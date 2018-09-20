@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get($path.'/delete-campaign-{id}', 'CampaignBackendController@delete')->where('id', '[0-9]+');
 	Route::get($path.'/show-list', 'CampaignBackendController@showList');
 	Route::get($path.'/show-list-{id}','CampaignBackendController@showListConditions')->where('id', '[0-9]+');
-	Route::get($path.'/quit', 'CampaignBackendController@getOut');
+	Route::get($path.'/quit', 'CampaignBackendController@quit');
 
 	// routes Configurations
 	Route::get($path.'/show-configurations', 'ConfigurationBackendController@showConfigurations');
