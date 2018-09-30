@@ -2,9 +2,13 @@
 
 namespace App\Providers;
 
+use App\Models\Auth\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
+/**
+ * Class RouteServiceProvider.
+ */
 class RouteServiceProvider extends ServiceProvider
 {
     /**
@@ -23,7 +27,18 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        /*
+        * Register route model bindings
+        */
+
+        /*
+         * Allow this to select all users regardless of status
+         */
+        $this->bind('user', function ($value) {
+            $user = new User;
+
+            return User::withTrashed()->where($user->getRouteKeyName(), $value)->first();
+        });
 
         parent::boot();
     }
