@@ -2,84 +2,105 @@
 
 namespace App\Providers;
 
-use Carbon\Carbon;
+use App\Models\Post;
+use App\Models\User;
+use Illuminate\Support\Facades\URL;
+use Laravel\Dusk\DuskServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\EloquentTagRepository;
+use App\Repositories\EloquentMetaRepository;
+use App\Repositories\EloquentPostRepository;
+use App\Repositories\EloquentRoleRepository;
+use App\Repositories\EloquentUserRepository;
+use App\Repositories\Contracts\TagRepository;
+use App\Repositories\Contracts\MetaRepository;
+use App\Repositories\Contracts\PostRepository;
+use App\Repositories\Contracts\RoleRepository;
+use App\Repositories\Contracts\UserRepository;
+use App\Repositories\EloquentAccountRepository;
+use App\Repositories\Contracts\AccountRepository;
+use App\Repositories\EloquentFormSettingRepository;
+use App\Repositories\EloquentRedirectionRepository;
+use Illuminate\Database\Eloquent\Relations\Relation;
+use App\Repositories\Contracts\FormSettingRepository;
+use App\Repositories\Contracts\RedirectionRepository;
+use App\Repositories\EloquentFormSubmissionRepository;
+use App\Repositories\Contracts\FormSubmissionRepository;
 
-/**
- * Class AppServiceProvider.
- */
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
     public function boot()
     {
-        /*
-         * Application locale defaults for various components
-         *
-         * These will be overridden by LocaleMiddleware if the session local is set
-         */
-
-        /*
-         * setLocale for php. Enables ->formatLocalized() with localized values for dates
-         */
-        setlocale(LC_TIME, config('app.locale_php'));
-
-        /*
-         * setLocale to use Carbon source locales. Enables diffForHumans() localized
-         */
-        Carbon::setLocale(config('app.locale'));
-
-        /*
-         * Set the session variable for whether or not the app is using RTL support
-         * For use in the blade directive in BladeServiceProvider
-         */
-        if (! app()->runningInConsole()) {
-            if (config('locale.languages')[config('app.locale')][2]) {
-                session(['lang-rtl' => true]);
-            } else {
-                session()->forget('lang-rtl');
-            }
-        }
-
-        // Force SSL in production
-        if ($this->app->environment() == 'production') {
-            //URL::forceScheme('https');
-        }
-
-        // Set the default string length for Laravel5.4
-        // https://laravel-news.com/laravel-5-4-key-too-long-error
         Schema::defaultStringLength(191);
 
-        // Set the default template for Pagination to use the included Bootstrap 4 template
-        \Illuminate\Pagination\AbstractPaginator::defaultView('pagination::bootstrap-4');
-        \Illuminate\Pagination\AbstractPaginator::defaultSimpleView('pagination::simple-bootstrap-4');
+        Relation::morphMap([
+            'post' => Post::class,
+            'user' => User::class,
+        ]);
+
+        if (config('app.url_force_https')) {
+            // Force SSL if isSecure does not detect HTTPS
+            URL::forceScheme('https');
+        }
     }
 
     /**
      * Register any application services.
-     *
-     * @return void
      */
     public function register()
     {
-        /*
-         * Sets third party service providers that are only needed on local/testing environments
-         */
-        if ($this->app->environment() != 'production') {
-            /**
-             * Loader for registering facades.
-             */
-            $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-
-            /*
-             * Load third party local aliases
-             */
-            $loader->alias('Debugbar', \Barryvdh\Debugbar\Facade::class);
+        // Dusk, if env is appropriate
+        if ($this->app->environment('local', 'testing')) {
+            $this->app->register(DuskServiceProvider::class);
         }
+
+        $this->app->bind(
+            UserRepository::class,
+            EloquentUserRepository::class
+        );
+
+        $this->app->bind(
+            AccountRepository::class,
+            EloquentAccountRepository::class
+        );
+
+        $this->app->bind(
+            RoleRepository::class,
+            EloquentRoleRepository::class
+        );
+
+        $this->app->bind(
+            MetaRepository::class,
+            EloquentMetaRepository::class
+        );
+
+        $this->app->bind(
+            FormSettingRepository::class,
+            EloquentFormSettingRepository::class
+        );
+
+        $this->app->bind(
+            FormSubmissionRepository::class,
+            EloquentFormSubmissionRepository::class
+        );
+
+        $this->app->bind(
+            RedirectionRepository::class,
+            EloquentRedirectionRepository::class
+        );
+
+        $this->app->bind(
+            PostRepository::class,
+            EloquentPostRepository::class
+        );
+
+        $this->app->bind(
+            TagRepository::class,
+            EloquentTagRepository::class
+        );
     }
 }

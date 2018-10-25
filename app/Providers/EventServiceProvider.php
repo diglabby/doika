@@ -2,11 +2,14 @@
 
 namespace App\Providers;
 
+use Illuminate\Auth\Events\Login;
+use App\Listeners\UserEventListener;
+use App\Listeners\LoginEventListener;
+use Illuminate\Auth\Events\Registered;
+use App\Listeners\FormSubmissionEventListener;
+use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
-/**
- * Class EventServiceProvider.
- */
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -15,7 +18,12 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        //
+        Registered::class => [
+            SendEmailVerificationNotification::class,
+        ],
+        Login::class => [
+            LoginEventListener::class,
+        ],
     ];
 
     /**
@@ -24,35 +32,15 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $subscribe = [
-        /*
-         * Frontend Subscribers
-         */
-
-        /*
-         * Auth Subscribers
-         */
-        \App\Listeners\Frontend\Auth\UserEventListener::class,
-
-        /*
-         * Backend Subscribers
-         */
-
-        /*
-         * Auth Subscribers
-         */
-        \App\Listeners\Backend\Auth\User\UserEventListener::class,
-        \App\Listeners\Backend\Auth\Role\RoleEventListener::class,
+        UserEventListener::class,
+        FormSubmissionEventListener::class,
     ];
 
     /**
      * Register any events for your application.
-     *
-     * @return void
      */
     public function boot()
     {
         parent::boot();
-
-        //
     }
 }
