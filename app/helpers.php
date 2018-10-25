@@ -1,72 +1,8 @@
 <?php
 
-use App\Helpers\General\Timezone;
-use App\Helpers\General\HtmlHelper;
-
-/*
- * Global helpers file with misc functions.
- */
-if (! function_exists('app_name')) {
-    /**
-     * Helper to grab the application name.
-     *
-     * @return mixed
-     */
-    function app_name()
-    {
-        return config('app.name');
-    }
-}
-
-if (! function_exists('gravatar')) {
-    /**
-     * Access the gravatar helper.
-     */
-    function gravatar()
-    {
-        return app('gravatar');
-    }
-}
-
-if (! function_exists('timezone')) {
-    /**
-     * Access the timezone helper.
-     */
-    function timezone()
-    {
-        return resolve(Timezone::class);
-    }
-}
-
-if (! function_exists('include_route_files')) {
-
-    /**
-     * Loops through a folder and requires all PHP files
-     * Searches sub-directories as well.
-     *
-     * @param $folder
-     */
-    function include_route_files($folder)
-    {
-        try {
-            $rdi = new recursiveDirectoryIterator($folder);
-            $it = new recursiveIteratorIterator($rdi);
-
-            while ($it->valid()) {
-                if (! $it->isDot() && $it->isFile() && $it->isReadable() && $it->current()->getExtension() === 'php') {
-                    require $it->key();
-                }
-
-                $it->next();
-            }
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
-    }
-}
+use Illuminate\Database\Eloquent\Model;
 
 if (! function_exists('home_route')) {
-
     /**
      * Return the route to the "home" page depending on authentication/authorization status.
      *
@@ -74,91 +10,57 @@ if (! function_exists('home_route')) {
      */
     function home_route()
     {
-        if (auth()->check()) {
-            if (auth()->user()->can('view backend')) {
-                return 'admin.dashboard';
-            } else {
-                return 'frontend.user.dashboard';
-            }
+        if (Gate::allows('access backend')) {
+            return route('admin.home');
         }
 
-        return 'frontend.index';
+        return route('user.home');
     }
 }
 
-if (! function_exists('style')) {
-
+if (! function_exists('is_admin_route')) {
     /**
-     * @param       $url
-     * @param array $attributes
-     * @param null  $secure
+     * @param \Illuminate\Http\Request $request
      *
-     * @return mixed
+     * @return bool
      */
-    function style($url, $attributes = [], $secure = null)
+    function is_admin_route(Illuminate\Http\Request $request)
     {
-        return resolve(HtmlHelper::class)->style($url, $attributes, $secure);
+        $action = $request->route()->getAction();
+
+        return 'App\Http\Controllers\Backend' === $action['namespace'];
     }
 }
 
-if (! function_exists('script')) {
-
+if (! function_exists('image_template_url')) {
     /**
-     * @param       $url
-     * @param array $attributes
-     * @param null  $secure
-     *
-     * @return mixed
-     */
-    function script($url, $attributes = [], $secure = null)
-    {
-        return resolve(HtmlHelper::class)->script($url, $attributes, $secure);
-    }
-}
-
-if (! function_exists('form_cancel')) {
-
-    /**
-     * @param        $cancel_to
-     * @param        $title
-     * @param string $classes
-     *
-     * @return mixed
-     */
-    function form_cancel($cancel_to, $title, $classes = 'btn btn-danger btn-sm')
-    {
-        return resolve(HtmlHelper::class)->formCancel($cancel_to, $title, $classes);
-    }
-}
-
-if (! function_exists('form_submit')) {
-
-    /**
-     * @param        $title
-     * @param string $classes
-     *
-     * @return mixed
-     */
-    function form_submit($title, $classes = 'btn btn-success btn-sm pull-right')
-    {
-        return resolve(HtmlHelper::class)->formSubmit($title, $classes);
-    }
-}
-
-if (! function_exists('camelcase_to_word')) {
-
-    /**
-     * @param $str
+     * @param $template
+     * @param $imagePath
      *
      * @return string
      */
-    function camelcase_to_word($str)
+    function image_template_url($template, $imagePath)
     {
-        return implode(' ', preg_split('/
-          (?<=[a-z])
-          (?=[A-Z])
-        | (?<=[A-Z])
-          (?=[A-Z][a-z])
-        /x', $str));
+        $imagePath = str_replace('/storage', '', $imagePath);
+
+        return url(config('imagecache.route')."/{$template}{$imagePath}");
+    }
+}
+
+if (! function_exists('localize_url')) {
+    function localize_url($locale = null, $attributes = [], Model $translatable = null)
+    {
+        $url = null;
+
+        if ($translatable && method_exists($translatable, 'getTranslation')) {
+            /** @var \Spatie\Translatable\HasTranslations $translatable */
+            if ($slug = $translatable->getTranslation('slug', $locale)) {
+                $url = route(Route::current()->getName(), ['post' => $slug]);
+            } else {
+                $url = route('home');
+            }
+        }
+
+        return LaravelLocalization::getLocalizedURL($locale, $url, $attributes, true);
     }
 }

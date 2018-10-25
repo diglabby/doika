@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Default Session Driver
@@ -29,7 +28,7 @@ return [
     |
     */
 
-    'lifetime' => env('SESSION_LIFETIME', 120),
+    'lifetime'        => env('SESSION_LIFETIME', 120),
 
     'expire_on_close' => false,
 
@@ -44,7 +43,7 @@ return [
     |
     */
 
-    'encrypt' => env('SESSION_ENCRYPT', false),
+    'encrypt' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -193,5 +192,4 @@ return [
     */
 
     'same_site' => null,
-
 ];

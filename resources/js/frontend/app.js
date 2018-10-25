@@ -1,24 +1,28 @@
+import loadClientScripts from './load-client-scripts'
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+// Vue & axios
+import Vue from 'vue'
+import { axios } from '../axios-config'
 
-import '../bootstrap';
-import '../plugins';
-import Vue from 'vue';
+import 'babel-polyfill'
+import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm'
 
-window.Vue = Vue;
+import { createLocales } from '../vue-i18n-config'
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+window.axios = axios
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+// Bootstrap Vue
+Vue.use(BootstrapVue)
 
-const app = new Vue({
-    el: '#app'
-});
+export function createApp() {
+  const i18n = createLocales(window.locale)
+
+  const app = new Vue({
+    i18n
+  })
+
+  return { app }
+}
+
+// Load Client Scripts
+loadClientScripts(createApp)
