@@ -881,8 +881,8 @@ export default {
                 "create": "Create redirection",
                 "import": "Import CSV"
             },
-            "posts": {
-                "create": "Create post",
+            "campaigns": {
+                "create": "Create campaign",
                 "save_and_publish": "Save and publish",
                 "save_as_draft": "Save as draft"
             }
@@ -979,6 +979,8 @@ export default {
             "upload_image": "Upload image",
             "anonymous": "Anonymous",
             "all_rights_reserved": "All rights reserved.",
+            "supporters": "Supported by the European Union",
+            "help": "Help Doika Team",
             "with": "with",
             "by": "by",
             "datatables": {
@@ -990,7 +992,7 @@ export default {
                 "infos": "Showing {offset_start} to {offset_end} of {total} entries"
             },
             "morphs": {
-                "post": "Post, identity {id}",
+                "campaign": "campaign, identity {id}",
                 "user": "User, identity {id}"
             },
             "auth": {
@@ -1065,20 +1067,49 @@ export default {
                 "login_as": "You are actually logged as <strong>{name}<\/strong>, you can logout as <a href=\"{route}\" data-turbolinks=\"false\">{admin}<\/a>."
             },
             "backend": {
+                "campaigns": {
+                    "statuses": {
+                        "draft": "Draft",
+                        "pending": "Pending",
+                        "published": "Published"
+                    },
+                    "titles": {
+                        "main": "Campaigns",
+                        "index": "List of campaigns",
+                        "create": "Create campaign",
+                        "edit": "Edit campaign",
+                        "publication": "Publication options"
+                    },
+                    "descriptions": {
+                        "meta_title": "If leave empty, title will be that of article' title by default.",
+                        "meta_description": "If leave empty, description will be that of article's summary by default."
+                    },
+                    "placeholders": {
+                        "body": "Write your content...",
+                        "meta_title": "Article's title.",
+                        "meta_description": "Article's summary."
+                    },
+                    "actions": {
+                        "destroy": "Delete selected campaigns",
+                        "publish": "Publish selected campaigns",
+                        "pin": "Pin selected campaigns",
+                        "promote": "Promote selected campaigns"
+                    }
+                },
                 "dashboard": {
-                    "new_posts": "New posts",
-                    "pending_posts": "Pending posts",
-                    "published_posts": "Published posts",
+                    "new_campaigns": "New campaigns",
+                    "pending_campaigns": "Pending campaigns",
+                    "published_campaigns": "Published campaigns",
                     "active_users": "Active users",
                     "form_submissions": "Submissions",
-                    "last_posts": "Last posts",
-                    "last_published_posts": "Last publications",
-                    "last_pending_posts": "Last pending posts",
-                    "last_new_posts": "Last new posts",
-                    "all_posts": "All posts"
+                    "last_campaigns": "Last campaigns",
+                    "last_published_campaigns": "Last publications",
+                    "last_pending_campaigns": "Last pending campaigns",
+                    "last_new_campaigns": "Last new campaigns",
+                    "all_campaigns": "All campaigns"
                 },
                 "new_menu": {
-                    "post": "New post",
+                    "campaign": "New campaign",
                     "form_setting": "New form setting",
                     "user": "New user",
                     "role": "New role",
@@ -1089,10 +1120,19 @@ export default {
                     "content": "Content management",
                     "forms": "Form management",
                     "access": "Access management",
-                    "seo": "SEO settings"
+                    "seo": "SEO settings",
+                    "configuration": "Module configuration",
+                    "guides": "FAQ",
+                    "feedback": "Feedback"
                 },
                 "titles": {
-                    "dashboard": "Dashboard"
+                    "campaigns": "Campaigns",
+                    "payments": "Payments",
+                    "paymentConfig": "Payment system",
+                    "layoutConfig": "Layout",
+                    "notificationsConfig": "Notifications",
+                    "howTo": "How to use",
+                    "sendFeedback": "Write feedback"
                 },
                 "users": {
                     "titles": {
@@ -1168,35 +1208,6 @@ export default {
                         "title": "CSV file import",
                         "label": "Select CSV file to import",
                         "description": "File must have 2 columns with \"source\" and \"target\" as heading, redirection will be permanent by default"
-                    }
-                },
-                "posts": {
-                    "statuses": {
-                        "draft": "Draft",
-                        "pending": "Pending",
-                        "published": "Published"
-                    },
-                    "titles": {
-                        "main": "Posts",
-                        "index": "Post list",
-                        "create": "Create post",
-                        "edit": "Edit post",
-                        "publication": "Publication options"
-                    },
-                    "descriptions": {
-                        "meta_title": "If leave empty, title will be that of article' title by default.",
-                        "meta_description": "If leave empty, description will be that of article's summary by default."
-                    },
-                    "placeholders": {
-                        "body": "Write your content...",
-                        "meta_title": "Article's title.",
-                        "meta_description": "Article's summary."
-                    },
-                    "actions": {
-                        "destroy": "Delete selected posts",
-                        "publish": "Publish selected posts",
-                        "pin": "Pin selected posts",
-                        "promote": "Promote selected posts"
                     }
                 }
             },
@@ -1516,6 +1527,13 @@ export default {
             },
             "attributes": {
                 "name": "Name",
+                "backers": "Backers\/Subscribers",
+                "reccurent": "Reccurent",
+                "average": "Average amount",
+                "recieved": "All",
+                "goal": "Needed",
+                "recurrent": "Recurrent",
+                "days": "Days remaining",
                 "display_name": "Display name",
                 "username": "Pseudo",
                 "email": "Email",

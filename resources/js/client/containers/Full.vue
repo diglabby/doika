@@ -1,32 +1,16 @@
 <template>
   <div class="app">
-    <AppHeader></AppHeader>
-  
-    <AppFooter :name="$app.appName" :editor-name="$app.editorName"
-               :editor-site-url="$app.editorSiteUrl"
-    >
-      <div class="module-donate__footer">
-        <a class="payment__description"></a>
-        <p class="result__description"></p>
-        <div class="module-donate__version">powered by <a href="#" target="_blank">Doika</a></div>
-      </div>
-    </AppFooter>
+    <div class="container-fluid">
+      <router-view :key="$route.name"></router-view>
+    </div>
   </div>
 </template>
 
 <script>
 import nav from '../_nav'
 
-import AppFooter from '../components/Footer'
-import AppHeader from '../components/Header'
-//import AppBody from '../components/Body'
-
 export default {
   name: 'Full',
-  components: {
-    AppHeader,
-    AppFooter
-  },
   data() {
     return {
       nav: []

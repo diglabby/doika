@@ -22,13 +22,15 @@ Route::get(
     'PagesController@legalMentions'
 )->name('legal-mentions');
 
-if (config('blog.enabled')) {
-    Route::get('blog', 'BlogController@index')->name('blog.index');
-    Route::get('blog/{post}', 'BlogController@show')->name('blog.show');
-    Route::get('blog/tags/{tag}', 'BlogController@tag')->name('blog.tag');
+//if (config('campaign.enabled')) {
+    Route::get('campaign', 'CampaignController@index')->name('campaign.index');
 
+    Route::get('campaign/tags/{tag}', 'CampaignController@tag')->name('campaign.tag');
+    Route::get('campaign/{campaignId}', 'CampaignController@show')->name('campaign.show');
+    Route::get('campaign/{campaignId}/donate', 'CampaignController@donate')->name('campaign.donate');
+    Route::get('campaign/get', 'CampaignController@get')->name('campaign.get');
     Route::get(
         LaravelLocalization::transRoute('routes.redactors'),
-        'BlogController@owner'
-    )->name('blog.owner');
-}
+        'CampaignController@owner'
+    )->name('campaign.owner');
+//}

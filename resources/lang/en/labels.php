@@ -27,6 +27,8 @@ return [
     'upload_image'        => 'Upload image',
     'anonymous'           => 'Anonymous',
     'all_rights_reserved' => 'All rights reserved.',
+	'supporters'		  => 'Supported by the European Union',
+	'help'		  		  => 'Help Doika Team',
     'with'                => 'with',
     'by'                  => 'by',
 
@@ -40,7 +42,7 @@ return [
     ],
 
     'morphs' => [
-        'post' => 'Post, identity :id',
+        'campaign' => 'campaign, identity :id',
         'user' => 'User, identity :id',
     ],
 
@@ -126,21 +128,36 @@ return [
     ],
 
     'backend' => [
-        'dashboard' => [
-            'new_posts'            => 'New posts',
-            'pending_posts'        => 'Pending posts',
-            'published_posts'      => 'Published posts',
+	
+		'campaigns' => [
+            'new_campaigns'            => 'New campaigns',
+            'pending_campaigns'        => 'Pending campaigns',
+            'published_campaigns'      => 'Published campaigns',
             'active_users'         => 'Active users',
             'form_submissions'     => 'Submissions',
-            'last_posts'           => 'Last posts',
-            'last_published_posts' => 'Last publications',
-            'last_pending_posts'   => 'Last pending posts',
-            'last_new_posts'       => 'Last new posts',
-            'all_posts'            => 'All posts',
+            'last_campaigns'           => 'Last campaigns',
+            'last_published_campaigns' => 'Last publications',
+            'last_pending_campaigns'   => 'Last pending campaigns',
+            'last_new_campaigns'       => 'Last new campaigns',
+            'all_campaigns'        => 'All campaigns',
+			'list'				   => 'List of campaigns',			
+        ],
+		
+        'dashboard' => [
+            'new_campaigns'            => 'New campaigns',
+            'pending_campaigns'        => 'Pending campaigns',
+            'published_campaigns'      => 'Published campaigns',
+            'active_users'         => 'Active users',
+            'form_submissions'     => 'Submissions',
+            'last_campaigns'           => 'Last campaigns',
+            'last_published_campaigns' => 'Last publications',
+            'last_pending_campaigns'   => 'Last pending campaigns',
+            'last_new_campaigns'       => 'Last new campaigns',
+            'all_campaigns'            => 'All campaigns',
         ],
 
         'new_menu' => [
-            'post'         => 'New post',
+            'campaign'         => 'New campaign',
             'form_setting' => 'New form setting',
             'user'         => 'New user',
             'role'         => 'New role',
@@ -149,14 +166,23 @@ return [
         ],
 
         'sidebar' => [
-            'content' => 'Content management',
-            'forms'   => 'Form management',
-            'access'  => 'Access management',
-            'seo'     => 'SEO settings',
+            'content' 		=> 'Content management',
+            'forms'   		=> 'Form management',
+            'access'  		=> 'Access management',
+            'seo'     		=> 'SEO settings',
+			'configuration' => 'Module configuration',
+			'guides' 		=> 'FAQ',
+			'feedback' 		=> 'Feedback'
         ],
 
-        'titles' => [
-            'dashboard' => 'Dashboard',
+        'titles' => [            
+			'campaigns' 	=> 'Campaigns',
+			'payments' 		=> 'Payments',
+			'paymentConfig'	=> 'Payment system',
+			'layoutConfig'	=> 'Layout',
+			'notificationsConfig'	=> 'Notifications',
+			'howTo'			=>	'How to use',
+			'sendFeedback'	=>	'Write feedback',
         ],
 
         'users' => [
@@ -248,7 +274,7 @@ return [
             ],
         ],
 
-        'posts' => [
+        'campaigns' => [
             'statuses' => [
                 'draft'     => 'Draft',
                 'pending'   => 'Pending',
@@ -256,10 +282,10 @@ return [
             ],
 
             'titles' => [
-                'main'        => 'Posts',
-                'index'       => 'Post list',
-                'create'      => 'Create post',
-                'edit'        => 'Edit post',
+                'main'        => 'Campaigns',
+                'index'       => 'List of campaigns',
+                'create'      => 'Create campaign',
+                'edit'        => 'Edit campaign',
                 'publication' => 'Publication options',
             ],
 
@@ -275,10 +301,10 @@ return [
             ],
 
             'actions' => [
-                'destroy' => 'Delete selected posts',
-                'publish' => 'Publish selected posts',
-                'pin'     => 'Pin selected posts',
-                'promote' => 'Promote selected posts',
+                'destroy' => 'Delete selected campaigns',
+                'publish' => 'Publish selected campaigns',
+                'pin'     => 'Pin selected campaigns',
+                'promote' => 'Promote selected campaigns',
             ],
         ],
     ],

@@ -6,7 +6,7 @@
     "watch": "npm run clean && npm run build -- --watch",
     "dev": "npm run clean && webpack-dev-server --mode development --hot --progress",
     "prod": "rimraf public/dist && cross-env NODE_ENV=production webpack --mode production --progress",
-    "lint": "eslint --ext .js,.vue resources/js"
+    "lint": "eslint  --fix --ext .js,.vue resources/js"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",

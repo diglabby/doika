@@ -13,3 +13,4 @@
 
 Route::get('robots.txt', 'SeoController@robots');
 Route::get('sitemap.xml', 'SeoController@sitemap');
+Route::get('campaign/get', 'CampaignController@get')->name('campaign.get');

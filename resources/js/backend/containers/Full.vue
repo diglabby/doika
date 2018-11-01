@@ -3,13 +3,16 @@
     <AppHeader></AppHeader>
     <div class="app-body">
       <Sidebar fixed>
-        <div class="sidebar-header">
-          <i class="fe fe-user"></i>&nbsp;&nbsp;{{ $app.user.name }}
-        </div>
         <AppSearch></AppSearch>
-        <SidebarNav :nav-items="nav"></SidebarNav>
-        <SidebarFooter></SidebarFooter>
-        <SidebarMinimizer></SidebarMinimizer>
+        <SidebarNav :nav-items="nav">
+        </SidebarNav>
+        <div class="container-fluid" style="margin-top:auto !important; border: 1px solid white; width: 80%; height: 50px; text-align: center; line-height: 46px;">
+          {{ $t('labels.help') }}
+        </div>
+        <SidebarFooter>
+        </SidebarFooter>
+        <SidebarMinimizer>
+        </SidebarMinimizer>
       </Sidebar>
       <main class="main">
         <b-alert variant="warning" class="alert-top mb-0" :show="$app.isImpersonation">

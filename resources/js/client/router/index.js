@@ -9,6 +9,7 @@ import Search from '../views/Search'
 import Dashboard from '../views/Dashboard'
 import PostForm from '../views/PostForm'
 import MainWindow from '../views/MainWindow'
+import DonateWindow from '../views/DonateWindow'
 import PostList from '../views/PostList'
 import FormSettingForm from '../views/FormSettingForm'
 import FormSettingList from '../views/FormSettingList'
@@ -33,64 +34,64 @@ export function createRouter(base, i18n) {
     scrollBehavior: () => ({ y: 0 }),
     routes: [
       {
-        path: '/main',
-        redirect: '/main',
-        name: 'home',
+        path: '/campaign/',
+        redirect: '/campaign/',
+        name: 'campaign',
         component: Full,
         meta: {
           label: i18n.t('labels.frontend.titles.administration')
         },
         children: [
           {
-            path: 'search',
-            name: 'search',
-            component: Search,
+            path: ':id',
+            name: 'campaign',
+            component: MainWindow,
             meta: {
-              label: i18n.t('labels.search')
+              label: i18n.t('labels.backend.campaign.titles.index')
             }
           },
           {
-            path: 'dashboard',
-            name: 'dashboard',
-            component: Dashboard,
+            path: ':id/donate',
+            name: 'donate',
+            component: DonateWindow,
             meta: {
-              label: i18n.t('labels.backend.titles.dashboard')
+              label: i18n.t('labels.backend.campaign.titles.index')
             }
           },
           {
-            path: 'posts',
+            path: 'campaign',
             component: {
               render(c) {
                 return c('router-view')
               }
             },
             meta: {
-              label: i18n.t('labels.backend.posts.titles.main')
+              label: i18n.t('labels.backend.campaign.titles.main')
             },
             children: [
               {
                 path: '/',
-                name: 'posts',
-                component: PostList,
+                name: 'campaign',
+                component: MainWindow,
                 meta: {
-                  label: i18n.t('labels.backend.posts.titles.index')
+                  label: i18n.t('labels.backend.campaign.titles.index')
                 }
               },
               {
                 path: 'create',
-                name: 'posts_create',
+                name: 'campaign_create',
                 component: PostForm,
                 meta: {
-                  label: i18n.t('labels.backend.posts.titles.create')
+                  label: i18n.t('labels.backend.campaign.titles.create')
                 }
               },
               {
-                path: ':id/edit',
-                name: 'posts_edit',
-                component: PostForm,
+                path: ':id/donate',
+                name: 'campaign_donate',
+                component: DonateWindow,
                 props: true,
                 meta: {
-                  label: i18n.t('labels.backend.posts.titles.edit')
+                  label: i18n.t('labels.backend.campaign.titles.edit')
                 }
               }
             ]

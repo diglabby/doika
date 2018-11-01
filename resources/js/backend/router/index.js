@@ -6,7 +6,7 @@ import Full from '../containers/Full'
 
 // Views
 import Search from '../views/Search'
-import Dashboard from '../views/Dashboard'
+import Campaigns from '../views/Campaigns'
 import PostForm from '../views/PostForm'
 import PostList from '../views/PostList'
 import FormSettingForm from '../views/FormSettingForm'
@@ -33,7 +33,7 @@ export function createRouter(base, i18n) {
     routes: [
       {
         path: '/',
-        redirect: '/dashboard',
+        redirect: '/campaigns',
         name: 'home',
         component: Full,
         meta: {
@@ -49,11 +49,11 @@ export function createRouter(base, i18n) {
             }
           },
           {
-            path: 'dashboard',
-            name: 'dashboard',
-            component: Dashboard,
+            path: 'campaigns',
+            name: 'campaigns',
+            component: Campaigns,
             meta: {
-              label: i18n.t('labels.backend.titles.dashboard')
+              label: i18n.t('labels.backend.titles.campaigns')
             }
           },
           {
@@ -64,7 +64,7 @@ export function createRouter(base, i18n) {
               }
             },
             meta: {
-              label: i18n.t('labels.backend.posts.titles.main')
+              label: i18n.t('labels.backend.campaigns.titles.main')
             },
             children: [
               {
@@ -72,7 +72,7 @@ export function createRouter(base, i18n) {
                 name: 'posts',
                 component: PostList,
                 meta: {
-                  label: i18n.t('labels.backend.posts.titles.index')
+                  label: i18n.t('labels.backend.campaigns.titles.index')
                 }
               },
               {
@@ -80,7 +80,7 @@ export function createRouter(base, i18n) {
                 name: 'posts_create',
                 component: PostForm,
                 meta: {
-                  label: i18n.t('labels.backend.posts.titles.create')
+                  label: i18n.t('labels.backend.campaigns.titles.create')
                 }
               },
               {
@@ -89,7 +89,7 @@ export function createRouter(base, i18n) {
                 component: PostForm,
                 props: true,
                 meta: {
-                  label: i18n.t('labels.backend.posts.titles.edit')
+                  label: i18n.t('labels.backend.campaigns.titles.edit')
                 }
               }
             ]

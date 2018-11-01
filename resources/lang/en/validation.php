@@ -118,6 +118,13 @@ return [
 
     'attributes' => [
         'name'                      => 'Name',
+		'backers'                   => 'Backers/Subscribers',
+		'reccurent'			   		=> 'Reccurent',
+		'average'			   		=> 'Average amount',
+		'recieved'			  	 	=> 'All',
+		'goal'						=> 'Needed',
+		'recurrent'					=> 'Recurrent',
+		'days'			   	   		=> 'Days remaining',
         'display_name'              => 'Display name',
         'username'                  => 'Pseudo',
         'email'                     => 'Email',

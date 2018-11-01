@@ -38,8 +38,8 @@ return [
         'import' => 'Import CSV',
     ],
 
-    'posts' => [
-        'create'           => 'Create post',
+    'campaigns' => [
+        'create'           => 'Create campaign',
         'save_and_publish' => 'Save and publish',
         'save_as_draft'    => 'Save as draft',
     ],

@@ -174,6 +174,9 @@ export function createApp() {
 
 // Init App
 if (document.getElementById('app') !== null) {
+  console.log('1' + document.getElementById('app'))
   const { app } = createApp()
+  console.log('3')
   app.$mount('#app')
+  console.log('3')
 }

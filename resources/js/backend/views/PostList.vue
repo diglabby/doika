@@ -2,19 +2,16 @@
   <div>
     <b-card>
       <template slot="header">
-        <h3 class="card-title">{{ $t('labels.backend.posts.titles.index') }}</h3>
+        <h3 class="card-title">{{ $t('labels.backend.campaigns.titles.index') }}</h3>
         <div class="card-options" v-if="this.$app.user.can('create posts')">
           <b-button to="/posts/create" variant="success" size="sm">
-            <i class="fe fe-plus-circle"></i> {{ $t('buttons.posts.create') }}
+            <i class="fe fe-plus-circle"></i> {{ $t('buttons.campaigns.create') }}
           </b-button>
         </div>
       </template>
       <b-datatable ref="datasource"
                    @context-changed="onContextChanged"
-                   search-route="admin.posts.search"
-                   delete-route="admin.posts.destroy"
-                   action-route="admin.posts.batch_action" :actions="actions"
-                   :selected.sync="selected"
+                  
       >
         <b-table ref="datatable"
                  striped
@@ -26,18 +23,12 @@
                  :empty-filtered-text="$t('labels.datatables.no_matched_results')"
                  :fields="fields"
                  :items="dataLoadProvider"
-                 sort-by="posts.created_at"
+                 sort-by="campaigns.created_at"
                  :sort-desc="true"
         >
           <template slot="HEAD_checkbox" slot-scope="data"></template>
           <template slot="checkbox" slot-scope="row">
             <b-form-checkbox :value="row.item.id" v-model="selected"></b-form-checkbox>
-          </template>
-          <template slot="image" slot-scope="row">
-            <router-link v-if="row.item.can_edit" :to="`/posts/${row.item.id}/edit`">
-              <img :src="row.item.thumbnail_image_path" :alt="row.item.title">
-            </router-link>
-            <img v-else :src="row.item.thumbnail_image_path" :alt="row.item.title">
           </template>
           <template slot="title" slot-scope="row">
             <router-link v-if="row.item.can_edit" :to="`/posts/${row.item.id}/edit`" v-text="row.value"></router-link>
@@ -46,20 +37,32 @@
           <template slot="status" slot-scope="row">
             <b-badge :variant="row.item.state">{{ $t(row.item.status_label) }}</b-badge>
           </template>
-          <template slot="pinned" slot-scope="row">
+          <template slot="backers" slot-scope="row">
             <c-switch v-if="row.item.can_edit" :checked="row.value" @change="onPinToggle(row.item.id)"></c-switch>
           </template>
-          <template slot="promoted" slot-scope="row">
+          <template slot="recurrent" slot-scope="row">
             <c-switch v-if="row.item.can_edit" :checked="row.value" @change="onPromoteToggle(row.item.id)"></c-switch>
           </template>
-          <template slot="owner" slot-scope="row">
+          <template slot="average" slot-scope="row">
             <span v-if="row.item.owner">{{ row.item.owner.name }}</span>
             <span v-else>{{ $t('labels.anonymous') }}</span>
           </template>
-          <template slot="posts.created_at" slot-scope="row">
+          <template slot="received" slot-scope="row">
+            <span v-if="row.item.owner">{{ row.item.owner.name }}</span>
+            <span v-else>{{ $t('labels.anonymous') }}</span>
+          </template>
+          <template slot="goal" slot-scope="row">
+            <span v-if="row.item.owner">{{ row.item.owner.name }}</span>
+            <span v-else>{{ $t('labels.anonymous') }}</span>
+          </template>
+          <template slot="days" slot-scope="row">
+            <span v-if="row.item.owner">{{ row.item.owner.name }}</span>
+            <span v-else>{{ $t('labels.anonymous') }}</span>
+          </template>
+          <template slot="campaigns.created_at" slot-scope="row">
             {{ row.item.created_at }}
           </template>
-          <template slot="posts.updated_at" slot-scope="row">
+          <template slot="campaigns.updated_at" slot-scope="row">
             {{ row.item.updated_at }}
           </template>
           <template slot="actions" slot-scope="row">
@@ -83,13 +86,12 @@
 import axios from 'axios'
 
 export default {
-  name: 'PostList',
+  name: 'CampaignList',
   data() {
     return {
       selected: [],
       fields: [
         { key: 'checkbox' },
-        { key: 'image', label: this.$t('validation.attributes.image') },
         {
           key: 'title',
           label: this.$t('validation.attributes.title'),
@@ -98,38 +100,52 @@ export default {
         {
           key: 'status',
           label: this.$t('validation.attributes.status'),
-          class: 'text-center'
-        },
-        {
-          key: 'pinned',
-          label: this.$t('validation.attributes.pinned'),
-          class: 'text-center'
-        },
-        {
-          key: 'promoted',
-          label: this.$t('validation.attributes.promoted'),
-          class: 'text-center'
-        },
-        { key: 'owner', label: this.$t('labels.author'), sortable: true },
-        {
-          key: 'posts.created_at',
-          label: this.$t('labels.created_at'),
           class: 'text-center',
           sortable: true
         },
         {
-          key: 'posts.updated_at',
-          label: this.$t('labels.updated_at'),
+          key: 'backers',
+          label: this.$t('validation.attributes.backers'),
+          class: 'text-center',
+          sortable: true
+        },
+        {
+          key: 'recurrent',
+          label: this.$t('validation.attributes.recurrent'),
+          class: 'text-center',
+          sortable: true
+        },
+        {
+          key: 'average',
+          label: this.$t('validation.attributes.average'),
+          class: 'text-center',
+          sortable: true
+        },
+        {
+          key: 'recieved',
+          label: this.$t('validation.attributes.recieved'),
+          class: 'text-center',
+          sortable: true
+        },
+        {
+          key: 'goal',
+          label: this.$t('validation.attributes.goal'),
+          class: 'text-center',
+          sortable: true
+        },
+        {
+          key: 'days',
+          label: this.$t('validation.attributes.days'),
           class: 'text-center',
           sortable: true
         },
         { key: 'actions', label: this.$t('labels.actions'), class: 'nowrap' }
       ],
       actions: {
-        destroy: this.$t('labels.backend.posts.actions.destroy'),
-        publish: this.$t('labels.backend.posts.actions.publish'),
-        pin: this.$t('labels.backend.posts.actions.pin'),
-        promote: this.$t('labels.backend.posts.actions.promote')
+        destroy: this.$t('labels.backend.campaigns.actions.destroy'),
+        publish: this.$t('labels.backend.campaigns.actions.publish'),
+        pin: this.$t('labels.backend.campaigns.actions.pin'),
+        promote: this.$t('labels.backend.campaigns.actions.promote')
       }
     }
   },
@@ -152,7 +168,7 @@ export default {
     },
     onPromoteToggle(id) {
       axios
-        .post(this.$app.route('admin.posts.promoted', { post: id }))
+        .post(this.$app.route('admin.campaigns.promoted', { post: id }))
         .catch(error => {
           this.$app.error(error)
         })

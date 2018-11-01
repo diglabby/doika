@@ -1,11 +1,11 @@
 <template>
   <Footer>
-    <strong>Copyright &copy; {{ new Date().getFullYear() }} <a href="/" target="_blank">{{ name }}</a>.
-    </strong>&nbsp;{{ $t('labels.all_rights_reserved') }}
+    <strong>Powered by <a href="/" target="_blank">{{ name }}</a>.
+    </strong>&nbsp;{{ $t('labels.supporters') }}
     <span class="ml-auto">
       <template v-if="editorName !== ''">
         <template v-if="editorSiteUrl !== ''">
-          <i class="fe fe-code"></i> {{ $t('labels.with') }} <i class="fe fe-heart"></i> {{ $t('labels.by') }}
+          {{ $t('labels.with') }} <i class="fe fe-heart"></i> {{ $t('labels.by') }}
           <a :href="editorSiteUrl" target="_blank"><strong>{{ editorName }}</strong></a>
         </template>
         <template v-else>
