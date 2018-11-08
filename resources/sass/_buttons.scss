@@ -1,0 +1,23 @@
+.btn-facebook {
+  @include button-variant(#365899, #365899);
+}
+
+.btn-twitter {
+  @include button-variant(#1DA1F2, #1DA1F2);
+}
+
+.btn-google {
+  @include button-variant(#DB4437, #DB4437);
+}
+
+.btn-linkedin {
+  @include button-variant(#0077B5, #0077B5);
+}
+
+.btn-github {
+  @include button-variant(#24292E, #24292E);
+}
+
+.btn-bitbucket {
+  @include button-variant(#253858, #253858);
+}
