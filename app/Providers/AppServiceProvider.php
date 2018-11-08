@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Post;
+use App\Models\Campaign;
 use App\Models\User;
 use Illuminate\Support\Facades\URL;
 use Laravel\Dusk\DuskServiceProvider;
@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\EloquentTagRepository;
 use App\Repositories\EloquentMetaRepository;
-use App\Repositories\EloquentPostRepository;
+use App\Repositories\EloquentCampaignRepository;
 use App\Repositories\EloquentRoleRepository;
 use App\Repositories\EloquentUserRepository;
 use App\Repositories\Contracts\TagRepository;
 use App\Repositories\Contracts\MetaRepository;
-use App\Repositories\Contracts\PostRepository;
+use App\Repositories\Contracts\CampaignRepository;
 use App\Repositories\Contracts\RoleRepository;
 use App\Repositories\Contracts\UserRepository;
 use App\Repositories\EloquentAccountRepository;
@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         Relation::morphMap([
-            'post' => Post::class,
+            'campaign' => Campaign::class,
             'user' => User::class,
         ]);
 
@@ -94,8 +94,8 @@ class AppServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
-            PostRepository::class,
-            EloquentPostRepository::class
+            CampaignRepository::class,
+            EloquentCampaignRepository::class
         );
 
         $this->app->bind(

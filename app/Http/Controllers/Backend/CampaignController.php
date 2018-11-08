@@ -1,55 +1,206 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Backend;
 
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\CreateCampaign;
-use App\Model\CampaignPageAdmin;
-use App\Nodel\CampaignListAdmin;
+use App\Utils\RequestSearchQuery;
+use App\Http\Requests\StoreCampaignRequest;
+use App\Http\Requests\UpdateCampaignRequest;
+//use App\Repositories\Contracts\RoleRepository;
+use App\Repositories\Contracts\UserRepository;
 
-class CampaignController extends Controller
-{   
-    public function create(CreateCampaign $request)
+class CampaignController extends BackendController
+{
+    /**
+     * @var CampaignRepository
+     */
+    protected $campaigns;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @param CampaignRepository                             $campaigns
+     */
+    public function __construct(UserRepository $campaigns)
     {
-        CampaignPageAdmin::createCampaign($request);
-        return redirect('/doika/show-list');
+        $this->campaigns = $campaigns;
     }
 
-    public function show($id)
+    public function getActiveCampaignCounter()
     {
-        $data = CampaignPageAdmin::getCampaignPage($id);
-        return view('backend.campaign', $data);
+        //return $this->campaigns->query()->whereActive(true)->count();
+        return 1;
     }
 
-    public function update($id, CreateCampaign $request)
+    /**
+     * Show the application dashboard.
+     *
+     * @param Request $request
+     *
+     * @throws \Exception
+     *
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
+    public function search(Request $request)
     {
-        CampaignPageAdmin::updateCampaignPage($id, $request);
-        return back();
+        var_dump($request);
+        $requestSearchQuery = new RequestSearchQuery($request, $this->users->query(), [
+            'name',
+            'email',
+        ]);
+
+        if ($request->get('exportData')) {
+            return $requestSearchQuery->export([
+                'name',
+                'email',
+                'active',
+                'last_access_at',
+                'created_at',
+                'updated_at',
+            ],
+                [
+                    __('validation.attributes.name'),
+                    __('validation.attributes.email'),
+                    __('validation.attributes.active'),
+                    __('labels.last_access_at'),
+                    __('labels.created_at'),
+                    __('labels.updated_at'),
+                ],
+                'campaigns');
+        }
+
+        // return $requestSearchQuery->result([
+        //     'id',
+        //     'name',
+        //     'email',
+        //     'active',
+        //     'last_access_at',
+        //     'created_at',
+        //     'updated_at',
+        // ]);
+        return "";
     }
 
-    public function delete($id)
+    /**
+     * @param Campaign $campaign
+     *
+     * @return Campaign
+     */
+    public function show(Campaign $campaign)
     {
-        CampaignPageAdmin::deleteCampaign($id);
-        return redirect('/doika/show-list');
+        if (! $campaign->can_edit) {
+            // Only Super admin can access himself
+            abort(403);
+        }
+
+        return $campaign;
     }
 
-    public function showList()
+    public function getRoles()
     {
-        $data = CampaignListAdmin::getListAdminPage();
-        return view('backend.list', $data);
+        //return $this->roles->getAllowedRoles();
+        return null;
     }
 
-    public function showListConditions($id)
+    /**
+     * @param StoreCampaignRequest $request
+     *
+     * @return mixed
+     */
+    public function store(StoreCampaignRequest $request)
     {
-        $data = CampaignListAdmin::getListAdminPageConditions($id);
-        $data['conditions_id'] = $id;
-        return view('backend.list', $data);      
+        $this->authorize('create campaigns');
+
+        $this->campaigns->store($request->input());
+
+        return $this->redirectResponse($request, __('alerts.backend.campaigns.created'));
     }
 
-    public function getOut()
+    /**
+     * @param Campaign              $campaign
+     * @param UpdateCampaignRequest $request
+     *
+     * @throws \Illuminate\Database\Eloquent\MassAssignmentException
+     *
+     * @return mixed
+     */
+    public function update(Campaign $campaign, UpdateCampaignRequest $request)
     {
-        Auth::logout();
-        return redirect('/');
+        $this->authorize('edit campaigns');
+
+        $this->campaigns->update($campaign, $request->input());
+
+        return $this->redirectResponse($request, __('alerts.backend.campaigns.updated'));
+    }
+
+    /**
+     * @param Campaign    $campaign
+     * @param Request $request
+     *
+     * @return mixed
+     */
+    public function destroy(Campaign $campaign, Request $request)
+    {
+        $this->authorize('delete campaigns');
+
+        $this->campaigns->destroy($campaign);
+
+        return $this->redirectResponse($request, __('alerts.backend.campaigns.deleted'));
+    }
+
+    /**
+     * @param Campaign $campaign
+     *
+     * @return mixed
+     */
+    public function impersonate(Campaign $campaign)
+    {
+        $this->authorize('impersonate campaigns');
+
+        return $this->campaigns->impersonate($campaign);
+    }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    public function batchAction(Request $request)
+    {
+        $action = $request->get('action');
+        $ids = $request->get('ids');
+
+        switch ($action) {
+            case 'destroy':
+                $this->authorize('delete campaigns');
+
+                $this->campaigns->batchDestroy($ids);
+
+                return $this->redirectResponse($request, __('alerts.backend.campaigns.bulk_destroyed'));
+                break;
+            case 'enable':
+                $this->authorize('edit campaigns');
+
+                $this->campaigns->batchEnable($ids);
+
+                return $this->redirectResponse($request, __('alerts.backend.campaigns.bulk_enabled'));
+                break;
+            case 'disable':
+                $this->authorize('edit campaigns');
+
+                $this->campaigns->batchDisable($ids);
+
+                return $this->redirectResponse($request, __('alerts.backend.campaigns.bulk_disabled'));
+                break;
+        }
+
+        return $this->redirectResponse($request, __('alerts.backend.actions.invalid'), 'error');
+    }
+
+    public function activeToggle(Campaign $campaign)
+    {
+        $this->authorize('edit campaigns');
+        $campaign->update(['active' => ! $campaign->active]);
     }
 }

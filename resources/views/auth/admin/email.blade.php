@@ -11,12 +11,12 @@
                             <form action="{{ route('login') }}" method="post">
                                 @csrf
 
-                                <h1>@lang('labels.user.login')</h1>
+                                <h1>@lang('labels.admin.login.reset.header')</h1>
                                 <div class="form-group">
-                                    <label for="email">@lang('validation.attributes.email')</label>
-                                    {{ Form::bsEmail('email', null, ['required', 'placeholder' => __('validation.attributes.email')]) }}
+                                    <label for="email">@lang('labels.admin.login.email')</label>
+                                    {{ Form::bsEmail('email', null, ['required', 'placeholder' => __('labels.admin.login.placeholder.email')]) }}
                                 </div>
-                                <button type="submit" class="btn btn-primary">@lang('labels.user.send_password_link')</button>
+                                <button type="submit" class="btn btn-primary">@lang('labels.admin.login.reset.submit')</button>
                             </form>
                         </div>
                     </div>

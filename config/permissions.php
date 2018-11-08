@@ -13,54 +13,54 @@ return [
         'category'     => 'permissions.categories.access',
     ],
 
-    'view posts' => [
-        'display_name' => 'permissions.view.posts.display_name',
-        'description'  => 'permissions.view.posts.description',
+    'view campaigns' => [
+        'display_name' => 'permissions.view.campaigns.display_name',
+        'description'  => 'permissions.view.campaigns.description',
         'category'     => 'permissions.categories.blog',
-        'children'     => ['view own posts'],
+        'children'     => ['view own campaigns'],
     ],
 
-    'create posts' => [
-        'display_name' => 'permissions.create.posts.display_name',
-        'description'  => 'permissions.create.posts.description',
-        'category'     => 'permissions.categories.blog',
-    ],
-
-    'edit posts' => [
-        'display_name' => 'permissions.edit.posts.display_name',
-        'description'  => 'permissions.edit.posts.description',
-        'category'     => 'permissions.categories.blog',
-        'children'     => ['edit own posts'],
-    ],
-
-    'delete posts' => [
-        'display_name' => 'permissions.delete.posts.display_name',
-        'description'  => 'permissions.delete.posts.description',
-        'category'     => 'permissions.categories.blog',
-        'children'     => ['delete own posts'],
-    ],
-
-    'view own posts' => [
-        'display_name' => 'permissions.view.own.posts.display_name',
-        'description'  => 'permissions.view.own.posts.description',
+    'create campaigns' => [
+        'display_name' => 'permissions.create.campaigns.display_name',
+        'description'  => 'permissions.create.campaigns.description',
         'category'     => 'permissions.categories.blog',
     ],
 
-    'edit own posts' => [
-        'display_name' => 'permissions.edit.own.posts.display_name',
-        'description'  => 'permissions.edit.own.posts.description',
+    'edit campaigns' => [
+        'display_name' => 'permissions.edit.campaigns.display_name',
+        'description'  => 'permissions.edit.campaigns.description',
+        'category'     => 'permissions.categories.blog',
+        'children'     => ['edit own campaigns'],
+    ],
+
+    'delete campaigns' => [
+        'display_name' => 'permissions.delete.campaigns.display_name',
+        'description'  => 'permissions.delete.campaigns.description',
+        'category'     => 'permissions.categories.blog',
+        'children'     => ['delete own campaigns'],
+    ],
+
+    'view own campaigns' => [
+        'display_name' => 'permissions.view.own.campaigns.display_name',
+        'description'  => 'permissions.view.own.campaigns.description',
         'category'     => 'permissions.categories.blog',
     ],
 
-    'delete own posts' => [
-        'display_name' => 'permissions.delete.own.posts.display_name',
-        'description'  => 'permissions.delete.own.posts.description',
+    'edit own campaigns' => [
+        'display_name' => 'permissions.edit.own.campaigns.display_name',
+        'description'  => 'permissions.edit.own.campaigns.description',
         'category'     => 'permissions.categories.blog',
     ],
 
-    'publish posts' => [
-        'display_name' => 'permissions.publish.posts.display_name',
-        'description'  => 'permissions.publish.posts.description',
+    'delete own campaigns' => [
+        'display_name' => 'permissions.delete.own.campaigns.display_name',
+        'description'  => 'permissions.delete.own.campaigns.description',
+        'category'     => 'permissions.categories.blog',
+    ],
+
+    'publish campaigns' => [
+        'display_name' => 'permissions.publish.campaigns.display_name',
+        'description'  => 'permissions.publish.campaigns.description',
         'category'     => 'permissions.categories.blog',
     ],
 

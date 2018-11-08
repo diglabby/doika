@@ -6,7 +6,7 @@
     "watch": "npm run clean && npm run build -- --watch",
     "dev": "npm run clean && webpack-dev-server --mode development --hot --progress",
     "prod": "rimraf public/dist && cross-env NODE_ENV=production webpack --mode production --progress",
-    "lint": "eslint --ext .js,.vue resources/js"
+    "lint": "eslint  --fix --ext .js,.vue resources/js"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
@@ -69,7 +69,10 @@
     "webpack-manifest-plugin": "^2.0.4",
     "webpack-notifier": "^1.6.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "verte": "0.0.7",
+    "vue-color": "^2.7.0"
+  },
   "browserslist": [
     "> 1%",
     "last 2 versions"

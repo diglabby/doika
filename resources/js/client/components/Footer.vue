@@ -5,8 +5,6 @@
       <p class="result__description"></p>
       <div class="module-donate__version">powered by <a href="#" target="_blank">Doika</a></div>
     </div>
-    <strong>Copyright &copy; {{ new Date().getFullYear() }} <a href="/" target="_blank">{{ name }}</a>.
-    </strong>&nbsp;{{ $t('labels.all_rights_reserved') }}    
   </Footer>
 </template>
 <script>

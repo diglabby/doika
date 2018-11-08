@@ -4,10 +4,10 @@
       <b-row class="justify-content-center">
         <b-col xl="6">
           <b-card>
-            <h3 class="card-title" slot="header">{{ isNew ? $t('labels.backend.users.titles.create') : $t('labels.backend.users.titles.edit') }}</h3>
+            <h3 class="card-title" slot="header">{{ isNew ? $t('labels.admin.users.create.header') : $t('labels.admin.users.edit.header') }}</h3>
 
             <b-form-group
-              :label="$t('validation.attributes.name')"
+              :label="$t('labels.admin.users.name')"
               label-for="name"
               horizontal
               :label-cols="3"
@@ -17,14 +17,14 @@
                 id="name"
                 name="name"
                 required
-                :placeholder="$t('validation.attributes.name')"
+                :placeholder="$t('labels.admin.users.placeholder.name')"
                 v-model="model.name"
                 :state="state('name')"
               ></b-form-input>
             </b-form-group>
 
             <b-form-group
-              :label="$t('validation.attributes.email')"
+              :label="$t('labels.admin.users.email')"
               label-for="email"
               horizontal
               :label-cols="3"
@@ -35,7 +35,7 @@
                 name="email"
                 type="email"
                 required
-                :placeholder="$t('validation.attributes.email')"
+                :placeholder="$t('labels.admin.users.placeholder.email')"
                 v-model="model.email"
                 :state="state('email')"
               ></b-form-input>
@@ -47,14 +47,14 @@
                   <c-switch
                     name="active"
                     v-model="model.active"
-                    :description="$t('validation.attributes.active')"
+                    :description="$t('labels.admin.users.active')"
                   ></c-switch>
                 </b-col>
               </b-row>
             </div>
 
             <b-form-group
-              :label="$t('validation.attributes.password')"
+              :label="$t('labels.admin.users.password')"
               label-for="password"
               horizontal
               :label-cols="3"
@@ -64,14 +64,14 @@
                 id="password"
                 name="password"
                 type="password"
-                :placeholder="$t('validation.attributes.password')"
+                :placeholder="$t('labels.admin.users.placeholder.password')"
                 v-model="model.password"
                 :state="state('password')"
               ></b-form-input>
             </b-form-group>
 
             <b-form-group
-              :label="$t('validation.attributes.password_confirmation')"
+              :label="$t('labels.admin.users.passwordConfirmation')"
               label-for="password_confirmation"
               horizontal
               :label-cols="3"
@@ -81,31 +81,16 @@
                 id="password_confirmation"
                 name="password_confirmation"
                 type="password"
-                :placeholder="$t('validation.attributes.password_confirmation')"
+                :placeholder="$t('labels.admin.users.placeholder.passwordConfirmation')"
                 v-model="model.password_confirmation"
                 :state="state('password_confirmation')"
               ></b-form-input>
             </b-form-group>
 
-            <b-form-group
-              :label="$t('validation.attributes.roles')"
-              label-for="roles"
-              horizontal
-              :label-cols="3"
-            >
-              <b-form-checkbox-group stacked v-model="model.roles" name="roles[]">
-                <b-form-checkbox v-for="role in roles" :key="role.id"
-                                 v-b-tooltip.left :title="role.description" :value="role.id"
-                >
-                  {{ role.display_name }}
-                </b-form-checkbox>
-              </b-form-checkbox-group>
-            </b-form-group>
-
             <b-row slot="footer">
               <b-col>
                 <b-button to="/users" exact variant="danger" size="sm">
-                  {{ $t('buttons.back') }}
+                  {{ $t('buttons.admin.common.back') }}
                 </b-button>
               </b-col>
               <b-col>
@@ -113,7 +98,7 @@
                           :disabled="pending"
                           v-if="isNew || this.$app.user.can('edit users')"
                 >
-                  {{ isNew ? $t('buttons.create') : $t('buttons.edit') }}
+                  {{ isNew ? $t('buttons.admin.common.create') : $t('buttons.admin.common.edit') }}
                 </b-button>
               </b-col>
             </b-row>

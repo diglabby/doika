@@ -3,17 +3,16 @@
     <b-row>
       <b-col md="4" class="mb-3">
         <b-form inline v-if="lengthChange">
-          <label class="mr-2">{{ $t('labels.datatables.show_per_page') }}</label>
+          <label class="mr-2">{{ $t('labels.admin.datatables.showPerPage') }}</label>
           <b-form-select :options="pageOptions" v-model="perPage" class="mr-2" @input="onContextChanged"></b-form-select>
-          <label>{{ $t('labels.datatables.entries_per_page') }}</label>
+          <label>{{ $t('labels.admin.datatables.entriesPerPage') }}</label>
         </b-form>
       </b-col>
-      <b-col md="4" class="mb-3 text-center">
-        <label class="mt-2" v-if="infos">{{ $t('labels.datatables.infos', { offset_start: perPage * (currentPage - 1) + 1, offset_end: perPage * currentPage, total: totalRows }) }}</label>
+      <b-col md="4" class="mb-3 text-center">        
       </b-col>
       <b-col md="4" class="mb-3">
         <b-form inline v-if="search" class="d-flex justify-content-end" @submit.prevent>
-          <label class="mr-2">{{ $t('labels.datatables.search') }}</label>
+          <label class="mr-2">{{ $t('labels.admin.datatables.search') }}</label>
           <b-form-input v-model="searchQuery" @input="debounceInput"></b-form-input>
         </b-form>
       </b-col>
@@ -24,7 +23,7 @@
         <form class="form-inline" @submit.prevent="onBulkAction" v-if="actions">
           <div class="form-group">
             <b-form-select :options="actions" v-model="action" class="mr-1"></b-form-select>
-            <b-button type="submit" variant="danger">{{ $t('labels.validate') }}</b-button>
+            <b-button type="submit" variant="success">{{ $t('buttons.admin.common.apply') }}</b-button>
           </div>
         </form>
       </b-col>
@@ -32,11 +31,6 @@
         <b-pagination :total-rows="totalRows" :per-page="perPage" v-model="currentPage" v-if="paging && totalRows > perPage"
                       class="justify-content-center" @input="onContextChanged"
         ></b-pagination>
-      </b-col>
-      <b-col md="4">
-        <div v-if="exportData" class="d-flex justify-content-end">
-          <b-button @click.prevent="onExportData"><i class="fe fe-download"></i> {{ $t('labels.export') }}</b-button>
-        </div>
       </b-col>
     </b-row>
   </div>
@@ -143,12 +137,12 @@ export default {
     },
     async deleteRow(params) {
       let result = await window.swal({
-        title: this.$t('labels.are_you_sure'),
+        title: this.$t('labels.admin.common.confirmation'),
         type: 'warning',
         showCancelButton: true,
-        cancelButtonText: this.$t('buttons.cancel'),
+        cancelButtonText: this.$t('buttons.admin.common.cancel'),
         confirmButtonColor: '#dd4b39',
-        confirmButtonText: this.$t('buttons.delete')
+        confirmButtonText: this.$t('buttons.admin.common.delete')
       })
 
       if (result.value) {

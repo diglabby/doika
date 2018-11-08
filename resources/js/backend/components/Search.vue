@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar-form">
-    <b-form-input type="search" :placeholder="$t('labels.search')" @input="onSearch"></b-form-input>
+    <b-form-input type="search" :placeholder="$t('labels.admin.common.search')" @input="onSearch"></b-form-input>
   </div>
 </template>
 

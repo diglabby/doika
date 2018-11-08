@@ -37,7 +37,7 @@ Vue.component('b-datatable', DataTable)
 export function createApp() {
   // Init router and store
   const i18n = createLocales(window.settings.locale)
-  const router = createRouter(window.settings.adminHomePath, i18n)
+  const router = createRouter('/' + window.settings.locale, i18n)
   const store = createStore(window.route)
 
   /**

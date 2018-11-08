@@ -9,23 +9,23 @@
                         <div class="card-body">
                             <form action="{{ route('login') }}" method="post">
                                 @csrf
-								
-								<div class="card-logo">
-									<img src="/images/Doika-logo.png" />
-								</div>
-								
-                                <h1>@lang('labels.user.login')</h1>
+
+                								<div class="card-logo">
+                									<img src="/images/Doika-logo.png" />
+                								</div>
+
+                                <h1>@lang('labels.admin.login.header')</h1>
 
                                 <div class="form-group">
-                                    <label for="email">@lang('validation.attributes.email')</label>
-                                    {{ Form::bsEmail('email', null, ['required', 'placeholder' => __('validation.attributes.email')]) }}
+                                    <label for="email">@lang('labels.admin.login.email')</label>
+                                    {{ Form::bsEmail('email', null, ['required', 'placeholder' => __('labels.admin.login.placeholder.email')]) }}
                                 </div>
 
                                 <div class="form-group">
                                     <label for="password">
-                                        @lang('validation.attributes.password')
+                                        @lang('labels.admin.login.password')
                                     </label>
-                                    {{ Form::bsPassword('password', ['required', 'placeholder' => __('validation.attributes.password')]) }}
+                                    {{ Form::bsPassword('password', ['required', 'placeholder' => __('labels.admin.login.placeholder.password')]) }}
                                 </div>
 
                                 @if($isLocked)
@@ -34,14 +34,14 @@
                                     </div>
                                 @endif
                                 <div class="form-group">
-                                    {{ Form::bsCheckbox('remember', __('labels.user.remember')) }}
+                                    {{ Form::bsCheckbox('remember', __('labels.admin.login.remember')) }}
                                 </div>
 
                                 <div class="d-flex align-items-center">
-                                    <button type="submit" class="btn btn-primary"><i class="fe fe-log-in"></i>&nbsp;@lang('labels.user.login')</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fe fe-log-in"></i>&nbsp;@lang('buttons.admin.login.submit')</button>
 
                                     <a href="{{ route('admin.password.request') }}" class="ml-auto small">
-                                        @lang('labels.user.password_forgot')
+                                        @lang('labels.admin.login.reset.link')
                                     </a>
                                 </div>
                             </form>

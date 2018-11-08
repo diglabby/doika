@@ -10,33 +10,21 @@
       <HeaderDropdown right class="px-3 d-none d-md-block">
         <template slot="header">
           <span class="d-md-down-none">
-            <i class="fe fe-plus-circle"></i>&nbsp;&nbsp;{{ $t('labels.add_new') }}
+            <i class="fe fe-plus-circle"></i>&nbsp;&nbsp;{{ $t('labels.admin.newMenu.header') }}
           </span>
         </template>
         <template slot="dropdown">
-          <b-dropdown-item to="/posts/create" v-if="this.$app.user.can('create posts')">
-            <i class="fe fe-book"></i>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.post') }}
+          <b-dropdown-item to="/campaigns/create" v-if="this.$app.user.can('create campaign')">
+            <i class="fe fe-book"></i>&nbsp;&nbsp;{{ $t('labels.admin.newMenu.campaign') }}
           </b-dropdown-item>
-          <b-dropdown-item to="/form-settings/create" v-if="this.$app.user.can('create form_settings')">
-            <i class="fe fe-sliders"></i>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.form_setting') }}
-          </b-dropdown-item>
-          <b-dropdown-item to="/users/create" v-if="this.$app.user.can('create users')">
-            <i class="fe fe-users"></i>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.user') }}
-          </b-dropdown-item>
-          <b-dropdown-item to="/roles/create" v-if="this.$app.user.can('create roles')">
-            <i class="fe fe-shield"></i>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.role') }}
-          </b-dropdown-item>
-          <b-dropdown-item to="/metas/create" v-if="this.$app.user.can('create metas')">
-            <i class="fe fe-tag"></i>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.meta') }}
-          </b-dropdown-item>
-          <b-dropdown-item to="/redirections/create" v-if="this.$app.user.can('create redirections')">
-            <i class="fe fe-fast-forward"></i>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.redirection') }}
+          <b-dropdown-item to="/users/create" v-if="this.$app.user.can('create user')">
+            <i class="fe fe-users"></i>&nbsp;&nbsp;{{ $t('labels.admin.newMenu.user') }}
           </b-dropdown-item>
         </template>
       </HeaderDropdown>
       <HeaderDropdown right class="px-3 d-none d-md-block">
         <template slot="header">
-          <span class="d-md-down-none">{{ $t('labels.language') }}</span>
+          <span class="d-md-down-none">{{ $t('labels.admin.languageMenu.header') }}</span>
         </template>
         <template slot="dropdown">
           <b-dropdown-item :key="index" v-for="(locale, index) in this.$app.locales"
@@ -49,21 +37,21 @@
       </HeaderDropdown>
       <HeaderDropdown right class="px-3">
         <template slot="header">
-          <img :src="this.$app.user.avatar" class="img-avatar" :alt="$t('labels.user.avatar')">
+          <img :src="this.$app.user.avatar" class="img-avatar" :alt="$t('labels.admin.accountMenu.avatar')">
           <span class="d-md-down-none">
             {{ this.$app.user.name }}
           </span>
         </template>
         <template slot="dropdown">
           <b-dropdown-item :href="$app.route('user.account')">
-            <i class="fe fe-user"></i>&nbsp;&nbsp;{{ $t('labels.user.profile') }}
+            <i class="fe fe-user"></i>&nbsp;&nbsp;{{ $t('labels.admin.accountMenu.header') }}
           </b-dropdown-item>
           <b-dropdown-item :href="$app.route('admin.logout')">
-            <i class="fe fe-log-out"></i>&nbsp;&nbsp;{{ $t('labels.user.logout') }}
+            <i class="fe fe-log-out"></i>&nbsp;&nbsp;{{ $t('labels.admin.accountMenu.logout') }}
           </b-dropdown-item>
         </template>
       </HeaderDropdown>
-    </b-navbar-nav>    
+    </b-navbar-nav>
   </Header>
 </template>
 

@@ -1,46 +1,38 @@
 <?php
 
 return [
-    'cancel'   => 'Cancel',
-    'save'     => 'Save',
-    'close'    => 'Close',
-    'create'   => 'Create',
-    'delete'   => 'Delete',
-    'confirm'  => 'Confirm',
-    'show'     => 'Show',
-    'edit'     => 'Edit',
-    'update'   => 'Update',
-    'view'     => 'View',
-    'preview'  => 'Preview',
-    'back'     => 'Back',
-    'send'     => 'Send',
-    'login-as' => 'Login as :name',
-    'apply'    => 'Apply',
-
-    'users' => [
-        'create' => 'Create user',
-    ],
-
-    'roles' => [
-        'create' => 'Create role',
-    ],
-
-    'metas' => [
-        'create' => 'Create meta',
-    ],
-
-    'form_settings' => [
-        'create' => 'Create setting',
-    ],
-
-    'redirections' => [
-        'create' => 'Create redirection',
-        'import' => 'Import CSV',
-    ],
-
-    'posts' => [
-        'create'           => 'Create post',
-        'save_and_publish' => 'Save and publish',
-        'save_as_draft'    => 'Save as draft',
-    ],
+    'admin' => [
+		'common' => [
+			'delete' => 'Delete',
+			'cancel' => 'Cancel',
+			'edit' => 'Edit',
+			'apply' => 'Apply',
+			'enableSelected' => 'Enable selected',
+			'disableSelected' => 'Disable selected',
+			'removeSelected' => 'Remove selected',
+			'create' => 'Create',
+			'back' => 'Back',
+			'save' => 'Save',		
+			'info' => 'Info',
+			'print' => 'Print',
+			'email' => 'Send email',
+		],		
+		'support' => 'Help Doika Team',
+        'login' => [
+            'submit' => 'Login'
+		],		
+		'feedback' => [
+			'submit' => 'Send'
+		],
+		'users' => [
+			'create' => 'Create new user'
+		],
+		'campaigns' => [
+			'create' => 'Create campaign',	
+			'save' => 'Save campaign',
+			'uploadImage' => 'Upload image',
+			'deleteImage' => 'Delete image',					
+		],
+		
+	]
 ];
