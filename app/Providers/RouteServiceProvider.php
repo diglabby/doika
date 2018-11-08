@@ -60,6 +60,7 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->namespace.'\Backend')
             ->as('admin.')
             ->group(base_path('routes/admin.php'));
+
     }
 
     /**

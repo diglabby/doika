@@ -6,18 +6,15 @@
         <AppSearch></AppSearch>
         <SidebarNav :nav-items="nav">
         </SidebarNav>
-        <div class="container-fluid" style="margin-top:auto !important; border: 1px solid white; width: 80%; height: 50px; text-align: center; line-height: 46px;">
-          {{ $t('labels.help') }}
-        </div>
+        <b-button class="container-fluid btn btn-success" style="margin-top:auto !important; border: 1px solid white; width: 80%; height: 50px;">
+          {{ $t('buttons.admin.support') }}
+        </b-button>
         <SidebarFooter>
         </SidebarFooter>
         <SidebarMinimizer>
         </SidebarMinimizer>
       </Sidebar>
       <main class="main">
-        <b-alert variant="warning" class="alert-top mb-0" :show="$app.isImpersonation">
-          <span v-html="$t('labels.alerts.login_as', {'name': $app.user.name, 'route': $app.route('admin.logout'), 'admin': $app.usurperName})"></span>
-        </b-alert>
         <breadcrumb :list="$route.matched"></breadcrumb>
         <div class="container-fluid">
           <router-view :key="$route.name"></router-view>
@@ -59,15 +56,9 @@ export default {
   },
   methods: {
     initNav() {
-      this.nav = nav(
-        this.$app,
-        this.$i18n,
-        this.$store.state.counters.newPostsCount,
-        this.$store.state.counters.pendingPostsCount
-      )
+      this.nav = nav(this.$app, this.$i18n)
     },
     async fetchData() {
-      await this.$store.dispatch('LOAD_COUNTERS')
       this.initNav()
     }
   }

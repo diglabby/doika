@@ -51,10 +51,10 @@ export default {
     }
   },
   async created() {
-    let { data } = await axios.get(
-      this.$app.route('campaign.get', { campaignId: '1' })
-    )
+    let { data } = await axios.get(this.$app.route('campaign.get'))
     this.campaign = data
+    console.log(this.campaign)
+    //this.campaign = data
   }
 }
 </script>

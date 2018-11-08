@@ -1,36 +1,26 @@
 <template>
   <div class="app">
     <div class="container-fluid">
-      <router-view :key="$route.name"></router-view>
+      <transition name="fade" mode="out-in">
+        <router-view :key="$route.name"></router-view>
+      </transition>
     </div>
   </div>
 </template>
 
 <script>
-import nav from '../_nav'
-
 export default {
   name: 'Full',
   data() {
     return {
-      nav: []
+      transitionName: 'slide-left'
     }
   },
-  watch: {
-    $route: 'fetchData'
-  },
-  created() {
-    this.initNav()
-    this.fetchData()
-  },
-  methods: {
-    initNav() {
-      this.nav = nav(this.$app, this.$i18n)
-    },
-    async fetchData() {
-      await this.$store.dispatch('LOAD_COUNTERS')
-      this.initNav()
-    }
+  beforeRouteUpdate(to, from, next) {
+    const toDepth = to.path.split('/').length
+    const fromDepth = from.path.split('/').length
+    this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+    next()
   }
 }
 </script>

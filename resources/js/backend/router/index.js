@@ -7,20 +7,14 @@ import Full from '../containers/Full'
 // Views
 import Search from '../views/Search'
 import Campaigns from '../views/Campaigns'
-import PostForm from '../views/PostForm'
-import PostList from '../views/PostList'
-import FormSettingForm from '../views/FormSettingForm'
-import FormSettingList from '../views/FormSettingList'
-import FormSubmissionShow from '../views/FormSubmissionShow'
-import FormSubmissionList from '../views/FormSubmissionList'
+import CampaignForm from '../views/CampaignForm'
+import Payments from '../views/Payments'
+import PaymentForm from '../views/PaymentForm'
+import Help from '../views/Help'
+import Feedback from '../views/Feedback'
+import Settings from '../views/Settings'
 import UserForm from '../views/UserForm'
 import UserList from '../views/UserList'
-import RoleForm from '../views/RoleForm'
-import RoleList from '../views/RoleList'
-import MetaForm from '../views/MetaForm'
-import MetaList from '../views/MetaList'
-import RedirectionForm from '../views/RedirectionForm'
-import RedirectionList from '../views/RedirectionList'
 
 Vue.use(Router)
 
@@ -37,7 +31,7 @@ export function createRouter(base, i18n) {
         name: 'home',
         component: Full,
         meta: {
-          label: i18n.t('labels.frontend.titles.administration')
+          label: i18n.t('labels.admin.title')
         },
         children: [
           {
@@ -45,7 +39,7 @@ export function createRouter(base, i18n) {
             name: 'search',
             component: Search,
             meta: {
-              label: i18n.t('labels.search')
+              label: i18n.t('labels.common.search')
             }
           },
           {
@@ -53,114 +47,83 @@ export function createRouter(base, i18n) {
             name: 'campaigns',
             component: Campaigns,
             meta: {
-              label: i18n.t('labels.backend.titles.campaigns')
+              label: i18n.t('labels.admin.campaigns.breadcrumb')
             }
           },
           {
-            path: 'posts',
+            path: 'campaigns',
+            name: 'campaigns',
             component: {
               render(c) {
                 return c('router-view')
               }
             },
             meta: {
-              label: i18n.t('labels.backend.campaigns.titles.main')
+              label: i18n.t('labels.admin.campaigns.title')
             },
             children: [
               {
-                path: '/',
-                name: 'posts',
-                component: PostList,
-                meta: {
-                  label: i18n.t('labels.backend.campaigns.titles.index')
-                }
-              },
-              {
                 path: 'create',
-                name: 'posts_create',
-                component: PostForm,
+                name: 'campaigns_create',
+                component: CampaignForm,
                 meta: {
-                  label: i18n.t('labels.backend.campaigns.titles.create')
+                  label: i18n.t('labels.admin.campaigns.create.title')
                 }
               },
               {
                 path: ':id/edit',
-                name: 'posts_edit',
-                component: PostForm,
+                name: 'campaigns_edit',
+                component: CampaignForm,
                 props: true,
                 meta: {
-                  label: i18n.t('labels.backend.campaigns.titles.edit')
+                  label: i18n.t('labels.admin.campaigns.edit.title')
                 }
               }
             ]
           },
           {
-            path: 'form-submissions',
+            path: 'payments',
+            name: 'payments',
+            component: Payments,
+            meta: {
+              label: i18n.t('labels.admin.payments.title')
+            }
+          },
+          {
+            path: 'payments',
             component: {
               render(c) {
                 return c('router-view')
               }
             },
             meta: {
-              label: i18n.t('labels.backend.form_submissions.titles.main')
+              label: i18n.t('labels.admin.payments.title')
             },
             children: [
               {
-                path: '/',
-                name: 'form_submissions',
-                component: FormSubmissionList,
-                meta: {
-                  label: i18n.t('labels.backend.form_submissions.titles.index')
-                }
-              },
-              {
-                path: ':id/show',
-                name: 'form_submissions_show',
-                component: FormSubmissionShow,
+                path: ':id/edit',
+                name: 'payments_edit',
+                component: PaymentForm,
                 props: true,
                 meta: {
-                  label: i18n.t('labels.backend.form_submissions.titles.show')
+                  label: i18n.t('labels.admin.payments.show.title')
                 }
               }
             ]
           },
           {
-            path: 'form-settings',
-            component: {
-              render(c) {
-                return c('router-view')
-              }
-            },
+            path: 'feedback',
+            component: Feedback,
             meta: {
-              label: i18n.t('labels.backend.form_settings.titles.main')
-            },
-            children: [
-              {
-                path: '/',
-                name: 'form_settings',
-                component: FormSettingList,
-                meta: {
-                  label: i18n.t('labels.backend.form_settings.titles.index')
-                }
-              },
-              {
-                path: 'create',
-                name: 'form_settings_create',
-                component: FormSettingForm,
-                meta: {
-                  label: i18n.t('labels.backend.form_settings.titles.create')
-                }
-              },
-              {
-                path: ':id/edit',
-                name: 'form_settings_edit',
-                component: FormSettingForm,
-                props: true,
-                meta: {
-                  label: i18n.t('labels.backend.form_settings.titles.edit')
-                }
-              }
-            ]
+              label: i18n.t('labels.admin.feedback.title')
+            }
+          },
+          {
+            path: 'settings',
+            component: Settings,
+            meta: {
+              label: i18n.t('labels.admin.settings.title')
+            }
           },
           {
             path: 'users',
@@ -170,7 +133,7 @@ export function createRouter(base, i18n) {
               }
             },
             meta: {
-              label: i18n.t('labels.backend.users.titles.main')
+              label: i18n.t('labels.admin.users.title')
             },
             children: [
               {
@@ -178,7 +141,7 @@ export function createRouter(base, i18n) {
                 name: 'users',
                 component: UserList,
                 meta: {
-                  label: i18n.t('labels.backend.users.titles.index')
+                  label: i18n.t('labels.admin.users.breadcrumb')
                 }
               },
               {
@@ -186,7 +149,7 @@ export function createRouter(base, i18n) {
                 name: 'users_create',
                 component: UserForm,
                 meta: {
-                  label: i18n.t('labels.backend.users.titles.create')
+                  label: i18n.t('labels.admin.users.create.breadcrumb')
                 }
               },
               {
@@ -195,7 +158,7 @@ export function createRouter(base, i18n) {
                 component: UserForm,
                 props: true,
                 meta: {
-                  label: i18n.t('labels.backend.users.titles.edit')
+                  label: i18n.t('labels.admin.users.edit.breadcrumb')
                 }
               }
             ]
@@ -239,42 +202,12 @@ export function createRouter(base, i18n) {
             ]
           },
           {
-            path: 'metas',
-            component: {
-              render(c) {
-                return c('router-view')
-              }
-            },
+            path: 'help',
+            name: 'help',
+            component: Help,
             meta: {
-              label: i18n.t('labels.backend.metas.titles.main')
-            },
-            children: [
-              {
-                path: '/',
-                name: 'metas',
-                component: MetaList,
-                meta: {
-                  label: i18n.t('labels.backend.metas.titles.index')
-                }
-              },
-              {
-                path: 'create',
-                name: 'metas_create',
-                component: MetaForm,
-                meta: {
-                  label: i18n.t('labels.backend.metas.titles.create')
-                }
-              },
-              {
-                path: ':id/edit',
-                name: 'metas_edit',
-                component: MetaForm,
-                props: true,
-                meta: {
-                  label: i18n.t('labels.backend.metas.titles.edit')
-                }
-              }
-            ]
+              label: i18n.t('labels.admin.help.title')
+            }
           },
           {
             path: 'redirections',

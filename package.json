@@ -69,7 +69,10 @@
     "webpack-manifest-plugin": "^2.0.4",
     "webpack-notifier": "^1.6.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "verte": "0.0.7",
+    "vue-color": "^2.7.0"
+  },
   "browserslist": [
     "> 1%",
     "last 2 versions"

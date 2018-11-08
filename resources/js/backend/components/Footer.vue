@@ -1,15 +1,15 @@
 <template>
   <Footer>
-    <strong>Powered by <a href="/" target="_blank">{{ name }}</a>.
-    </strong>&nbsp;{{ $t('labels.supporters') }}
+    <strong>{{ $t('labels.admin.common.footer.left') }} <a href="/" target="_blank">{{ name }}</a>.
+    </strong>&nbsp;{{ $t('labels.admin.common.footer.supporter') }}
     <span class="ml-auto">
       <template v-if="editorName !== ''">
         <template v-if="editorSiteUrl !== ''">
-          {{ $t('labels.with') }} <i class="fe fe-heart"></i> {{ $t('labels.by') }}
+          {{ $t('labels.admin.common.footer.with') }} <i class="fe fe-heart"></i> {{ $t('labels.admin.common.footer.by') }}
           <a :href="editorSiteUrl" target="_blank"><strong>{{ editorName }}</strong></a>
         </template>
         <template v-else>
-          <i class="fe fe-code"></i> {{ $t('labels.with') }} <i class="fe fe-heart"></i> {{ $t('labels.by') }} <strong>{{ editorName }}</strong>
+          <i class="fe fe-code"></i> {{ $t('labels.admin.common.footer.with') }} <i class="fe fe-heart"></i> {{ $t('labels.admin.common.footer.by') }} <strong>{{ editorName }}</strong>
         </template>
       </template>
     </span>

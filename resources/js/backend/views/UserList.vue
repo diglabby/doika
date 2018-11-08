@@ -2,10 +2,10 @@
   <div>
     <b-card>
       <template slot="header">
-        <h3 class="card-title">{{ $t('labels.backend.users.titles.index') }}</h3>
+        <h3 class="card-title">{{ $t('labels.admin.users.header') }}</h3>
         <div class="card-options" v-if="this.$app.user.can('create users')">
           <b-button to="/users/create" variant="success" size="sm">
-            <i class="fe fe-plus-circle"></i> {{ $t('buttons.users.create') }}
+            <i class="fe fe-plus-circle"></i> {{ $t('buttons.admin.users.create') }}
           </b-button>
         </div>
       </template>
@@ -22,8 +22,8 @@
                  show-empty
                  stacked="md"
                  no-local-sorting
-                 :empty-text="$t('labels.datatables.no_results')"
-                 :empty-filtered-text="$t('labels.datatables.no_matched_results')"
+                 :empty-text="$t('alerts.admin.common.search.noResult')"
+                 :empty-filtered-text="$t('alerts.admin.common.search.noResult')"
                  :fields="fields"
                  :items="dataLoadProvider"
         >
@@ -38,17 +38,11 @@
           <template slot="active" slot-scope="row">
             <c-switch v-if="row.item.can_edit" :checked="row.value" @change="onActiveToggle(row.item.id)"></c-switch>
           </template>
-          <template slot="roles" slot-scope="row">
-            {{ formatRoles(row.value) }}
-          </template>
           <template slot="actions" slot-scope="row">
-            <b-button v-if="row.item.can_edit" size="sm" variant="primary" :to="`/users/${row.item.id}/edit`" v-b-tooltip.hover :title="$t('buttons.edit')" class="mr-1">
+            <b-button v-if="row.item.can_edit" size="sm" variant="primary" :to="`/users/${row.item.id}/edit`" v-b-tooltip.hover :title="$t('buttons.admin.common.edit')" class="mr-1">
               <i class="fe fe-edit"></i>
             </b-button>
-            <b-button v-if="row.item.can_impersonate" size="sm" variant="warning" :href="$app.route('admin.users.impersonate', { user: row.item.id })" v-b-tooltip.hover :title="$t('buttons.login-as', { name: row.item.name })" class="mr-1">
-              <i class="fe fe-lock"></i>
-            </b-button>
-            <b-button v-if="row.item.can_delete" size="sm" variant="danger" v-b-tooltip.hover :title="$t('buttons.delete')" @click.stop="onDelete(row.item.id)">
+            <b-button v-if="row.item.can_delete" size="sm" variant="danger" v-b-tooltip.hover :title="$t('buttons.admin.common.delete')" @click.stop="onDelete(row.item.id)">
               <i class="fe fe-trash"></i>
             </b-button>
           </template>
@@ -70,44 +64,41 @@ export default {
         { key: 'checkbox' },
         {
           key: 'name',
-          label: this.$t('validation.attributes.name'),
+          label: this.$t('labels.admin.users.name'),
           sortable: true
         },
         {
           key: 'email',
-          label: this.$t('validation.attributes.email'),
-          sortable: true
-        },
-        { key: 'roles', label: this.$t('validation.attributes.roles') },
-        {
-          key: 'last_access_at',
-          label: this.$t('labels.last_access_at'),
-          class: 'text-center',
+          label: this.$t('labels.admin.users.email'),
           sortable: true
         },
         {
           key: 'active',
-          label: this.$t('validation.attributes.active'),
+          label: this.$t('labels.admin.users.active'),
           class: 'text-center'
         },
         {
           key: 'created_at',
-          label: this.$t('labels.created_at'),
+          label: this.$t('labels.admin.users.createdAt'),
           class: 'text-center',
           sortable: true
         },
         {
           key: 'updated_at',
-          label: this.$t('labels.updated_at'),
+          label: this.$t('labels.admin.users.updatedAt'),
           class: 'text-center',
           sortable: true
         },
-        { key: 'actions', label: this.$t('labels.actions'), class: 'nowrap' }
+        {
+          key: 'actions',
+          label: this.$t('labels.admin.datatables.actions'),
+          class: 'nowrap'
+        }
       ],
       actions: {
-        destroy: this.$t('labels.backend.users.actions.destroy'),
-        enable: this.$t('labels.backend.users.actions.enable'),
-        disable: this.$t('labels.backend.users.actions.disable')
+        destroy: this.$t('buttons.admin.common.removeSelected'),
+        enable: this.$t('buttons.admin.common.enableSelected'),
+        disable: this.$t('buttons.admin.common.disableSelected')
       }
     }
   },

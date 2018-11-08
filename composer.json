@@ -1,7 +1,7 @@
 {
     "name": "Doika",
     "description": "Doika",
-    "keywords": ["framework", "laravel", "boilerplate", "bootstrap 4 beta", "vue", "tabler"],
+    "keywords": ["vue"],
     "license": "MIT",
     "type": "project",
     "require": {

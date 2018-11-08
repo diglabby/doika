@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
 use App\Repositories\Contracts\TagRepository;
-use App\Repositories\Contracts\PostRepository;
+//use App\Repositories\Contracts\PostRepository;
 use App\Repositories\Contracts\UserRepository;
 
 class FrontendController extends Controller
@@ -16,28 +16,11 @@ class FrontendController extends Controller
      */
     public function __construct()
     {
-        Route::bind('post', function ($value) {
-            $posts = app(PostRepository::class);
-
-            return $posts->findBySlug($value);
-        });
-
-        Route::bind('tag', function ($value) {
-            $tags = app(TagRepository::class);
-
-            return $tags->findBySlug($value);
-        });
-
-        Route::bind('user', function ($value) {
-            $users = app(UserRepository::class);
-
-            return $users->findBySlug($value);
-        });
     }
 
     public function index()
     {
-        return view('client.home');
+        return view('client.campaign');
     }
 
     /**

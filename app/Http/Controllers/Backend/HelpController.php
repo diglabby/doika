@@ -5,31 +5,31 @@ namespace App\Http\Controllers\Backend;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Utils\RequestSearchQuery;
-use App\Http\Requests\StoreCampaignRequest;
-use App\Http\Requests\UpdateCampaignRequest;
+use App\Http\Requests\StorePaymentRequest;
+use App\Http\Requests\UpdatePaymentRequest;
 //use App\Repositories\Contracts\RoleRepository;
 use App\Repositories\Contracts\UserRepository;
 
-class CampaignController extends BackendController
+class HelpController extends BackendController
 {
     /**
-     * @var CampaignRepository
+     * @var PaymentRepository
      */
-    protected $campaigns;
+    protected $payments;
 
     /**
      * Create a new controller instance.
      *
-     * @param CampaignRepository                             $campaigns
+     * @param PaymentRepository                             $payments
      */
-    public function __construct(UserRepository $campaigns)
+    public function __construct(UserRepository $payments)
     {
-        $this->campaigns = $campaigns;
+        $this->payments = $payments;
     }
 
-    public function getActiveCampaignCounter()
+    public function getActivePaymentCounter()
     {
-        //return $this->campaigns->query()->whereActive(true)->count();
+        //return $this->payments->query()->whereActive(true)->count();
         return 1;
     }
 
@@ -67,7 +67,7 @@ class CampaignController extends BackendController
                     __('labels.created_at'),
                     __('labels.updated_at'),
                 ],
-                'campaigns');
+                'payments');
         }
 
         // return $requestSearchQuery->result([
@@ -83,18 +83,18 @@ class CampaignController extends BackendController
     }
 
     /**
-     * @param Campaign $campaign
+     * @param Payment $payment
      *
-     * @return Campaign
+     * @return Payment
      */
-    public function show(Campaign $campaign)
+    public function show(Payment $payment)
     {
-        if (! $campaign->can_edit) {
+        if (! $payment->can_edit) {
             // Only Super admin can access himself
             abort(403);
         }
 
-        return $campaign;
+        return $payment;
     }
 
     public function getRoles()
@@ -104,61 +104,61 @@ class CampaignController extends BackendController
     }
 
     /**
-     * @param StoreCampaignRequest $request
+     * @param StorePaymentRequest $request
      *
      * @return mixed
      */
-    public function store(StoreCampaignRequest $request)
+    public function store(StorePaymentRequest $request)
     {
-        $this->authorize('create campaigns');
+        $this->authorize('create payments');
 
-        $this->campaigns->store($request->input());
+        $this->payments->store($request->input());
 
-        return $this->redirectResponse($request, __('alerts.backend.campaigns.created'));
+        return $this->redirectResponse($request, __('alerts.backend.payments.created'));
     }
 
     /**
-     * @param Campaign              $campaign
-     * @param UpdateCampaignRequest $request
+     * @param Payment              $payment
+     * @param UpdatePaymentRequest $request
      *
      * @throws \Illuminate\Database\Eloquent\MassAssignmentException
      *
      * @return mixed
      */
-    public function update(Campaign $campaign, UpdateCampaignRequest $request)
+    public function update(Payment $payment, UpdatePaymentRequest $request)
     {
-        $this->authorize('edit campaigns');
+        $this->authorize('edit payments');
 
-        $this->campaigns->update($campaign, $request->input());
+        $this->payments->update($payment, $request->input());
 
-        return $this->redirectResponse($request, __('alerts.backend.campaigns.updated'));
+        return $this->redirectResponse($request, __('alerts.backend.payments.updated'));
     }
 
     /**
-     * @param Campaign    $campaign
+     * @param Payment    $payment
      * @param Request $request
      *
      * @return mixed
      */
-    public function destroy(Campaign $campaign, Request $request)
+    public function destroy(Payment $payment, Request $request)
     {
-        $this->authorize('delete campaigns');
+        $this->authorize('delete payments');
 
-        $this->campaigns->destroy($campaign);
+        $this->payments->destroy($payment);
 
-        return $this->redirectResponse($request, __('alerts.backend.campaigns.deleted'));
+        return $this->redirectResponse($request, __('alerts.backend.payments.deleted'));
     }
 
     /**
-     * @param Campaign $campaign
+     * @param Payment $payment
      *
      * @return mixed
      */
-    public function impersonate(Campaign $campaign)
+    public function impersonate(Payment $payment)
     {
-        $this->authorize('impersonate campaigns');
+        $this->authorize('impersonate payments');
 
-        return $this->campaigns->impersonate($campaign);
+        return $this->payments->impersonate($payment);
     }
 
     /**
@@ -173,34 +173,34 @@ class CampaignController extends BackendController
 
         switch ($action) {
             case 'destroy':
-                $this->authorize('delete campaigns');
+                $this->authorize('delete payments');
 
-                $this->campaigns->batchDestroy($ids);
+                $this->payments->batchDestroy($ids);
 
-                return $this->redirectResponse($request, __('alerts.backend.campaigns.bulk_destroyed'));
+                return $this->redirectResponse($request, __('alerts.backend.payments.bulk_destroyed'));
                 break;
             case 'enable':
-                $this->authorize('edit campaigns');
+                $this->authorize('edit payments');
 
-                $this->campaigns->batchEnable($ids);
+                $this->payments->batchEnable($ids);
 
-                return $this->redirectResponse($request, __('alerts.backend.campaigns.bulk_enabled'));
+                return $this->redirectResponse($request, __('alerts.backend.payments.bulk_enabled'));
                 break;
             case 'disable':
-                $this->authorize('edit campaigns');
+                $this->authorize('edit payments');
 
-                $this->campaigns->batchDisable($ids);
+                $this->payments->batchDisable($ids);
 
-                return $this->redirectResponse($request, __('alerts.backend.campaigns.bulk_disabled'));
+                return $this->redirectResponse($request, __('alerts.backend.payments.bulk_disabled'));
                 break;
         }
 
         return $this->redirectResponse($request, __('alerts.backend.actions.invalid'), 'error');
     }
 
-    public function activeToggle(Campaign $campaign)
+    public function activeToggle(Payment $payment)
     {
-        $this->authorize('edit campaigns');
-        $campaign->update(['active' => ! $campaign->active]);
+        $this->authorize('edit payments');
+        $payment->update(['active' => ! $payment->active]);
     }
 }

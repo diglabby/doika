@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use App\Models\Post;
+use App\Models\Payment;
 use App\Models\User;
-use App\Policies\PostPolicy;
+use App\Policies\PaymentPolicy;
 use App\Policies\UserPolicy;
 use Illuminate\Support\Facades\Gate;
 use App\Repositories\Contracts\AccountRepository;
@@ -20,7 +20,9 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies
         = [
             User::class => UserPolicy::class,
-            Post::class => PostPolicy::class,
+            Campaign::class => CampaignPolicy::class,
+            Payment::class => PaymentPolicy::class,
+            Post::class => PostPolicy::class
         ];
 
     /**

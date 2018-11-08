@@ -3,68 +3,73 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Tag;
-use App\Models\Post;
+use App\Models\Campaign;
 use App\Models\User;
-use App\Facades\SEOMeta;
+//use App\Facades\SEOMeta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Gate;
-use App\Repositories\Contracts\PostRepository;
+//use App\Repositories\Contracts\PostRepository;
 
 class CampaignController extends FrontendController
 {
     /**
-     * @var PostRepository
+     * @var CampaignRepository
      */
-    protected $posts;
+    protected $campaigns;
 
     /**
      * Create a new controller instance.
      *
-     * @param \App\Repositories\Contracts\PostRepository $posts
+     * @param \App\Repositories\Contracts\CampaignRepository $campaigns
      */
-    public function __construct(PostRepository $posts)
+    //public function __construct(CampaignRepository $campaigns)
+    public function __construct()
     {
         parent::__construct();
 
-        $this->posts = $posts;
+        //$this->campaigns = $campaigns;
+        $this->campaigns = null;
     }
 
     public function index()
     {
-        return view('frontend.campaign.index')->withPosts(
-            $this->posts->published()->paginate(9)
-        );
+        //return view('frontend.campaign.index')->withCampaigns(
+        //    $this->campaigns->published()->paginate(9)
+        //);
+        return null;
     }
 
     public function tag(Tag $tag)
     {
-        $this->setTranslatable($tag);
+        //$this->setTranslatable($tag);
 
-        return view('frontend.campaign.tag')->withTag($tag)->withPosts(
-            $this->posts->publishedByTag($tag)->paginate(9)
-        );
+        //return view('frontend.campaign.tag')->withTag($tag)->withCampaigns(
+        //    $this->campaigns->publishedByTag($tag)->paginate(9)
+        //);
+        return null;
     }
 
     public function owner(User $user)
     {
-        $this->setLocalesAttributes(['user' => $user->slug]);
+        //$this->setLocalesAttributes(['user' => $user->slug]);
 
-        return view('frontend.campaign.owner')
-            ->withUser($user)
-            ->withPosts($this->posts->publishedByOwner($user)->paginate(9));
+        //return view('frontend.campaign.owner')
+        //    ->withUser($user)
+        //    ->withCampaigns($this->campaigns->publishedByOwner($user)->paginate(9));
+        return null;
     }
 
-    public function show(Post $campaignId)
+    public function show()
     {
         // If not published, only user with edit access can see it
-        //if (! $post->published && ! Gate::check('update', $post)) {
+        //if (! $campaign->published && ! Gate::check('update', $campaign)) {
         //    abort(404);
         //}
 
 
 
-        //$this->setTranslatable($post);
+        //$this->setTranslatable($campaign);
         $data = '{
                   	"layout": "form",
                   	"styles": {
@@ -72,7 +77,7 @@ class CampaignController extends FrontendController
                   	},
                   	"content": {
                   		"title": "First campaign title",
-                  		"description": "First campaign description, soooo loooong shhhittt",
+                  		"description": "First campaign description",
                   		"image": "path_url",
 
                   		"warnings": {
@@ -95,16 +100,16 @@ class CampaignController extends FrontendController
         return view('client.campaign')->withData($data);
     }
 
-    public function donate(Post $campaignId)
+    public function donate()
     {
         // If not published, only user with edit access can see it
-        //if (! $post->published && ! Gate::check('update', $post)) {
+        //if (! $campaign->published && ! Gate::check('update', $campaign)) {
         //    abort(404);
         //}
 
 
 
-        //$this->setTranslatable($post);
+        //$this->setTranslatable($campaign);
         $data = '{
                   	"layout": "form",
                   	"styles": {
@@ -112,7 +117,7 @@ class CampaignController extends FrontendController
                   	},
                   	"content": {
                   		"title": "First campaign title",
-                  		"description": "First campaign description, soooo loooong shhhittt",
+                  		"description": "First campaign description",
                   		"image": "path_url",
 
                   		"warnings": {
@@ -138,13 +143,13 @@ class CampaignController extends FrontendController
     public function get()
     {
         // If not published, only user with edit access can see it
-        //if (! $post->published && ! Gate::check('update', $post)) {
+        //if (! $campaign->published && ! Gate::check('update', $campaign)) {
         //    abort(404);
         //}
 
 
 
-        //$this->setTranslatable($post);
+        //$this->setTranslatable($campaign);
         $data = '{
           "layout": "form",
           "styles": {
@@ -152,7 +157,7 @@ class CampaignController extends FrontendController
           },
           "content" : {
             "title" : "First campaign title",
-            "description" : "First campaign description, soooo loooong shhhittt",
+            "description" : "First campaign description",
             "image" : "placeholder.png",
 
             "warnings" : {
