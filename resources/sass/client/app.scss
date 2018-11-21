@@ -10,6 +10,7 @@
 
 @import "~noty/src/themes/bootstrap-v4";
 
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,500,700&subset=cyrillic,cyrillic-ext');
 
 
 // Components
@@ -18,131 +19,199 @@
 // RTL
 
 
-[v-cloak] {
-  display: none;
-}
+  [v-cloak] {
+    display: none;
+  }
 
-.intl-tel-input {
-  width: 100%;
-}
+  .intl-tel-input {
+    width: 100%;
+  }
 
-.alert.alert-top {
-  border: none;
-  border-radius: 0;
-  margin-bottom: 0;
-}
+  .alert.alert-top {
+    border: none;
+    border-radius: 0;
+    margin-bottom: 0;
+  }
 
-.custom-control-indicator, .custom-control-description, .switch-label, .switch-handle {
-  margin-top: .25rem;
-}
+  .custom-control-indicator, .custom-control-description, .switch-label, .switch-handle {
+    margin-top: .25rem;
+  }
 
-.flatpickr-calendar {
-  border-radius: 0;
-}
+  .flatpickr-calendar {
+    border-radius: 0;
+  }
 
-body .v-select {
-  .selected-tag {
-    background-color: #20a8d8;
-    border-color: #20a8d8;
-    color: #fff;
-
-    .close {
+  body .v-select {
+    .selected-tag {
+      background-color: #20a8d8;
+      border-color: #20a8d8;
       color: #fff;
-      text-shadow: none;
-      opacity: 1;
+
+      .close {
+        color: #fff;
+        text-shadow: none;
+        opacity: 1;
+      }
+    }
+
+    .dropdown-toggle, .selected-tag {
+      border-radius: 0;
     }
   }
 
-  .dropdown-toggle, .selected-tag {
-    border-radius: 0;
+  .table th {
+    white-space: nowrap;
   }
-}
 
-.table th {
-  white-space: nowrap;
-}
+  .nowrap {
+    white-space: nowrap;
+  }
 
-.nowrap {
-  white-space: nowrap;
-}
+  .card-logo img {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 10px;
+  }
 
-.card-logo img {
-  width: 200px;
-  height: 200px;
-  margin: 0 auto 10px;
-}
+  .card-logo {
+    width: 200px;
+    margin: 0 auto 10px;
+  }
 
-.card-logo {
-  width: 200px;
-  margin: 0 auto 10px;
-}
+  .card-logo + h1 {
+    margin: 0 auto 10px;
+    width: 200px;
+    text-align: center;
+  }
 
-.card-logo + h1 {
-  margin: 0 auto 10px;
-  width: 200px;
-  text-align: center;
-}
+  .app-header a.navbar-brand {
+    width:150px;
+  }
 
-.app-header a.navbar-brand {
-  width:150px;
-}
-
-button:focus {
-  outline: 5px auto pink;
-}
-.app {
-  max-width: 750px;    
-}
-.app {
-  background-color: #e7eef4;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  min-height: 430px;
-  max-width: 750px;
-}
-html {
-  overflow: hidden;
-}
-
-body, html {
-  margin: 0;
-  padding: 0;
-}
-
-.app > * {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.module-donate__title {
-  font-family: Roboto;
-  color:  #31383e;
-  font-weight: 700;
-  text-align: left;
-  margin: 0;
-}
-
-#beGatewayForm {
-  width: 100%;
-}
-
-
+  button:focus {
+    outline: 5px auto pink;
+  }
   .app {
-    width: 100%;
-    max-width: 770px;
+    max-width: 750px;
+  }
+  .app {
+    background-color: #e7eef4;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    min-height: 430px;
+    max-width: 750px;
+  }
+  html {
     overflow: hidden;
-    padding: 15px 40px 15px 40px;
+  }
+
+  body, html {
+    margin: 0;
+    padding: 0;
+  }
+
+  .app > * {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
   }
 
   .module-donate__title {
-    line-height: 32.8px;
-    font-size: 22px;
+    font-family: Ubuntu;
+    color:  #31383e;
+    font-weight: 700;
+    text-align: left;
+    margin: 0;
+  }
+
+  #beGatewayForm {
+    width: 100%;
+  }
+  .module-donate__status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 430px;
+    flex-direction: column;
+  }
+  .status__title {
+    font-family: Ubuntu;
+    color:  #31383e;
+    font-weight: 700;
+    text-align: left;
+    font-size: 20px;
+    margin: 0;
+    padding-bottom: 15px;
+  }
+  .status__text {
+    font-family: Ubuntu;
+    color:  #31383e;
+    font-weight: 400;
+    text-align: left;
+    font-size: 14px;
+    padding-top: 15px;
+    margin: 0;
+  }
+  .module-donate__donateWindow {
+    padding: 16px 0 0px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: center;
+    align-items: center;
+    max-height: 100%;
+    height: 100%;
+  }
+
+  .module-donate__card {
+    width: 400px;
+    height: 300px;
+  }
+
+  .card__placeholder {
+    width: 100%;
+    height: auto;
+  }
+
+  .donate__email {
+
+  }
+
+  .app {
+    width: 100%;
+    max-width: 750px;
+    height: 520px;
+    margin: 5px 0 0 5px;
+    max-height: 520px;
+    overflow: hidden;
+    padding: 30px 50px 60px 45px;
+    -webkit-box-shadow: 0px 4px 21px -3px rgba(51,51,3,0.61);
+    -moz-box-shadow: 0px 4px 21px -3px rgba(51,51,3,0.61);
+    box-shadow: 0px 4px 21px -3px rgba(51,51,3,0.61);
+    background: #f1f1f1;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+  }
+
+  .module-donate__title {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #191919;
   }
 
   .module-donate__wrapper {
-    padding: 25px 0 15px 0;
+    padding: 16px 0 0px 0;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -155,19 +224,24 @@ body, html {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    max-height: 300px;
+    height: 300px;
+  }
 
+  .module-donate__info {
+    max-width: 360px;
   }
 
   .module-donate__main-panel {
     height: auto;
-    width: 45%;
-    height: 230px;
-    min-width: 300px;
+    width: auto;
+    height: 195px;
+    max-width: 265px;
   }
 
   .module-donate__image {
-    height: 230px;
-    width: 53%;
+    height: 195px;
+    width: 100%;
     overflow: hidden;
     position: relative;
   }
@@ -205,75 +279,101 @@ body, html {
         flex-wrap: wrap;
     -webkit-box-pack: end;
         -ms-flex-pack: end;
-            justify-content: flex-end;
+            justify-content: space-between;
+  }
+
+  a {
+    text-decoration: none !important;
   }
 
   .module-donate__button-select {
-    font-family: Roboto, sans-serif;
-    width: 90px;
-    height: 55px;
-    margin: 0px 0px 30px 10px;
-    border-radius: 2px;
+    font-family: Ubuntu, sans-serif;
+    width: 75px;
+    height: 50px;
+    margin-bottom:20px;
     border: none;
-    color: #f7fafc;
-    font-size: 20px;
-    font-weight: 400;
-    -webkit-transition: color 0.3s, background-color 0.3s;
-    -o-transition: color 0.3s, background-color 0.3s;
-    transition: color 0.3s, background-color 0.3s;
+    padding: 0;
+    background-color: #FAFAFA;
+    color: #303030;
+    font-size: 18px;
+    font-weight: 500;
     cursor: pointer;
     white-space: nowrap;
-    opacity: 0.36;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.07), 0 3px 6px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease 0s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-font-smoothing: antialiased;
   }
 
   .module-donate__button-select.clicked {
-    -webkit-transition: background-color 0.3s;
-    -o-transition: background-color 0.3s;
-    transition: background-color 0.3s;
-    outline: none;
-    opacity: 1;
+    outline: none !important;
+    background-color: #383838 !important;
+    color: #FF80B4;
+    transition: all 0.3s ease 0s;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .module-donate__button-select.payment {
+    width:50%;
   }
 
   .module-donate__button-select:focus {
-    outline: none;
+    outline: none !important;
+    background-color: #383838 !important;
+    color: #FF80B4;
   }
 
   .module-donate__button-select:hover {
-    color: #31383e;
-    -webkit-transition: color 0.3s;
-    -o-transition: color 0.3s;
-    transition: color 0.3s;
+    color: #FF80B4;
+    -webkit-transform: perspective(1px) scale(1.1);
+        -ms-transform: perspective(1px) scale(1.1);
+        transform: perspective(1px) scale(1.1);
+    transition: all 0.3s ease 0s;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .module-donate__button-select.confirm {
+    margin-left: auto;
+    height: 50px;
+    width: 165px;
+    overflow: hidden;
+    background-color: #FF80B4;
+    margin-bottom: 10px;
+    margin-top: 15px;
+  }
+
+  .module-donate__button-select.confirm:hover {
+    background-color: #FF80B4;
+    color: #303030;
   }
 
   .module-donate__button-confirm {
-    font-family: Roboto, sans-serif;
+    font-family: Ubuntu, sans-serif;
     width: 160px;
     height: 55px;
     margin: 5px 0px 0px 10px;
-    border-radius: 2px;
     border: none;
-    color: #f7fafc;
-    font-size: 20px;
-    font-weight: 400;
+    color: #FF80B4;
+    font-size: 18px;
+    font-weight: 500;
     background-color: #94c840;
-    -webkit-transition: color 0.3s;
-    -o-transition: color 0.3s;
-    transition: color 0.3s;
+    transition: all 0.3s ease 0s;
     cursor: pointer;
   }
 
   .module-donate__button-confirm:hover {
     color: #31383e;
-    -webkit-transition: color 0.3s;
-    -o-transition: color 0.3s;
-    transition: color 0.3s;
+    -webkit-transform: perspective(1px) scale(1.1);
+        -ms-transform: perspective(1px) scale(1.1);
+        transform: perspective(1px) scale(1.1);
+    transition: all 0.3s ease 0s;
   }
 
   .module-donate__button-confirm:focus {
     color: #31383e;
-    -webkit-transition: color 0.3s;
-    -o-transition: color 0.3s;
-    transition: color 0.3s;
+    transition: all 0.3s ease 0s;
     outline: none;
   }
 
@@ -281,51 +381,103 @@ body, html {
     margin-top: -20px;
   }
 
-  .module-donate__text-input {
-    font-family: Roboto, sans-serif;
-    font-size: 18px;
-    font-weight: 400;
+  .donate__checkbox {
+    font-family: Ubuntu, sans-serif;
+
+    color: #31383e;
+    padding-bottom: 45px;
+  }
+
+  .donateWindow__footer {
+    font-size: 0;
+    width: 70%;
     text-align: left;
-    width: 120px;
-    height: 55px;
-    border: 2px solid white;
-    margin: 5px 0px 10px 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .donateWindow__footer .back {
+    margin-left: 0;
+  }
+
+  .donate__email {
+    width: 250px !important;
+  }
+  .module-donate__text-input {
+    font-family: Ubuntu, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: left;
+    width: 170px;
+    height: 50px;
+    color: #191919;
+    border: none;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
     padding: 0px 5px 0px 15px;
     color: #31383e;
     -moz-appearance:textfield;
     -webkit-appearance: none;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.07), 0 3px 6px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease 0s;
   }
 
+  .module-donate__text-input.recurrent {
+    margin-bottom: 30px;
+    width: 400px;
+  }
+
+  .module-donate__title.recurrent {
+    margin-bottom: 25px;
+  }
   .module-donate__text-input::-webkit-outer-spin-button,
   .module-donate__text-input::-webkit-inner-spin-button {
       -webkit-appearance: none;
   }
 
   .module-donate__text-input:focus{
-    border:2px solid #94c840;
+    border: none;
     border-radius: 2px;
     outline: none;
   }
 
+  .module-donate__text-input:hover{
+    -webkit-transform: perspective(1px) scale(1.1);
+        -ms-transform: perspective(1px) scale(1.1);
+        transform: perspective(1px) scale(1.1);
+    transition: all 0.3s ease 0s;
+  }
+
   .module-donate__text-input::-webkit-input-placeholder {
-    color:  #94989c;
-    font-weight: 400;
+    font-family: Ubuntu, sans-serif;
+    color:  #191919;
+    font-weight: 500;
   }
 
   .module-donate__text-input:-ms-input-placeholder {
-    color:  #94989c;
-    font-weight: 400;
+    font-family: Ubuntu, sans-serif;
+    color:  #191919;
+    font-weight: 500;
   }
 
   .module-donate__text-input::-ms-input-placeholder {
-    color:  #94989c;
-    font-weight: 400;
+    font-family: Ubuntu, sans-serif;
+    color:  #191919;
+    font-weight: 500;
   }
 
   .module-donate__text-input::placeholder {
-    color:  #94989c;
+    font-family: Ubuntu, sans-serif;
+    color:  #303030;
     font-weight: 400;
   }
 
@@ -338,7 +490,7 @@ body, html {
     width: 100%;
     text-align: center;
     font-size: 13px;
-    font-family: Roboto, sans-serif;
+    font-family: Ubuntu, sans-serif;
     margin: -10px;
     color: red;
     max-height: 0;
@@ -359,14 +511,14 @@ body, html {
   }
 
   .module-donate__description {
-    padding: 10px 0 0 0;
+    padding: 20px 0 0 0;
     width: 100%;
     height: auto;
-    font-family: Roboto, sans-serif;
-    color:  #31383e;
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 26px;
+    font-family: Ubuntu, sans-serif;
+    color:  #191919;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
     text-align: left;
     clear: both;
     margin: 0;
@@ -380,7 +532,22 @@ body, html {
     width: 100%;
     height: 20px;
     font-size: 0;
+    margin-top: 25px;
     overflow: hidden;
+  }
+
+  .progress__bar {
+    border-radius: 10px;
+    background-color: #DDDDDD;
+    margin-top: 30px;
+    height: 15px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.07), 0 3px 6px rgba(0, 0, 0, 0.08);
+  }
+
+  .progress-bar {
+    background-color: #FF80B4;
+    border-radius: 10px;
+    height: 15px;
   }
 
   .module-donate__progress-bar .progress-bar__track {
@@ -465,33 +632,42 @@ body, html {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 14px;
   }
 
   .payment__description {
     display: inline-block;
-    font-family: Roboto, sans-serif;
+    font-family: Ubuntu, sans-serif;
     color:  #94989c;
     font-size: 13px;
     font-weight: 400;
     text-align: left;
-    width: 33%;
-    text-decoration: none;
+    margin-left: auto;
+    text-decoration: underline !important;
     cursor: pointer;
+    width: 100%;
+    text-align: right;
+  }
+  .module-donate__version.donateWindow {
+    margin-top: 55px;
   }
   .payment__description:hover {
 
   }
 
   .module-donate__version {
-    font-family: Roboto, sans-serif;
+    font-family: Ubuntu, sans-serif;
     color:  #94989c;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
     text-align: right;
-    width: 33%;
+    width: 100%;
     text-decoration: none;
     float: right;
+    margin: 0;
+    padding: 20px 0 0 0;
   }
   .module-donate__version a {
     text-decoration: none;
@@ -499,11 +675,23 @@ body, html {
   }
 
   .result__description {
-    font-family: Roboto, sans-serif;
-    color:  #4c4f51;
-    font-size: 22px;
-    font-weight: 400;
-    text-align: center;
+    font-family: Ubuntu, sans-serif;
+    color:  #191919;
+    font-size: 18px;
+    font-weight: 500;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    min-width: 33%;
+    white-space: nowrap;
+  }
+
+  .result__recieved {
+    font-family: Ubuntu, sans-serif;
+    color:  #191919;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: right;
     display: inline-block;
     padding: 0;
     margin: 0;
@@ -523,13 +711,13 @@ body, html {
   }
 
   .summ__highlight {
-    font-family: Roboto, sans-serif;
-    color:  #55affb;
-    font-size: 22px;
-    font-weight: 700;
+    font-family: Ubuntu, sans-serif;
+    color:  #FF80B4;
+    font-size: 18px;
+    font-weight: 500;
   }
 
-@media all and (max-width: 771px) {
+@media all and (max-width: 740px) {
 
   .app {
     overflow: hidden;
@@ -566,7 +754,7 @@ body, html {
   }
 
   .module-donate__wrapper {
-    padding: 25px 0 15px 0;
+    padding: 25px 0 0px 0;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

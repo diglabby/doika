@@ -6,8 +6,8 @@
       </template>
       <div>
         <ul id="helpList" style="list-style:none">
-          <li v-for="item in help" :key="item.id" style="margin-top: 10px;">
-            <b-btn v-b-toggle="'collapse-' + item.id" variant="primary">{{ item.title }}</b-btn>
+          <li v-for="item in help" :key="item.id" style="margin-top: 10px;" @click="provide(item)">
+            <p v-b-toggle="'collapse-' + item.id" variant="primary"><i class="fe" :class="(contains(buttons, item)) ? 'fe-minus-circle' : 'fe-plus-circle'"></i>  {{ item.title }}</p>
             <b-collapse :id="'collapse-' + item.id" class="mt-2">
               <b-card>
                 <p class="card-text">{{ item.text }}</p>
@@ -36,7 +36,18 @@ export default {
           title: 'Why I am here?',
           text: 'For a reason'
         }
-      ]
+      ],
+      buttons: []
+    }
+  },
+  methods: {
+    provide: function(item) {
+      console.log(this.buttons)
+      if (this.buttons.includes(item)) this.buttons.splice(item, 1)
+      else this.buttons.push(item)
+    },
+    contains: function(arr, item) {
+      return arr.indexOf(item) != -1
     }
   }
 }

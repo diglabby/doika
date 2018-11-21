@@ -88,7 +88,7 @@
 
             <b-row slot="footer">
               <b-col col-lg="3">
-                <b-button to="/payments" exact variant="danger" size="sm">
+                <b-button to="/payments" exact variant="secondary" size="sm">
                   {{ $t('buttons.admin.common.back') }}
                 </b-button>
               </b-col>

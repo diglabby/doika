@@ -74,9 +74,9 @@ function getEntryConfig (name, analyzerPort, alias = {}) {
       ]
     },
     output: {
-      path: path.resolve(__dirname, 'public' + publicPathFolder),
+      path: path.resolve(__dirname, 'public' + publicPathFolder),	  
       filename: production ? 'js/[name].[chunkhash].js' : 'js/[name].js',
-      publicPath
+      publicPath: '/doika/public' + publicPathFolder
     },
     module: {
       rules: [
@@ -120,18 +120,19 @@ function getEntryConfig (name, analyzerPort, alias = {}) {
           use: [
             {
               loader: 'url-loader',
-              options: {
-                name: (path) => {
-                  if (!/node_modules/.test(path)) {
-                    return 'images/[name].[ext]?[hash]'
-                  }
+              options: {				
+                //name: (path) => {
+                //  if (!/node_modules/.test(path)) {
+                //    return 'images/[name].[ext]?[hash]'
+                //  }
 
-                  return `images/vendor-${name}/` + path
-                    .replace(/\\/g, '/')
-                    .replace(
-                      /((.*(node_modules))|images|image|img|assets)\//g, ''
-                    ) + '?[hash]'
-                },
+                //  return `images/vendor-${name}/` + path
+                //    .replace(/\\/g, '/')
+                //    .replace(
+                //      /((.*(node_modules))|images|image|img|assets)\//g, ''
+                //    ) + '?[hash]'
+                //},
+				name: "/images/[name].[ext]?[hash]",
                 limit: 4096
               }
             }
@@ -140,14 +141,15 @@ function getEntryConfig (name, analyzerPort, alias = {}) {
         {
           test: /\.(woff2?|ttf|eot|svg|otf)$/,
           loader: 'url-loader',
-          options: {
+          options: {			
             name: (path) => {
-              if (!/node_modules/.test(path)) {
+             if (!/node_modules/.test(path)) {
                 return 'fonts/[name].[ext]?[hash]'
               }
 
               return `fonts/vendor-${name}/[name].[ext]?[hash]`
             },
+			
             limit: 4096
           }
         }

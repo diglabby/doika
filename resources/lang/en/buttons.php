@@ -34,5 +34,10 @@ return [
 			'deleteImage' => 'Delete image',					
 		],
 		
+	],
+	'client' => [
+		'back' => 'Back',
+		'confirm' => 'Confirm',
+		'proceed' => 'Proceed'
 	]
 ];
