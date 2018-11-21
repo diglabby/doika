@@ -11,17 +11,23 @@
     <title>Doika Module | {{ config('app.name') }}</title>
 
     <!-- Styles -->
-    @if ($stylePath = Html::asset('client', 'client.css'))
+
+    {{-- @if ($stylePath = Html::asset('backend', 'backend.css'))
     <link rel="stylesheet" href="{{ $stylePath }}">
-    @endif
+    @endif --}}
+    <link rel="stylesheet" href="/doika/public/build/css/client.css">
+
 
     <!-- CDN -->
     <script defer src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script defer src="//cdn.ckeditor.com/ckeditor5/10.1.0/classic/ckeditor.js"></script>
 
-    <!-- Scripts -->
-    <script defer src="{{ Html::asset('client', 'vendor-client.js') }}"></script>
-    <script defer src="{{ Html::asset('client', 'client.js') }}"></script>
+    <!--
+    <script defer src="{{ Html::asset('backend', 'vendor-backend.js') }}"></script>
+    <script defer src="{{ Html::asset('backend', 'backend.js') }}"></script>
+  -->
+    <script defer src="/doika/public/build/js/vendor-client.js"></script>
+    <script defer src="/doika/public/build/js/client.js"></script>
 
     <!-- JS settings -->
     <script type="application/json" data-settings-selector="settings-json">
@@ -29,7 +35,8 @@
         'locale' => app()->getLocale(),
         'appName' => config('app.name'),
         'homePath' => route('home'),
-        'adminHomePath' => route('admin.home', [], false),
+        //'adminHomePath' => route('admin.home', [], false),
+		'adminHomePath' => '/doika/admin',
         'adminPathName' => config('app.admin_path'),
         'editorName' => config('app.editor_name'),
         'editorSiteUrl' => config('app.editor_site_url'),

@@ -101,3 +101,35 @@ body .v-select {
 button:focus {
   outline: 5px auto pink;
 }
+
+.campaign-dropdown {
+  margin: 20px 0 0 0;
+  width: 40%;
+}
+.campaign-dropdown button {
+  width: 100%;
+  background-color: #fff !important;
+  color: #6e7687 !important;
+}
+
+.campaign-dropdown button:hover {
+  width: 100%;
+  background-color: #fff !important;
+  color: #6e7687 !important;
+}
+.campaign-dropdown .dropdown-item.active {
+  background-color: #fff !important;
+  color: #6e7687 !important;
+}
+.campaign-dropdown .dropdown-item.active:hover{
+  background-color: #f8f9fa !important;
+  color: #6e7687 !important;
+}
+.image-preview {
+  max-width: 150px;
+  height: auto;
+}
+
+.image-preview img{
+  width: 100%;
+}

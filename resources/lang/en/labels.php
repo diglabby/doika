@@ -224,5 +224,11 @@ return [
 			]
 			
 		]
-    ]
+    ],
+	'client' => [
+		'paymentInfo' => 'Terms of Use',
+		'input' => 'Summ',
+		'recieved' => 'Recieved',
+		'needed' => 'Needed'
+	]
 ];

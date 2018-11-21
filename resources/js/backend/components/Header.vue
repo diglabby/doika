@@ -43,9 +43,9 @@
           </span>
         </template>
         <template slot="dropdown">
-          <b-dropdown-item :href="$app.route('user.account')">
+          <!--<b-dropdown-item :href="$app.route('user.account')">
             <i class="fe fe-user"></i>&nbsp;&nbsp;{{ $t('labels.admin.accountMenu.header') }}
-          </b-dropdown-item>
+          </b-dropdown-item>-->
           <b-dropdown-item :href="$app.route('admin.logout')">
             <i class="fe fe-log-out"></i>&nbsp;&nbsp;{{ $t('labels.admin.accountMenu.logout') }}
           </b-dropdown-item>
