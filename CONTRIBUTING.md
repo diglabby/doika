@@ -1,0 +1,22 @@
+# Як зрабіць свой унёсак
+Мы вельмі рады, што вы чытаеце гэта, таму што нам трэба валантэры-распрацоўшчыкі, каб дапамагчы гэтаму праекту развівацца.
+
+## Стварэнне баг-рапартаў і прапаноў
+[Прыклад афармлення бага](https://github.com/diglabby/doika_1.2/wiki/Прыклад-афармлення-бага)
+
+[Праца з рэквэстамі]()
+
+
+## Як пачаць распрацоўку?
+1. Праглядзець статус і роадмэп распрацоукi праекта на старонцы [milestones](https://github.com/diglabby/doika/milestones?direction=asc&sort=due_date&state=open).
+2. Як разгарнуць лакальны асяродак для распрацоўкі [інструкцыя](TODO).
+3. Праглядзець [дакументацыю](https://realtimeboard.com/app/board/o9J_k0X88dM=/). 
+  - [Архiтэктура файлаў i базы](https://realtimeboard.com/app/board/o9J_k0X88dM=/?moveToWidget=3074457346027045333)
+  - [Блок-схемы](https://realtimeboard.com/app/board/o9J_k0X88dM=/?moveToWidget=3074457346144718504)
+  - [Спiс класаў](https://realtimeboard.com/app/board/o9J_k0X88dM=/?moveToWidget=3074457346135802429)
+  - [Вiкi](https://github.com/diglabby/doika/wiki/) частка "для распрацоўшчыкаў".
+  - Пры з'яўленні пытанняў і цяжкасцей запытаць у Slack бягучых удзельнікаў каманды: @fr0zen, @tyuba4, @Сёмка, @SvetaN (інвайт у канал Slack магчыма атрымаць звярнуўшыся да нас праз [форму](https://docs.google.com/forms/d/e/1FAIpQLSf3q7HMtfJly4wCrRyIlHDdAzFExSjw2vqbA62XFJHofjMqjg/viewform)).
+
+
+## Кодынг-стандарт
+[Кодынг-стандарт](https://github.com/diglabby/doika_1.2/wiki/Кодынг-стандарт)
