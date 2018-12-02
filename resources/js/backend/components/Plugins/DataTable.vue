@@ -8,7 +8,7 @@
           <label>{{ $t('labels.admin.datatables.entriesPerPage') }}</label>
         </b-form>
       </b-col>
-      <b-col md="4" class="mb-3 text-center">        
+      <b-col md="4" class="mb-3 text-center">
       </b-col>
       <b-col md="4" class="mb-3">
         <b-form inline v-if="search" class="d-flex justify-content-end" @submit.prevent>
@@ -163,7 +163,7 @@ export default {
         type: 'warning',
         showCancelButton: true,
         cancelButtonText: this.$t('buttons.cancel'),
-        confirmButtonColor: '#dd4b39',
+        confirmButtonColor: '#f66d9b',
         confirmButtonText: this.$t('buttons.confirm')
       })
 

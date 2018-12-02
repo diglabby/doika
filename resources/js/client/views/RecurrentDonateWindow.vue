@@ -4,12 +4,11 @@
       <div class="module-donate__card">
         <img class="card__placeholder" src="/doika/public/images/card.png">
       </div>
-      <input type="email" id="email" class="donate__email module-donate__text-input" :placeholder="placeholder">
       <div class="donateWindow__footer">
-        <b-button to="/doika/campaign/1" class="module-donate__button-select confirm back">{{ $t('buttons.client.back') }}</b-button>
-        <b-button to="/doika/campaign/1/donate/status" class="module-donate__button-select confirm">{{ $t('buttons.client.proceed') }}</b-button>
+        <b-button to="/doika/campaign/1/recurrent" class="module-donate__button-select confirm back">{{ $t('buttons.client.back') }}</b-button>
+        <b-button to="/doika/campaign/1/recurrent/status" class="module-donate__button-select confirm">{{ $t('buttons.client.proceed') }}</b-button>
       </div>
-      <p class="module-donate__version">powered by <a href="#" target="_blank">Doika</a></p>
+      <p class="module-donate__version donateWindow">powered by <a href="#" target="_blank">Doika</a></p>
     </div>
   </div>
 </template>
@@ -18,7 +17,7 @@
 import axios from 'axios'
 
 export default {
-  name: 'DonateWindow',
+  name: 'RecurrentDonateWindow',
   data() {
     return {
       campaign: [],

@@ -42,7 +42,7 @@
             <b-button v-if="row.item.can_edit" size="sm" variant="primary" :to="`/users/${row.item.id}/edit`" v-b-tooltip.hover :title="$t('buttons.admin.common.edit')" class="mr-1">
               <i class="fe fe-edit"></i>
             </b-button>
-            <b-button v-if="row.item.can_delete" size="sm" variant="danger" v-b-tooltip.hover :title="$t('buttons.admin.common.delete')" @click.stop="onDelete(row.item.id)">
+            <b-button v-if="row.item.can_delete" size="sm" variant="secondary" v-b-tooltip.hover :title="$t('buttons.admin.common.delete')" @click.stop="onDelete(row.item.id)">
               <i class="fe fe-trash"></i>
             </b-button>
           </template>

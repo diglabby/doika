@@ -6,13 +6,11 @@
         <AppSearch></AppSearch>
         <SidebarNav :nav-items="nav">
         </SidebarNav>
-        <b-button class="container-fluid btn btn-success" style="margin-top:auto !important; border: 1px solid white; width: 80%; height: 50px;">
+        <b-button class="container-fluid btn btn-success" style="margin-top:auto !important; margin-bottom:20px; width: 80%; height: 50px;">
           {{ $t('buttons.admin.support') }}
         </b-button>
         <SidebarFooter>
         </SidebarFooter>
-        <SidebarMinimizer>
-        </SidebarMinimizer>
       </Sidebar>
       <main class="main">
         <breadcrumb :list="$route.matched"></breadcrumb>

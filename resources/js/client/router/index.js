@@ -8,6 +8,9 @@ import Full from '../containers/Full'
 
 import MainWindow from '../views/MainWindow'
 import DonateWindow from '../views/DonateWindow'
+import RecurrentWindow from '../views/RecurrentWindow'
+import RecurrentDonateWindow from '../views/RecurrentDonateWindow'
+import StatusWindow from '../views/StatusWindow'
 
 Vue.use(Router)
 
@@ -19,7 +22,7 @@ export function createRouter(base, i18n) {
     scrollBehavior: () => ({ y: 0 }),
     routes: [
       {
-        path: '/campaign/',
+        path: '/doika/campaign/',
         name: 'campaign',
         component: Full,
         meta: {
@@ -38,6 +41,38 @@ export function createRouter(base, i18n) {
             path: ':id/donate',
             name: 'donate',
             component: DonateWindow,
+            meta: {
+              label: i18n.t('labels.admin.campaigns.title')
+            }
+          },
+          {
+            path: ':id/donate/status',
+            name: 'status',
+            component: StatusWindow,
+            meta: {
+              label: i18n.t('labels.admin.campaigns.title')
+            }
+          },
+          {
+            path: ':id/recurrent',
+            name: 'recurrent',
+            component: RecurrentWindow,
+            meta: {
+              label: i18n.t('labels.admin.campaigns.title')
+            }
+          },
+          {
+            path: ':id/recurrent/donate',
+            name: 'recurrent',
+            component: RecurrentDonateWindow,
+            meta: {
+              label: i18n.t('labels.admin.campaigns.title')
+            }
+          },
+          {
+            path: ':id/recurrent/status',
+            name: 'status',
+            component: StatusWindow,
             meta: {
               label: i18n.t('labels.admin.campaigns.title')
             }
