@@ -1,0 +1,5 @@
+{
+  "client.css": "/build/css/client.css",
+  "client.js": "/build/js/client.js",
+  "vendor-client.js": "/build/js/vendor-client.js"
+}

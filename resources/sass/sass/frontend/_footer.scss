@@ -1,0 +1,30 @@
+/*
+ * Footer
+ *
+ * Separated section of content at the bottom of all pages, save the homepage.
+ */
+
+.footer {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-top: 100px;
+  color: white;
+}
+.footer a {
+  color: white;
+}
+.footer-links {
+  padding: 0;
+  margin-bottom: 2rem;
+}
+.footer-links li {
+  display: inline-block;
+  margin-right: .5rem;
+}
+
+*[dir="rtl"] {
+  .footer-links li {
+    margin-right: inherit;
+    margin-left: .5rem;
+  }
+}

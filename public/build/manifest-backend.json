@@ -1,0 +1,8 @@
+{
+  "backend.css": "/build/css/backend.css",
+  "backend.js": "/build/js/backend.js",
+  "vendor-backend.js": "/build/js/vendor-backend.js",
+  "fonts/app.scss": "/build/fonts/feather-webfont.svg?4a878d5b85f694202ec0ccd16510be9c",
+  "/images/logo-symbol.png": "/build//images/logo-symbol.png?7cf8986d7b6640d0dde9ad23a76c977c",
+  "/images/logo.png": "/build//images/logo.png?1bd73597a46e2aecc6ea3326c3d13041"
+}
