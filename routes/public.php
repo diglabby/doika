@@ -10,15 +10,15 @@
 
     //Route::get('doika/campaign/tags/{tag}', 'CampaignController@tag')->name('campaign.tag');
 
-    Route::get('doika/campaign/{campaignId}', 'CampaignController@show')->name('campaign.show')->where('campaignId', '[0-9]+');
+    Route::get('campaign/{campaignId}', 'CampaignController@show')->name('campaign.show')->where('campaignId', '[0-9]+');
 
-    Route::get('doika/campaign/{campaignId}/donate', 'CampaignController@donate')->name('campaign.donate')->where('campaignId', '[0-9]+');
-    Route::get('doika/campaign/get', 'CampaignController@get')->name('campaign.get');
+    Route::get('campaign/{campaignId}/donate', 'CampaignController@donate')->name('campaign.donate')->where('campaignId', '[0-9]+');
+    Route::get('campaign/get', 'CampaignController@get')->name('campaign.get');
 	
-	Route::get('doika/campaign/{campaignId}/recurrent', 'CampaignController@donate')->name('campaign.recurrent')->where('campaignId', '[0-9]+');
-    Route::get('doika/campaign/{campaignId}/recurrent/status', 'CampaignController@donate')->name('campaign.recurrent.status')->where('campaignId', '[0-9]+');
-	Route::get('doika/campaign/{campaignId}/recurrent/donate', 'CampaignController@donate')->name('campaign.recurrent.donate')->where('campaignId', '[0-9]+');
-	Route::get('doika/campaign/{campaignId}/donate/status', 'CampaignController@donate')->name('campaign.donate.status')->where('campaignId', '[0-9]+');
+	Route::get('campaign/{campaignId}/recurrent', 'CampaignController@donate')->name('campaign.recurrent')->where('campaignId', '[0-9]+');
+    Route::get('campaign/{campaignId}/recurrent/status', 'CampaignController@donate')->name('campaign.recurrent.status')->where('campaignId', '[0-9]+');
+	Route::get('campaign/{campaignId}/recurrent/donate', 'CampaignController@donate')->name('campaign.recurrent.donate')->where('campaignId', '[0-9]+');
+	Route::get('campaign/{campaignId}/donate/status', 'CampaignController@donate')->name('campaign.donate.status')->where('campaignId', '[0-9]+');
 	
     //Route::get(
     //    LaravelLocalization::transRoute('routes.redactors'),
