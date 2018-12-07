@@ -44,5 +44,5 @@ Doika - модуль, які дапамагае прымаць ахвярава�
 ![](https://trello-attachments.s3.amazonaws.com/5afee29cdc7e2f274f42491b/5bb66bb619b45a5e5bf3f89a/1667f21546988191810730b1579c02cb/doika_end_gif.gif)
 
 ## Карысныя спасылкі
-* [Прэзентацыйная старонка](https://doika.falanster.by/)
-* 
+* [Прэзентацыйная ўэб-старонка](https://doika.falanster.by/)
+* [Прэзентацыя у паўэрпоінт](https://docs.google.com/presentation/d/144zEv4DyBoa0jDKwee30Rip0oKZ8QzkeUKaNCRWy1qY/edit#slide=id.g42bd4a5055_0_28)
