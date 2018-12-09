@@ -1,0 +1,49 @@
+{
+    "name": "davejamesmiller/laravel-breadcrumbs",
+    "description": "A simple Laravel-style way to create breadcrumbs.",
+    "keywords": [
+        "laravel"
+    ],
+    "homepage": "https://github.com/davejamesmiller/laravel-breadcrumbs",
+    "authors": [
+        {
+            "name": "Dave James Miller",
+            "email": "dave@davejamesmiller.com",
+            "homepage": "https://davejamesmiller.com/"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.1.3",
+        "illuminate/support": "5.6.*|5.7.*",
+        "illuminate/view": "5.6.*|5.7.*"
+    },
+    "require-dev": {
+        "laravel/framework": "5.6.*|5.7.*",
+        "orchestra/testbench": "3.6.*|3.7.*",
+        "phpunit/phpunit": "7.*",
+        "php-coveralls/php-coveralls": "^1.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "DaveJamesMiller\\Breadcrumbs\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BreadcrumbsTests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "DaveJamesMiller\\Breadcrumbs\\BreadcrumbsServiceProvider"
+            ],
+            "aliases": {
+                "Breadcrumbs": "DaveJamesMiller\\Breadcrumbs\\Facades\\Breadcrumbs"
+            }
+        }
+    }
+}

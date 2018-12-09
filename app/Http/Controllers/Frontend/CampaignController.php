@@ -153,20 +153,20 @@ class CampaignController extends FrontendController
         $data = '{
           "layout": "form",
           "styles": {
-
           },
+		  
           "content" : {
-            "title" : "First campaign title",
-            "description" : "First campaign description",
+            "title" : "Модуль прыёму ахвяраванняў Модуль прыёму ахвяраванняў Модуль прыёму ахвяраванняў",
+            "description" : "Модуль данэйта - гэта праграма на базе адкрытага коду для збору сродкаў на дзейнасць грамадскій аб\'яднанняў Беларусі. Размешчаны на сайце арганізацыі модуль дазволіць збіраць сродкі на рахунак метадам прамой аплаты па крэдытнай або дэбітнай картцы, як па падпісцы так і разава.",
             "image" : "placeholder.png",
 
             "warnings" : {
               "cost_error" : "invalid cost"
             },
 
-            "button_values" : [ "2", "4", "6", "8", "10", "12"],
+            "button_values" : [ "2", "4", "6", "8" ],
 
-            "currency" : "BYN",
+            "currency" : "руб",
 
             "termsOfUse" : {
             }

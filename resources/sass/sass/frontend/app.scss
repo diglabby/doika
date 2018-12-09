@@ -1,0 +1,123 @@
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap-vue/dist/bootstrap-vue.css";
+
+// Plugins
+@import "~sweetalert2/src/sweetalert2";
+@import "~slick-carousel/slick/slick";
+@import "~slick-carousel/slick/slick-theme";
+@import "~intl-tel-input/src/css/intlTelInput";
+
+// Components
+@import "../buttons";
+
+// Sections
+@import "footer";
+
+// Pages
+@import "blog";
+
+// RTL
+@import "../bootstrap-rtl";
+
+body {
+  padding-top: 3.5rem;
+}
+
+.highlight {
+  position: relative;
+}
+
+.jumbotron {
+  margin-bottom: 0;
+  direction: ltr !important;
+
+  @include media-breakpoint-up(sm) {
+    padding: $jumbotron-padding $jumbotron-padding / 2;
+  }
+}
+
+.breadcrumb {
+  padding: 1rem 0;
+  background-color: transparent;
+}
+
+.breadcrumb-item.active {
+  color: $white;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+.intl-tel-input {
+  width: 100%;
+}
+
+iframe {
+  width: 100%;
+  border: 0;
+}
+
+.alert.alert-top {
+  border: none;
+  margin-bottom: 0;
+}
+
+.custom-control-indicator, .custom-control-description, .switch-label, .switch-handle {
+  margin-top: .25rem;
+}
+
+[data-toggle="slider"]:not(.slick-initialized) {
+  visibility: hidden;
+}
+
+.slick-slide {
+  text-align: center;
+
+  h3 {
+    line-height: 15rem;
+    background-color: #fff;
+    margin: 0 0.5rem;
+  }
+}
+
+.wysiwyg-content .image {
+  &.image-style-align-left {
+    float: left;
+    margin-right: 2em;
+  }
+
+  &.image-style-align-right {
+    float: right;
+    margin-left: 2em;
+  }
+
+  &.image-style-align-center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &.image-style-align-center, .image-style-align-left, .image-style-align-right {
+    max-width: 50%;
+  }
+
+  > img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  > figcaption {
+    text-align: center;
+    color: #333;
+    background-color: #f7f7f7;
+    padding: .8em;
+    font-size: .75em;
+    outline-offset: -1px;
+  }
+}

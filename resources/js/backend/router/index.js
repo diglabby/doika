@@ -52,7 +52,6 @@ export function createRouter(base, i18n) {
           },
           {
             path: 'campaigns',
-            name: 'campaigns',
             component: {
               render(c) {
                 return c('router-view')
@@ -164,88 +163,12 @@ export function createRouter(base, i18n) {
             ]
           },
           {
-            path: 'roles',
-            component: {
-              render(c) {
-                return c('router-view')
-              }
-            },
-            meta: {
-              label: i18n.t('labels.backend.roles.titles.main')
-            },
-            children: [
-              {
-                path: '/',
-                name: 'roles',
-                component: RoleList,
-                meta: {
-                  label: i18n.t('labels.backend.roles.titles.index')
-                }
-              },
-              {
-                path: 'create',
-                name: 'roles_create',
-                component: RoleForm,
-                meta: {
-                  label: i18n.t('labels.backend.roles.titles.create')
-                }
-              },
-              {
-                path: ':id/edit',
-                name: 'roles_edit',
-                component: RoleForm,
-                props: true,
-                meta: {
-                  label: i18n.t('labels.backend.roles.titles.edit')
-                }
-              }
-            ]
-          },
-          {
             path: 'help',
             name: 'help',
             component: Help,
             meta: {
               label: i18n.t('labels.admin.help.title')
             }
-          },
-          {
-            path: 'redirections',
-            component: {
-              render(c) {
-                return c('router-view')
-              }
-            },
-            meta: {
-              label: i18n.t('labels.backend.redirections.titles.main')
-            },
-            children: [
-              {
-                path: '/',
-                name: 'redirections',
-                component: RedirectionList,
-                meta: {
-                  label: i18n.t('labels.backend.redirections.titles.index')
-                }
-              },
-              {
-                path: 'create',
-                name: 'redirections_create',
-                component: RedirectionForm,
-                meta: {
-                  label: i18n.t('labels.backend.redirections.titles.create')
-                }
-              },
-              {
-                path: ':id/edit',
-                name: 'redirections_edit',
-                component: RedirectionForm,
-                props: true,
-                meta: {
-                  label: i18n.t('labels.backend.redirections.titles.edit')
-                }
-              }
-            ]
           }
         ]
       }

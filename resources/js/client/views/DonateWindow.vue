@@ -1,23 +1,15 @@
 <template>
   <div>
-    <p class="module-donate__title">{{ campaign.content.title }}</p>
-    <div class="module-donate__wrapper">
-      <div class="module-donate__description-wrapper">
-        <p class="module-donate__description">{{ campaign.content.description }}</p>
-        <p class="result__description">{{ $t('content.received') }} <span class="summ__highlight">{{ campaign.funded.current }}</span> {{ $t('content.from') }} <span class="summ__highlight">{{ campaign.funded.goal }}</span> </p>
-        <b-button to="/campaign/1" class="module-donate__back-button"><img src="/images/back.png">Назад</b-button>
+    <div class="module-donate__donateWindow">
+      <div class="module-donate__card">
+        <img class="card__placeholder" src="/doika/public/images/card.png">
       </div>
-      <div class="module-donate__main-panel">
-        <div id="donate-bePaid__form" class="donate-bePaid__form"></div>
-        <div>
-          <div class="module-donate__message">
-            <p class="module-donate__message_title"></p>
-            <p class="module-donate__message_button"></p>
-          </div>
-          <a class="payment__description">{{ $t('content.paymentInfo') }}</a>
-          <div class="module-donate__version">powered by <a href="#" target="_blank">Doika</a></div>
-        </div>
+      <input type="email" id="email" class="donate__email module-donate__text-input" :placeholder="placeholder">
+      <div class="donateWindow__footer">
+        <b-button to="/doika/campaign/1" class="module-donate__button-select confirm back">{{ $t('buttons.client.back') }}</b-button>
+        <b-button to="/doika/campaign/1/donate/status" class="module-donate__button-select confirm">{{ $t('buttons.client.proceed') }}</b-button>
       </div>
+      <p class="module-donate__version">powered by <a href="#" target="_blank">Doika</a></p>
     </div>
   </div>
 </template>
@@ -29,7 +21,8 @@ export default {
   name: 'DonateWindow',
   data() {
     return {
-      campaign: []
+      campaign: [],
+      placeholder: 'Email for thanks'
     }
   },
   async created() {

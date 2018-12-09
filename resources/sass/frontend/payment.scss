@@ -1,0 +1,335 @@
+#module-donate {
+  background-color: rgba(231, 238, 244, 1);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 100%;
+}
+html {
+  overflow: hidden;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+#module-donate > * {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.module-donate__title {
+  font-family: Roboto;
+  color:  #31383e;
+  font-weight: 700;
+  text-align: left;
+}
+
+#beGatewayForm {
+  width: 100%;
+  height: 320px;
+}
+
+#donate-bePaid__form {
+  width: 100%;
+  height: 320px;
+}
+
+#module-donate {
+  width: 100%;
+  max-width: 770px;
+  overflow: hidden;
+  padding: 15px 40px 15px 40px;
+}
+
+.module-donate__title {
+  line-height: 32.8px;
+  font-size: 22px;
+}
+
+#module-donate .module-donate__wrapper {
+  padding: 25px 0 15px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+
+}
+
+.module-donate__main-panel {
+  height: auto;
+  width: 45%;
+  height: 230px;
+  min-width: 320px;
+  text-align: center;
+}
+
+.module-donate__description-wrapper {
+  width: 40%;
+}
+
+.module-donate__description {
+  padding: 0px 0 10px 0;
+  width: 100%;
+  height: auto;
+  font-family: Roboto, sans-serif;
+  color:  #31383e;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: left;
+  clear: both;
+  margin: 0;
+}
+
+.payment__description {
+  display: inline-block;
+  font-family: Roboto, sans-serif;
+  color:  #94989c;
+  font-size: 13px;
+  font-weight: 400;
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+  border-bottom: 1px solid gray;
+  display: inline;
+}
+
+.module-donate__version {
+  font-family: Roboto, sans-serif;
+  color:  #94989c;
+  font-size: 13px;
+  font-weight: 400;
+  text-align: right;
+  width: 33%;
+  text-decoration: none;
+  float: right;
+}
+.module-donate__version a {
+  text-decoration: none;
+  color:  #94989c;
+}
+
+.module-donate__message {
+  display: none;
+  width: 100%;
+  height: 300px;
+  text-align: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.module-donate__message_title {
+  color: #f98d4c;
+  font-size: 22px;
+  font-weight: 500;
+  font-family: Roboto;
+  height: 80%;
+}
+
+.module-donate__message_button {
+  font-family: Roboto;
+  color:  #f7fafc;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  background-color:  #94c840;
+  width: 100%;
+  height: 30px;
+  margin-top: 0;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 5px 0px #000;
+          box-shadow: 0 1px 5px 0px #000;
+  cursor: pointer;
+}
+
+.result__description {
+  font-family: Roboto, sans-serif;
+  color:  #4c4f51;
+  font-size: 22px;
+  font-weight: 400;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  min-width: 33%;
+  white-space: nowrap;
+  border-bottom: 1px solid gray;
+  display: inline;
+}
+
+.donate-bePaid__form {
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+}
+
+.donate-bePaid__form iframe {
+  height: 100%;
+  width: 100%;
+}
+
+.summ__highlight {
+  font-family: Roboto, sans-serif;
+  color:  #55affb;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.module-donate__back-button {
+  width: 60px;
+  height: 60px;
+  background: url("../img/back.png") 100% 100% no-repeat;
+  background-size: contain;
+  position: relative;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.module-donate__back-button p{
+  font-size: 20px;
+  font-family: Roboto, sans-serif;
+  position: absolute;
+  font-weight: 400;
+  right: -70px;
+  color: #898f95;
+}
+
+
+@media all and (max-width: 771px) {
+
+  #module-donate {
+    overflow: hidden;
+    padding: 15px 40px 15px 40px;
+  }
+  .module-donate__main-panel {
+    height: auto;
+    width: 55%;
+    height: 320px;
+    text-align: center;
+  }
+
+  .module-donate__description {
+    text-align: justify;
+  }
+}
+
+@media all and (max-width: 700px) {
+
+  #module-donate {
+    overflow: hidden;
+    height: 100%;
+    padding: 15px 40px 0px 40px;
+  }
+
+  .module-donate__title {
+    text-align: center;
+  }
+
+  #module-donate .module-donate__wrapper {
+    padding: 25px 0 15px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+
+  .module-donate__description-wrapper {
+    width: 100%;
+  }
+
+  .module-donate__main-panel {
+    max-width: 355px;
+    width: 80%;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .payment__description {
+    width: auto;
+  }
+
+  .result__description {
+    padding-top: 10px;
+  }
+}
+
+@media all and (max-width: 450px) {
+
+  #module-donate .module-donate__wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+
+  .module-donate__main-panel {
+    width: 100%;
+    height: 320px;
+    margin-top: 20px;
+    min-width: 100px;
+  }
+
+  #module-donate {
+    overflow: hidden;
+    height: 100%;
+    padding: 10px 10px 0px 10px;
+  }
+
+  .module-donate__description-wrapper {
+    width: 100%;
+    text-align: center;
+  }
+
+  .module-donate__description {
+    line-height: 20px;
+    padding-top: 30px;
+  }
+
+  .payment__description {
+    width: 100%;
+  }
+  .module-donate__version {
+    padding-top: 10px;
+    width: 100%;
+  }
+  .result__description {
+    padding-top: 10px;
+    padding-bottom: 0;
+    font-size: 16px;
+    text-align: center;
+  }
+  .result__description > span {
+    font-size: 16px;
+  }
+}
