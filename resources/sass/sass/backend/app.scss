@@ -73,6 +73,16 @@ body .v-select {
   white-space: nowrap;
 }
 
+.table tr.disabled {
+    filter: grayscale(1);
+    opacity: 0.5;
+}
+
+.table tr:nth-child(2) {
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+
 .nowrap {
   white-space: nowrap;
 }
