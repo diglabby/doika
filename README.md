@@ -30,7 +30,7 @@ Doika - модуль, які дапамагае прымаць ахвярава�
 
 ## Патрабаванні да распрацоўкі
 Для распрацоўшчыкаў:
-* Apache
+* Apache (rewrite mod on, for virtual host directory too: AllowOverride All )
 * MySQL
 * PHP >= 7.1.3
 * OpenSSL PHP Extension, PDO PHP Extension, Mbstring PHP Extension, Tokenizer PHP Extension, XML PHP Extension, Ctype PHP Extension, JSON PHP Extension пашырэнне для PHP
