@@ -17441,7 +17441,7 @@ a.tag-addon:hover {
   font-family: "feather";
   src: url(/doika/public/build/fonts/feather-webfont.eot?cc5143b2b877ad1f2a9d7ddde2e55dee);
   /* IE9*/
-  src: url(/doika/public/build/fonts/feather-webfont.eot?cc5143b2b877ad1f2a9d7ddde2e55dee) format("embedded-opentype"), url(/doika/public/build/fonts/feather-webfont.woff?2cf523cd335b115a5678b068b56c3011) format("woff"), url(/doika/public/build/fonts/feather-webfont.ttf?b8e9cbc7ac23b572497cd2115bcf71c6) format("truetype"), url(/doika/public/build/fonts/feather-webfont.svg?4a878d5b85f694202ec0ccd16510be9c) format("svg");
+  src: url(/doika/public/build/fonts/feather-webfont.eot?cc5143b2b877ad1f2a9d7ddde2e55dee) format("embedded-opentype"), url(/doika/public/build/fonts/feather-webfont.woff?2cf523cd335b115a5678b068b56c3011) format("woff"), url(/doika/public/build/fonts/feather-webfont.ttf?b8e9cbc7ac23b572497cd2115bcf71c6) format("truetype"), url(/doika/public/build/fonts/feather-webfont.svg?68bee8ffe37eb3cbfc76f1d1a17b0d49) format("svg");
   /* iOS 4.1- */
 }
 
@@ -23863,6 +23863,18 @@ body .v-select .selected-tag .close {
 
 body .v-select .dropdown-toggle, body .v-select .selected-tag {
   border-radius: 0;
+}
+
+.table tr.disabled {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+  opacity: 0.5;
+}
+
+.table tr:nth-child(2) {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+  opacity: 0.5;
 }
 
 .table th {
