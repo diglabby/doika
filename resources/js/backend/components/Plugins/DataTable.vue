@@ -1,38 +1,6 @@
 <template>
   <div>
-    <b-row>
-      <b-col md="4" class="mb-3">
-        <b-form inline v-if="lengthChange">
-          <label class="mr-2">{{ $t('labels.admin.datatables.showPerPage') }}</label>
-          <b-form-select :options="pageOptions" v-model="perPage" class="mr-2" @input="onContextChanged"></b-form-select>
-          <label>{{ $t('labels.admin.datatables.entriesPerPage') }}</label>
-        </b-form>
-      </b-col>
-      <b-col md="4" class="mb-3 text-center">
-      </b-col>
-      <b-col md="4" class="mb-3">
-        <b-form inline v-if="search" class="d-flex justify-content-end" @submit.prevent>
-          <label class="mr-2">{{ $t('labels.admin.datatables.search') }}</label>
-          <b-form-input v-model="searchQuery" @input="debounceInput"></b-form-input>
-        </b-form>
-      </b-col>
-    </b-row>
-    <slot></slot>
-    <b-row>
-      <b-col md="4">
-        <form class="form-inline" @submit.prevent="onBulkAction" v-if="actions">
-          <div class="form-group">
-            <b-form-select :options="actions" v-model="action" class="mr-1"></b-form-select>
-            <b-button type="submit" variant="success">{{ $t('buttons.admin.common.apply') }}</b-button>
-          </div>
-        </form>
-      </b-col>
-      <b-col md="4">
-        <b-pagination :total-rows="totalRows" :per-page="perPage" v-model="currentPage" v-if="paging && totalRows > perPage"
-                      class="justify-content-center" @input="onContextChanged"
-        ></b-pagination>
-      </b-col>
-    </b-row>
+    <slot></slot>    
   </div>
 </template>
 

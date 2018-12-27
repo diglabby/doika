@@ -84,18 +84,17 @@ export default {
         {
           key: 'title',
           label: this.$t('labels.admin.campaigns.name'),
-          sortable: true
+          class: 'text-center'
         },
         {
           key: 'status',
           label: this.$t('labels.admin.campaigns.status'),
-          sortable: true
+          class: 'text-center'
         },
         {
           key: 'backers',
           label: this.$t('labels.admin.campaigns.backers'),
-          class: 'text-center',
-          sortable: true
+          class: 'text-center'
         },
         {
           key: 'recurrent',
@@ -105,26 +104,22 @@ export default {
         {
           key: 'average',
           label: this.$t('labels.admin.campaigns.average'),
-          class: 'text-center',
-          sortable: true
+          class: 'text-center'
         },
         {
           key: 'recieved',
           label: this.$t('labels.admin.campaigns.recieved'),
-          class: 'text-center',
-          sortable: true
+          class: 'text-center'
         },
         {
           key: 'goal',
           label: this.$t('labels.admin.campaigns.goal'),
-          class: 'text-center',
-          sortable: true
+          class: 'text-center'
         },
         {
           key: 'days',
           label: this.$t('labels.admin.campaigns.days'),
-          class: 'text-center',
-          sortable: true
+          class: 'text-center'
         },
         {
           key: 'actions',

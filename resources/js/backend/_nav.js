@@ -22,8 +22,28 @@ export default (app, i18n, newPostsCount, pendingPostsCount) => {
       access: true
     },
     {
-      name: i18n.t('labels.admin.settings.title'),
-      url: '/settings',
+      name: 'Payment systems',
+      url: '/paymentSystems',
+      icon: 'fe fe-settings',
+      access: true
+    },
+    {
+      divider: true,
+      access: true
+    },
+    {
+      name: 'Layout',
+      url: '/layout',
+      icon: 'fe fe-settings',
+      access: true
+    },
+    {
+      divider: true,
+      access: true
+    },
+    {
+      name: 'Notificatons',
+      url: '/notifications',
       icon: 'fe fe-settings',
       access: true
     },

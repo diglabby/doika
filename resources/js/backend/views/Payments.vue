@@ -41,11 +41,6 @@
           <template slot="datetime" slot-scope="row">
             <span v-text="row.value"></span>
           </template>
-          <template slot="actions" slot-scope="row">
-            <b-button v-if="row.item.can_edit" size="sm" variant="primary" :to="`/payments/${row.item.id}/edit`" v-b-tooltip.hover :title="$t('buttons.admin.common.info')" class="mr-1">
-              <i class="fe fe-list"></i>
-            </b-button>
-          </template>
         </b-table>
       </b-datatable>
     </b-card>
@@ -92,11 +87,6 @@ export default {
           label: this.$t('labels.admin.payments.date'),
           class: 'text-center',
           sortable: true
-        },
-        {
-          key: 'actions',
-          label: this.$t('labels.admin.datatables.actions'),
-          class: 'nowrap'
         }
       ]
     }

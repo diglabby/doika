@@ -15,6 +15,9 @@ import Feedback from '../views/Feedback'
 import Settings from '../views/Settings'
 import UserForm from '../views/UserForm'
 import UserList from '../views/UserList'
+import Notifications from '../views/Notifications'
+import PaymentSystems from '../views/PaymentSystems'
+import Layout from '../views/Layout'
 
 Vue.use(Router)
 
@@ -122,6 +125,27 @@ export function createRouter(base, i18n) {
             component: Settings,
             meta: {
               label: i18n.t('labels.admin.settings.title')
+            }
+          },
+          {
+            path: 'layout',
+            component: Layout,
+            meta: {
+              label: 'Layout'
+            }
+          },
+          {
+            path: 'paymentSystems',
+            component: PaymentSystems,
+            meta: {
+              label: 'Payment systems'
+            }
+          },
+          {
+            path: 'notifications',
+            component: Notifications,
+            meta: {
+              label: 'Notifications'
             }
           },
           {
