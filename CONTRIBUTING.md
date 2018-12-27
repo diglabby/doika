@@ -16,6 +16,9 @@
   - [Спiс класаў](https://realtimeboard.com/app/board/o9J_k0X88dM=/?moveToWidget=3074457346135802429)
   - [Вiкi](https://github.com/diglabby/doika/wiki/) частка "для распрацоўшчыкаў".
   - Пры з'яўленні пытанняў і цяжкасцей запытаць у Slack бягучых удзельнікаў каманды: @fr0zen, @tyuba4, @Сёмка, @SvetaN (інвайт у канал Slack магчыма атрымаць звярнуўшыся да нас праз [форму](https://docs.google.com/forms/d/e/1FAIpQLSf3q7HMtfJly4wCrRyIlHDdAzFExSjw2vqbA62XFJHofjMqjg/viewform)).
+  
+### Да каго звяртацца, каб паглядзелі код у пулрэквэсце
+ @Tyuba4 @lptn @fr0zen @pro2s 
 
 
 ## Кодынг-стандарт
