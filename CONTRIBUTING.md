@@ -16,10 +16,18 @@
   - [Спiс класаў](https://realtimeboard.com/app/board/o9J_k0X88dM=/?moveToWidget=3074457346135802429)
   - [Вiкi](https://github.com/diglabby/doika/wiki/) частка "для распрацоўшчыкаў".
   - Пры з'яўленні пытанняў і цяжкасцей запытаць у Slack бягучых удзельнікаў каманды: @fr0zen, @tyuba4, @Сёмка, @SvetaN (інвайт у канал Slack магчыма атрымаць звярнуўшыся да нас праз [форму](https://docs.google.com/forms/d/e/1FAIpQLSf3q7HMtfJly4wCrRyIlHDdAzFExSjw2vqbA62XFJHofjMqjg/viewform)).
-  
-### Да каго звяртацца, каб паглядзелі код у пулрэквэсце
- @Tyuba4 @lptn @fr0zen @pro2s 
 
 
 ## Кодынг-стандарт
 [Кодынг-стандарт](https://github.com/diglabby/doika_1.2/wiki/Кодынг-стандарт)
+
+
+## Тэставанне
+Дзе можна паглядзець змены, якія адбываюцца на dev галіне рэпазіторыя: [Тэставы-дамен](http://it3donate-landing.falanster.by/doika/admin/campaigns)
+
+Алгарытм таго, як змены пераходзяць з рэпазіторыя на тэставы дамен.
+1. Робіцца pull request.
+2. Pull request мержыцца.
+3. Усталяваны на сэрвере Jenkins забірае змены з рэпазіторыя.
+4. Jenkins адаптуе канфігурацыю Laravel пад сэрвер.
+5. Можна праглядаць змены
