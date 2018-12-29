@@ -813,9 +813,6 @@ a {
 
 .donate__email {
   width: 250px !important;
-  margin: -50px 0 20px 130px;
-  -ms-flex-item-align: start;
-      align-self: flex-start;
 }
 
 .module-donate__text-input {

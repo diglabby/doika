@@ -186,38 +186,6 @@
                         ></c-switch>
                       </b-col>
                     </b-row>
-                    <b-row>
-                      <b-col lg="5" offset-lg="1">
-                        <b-form-group>
-                          <b-dropdown text="Language" class="campaign-dropdown">
-                            <b-dropdown-item to="/">
-                              {{ $t('labels.admin.languageMenu.en') }}
-                            </b-dropdown-item>
-                            <b-dropdown-item to="/">
-                              {{ $t('labels.admin.languageMenu.ru') }}
-                            </b-dropdown-item>
-                            <b-dropdown-item to="/">
-                              {{ $t('labels.admin.languageMenu.be') }}
-                            </b-dropdown-item>
-                          </b-dropdown>
-                        </b-form-group>
-                      </b-col>
-
-                      <b-col lg="5" offset-lg="1" mt="3">
-                        <b-form-group>
-                          <div class="form-group">
-                            <b-dropdown text="Payment system" class="campaign-dropdown">
-                              <b-dropdown-item to="/">
-                                {{ $t('labels.admin.payments.system.bepaid') }}
-                              </b-dropdown-item>
-                              <b-dropdown-item to="/">
-                                {{ $t('labels.admin.payments.system.visa') }}
-                              </b-dropdown-item>
-                            </b-dropdown>
-                          </div>
-                        </b-form-group>
-                      </b-col>
-                    </b-row>
                   </div>
                 </b-card-body>
               </b-collapse>
@@ -252,38 +220,6 @@
                 </b-button>
               </b-col>
             </b-row>
-          </b-card>
-        </b-col>
-        <b-col xl="4">
-          <b-card no-body class="mb-0">
-            <b-card-header header-tag="header" role="tab">
-              <h5 class="card-title">
-                <a href="#" v-b-toggle.colors>
-                  {{ $t('labels.admin.campaigns.colors') }}
-                </a>
-              </h5>
-            </b-card-header>
-            <b-collapse id="colors" visible role="tabpanel">
-              <b-card-body>
-                <div style = "min-height:250px">
-                </div>
-              </b-card-body>
-            </b-collapse>
-          </b-card>
-          <b-card no-body class="mb-0 mt-4">
-            <b-card-header header-tag="header" role="tab">
-              <h5 class="card-title">
-                <a href="#" v-b-toggle.preview>
-                  {{ $t('labels.admin.campaigns.preview') }}
-                </a>
-              </h5>
-            </b-card-header>
-            <b-collapse id="preview" visible role="tabpanel">
-              <b-card-body>
-                <div style = "min-height:250px">
-                </div>
-              </b-card-body>
-            </b-collapse>
           </b-card>
         </b-col>
       </b-row>
