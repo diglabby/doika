@@ -15,8 +15,14 @@ class CreateCampaignsTable extends Migration
     {
         Schema::create('campaigns', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('campaign_title');
-            $table->boolean('campaign_active');
+            $table->string('name');
+            $table->string('description');
+            $table->string('title_picture_url');
+            $table->date('started_at');
+            $table->date('finished_at');
+            $table->integer('active_status');
+            $table->integer('amount');
+            $table->string('currency_code', 3);
             $table->timestamps();
         });
     }
