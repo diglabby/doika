@@ -17,7 +17,7 @@ return [
 			'info' => ''
 		],		
 		'common' => [
-			'search' => 'Search',
+			'search' => 'Поиск',
 			'footer' => [
 				'left' => 'Powered by',
 				'with' => 'with',
@@ -27,58 +27,58 @@ return [
 			'confirmation' => 'Are you sure?'
 		],	
 		'newMenu' => [
-			'header' => 'Add',
-			'campaign' => 'New campaign',
-            'user' => 'New user'
+			'header' => 'Добавить',
+			'campaign' => 'Новая кампания',
+            'user' => 'Новый пользователь'
 		],
 		'languageMenu' => [
-			'header' => 'Language', 
-			'be' => 'Belarussian',
-            'ru' => 'Russian',
-			'en' => 'English'
+			'header' => 'Язык', 
+			'be' => 'Белорусский',
+            'ru' => 'Русский',
+			'en' => 'Английский'
 		],
 		'accountMenu' => [
-			'header' => 'My profile',
-			'avatar' => 'User avatar',
-			'logout' => 'Logout'            
+			'header' => 'Профиль',
+			'avatar' => 'Аватар пользователя',
+			'logout' => 'Выйти'            
 		],
 		'rightMenu' => [			
 			'divider' => [
-				'configuration' => 'MODULE CONFIGURATION',
-				'access' => 'ACCESS MANAGEMENT',
+				'configuration' => 'Конфигурация модуля',
+				'access' => 'Управление доступом',
 				'help' => 'FAQ',
-				'feedback' => 'FEEDBACK'
+				'feedback' => 'Обратная связь'
 			],			      
 		],
         'login' => [
-            'title' => 'Administration',
-            'email' => 'Email',
+            'title' => 'Вход в систему',
+            'email' => 'E-mail адрес',
             'placeholder' => [
-                'email' => 'Email',
-                'password' => 'Password',
+                'email' => 'E-mail адрес',
+                'password' => 'Пароль',
             ],
-            'password' => 'Password',
-            'remember' => 'Remember',
+            'password' => 'Пароль',
+            'remember' => 'Запомнить меня',
             'reset' => [
-				'link' => 'Forget password?',
-				'title' => 'Password reset',
-				'submit' => 'Send reset password link',
-				'header' => 'Login'
+				'link' => 'Забыли пароль?',
+				'title' => 'Сброс пароля',
+				'submit' => 'Отправить ссылку на сброс пароля',
+				'header' => 'Логин'
 			],
-            'header' => 'Login'
+            'header' => 'Логин'
         ],
 		'campaigns' => [
-			'title' => 'Campaigns',
-			'header' => 'Campaigns List',
-			'breadcrumb' => 'Campaigns',
-			'name' => 'Title',
-            'status' => 'Status',
-			'backers' => 'Backers',
-			'recurrent' => 'Recurrent',
-			'average' => 'Average',
-			'recieved' => 'Recieved',
-			'goal' => 'Goal',
-			'days' => 'Days',
+			'title' => 'Список кампаний',
+			'header' => 'Список кампаний',
+			'breadcrumb' => 'Список кампаний',
+			'name' => 'Название кампании',
+            'status' => 'Статус кампании',
+			'backers' => 'Жертвователи',
+			'recurrent' => 'Подписка',
+			'average' => 'Средний чек',
+			'recieved' => 'Собранная сумма',
+			'goal' => 'Целевая сумма',
+			'days' => 'Количество дней до окончания',
 			'description' => 'Description',
 			'image' => 'Title image',
 			'uploadImage' => 'Upload image',
@@ -100,9 +100,9 @@ return [
 				'image' => 'No file chosen',				
 			],
 			'create' => [
-				'title' => 'Create campaign',
-				'header' => 'Create campaign',
-				'breadcrumb' => 'Create',
+				'title' => 'Создать кампанию',
+				'header' => 'Создать кампанию',
+				'breadcrumb' => 'Создать кампанию',
 			],
 			'edit' => [
 				'title' => 'Edit campaign',
@@ -111,116 +111,116 @@ return [
 			]
 		],
 		'payments' => [			
-			'title' => 'Payments',
-			'header' => 'Payments list',
-			'breadcrumb' => 'Payments',
-			'date' => 'Date',
-			'campaign' => 'Campaign',
-			'amount' => 'Amount',
-			'backer' => 'Backer',
-			'recurrent' => 'Recurrent',
-			'status' => 'Payment status',
-			'backerStatus' => 'Backer status',
+			'title' => 'Список пожертвований',
+			'header' => 'Список пожертвований',
+			'breadcrumb' => 'Список пожертвований',
+			'date' => 'Дата',
+			'campaign' => 'Кампания',
+			'amount' => 'Сумма',
+			'backer' => 'Жертвователь',
+			'recurrent' => 'Подписка на кампанию',
+			'status' => 'Статус оплаты',
+			'backerStatus' => 'Статус карты',
 			'statuses' => [
-				'success' => 'Success',
-				'failed' => 'Failed',
-				'error' => 'Error'
+				'success' => 'Успешно',
+				'failed' => 'Не успешно',
+				'error' => 'Не завершено'
 			],			
 			'show' => [
-				'title' => 'Show payment',
-				'header' => 'Show payment',
-				'breadcrumb' => 'Show',
+				'title' => 'Показать платеж',
+				'header' => 'Показать платеж',
+				'breadcrumb' => 'Показать',
 			],
 			'placeholder' => [
-				'date' => 'Date',
-				'campaign' => 'Campaign',
-				'amount' => 'Amount',
-				'backer' => 'Backer',
-				'recurrent' => 'Recurrent',
-				'status' => 'Payment status',
-				'backerStatus' => 'Backer status',			
+				'date' => 'Дата',
+				'campaign' => 'Кампания',
+				'amount' => 'Сумма',
+				'backer' => 'Жертвователь',
+				'recurrent' => 'Подписка на кампанию',
+				'status' => 'Статус оплаты',
+				'backerStatus' => 'Статус карты',			
 			],
 		],
 		'settings' => [	
-			'title' => 'Settings',		
+			'title' => 'Настройки',		
 			'payments' => [
-				'header' => 'Payment systems options',
-				'idMarket' => 'Bepaid Market Id',
+				'header' => 'Объединение с платёжной системой',
+				'idMarket' => 'Bepaid Market ID',
 				'keyMarket' => 'Bepaid Market key',
-				'test' => 'Turn off test payments',
-				'maxPayment' => 'Max payment amount',
-				'minPayment' => 'Min payment amount',
-				'termsOfUse' => 'Terms of use',
+				'test' => 'Отключить тестовые платежи',
+				'maxPayment' => 'Максимальный платеж, бел.руб',
+				'minPayment' => 'Минимальный платеж, бел.руб',
+				'termsOfUse' => 'Текст условий сервиса сбора пожертвований',
 				'placeholder' => [
-					'idMarket' => 'Bepaid Market Id',
+					'idMarket' => 'Bepaid Market ID',
 					'keyMarket' => 'Bepaid Market key',
-					'test' => 'Turn off test payments',
-					'maxPayment' => 'Max payment amount',
-					'minPayment' => 'Min payment amount',
+					'test' => 'Отключить тестовые платежи',
+					'maxPayment' => 'Максимальный платеж, бел.руб',
+					'minPayment' => 'Минимальный платеж, бел.руб',
 				]
 			],			
 			'layout' => [
-				'header' => 'Layout options'				
+				'header' => 'Параметры макета'				
 			],	
 			'notifications' => [
-				'address' => 'Server address',
-				'port' => 'Server port',
-				'user' => 'Email user',
-				'password' => 'Email password',
-				'email' => 'Email address',
-				'header' => 'Notifications options',
-				'reccurentTemplate' => 'Recurrent payments email template',
-				'singleTemplate' => 'Single payment email template',
+				'address' => 'Адрес сервера',
+				'port' => 'Порт сервера',
+				'user' => 'Пользователь электронной почты',
+				'password' => 'Пароль',
+				'email' => 'Адрес электронной почты',
+				'header' => 'Настройка сообщений',
+				'reccurentTemplate' => 'Шаблон электронного письма для рекуррентных платежей',
+				'singleTemplate' => 'Благодарность за сделанный платеж на почту',
 				'placeholder' => [
-					'address' => 'Server address',
-					'port' => 'Server port',
-					'user' => 'Email user',
-					'password' => 'Email password',
-					'email' => 'Email address',					
+					'address' => 'Адрес сервера',
+					'port' => 'Порт сервера',
+					'user' => 'Пользователь электронной почты',
+					'password' => 'Пароль',
+					'email' => 'Адрес электронный почты',					
 				]					
 			]			
 		],
 		'help' => [
 			'title' => 'FAQ',            
-            'header' => 'Frequently asked questions'
+            'header' => 'Как пользоваться модулем'
 		],
 		'feedback' => [
-			'title' => 'Feedback',
-			'header' => 'Feedback',
-			'email' => 'Email',
-			'name' => 'Name',
-			'message' => 'Message',
+			'title' => 'Обратная связь',
+			'header' => 'Обратная связь',
+			'email' => 'E-mail',
+			'name' => 'Имя',
+			'message' => 'Сообщение',
 			'placeholder' => [
-				'email' => 'Email',
-				'name' => 'Name',
-				'message' => 'Write your message'
+				'email' => 'E-mail',
+				'name' => 'Имя',
+				'message' => 'Напишите Ваше обращение'
 			]
 		],
 		'users' => [
-			'title' => 'Users',
-			'breadcrumb' => 'List',
-			'header' => 'User List',
-			'email' => 'Email',
-			'name' => 'Name',
-			'active' => 'Active',
-			'createdAt' => 'Created at',
-			'updatedAt' => 'Updated at',
-			'message' => 'Message',
-			'password' => 'Password',
-			'passwordConfirmation' => 'Repeat password',
+			'title' => 'Список пользователей',
+			'breadcrumb' => 'Список пользователей',
+			'header' => 'Список пользователей',
+			'email' => 'E-mail',
+			'name' => 'Имя',
+			'active' => 'Действующая',
+			'createdAt' => 'Дата создания',
+			'updatedAt' => 'Дата обновления',
+			'message' => 'Сообщение',
+			'password' => 'Пароль',
+			'passwordConfirmation' => 'Повторите пароль',
 			'placeholder' => [
-				'email' => 'Email',
-				'name' => 'Name',
-				'message' => 'Write your message',
+				'email' => 'E-mail',
+				'name' => 'Имя',
+				'message' => 'Напишите Ваше сообщение',
 				'password' => 'Password'
 			],
 			'create' => [
-				'breadcrumb' => 'Create',
-				'header' => 'Create user'
+				'breadcrumb' => 'Создать',
+				'header' => 'Создать пользователя'
 			],
 			'edit' => [
-				'breadcrumb' => 'Edit',
-				'header' => 'Edit user'
+				'breadcrumb' => 'Редактировать',
+				'header' => 'Редактирование пользователя'
 			]
 			
 		]
