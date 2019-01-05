@@ -20,7 +20,7 @@ Doika - модуль, які дапамагае прымаць ахвярава�
 [Як зрабіць свой унёсак](CONTRIBUTING.md)
 
 ## Патрабаванні да распрацоўкі
-Для распрацоўшчыкаў:
+
 * [Apache](https://httpd.apache.org/download.cgi) (rewrite mod on, for virtual host directory too: AllowOverride All )
 * MySQL >= 5.7 PostgreSQL, SQLite, MSSQL Server [Поўны спіс](https://laravel.com/docs/5.7/database)
 * PHP >= 7.1.3
