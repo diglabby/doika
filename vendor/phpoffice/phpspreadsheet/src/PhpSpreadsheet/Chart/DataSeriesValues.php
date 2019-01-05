@@ -271,7 +271,7 @@ class DataSeriesValues
     public function isMultiLevelSeries()
     {
         if (count($this->dataValues) > 0) {
-            return is_array($this->dataValues[0]);
+            return is_array(array_values($this->dataValues)[0]);
         }
 
         return null;
@@ -354,11 +354,7 @@ class DataSeriesValues
                 }
                 unset($dataValue);
             } else {
-                $cellRange = explode('!', $this->dataSource);
-                if (count($cellRange) > 1) {
-                    list(, $cellRange) = $cellRange;
-                }
-
+                list($worksheet, $cellRange) = Worksheet::extractSheetTitle($this->dataSource, true);
                 $dimensions = Coordinate::rangeDimension(str_replace('$', '', $cellRange));
                 if (($dimensions[0] == 1) || ($dimensions[1] == 1)) {
                     $this->dataValues = Functions::flattenArray($newDataValues);

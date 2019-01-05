@@ -10,7 +10,7 @@
         "arcanedev/log-viewer": "^4.5",
         "arcanedev/no-captcha": "^7.0",
         "davejamesmiller/laravel-breadcrumbs": "^5.1",
-        "doctrine/dbal": "^2.6",
+        "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.3",
         "hieu-le/active": "^3.5",

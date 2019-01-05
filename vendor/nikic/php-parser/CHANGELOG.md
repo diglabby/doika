@@ -1,7 +1,36 @@
-Version 4.0.5-dev
+Version 4.1.2-dev
 -----------------
 
 Nothing yet.
+
+Version 4.1.1 (2018-12-26)
+--------------------------
+
+### Fixed
+
+* Fix "undefined offset" notice when parsing specific malformed code (#551).
+* Remove assertion when pretty printing anonymous class with a name (#554).
+
+### Added
+
+* Support error recovery for missing return type (`function foo() : {}`) (#544).
+
+Version 4.1.0 (2018-10-10)
+--------------------------
+
+### Added
+
+* Added support for PHP 7.3 flexible heredoc/nowdoc strings, completing support for PHP 7.3. There
+  are two caveats for this feature:
+   * In some rare, pathological cases flexible heredoc/nowdoc strings change the interpretation of
+     existing doc strings. PHP-Parser will now use the new interpretation.
+   * Flexible heredoc/nowdoc strings require special support from the lexer. Because this is not
+     available on PHP versions before 7.3, support has to be emulated. This emulation is not perfect
+     and some cases which we do not expect to occur in practice (such as flexible doc strings being
+     nested within each other through abuse of variable-variable interpolation syntax) may not be
+     recognized correctly.
+* Added `DONT_TRAVERSE_CURRENT_AND_CHILDREN` to `NodeTraverser` to skip both traversal of child
+  nodes, and prevent subsequent visitors from visiting the current node.
 
 Version 4.0.4 (2018-09-18)
 --------------------------

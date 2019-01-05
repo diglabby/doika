@@ -43,7 +43,7 @@ abstract class AbstractNode implements \Countable
 
     public function __construct(string $name, self $parent = null)
     {
-        if (\substr($name, -1) == '/') {
+        if (\substr($name, -1) == \DIRECTORY_SEPARATOR) {
             $name = \substr($name, 0, -1);
         }
 
@@ -83,7 +83,7 @@ abstract class AbstractNode implements \Countable
             if ($this->parent === null || $this->parent->getPath() === null || $this->parent->getPath() === false) {
                 $this->path = $this->name;
             } else {
-                $this->path = $this->parent->getPath() . '/' . $this->name;
+                $this->path = $this->parent->getPath() . \DIRECTORY_SEPARATOR . $this->name;
             }
         }
 

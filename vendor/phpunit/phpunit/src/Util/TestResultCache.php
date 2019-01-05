@@ -9,6 +9,8 @@
  */
 namespace PHPUnit\Runner;
 
+use PHPUnit\Framework\Test;
+
 class TestResultCache implements \Serializable, TestResultCacheInterface
 {
     /**
@@ -75,6 +77,15 @@ class TestResultCache implements \Serializable, TestResultCacheInterface
     {
         if (\defined('PHPUNIT_TESTSUITE_RESULTCACHE')) {
             return;
+        }
+
+        if (!$this->createDirectory(\dirname($this->cacheFilename))) {
+            throw new Exception(
+                \sprintf(
+                    'Cannot create directory "%s" for result cache file',
+                    $this->cacheFilename
+                )
+            );
         }
 
         \file_put_contents(
@@ -175,5 +186,10 @@ class TestResultCache implements \Serializable, TestResultCacheInterface
                 }
             }
         }
+    }
+
+    private function createDirectory(string $directory): bool
+    {
+        return !(!\is_dir($directory) && !@\mkdir($directory, 0777, true) && !\is_dir($directory));
     }
 }

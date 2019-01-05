@@ -4,6 +4,8 @@ namespace Maatwebsite\Excel\Imports;
 
 use Maatwebsite\Excel\Row;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithMapping;
+use Maatwebsite\Excel\Concerns\WithProgressBar;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
@@ -27,9 +29,6 @@ class ModelImporter
      * @param Worksheet $worksheet
      * @param ToModel   $import
      * @param int|null  $startRow
-     *
-     * @throws \PhpOffice\PhpSpreadsheet\Exception
-     * @throws \Throwable
      */
     public function import(Worksheet $worksheet, ToModel $import, int $startRow = 1)
     {
@@ -41,23 +40,30 @@ class ModelImporter
         foreach ($worksheet->getRowIterator($startRow, $endRow) as $spreadSheetRow) {
             $i++;
 
-            $row   = new Row($spreadSheetRow, $headingRow);
-            $model = $import->model($row->toArray(null, $import instanceof WithCalculatedFormulas));
+            $row      = new Row($spreadSheetRow, $headingRow);
+            $rowArray = $row->toArray(null, $import instanceof WithCalculatedFormulas);
 
-            // Skip rows that the user explicitly returned null for
-            if (null !== $model) {
-                $models = is_array($model) ? $model : [$model];
-                $this->manager->add(...$models);
+            if ($import instanceof WithMapping) {
+                $rowArray = $import->map($rowArray);
             }
+
+            $this->manager->add(
+                $row->getIndex(),
+                $rowArray
+            );
 
             // Flush each batch.
             if (($i % $batchSize) === 0) {
-                $this->manager->flush($batchSize > 1);
+                $this->manager->flush($import, $batchSize > 1);
                 $i = 0;
+            }
+
+            if ($import instanceof WithProgressBar) {
+                $import->getConsoleOutput()->progressAdvance();
             }
         }
 
         // Flush left-overs.
-        $this->manager->flush();
+        $this->manager->flush($import, $batchSize > 1);
     }
 }

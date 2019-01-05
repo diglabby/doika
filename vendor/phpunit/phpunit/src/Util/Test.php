@@ -10,6 +10,7 @@
 namespace PHPUnit\Util;
 
 use PharIo\Version\VersionConstraintParser;
+use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\CodeCoverageException;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\InvalidCoversTargetException;
@@ -276,7 +277,7 @@ final class Test
             }
         }
 
-        if (!empty($required['OSFAMILY']) && $required['OSFAMILY'] !== (new OperatingSystem())->getFamily()) {
+        if (!empty($required['OSFAMILY']) && $required['OSFAMILY'] !== (new OperatingSystem)->getFamily()) {
             $missing[] = \sprintf('Operating system %s is required.', $required['OSFAMILY']);
         }
 
@@ -413,7 +414,7 @@ final class Test
             $data = self::getDataFromTestWithAnnotation($docComment);
         }
 
-        if (\is_array($data) && empty($data)) {
+        if ($data === []) {
             throw new SkippedTestError;
         }
 
@@ -706,26 +707,38 @@ final class Test
                 $class = new ReflectionClass($className);
 
                 foreach ($class->getMethods() as $method) {
-                    if (self::isBeforeClassMethod($method)) {
-                        \array_unshift(
-                            self::$hookMethods[$className]['beforeClass'],
-                            $method->getName()
-                        );
+                    if ($method->getDeclaringClass()->getName() === Assert::class) {
+                        continue;
                     }
 
-                    if (self::isBeforeMethod($method)) {
-                        \array_unshift(
-                            self::$hookMethods[$className]['before'],
-                            $method->getName()
-                        );
+                    if ($method->getDeclaringClass()->getName() === TestCase::class) {
+                        continue;
                     }
 
-                    if (self::isAfterMethod($method)) {
-                        self::$hookMethods[$className]['after'][] = $method->getName();
-                    }
+                    if ($methodComment = $method->getDocComment()) {
+                        if ($method->isStatic()) {
+                            if (\strpos($methodComment, '@beforeClass') !== false) {
+                                \array_unshift(
+                                    self::$hookMethods[$className]['beforeClass'],
+                                    $method->getName()
+                                );
+                            }
 
-                    if (self::isAfterClassMethod($method)) {
-                        self::$hookMethods[$className]['afterClass'][] = $method->getName();
+                            if (\strpos($methodComment, '@afterClass') !== false) {
+                                self::$hookMethods[$className]['afterClass'][] = $method->getName();
+                            }
+                        }
+
+                        if (\preg_match('/@before\b/', $methodComment) > 0) {
+                            \array_unshift(
+                                self::$hookMethods[$className]['before'],
+                                $method->getName()
+                            );
+                        }
+
+                        if (\preg_match('/@after\b/', $methodComment) > 0) {
+                            self::$hookMethods[$className]['after'][] = $method->getName();
+                        }
                     }
                 }
             } catch (ReflectionException $e) {
@@ -1074,26 +1087,6 @@ final class Test
         }
 
         return $result;
-    }
-
-    private static function isBeforeClassMethod(ReflectionMethod $method): bool
-    {
-        return $method->isStatic() && \strpos($method->getDocComment(), '@beforeClass') !== false;
-    }
-
-    private static function isBeforeMethod(ReflectionMethod $method): bool
-    {
-        return \preg_match('/@before\b/', $method->getDocComment()) > 0;
-    }
-
-    private static function isAfterClassMethod(ReflectionMethod $method): bool
-    {
-        return $method->isStatic() && \strpos($method->getDocComment(), '@afterClass') !== false;
-    }
-
-    private static function isAfterMethod(ReflectionMethod $method): bool
-    {
-        return \preg_match('/@after\b/', $method->getDocComment()) > 0;
     }
 
     /**

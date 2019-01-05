@@ -294,10 +294,19 @@ var route_Router = function (_String) {
             var routeNames = Object.keys(this.ziggy.namedRoutes);
 
             var currentRoute = routeNames.filter(function (name) {
+                if (_this3.ziggy.namedRoutes[name].methods.indexOf('GET') === -1) {
+                    return false;
+                }
+
                 return new Router(name, undefined, undefined, _this3.ziggy).matchUrl();
             })[0];
 
-            return name ? name == currentRoute : currentRoute;
+            if (name) {
+                var pattern = new RegExp(name.replace('*', '.*').replace('.', '\.'), 'i');
+                return pattern.test(currentRoute);
+            }
+
+            return currentRoute;
         }
     }, {
         key: 'parse',
