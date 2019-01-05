@@ -4,16 +4,16 @@ return [
     'admin' => [
 		'common' => [
 			'search' => [
-				'noResult' => 'Not found',
-				'noMatchResult' => 'No match'
+				'noResult' => 'Не найдено',
+				'noMatchResult' => 'Нет совпадений'
 			]
 		],
         'login' => [
-            'error' => 'These credentials do not match our records.'
+            'error' => 'Такие e-mail и пароль не существуют.'
         ],
 		'feedback' => [
-			'error' => 'Sending error!',
-			'success' => 'Message sent successfully'
+			'error' => 'Ошибка отправки!',
+			'success' => 'Сообщение успешно отправлено'
         ]
     ]
 ];
