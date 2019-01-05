@@ -6,6 +6,32 @@ Doika - модуль, які дапамагае прымаць ахвярава�
 2. Дэталізуем (абмяркоўваем) задачы па [накірункам](https://github.com/diglabby/doika/milestones)
 3. Вывучаем API BePaid [рэкурэнтные плацяжы](https://docs.bepaid.by/ru/subscriptions/intro)
 
+## Як пачаць распрацоўку?
+1. Праглядзець статус і роадмэп распрацоукi праекта на старонцы [milestones](https://github.com/diglabby/doika/milestones?direction=asc&sort=due_date&state=open).
+2. Як разгарнуць лакальны асяродак для распрацоўкі (Секцыя "Патрабаванні да рапрацоўкі")
+3. Праглядзець [дакументацыю](https://realtimeboard.com/app/board/o9J_k0X88dM=/). 
+- [Архiтэктура файлаў i базы](https://realtimeboard.com/app/board/o9J_k0X88dM=/?moveToWidget=3074457346027045333)
+- [Блок-схемы](https://realtimeboard.com/app/board/o9J_k0X88dM=/?moveToWidget=3074457346144718504)
+- [Спiс класаў](https://realtimeboard.com/app/board/o9J_k0X88dM=/?moveToWidget=3074457346135802429)
+- [Вiкi](https://github.com/diglabby/doika/wiki/) Частка "для распрацоўшчыкаў".
+- Пры з'яўленні пытанняў і цяжкасцей запытаць доступ у Slack бягучых удзельнікаў каманды: @fr0zen, @Tyuba4, @Сёмка, @svetasemashko Таксама інвайт у канал Slack магчыма атрымаць звярнуўшыся да нас праз [форму](https://docs.google.com/forms/d/e/1FAIpQLSf3q7HMtfJly4wCrRyIlHDdAzFExSjw2vqbA62XFJHofjMqjg/viewform)).
+- Увага! Робім пул рэквэсты ў галіну dev.
+
+[Як зрабіць свой унёсак](CONTRIBUTING.md)
+
+## Патрабаванні да распрацоўкі
+Для распрацоўшчыкаў:
+* [Apache](https://httpd.apache.org/download.cgi) (rewrite mod on, for virtual host directory too: AllowOverride All )
+* MySQL >= 5.7 PostgreSQL, SQLite, MSSQL Server [Поўны спіс](https://laravel.com/docs/5.7/database)
+* PHP >= 7.1.3
+* OpenSSL PHP Extension, PDO PHP Extension, Mbstring PHP Extension, Tokenizer PHP Extension, XML PHP Extension, Ctype PHP Extension, JSON PHP Extension ([PHP Extensions](https://github.com/diglabby/doika/blob/master/composer.json#L8-L9))
+* На базе фрэймворка Laravel 5.6 (для усталёўкі патрэбны Composer)
+* [Кодынг-стандарт](https://github.com/diglabby/doika_1.2/wiki/%D0%9A%D0%BE%D0%B4%D1%8B%D0%BD%D0%B3-%D1%81%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82) 
+* [Composer](https://getcomposer.org/download/)
+* [NPM](https://nodejs.org/en/download/)
+* [Прыклад афармлення бага](https://github.com/diglabby/doika_1.2/wiki/%D0%9F%D1%80%D1%8B%D0%BA%D0%BB%D0%B0%D0%B4-%D0%B0%D1%84%D0%B0%D1%80%D0%BC%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D0%B1%D0%B0%D0%B3%D0%B0)
+* Увага! Працуем з рэквэстамі (Pull request) на гітхабе у галіну dev (!)
+
 ## Распрацоўшчыку - як запусціць праект на лінукс
 
 1. Заходзім у рэпазіторый https://github.com/diglabby/doika.git і ствараем для сябе fork
@@ -30,37 +56,8 @@ Doika - модуль, які дапамагае прымаць ахвярава�
 7. Змяняем канфіг файла. Меняем назву файла .env.example на .env і заходзім у яго. DB_DATABASE = doika, DB_USERNAME = root (калі не мянялі) DB_PASSWORD = (пуста калі не устонаўлівалі пароль), мяняем радок APP_KEY = на APP_KEY = base64:8ObMpr3jB1o5SQ3az2pqXo9tSPGAZOponr4eHBoDs9Y =
 8. Пішам ў браўзэры http: // doika / doika / admin ўводзім demo@example.com demo
 
-[Як зрабіць свой унёсак](CONTRIBUTING.md)
-
 ## Структура праекта (распрацоўваем)
 для чаго патрэбны ключавыя файлы (канфіг файл, файл інсталятар, дзе ляжыць фронт, дзе бэк, якія заўвагі па шляхах
-
-## Патрабаванні да распрацоўкі
-Для распрацоўшчыкаў:
-* [Apache](https://httpd.apache.org/download.cgi) (rewrite mod on, for virtual host directory too: AllowOverride All )
-* MySQL >= 5.7 PostgreSQL, SQLite, MSSQL Server [Поўны спіс](https://laravel.com/docs/5.7/database)
-* PHP >= 7.1.3
-* OpenSSL PHP Extension, PDO PHP Extension, Mbstring PHP Extension, Tokenizer PHP Extension, XML PHP Extension, Ctype PHP Extension, JSON PHP Extension ([PHP Extensions](https://github.com/diglabby/doika/blob/master/composer.json#L8-L9))
-* На базе фрэймворка Laravel 5.6 (для усталёўкі патрэбны Composer)
-* [Кодынг-стандарт](https://github.com/diglabby/doika_1.2/wiki/%D0%9A%D0%BE%D0%B4%D1%8B%D0%BD%D0%B3-%D1%81%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82) 
-* [Composer](https://getcomposer.org/download/)
-* [NPM](https://nodejs.org/en/download/)
-* [Прыклад афармлення бага](https://github.com/diglabby/doika_1.2/wiki/%D0%9F%D1%80%D1%8B%D0%BA%D0%BB%D0%B0%D0%B4-%D0%B0%D1%84%D0%B0%D1%80%D0%BC%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D0%B1%D0%B0%D0%B3%D0%B0)
-* як працеум з рэквэстамі (Pull request) на гітхабе.
-
-## Як паставіць модуль?
-Апошняя версія і падрабязная інструкцыя па ўсталёўцы Doika_1.2 знаходзіцца [тут](https://github.com/diglabby/doika_1.2/wiki/%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D1%9E%D0%BA%D0%B0-%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D1%8F-%D0%BD%D0%B0-%D1%85%D0%BE%D1%81%D1%82%D1%8B%D0%BD%D0%B3). 
-
-## Як пачаць распрацоўку?
-1. Праглядзець статус і роадмэп распрацоукi праекта на старонцы [milestones](https://github.com/diglabby/doika/milestones?direction=asc&sort=due_date&state=open).
-2. Як разгарнуць лакальны асяродак для распрацоўкі [інструкцыя] (TODO).
-3. Праглядзець [дакументацыю](https://realtimeboard.com/app/board/o9J_k0X88dM=/). 
-- [Архiтэктура файлаў i базы](https://realtimeboard.com/app/board/o9J_k0X88dM=/?moveToWidget=3074457346027045333)
-- [Блок-схемы](https://realtimeboard.com/app/board/o9J_k0X88dM=/?moveToWidget=3074457346144718504)
-- [Спiс класаў](https://realtimeboard.com/app/board/o9J_k0X88dM=/?moveToWidget=3074457346135802429)
-- [Вiкi](https://github.com/diglabby/doika/wiki/) Частка "для распрацоўшчыкаў".
-- Пры з'яўленні пытанняў і цяжкасцей запытаць у Slack бягучых удзельнікаў каманды: @fr0zen, @tyuba4, @Сёмка, @SvetaN (інвайт у канал Slack магчыма атрымаць звярнуўшыся да нас праз [форму](https://docs.google.com/forms/d/e/1FAIpQLSf3q7HMtfJly4wCrRyIlHDdAzFExSjw2vqbA62XFJHofjMqjg/viewform)).
-- Увага! Робім пул рэквэсты ў галіну dev.
 
 ## Ліцэнзіі і абмежаванні
 Выкарыстоўваем наступныя ліцэнзіі:
