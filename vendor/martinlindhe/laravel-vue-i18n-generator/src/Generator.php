@@ -10,6 +10,7 @@ class Generator
 
     private $availableLocales = [];
     private $filesToCreate = [];
+    private $langFiles;
 
     const VUEX_I18N = 'vuex-i18n';
     const VUE_I18N = 'vue-i18n';
@@ -34,11 +35,13 @@ class Generator
      * @return string
      * @throws Exception
      */
-    public function generateFromPath($path, $umd = null, $withVendor = false)
+    public function generateFromPath($path, $umd = null, $withVendor = false, $langFiles = [])
     {
         if (!is_dir($path)) {
             throw new Exception('Directory not found: ' . $path);
         }
+
+        $this->langFiles = $langFiles;
 
         $locales = [];
         $files = [];
@@ -59,6 +62,9 @@ class Generator
             $fileinfo = new \SplFileInfo($fileName);
 
             $noExt = $this->removeExtension($fileinfo->getFilename());
+            if (class_exists('App')) {
+                App::setLocale($noExt);
+            }
 
             if ($fileinfo->isDir()) {
                 $local = $this->allocateLocaleArray($fileinfo->getRealPath());
@@ -76,7 +82,7 @@ class Generator
 
         $locales = $this->adjustVendor($locales);
 
-        $jsonLocales = json_encode($locales, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . PHP_EOL;
+        $jsonLocales = json_encode($locales, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . PHP_EOL;
         
         if(json_last_error() !== JSON_ERROR_NONE)
         {
@@ -113,8 +119,10 @@ class Generator
                 && !in_array($fileinfo->getFilename(), ['vendor'])
             ) {
                 $noExt = $this->removeExtension($fileinfo->getFilename());
-                if (!in_array($noExt, $this->availableLocales)) {
+                if (class_exists('App')) {
                     App::setLocale($noExt);
+                }
+                if (!in_array($noExt, $this->availableLocales)) {
                     $this->availableLocales[] = $noExt;
                 }
                 if ($fileinfo->isDir()) {
@@ -136,7 +144,7 @@ class Generator
         foreach ($this->filesToCreate as $fileName => $data) {
             $fileToCreate = $jsPath . $fileName . '.js';
             $createdFiles .= $fileToCreate . PHP_EOL;
-            $jsonLocales = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . PHP_EOL;
+            $jsonLocales = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . PHP_EOL;
             if(json_last_error() !== JSON_ERROR_NONE)
             {
                 throw new Exception('Could not generate JSON, error code '.json_last_error());
@@ -203,7 +211,7 @@ class Generator
                     continue;
                 }
 
-                if (isset($this->config['langFiles']) && !empty($this->config['langFiles']) && !in_array($noExt, $this->config['langFiles'])) {
+                if ($this->shouldIgnoreLangFile($noExt)) {
                     continue;
                 }
 
@@ -227,6 +235,21 @@ class Generator
     }
 
     /**
+     * @param string $noExt
+     * @return boolean
+     */
+    private function shouldIgnoreLangFile($noExt)
+    {
+        // langFiles passed by option have priority
+        if (isset($this->langFiles) && !empty($this->langFiles)) {
+            return !in_array($noExt, $this->langFiles);
+        }
+
+        return (isset($this->config['langFiles']) && !empty($this->config['langFiles']) && !in_array($noExt, $this->config['langFiles']))
+                    || (isset($this->config['excludes']) && in_array($noExt, $this->config['excludes']));
+    }
+
+    /**
      * @param array $arr
      * @return array
      */
@@ -234,6 +257,7 @@ class Generator
     {
         $res = [];
         foreach ($arr as $key => $val) {
+            $key = $this->adjustString($key);
 
             if (is_string($val)) {
                 $res[$key] = $this->adjustString($val);

@@ -86,6 +86,29 @@ class GenerateTest extends \PHPUnit_Framework_TestCase
         $this->destroyLocaleFilesFrom($arr, $root);
     }
 
+    function testBasicWithTranslationString()
+    {
+        $arr = [
+            'en' => [
+                'main' => [
+                    'hello :name' => 'Hello :name',
+                ]
+            ],
+        ];
+
+        $root = $this->generateLocaleFilesFrom($arr);
+        $this->assertEquals(
+            'export default {' . PHP_EOL
+            . '    "en": {' . PHP_EOL
+            . '        "main": {' . PHP_EOL
+            . '            "hello {name}": "Hello {name}"' . PHP_EOL
+            . '        }' . PHP_EOL
+            . '    }' . PHP_EOL
+            . '}' . PHP_EOL,
+            (new Generator([]))->generateFromPath($root));
+        $this->destroyLocaleFilesFrom($arr, $root);
+    }
+
     function testBasicWithVendor()
     {
         $arr = [
@@ -230,6 +253,7 @@ class GenerateTest extends \PHPUnit_Framework_TestCase
                 'help' => [
                     'yes' => 'see <a href="mailto:mail@com">',
                     'no' => 'see <a href=":link">',
+                    'maybe' => 'It is a <strong>Test</strong> ok!',
                 ]
             ]
         ];
@@ -241,7 +265,8 @@ class GenerateTest extends \PHPUnit_Framework_TestCase
             . '    "en": {' . PHP_EOL
             . '        "help": {' . PHP_EOL
             . '            "yes": "see <a href=\"mailto:mail@com\">",' . PHP_EOL
-            . '            "no": "see <a href=\"{link}\">"' . PHP_EOL
+            . '            "no": "see <a href=\"{link}\">",' . PHP_EOL
+            . '            "maybe": "It is a <strong>Test</strong> ok!"' . PHP_EOL
             . '        }' . PHP_EOL
             . '    }' . PHP_EOL
             . '}' . PHP_EOL,

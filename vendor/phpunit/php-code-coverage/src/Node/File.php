@@ -341,9 +341,14 @@ final class File extends AbstractNode
             $this->codeUnitsByLine[$lineNumber] = [];
         }
 
-        $this->processClasses($tokens);
-        $this->processTraits($tokens);
-        $this->processFunctions($tokens);
+        try {
+            $this->processClasses($tokens);
+            $this->processTraits($tokens);
+            $this->processFunctions($tokens);
+        } catch (\OutOfBoundsException $e) {
+            // This can happen with PHP_Token_Stream if the file is syntactically invalid,
+            // and probably affects a file that wasn't executed.
+        }
         unset($tokens);
 
         foreach (\range(1, $this->linesOfCode['loc']) as $lineNumber) {

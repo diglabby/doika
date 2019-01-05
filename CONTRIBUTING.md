@@ -23,7 +23,7 @@
 
 
 ## Тэставанне
-Дзе можна паглядзець змены, якія адбываюцца на dev галіне рэпазіторыя: [Тэставы-дамен](http://it3donate-landing.falanster.by/doika/admin/campaigns)
+Дзе можна паглядзець змены, якія адбываюцца на dev галіне рэпазіторыя: [Тэставы-дамен](http://it3donate-landing.falanster.by/doika/admin/campaigns) - лагін: demo@example.com пароль: demo
 
 Алгарытм таго, як змены пераходзяць з рэпазіторыя на тэставы дамен.
 1. Робіцца pull request.

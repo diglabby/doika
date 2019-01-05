@@ -89,7 +89,8 @@ $tnt->loadConfig([
     'database'  => 'dbname',
     'username'  => 'user',
     'password'  => 'pass',
-    'storage'   => '/var/www/tntsearch/examples/'
+    'storage'   => '/var/www/tntsearch/examples/',
+    'stemmer'   => \TeamTNT\TNTSearch\Stemmer\PorterStemmer::class//optional
 ]);
 
 $indexer = $tnt->createIndex('name.index');
@@ -275,6 +276,8 @@ $classifier->load('sports.cls');
 * [TNTSearch Driver for Laravel Scout](https://github.com/teamtnt/laravel-scout-tntsearch-driver)
 
 ## Support [![OpenCollective](https://opencollective.com/tntsearch/backers/badge.svg)](#backers) [![OpenCollective](https://opencollective.com/tntsearch/sponsors/badge.svg)](#sponsors)
+
+<a href='https://ko-fi.com/O4O3K2R9' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi4.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
 ### Backers
 

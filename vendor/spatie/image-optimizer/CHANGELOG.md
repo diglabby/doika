@@ -2,6 +2,14 @@
 
 All notable changes to `image-optimizer` will be documented in this file
 
+## 1.1.3 - 2018-11-19
+
+- require the fileinfo extension
+
+## 1.1.2 - 2018-10-10
+
+- make sure all optimizers use `binaryPath`
+
 ## 1.1.1 - 2018-09-10
 
 - fix logger output

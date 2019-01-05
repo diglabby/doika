@@ -5,6 +5,7 @@ namespace Maatwebsite\Excel\Concerns;
 use InvalidArgumentException;
 use Maatwebsite\Excel\Importer;
 use Illuminate\Support\Collection;
+use Illuminate\Console\OutputStyle;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\PendingDispatch;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -12,6 +13,11 @@ use Maatwebsite\Excel\Exceptions\NoFilePathGivenException;
 
 trait Importable
 {
+    /**
+     * @var OutputStyle|null
+     */
+    protected $output;
+
     /**
      * @param string|UploadedFile|null $filePath
      * @param string|null              $disk
@@ -91,6 +97,32 @@ trait Importable
     }
 
     /**
+     * @param OutputStyle $output
+     *
+     * @return $this
+     */
+    public function withOutput(OutputStyle $output)
+    {
+        $this->output = $output;
+
+        return $this;
+    }
+
+    /**
+     * @return OutputStyle
+     */
+    public function getConsoleOutput(): OutputStyle
+    {
+        if (!$this->output instanceof OutputStyle) {
+            throw new InvalidArgumentException(
+                'Importable has no OutputStyle. Declare one by using ->withOutput($this->output).'
+            );
+        }
+
+        return $this->output;
+    }
+
+    /**
      * @param UploadedFile|string|null $filePath
      *
      * @throws NoFilePathGivenException
@@ -112,6 +144,6 @@ trait Importable
      */
     private function getImporter(): Importer
     {
-        return resolve(Importer::class);
+        return app(Importer::class);
     }
 }

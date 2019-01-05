@@ -15,9 +15,14 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id');
-            $table->foreign('company_id')->references('id')->on('companies');
-            $table->double('amount');
+            $table->integer('payment_gateway_id');
+            $table->integer('payment_gateway_transaction_id');
+            $table->integer('campaign_id');
+            $table->foreign('campaign_id')->references('id')->on('campaigns');
+            $table->integer('subscription_id')->nullable();
+            $table->string('error_code')->nullable();
+            $table->string('error_message')->nullable();
+            $table->integer('amount');
             $table->timestamps();
         });
     }

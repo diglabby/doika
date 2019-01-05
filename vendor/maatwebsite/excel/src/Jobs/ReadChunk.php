@@ -4,10 +4,13 @@ namespace Maatwebsite\Excel\Jobs;
 
 use Maatwebsite\Excel\Sheet;
 use Illuminate\Bus\Queueable;
+use Illuminate\Support\Facades\DB;
+use PhpOffice\PhpSpreadsheet\Cell\Cell;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use PhpOffice\PhpSpreadsheet\Reader\IReader;
 use Maatwebsite\Excel\Filters\ChunkReadFilter;
 use Maatwebsite\Excel\Imports\HeadingRowExtractor;
+use Maatwebsite\Excel\Concerns\WithCustomValueBinder;
 
 class ReadChunk implements ShouldQueue
 {
@@ -66,6 +69,10 @@ class ReadChunk implements ShouldQueue
      */
     public function handle()
     {
+        if ($this->sheetImport instanceof WithCustomValueBinder) {
+            Cell::setValueBinder($this->sheetImport);
+        }
+
         $headingRow = HeadingRowExtractor::headingRow($this->sheetImport);
 
         $filter = new ChunkReadFilter(
@@ -86,13 +93,13 @@ class ReadChunk implements ShouldQueue
             $this->sheetName
         );
 
-        $sheet->import(
-            $this->sheetImport,
-            $this->startRow
-        );
+        DB::transaction(function () use ($sheet) {
+            $sheet->import(
+                $this->sheetImport,
+                $this->startRow
+            );
 
-        $sheet->disconnect();
-
-        unset($sheet, $spreadsheet);
+            $sheet->disconnect();
+        });
     }
 }

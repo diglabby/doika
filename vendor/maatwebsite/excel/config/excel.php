@@ -3,7 +3,7 @@
 use Maatwebsite\Excel\Excel;
 
 return [
-    'exports'            => [
+    'exports' => [
 
         /*
         |--------------------------------------------------------------------------
@@ -14,7 +14,7 @@ return [
         | Here you can specify how big the chunk should be.
         |
         */
-        'chunk_size' => 1000,
+        'chunk_size'             => 1000,
 
         /*
         |--------------------------------------------------------------------------
@@ -25,7 +25,14 @@ return [
         | or downloading. Here you can customize that path.
         |
         */
-        'temp_path'  => sys_get_temp_dir(),
+        'temp_path'              => sys_get_temp_dir(),
+
+        /*
+       |--------------------------------------------------------------------------
+       | Pre-calculate formulas during export
+       |--------------------------------------------------------------------------
+       */
+        'pre_calculate_formulas' => false,
 
         /*
         |--------------------------------------------------------------------------
@@ -35,7 +42,7 @@ return [
         | Configure e.g. delimiter, enclosure and line ending for CSV exports.
         |
         */
-        'csv'        => [
+        'csv'                    => [
             'delimiter'              => ',',
             'enclosure'              => '"',
             'line_ending'            => PHP_EOL,
@@ -45,7 +52,9 @@ return [
         ],
     ],
 
-    'imports' => [
+    'imports'            => [
+
+        'read_only' => true,
 
         'heading_row' => [
 
