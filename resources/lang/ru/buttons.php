@@ -3,41 +3,41 @@
 return [
     'admin' => [
 		'common' => [
-			'delete' => 'Delete',
-			'cancel' => 'Cancel',
-			'edit' => 'Edit',
-			'apply' => 'Apply',
-			'enableSelected' => 'Enable selected',
-			'disableSelected' => 'Disable selected',
-			'removeSelected' => 'Remove selected',
-			'create' => 'Create',
-			'back' => 'Back',
-			'save' => 'Save',		
-			'info' => 'Info',
-			'print' => 'Print',
-			'email' => 'Send email',
+			'delete' => 'Удалить',
+			'cancel' => 'Отменить',
+			'edit' => 'Редактировать',
+			'apply' => 'Применить',
+			'enableSelected' => 'Включить выбранные',
+			'disableSelected' => 'Отключить выбранные',
+			'removeSelected' => 'Удалить выбранные',
+			'create' => 'Создать',
+			'back' => 'Назад',
+			'save' => 'Сохранить',		
+			'info' => 'Справка',
+			'print' => 'Распечатать',
+			'email' => 'Отправить e-mail',
 		],		
-		'support' => 'Help Doika Team',
+		'support' => 'Помоги Команде Doika',
         'login' => [
-            'submit' => 'Login'
+            'submit' => 'Логин'
 		],		
 		'feedback' => [
-			'submit' => 'Send'
+			'submit' => 'Отправить'
 		],
 		'users' => [
-			'create' => 'Create new user'
+			'create' => 'Создать нового пользователя'
 		],
 		'campaigns' => [
-			'create' => 'Create campaign',	
-			'save' => 'Save campaign',
-			'uploadImage' => 'Upload image',
-			'deleteImage' => 'Delete image',					
+			'create' => 'Создать кампанию',	
+			'save' => 'Сохранить кампанию',
+			'uploadImage' => 'Загрузить изображение',
+			'deleteImage' => 'Удалить изображение',					
 		],
 		
 	],
 	'client' => [
-		'back' => 'Back',
-		'confirm' => 'Confirm',
-		'proceed' => 'Proceed'
+		'back' => 'Назад',
+		'confirm' => 'Подтвердить',
+		'proceed' => 'Продолжить'
 	]
 ];

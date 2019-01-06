@@ -8,13 +8,13 @@ return [
 		]
 	],
     'admin' => [	
-		'title' => 'Administration',
+		'title' => 'Управление',
 		'datatables' => [
-			'showPerPage' => 'Show',
-			'entriesPerPage' => 'entries per page',
-			'search' => 'Search',
-			'actions' => 'Actions',
-			'info' => ''
+			'showPerPage' => 'Показать',
+			'entriesPerPage' => 'записей на странице',
+			'search' => 'Поиск',
+			'actions' => 'Действия',
+			'info' => 'Справка'
 		],		
 		'common' => [
 			'search' => 'Поиск',
@@ -24,7 +24,7 @@ return [
 				'by' => 'by',
 				'supporter' => 'Supported by the European Union'
 			],
-			'confirmation' => 'Are you sure?'
+			'confirmation' => 'Вы уверены?'
 		],	
 		'newMenu' => [
 			'header' => 'Добавить',
@@ -79,25 +79,25 @@ return [
 			'recieved' => 'Собранная сумма',
 			'goal' => 'Целевая сумма',
 			'days' => 'Количество дней до окончания',
-			'description' => 'Description',
-			'image' => 'Title image',
-			'uploadImage' => 'Upload image',
-			'allowedImageTypes' => 'Allowed types: png gif jpg jpeg.',
-			'paymentSystem' => 'Payment system',
-			'startAt' => 'Start at',
-			'finishAt' => 'Finish at',
-			'colors' => 'Colors configuration',
-			'preview' => 'Campaign preview',
-			'active' => 'Active',
-			'topBanner' => 'Top banner',
-			'progressBar' => 'Progress bar',
-			'options' => 'Options',			
+			'description' => 'Описание',
+			'image' => 'Изображение для кампании',
+			'uploadImage' => 'Загрузить изображение',
+			'allowedImageTypes' => 'Допустимый формат: png gif jpg jpeg.',
+			'paymentSystem' => 'Платежная система',
+			'startAt' => 'Дата начала',
+			'finishAt' => 'Дата окончания',
+			'colors' => 'Конфигурация цветов',
+			'preview' => 'Просмотр кампании',
+			'active' => 'Действующая',
+			'topBanner' => 'Верхний баннер',
+			'progressBar' => 'Полоса прогресса',
+			'options' => 'Параметры',			
 			'placeholder' => [
-				'shortcode' => 'Shortcode',
-				'header' => 'Create campaign',
-				'breadcrumb' => 'Create',
-				'name' => 'Title',
-				'image' => 'No file chosen',				
+				'shortcode' => 'Шорткод',
+				'header' => 'Создать кампанию',
+				'breadcrumb' => 'Создать',
+				'name' => 'Название',
+				'image' => 'Файл не выбран',				
 			],
 			'create' => [
 				'title' => 'Создать кампанию',
@@ -105,9 +105,9 @@ return [
 				'breadcrumb' => 'Создать кампанию',
 			],
 			'edit' => [
-				'title' => 'Edit campaign',
-				'header' => 'Edit campaign',
-				'breadcrumb' => 'Edit',
+				'title' => 'Редактировать кампанию',
+				'header' => 'Редактировать кампанию',
+				'breadcrumb' => 'Редактировать',
 			]
 		],
 		'payments' => [			
@@ -227,8 +227,8 @@ return [
     ],
 	'client' => [
 		'paymentInfo' => 'Terms of Use',
-		'input' => 'Summ',
-		'recieved' => 'Recieved',
-		'needed' => 'Needed'
+		'input' => 'Сумма',
+		'recieved' => 'Собранная сумма',
+		'needed' => 'Целевая сумма'
 	]
 ];
