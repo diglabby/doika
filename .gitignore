@@ -1,5 +1,13 @@
-/node_modules
+# Dev/IDE (normally they shold be ignored on developer local machine level)
 /.idea
 /.vscode
 /.vagrant
+.phpstorm.meta.php
+_ide_helper.php
+_ide_helper_models.php
+
+# node.js
+/node_modules
+
+# Laravel
 .env
