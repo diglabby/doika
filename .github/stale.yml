@@ -1,0 +1,23 @@
+# Config for Stale bot: https://probot.github.io/apps/stale/
+# Number of days of inactivity before an issue becomes stale
+daysUntilStale: 365
+# Number of days of inactivity before a stale issue is closed
+daysUntilClose: 7
+# Issues with these labels will never be considered stale
+exemptLabels:
+  - pinned
+  - security
+  - recurring
+  - Epic
+# Label to use when marking an issue as stale
+staleLabel: нясвежы
+# Comment to post when marking an issue as stale. Set to `false` to disable
+markComment: >
+  Гэтая іш'ю была аўтаматычна пазначаецца як нясвежы, таму што не было ў апошні час неактыўны на працягу 365 дзён.
+  Калі ласка выдаліце "нясвежы" лэйбл калі вы не згодны з гэтым.
+  Калі вы гэтага не зробіце, я буду аўтаматычна зыкрыю іш'ю праз 7 дзён.
+  Гэта вельмі важна, каб мы не закрывалі іш'ю, якія не павінны быць закрытыя, так што калі ласка адрэагкйце на гэтае апавяшчэнне (будзь коцікам! 🐈).
+  Дзякуй!
+# Comment to post when closing a stale issue. Set to `false` to disable
+closeComment: >
+  Гэтае іш'ю закрыта, таму што гэта яно было неяктыўным 365 дзён, і яшчэ 7 дзён пасля маркіроўкі яго як «нясвежы» ніхто не адрэагаваў на гэта і не зняў гэтую пазнаку.
