@@ -49,7 +49,7 @@ Doika - модуль, які дапамагае прымаць ахвярава�
 * Apache (rewrite mod on, for virtual host directory too: AllowOverride All )
 * MySQL >= 5.7
 * PHP >= 7.1.3
-* OpenSSL PHP Extension, PDO PHP Extension, Mbstring PHP Extension, Tokenizer PHP Extension, XML PHP Extension, Ctype PHP Extension, JSON PHP Extension пашырэнне для PHP
+* OpenSSL PHP Extension, PDO PHP Extension, Mbstring PHP Extension, Tokenizer PHP Extension, XML PHP Extension, Ctype PHP Extension, JSON PHP Extension, BCMath PHP Extension пашырэнне для PHP
 * На базе фрэймворка Laravel 5.6 (для усталёўкі патрэбны Composer)
 * [Кодынг-стандарт](https://github.com/diglabby/doika/wiki/Кодынг-стандарт) 
 * [Прыклад афармлення бага](https://github.com/diglabby/doika/wiki/Прыклад-афармлення-бага)
