@@ -1,0 +1,17 @@
+# Config for Welcome bot https://github.com/behaviorbot/welcome
+# Configuration for new-issue-welcome - https://github.com/behaviorbot/new-issue-welcome
+# Comment to be posted to on first time issues
+newIssueWelcomeComment: >
+  Дзякуй за адкрыцце тваёй першай іш'ю ў гэтым рэпазіторыі!
+
+# Configuration for new-pr-welcome - https://github.com/behaviorbot/new-pr-welcome
+# Comment to be posted to on PRs from first time contributors in your repository
+newPRWelcomeComment: >
+  Дзякуй за стварэнне твайго першага pull request тут! Калі ласка азнаемся з [правіламі афармлення PR](/CONTRIBUTING.md).
+
+# Configuration for first-pr-merge - https://github.com/behaviorbot/first-pr-merge
+# Comment to be posted to on pull requests merged by a first time user
+firstPRMergeComment: >
+  УРА! Мы толькі што прынялі і зклеілі першы PR ад цябе! 🎉🎉🎉 Чакаем новых подзьвігаў!
+  ![image](https://media.giphy.com/media/5gXYzsVBmjIsw/giphy.gif)
+# It is recommended to include as many gifs and emojis as possible!
