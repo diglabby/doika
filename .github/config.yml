@@ -15,3 +15,29 @@ firstPRMergeComment: >
   УРА! Мы толькі што прынялі і зклеілі першы PR ад цябе! 🎉🎉🎉 Чакаем новых подзьвігаў!
   ![image](https://media.giphy.com/media/5gXYzsVBmjIsw/giphy.gif)
 # It is recommended to include as many gifs and emojis as possible!
+
+
+
+
+
+
+# Configuration for Request-info bot - https://github.com/behaviorbot/request-info
+# *Required* Comment to reply with
+requestInfoReplyComment: >
+  Мы былі б ўдзячныя, калі вы маглі б даць нам больш інфармацыі аб гэтай іш'ю!
+
+# *OPTIONAL* default titles to check against for lack of descriptiveness
+# MUST BE ALL LOWERCASE
+#requestInfoDefaultTitles:
+#  - update readme.md
+#  - updates
+
+
+# *OPTIONAL* Label to be added to Issues and Pull Requests with insufficient information given
+# requestInfoLabelToAdd: needs-more-info
+
+# *OPTIONAL* Only warn about insufficient information on these events type
+# Keys must be lowercase. Valid values are 'issue' and 'pullRequest'
+requestInfoOn:
+  pullRequest: false
+  issue: true
