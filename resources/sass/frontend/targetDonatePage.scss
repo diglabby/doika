@@ -1,0 +1,135 @@
+  #module-donate-wrapper {
+    background-color: rgba(231, 238, 244, 0.91);
+    -webkit-box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.37);
+            box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.37);
+  }
+
+  #module-donate-wrapper > * {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+
+  #module-donate-wrapper {
+    width: 100%;
+    max-width: 770px;
+    overflow: hidden;
+    height: auto;
+    min-height: 300px;
+    background: url("../img/loader2.gif") center center no-repeat;
+  }
+
+  .b-popup {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    z-index: 100;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.75);
+    text-align: center;
+    display: none;
+  }
+
+  .b-popup .b-popup-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    height: 20px;
+    width: 20px;
+    background: url("../img/close.png") 100% 100% no-repeat;
+    background-size: cover;
+    cursor: pointer;
+  }
+
+  .b-popup .b-popup-content {
+    margin: 0 auto;
+    vertical-align: middle;
+    position: relative;
+    z-index: 101;
+    width: 60%;
+    background: #fff;
+    padding: 15px 30px;
+    text-align: left;
+    -webkit-box-shadow: 0px 0px 10px #000;
+            box-shadow: 0px 0px 10px #000;
+    font-family: Roboto, sans-serif;
+  }
+
+  .b-popup .b-popup-content-img {
+    width: 100%;
+    height: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+       -ms-flex-align: center;
+          align-items: center;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin: 10px 0;
+    -webkit-box-shadow: 0 7px 6px -6px #777, 0 -7px 6px -6px #999;
+            box-shadow: 0 7px 6px -6px #777, 0 -7px 6px -6px #999;
+  }
+
+  .b-popup-content-img img {
+    margin: 0;
+  }
+
+  .b-popup-content h3 {
+    padding: 10px 0 30px 0;
+  }
+
+@media all and (max-width: 771px) {
+
+  #module-donate-wrapper {
+
+    overflow: hidden;
+    height: 100%;
+  }
+}
+
+@media all and (max-width: 700px) {
+
+  #module-donate-wrapper {
+
+    overflow: hidden;
+    height: 100%;
+    
+  }
+
+  .b-popup .b-popup-content {
+      width: 80%;
+  }
+}
+
+@media all and (max-width: 450px) {
+
+  .b-popup .b-popup-content p {
+    text-indent: 5px;
+  }
+  .b-popup .b-popup-content h3 {
+    padding: 10px;
+    font-size: 16px;
+  }
+  .b-popup .b-popup-content img {
+    width: auto !important;
+    height: 30px !important;
+  }
+
+  #module-donate-wrapper {
+
+    overflow: hidden;
+    height: 100%;
+
+  }
+}
