@@ -13,3 +13,7 @@ yarn-error.log
 
 # Laravel
 .env
+/vendor
+
+/public/build
+/public/dist
