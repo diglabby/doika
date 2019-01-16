@@ -4,10 +4,10 @@
 
 import _ from 'lodash'
 import axios from 'axios'
-import swal from 'sweetalert2';
-import $ from 'jquery';
-import 'popper.js/dist/umd/popper'; // Required for BS4
-import 'bootstrap';
+import swal from 'sweetalert2'
+import $ from 'jquery'
+import 'popper.js/dist/umd/popper' // Required for BS4
+import 'bootstrap'
 
 /**
  * Font Awesome >=5.1
@@ -17,15 +17,15 @@ import 'bootstrap';
  * Also you can import the icons separately on the frontend and backend
  */
 
-import { library, dom } from '@fortawesome/fontawesome-svg-core';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import { far } from '@fortawesome/free-regular-svg-icons';
-import { fas } from '@fortawesome/free-solid-svg-icons';
+import { library, dom } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 
-library.add(fab, far, fas);
+library.add(fab, far, fas)
 
 // Kicks off the process of finding <i> tags and replacing with <svg>
-dom.watch();
+dom.watch()
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -33,9 +33,9 @@ dom.watch();
  * code may be modified to fit the specific needs of your application.
  */
 
-window.$ = window.jQuery = $;
-window.swal = swal;
-window._ = _; // Lodash
+window.$ = window.jQuery = $
+window.swal = swal
+window._ = _ // Lodash
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -43,8 +43,8 @@ window._ = _; // Lodash
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = axios;
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios = axios
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
@@ -52,12 +52,14 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * a simple convenience so we don't have to attach every token manually.
  */
 
-const token = document.head.querySelector('meta[name="csrf-token"]');
+const token = document.head.querySelector('meta[name="csrf-token"]')
 
 if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content
 } else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+  console.error(
+    'CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token'
+  )
 }
 
 /**

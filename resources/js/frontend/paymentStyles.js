@@ -1,4 +1,5 @@
-var paymentStyle = 'html {\
+var paymentStyle =
+  'html {\
     padding:0;\
     margin:0;\
     overflow: hidden;\
@@ -118,8 +119,16 @@ var paymentStyle = 'html {\
     max-width: 365px;\
     height: 186px;\
     position:relative;\
-    background: url("' + parent.document.location.protocol + '//'+ parent.document.location.host + '/client-side/assets/img/front-card.png"),\
-    url("' + parent.document.location.protocol + '//'+ parent.document.location.host + '/client-side/assets/img/back-card.png");\
+    background: url("' +
+  parent.document.location.protocol +
+  '//' +
+  parent.document.location.host +
+  '/client-side/assets/img/front-card.png"),\
+    url("' +
+  parent.document.location.protocol +
+  '//' +
+  parent.document.location.host +
+  '/client-side/assets/img/back-card.png");\
     background-repeat: no-repeat;\
     background-position: left top, right 20px;\
   }\
@@ -226,4 +235,4 @@ var paymentStyle = 'html {\
       width: 80% !important;\
     }\
   }\
-  ';
+  '
