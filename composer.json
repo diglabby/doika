@@ -9,6 +9,7 @@
         "ext-gd": "*",
         "arcanedev/log-viewer": "^4.5",
         "arcanedev/no-captcha": "^7.0",
+        "begateway/begateway-api-php": "^4.2",
         "davejamesmiller/laravel-breadcrumbs": "^5.1",
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
