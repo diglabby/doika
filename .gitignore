@@ -2,6 +2,9 @@
 /.idea
 /.vscode
 /.vagrant
+
+# composer
+/vendor
 .phpstorm.meta.php
 _ide_helper.php
 _ide_helper_models.php
