@@ -1,4 +1,4 @@
-
+﻿
 
 // Custom Variables
 @import "variables";
@@ -961,7 +961,6 @@
 }
 
 .modal-enter .modal-container,
-.modal-leave-active .modal-container {
-  -webkit-transform: scale(1.1);
+.modal-leave-active .modal-container {  
   transform: scale(1.1);
 }
