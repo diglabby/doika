@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "133539a6027a728beccdaa10f31de562",
+    "content-hash": "e229f8c3528d386bad4fb951922d8c02",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -191,6 +191,51 @@
                 "support"
             ],
             "time": "2018-09-04T17:19:43+00:00"
+        },
+        {
+            "name": "begateway/begateway-api-php",
+            "version": "4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/begateway/begateway-api-php.git",
+                "reference": "e72f2866bc033b65ea3d66812c139a318ec53da3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/begateway/begateway-api-php/zipball/e72f2866bc033b65ea3d66812c139a318ec53da3",
+                "reference": "e72f2866bc033b65ea3d66812c139a318ec53da3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">= 5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BeGateway\\": "lib/BeGateway"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "BeGateway",
+                    "email": "admin@begateway.com"
+                }
+            ],
+            "description": "BeGateway PHP API library",
+            "keywords": [
+                "api",
+                "begateway",
+                "bepaid",
+                "payment processing"
+            ],
+            "time": "2019-01-09T15:58:40+00:00"
         },
         {
             "name": "davejamesmiller/laravel-breadcrumbs",
