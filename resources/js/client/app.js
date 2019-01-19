@@ -13,6 +13,7 @@ import DataTable from './components/Plugins/DataTable'
 import RichTextEditor from './components/Plugins/RichTextEditor'
 import DateTimePicker from './components/Plugins/DateTimePicker'
 import Switch from './components/Plugins/Switch'
+import ModalWindow from './components/Plugins/ModalWindow'
 import vSelect from './components/Plugins/Select'
 
 import { createRouter } from './router'
@@ -32,7 +33,6 @@ Vue.component('v-select', vSelect)
 Vue.component('c-switch', Switch)
 Vue.component('p-datetimepicker', DateTimePicker)
 Vue.component('p-richtexteditor', RichTextEditor)
-Vue.component('b-datatable', DataTable)
 Vue.component('b-datatable', DataTable)
 
 export function createApp() {
