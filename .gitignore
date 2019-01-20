@@ -11,6 +11,9 @@ _ide_helper_models.php
 
 # node.js
 /node_modules
+
+# node build
+/public/build
 npm-debug.log
 yarn-error.log
 

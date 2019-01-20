@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //AutoPublishPostTrigger::class,
+        Commands\TryRecurrentBePaidPlan::class
     ];
 
     /**
