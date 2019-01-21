@@ -29,7 +29,7 @@
         <template slot="dropdown">
           <b-dropdown-item :key="index" v-for="(locale, index) in this.$app.locales"
                            :hreflang="index"
-                           :href="`/${index}/${$app.adminPathName}${$route.fullPath}`"
+                           :href="`/doika/${index}/${$app.adminPathName}${$route.fullPath}`"
           >
             {{ locale.native }}
           </b-dropdown-item>

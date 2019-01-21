@@ -22,7 +22,7 @@ export function createRouter(base, i18n) {
     scrollBehavior: () => ({ y: 0 }),
     routes: [
       {
-        path: '/doika/campaign/',
+        path: '/doika/:locale/campaign/',
         name: 'campaign',
         component: Full,
         meta: {
