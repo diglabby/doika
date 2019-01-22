@@ -21,22 +21,27 @@
                 </b-col>
               </b-row>
             </h3>
-            <b-form-group
-              :label="$t('labels.admin.campaigns.name')"
-              label-for="title"
-              horizontal
-              :label-cols="2"
-              :feedback="feedback('title')"
-            >
-              <b-form-input
-                id="title"
-                name="title"
-                required
-                :placeholder="$t('labels.admin.campaigns.placeholder.name')"
-                v-model="model.title"
-                :state="state('title')"
-              ></b-form-input>
-            </b-form-group>
+
+            <b-row>
+              <b-col>
+                <b-form-group
+                  :label="$t('labels.admin.campaigns.name')"
+                  label-for="title"
+                  horizontal
+                  :label-cols="2"
+                  :feedback="feedback('title')"
+                >
+                  <b-form-input
+                    id="title"
+                    name="title"
+                    required
+                    :placeholder="$t('labels.admin.campaigns.placeholder.name')"
+                    v-model="model.title"
+                    :state="state('title')"
+                  ></b-form-input>
+                </b-form-group>
+              </b-col>
+            </b-row>
 
             <b-form-group
               :label="$t('labels.admin.campaigns.description')"
@@ -153,6 +158,31 @@
                     </b-col>
                   </b-row>
 
+
+
+                  <b-row>
+                    <b-col lg="4">
+                      <b-form-group
+                        :label="$t('labels.admin.campaigns.amount')"
+                        label-for="amount"
+                        horizontal
+                        :label-cols="3"
+                        :feedback="feedback('amount')"
+                      >
+                        <b-form-input
+                          id="amount"
+                          name="amount"
+                          required
+                          :placeholder="$t('labels.admin.campaigns.placeholder.amount')"
+                          v-model="model.amount"
+                          :state="state('amount')"
+                        ></b-form-input>
+                      </b-form-group>
+                    </b-col>
+                    <b-col offset-lg="2" lg="6">
+                    </b-col>
+                  </b-row>
+
                   <div class="form-group">
                     <b-row class="mb-4 mt-4">
                       <b-col lg="5" offset-lg="1">
@@ -257,6 +287,7 @@ export default {
         featured_image: null,
         thumbnail_image_path: null,
         status: null,
+        amount: null,
         state: null,
         status_label: null,
         owner: {
