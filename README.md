@@ -24,7 +24,7 @@ Doika - модуль, які дапамагае прымаць ахвярава�
 * [Apache](https://httpd.apache.org/download.cgi) (rewrite mod on, for virtual host directory too: AllowOverride All )
 * MySQL >= 5.7 PostgreSQL, SQLite, MSSQL Server [Поўны спіс](https://laravel.com/docs/5.7/database)
 * PHP >= 7.1.3
-* OpenSSL PHP Extension, PDO PHP Extension, Mbstring PHP Extension, Tokenizer PHP Extension, XML PHP Extension, Ctype PHP Extension, JSON PHP Extension ([PHP Extensions](https://github.com/diglabby/doika/blob/master/composer.json#L8-L9)), BCMath PHP Extension
+* OpenSSL PHP Extension, PDO PHP Extension, Mbstring PHP Extension, Tokenizer PHP Extension, XML PHP Extension, Ctype PHP Extension, JSON PHP Extension ([PHP Extensions](https://github.com/diglabby/doika/blob/master/composer.json#L8-L9)), BCMath PHP Extension, Sqlite3
 * На базе фрэймворка Laravel 5.6 (для усталёўкі патрэбны Composer)
 * [Кодынг-стандарт](https://github.com/diglabby/doika_1.2/wiki/%D0%9A%D0%BE%D0%B4%D1%8B%D0%BD%D0%B3-%D1%81%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82) 
 * [Composer](https://getcomposer.org/download/)
@@ -43,10 +43,11 @@ Doika - модуль, які дапамагае прымаць ахвярава�
 5. З тэрмінала запусціць каманду `npm install`. Вы павінны запусціць з карнявой дырэкторыі doika
 6. Выконваем зборку фронтэнда `npm run build`
 7. Рыхтуем канфіг файл. Для гэтага ў тэчцы doika ствараем копію файла .env.example і надаем яму імя .env (падказка: выканаць каманду `cp .env.example .env`)
-8. Дадаем у файл .env свае дадзеныя DB_DATABASE={your_database} DB_USERNAME={your_username} DB_PASSWORD={your_password}
-9. Разгортваем базу дадзеных `php artisan migrate` [дале састарэла?] Імпартуем файл doika.sql у базу дадзеных, пры з'яўленні памылак звяртаем ўвагу на версію MySQL.
+8. Рыхтуем пустую Mysql базу.
+8. Дадаем у файл .env свае дадзеныя, для падключэння к базе, створанай на папярэднім кроку DB_DATABASE={назва_базы} DB_USERNAME={лагін_для_падключэння} DB_PASSWORD={пароль}
+9. Разгортваем базу дадзеных `php artisan migrate` Імпартуем файл doika.sql у базу дадзеных, пры з'яўленні памылак звяртаем ўвагу на версію MySQL.
 10. Генерым ключ для laravel: зайсцi у папку doika праз i выканаць `php artisan key:generate`
-11. Усталяваная версія павінна запускацца на Вашым лакальным хасце са шляхам http://[host-name]/doika/admin/login
+11. Усталяваная версія павінна запускацца на Вашым лакальным хасце са шляхам http://[host-name]/doika/be/admin/login
 12. Выкарыстоўваеце дадзеныя для ўвахода Лагін: demo@example.com , Пароль: demo
 
 ### win (Open Server)
