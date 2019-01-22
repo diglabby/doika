@@ -9,7 +9,6 @@ _ide_helper_models.php
 # node.js
 /node_modules
 npm-debug.log
-yarn-error.log
 
 # Laravel
 .env
