@@ -9,8 +9,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UsersTableSeeder::class);
-        $this->call(MetasTableSeeder::class);
-        $this->call(PostsTableSeeder::class);
+        $this->call(UsersSeeder::class);
     }
 }
