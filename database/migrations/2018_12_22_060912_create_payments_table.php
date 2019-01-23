@@ -17,7 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->increments('id');
             $table->integer('payment_gateway_id');
             $table->integer('payment_gateway_transaction_id');
-            $table->integer('campaign_id');
+            $table->integer('campaign_id')->unsigned();
             $table->foreign('campaign_id')->references('id')->on('campaigns');
             $table->integer('subscription_id')->nullable();
             $table->string('error_code')->nullable();
