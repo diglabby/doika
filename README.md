@@ -22,7 +22,7 @@ Doika - модуль, які дапамагае прымаць ахвярава�
 ## Патрабаванні да распрацоўкі
 
 * [Apache](https://httpd.apache.org/download.cgi) (rewrite mod on, for virtual host directory too: AllowOverride All )
-* MySQL >= 5.7 PostgreSQL, SQLite, MSSQL Server [Поўны спіс](https://laravel.com/docs/5.7/database)
+* MySQL >= 5.5 PostgreSQL, SQLite, MSSQL Server [Поўны спіс](https://laravel.com/docs/5.7/database)
 * PHP >= 7.1.3
 * OpenSSL PHP Extension, PDO PHP Extension, Mbstring PHP Extension, Tokenizer PHP Extension, XML PHP Extension, Ctype PHP Extension, JSON PHP Extension ([PHP Extensions](https://github.com/diglabby/doika/blob/master/composer.json#L8-L9)), BCMath PHP Extension, Sqlite3
 * На базе фрэймворка Laravel 5.6 (для усталёўкі патрэбны Composer)
