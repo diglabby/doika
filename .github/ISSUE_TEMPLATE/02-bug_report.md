@@ -18,5 +18,7 @@ about: Штосць не праце так, як гэта чакаецца? 🐞
 
 ## Тэставыя ўмовы
 
- - Платформа і версія: Windows10/Linux/MacOS/Android9/iOS12
- - Браўзер і версія: Chrome/Firefox/Edge/Internet explorer/Safari
+- Версія Doika: 
+- Платформа і версія: Windows10/Linux/MacOS/Android9/iOS12
+- Браўзер і версія: Chrome/Firefox/Edge/Internet explorer/Safari
+
