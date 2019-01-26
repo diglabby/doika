@@ -37,7 +37,13 @@ Vue.component('b-datatable', DataTable)
 export function createApp() {
   // Init router and store
   const i18n = createLocales(window.settings.locale)
-  const router = createRouter(window.settings.adminHomePath, i18n)
+
+  //construct base path for Vue router /doika/{locale}/admin
+  let basePath = window.settings.adminHomePath.split('/')
+  basePath.splice(2, 0, i18n.locale)
+  basePath = basePath.join('/')
+
+  const router = createRouter(basePath, i18n)
   const store = createStore(window.route)
 
   /**
