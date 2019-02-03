@@ -268,8 +268,11 @@ export default {
     return {
       config: {
         wrap: true,
-        time_24hr: true,
-        enableTime: true
+        time_24hr: false,
+        enableTime: false,
+        onChange: function(selectedDates, dateStr, instance) {
+          instance.close()
+        }
       },
 
       counter: 45,
