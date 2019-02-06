@@ -12,7 +12,7 @@
                   </a>
                 </h5>
               </b-card-header>
-              <b-collapse id="payment" visible role="tabpanel">
+              <b-collapse id="payment" aria-expanded="true" visible role="tabpanel">
                 <nav class="nav nav-tabs" id="myTab" role="tablist">
                   <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-expanded="true">BePaid</a>
                   <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile">Artpay</a>
