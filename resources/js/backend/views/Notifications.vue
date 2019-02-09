@@ -12,7 +12,7 @@
                   </a>
                 </h5>
               </b-card-header>
-              <b-collapse id="notifications" role="tabpanel">
+              <b-collapse id="notifications" aria-expanded="true" visible role="tabpanel">
                 <b-card-body>
                   <b-row>
                     <b-col md>
