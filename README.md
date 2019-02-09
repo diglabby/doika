@@ -1,3 +1,5 @@
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/diglabby/doika/badges/quality-score.png?b=dev)](https://scrutinizer-ci.com/g/diglabby/doika/?branch=dev)
+
 Doika - модуль, які дапамагае прымаць ахвяраванні з дапамогай банкаўскіх картак і наладзіць новы падыход у фандрэйзінгу беларускіх некамерцыйных грамадскіх арганізацый на сваіх сайтах
 
 ## Бягучыя задачы праекта
