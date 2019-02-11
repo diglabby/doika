@@ -10,5 +10,9 @@ before_script:
   - mysql -e 'create database doika;'
   - composer install --no-interaction --prefer-dist
 
+cache:
+  directories:
+    - $HOME/.composer/cache
+
 script:
   - composer test:ci
