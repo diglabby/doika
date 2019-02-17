@@ -70,9 +70,8 @@ services:
       sh -c '
         npm install       
         npm rebuild node-sass
-        npm install babel-polyfill
-        npm run lint
-        npm run dev     
+        npm install babel-polyfill        
+        npm run build    
       '
   
     
