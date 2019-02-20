@@ -34,6 +34,7 @@ export default {
       types: ['Name', 'Mail', 'Phone']
     }
   },
+  
   async created() {
     let { data } = await axios.get(
       this.$app.route('campaign.get', { campaignId: '1' })
