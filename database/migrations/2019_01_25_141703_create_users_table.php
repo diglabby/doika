@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration {
 			$table->boolean('confirmed')->default(0);
 			$table->dateTime('last_access_at')->nullable();
 			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 
