@@ -11,7 +11,6 @@ use Illuminate\Support\ServiceProvider;
 use App\Repositories\EloquentTagRepository;
 use App\Repositories\EloquentMetaRepository;
 use App\Repositories\EloquentCampaignRepository;
-use App\Repositories\EloquentRoleRepository;
 use App\Repositories\EloquentUserRepository;
 use App\Repositories\Contracts\TagRepository;
 use App\Repositories\Contracts\MetaRepository;

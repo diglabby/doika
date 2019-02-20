@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Utils\RequestSearchQuery;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
-use App\Repositories\Contracts\RoleRepository;
 use App\Repositories\Contracts\UserRepository;
 
 class UserController extends BackendController
@@ -18,20 +17,13 @@ class UserController extends BackendController
     protected $users;
 
     /**
-     * @var RoleRepository
-     */
-    protected $roles;
-
-    /**
      * Create a new controller instance.
      *
      * @param UserRepository                             $users
-     * @param \App\Repositories\Contracts\RoleRepository $roles
      */
-    public function __construct(UserRepository $users, RoleRepository $roles)
+    public function __construct(UserRepository $users)
     {
         $this->users = $users;
-        $this->roles = $roles;
     }
 
     public function getActiveUserCounter()

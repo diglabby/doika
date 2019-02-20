@@ -28,11 +28,9 @@ use App\Notifications\ResetPassword as ResetPasswordNotification;
  * @property mixed                                                                                                     $can_delete
  * @property mixed                                                                                                     $can_edit
  * @property mixed                                                                                                     $can_impersonate
- * @property mixed                                                                                                     $formatted_roles
  * @property mixed                                                                                                     $is_super_admin
  * @property \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property \Illuminate\Database\Eloquent\Collection|\App\Models\SocialLogin[]                                        $providers
- * @property \Illuminate\Database\Eloquent\Collection|\App\Models\Role[]                                               $roles
  *
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User actives()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User findSimilarSlugs($attribute, $config, $slug)
