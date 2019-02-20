@@ -9,8 +9,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\ResetPassword as ResetPasswordNotification;
 
 /**
- * App\Models\User.
- *
  * @property int                                                                                                       $id
  * @property string                                                                                                    $name
  * @property string                                                                                                    $email
@@ -27,26 +25,11 @@ use App\Notifications\ResetPassword as ResetPasswordNotification;
  * @property mixed                                                                                                     $avatar
  * @property mixed                                                                                                     $can_delete
  * @property mixed                                                                                                     $can_edit
- * @property mixed                                                                                                     $can_impersonate
  * @property mixed                                                                                                     $is_super_admin
  * @property \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property \Illuminate\Database\Eloquent\Collection|\App\Models\SocialLogin[]                                        $providers
  *
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User actives()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User findSimilarSlugs($attribute, $config, $slug)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereEmailVerifiedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereLastAccessAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereLocale($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereTimezone($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class User extends Authenticatable
@@ -103,7 +86,6 @@ class User extends Authenticatable
         'avatar',
         'can_edit',
         'can_delete',
-        'can_impersonate',
     ];
 
     public static function boot()
@@ -199,5 +181,11 @@ class User extends Authenticatable
     public function __toString()
     {
         return $this->name;
+    }
+
+    /** @deprecated Created for backward compatibility with old code that we are going to remove */
+    public function isAdmin(): bool
+    {
+        return true;
     }
 }
