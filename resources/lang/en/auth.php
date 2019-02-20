@@ -15,5 +15,6 @@ return [
 
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'password_rules' => 'Password should be at least 7 characters',
 
 ];
