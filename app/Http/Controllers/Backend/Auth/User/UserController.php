@@ -5,12 +5,11 @@ namespace App\Http\Controllers\Backend\Auth\User;
 use App\Models\Auth\User;
 use App\Http\Controllers\Controller;
 use App\Events\Backend\Auth\User\UserDeleted;
-use App\Repositories\Backend\Auth\RoleRepository;
 use App\Repositories\Backend\Auth\UserRepository;
-use App\Repositories\Backend\Auth\PermissionRepository;
 use App\Http\Requests\Backend\Auth\User\StoreUserRequest;
 use App\Http\Requests\Backend\Auth\User\ManageUserRequest;
 use App\Http\Requests\Backend\Auth\User\UpdateUserRequest;
+use Illuminate\Contracts\Support\Renderable;
 
 /**
  * Class UserController.
@@ -43,18 +42,9 @@ class UserController extends Controller
             ->withUsers($this->userRepository->getActivePaginated(25, 'id', 'asc'));
     }
 
-    /**
-     * @param ManageUserRequest    $request
-     * @param RoleRepository       $roleRepository
-     * @param PermissionRepository $permissionRepository
-     *
-     * @return mixed
-     */
-    public function create(ManageUserRequest $request, RoleRepository $roleRepository, PermissionRepository $permissionRepository)
+    public function create(ManageUserRequest $request)
     {
-        return view('backend.auth.user.create')
-            ->withRoles($roleRepository->with('permissions')->get(['id', 'name']))
-            ->withPermissions($permissionRepository->get(['id', 'name']));
+        return view('backend.auth.user.create');
     }
 
     /**
@@ -73,8 +63,6 @@ class UserController extends Controller
             'active',
             'confirmed',
             'confirmation_email',
-            'roles',
-            'permissions'
         ));
 
         return redirect()->route('admin.auth.user.index')->withFlashSuccess(__('alerts.backend.users.created'));
@@ -92,22 +80,10 @@ class UserController extends Controller
             ->withUser($user);
     }
 
-    /**
-     * @param ManageUserRequest    $request
-     * @param RoleRepository       $roleRepository
-     * @param PermissionRepository $permissionRepository
-     * @param User                 $user
-     *
-     * @return mixed
-     */
-    public function edit(ManageUserRequest $request, RoleRepository $roleRepository, PermissionRepository $permissionRepository, User $user)
+    public function edit(ManageUserRequest $request, User $user): Renderable
     {
         return view('backend.auth.user.edit')
-            ->withUser($user)
-            ->withRoles($roleRepository->get())
-            ->withUserRoles($user->roles->pluck('name')->all())
-            ->withPermissions($permissionRepository->get(['id', 'name']))
-            ->withUserPermissions($user->permissions->pluck('name')->all());
+            ->withUser($user);
     }
 
     /**
@@ -124,8 +100,6 @@ class UserController extends Controller
             'first_name',
             'last_name',
             'email',
-            'roles',
-            'permissions'
         ));
 
         return redirect()->route('admin.auth.user.index')->withFlashSuccess(__('alerts.backend.users.updated'));

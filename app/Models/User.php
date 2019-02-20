@@ -56,15 +56,6 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
-     * The relationship that are eager loaded.
-     *
-     * @var array
-     */
-    protected $with = [
-        'roles',
-    ];
-
-    /**
      * The attributes that should be mutated to dates.
      *
      * @var array
@@ -157,58 +148,6 @@ class User extends Authenticatable
     public function getIsSuperAdminAttribute()
     {
         return 1 === $this->id;
-    }
-
-    /**
-     * Many-to-Many relations with Role.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class);
-    }
-
-    public function getFormattedRolesAttribute()
-    {
-        return $this->is_super_admin
-            ? __('labels.user.super_admin')
-            : $this->roles->implode('display_name', ', ');
-    }
-
-    /**
-     * @param $name
-     *
-     * @return bool
-     */
-    public function hasRole($name)
-    {
-        return $this->roles->contains('name', $name);
-    }
-
-    /**
-     * @return array
-     */
-    public function getPermissions()
-    {
-        $permissions = [];
-
-        foreach ($this->roles as $role) {
-            foreach ($role->permissions as $permission) {
-                if (! \in_array($permission, $permissions, true)) {
-                    $permissions[] = $permission;
-                }
-            }
-        }
-
-        // Add children permissions
-        foreach (config('permissions') as $name => $permission) {
-            if (isset($permission['children']) && \in_array($name, $permissions, true)) {
-                $permissions = array_merge($permissions, $permission['children']);
-            }
-        }
-
-        return collect($permissions);
     }
 
     /**

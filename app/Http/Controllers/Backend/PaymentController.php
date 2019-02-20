@@ -97,12 +97,6 @@ class PaymentController extends BackendController
         return $payment;
     }
 
-    public function getRoles()
-    {
-        //return $this->roles->getAllowedRoles();
-        return null;
-    }
-
     /**
      * @param StorePaymentRequest $request
      *

@@ -53,21 +53,6 @@ Route::group(
     }
 );
 
-Route::group(
-    ['middleware' => ['can:view roles']],
-    function () {
-        Route::get('roles/permissions', 'RoleController@getPermissions')->name('roles.get_permissions');
-
-        Route::get('roles/search', 'RoleController@search')->name('roles.search');
-        Route::get('roles/{role}/show', 'RoleController@show')->name('roles.show');
-
-        Route::resource('roles', 'RoleController', [
-            'only' => ['store', 'update', 'destroy'],
-        ]);
-    }
-);
-
-
 Route::get('/{vue_capture?}', 'BackendController@index')
     ->where('vue_capture', '[\/\w\.-]*')
     ->name('home');

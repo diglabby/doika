@@ -34,28 +34,6 @@
                         </div><!--col-->
                     </div><!--form-group-->
 
-                    <div class="form-group row">
-                        {{ html()->label(__('validation.attributes.backend.access.roles.associated_permissions'))
-                            ->class('col-md-2 form-control-label')
-                            ->for('permissions') }}
-
-                        <div class="col-md-10">
-                            @if($permissions->count())
-                                @foreach($permissions as $permission)
-                                    <div class="checkbox d-flex align-items-center">
-                                        {{ html()->label(
-                                                html()->checkbox('permissions[]', old('permissions') && in_array($permission->name, old('permissions')) ? true : false, $permission->name)
-                                                      ->class('switch-input')
-                                                      ->id('permission-'.$permission->id)
-                                                    . '<span class="switch-slider" data-checked="on" data-unchecked="off"></span>')
-                                                ->class('switch switch-label switch-pill switch-primary mr-2')
-                                            ->for('permission-'.$permission->id) }}
-                                        {{ html()->label(ucwords($permission->name))->for('permission-'.$permission->id) }}
-                                    </div>
-                                @endforeach
-                            @endif
-                        </div><!--col-->
-                    </div><!--form-group-->
                 </div><!--col-->
             </div><!--row-->
         </div><!--card-body-->

@@ -97,12 +97,6 @@ class CampaignController extends BackendController
         return $campaign;
     }
 
-    public function getRoles()
-    {
-        //return $this->roles->getAllowedRoles();
-        return null;
-    }
-
     /**
      * @param StoreCampaignRequest $request
      *
