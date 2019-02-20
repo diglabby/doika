@@ -68,14 +68,6 @@ trait UserMethod
     }
 
     /**
-     * @return mixed
-     */
-    public function isAdmin()
-    {
-        return $this->hasRole(config('access.users.admin_role'));
-    }
-
-    /**
      * @return bool
      */
     public function isActive()

@@ -10,7 +10,8 @@ use App\Notifications\ResetPassword as ResetPasswordNotification;
 
 /**
  * @property int                                                                                                       $id
- * @property string                                                                                                    $name
+ * @property string                                                                                                    $first_name
+ * @property string                                                                                                    $last_name
  * @property string                                                                                                    $email
  * @property \Carbon\Carbon|null                                                                                       $email_verified_at
  * @property string|null                                                                                               $password
@@ -51,7 +52,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'active',
         'locale',
@@ -187,5 +189,10 @@ class User extends Authenticatable
     public function isAdmin(): bool
     {
         return true;
+    }
+
+    public function getNameAttribute(): string
+    {
+        return "$this->first_name $this->last_name";
     }
 }
