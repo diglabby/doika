@@ -2,8 +2,6 @@
 
 namespace App\Models\Auth;
 
-use App\Models\Traits\Uuid;
-
 use Illuminate\Notifications\Notifiable;
 use App\Models\Auth\Traits\Scope\UserScope;
 use App\Models\Auth\Traits\Method\UserMethod;
@@ -25,8 +23,7 @@ class User extends Authenticatable
         UserAttribute,
         UserMethod,
         UserRelationship,
-        UserScope,
-        Uuid;
+        UserScope;
 
     /**
      * The attributes that are mass assignable.

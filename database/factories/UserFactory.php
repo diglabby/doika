@@ -1,7 +1,6 @@
 <?php
 
 use Faker\Generator;
-use Illuminate\Support\Str;
 use App\Models\Auth\User;
 
 /*
@@ -17,7 +16,6 @@ use App\Models\Auth\User;
 
 $factory->define(User::class, function (Generator $faker) {
     return [
-        'uuid' 			    => Str::uuid(),
         'first_name'        => $faker->firstName,
         'last_name'         => $faker->lastName,
         'email'             => $faker->safeEmail,
@@ -56,6 +54,6 @@ $factory->state(User::class, 'unconfirmed', function () {
 
 $factory->state(User::class, 'softDeleted', function () {
     return [
-        'deleted_at' => \Illuminate\Support\Carbon::now(),
+        'deleted_at' => now(),
     ];
 });
