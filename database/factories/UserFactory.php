@@ -19,6 +19,7 @@ $factory->define(User::class, function (Generator $faker) {
         'first_name'        => $faker->firstName,
         'last_name'         => $faker->lastName,
         'email'             => $faker->safeEmail,
+        'slug'              => $faker->unique()->slug,
         'password'          => 'secret',
         'password_changed_at' => null,
         'remember_token'    => str_random(10),

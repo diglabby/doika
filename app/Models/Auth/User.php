@@ -50,6 +50,7 @@ class User extends Authenticatable
         'active' => 0,
         'confirmed' => 0,
         'locale' => 'be',
+        'timezone' => 'Europe/Minsk',
     ];
 
     /**
