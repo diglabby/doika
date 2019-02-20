@@ -46,6 +46,11 @@ class User extends Authenticatable
         'last_login_ip',
     ];
 
+    protected $attributes = [
+        'active' => 0,
+        'convermed' => 0,
+    ];
+
     /**
      * The attributes that should be hidden for arrays.
      *
