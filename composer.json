@@ -1,7 +1,7 @@
 {
-    "name": "Doika",
+    "name": "diglabby/doika",
     "description": "Doika",
-    "keywords": ["vue"],
+    "keywords": ["vue", "laravel", "bePaid"],
     "license": "MIT",
     "type": "project",
     "require": {
