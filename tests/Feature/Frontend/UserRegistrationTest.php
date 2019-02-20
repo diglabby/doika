@@ -3,7 +3,6 @@
 namespace Tests\Feature\Frontend;
 
 use Tests\TestCase;
-use App\Models\Auth\Role;
 use App\Models\Auth\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Event;
@@ -26,8 +25,6 @@ class UserRegistrationTest extends TestCase
      */
     protected function registerUser($userData = [])
     {
-        factory(Role::class)->create(['name' => 'user']);
-
         return $this->post('/register', array_merge([
             'first_name' => 'John',
             'last_name' => 'Doe',

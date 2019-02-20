@@ -9,8 +9,6 @@ Route::group(
     function () {
         Route::get('users/active_counter', 'UserController@getActiveUserCounter')->name('users.active.counter');
 
-        Route::get('users/roles', 'UserController@getRoles')->name('users.get_roles');
-
         Route::get('users/search', 'UserController@search')->name('users.search');
         Route::get('users/{user}/show', 'UserController@show')->name('users.show');
 

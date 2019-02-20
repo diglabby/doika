@@ -3,7 +3,6 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use App\Models\Auth\Role;
 use App\Models\Auth\User;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Database\Eloquent\Model;
@@ -26,8 +25,6 @@ class UserRepositoryTest extends TestCase
         parent::setUp();
 
         $this->userRepository = $this->app->make(UserRepository::class);
-        // We create a test-role because almost every test need one
-        factory(Role::class)->create(['name' => 'test-role']);
     }
 
     protected function getValidUserData($userData = [])
@@ -38,7 +35,6 @@ class UserRepositoryTest extends TestCase
             'email' => 'john@example.com',
             'timezone' => 'UTC',
             'password' => 'secret',
-            'roles' => ['test-role'],
         ], $userData);
     }
 
