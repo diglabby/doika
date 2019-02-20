@@ -49,6 +49,7 @@ class User extends Authenticatable
     protected $attributes = [
         'active' => 0,
         'confirmed' => 0,
+        'locale' => 'be',
     ];
 
     /**
