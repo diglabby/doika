@@ -21,7 +21,6 @@ class CreateUsersTable extends Migration {
 			$table->dateTime('email_verified_at')->nullable();
 			$table->string('password', 191)->nullable();
 			$table->dateTime('password_changed_at')->nullable();
-			$table->boolean('active')->default(1);
 			$table->string('remember_token', 100)->nullable();
 			$table->string('locale', 191);
 			$table->string('timezone', 191);
