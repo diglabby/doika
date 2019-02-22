@@ -6,6 +6,8 @@ php:
   - 7.3
 
 before_script:
+  # disable xdebug if not coverage
+  - if [[ $COVERAGE == "" ]]; then phpenv config-rm xdebug.ini; fi
   - cp .env.ci .env
   - mysql -e 'create database doika;'
   - composer install --no-interaction --prefer-dist
@@ -16,3 +18,11 @@ cache:
 
 script:
   - composer test:ci
+
+after_script:
+  - |
+    if [[ $COVERAGE == true && $TRAVIS_BRANCH == "master" ]]; then
+      vendor/bin/phpunit --coverage-clover coverage.xml
+      wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.1.0/php-coveralls.phar
+      php php-coveralls.phar --verbose
+    fi
