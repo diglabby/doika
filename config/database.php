@@ -52,6 +52,19 @@ return [
             'engine'      => null,
         ],
 
+        'testing' => [
+            'driver'    => 'mysql',
+            'host'      => env('DB_TEST_HOST', 'localhost'),
+            'port'      => env('DB_TEST_PORT', '3306'),
+            'database'  => env('DB_TEST_DATABASE', 'doika'),
+            'username'  => env('DB_TEST_USERNAME', 'root'),
+            'password'  => env('DB_TEST_PASSWORD', ''),
+            'charset'   => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix'    => '',
+            'strict'    => true,
+        ],
+
         'pgsql' => [
             'driver'   => 'pgsql',
             'host'     => env('DB_HOST', '127.0.0.1'),

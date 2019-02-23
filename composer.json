@@ -82,7 +82,8 @@
         "post-update-cmd": [
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta"
-        ]
+        ],
+        "test:ci": "vendor/bin/phpunit --verbose -c phpunit.xml"
     },
     "config": {
         "preferred-install": "dist",
