@@ -22,7 +22,7 @@ export function createRouter(base, i18n) {
     scrollBehavior: () => ({ y: 0 }),
     routes: [
       {
-        path: '/doika/:locale/campaign/',
+        path: '/campaign/',
         name: 'campaign',
         component: Full,
         meta: {
@@ -47,7 +47,7 @@ export function createRouter(base, i18n) {
           },
           {
             path: ':id/donate/status',
-            name: 'status',
+            name: 'donateStatus',
             component: StatusWindow,
             meta: {
               label: i18n.t('labels.admin.campaigns.title')
@@ -63,7 +63,7 @@ export function createRouter(base, i18n) {
           },
           {
             path: ':id/recurrent/donate',
-            name: 'recurrent',
+            name: 'recurrentDonate',
             component: RecurrentDonateWindow,
             meta: {
               label: i18n.t('labels.admin.campaigns.title')
@@ -71,7 +71,7 @@ export function createRouter(base, i18n) {
           },
           {
             path: ':id/recurrent/status',
-            name: 'status',
+            name: 'recurrentStatus',
             component: StatusWindow,
             meta: {
               label: i18n.t('labels.admin.campaigns.title')

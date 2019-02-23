@@ -1,9 +1,14 @@
 <template>
   <div class="module-donate__donateWindow">
-    <p class="module-donate__title recurrent">User credentials page</p>
+    <p class="module-donate__title recurrent">{{ $t('labels.client.title') }}</p>
     <b-container fluid>
-      <b-row class="my-1" v-for="type in types" :key="type">
-        <b-col sm="6"><b-form-input :id="`type-${type}`" :placeholder="type" class="module-donate__text-input recurrent"></b-form-input></b-col>
+      <b-row class="my-1" v-for="field in fields" :key="field">
+        <b-col sm="6">
+          <md-field>
+            <label>{{ field }}</label>
+            <md-input v-model="type" class="donateWindow__input"></md-input>            
+          </md-field>
+        </b-col>
       </b-row>
       <b-form-checkbox id="checkbox1"
                        v-model="status"
@@ -11,16 +16,33 @@
                        unchecked-value="not_accepted"
                        class="donate__checkbox"
       >
-        I accept the terms and use
+        {{ $t('labels.client.termsOfUse') }}
       </b-form-checkbox>
     </b-container>
     <div class="donateWindow__footer">
-      <b-button to="/doika/campaign/1" class="module-donate__button-select confirm back">{{ $t('buttons.client.back') }}</b-button>
-      <b-button to="/doika/campaign/1/recurrent/donate" class="module-donate__button-select confirm">{{ $t('buttons.client.proceed') }}</b-button>
+      <b-button to="/campaign/1" class="module-donate__button-nonselect confirm back">{{ $t('buttons.client.back') }}</b-button>
+      <b-button to="/campaign/1/recurrent/donate" class="module-donate__button-select confirm">{{ $t('buttons.client.proceed') }}</b-button>
     </div>
     <p class="module-donate__version">powered by <a href="#" target="_blank">Doika</a></p>
   </div>
 </template>
+
+<style lang="scss">
+@import '~vue-material/dist/theme/engine';
+
+@import '~vue-material/dist/theme/all';
+.md-theme-default a:not(.md-button) {
+  color: #303030;
+}
+
+@include md-register-theme(
+  'default',
+  (
+    primary: #000000,
+    accent: #ff69b4
+  )
+);
+</style>
 
 <script>
 import axios from 'axios'
@@ -30,8 +52,19 @@ export default {
   data() {
     return {
       campaign: [],
-      placeholder: 'Email',
-      types: ['Name', 'Mail', 'Phone']
+      fields: [
+        this.$t('labels.client.name'),
+        this.$t('labels.client.email'),
+        this.$t('labels.client.phone')
+      ],
+      initial: 'Initial Value',
+      type: null,
+      withLabel: null,
+      inline: null,
+      number: null,
+      textarea: null,
+      autogrow: null,
+      disabled: null
     }
   },
   async created() {
