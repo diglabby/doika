@@ -32,7 +32,7 @@ class CreateUserTest extends TestCase
 
         $response = $this->post('/admin/auth/user', []);
 
-        $response->assertSessionHasErrors(['first_name', 'last_name', 'email', 'password', 'roles']);
+        $response->assertSessionHasErrors(['first_name', 'last_name', 'email', 'password']);
     }
 
     /** @test */
@@ -50,8 +50,7 @@ class CreateUserTest extends TestCase
                 'active' => '1',
                 'confirmed' => '0',
                 'timezone' => 'UTC',
-                'confirmation_email' => '1',
-                'roles' => [1 => 'executive', 2 => 'user'],
+                'confirmation_email' => '1',               
             ]);
 
         $response->assertSessionHasErrors('email');
@@ -76,8 +75,7 @@ class CreateUserTest extends TestCase
             'active' => '1',
             'confirmed' => '1',
             'timezone' => 'UTC',
-            'confirmation_email' => '1',
-            'roles' => [1 => 'administrator'],
+            'confirmation_email' => '1'            
         ]);
 
         $this->assertDatabaseHas(
@@ -110,8 +108,7 @@ class CreateUserTest extends TestCase
             'active' => '1',
             'confirmed' => '0',
             'timezone' => 'UTC',
-            'confirmation_email' => '1',
-            'roles' => [1 => 'administrator'],
+            'confirmation_email' => '1'            
         ]);
 
         $response->assertSessionHas(['flash_success' => __('alerts.backend.users.created')]);

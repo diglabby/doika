@@ -16,7 +16,7 @@ class AdminDashboardTest extends TestCase
     /** @test */
     public function unauthenticated_users_cant_access_admin_dashboard()
     {
-        $this->get('/admin/dashboard')->assertRedirect('/login');
+        $this->get('/doika/en/admin/campaigns')->assertRedirect('/doika/en/admin/login');
     }
 
     /** @test */
@@ -24,9 +24,9 @@ class AdminDashboardTest extends TestCase
     {
         $this->actingAs(factory(User::class)->create());
 
-        $response = $this->get('/admin/dashboard');
+        $response = $this->get('/doika/en/admin/campaigns');
 
-        $response->assertRedirect('/dashboard');
+        $response->assertRedirect('/doika/en/admin/campaigns');
     }
 
     /** @test */
@@ -34,6 +34,6 @@ class AdminDashboardTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $this->get('/admin/dashboard')->assertStatus(200);
+        $this->get('/doika/en/admin/campaigns')->assertStatus(200);
     }
 }
