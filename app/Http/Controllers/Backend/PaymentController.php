@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Utils\RequestSearchQuery;
 use App\Http\Requests\StorePaymentRequest;
 use App\Http\Requests\UpdatePaymentRequest;
-//use App\Repositories\Contracts\RoleRepository;
 use App\Repositories\Contracts\UserRepository;
 
 class PaymentController extends BackendController
@@ -95,12 +94,6 @@ class PaymentController extends BackendController
         }
 
         return $payment;
-    }
-
-    public function getRoles()
-    {
-        //return $this->roles->getAllowedRoles();
-        return null;
     }
 
     /**

@@ -9,6 +9,9 @@ before_script:
   - cp .env.ci .env
   - mysql -e 'create database doika;'
   - composer install --no-interaction --prefer-dist
+  - php artisan key:generate
+  - php artisan config:clear
+  - php artisan config:cache
 
 cache:
   directories:

@@ -32,7 +32,7 @@ class AdminDashboardTest extends TestCase
     /** @test */
     public function admin_can_access_admin_dashboard()
     {
-        $this->loginAsAdmin();
+        $this->actingAs(factory(User::class)->create());
 
         $this->get('/doika/en/admin/campaigns')->assertStatus(200);
     }

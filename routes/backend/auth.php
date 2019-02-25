@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Backend\Auth\Role\RoleController;
 use App\Http\Controllers\Backend\Auth\User\UserController;
 use App\Http\Controllers\Backend\Auth\User\UserAccessController;
 use App\Http\Controllers\Backend\Auth\User\UserStatusController;
@@ -93,18 +92,6 @@ Route::group([
             // Deleted
             Route::get($path + 'delete', [UserStatusController::class, 'delete'])->name('user.delete-permanently');
             Route::get($path + 'restore', [UserStatusController::class, 'restore'])->name('user.restore');
-        });
-    });
-
-    Route::group(['namespace' => 'Role'], function () {
-        Route::get($path + 'role', [RoleController::class, 'index'])->name('role.index');
-        Route::get($path + 'role/create', [RoleController::class, 'create'])->name('role.create');
-        Route::post($path + 'role', [RoleController::class, 'store'])->name('role.store');
-
-        Route::group(['prefix' => 'role/{role}'], function () {
-            Route::get($path + 'edit', [RoleController::class, 'edit'])->name('role.edit');
-            Route::patch($path + '/', [RoleController::class, 'update'])->name('role.update');
-            Route::delete($path + '/', [RoleController::class, 'destroy'])->name('role.destroy');
         });
     });
 });

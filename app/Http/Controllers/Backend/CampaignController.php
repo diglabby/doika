@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Utils\RequestSearchQuery;
 use App\Http\Requests\StoreCampaignRequest;
 use App\Http\Requests\UpdateCampaignRequest;
-//use App\Repositories\Contracts\RoleRepository;
 use App\Repositories\Contracts\UserRepository;
 
 class CampaignController extends BackendController
@@ -95,12 +94,6 @@ class CampaignController extends BackendController
         }
 
         return $campaign;
-    }
-
-    public function getRoles()
-    {
-        //return $this->roles->getAllowedRoles();
-        return null;
     }
 
     /**

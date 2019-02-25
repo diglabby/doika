@@ -11,12 +11,10 @@ use Illuminate\Support\ServiceProvider;
 use App\Repositories\EloquentTagRepository;
 use App\Repositories\EloquentMetaRepository;
 use App\Repositories\EloquentCampaignRepository;
-use App\Repositories\EloquentRoleRepository;
 use App\Repositories\EloquentUserRepository;
 use App\Repositories\Contracts\TagRepository;
 use App\Repositories\Contracts\MetaRepository;
 use App\Repositories\Contracts\CampaignRepository;
-use App\Repositories\Contracts\RoleRepository;
 use App\Repositories\Contracts\UserRepository;
 use App\Repositories\EloquentAccountRepository;
 use App\Repositories\Contracts\AccountRepository;
@@ -66,11 +64,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             AccountRepository::class,
             EloquentAccountRepository::class
-        );
-
-        $this->app->bind(
-            RoleRepository::class,
-            EloquentRoleRepository::class
         );
 
         $this->app->bind(

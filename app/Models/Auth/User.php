@@ -2,8 +2,6 @@
 
 namespace App\Models\Auth;
 
-use App\Models\Traits\Uuid;
-use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Auth\Traits\Scope\UserScope;
 use App\Models\Auth\Traits\Method\UserMethod;
@@ -18,15 +16,14 @@ use App\Models\Auth\Traits\Relationship\UserRelationship;
  */
 class User extends Authenticatable
 {
-    use HasRoles,
+    use
         Notifiable,
         SendUserPasswordReset,
         SoftDeletes,
         UserAttribute,
         UserMethod,
         UserRelationship,
-        UserScope,
-        Uuid;
+        UserScope;
 
     /**
      * The attributes that are mass assignable.
@@ -47,6 +44,13 @@ class User extends Authenticatable
         'timezone',
         'last_login_at',
         'last_login_ip',
+    ];
+
+    protected $attributes = [
+        'active' => 0,
+        'confirmed' => 0,
+        'locale' => 'be',
+        'timezone' => 'Europe/Minsk',
     ];
 
     /**

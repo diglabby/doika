@@ -9,10 +9,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\ResetPassword as ResetPasswordNotification;
 
 /**
- * App\Models\User.
- *
  * @property int                                                                                                       $id
- * @property string                                                                                                    $name
+ * @property string                                                                                                    $first_name
+ * @property string                                                                                                    $last_name
  * @property string                                                                                                    $email
  * @property \Carbon\Carbon|null                                                                                       $email_verified_at
  * @property string|null                                                                                               $password
@@ -27,42 +26,16 @@ use App\Notifications\ResetPassword as ResetPasswordNotification;
  * @property mixed                                                                                                     $avatar
  * @property mixed                                                                                                     $can_delete
  * @property mixed                                                                                                     $can_edit
- * @property mixed                                                                                                     $can_impersonate
- * @property mixed                                                                                                     $formatted_roles
  * @property mixed                                                                                                     $is_super_admin
  * @property \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property \Illuminate\Database\Eloquent\Collection|\App\Models\SocialLogin[]                                        $providers
- * @property \Illuminate\Database\Eloquent\Collection|\App\Models\Role[]                                               $roles
  *
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User actives()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User findSimilarSlugs($attribute, $config, $slug)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereEmailVerifiedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereLastAccessAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereLocale($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereTimezone($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class User extends Authenticatable
 {
     use Notifiable;
-
-    /**
-     * The relationship that are eager loaded.
-     *
-     * @var array
-     */
-    protected $with = [
-        'roles',
-    ];
 
     /**
      * The attributes that should be mutated to dates.
@@ -79,7 +52,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'active',
         'locale',
@@ -114,7 +88,6 @@ class User extends Authenticatable
         'avatar',
         'can_edit',
         'can_delete',
-        'can_impersonate',
     ];
 
     public static function boot()
@@ -157,58 +130,6 @@ class User extends Authenticatable
     public function getIsSuperAdminAttribute()
     {
         return 1 === $this->id;
-    }
-
-    /**
-     * Many-to-Many relations with Role.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class);
-    }
-
-    public function getFormattedRolesAttribute()
-    {
-        return $this->is_super_admin
-            ? __('labels.user.super_admin')
-            : $this->roles->implode('display_name', ', ');
-    }
-
-    /**
-     * @param $name
-     *
-     * @return bool
-     */
-    public function hasRole($name)
-    {
-        return $this->roles->contains('name', $name);
-    }
-
-    /**
-     * @return array
-     */
-    public function getPermissions()
-    {
-        $permissions = [];
-
-        foreach ($this->roles as $role) {
-            foreach ($role->permissions as $permission) {
-                if (! \in_array($permission, $permissions, true)) {
-                    $permissions[] = $permission;
-                }
-            }
-        }
-
-        // Add children permissions
-        foreach (config('permissions') as $name => $permission) {
-            if (isset($permission['children']) && \in_array($name, $permissions, true)) {
-                $permissions = array_merge($permissions, $permission['children']);
-            }
-        }
-
-        return collect($permissions);
     }
 
     /**
@@ -262,5 +183,16 @@ class User extends Authenticatable
     public function __toString()
     {
         return $this->name;
+    }
+
+    /** @deprecated Created for backward compatibility with old code that we are going to remove */
+    public function isAdmin(): bool
+    {
+        return true;
+    }
+
+    public function getNameAttribute(): string
+    {
+        return "$this->first_name $this->last_name";
     }
 }

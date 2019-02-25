@@ -1,7 +1,6 @@
 <?php
 
 use Faker\Generator;
-use Webpatser\Uuid\Uuid;
 use App\Models\Auth\User;
 
 /*
@@ -17,10 +16,10 @@ use App\Models\Auth\User;
 
 $factory->define(User::class, function (Generator $faker) {
     return [
-        'uuid' 			    => Uuid::generate(4)->string,
         'first_name'        => $faker->firstName,
         'last_name'         => $faker->lastName,
         'email'             => $faker->safeEmail,
+        'slug'              => $faker->unique()->slug,
         'password'          => 'secret',
         'password_changed_at' => null,
         'remember_token'    => str_random(10),
@@ -56,6 +55,6 @@ $factory->state(User::class, 'unconfirmed', function () {
 
 $factory->state(User::class, 'softDeleted', function () {
     return [
-        'deleted_at' => \Illuminate\Support\Carbon::now(),
+        'deleted_at' => now(),
     ];
 });

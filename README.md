@@ -1,4 +1,4 @@
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/diglabby/doika/badges/quality-score.png?b=dev)](https://scrutinizer-ci.com/g/diglabby/doika/?branch=dev) [![Build Status](https://scrutinizer-ci.com/g/diglabby/doika/badges/build.png?b=dev)](https://scrutinizer-ci.com/g/diglabby/doika/build-status/dev)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/diglabby/doika/badges/quality-score.png?b=dev)](https://scrutinizer-ci.com/g/diglabby/doika/?branch=dev) [![Build Status](https://scrutinizer-ci.com/g/diglabby/doika/badges/build.png?b=dev)](https://scrutinizer-ci.com/g/diglabby/doika/build-status/dev) [![Build Status](https://travis-ci.org/diglabby/doika.svg?branch=dev)](https://travis-ci.org/diglabby/doika)
 
 Doika - модуль, які дапамагае прымаць ахвяраванні з дапамогай банкаўскіх картак і наладзіць новы падыход у фандрэйзінгу беларускіх некамерцыйных грамадскіх арганізацый на сваіх сайтах
 

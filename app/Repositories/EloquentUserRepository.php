@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Config\Repository;
-use App\Repositories\Contracts\RoleRepository;
 use App\Repositories\Contracts\UserRepository;
 use Mcamara\LaravelLocalization\LaravelLocalization;
 
@@ -33,26 +32,18 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
     protected $config;
 
     /**
-     * @var RoleRepository
-     */
-    protected $roles;
-
-    /**
      * EloquentUserRepository constructor.
      *
      * @param User                                             $user
-     * @param \App\Repositories\Contracts\RoleRepository       $roles
      * @param \Mcamara\LaravelLocalization\LaravelLocalization $localization
      * @param \Illuminate\Contracts\Config\Repository          $config
      */
     public function __construct(
         User $user,
-        RoleRepository $roles,
         LaravelLocalization $localization,
         Repository $config
     ) {
         parent::__construct($user);
-        $this->roles = $roles;
         $this->localization = $localization;
         $this->config = $config;
     }
@@ -152,20 +143,6 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
         if (! $user->save()) {
             return false;
         }
-
-        $roles = $input['roles'] ?? [];
-
-        if (! empty($roles)) {
-            $allowedRoles = $this->roles->getAllowedRoles()->keyBy('id');
-
-            foreach ($roles as $id) {
-                if (! $allowedRoles->has($id)) {
-                    throw new GeneralException(__('exceptions.backend.users.cannot_set_superior_roles'));
-                }
-            }
-        }
-
-        $user->roles()->sync($roles);
 
         return true;
     }
