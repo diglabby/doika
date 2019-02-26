@@ -32,7 +32,7 @@ Vue.component('v-select', vSelect)
 Vue.component('c-switch', Switch)
 Vue.component('p-datetimepicker', DateTimePicker)
 Vue.component('p-richtexteditor', RichTextEditor)
-Vue.component('b-datatable', DataTable)
+Vue.component('p-richtexteditor', RichTextEditor)
 
 export function createApp() {
   // Init router and store
