@@ -286,10 +286,17 @@ export default {
                 }
             },
             "client": {
+                "title": "Дадзеныя карыстальніка",
+                "name": "Імя Прозвішча",
+                "email": "Пошта",
+                "phone": "Тэлефон",
+                "mask": "(+375)",
+                "termsOfUse": "Я згодны/згодна з правіламі карыстання",
                 "paymentInfo": "Terms of Use",
                 "input": "Сума",
                 "recieved": "Сабраная сума",
-                "needed": "Мэтавая сума"
+                "needed": "Мэтавая сума",
+                "thanks": "Вялікі дзякуй за дапамогу!"
             }
         },
         "pagination": {
@@ -534,7 +541,6 @@ export default {
                     "paymentSystem": "Payment system",
                     "startAt": "Start at",
                     "finishAt": "Finish at",
-                    "amount": "Amount",
                     "colors": "Colors configuration",
                     "preview": "Campaign preview",
                     "active": "Active",
@@ -546,8 +552,7 @@ export default {
                         "header": "Create campaign",
                         "breadcrumb": "Create",
                         "name": "Title",
-                        "image": "No file chosen",
-                        "amount": "Amount"
+                        "image": "No file chosen"
                     },
                     "create": {
                         "title": "Create campaign",

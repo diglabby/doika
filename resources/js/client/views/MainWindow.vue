@@ -20,7 +20,7 @@
           <input type="number" class="module-donate__text-input" :placeholder="$t('labels.client.input')">
           <b-button class="module-donate__button-select payment" @click="recurrent = '/donate'" :class="{clicked: (recurrent=='/donate')}">One time</b-button>
           <b-button class="module-donate__button-select payment" @click="recurrent = '/recurrent'" :class="{clicked: (recurrent=='/recurrent')}">Recurrent</b-button>
-          <b-button :to="'/doika/campaign/1' + recurrent" class="module-donate__button-select confirm">{{ $t('buttons.client.confirm') }}</b-button>
+          <b-button :to="'/campaign/1' + recurrent" class="module-donate__button-select confirm">{{ $t('buttons.client.confirm') }}</b-button>
           <a class="payment__description" id="show-modal" @click="showModal = true">{{ $t('labels.client.paymentInfo') }}</a>
           <transition name="modal" v-if="showModal">
             <div class="modal-mask">
@@ -54,7 +54,6 @@
 
   </div>
 </template>
-
 
 
 <script>
