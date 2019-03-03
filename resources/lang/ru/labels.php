@@ -7,7 +7,7 @@ return [
 			'description' => ''
 		]
 	],
-    'admin' => [	
+    'admin' => [
 		'title' => 'Управление',
 		'datatables' => [
 			'showPerPage' => 'Показать',
@@ -15,7 +15,7 @@ return [
 			'search' => 'Поиск',
 			'actions' => 'Действия',
 			'info' => 'Справка'
-		],		
+		],
 		'common' => [
 			'search' => 'Поиск',
 			'footer' => [
@@ -25,14 +25,14 @@ return [
 				'supporter' => 'Supported by the European Union'
 			],
 			'confirmation' => 'Вы уверены?'
-		],	
+		],
 		'newMenu' => [
 			'header' => 'Добавить',
 			'campaign' => 'Новая кампания',
             'user' => 'Новый пользователь'
 		],
 		'languageMenu' => [
-			'header' => 'Язык', 
+			'header' => 'Язык',
 			'be' => 'Белорусский',
             'ru' => 'Русский',
 			'en' => 'Английский'
@@ -40,15 +40,15 @@ return [
 		'accountMenu' => [
 			'header' => 'Профиль',
 			'avatar' => 'Аватар пользователя',
-			'logout' => 'Выйти'            
+			'logout' => 'Выйти'
 		],
-		'rightMenu' => [			
+		'rightMenu' => [
 			'divider' => [
 				'configuration' => 'Конфигурация модуля',
 				'access' => 'Управление доступом',
 				'help' => 'FAQ',
 				'feedback' => 'Обратная связь'
-			],			      
+			],
 		],
         'login' => [
             'title' => 'Вход в систему',
@@ -91,13 +91,13 @@ return [
 			'active' => 'Действующая',
 			'topBanner' => 'Верхний баннер',
 			'progressBar' => 'Полоса прогресса',
-			'options' => 'Параметры',			
+			'options' => 'Параметры',
 			'placeholder' => [
 				'shortcode' => 'Шорткод',
 				'header' => 'Создать кампанию',
 				'breadcrumb' => 'Создать',
 				'name' => 'Название',
-				'image' => 'Файл не выбран',				
+				'image' => 'Файл не выбран',
 			],
 			'create' => [
 				'title' => 'Создать кампанию',
@@ -110,7 +110,7 @@ return [
 				'breadcrumb' => 'Редактировать',
 			]
 		],
-		'payments' => [			
+		'payments' => [
 			'title' => 'Список пожертвований',
 			'header' => 'Список пожертвований',
 			'breadcrumb' => 'Список пожертвований',
@@ -125,7 +125,7 @@ return [
 				'success' => 'Успешно',
 				'failed' => 'Не успешно',
 				'error' => 'Не завершено'
-			],			
+			],
 			'show' => [
 				'title' => 'Показать платеж',
 				'header' => 'Показать платеж',
@@ -138,30 +138,34 @@ return [
 				'backer' => 'Жертвователь',
 				'recurrent' => 'Подписка на кампанию',
 				'status' => 'Статус оплаты',
-				'backerStatus' => 'Статус карты',			
+				'backerStatus' => 'Статус карты',
 			],
 		],
-		'settings' => [	
-			'title' => 'Настройки',		
+		'settings' => [
+			'title' => 'Настройки',
 			'payments' => [
 				'header' => 'Объединение с платёжной системой',
 				'idMarket' => 'Bepaid Market ID',
+				'artPayIdMarket' => 'Artpay Market Id',
 				'keyMarket' => 'Bepaid Market key',
+				'artPayKeyMarket' => 'Artpay Market key',
 				'test' => 'Отключить тестовые платежи',
 				'maxPayment' => 'Максимальный платеж, бел.руб',
 				'minPayment' => 'Минимальный платеж, бел.руб',
 				'termsOfUse' => 'Текст условий сервиса сбора пожертвований',
 				'placeholder' => [
 					'idMarket' => 'Bepaid Market ID',
+					'artPayIdMarket' => 'Artpay Market Id',
 					'keyMarket' => 'Bepaid Market key',
+					'artPayKeyMarket' => 'Artpay Market key',
 					'test' => 'Отключить тестовые платежи',
 					'maxPayment' => 'Максимальный платеж, бел.руб',
 					'minPayment' => 'Минимальный платеж, бел.руб',
 				]
-			],			
+			],
 			'layout' => [
-				'header' => 'Параметры макета'				
-			],	
+				'header' => 'Параметры макета'
+			],
 			'notifications' => [
 				'address' => 'Адрес сервера',
 				'port' => 'Порт сервера',
@@ -176,12 +180,12 @@ return [
 					'port' => 'Порт сервера',
 					'user' => 'Пользователь электронной почты',
 					'password' => 'Пароль',
-					'email' => 'Адрес электронный почты',					
-				]					
-			]			
+					'email' => 'Адрес электронный почты',
+				]
+			]
 		],
 		'help' => [
-			'title' => 'FAQ',            
+			'title' => 'FAQ',
             'header' => 'Как пользоваться модулем'
 		],
 		'feedback' => [
@@ -222,7 +226,7 @@ return [
 				'breadcrumb' => 'Редактировать',
 				'header' => 'Редактирование пользователя'
 			]
-			
+
 		]
     ],
 	'client' => [

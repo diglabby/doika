@@ -7,7 +7,7 @@ return [
 			'description' => ''
 		]
 	],
-    'admin' => [	
+    'admin' => [
 		'title' => 'Administration',
 		'datatables' => [
 			'showPerPage' => 'Show',
@@ -15,7 +15,7 @@ return [
 			'search' => 'Search',
 			'actions' => 'Actions',
 			'info' => ''
-		],		
+		],
 		'common' => [
 			'search' => 'Search',
 			'footer' => [
@@ -25,14 +25,14 @@ return [
 				'supporter' => 'Supported by the European Union'
 			],
 			'confirmation' => 'Are you sure?'
-		],	
+		],
 		'newMenu' => [
 			'header' => 'Add',
 			'campaign' => 'New campaign',
             'user' => 'New user'
 		],
 		'languageMenu' => [
-			'header' => 'Language', 
+			'header' => 'Language',
 			'be' => 'Belarussian',
             'ru' => 'Russian',
 			'en' => 'English'
@@ -40,15 +40,15 @@ return [
 		'accountMenu' => [
 			'header' => 'My profile',
 			'avatar' => 'User avatar',
-			'logout' => 'Logout'            
+			'logout' => 'Logout'
 		],
-		'rightMenu' => [			
+		'rightMenu' => [
 			'divider' => [
 				'configuration' => 'MODULE CONFIGURATION',
 				'access' => 'ACCESS MANAGEMENT',
 				'help' => 'FAQ',
 				'feedback' => 'FEEDBACK'
-			],			      
+			],
 		],
         'login' => [
             'title' => 'Administration',
@@ -91,13 +91,13 @@ return [
 			'active' => 'Active',
 			'topBanner' => 'Top banner',
 			'progressBar' => 'Progress bar',
-			'options' => 'Options',			
+			'options' => 'Options',
 			'placeholder' => [
 				'shortcode' => 'Shortcode',
 				'header' => 'Create campaign',
 				'breadcrumb' => 'Create',
 				'name' => 'Title',
-				'image' => 'No file chosen',				
+				'image' => 'No file chosen',
 			],
 			'create' => [
 				'title' => 'Create campaign',
@@ -110,7 +110,7 @@ return [
 				'breadcrumb' => 'Edit',
 			]
 		],
-		'payments' => [			
+		'payments' => [
 			'title' => 'Payments',
 			'header' => 'Payments list',
 			'breadcrumb' => 'Payments',
@@ -125,7 +125,7 @@ return [
 				'success' => 'Success',
 				'failed' => 'Failed',
 				'error' => 'Error'
-			],			
+			],
 			'show' => [
 				'title' => 'Show payment',
 				'header' => 'Show payment',
@@ -138,30 +138,34 @@ return [
 				'backer' => 'Backer',
 				'recurrent' => 'Recurrent',
 				'status' => 'Payment status',
-				'backerStatus' => 'Backer status',			
+				'backerStatus' => 'Backer status',
 			],
 		],
-		'settings' => [	
-			'title' => 'Settings',		
+		'settings' => [
+			'title' => 'Settings',
 			'payments' => [
 				'header' => 'Payment systems options',
 				'idMarket' => 'Bepaid Market Id',
+				'artPayIdMarket' => 'Artpay Market Id',
 				'keyMarket' => 'Bepaid Market key',
+				'artPayKeyMarket' => 'Artpay Market key',
 				'test' => 'Turn off test payments',
 				'maxPayment' => 'Max payment amount',
 				'minPayment' => 'Min payment amount',
 				'termsOfUse' => 'Terms of use',
 				'placeholder' => [
 					'idMarket' => 'Bepaid Market Id',
+					'artPayIdMarket' => 'Artpay Market Id',
 					'keyMarket' => 'Bepaid Market key',
+					'artPayKeyMarket' => 'Artpay Market key',
 					'test' => 'Turn off test payments',
 					'maxPayment' => 'Max payment amount',
 					'minPayment' => 'Min payment amount',
 				]
-			],			
+			],
 			'layout' => [
-				'header' => 'Layout options'				
-			],	
+				'header' => 'Layout options'
+			],
 			'notifications' => [
 				'address' => 'Server address',
 				'port' => 'Server port',
@@ -176,12 +180,12 @@ return [
 					'port' => 'Server port',
 					'user' => 'Email user',
 					'password' => 'Email password',
-					'email' => 'Email address',					
-				]					
-			]			
+					'email' => 'Email address',
+				]
+			]
 		],
 		'help' => [
-			'title' => 'FAQ',            
+			'title' => 'FAQ',
             'header' => 'Frequently asked questions'
 		],
 		'feedback' => [
@@ -222,7 +226,7 @@ return [
 				'breadcrumb' => 'Edit',
 				'header' => 'Edit user'
 			]
-			
+
 		]
     ],
 	'client' => [
