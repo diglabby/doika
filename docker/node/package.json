@@ -70,10 +70,8 @@
     "webpack-notifier": "^1.6.0"
   },
   "dependencies": {
-    "mdbvue": "^5.1.0",
     "verte": "0.0.7",
-    "vue-color": "^2.7.0",
-    "vue-material": "^1.0.0-beta-10.2"
+    "vue-color": "^2.7.0"
   },
   "browserslist": [
     "> 1%",
