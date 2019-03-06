@@ -248,11 +248,11 @@ export default {
                 "feedback": {
                     "title": "Зваротная сувязь",
                     "header": "Зваротная сувязь",
-                    "email": "E-mail",
+                    "email": "Ваш Email",
                     "name": "Імя",
                     "message": "Паведамленне",
                     "placeholder": {
-                        "email": "E-mail",
+                        "email": "Ваш Email",
                         "name": "Імя",
                         "message": "Напішыце Ваш зварот"
                     }
@@ -642,11 +642,11 @@ export default {
                 "feedback": {
                     "title": "Feedback",
                     "header": "Feedback",
-                    "email": "Email",
+                    "email": "Your Email",
                     "name": "Name",
                     "message": "Message",
                     "placeholder": {
-                        "email": "Email",
+                        "email": "Your Email",
                         "name": "Name",
                         "message": "Write your message"
                     }
@@ -1029,11 +1029,11 @@ export default {
                 "feedback": {
                     "title": "Обратная связь",
                     "header": "Обратная связь",
-                    "email": "E-mail",
+                    "email": "Ваш Email",
                     "name": "Имя",
                     "message": "Сообщение",
                     "placeholder": {
-                        "email": "E-mail",
+                        "email": "Ваш Email",
                         "name": "Имя",
                         "message": "Напишите Ваше обращение"
                     }
