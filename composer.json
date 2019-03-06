@@ -50,10 +50,11 @@
             "database/factories"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "laravel/",
+            "Diglabby\\Doika": "src/"
         },
         "files": [
-            "app/helpers.php"
+            "laravel/helpers.php"
         ]
     },
     "autoload-dev": {
