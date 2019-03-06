@@ -7,18 +7,11 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ExampleTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testBasicTest()
+    /** @test */
+    public function can_open_home_page()
     {
-        $this->withoutExceptionHandling();
-
         $response = $this->get(localize_url('en', route('home')));
 
-
-        $response->assertStatus(200);
+        $response->assertOk(200);
     }
 }
