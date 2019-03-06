@@ -14,7 +14,10 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $response = $this->get('/');
+        $this->withoutExceptionHandling();
+
+        $response = $this->get(localize_url('en', route('home')));
+
 
         $response->assertStatus(200);
     }
