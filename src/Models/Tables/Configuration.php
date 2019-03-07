@@ -1,10 +1,10 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Diglabby\Doika\Tables;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Configuration extends Model
+final class Configuration extends Model
 {
     //
 }
