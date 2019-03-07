@@ -3,19 +3,15 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ExampleTest extends TestCase
 {
-    use DatabaseMigrations;
-
-    /**
-     * A basic test example.
-     */
-    public function testBasicTest()
+    /** @test */
+    public function can_open_home_page()
     {
-        $response = $this->get('/');
+        $response = $this->get(localize_url('en', route('home')));
 
-        $response->assertStatus(200);
+        $response->assertOk();
     }
 }
