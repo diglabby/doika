@@ -5,8 +5,8 @@
         <img class="card__placeholder" src="/doika/public/images/card.png">
       </div>
       <div class="donateWindow__footer">
-        <b-button to="/doika/campaign/1/recurrent" class="module-donate__button-select confirm back">{{ $t('buttons.client.back') }}</b-button>
-        <b-button to="/doika/campaign/1/recurrent/status" class="module-donate__button-select confirm">{{ $t('buttons.client.proceed') }}</b-button>
+        <b-button to="/campaign/1/recurrent" class="module-donate__button-select confirm back">{{ $t('buttons.client.back') }}</b-button>
+        <b-button to="/campaign/1/recurrent/status" class="module-donate__button-select confirm">{{ $t('buttons.client.proceed') }}</b-button>
       </div>
       <p class="module-donate__version donateWindow">powered by <a href="#" target="_blank">Doika</a></p>
     </div>

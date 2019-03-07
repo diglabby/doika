@@ -1,7 +1,7 @@
 {
-    "name": "Doika",
+    "name": "diglabby/doika",
     "description": "Doika",
-    "keywords": ["vue"],
+    "keywords": ["vue", "laravel", "bePaid"],
     "license": "MIT",
     "type": "project",
     "require": {
@@ -50,10 +50,11 @@
             "database/factories"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "laravel/",
+            "Diglabby\\Doika": "src/"
         },
         "files": [
-            "app/helpers.php"
+            "laravel/helpers.php"
         ]
     },
     "autoload-dev": {
@@ -82,7 +83,8 @@
         "post-update-cmd": [
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta"
-        ]
+        ],
+        "test:ci": "vendor/bin/phpunit --verbose -c phpunit.xml"
     },
     "config": {
         "preferred-install": "dist",

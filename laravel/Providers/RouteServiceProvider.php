@@ -45,7 +45,7 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
 
-        Route::middleware(['web', 'metas', 'locale', 'localize'])
+        Route::middleware(['web', 'locale', 'localize'])
             ->prefix(LaravelLocalization::setLocale())
             ->namespace($this->namespace.'\Frontend')
             ->group(base_path('routes/public.php'));

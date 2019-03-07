@@ -55,7 +55,7 @@
     "turbolinks": "^5.2.0",
     "url-loader": "^1.1.1",
     "vue": "^2.5.17",
-    "vue-i18n": "^8.8.2",
+    "vue-i18n": "^8.0.0",
     "vue-loader": "^15.4.2",
     "vue-perfect-scrollbar": "^0.1.0",
     "vue-router": "^3.0.1",
@@ -70,10 +70,8 @@
     "webpack-notifier": "^1.6.0"
   },
   "dependencies": {
-    "mdbvue": "^5.1.0",
     "verte": "0.0.7",
-    "vue-color": "^2.7.0",
-    "vue-material": "^1.0.0-beta-10.2"
+    "vue-color": "^2.7.0"
   },
   "browserslist": [
     "> 1%",
