@@ -191,11 +191,11 @@ return [
 		'feedback' => [
 			'title' => 'Обратная связь',
 			'header' => 'Обратная связь',
-			'email' => 'E-mail',
+			'email' => 'Ваш Email',
 			'name' => 'Имя',
 			'message' => 'Сообщение',
 			'placeholder' => [
-				'email' => 'E-mail',
+				'email' => 'Ваш Email',
 				'name' => 'Имя',
 				'message' => 'Напишите Ваше обращение'
 			]

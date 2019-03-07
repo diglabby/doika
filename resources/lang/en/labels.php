@@ -191,11 +191,11 @@ return [
 		'feedback' => [
 			'title' => 'Feedback',
 			'header' => 'Feedback',
-			'email' => 'Email',
+			'email' => 'Your Email',
 			'name' => 'Name',
 			'message' => 'Message',
 			'placeholder' => [
-				'email' => 'Email',
+				'email' => 'Your Email',
 				'name' => 'Name',
 				'message' => 'Write your message'
 			]
