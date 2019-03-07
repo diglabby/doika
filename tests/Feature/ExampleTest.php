@@ -12,6 +12,6 @@ class ExampleTest extends TestCase
     {
         $response = $this->get(localize_url('en', route('home')));
 
-        $response->assertOk(200);
+        $response->assertOk();
     }
 }
