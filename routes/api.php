@@ -10,3 +10,6 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::get('/admins', function () {
+    return factory(\App\Admin::class, 10)->make();
+});

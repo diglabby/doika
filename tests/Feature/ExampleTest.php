@@ -8,9 +8,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class ExampleTest extends TestCase
 {
     /** @test */
-    public function can_open_home_page()
+    public function can_use_api_routes()
     {
-        $response = $this->get(localize_url('en', route('home')));
+        $response = $this->get('/api/admins');
 
         $response->assertOk();
     }
