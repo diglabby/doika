@@ -52,26 +52,24 @@ services:
     build:
       context: './'
       dockerfile: 'docker/node/Dockerfile' 
-    working_dir: /app
+    working_dir: /app  
     environment:
       - NODE_ENV=dev
-      - DEV_SERVER_PORT=3001
+      - DEV_SERVER_PORT=4000  
     volumes:
-      - ./:/app   
+      - .:/app/:rw     
       - /app/node_modules/
-      - ./docker/logs:/root/.npm/_logs     
+      - ./docker/node/logs:/root/.npm/_logs     
     ports:
-      - '3001:3001'     
+    - '4000:4000'
     expose:
-      - '3001'
-      - '8888'
-      - '8889'
+      - '4000'      
     command: >
       sh -c '
-        npm install       
-        npm rebuild node-sass
-        npm install babel-polyfill        
-        npm run build    
+      npm install && 
+      npm run dev
       '
+      
+  
   
     
