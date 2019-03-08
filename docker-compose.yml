@@ -52,7 +52,7 @@ services:
     build:
       context: './'
       dockerfile: 'docker/node/Dockerfile' 
-    working_dir: /app  
+    working_dir: /app
     environment:
       - NODE_ENV=dev
       - DEV_SERVER_PORT=4000  
