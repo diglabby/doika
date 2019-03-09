@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DoikaApp\Tables;
+namespace Diglabby\Doika\Tables;
 
 use Illuminate\Database\Eloquent\Model;
 
