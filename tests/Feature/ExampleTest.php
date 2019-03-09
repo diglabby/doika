@@ -10,7 +10,7 @@ class ExampleTest extends TestCase
     /** @test */
     public function can_open_home_page()
     {
-        $response = $this->get(localize_url('en', route('home')));
+        $response = $this->get('/doika/en/campaign/1');
 
         $response->assertOk();
     }
