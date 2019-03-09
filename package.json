@@ -1,5 +1,8 @@
 {
   "private": true,
+  "engines": {
+    "node": ">=8.10"
+  },
   "scripts": {
     "clean": "rimraf public/build",
     "build": "npm run clean && webpack --mode development --progress",
