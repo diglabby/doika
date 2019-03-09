@@ -61,7 +61,8 @@
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta"
         ],
-        "test:ci": "vendor/bin/phpunit --verbose -c phpunit.xml"
+        "test": "vendor/bin/phpunit",
+        "test:ci": "@test"
     },
     "config": {
         "preferred-install": "dist",
