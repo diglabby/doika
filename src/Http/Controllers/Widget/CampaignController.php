@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Diglabby\Doika\Http\Controllers\Frontend;
+namespace Diglabby\Doika\Http\Controllers\Widget;
 
 use App\Http\Controllers\Controller;
 use Diglabby\Doika\Tables\Campaign;

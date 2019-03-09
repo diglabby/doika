@@ -1,6 +1,6 @@
 <?php
 
-namespace Diglabby\Doika\Http\Controllers\Frontend;
+namespace Diglabby\Doika\Http\Controllers\Widget;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Repositories\Contracts\TagRepository;
 use App\Repositories\Contracts\UserRepository;
 
-class FrontendController extends Controller
+class WidgetController extends Controller
 {
     public function index(): Renderable
     {
