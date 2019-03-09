@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -13,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard'     => 'web',
-        'passwords' => 'users',
+        'guard' => 'web',
+        'passwords' => 'users', // default password broker name
     ],
 
     /*
@@ -36,13 +37,14 @@ return [
 
     'guards' => [
         'web' => [
-            'driver'   => 'session',
-            'provider' => 'users',
+            'driver' => 'session',
+            'provider' => 'admins',
         ],
 
         'api' => [
-            'driver'   => 'token',
-            'provider' => 'users',
+            'driver' => 'token',
+            'provider' => 'admins',
+            'hash' => false,
         ],
     ],
 
@@ -64,9 +66,9 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'admins' => [
             'driver' => 'eloquent',
-            'model'  => App\Models\User::class,
+            'model' => App\Admin::class,
         ],
 
         // 'users' => [
@@ -92,9 +94,10 @@ return [
 
     'passwords' => [
         'users' => [
-            'provider' => 'users',
-            'table'    => 'password_resets',
-            'expire'   => 60,
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
         ],
     ],
+
 ];
