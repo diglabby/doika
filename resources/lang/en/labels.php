@@ -167,6 +167,8 @@ return [
 				'header' => 'Layout options'
 			],
 			'notifications' => [
+				'serverSettings'=>'serverSettings',
+		  	'message'=>'message',
 				'address' => 'Server address',
 				'port' => 'Server port',
 				'user' => 'Email user',
@@ -174,7 +176,9 @@ return [
 				'email' => 'Email address',
 				'header' => 'Notifications options',
 				'reccurentTemplate' => 'Recurrent payments email template',
+				'donationService'=> 'text of the conditions of the donation service',
 				'singleTemplate' => 'Single payment email template',
+				'subjectOfNotification'=> 'subjectOfNotification',
 				'placeholder' => [
 					'address' => 'Server address',
 					'port' => 'Server port',

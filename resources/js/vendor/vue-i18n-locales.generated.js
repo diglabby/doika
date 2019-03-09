@@ -228,6 +228,8 @@ export default {
                         "header": "Параметры макета"
                     },
                     "notifications": {
+                        "serverSettings": "Серверные налады",
+                        "message": "Паведамленне",
                         "address": "Адрас сервера",
                         "port": "Порт сервера",
                         "user": "Карыстальнік электронная пошты",
@@ -235,7 +237,9 @@ export default {
                         "email": "Адрас электроннай пошты",
                         "header": "Наладка паведамленняў",
                         "reccurentTemplate": "Шаблон электроннага ліста для рэкурэнтных плацяжоў",
+                        "donationService": "Тэкст умоў сэрвісу збору ахвяраванняў",
                         "singleTemplate": "Удзячнасць за зроблены плацеж на пошту",
+                        "subjectOfNotification": "Тэма паведамлення",
                         "placeholder": {
                             "address": "Адрас сервера",
                             "port": "Порт сервера",
@@ -626,6 +630,8 @@ export default {
                         "header": "Layout options"
                     },
                     "notifications": {
+                        "serverSettings": "serverSettings",
+                        "message": "message",
                         "address": "Server address",
                         "port": "Server port",
                         "user": "Email user",
@@ -633,7 +639,9 @@ export default {
                         "email": "Email address",
                         "header": "Notifications options",
                         "reccurentTemplate": "Recurrent payments email template",
+                        "donationService": "text of the conditions of the donation service",
                         "singleTemplate": "Single payment email template",
+                        "subjectOfNotification": "subjectOfNotification",
                         "placeholder": {
                             "address": "Server address",
                             "port": "Server port",
@@ -1017,6 +1025,8 @@ export default {
                         "header": "Параметры макета"
                     },
                     "notifications": {
+                        "serverSettings": "Серверные настройки",
+                        "message": "Сообщение",
                         "address": "Адрес сервера",
                         "port": "Порт сервера",
                         "user": "Пользователь электронной почты",
@@ -1024,7 +1034,9 @@ export default {
                         "email": "Адрес электронной почты",
                         "header": "Настройка сообщений",
                         "reccurentTemplate": "Шаблон электронного письма для рекуррентных платежей",
+                        "donationService": "Текст условий сервиса сбора пожертвований",
                         "singleTemplate": "Благодарность за сделанный платеж на почту",
+                        "subjectOfNotification": "Тема уведомления",
                         "placeholder": {
                             "address": "Адрес сервера",
                             "port": "Порт сервера",

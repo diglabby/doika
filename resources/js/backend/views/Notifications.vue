@@ -13,126 +13,139 @@
                 </h5>
               </b-card-header>
               <b-collapse id="notifications" aria-expanded="true" visible role="tabpanel">
-                <b-card-body>
-                  <b-row>
-                    <b-col md>
-                      <b-form-group
-                        :label="$t('labels.admin.settings.notifications.address')"
-                        label-for="title"
-                        horizontal
-                        :label-cols="4"
-                        :feedback="feedback('title')"
-                      >
-                        <b-form-input
-                          id="title"
-                          name="title"
-                          required
-                          :placeholder="$t('labels.admin.settings.notifications.placeholder.address')"
-                          v-model="model.title"
-                          :state="state('title')"
-                        ></b-form-input>
-                      </b-form-group>
-                    </b-col>
-                    <b-col md>
-                      <b-form-group
-                        :label="$t('labels.admin.settings.notifications.port')"
-                        label-for="title"
-                        horizontal
-                        :label-cols="4"
-                        :feedback="feedback('title')"
-                      >
-                        <b-form-input
-                          id="title"
-                          name="title"
-                          required
-                          :placeholder="$t('labels.admin.settings.notifications.placeholder.port')"
-                          v-model="model.title"
-                          :state="state('title')"
-                        ></b-form-input>
-                      </b-form-group>
-                    </b-col>
-                  </b-row>
-                  <b-row>
-                    <b-col md>
-                      <b-form-group
-                        :label="$t('labels.admin.settings.notifications.user')"
-                        label-for="title"
-                        horizontal
-                        :label-cols="4"
-                        :feedback="feedback('title')"
-                      >
-                        <b-form-input
-                          id="title"
-                          name="title"
-                          required
-                          :placeholder="$t('labels.admin.settings.notifications.placeholder.user')"
-                          v-model="model.title"
-                          :state="state('title')"
-                        ></b-form-input>
-                      </b-form-group>
-                    </b-col>
-                    <b-col md>
-                      <b-form-group
-                        :label="$t('labels.admin.settings.notifications.password')"
-                        label-for="title"
-                        horizontal
-                        :label-cols="4"
-                        :feedback="feedback('title')"
-                      >
-                        <b-form-input
-                          id="title"
-                          name="title"
-                          required
-                          :placeholder="$t('labels.admin.settings.notifications.placeholder.password')"
-                          v-model="model.title"
-                          :state="state('title')"
-                        ></b-form-input>
-                      </b-form-group>
-                    </b-col>
-                  </b-row>
-                  <b-row>
-                    <b-col lg="6">
-                      <b-form-group
-                        :label="$t('labels.admin.settings.notifications.email')"
-                        label-for="title"
-                        horizontal
-                        :label-cols="4"
-                        :feedback="feedback('title')"
-                      >
-                        <b-form-input
-                          id="title"
-                          name="title"
-                          required
-                          :placeholder="$t('labels.admin.settings.notifications.placeholder.email')"
-                          v-model="model.title"
-                          :state="state('title')"
-                        ></b-form-input>
-                      </b-form-group>
-                    </b-col>
-                  </b-row>
-                  <b-form-group
-                    :label="$t('labels.admin.settings.notifications.reccurentTemplate')"
-                    label-for="body"
-                    horizontal
-                    :label-cols="2"
-                  >
-                    <p-richtexteditor
-                      name="body"
-                      v-model="model.body"
-                    ></p-richtexteditor>
-                  </b-form-group>
-                  <b-form-group
-                    :label="$t('labels.admin.settings.notifications.singleTemplate')"
-                    label-for="body"
-                    horizontal
-                    :label-cols="2"
-                  >
-                    <p-richtexteditor
-                      name="body"
-                      v-model="model.body"
-                    ></p-richtexteditor>
-                  </b-form-group>
-                </b-card-body>
+                <div>
+                  <b-tabs>
+                    <b-tab :title = "$t('labels.admin.settings.notifications.serverSettings')" active>
+                      <b-card-body>
+                        <b-row>
+                          <b-col md>
+                            <b-form-group
+                              :label="$t('labels.admin.settings.notifications.address')"
+                              label-for="title"
+                              horizontal
+                              :label-cols="4"
+                              :feedback="feedback('title')"
+                            >
+                              <b-form-input
+                                id="title"
+                                name="title"
+                                required
+                                :placeholder="$t('labels.admin.settings.notifications.placeholder.address')"
+                                v-model="model.title"
+                                :state="state('title')"
+                              ></b-form-input>
+                            </b-form-group>
+                          </b-col>
+                          <b-col md>
+                            <b-form-group
+                              :label="$t('labels.admin.settings.notifications.port')"
+                              label-for="title"
+                              horizontal
+                              :label-cols="4"
+                              :feedback="feedback('title')"
+                            >
+                              <b-form-input
+                                id="title"
+                                name="title"
+                                required
+                                :placeholder="$t('labels.admin.settings.notifications.placeholder.port')"
+                                v-model="model.title"
+                                :state="state('title')"
+                              ></b-form-input>
+                            </b-form-group>
+                          </b-col>
+                        </b-row>
+                        <b-row>
+                          <b-col md>
+                            <b-form-group
+                              :label="$t('labels.admin.settings.notifications.user')"
+                              label-for="title"
+                              horizontal
+                              :label-cols="4"
+                              :feedback="feedback('title')"
+                            >
+                              <b-form-input
+                                id="title"
+                                name="title"
+                                required
+                                :placeholder="$t('labels.admin.settings.notifications.placeholder.user')"
+                                v-model="model.title"
+                                :state="state('title')"
+                              ></b-form-input>
+                            </b-form-group>
+                          </b-col>
+                          <b-col md>
+                            <b-form-group
+                              :label="$t('labels.admin.settings.notifications.password')"
+                              label-for="title"
+                              horizontal
+                              :label-cols="4"
+                              :feedback="feedback('title')"
+                            >
+                              <b-form-input
+                                id="title"
+                                name="title"
+                                required
+                                :placeholder="$t('labels.admin.settings.notifications.placeholder.password')"
+                                v-model="model.title"
+                                :state="state('title')"
+                              ></b-form-input>
+                            </b-form-group>
+                          </b-col>
+                        </b-row>
+                      </b-card-body>
+                    </b-tab>
+                    <b-tab :title="$t('labels.admin.settings.notifications.message')">
+                      <b-card-body>
+                        <b-row>
+                          <b-col md>
+                            <b-form-group
+                              :label="$t('labels.admin.settings.notifications.subjectOfNotification')"
+                              label-for="body"
+                              horizontal
+                              :label-cols="3"
+                            >
+                              <p-richtexteditor
+                                name="body"
+                                v-model="model.body"
+                              ></p-richtexteditor>
+                            </b-form-group>
+                          </b-col>
+                        </b-row>
+                        <b-row>
+                          <b-col md>
+                            <b-form-group
+                              :label="$t('labels.admin.settings.notifications.donationService')"
+                              label-for="body"
+                              horizontal
+                              :label-cols="3"
+                            >
+                              <p-richtexteditor
+                                name="body"
+                                v-model="model.body"
+                              ></p-richtexteditor>
+                            </b-form-group>
+                          </b-col>
+                        </b-row>
+                        <b-row>
+                          <b-col md>
+                            <b-form-group
+                              :label="$t('labels.admin.settings.notifications.singleTemplate')"
+                              label-for="body"
+                              horizontal
+                              :label-cols="3"
+                            >
+                              <p-richtexteditor
+                                name="body"
+                                v-model="model.body"
+                              ></p-richtexteditor>
+                            </b-form-group>
+                          </b-col>
+                        </b-row>
+                      </b-card-body>
+                    </b-tab>
+                  </b-tabs>
+                </div>
               </b-collapse>
             </b-card>
             <b-row slot="footer">
@@ -140,7 +153,6 @@
               </b-col>
               <b-col md>
                 <input name="status" type="hidden" value="publish">
-
                 <b-button right split class="float-right" variant="success" @click="model.status = 'publish'; onSubmit()" :disabled="pending">
                   {{ $t('buttons.admin.common.apply') }}
                 </b-button>
@@ -152,6 +164,7 @@
     </form>
   </div>
 </template>
+
 
 <script>
 import axios from 'axios'
