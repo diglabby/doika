@@ -187,11 +187,11 @@ return [
 		'feedback' => [
 			'title' => 'Зваротная сувязь',
 			'header' => 'Зваротная сувязь',
-			'email' => 'E-mail',
+			'email' => 'Ваш Email',
 			'name' => 'Імя',
 			'message' => 'Паведамленне',
 			'placeholder' => [
-				'email' => 'E-mail',
+				'email' => 'Ваш Email',
 				'name' => 'Імя',
 				'message' => 'Напішыце Ваш зварот'
 			]
