@@ -16,3 +16,6 @@ npm-debug.log
 
 /public/build
 /public/dist
+
+/docker/apache/logs
+/docker/node/logs
