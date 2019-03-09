@@ -207,14 +207,18 @@ export default {
                     "payments": {
                         "header": "Злучэнне з плацежнай сістэмай",
                         "idMarket": "Bepaid Market ID",
+                        "artPayIdMarket": "Artpay Market Id",
                         "keyMarket": "Bepaid Market key",
+                        "artPayKeyMarket": "Artpay Market key",
                         "test": "Адключыць тэставыя плацяжы",
                         "maxPayment": "Максімальны плацёж, бел.руб",
                         "minPayment": "Мінімальны плацёж, бел.руб",
                         "termsOfUse": "Текст условий сервиса сбора пожертвований",
                         "placeholder": {
                             "idMarket": "Bepaid Market ID",
+                            "artPayIdMarket": "Artpay Market Id",
                             "keyMarket": "Bepaid Market key",
+                            "artPayKeyMarket": "Artpay Market key",
                             "test": "Адключыць тэставыя плацяжы",
                             "maxPayment": "Максімальны плацёж, бел.руб",
                             "minPayment": "Мінімальны плацёж, бел.руб"
@@ -601,14 +605,18 @@ export default {
                     "payments": {
                         "header": "Payment systems options",
                         "idMarket": "Bepaid Market Id",
+                        "artPayIdMarket": "Artpay Market Id",
                         "keyMarket": "Bepaid Market key",
+                        "artPayKeyMarket": "Artpay Market key",
                         "test": "Turn off test payments",
                         "maxPayment": "Max payment amount",
                         "minPayment": "Min payment amount",
                         "termsOfUse": "Terms of use",
                         "placeholder": {
                             "idMarket": "Bepaid Market Id",
+                            "artPayIdMarket": "Artpay Market Id",
                             "keyMarket": "Bepaid Market key",
+                            "artPayKeyMarket": "Artpay Market key",
                             "test": "Turn off test payments",
                             "maxPayment": "Max payment amount",
                             "minPayment": "Min payment amount"
@@ -988,14 +996,18 @@ export default {
                     "payments": {
                         "header": "Объединение с платёжной системой",
                         "idMarket": "Bepaid Market ID",
+                        "artPayIdMarket": "Artpay Market Id",
                         "keyMarket": "Bepaid Market key",
+                        "artPayKeyMarket": "Artpay Market key",
                         "test": "Отключить тестовые платежи",
                         "maxPayment": "Максимальный платеж, бел.руб",
                         "minPayment": "Минимальный платеж, бел.руб",
                         "termsOfUse": "Текст условий сервиса сбора пожертвований",
                         "placeholder": {
                             "idMarket": "Bepaid Market ID",
+                            "artPayIdMarket": "Artpay Market Id",
                             "keyMarket": "Bepaid Market key",
+                            "artPayKeyMarket": "Artpay Market key",
                             "test": "Отключить тестовые платежи",
                             "maxPayment": "Максимальный платеж, бел.руб",
                             "minPayment": "Минимальный платеж, бел.руб"
