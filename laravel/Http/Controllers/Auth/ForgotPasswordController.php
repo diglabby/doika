@@ -22,19 +22,11 @@ class ForgotPasswordController extends Controller
 
     /**
      * Create a new controller instance.
+     *
+     * @return void
      */
     public function __construct()
     {
         $this->middleware('guest');
-    }
-
-    /**
-     * Display the form to request a password reset link.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function showAdminLinkRequestForm()
-    {
-        return view('auth.admin.email');
     }
 }

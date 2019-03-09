@@ -8,8 +8,7 @@ php:
 before_script:
   # disable xdebug if not coverage
   - if [[ $COVERAGE == "" ]]; then phpenv config-rm xdebug.ini; fi
-  - cp .env.ci .env
-  - mysql -e 'create database doika;'
+  - cp .env.example .env
   - composer install --no-interaction --prefer-dist
 
 cache:
