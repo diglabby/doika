@@ -1,6 +1,6 @@
 <?php
 
-namespace Diglabby\Doika;
+namespace Diglabby\Doika\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;

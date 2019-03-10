@@ -1,8 +1,7 @@
 <?php
 
-namespace Diglabby\Doika;
+namespace Diglabby\Doika\Models;
 
-use Diglabby\Doika\Tables\Campaign;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
