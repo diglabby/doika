@@ -61,7 +61,7 @@ class RouteServiceProvider extends BasicRouteServiceProvider
             ->prefix(LaravelLocalization::setLocale())
             ->namespace($this->namespace)
             ->group(base_path('routes/public.php'));
-/*
+
         Route::middleware(['web', 'locale'])
             ->prefix(LaravelLocalization::setLocale())
             ->namespace($this->laravelNamespace)
@@ -71,7 +71,7 @@ class RouteServiceProvider extends BasicRouteServiceProvider
             ->prefix(LaravelLocalization::setLocale().'/'.config('app.admin_path'))
             ->namespace($this->laravelNamespace.'\Dashboard')
             ->as('admin.')
-            ->group(base_path('routes/admin.php'));*/
+            ->group(base_path('routes/admin.php'));
 
     }
 
