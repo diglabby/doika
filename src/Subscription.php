@@ -29,12 +29,6 @@ final class Subscription extends Model
         'payment_interval' => 'P1M', // means "Period: 1 Month"
     ];
 
-    /** @var array The attributes that should be mutated to dates */
-    protected $dates = [
-        'created_at',
-        'updated_at',
-    ];
-
     public function donator(): BelongsTo
     {
         return $this->belongsTo(Donator::class);

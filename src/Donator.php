@@ -14,12 +14,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int|null $phone
  *
  * Relationships:
- * @property-read Collection|Subscription[] $subscription
+ * @property-read Collection|Subscription[] $subscriptions
+ * @property-read Collection|Transaction[] $transactions
  */
 final class Donator extends Model
 {
     public function subscriptions(): HasMany
     {
         $this->hasMany(Subscription::class);
+    }
+
+    public function transactions(): HasMany
+    {
+        $this->hasMany(Transaction::class);
     }
 }
