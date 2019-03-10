@@ -1,7 +1,8 @@
 <?php
 
+use Diglabby\Doika\Models\Campaign;
 
-$factory->define(\Diglabby\Doika\Tables\Campaign::class, function (Faker\Generator $faker) {
+$factory->define(Campaign::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->words(),
         'description' => $faker->sentence,

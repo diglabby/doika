@@ -1,10 +1,10 @@
 <?php declare(strict_types = 1);
 
-namespace Diglabby\Doika\Tables;
+namespace Diglabby\Doika\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-final class CampaignLangInformation extends Model
+final class Payment extends Model
 {
     //связи модели один-ко-многим в которых она является дочерней
     public function campaign()
