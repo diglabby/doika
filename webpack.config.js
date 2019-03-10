@@ -10,7 +10,7 @@ const ManifestPlugin = require('webpack-manifest-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const hmr = process.argv.includes('--hot')
-const production = process.env.NODE_ENV === 'development'
+const production = process.env.NODE_ENV === 'production'
 const devServerPort = parseInt(process.env.DEV_SERVER_PORT || '80', 10)
 const devServerUrl = process.env.DEV_SERVER_URL || 'http://localhost:80'
 
