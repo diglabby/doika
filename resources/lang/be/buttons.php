@@ -35,7 +35,7 @@ return [
 		],
 		
 	],
-	'client' => [
+	'widget' => [
 		'back' => 'Назад',
 		'confirm' => 'Пацвердзіць',
 		'proceed' => 'Працягнуць'

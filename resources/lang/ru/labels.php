@@ -229,7 +229,7 @@ return [
 
 		]
     ],
-	'client' => [
+	'widget' => [
 		'paymentInfo' => 'Terms of Use',
 		'input' => 'Сумма',
 		'recieved' => 'Собранная сумма',
