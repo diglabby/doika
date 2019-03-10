@@ -2,8 +2,8 @@
 
 namespace Diglabby\Doika\Http\Middleware;
 
-use Carbon\Carbon;
 use Closure;
+use Illuminate\Support\Carbon;
 use Mcamara\LaravelLocalization\LaravelLocalization;
 
 class SetLocale
