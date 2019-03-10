@@ -21,7 +21,7 @@ class CreateTransactionsTable extends Migration
             $table->string('payment_gateway');
             $table->string('payment_gateway_transaction_id')->comment('Native trsanction ID on PG');
             $table->unsignedInteger('amount')->comment('Amount in cents');
-            $table->string('currency');
+            $table->string('currency', 3);
             $table->string('status');
             $table->string('status_message');
             $table->timestamps();

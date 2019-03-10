@@ -20,7 +20,7 @@ class CreateSubscriptionsTable extends Migration
             $table->string('payment_gateway');
             $table->string('payment_gateway_subscription_id')->comment('Native subscription ID on PG');
             $table->unsignedInteger('amount')->comment('Amount in cents');
-            $table->string('currency');
+            $table->string('currency', 3);
             $table->string('payment_interval')->comment('An ISO 8601 repeating interval specification');
             $table->timestamps();
 
