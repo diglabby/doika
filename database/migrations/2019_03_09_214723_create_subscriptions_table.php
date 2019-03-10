@@ -15,8 +15,8 @@ class CreateSubscriptionsTable extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('donator_id');
-            $table->unsignedInteger('campaign_id');
+            $table->unsignedBigInteger('donator_id');
+            $table->unsignedBigInteger('campaign_id');
             $table->string('payment_gateway');
             $table->string('payment_gateway_subscription_id')->comment('Native subscription ID on PG');
             $table->unsignedInteger('amount')->comment('Amount in cents');
