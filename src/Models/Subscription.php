@@ -1,8 +1,7 @@
 <?php
 
-namespace Diglabby\Doika;
+namespace Diglabby\Doika\Models;
 
-use Diglabby\Doika\Tables\Campaign;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -26,13 +25,7 @@ final class Subscription extends Model
     /** @var array Default attributes */
     protected $attributes = [
         'currency' => 'BYN',
-        'payment_interval' => 'P1M',
-    ];
-
-    /** @var array The attributes that should be mutated to dates */
-    protected $dates = [
-        'created_at',
-        'updated_at',
+        'payment_interval' => 'P1M', // means "Period: 1 Month"
     ];
 
     public function donator(): BelongsTo
