@@ -26,7 +26,7 @@ final class Subscription extends Model
     /** @var array Default attributes */
     protected $attributes = [
         'currency' => 'BYN',
-        'payment_interval' => 'P1M',
+        'payment_interval' => 'P1M', // means "Period: 1 Month"
     ];
 
     /** @var array The attributes that should be mutated to dates */
