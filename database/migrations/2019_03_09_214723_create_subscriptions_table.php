@@ -21,7 +21,7 @@ class CreateSubscriptionsTable extends Migration
             $table->string('payment_gateway_subscription_id')->comment('Native subscription ID on PG');
             $table->unsignedInteger('amount')->comment('Amount in cents');
             $table->string('currency');
-            $table->string('payment_period')->comment('"1 month", "1 week", etc');
+            $table->string('payment_interval')->comment('An ISO 8601 repeating interval specification');
             $table->timestamps();
 
             $table->foreign('donator_id')->references('id')->on('donators');
