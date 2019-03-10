@@ -9,7 +9,7 @@ use Diglabby\Doika\Models\Campaign;
 
 $factory->define(Campaign::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->words(),
+        'name' => $faker->words(3, true),
         'description' => $faker->sentence,
         'picture_url' => $faker->imageUrl(),
         'target_amount' => 10000,
