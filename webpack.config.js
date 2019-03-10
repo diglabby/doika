@@ -10,7 +10,7 @@ const ManifestPlugin = require('webpack-manifest-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const hmr = process.argv.includes('--hot')
-const production = process.env.NODE_ENV === 'production'
+const production = process.env.NODE_ENV === 'development'
 const devServerPort = parseInt(process.env.DEV_SERVER_PORT || '80', 10)
 const devServerUrl = process.env.DEV_SERVER_URL || 'http://localhost:80'
 
@@ -198,8 +198,8 @@ function getEntryConfig (name, analyzerPort, alias = {}) {
 }
 
 module.exports = [
-  getEntryConfig('client', 8888, {
+  getEntryConfig('widget', 8888, {
     'vue$': 'vue/dist/vue.esm.js'
   }),
-  getEntryConfig('backend', 8889)
+  getEntryConfig('dashboard', 8889)
 ]
