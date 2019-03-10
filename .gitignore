@@ -16,3 +16,8 @@ npm-debug.log
 
 /public/build
 /public/dist
+
+.phpunit.result.cache
+
+/docker/apache/logs
+/docker/node/logs

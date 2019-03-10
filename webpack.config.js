@@ -11,8 +11,8 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 const hmr = process.argv.includes('--hot')
 const production = process.env.NODE_ENV === 'production'
-const devServerPort = parseInt(process.env.DEV_SERVER_PORT || '8080', 10)
-const devServerUrl = process.env.DEV_SERVER_URL || 'http://localhost:8080'
+const devServerPort = parseInt(process.env.DEV_SERVER_PORT || '80', 10)
+const devServerUrl = process.env.DEV_SERVER_URL || 'http://localhost:80'
 
 const publicPathFolder = production ? '/dist/' : '/build/'
 const publicPath = hmr ? `${devServerUrl}${publicPathFolder}` : publicPathFolder
@@ -98,11 +98,11 @@ function getEntryConfig (name, analyzerPort, alias = {}) {
             }
           ])
         },
-        {
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          enforce: 'pre'
-        },
+        // {
+          // test: /\.(js|vue)$/,
+          // loader: 'eslint-loader',
+          // enforce: 'pre'
+        // },
         {
           test: /\.vue$/,
           loader: 'vue-loader'
@@ -182,6 +182,11 @@ function getEntryConfig (name, analyzerPort, alias = {}) {
       contentBase: path.resolve(__dirname, 'public'),
       headers: {
         'Access-Control-Allow-Origin': '*'
+      },
+      watchOptions: {
+        aggregateTimeout: 300,
+        poll: 1000,
+        ignored: /node_modules/
       },
       historyApiFallback: true,
       compress: true,

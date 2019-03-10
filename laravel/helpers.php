@@ -28,7 +28,7 @@ if (! function_exists('is_admin_route')) {
     {
         $action = $request->route()->getAction();
 
-        return 'App\Http\Controllers\Backend' === $action['namespace'];
+        return 'App\Http\Controllers\Dashboard' === $action['namespace'];
     }
 }
 
