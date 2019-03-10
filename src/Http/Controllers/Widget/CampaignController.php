@@ -3,7 +3,7 @@
 namespace Diglabby\Doika\Http\Controllers\Widget;
 
 use App\Http\Controllers\Controller;
-use Diglabby\Doika\Tables\Campaign;
+use Diglabby\Doika\Models\Campaign;
 use Faker\Generator;
 use Illuminate\Contracts\Support\Renderable;
 
