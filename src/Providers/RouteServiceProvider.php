@@ -39,11 +39,23 @@ class RouteServiceProvider extends BasicRouteServiceProvider
      */
     public function map()
     {
-        $this->mapApiRoutes();
+        $this->mapWidgetRoutes();
+        $this->mapDashboardRoutes();
+    }
 
-        $this->mapWebRoutes();
+    protected function mapWidgetRoutes()
+    {
+        Route::middleware('web')
+            ->prefix('doika')
+            ->group(base_path('routes/widget.php'));
+    }
 
-        //
+    protected function mapDashboardRoutes()
+    {
+        Route::middleware(['web'])
+            ->namespace($this->namespace)
+            ->prefix('doika/dashboard')
+            ->group(base_path('routes/dashboard.php'));
     }
 
     /**
@@ -73,18 +85,5 @@ class RouteServiceProvider extends BasicRouteServiceProvider
             ->as('admin.')
             ->group(base_path('routes/admin.php'));*/
 
-    }
-
-    /**
-     * Define the "api" routes for the application.
-     *
-     * These routes are typically stateless.
-     */
-    protected function mapApiRoutes()
-    {
-        Route::prefix('api')
-            ->middleware('api')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/api.php'));
     }
 }
