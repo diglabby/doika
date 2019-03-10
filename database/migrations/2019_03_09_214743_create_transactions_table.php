@@ -26,6 +26,7 @@ class CreateTransactionsTable extends Migration
             $table->string('status_message');
             $table->timestamps();
 
+            $table->foreign('campaign_id')->references('id')->on('campaigns');
             $table->foreign('subscription_id')->references('id')->on('subscriptions');
         });
     }
