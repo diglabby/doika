@@ -47,6 +47,7 @@ class RouteServiceProvider extends BasicRouteServiceProvider
     {
         Route::middleware('web')
             ->prefix('doika')
+            ->namespace($this->namespace)
             ->group(base_path('routes/widget.php'));
     }
 
@@ -68,11 +69,6 @@ class RouteServiceProvider extends BasicRouteServiceProvider
         Route::middleware('web')
             ->namespace($this->laravelNamespace)
             ->group(base_path('routes/web.php'));
-
-        Route::middleware(['web', 'locale', 'localize'])
-            ->prefix(LaravelLocalization::setLocale())
-            ->namespace($this->namespace)
-            ->group(base_path('routes/public.php'));
 
         Route::middleware(['web', 'locale'])
             ->prefix(LaravelLocalization::setLocale())
