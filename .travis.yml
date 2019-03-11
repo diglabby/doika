@@ -5,15 +5,16 @@ php:
   - 7.2
   - 7.3
 
+cache:
+  directories:
+    - $HOME/.composer/cache
+
 before_script:
   # disable xdebug if not coverage
   - if [[ $COVERAGE == "" ]]; then phpenv config-rm xdebug.ini; fi
   - cp .env.example .env
   - composer install --no-interaction --prefer-dist
-
-cache:
-  directories:
-    - $HOME/.composer/cache
+  - php artisan key:generate
 
 script:
   - composer test:ci
