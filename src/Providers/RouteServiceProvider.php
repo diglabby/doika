@@ -21,18 +21,6 @@ class RouteServiceProvider extends BasicRouteServiceProvider
     protected $laravelNamespace = 'App\Http\Controllers';
 
     /**
-     * Define your route model bindings, pattern filters, etc.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        //
-
-        parent::boot();
-    }
-
-    /**
      * Define the routes for the application.
      *
      * @return void
@@ -62,8 +50,8 @@ class RouteServiceProvider extends BasicRouteServiceProvider
             ->namespace($this->namespace)
             ->group(base_path('routes/public.php'));
 
-        Route::middleware(['web', 'locale'])
-            ->prefix(LaravelLocalization::setLocale())
+        Route::middleware(['web'])
+            ->prefix('doika/')
             ->namespace($this->laravelNamespace)
             ->group(base_path('routes/auth.php'));
 
@@ -72,7 +60,6 @@ class RouteServiceProvider extends BasicRouteServiceProvider
             ->namespace($this->laravelNamespace.'\Dashboard')
             ->as('admin.')
             ->group(base_path('routes/admin.php'));
-
     }
 
     /**
