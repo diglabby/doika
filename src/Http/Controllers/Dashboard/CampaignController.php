@@ -10,12 +10,14 @@ final class CampaignController extends Controller
 {
     public function index()
     {
-        return factory(Campaign::class, 10)->make();
+        return view('backend.admin.list', ['campaigns' => factory(Campaign::class, 10)->make()]);
     }
 
     public function show(int $campaignId)
     {
-        return factory(Campaign::class)->make();
+        return view('backend.admin.campaign', [
+            'camplaign' => factory(Campaign::class)->make(['id' => $campaignId])
+        ]);
     }
 
     public function delete(Campaign $campaign)
