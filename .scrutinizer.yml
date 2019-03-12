@@ -1,6 +1,7 @@
 build:
   tests:
     override:
+      - cp .env.example .env
       - composer test:ci
       - php-scrutinizer-run
       - phpcs-run
@@ -14,7 +15,7 @@ build:
     php73:
       environment:
         php: 7.3
-        mysql: 8.0
+        mysql: 5.7
 
     coverage:
       tests:
