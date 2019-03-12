@@ -18,6 +18,7 @@ before_script:
 
 script:
   - composer test:ci
+  - php artisan route:list
 
 after_script:
   - |
