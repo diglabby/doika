@@ -1,8 +1,8 @@
 <?php
 
-Route::get('index/search', 'AjaxController@search')->name('search');
-Route::get('routes/search', 'AjaxController@routesSearch')->name('routes.search');
-Route::post('images/upload', 'AjaxController@imageUpload')->name('images.upload');
+//Route::get('index/search', 'AjaxController@search')->name('search');
+//Route::get('routes/search', 'AjaxController@routesSearch')->name('routes.search');
+//Route::post('images/upload', 'AjaxController@imageUpload')->name('images.upload');
 
 Route::group(
     ['middleware' => ['can:view campaigns']],
