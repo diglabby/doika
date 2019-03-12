@@ -27,12 +27,23 @@ class RouteServiceProvider extends BasicRouteServiceProvider
      */
     public function map()
     {
-        $this->mapApiRoutes();
-
-        $this->mapWebRoutes();
-
-        //
+        $this->mapWidgetRoutes();
+        $this->mapDashboardRoutes();
     }
+
+    protected function mapWidgetRoutes()
+    {
+        Route::middleware('web')
+            ->prefix('doika')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/widget.php'));
+    }
+    protected function mapDashboardRoutes()
+    {
+        Route::middleware(['web'])
+            ->namespace($this->namespace)
+            ->prefix('doika/dashboard')
+            ->group(base_path('routes/dashboard.php'));
 
     /**
      * Define the "web" routes for the application.
@@ -45,11 +56,6 @@ class RouteServiceProvider extends BasicRouteServiceProvider
             ->namespace($this->laravelNamespace)
             ->group(base_path('routes/web.php'));
 
-        Route::middleware(['web', 'locale', 'localize'])
-            ->prefix(LaravelLocalization::setLocale())
-            ->namespace($this->namespace)
-            ->group(base_path('routes/public.php'));
-
         Route::middleware(['web'])
             ->prefix('doika/')
             ->namespace($this->laravelNamespace)
@@ -60,18 +66,6 @@ class RouteServiceProvider extends BasicRouteServiceProvider
             ->namespace($this->laravelNamespace.'\Dashboard')
             ->as('admin.')
             ->group(base_path('routes/admin.php'));
-    }
 
-    /**
-     * Define the "api" routes for the application.
-     *
-     * These routes are typically stateless.
-     */
-    protected function mapApiRoutes()
-    {
-        Route::prefix('api')
-            ->middleware('api')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/api.php'));
     }
 }
