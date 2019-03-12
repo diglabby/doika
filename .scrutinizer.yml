@@ -14,7 +14,7 @@ build:
     php73:
       environment:
         php: 7.3
-        mysql: 8.0
+        mysql: 5.7
 
     coverage:
       tests:
