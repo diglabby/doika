@@ -19,13 +19,15 @@ import vSelect from './components/Plugins/Select'
 import { createRouter } from './router'
 import { createStore } from './store'
 import { createLocales } from '../vue-i18n-config'
-
+import VueMaterial from 'vue-material'
+import 'vue-material/dist/vue-material.min.css'
+import 'vue-material/dist/theme/default-dark.css'
 import App from './App.vue'
 import Noty from 'noty'
 
 // Bootstrap Vue
 Vue.use(BootstrapVue)
-
+Vue.use(VueMaterial)
 // vue-select
 Vue.component('v-select', vSelect)
 
@@ -38,7 +40,7 @@ Vue.component('b-datatable', DataTable)
 export function createApp() {
   // Init router and store
   const i18n = createLocales(window.settings.locale)
-  const router = createRouter('/' + window.settings.locale, i18n)
+  const router = createRouter('/doika/' + window.settings.locale, i18n)
   const store = createStore(window.route)
 
   /**

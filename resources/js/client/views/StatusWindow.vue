@@ -1,11 +1,10 @@
 <template>
   <div>
     <div class="module-donate__status">
-      <p class="status__title">Successful payment</p>
+      <p class="status__title">{{ $t('labels.client.thanks') }}</p>
       <div class="module-donate__icon">
-        <img src="/doika/public/images/approve.png">
+        <img src="/doika/public/images/smile.png">
       </div>
-      <p class="status__text">Successful payment</p>
     </div>
     <div class="module-donate__footer">
       <p class="module-donate__version">powered by <a href="#" target="_blank">Doika</a></p>

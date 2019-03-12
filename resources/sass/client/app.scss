@@ -116,7 +116,15 @@
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
   }
-
+  .md-theme-default a {
+     color: #000 !important;     
+  }
+  .md-field.md-theme-default:before {
+     background-color: #000 !important;
+  }
+  .md-field.md-theme-default:after {
+    background-color: #000 !important;
+  }
   .module-donate__title {
     font-family: Ubuntu;
     color:  #31383e;
@@ -307,6 +315,27 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  .module-donate__button-nonselect {
+    font-family: Ubuntu, sans-serif;
+    width: 75px;
+    height: 50px;
+    margin-bottom:20px;
+    border: none;
+    padding: 0;
+    background-color: #FFFFFF;
+    color: #303030;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.07), 0 3px 6px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease 0s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-font-smoothing: antialiased;
+  }
+
   .module-donate__button-select.clicked {
     outline: none !important;
     background-color: #383838 !important;
@@ -343,10 +372,31 @@
     margin-bottom: 10px;
     margin-top: 15px;
   }
+  
+  .module-donate__button-nonselect.confirm {
+    margin-left: auto;
+    height: 50px;
+    width: 165px;
+    overflow: hidden;
+    background-color: #FFFFFF;
+    margin-bottom: 10px;
+    margin-top: 15px;
+  }
 
   .module-donate__button-select.confirm:hover {
     background-color: #FF80B4;
     color: #303030;
+  }
+  .md-field label {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 16px;
+    color: #3B3B3B !important;
+  }
+  .md-input {    
+    border-color: #000000 !important;
   }
 
   .module-donate__button-confirm {
@@ -355,7 +405,7 @@
     height: 55px;
     margin: 5px 0px 0px 10px;
     border: none;
-    color: #FF80B4;
+    color: #FF80B4 !important;
     font-size: 18px;
     font-weight: 500;
     background-color: #94c840;
@@ -381,14 +431,19 @@
     margin-top: -20px;
   }
 
-  .donate__checkbox {
-    font-family: Ubuntu, sans-serif;
-
-    color: #31383e;
+  .donate__checkbox .custom-control-label {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 12px;
+    color: #000000 !important;
+    
     padding-bottom: 45px;
   }
 
   .donateWindow__footer {
+    margin-top: 50px;
     font-size: 0;
     width: 400px;
     text-align: left;

@@ -68,6 +68,6 @@ Route::group(
 );
 
 
-Route::get('/{vue_capture?}', 'BackendController@index')
+Route::get('/{vue_capture?}', 'DashboardController@index')
     ->where('vue_capture', '[\/\w\.-]*')
     ->name('home');

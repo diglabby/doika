@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateCampaignsTable extends Migration
 {
@@ -17,13 +17,14 @@ class CreateCampaignsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
-            $table->string('title_picture_url');
+            $table->string('picture_url');
+            $table->unsignedInteger('target_amount')->comment('Target ammount in cents');
+            $table->string('currency', 3);
             $table->date('started_at');
             $table->date('finished_at');
             $table->integer('active_status');
-            $table->integer('amount');
-            $table->string('currency_code', 3);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

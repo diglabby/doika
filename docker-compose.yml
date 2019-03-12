@@ -1,0 +1,75 @@
+version: "3"
+
+services:
+  composer:
+    container_name: 'doika-composer'
+    restart: 'no'
+    image: composer
+    working_dir: /app    
+    volumes:
+      - ./:/app
+    command: 'install --ignore-platform-reqs'        
+  mysql:
+    build: ./docker/mysql
+    container_name: 'doika-mysql'
+    restart: 'always'
+    ports:
+      - "3306:3306"    
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: doika_db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: root
+  webserver:
+    build: 
+      context: './'
+      dockerfile: 'docker/apache/Dockerfile'  
+    container_name: 'doika-webserver'
+    restart: 'always'
+    working_dir: /var/www/html/doika
+    ports:
+      - "80:80"
+      - "443:443"
+    links: 
+      - mysql
+    volumes: 
+      - ./:/var/www/html/doika
+      - ./docker/apache/logs:/var/log/apache2
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+      - ./docker/php/apache/vhosts:/etc/apache2/sites-enabled
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: 'doika-phpmyadmin'
+    links:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+    ports:
+      - '8080:80'
+  node:
+    container_name: 'doika-node'
+    build:
+      context: './'
+      dockerfile: 'docker/node/Dockerfile' 
+    working_dir: /app
+    environment:
+      - NODE_ENV=dev
+      - DEV_SERVER_PORT=4000  
+    volumes:
+      - .:/app/:rw     
+      - /app/node_modules/
+      - ./docker/node/logs:/root/.npm/_logs     
+    ports:
+    - '4000:4000'
+    expose:
+      - '4000'      
+    command: >
+      sh -c '
+      npm install && 
+      npm run dev
+      '
+      
+  
+  
+    

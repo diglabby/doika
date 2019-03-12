@@ -13,118 +13,221 @@
                 </h5>
               </b-card-header>
               <b-collapse id="payment" aria-expanded="true" visible role="tabpanel">
-                <nav class="nav nav-tabs" id="myTab" role="tablist">
-                  <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-expanded="true">BePaid</a>
-                  <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile">Artpay</a>
-                </nav>
-                <div class="tab-content" id="nav-tabContent">
-                  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                    <b-card-body>
-                      <b-row>
-                        <b-col md>
-                          <b-form-group
-                            :label="$t('labels.admin.settings.payments.idMarket')"
-                            label-for="title"
-                            horizontal
-                            :label-cols="4"
-                            :feedback="feedback('title')"
-                          >
-                            <b-form-input
-                              id="title"
-                              name="title"
-                              required
-                              :placeholder="$t('labels.admin.settings.payments.placeholder.idMarket')"
-                              v-model="model.title"
-                              :state="state('title')"
-                            ></b-form-input>
-                          </b-form-group>
-                        </b-col>
+                <div>
+                  <b-tabs>
+                    <b-tab title = "BePaid" active>
+                      <b-card-body>
+                        <b-row>
+                          <b-col md>
+                            <b-form-group
+                              :label="$t('labels.admin.settings.payments.idMarket')"
+                              label-for="title"
+                              horizontal
+                              :label-cols="4"
+                              :feedback="feedback('title')"
+                            >
+                              <b-form-input
+                                id="title"
+                                name="title"
+                                required
+                                :placeholder="$t('labels.admin.settings.payments.placeholder.idMarket')"
+                                v-model="model.title"
+                                :state="state('title')"
+                              ></b-form-input>
+                            </b-form-group>
+                          </b-col>
 
-                        <b-col md>
-                          <b-form-group
-                            :label="$t('labels.admin.settings.payments.keyMarket')"
-                            label-for="title"
-                            horizontal
-                            :label-cols="4"
-                            :feedback="feedback('title')"
-                          >
-                            <b-form-input
-                              id="title"
-                              name="title"
-                              required
-                              :placeholder="$t('labels.admin.settings.payments.placeholder.keyMarket')"
-                              v-model="model.title"
-                              :state="state('title')"
-                            ></b-form-input>
-                          </b-form-group>
-                        </b-col>
-                      </b-row>
-
-                      <b-row>
-                        <b-col md>
-                          <b-form-group
-                            :label="$t('labels.admin.settings.payments.minPayment')"
-                            label-for="title"
-                            horizontal
-                            :label-cols="4"
-                            :feedback="feedback('title')"
-                          >
-                            <b-form-input
-                              id="title"
-                              name="title"
-                              required
-                              :placeholder="$t('labels.admin.settings.payments.placeholder.minPayment')"
-                              v-model="model.title"
-                              :state="state('title')"
-                            ></b-form-input>
-                          </b-form-group>
-                        </b-col>
-
-                        <b-col md>
-                          <b-form-group
-                            :label="$t('labels.admin.settings.payments.maxPayment')"
-                            label-for="title"
-                            horizontal
-                            :label-cols="4"
-                            :feedback="feedback('title')"
-                          >
-                            <b-form-input
-                              id="title"
-                              name="title"
-                              required
-                              :placeholder="$t('labels.admin.settings.payments.placeholder.maxPayment')"
-                              v-model="model.title"
-                              :state="state('title')"
-                            ></b-form-input>
-                          </b-form-group>
-                        </b-col>
-                      </b-row>
-                      <div class="form-group">
-                        <b-row class="mb-4 mt-4">
-                          <b-col lg="5" offset-lg="2">
-                            <c-switch
-                              name="test"
-                              v-model="model.test"
-                              :description="$t('labels.admin.settings.payments.test')"
-                            ></c-switch>
+                          <b-col md>
+                            <b-form-group
+                              :label="$t('labels.admin.settings.payments.keyMarket')"
+                              label-for="title"
+                              horizontal
+                              :label-cols="4"
+                              :feedback="feedback('title')"
+                            >
+                              <b-form-input
+                                id="title"
+                                name="title"
+                                required
+                                :placeholder="$t('labels.admin.settings.payments.placeholder.keyMarket')"
+                                v-model="model.title"
+                                :state="state('title')"
+                              ></b-form-input>
+                            </b-form-group>
                           </b-col>
                         </b-row>
-                      </div>
-                      <b-form-group
-                        :label="$t('labels.admin.settings.payments.termsOfUse')"
-                        label-for="body"
-                        horizontal
-                        :label-cols="2"
-                      >
-                        <p-richtexteditor
-                          name="body"
-                          v-model="model.body"
-                        ></p-richtexteditor>
-                      </b-form-group>
-                    </b-card-body>
-                  </div>
-                  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+
+                        <b-row>
+                          <b-col md>
+                            <b-form-group
+                              :label="$t('labels.admin.settings.payments.minPayment')"
+                              label-for="title"
+                              horizontal
+                              :label-cols="4"
+                              :feedback="feedback('title')"
+                            >
+                              <b-form-input
+                                id="title"
+                                name="title"
+                                required
+                                :placeholder="$t('labels.admin.settings.payments.placeholder.minPayment')"
+                                v-model="model.title"
+                                :state="state('title')"
+                              ></b-form-input>
+                            </b-form-group>
+                          </b-col>
+
+                          <b-col md>
+                            <b-form-group
+                              :label="$t('labels.admin.settings.payments.maxPayment')"
+                              label-for="title"
+                              horizontal
+                              :label-cols="4"
+                              :feedback="feedback('title')"
+                            >
+                              <b-form-input
+                                id="title"
+                                name="title"
+                                required
+                                :placeholder="$t('labels.admin.settings.payments.placeholder.maxPayment')"
+                                v-model="model.title"
+                                :state="state('title')"
+                              ></b-form-input>
+                            </b-form-group>
+                          </b-col>
+                        </b-row>
+                        <div class="form-group">
+                          <b-row class="mb-4 mt-4">
+                            <b-col lg="5" offset-lg="2">
+                              <c-switch
+                                name="test"
+                                v-model="model.test"
+                                :description="$t('labels.admin.settings.payments.test')"
+                              ></c-switch>
+                            </b-col>
+                          </b-row>
+                        </div>
+                        <b-form-group
+                          :label="$t('labels.admin.settings.payments.termsOfUse')"
+                          label-for="body"
+                          horizontal
+                          :label-cols="2"
+                        >
+                          <p-richtexteditor
+                            name="body"
+                            v-model="model.body"
+                          ></p-richtexteditor>
+                        </b-form-group>
+                      </b-card-body>
+                    </b-tab>
+                    <b-tab title = "Artpay">
+                      <b-card-body>
+                        <b-row>
+                          <b-col md>
+                            <b-form-group
+                              :label="$t('labels.admin.settings.payments.artPayIdMarket')"
+                              label-for="title"
+                              horizontal
+                              :label-cols="4"
+                              :feedback="feedback('title')"
+                            >
+                              <b-form-input
+                                id="title"
+                                name="title"
+                                required
+                                :placeholder="$t('labels.admin.settings.payments.placeholder.artPayIdMarket')"
+                                v-model="model.title"
+                                :state="state('title')"
+                              ></b-form-input>
+                            </b-form-group>
+                          </b-col>
+
+                          <b-col md>
+                            <b-form-group
+                              :label="$t('labels.admin.settings.payments.artPayKeyMarket')"
+                              label-for="title"
+                              horizontal
+                              :label-cols="4"
+                              :feedback="feedback('title')"
+                            >
+                              <b-form-input
+                                id="title"
+                                name="title"
+                                required
+                                :placeholder="$t('labels.admin.settings.payments.placeholder.artPayKeyMarket')"
+                                v-model="model.title"
+                                :state="state('title')"
+                              ></b-form-input>
+                            </b-form-group>
+                          </b-col>
+                        </b-row>
+
+                        <b-row>
+                          <b-col md>
+                            <b-form-group
+                              :label="$t('labels.admin.settings.payments.minPayment')"
+                              label-for="title"
+                              horizontal
+                              :label-cols="4"
+                              :feedback="feedback('title')"
+                            >
+                              <b-form-input
+                                id="title"
+                                name="title"
+                                required
+                                :placeholder="$t('labels.admin.settings.payments.placeholder.minPayment')"
+                                v-model="model.title"
+                                :state="state('title')"
+                              ></b-form-input>
+                            </b-form-group>
+                          </b-col>
+
+                          <b-col md>
+                            <b-form-group
+                              :label="$t('labels.admin.settings.payments.maxPayment')"
+                              label-for="title"
+                              horizontal
+                              :label-cols="4"
+                              :feedback="feedback('title')"
+                            >
+                              <b-form-input
+                                id="title"
+                                name="title"
+                                required
+                                :placeholder="$t('labels.admin.settings.payments.placeholder.maxPayment')"
+                                v-model="model.title"
+                                :state="state('title')"
+                              ></b-form-input>
+                            </b-form-group>
+                          </b-col>
+                        </b-row>
+                        <div class="form-group">
+                          <b-row class="mb-4 mt-4">
+                            <b-col lg="5" offset-lg="2">
+                              <c-switch
+                                name="test"
+                                v-model="model.test"
+                                :description="$t('labels.admin.settings.payments.test')"
+                              ></c-switch>
+                            </b-col>
+                          </b-row>
+                        </div>
+                        <b-form-group
+                          :label="$t('labels.admin.settings.payments.termsOfUse')"
+                          label-for="body"
+                          horizontal
+                          :label-cols="2"
+                        >
+                          <p-richtexteditor
+                            name="body"
+                            v-model="model.body"
+                          ></p-richtexteditor>
+                        </b-form-group>
+                      </b-card-body>
+                    </b-tab>
+                  </b-tabs>
                 </div>
+
               </b-collapse>
             </b-card>
             <b-row slot="footer">

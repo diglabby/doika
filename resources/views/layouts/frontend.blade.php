@@ -10,8 +10,6 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    {!! SEOMeta::generate() !!}
-
     @if (count(config('laravellocalization.supportedLocales')) > 1)
     @include('partials.alternates')
     @endif
@@ -54,14 +52,14 @@
                 @yield('highlight')
             </section>
         @endif
-
+{{--
         @if(Breadcrumbs::exists() && !request()->routeIs('home'))
             <section class="nav-breadcrumb bg-dark">
                 <div class="container">
-                    {!! Breadcrumbs::render() !!}
+--}}{{--                    {!! Breadcrumbs::render() !!}--}}{{--
                 </div>
             </section>
-        @endif
+        @endif--}}
 
         <div class="main-container container py-4">
             @hasSection('title')

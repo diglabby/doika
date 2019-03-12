@@ -207,14 +207,18 @@ export default {
                     "payments": {
                         "header": "Злучэнне з плацежнай сістэмай",
                         "idMarket": "Bepaid Market ID",
+                        "artPayIdMarket": "Artpay Market Id",
                         "keyMarket": "Bepaid Market key",
+                        "artPayKeyMarket": "Artpay Market key",
                         "test": "Адключыць тэставыя плацяжы",
                         "maxPayment": "Максімальны плацёж, бел.руб",
                         "minPayment": "Мінімальны плацёж, бел.руб",
                         "termsOfUse": "Текст условий сервиса сбора пожертвований",
                         "placeholder": {
                             "idMarket": "Bepaid Market ID",
+                            "artPayIdMarket": "Artpay Market Id",
                             "keyMarket": "Bepaid Market key",
+                            "artPayKeyMarket": "Artpay Market key",
                             "test": "Адключыць тэставыя плацяжы",
                             "maxPayment": "Максімальны плацёж, бел.руб",
                             "minPayment": "Мінімальны плацёж, бел.руб"
@@ -248,11 +252,11 @@ export default {
                 "feedback": {
                     "title": "Зваротная сувязь",
                     "header": "Зваротная сувязь",
-                    "email": "E-mail",
+                    "email": "Ваш Email",
                     "name": "Імя",
                     "message": "Паведамленне",
                     "placeholder": {
-                        "email": "E-mail",
+                        "email": "Ваш Email",
                         "name": "Імя",
                         "message": "Напішыце Ваш зварот"
                     }
@@ -286,10 +290,17 @@ export default {
                 }
             },
             "client": {
+                "title": "Дадзеныя карыстальніка",
+                "name": "Імя Прозвішча",
+                "email": "Пошта",
+                "phone": "Тэлефон",
+                "mask": "(+375)",
+                "termsOfUse": "Я згодны/згодна з правіламі карыстання",
                 "paymentInfo": "Terms of Use",
                 "input": "Сума",
                 "recieved": "Сабраная сума",
-                "needed": "Мэтавая сума"
+                "needed": "Мэтавая сума",
+                "thanks": "Вялікі дзякуй за дапамогу!"
             }
         },
         "pagination": {
@@ -534,7 +545,6 @@ export default {
                     "paymentSystem": "Payment system",
                     "startAt": "Start at",
                     "finishAt": "Finish at",
-                    "amount": "Amount",
                     "colors": "Colors configuration",
                     "preview": "Campaign preview",
                     "active": "Active",
@@ -546,8 +556,7 @@ export default {
                         "header": "Create campaign",
                         "breadcrumb": "Create",
                         "name": "Title",
-                        "image": "No file chosen",
-                        "amount": "Amount"
+                        "image": "No file chosen"
                     },
                     "create": {
                         "title": "Create campaign",
@@ -596,14 +605,18 @@ export default {
                     "payments": {
                         "header": "Payment systems options",
                         "idMarket": "Bepaid Market Id",
+                        "artPayIdMarket": "Artpay Market Id",
                         "keyMarket": "Bepaid Market key",
+                        "artPayKeyMarket": "Artpay Market key",
                         "test": "Turn off test payments",
                         "maxPayment": "Max payment amount",
                         "minPayment": "Min payment amount",
                         "termsOfUse": "Terms of use",
                         "placeholder": {
                             "idMarket": "Bepaid Market Id",
+                            "artPayIdMarket": "Artpay Market Id",
                             "keyMarket": "Bepaid Market key",
+                            "artPayKeyMarket": "Artpay Market key",
                             "test": "Turn off test payments",
                             "maxPayment": "Max payment amount",
                             "minPayment": "Min payment amount"
@@ -637,11 +650,11 @@ export default {
                 "feedback": {
                     "title": "Feedback",
                     "header": "Feedback",
-                    "email": "Email",
+                    "email": "Your Email",
                     "name": "Name",
                     "message": "Message",
                     "placeholder": {
-                        "email": "Email",
+                        "email": "Your Email",
                         "name": "Name",
                         "message": "Write your message"
                     }
@@ -983,14 +996,18 @@ export default {
                     "payments": {
                         "header": "Объединение с платёжной системой",
                         "idMarket": "Bepaid Market ID",
+                        "artPayIdMarket": "Artpay Market Id",
                         "keyMarket": "Bepaid Market key",
+                        "artPayKeyMarket": "Artpay Market key",
                         "test": "Отключить тестовые платежи",
                         "maxPayment": "Максимальный платеж, бел.руб",
                         "minPayment": "Минимальный платеж, бел.руб",
                         "termsOfUse": "Текст условий сервиса сбора пожертвований",
                         "placeholder": {
                             "idMarket": "Bepaid Market ID",
+                            "artPayIdMarket": "Artpay Market Id",
                             "keyMarket": "Bepaid Market key",
+                            "artPayKeyMarket": "Artpay Market key",
                             "test": "Отключить тестовые платежи",
                             "maxPayment": "Максимальный платеж, бел.руб",
                             "minPayment": "Минимальный платеж, бел.руб"
@@ -1024,11 +1041,11 @@ export default {
                 "feedback": {
                     "title": "Обратная связь",
                     "header": "Обратная связь",
-                    "email": "E-mail",
+                    "email": "Ваш Email",
                     "name": "Имя",
                     "message": "Сообщение",
                     "placeholder": {
-                        "email": "E-mail",
+                        "email": "Ваш Email",
                         "name": "Имя",
                         "message": "Напишите Ваше обращение"
                     }
