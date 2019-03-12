@@ -44,6 +44,6 @@ final class Campaign extends Model
 
     public function campaign_lang_informations()
     {
-        return $this->hasMany(CampaignLangInformation::class);
+        return $this->hasMany(CampaignTranslation::class);
     }
 }
