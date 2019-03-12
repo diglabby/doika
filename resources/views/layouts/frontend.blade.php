@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}" dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
+<html lang="{{ app()->getLocale() }}">
 <head>
     @include('frontend.scripts.gtm')
 
@@ -11,7 +11,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @if (count(config('laravellocalization.supportedLocales')) > 1)
-    @include('partials.alternates')
+{{--    @include('partials.alternates')--}}
     @endif
 
     <!-- Styles -->

@@ -27,9 +27,9 @@
                             {{ __('labels.language') }}
                         </a>
 
-                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                      {{--  <div class="dropdown-menu" aria-labelledby="dropdown01">
                             @include('partials.locales')
-                        </div>
+                        </div>--}}
                     </div>
                 @endif
                 @guest

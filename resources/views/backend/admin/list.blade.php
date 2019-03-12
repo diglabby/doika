@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.backend')
 @section('title', 'Спіс кампаній')
 @section('content')
 	<div class="main-buttons">
@@ -56,5 +56,5 @@
 	</table>
 @endsection
 @section('popups')
-@includeWhen(!isset($first_login), 'shared.popup.first')
+{{--@includeWhen(!isset($first_login), 'shared.popup.first')--}}
 @endsection
