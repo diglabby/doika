@@ -18,4 +18,4 @@ Route::delete('/donators/{id}', 'Dashboard\DonatorController@delete')->name('das
 
 Route::get('/{vue_capture?}', 'Dashboard\DashboardController@index')
     ->where('vue_capture', '[\/\w\.-]*')
-    ->name('home');
+    ->name('dashboard.home');
