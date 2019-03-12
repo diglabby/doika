@@ -46,9 +46,6 @@
                             </div>
                         </div>
                     </form>
-                    <div class="row justify-content-center">
-                        {!! $socialiteLinks !!}
-                    </div>
                 </div>
             </div>
         </div>
