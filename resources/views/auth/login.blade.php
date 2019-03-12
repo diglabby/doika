@@ -28,14 +28,6 @@
                             </div>
                         </div>
 
-                        @if($isLocked)
-                        <div class="form-group row">
-                            <div class="col-md-8 ml-auto">
-                                {!! Form::captcha() !!}
-                            </div>
-                        </div>
-                        @endif
-
                         <div class="form-group row">
                             <div class="col-md-8 ml-auto">
                                 {{ Form::bsCheckbox('remember', __('labels.user.remember')) }}
@@ -62,7 +54,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    {!! Captcha::script() !!}
-@endpush

@@ -66,7 +66,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    {!! Captcha::script() !!}
-@endpush

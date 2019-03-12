@@ -28,11 +28,6 @@
                                     {{ Form::bsPassword('password', ['required', 'placeholder' => __('labels.admin.login.placeholder.password')]) }}
                                 </div>
 
-                                @if($isLocked)
-                                    <div class="form-group">
-                                        {!! Form::captcha() !!}
-                                    </div>
-                                @endif
                                 <div class="form-group">
                                     {{ Form::bsCheckbox('remember', __('labels.admin.login.remember')) }}
                                 </div>
@@ -52,7 +47,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    {!! Captcha::script() !!}
-@endpush
