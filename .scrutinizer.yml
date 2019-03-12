@@ -1,6 +1,7 @@
 build:
   tests:
     override:
+      - cp .env.example .env
       - composer test:ci
       - php-scrutinizer-run
       - phpcs-run
