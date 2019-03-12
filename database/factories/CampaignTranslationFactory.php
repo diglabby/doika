@@ -17,6 +17,8 @@ $factory->define(CampaignTranslation::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->state(Campaign::class, 'with_campaign', [
-    'campaign_id' => factory(Campaign::class)->lazy(),
-]);
+$factory->state(CampaignTranslation::class, 'with_campaign', function () {
+    return [
+        'campaign_id' => factory(Campaign::class)->lazy()
+    ];
+});
