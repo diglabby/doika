@@ -6,7 +6,7 @@ use App\Providers\RouteServiceProvider as BasicRouteServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-class RouteServiceProvider extends BasicRouteServiceProvider
+final class RouteServiceProvider extends BasicRouteServiceProvider
 {
     /**
      * This namespace is applied to your controller routes.
@@ -21,70 +21,34 @@ class RouteServiceProvider extends BasicRouteServiceProvider
     protected $laravelNamespace = 'App\Http\Controllers';
 
     /**
-     * Define your route model bindings, pattern filters, etc.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        //
-
-        parent::boot();
-    }
-
-    /**
      * Define the routes for the application.
      *
      * @return void
      */
     public function map()
     {
-        $this->mapApiRoutes();
-
-        $this->mapWebRoutes();
-
-        //
+        $this->mapWidgetRoutes();
+        $this->mapDashboardRoutes();
     }
 
-    /**
-     * Define the "web" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     */
-    protected function mapWebRoutes()
+    protected function mapWidgetRoutes()
     {
         Route::middleware('web')
-            ->namespace($this->laravelNamespace)
-            ->group(base_path('routes/web.php'));
-
-        Route::middleware(['web', 'locale', 'localize'])
-            ->prefix(LaravelLocalization::setLocale())
+            ->prefix('doika')
             ->namespace($this->namespace)
-            ->group(base_path('routes/public.php'));
-/*
-        Route::middleware(['web', 'locale'])
-            ->prefix(LaravelLocalization::setLocale())
+            ->group(base_path('routes/widget.php'));
+    }
+
+    protected function mapDashboardRoutes()
+    {
+        Route::middleware(['web'])
+            ->prefix('doika/')
             ->namespace($this->laravelNamespace)
             ->group(base_path('routes/auth.php'));
 
-        Route::middleware(['web', 'locale', 'auth', 'can:access backend'])
-            ->prefix(LaravelLocalization::setLocale().'/'.config('app.admin_path'))
-            ->namespace($this->laravelNamespace.'\Dashboard')
-            ->as('admin.')
-            ->group(base_path('routes/admin.php'));*/
-
-    }
-
-    /**
-     * Define the "api" routes for the application.
-     *
-     * These routes are typically stateless.
-     */
-    protected function mapApiRoutes()
-    {
-        Route::prefix('api')
-            ->middleware('api')
+        Route::middleware(['web', 'auth'])
+            ->prefix('doika/dashboard/')
             ->namespace($this->namespace)
-            ->group(base_path('routes/api.php'));
+            ->group(base_path('routes/dashboard.php'));
     }
 }

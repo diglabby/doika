@@ -4,7 +4,6 @@ namespace Diglabby\Doika\Http\Controllers\Widget;
 
 use App\Http\Controllers\Controller;
 use Diglabby\Doika\Models\Campaign;
-use Faker\Generator;
 use Illuminate\Contracts\Support\Renderable;
 
 final class CampaignController extends Controller
