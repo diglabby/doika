@@ -23,6 +23,7 @@
         "martinlindhe/laravel-vue-i18n-generator": "^0.1.22"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-ide-helper": "^2.5",
         "beyondcode/laravel-dump-server": "^1.2",
         "filp/whoops": "^2.0",
