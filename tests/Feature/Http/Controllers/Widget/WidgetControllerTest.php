@@ -9,6 +9,8 @@ class WidgetControllerTest extends TestCase
     /** @test */
     function it_can_open_widget()
     {
+        $this->withoutExceptionHandling();
+
         $response = $this->get(route('home'));
 
         $response->assertOk();

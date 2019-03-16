@@ -78,7 +78,7 @@
         "post-create-project-cmd": [
             "@php artisan key:generate"
         ],
-        "test": "vendor/bin/phpunit",
-        "test:ci": "@test"
+        "test": "./vendor/bin/phpunit --colors=always",
+        "test:ci": "@test --exclude-group=network"
     }
 }
