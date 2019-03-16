@@ -3,7 +3,9 @@
 namespace Diglabby\Doika\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Carbon;
 
 /**
  * @property int $id
@@ -18,6 +20,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property Carbon|null $deleted_at
+ *
+ * Relationships
+ * @property Transaction[] $translations
  */
 final class Campaign extends Model
 {
@@ -37,12 +42,12 @@ final class Campaign extends Model
         'active_status' => 'bool',
     ];
 
-    /** @var array Default vattribute values */
+    /** @var array Default attribute values */
     protected $attributes = [
         'active_status' => false,
     ];
 
-    public function campaign_lang_informations()
+    public function translations(): HasMany
     {
         return $this->hasMany(CampaignTranslation::class);
     }
