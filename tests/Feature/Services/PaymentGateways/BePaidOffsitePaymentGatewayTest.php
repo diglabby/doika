@@ -21,6 +21,7 @@ class BePaidOffsitePaymentGatewayTest extends TestCase
 
     /**
      * @test
+     * @group real-api
      * @group network
      */
     function it_returns_payment_token()
