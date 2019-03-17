@@ -41,7 +41,7 @@ final class RouteServiceProvider extends BasicRouteServiceProvider
     protected function mapDashboardRoutes()
     {
         Route::middleware(['web'])
-            ->prefix('doika/')
+            ->prefix('doika/dashboard/')
             ->namespace($this->laravelNamespace)
             ->group(base_path('routes/auth.php'));
 
