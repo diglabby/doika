@@ -12,7 +12,7 @@ class WidgetController extends Controller
 {
     public function index(): Renderable
     {
-        return view('client.campaign');
+        return view('widget.campaign');
     }
 
     /**
