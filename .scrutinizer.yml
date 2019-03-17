@@ -37,6 +37,8 @@ build:
 
 filter:
   excluded_paths:
+    - 'bootstrap/*'
+    - 'public/*'
     - 'resources/*'
     - 'tests/*'
   dependency_paths:
