@@ -34,7 +34,6 @@ build:
       tests:
         override:
           - php-scrutinizer-run
-          - phpcs-run
 
 filter:
   excluded_paths:
