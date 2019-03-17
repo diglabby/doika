@@ -1,48 +1,12 @@
-build:
-  tests:
-    before:
-      - cp .env.example .env
-    override:
-      - composer test:ci
-      - php-scrutinizer-run
-      - phpcs-run
-
-  nodes:
-    php71:
-      environment:
-        php: 7.1.3
-        mysql: 5.5
-
-    php73:
-      environment:
-        php: 7.3
-        mysql: 5.7
-
-    coverage:
-      tests:
-        override:
-          - command: composer test:ci
-            coverage:
-              file: target/coverage.xml   # <- Set this to where we find the coverage data. The path is relative to the current directory.
-              format: clover
-
-
 filter:
   excluded_paths:
-    - 'resources/*'
+    - 'bootstrap/*'
+    - 'public/*'
     - 'tests/*'
   dependency_paths:
     - 'vendor/*'
+    - 'node_modules/*'
 
 
 checks:
-  php: true
   javascript: true
-
-
-coding_style:
-  php: {  }
-
-
-tools:
-# ...
