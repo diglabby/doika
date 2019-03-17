@@ -1,4 +1,4 @@
-@extends('layouts.client')
+@extends('layouts.widget')
 
 @section('body_class', 'page-home-campaign')
 
