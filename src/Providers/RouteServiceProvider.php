@@ -4,7 +4,6 @@ namespace Diglabby\Doika\Providers;
 
 use App\Providers\RouteServiceProvider as BasicRouteServiceProvider;
 use Illuminate\Support\Facades\Route;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 final class RouteServiceProvider extends BasicRouteServiceProvider
 {

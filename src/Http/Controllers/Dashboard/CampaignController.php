@@ -4,7 +4,6 @@ namespace Diglabby\Doika\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Diglabby\Doika\Models\Campaign;
-use Illuminate\Http\Request;
 
 final class CampaignController extends Controller
 {
