@@ -51,7 +51,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
                     'fail_url' => $appUrl.'status=fail',
                     'cancel_url' => $appUrl.'status=cancel',
                     'notification_url' => route('webhooks.bepaid.donated', [$campaign->id]),
-                    'language' => app()->getLocale(),
+                    'language' => $this->config->get('app.locale'),
                 ],
                 'order' => [
                     'amount' => $money->getAmount(),
