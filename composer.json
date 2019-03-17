@@ -16,11 +16,13 @@
         "ext-mbstring": "*",
         "ext-zip": "*",
         "fideloper/proxy": "^4.0",
+        "guzzlehttp/guzzle": "^6.3",
         "hieu-le/active": "^3.5",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.7",
-        "martinlindhe/laravel-vue-i18n-generator": "^0.1.22"
+        "martinlindhe/laravel-vue-i18n-generator": "^0.1.22",
+        "moneyphp/money": "^3.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
