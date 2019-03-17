@@ -19,6 +19,6 @@ Route::get('campaign/{campaignId}/recurrent/create-donator', 'Widget\CampaignCon
 Route::post('campaign/{campaignId}/recurrent/donate', 'Widget\CampaignController@donateRecurrent')->name('campaign.recurrent.donate')->where('campaignId', '[0-9]+');
 
 /** @todo @fr0zen will remove it */
-Route::get('about', function () {})->name('about');
-Route::get('contact', function () {})->name('contact');
-Route::get('legal-mentions', function () {})->name('legal-mentions');
+Route::get('about', function () { return 'this route is deprecated'; })->name('about');
+Route::get('contact', function () { return 'this route is deprecated'; })->name('contact');
+Route::get('legal-mentions', function () { return 'this route is deprecated'; })->name('legal-mentions');
