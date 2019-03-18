@@ -4,7 +4,6 @@ namespace Diglabby\Doika\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Diglabby\Doika\Models\Donator;
-use Diglabby\Doika\Models\Transaction;
 use Illuminate\Http\Response;
 
 final class DonatorController extends Controller

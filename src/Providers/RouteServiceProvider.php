@@ -4,7 +4,6 @@ namespace Diglabby\Doika\Providers;
 
 use App\Providers\RouteServiceProvider as BasicRouteServiceProvider;
 use Illuminate\Support\Facades\Route;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 final class RouteServiceProvider extends BasicRouteServiceProvider
 {
@@ -29,6 +28,7 @@ final class RouteServiceProvider extends BasicRouteServiceProvider
     {
         $this->mapWidgetRoutes();
         $this->mapDashboardRoutes();
+        $this->mapRedirectRoutes();
     }
 
     protected function mapWidgetRoutes()
@@ -42,7 +42,7 @@ final class RouteServiceProvider extends BasicRouteServiceProvider
     protected function mapDashboardRoutes()
     {
         Route::middleware(['web'])
-            ->prefix('doika/')
+            ->prefix('doika/dashboard/')
             ->namespace($this->laravelNamespace)
             ->group(base_path('routes/auth.php'));
 
@@ -50,5 +50,12 @@ final class RouteServiceProvider extends BasicRouteServiceProvider
             ->prefix('doika/dashboard/')
             ->namespace($this->namespace)
             ->group(base_path('routes/dashboard.php'));
+    }
+
+    protected function mapRedirectRoutes()
+    {
+        Route::middleware(['web'])
+            ->namespace($this->namespace)
+            ->group(base_path('routes/redirects.php'));
     }
 }
