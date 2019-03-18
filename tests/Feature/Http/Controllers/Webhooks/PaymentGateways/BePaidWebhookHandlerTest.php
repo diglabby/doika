@@ -32,6 +32,9 @@ class BePaidWebhookHandlerTest extends TestCase
             'currency' => 'BYN',
             'status' => Transaction::STATUS_SUCCESSFUL,
         ]);
+        $this->assertDatabaseHas('donators', [
+            'email' => 'john@example.com',
+        ]);
     }
 
     public function loadRequestPayload(string $fixtureFilename): array
