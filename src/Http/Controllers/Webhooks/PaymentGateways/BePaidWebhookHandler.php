@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Diglabby\Doika\Models\Donator;
 use Diglabby\Doika\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 /**
  * @see https://docs.bepaid.by/ru/webhooks
@@ -29,5 +30,7 @@ final class BePaidWebhookHandler extends Controller
             'status' => Transaction::STATUS_SUCCESSFUL,
             'status_message' => $request->json('transaction.payment.message'),
         ]);
+
+        return response('', Response::HTTP_CREATED);
     }
 }
