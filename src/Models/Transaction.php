@@ -21,9 +21,11 @@ use Illuminate\Support\Carbon;
  */
 final class Transaction extends Model
 {
+    protected $guarded = [];
+
     /** @see https://docs.bepaid.by/ru/gateway/statuses */
-    private const STATUS_SUCCESSFULL = 'successful';
-    private const STATUS_FAILED = 'failed';
-    private const STATUS_INCOMPLETE = 'incomplete';
-    private const STATUS_EXPIRED = 'expired';
+    public const STATUS_SUCCESSFUL = 'successful';
+    public const STATUS_FAILED = 'failed';
+    public const STATUS_INCOMPLETE = 'incomplete';
+    public const STATUS_EXPIRED = 'expired';
 }

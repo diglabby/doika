@@ -1,0 +1,47 @@
+{
+  "transaction":{
+    "customer":{
+      "ip":"127.0.0.1",
+      "email":"john@example.com"
+    },
+    "credit_card":{
+      "holder":"John Doe",
+      "stamp":"3709786942408b77017a3aac8390d46d77d181e34554df527a71919a856d0f28",
+      "token":"d46d77d181e34554df527a71919a856d0f283709786942408b77017a3aac8390",
+      "brand":"visa",
+      "last_4":"0000",
+      "first_1":"4",
+      "exp_month":5,
+      "exp_year":2022
+    },
+    "billing_address":{
+      "first_name":"John",
+      "last_name":"Doe",
+      "address":"1st Street",
+      "country":"US",
+      "city":"Denver",
+      "zip":"96002",
+      "state":"CO",
+      "phone":null
+    },
+    "payment":{
+      "auth_code":"654321",
+      "bank_code":"05",
+      "rrn":"999",
+      "ref_id":"777888",
+      "message":"Payment was approved",
+      "gateway_id":317,
+      "billing_descriptor":"TEST GATEWAY BILLING DESCRIPTOR",
+      "status":"successful"
+    },
+    "uid":"1-310b0da80b",
+    "status":"successful",
+    "message":"Successfully processed",
+    "amount":100,
+    "test":false,
+    "currency":"BYN",
+    "description":"Donate",
+    "tracking_id": "my_tracking_id",
+    "type":"payment"
+  }
+}
