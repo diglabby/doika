@@ -4,10 +4,13 @@ namespace Tests\Feature\Http\Controllers\Webhooks\PaymentGateways;
 
 use Diglabby\Doika\Models\Campaign;
 use Diglabby\Doika\Models\Transaction;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class BePaidWebhookHandlerTest extends TestCase
 {
+    use RefreshDatabase;
+
     /** @test */
     function it_creates_successful_transaction_from_webhook_request()
     {
