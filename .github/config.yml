@@ -2,12 +2,12 @@
 # Configuration for new-issue-welcome - https://github.com/behaviorbot/new-issue-welcome
 # Comment to be posted to on first time issues
 newIssueWelcomeComment: >
-  Дзякуй за адкрыцце тваёй першай іш'ю ў гэтым рэпазіторыі!
+  Дзякуй за адкрыцце тваёй першага issue, сябра 😺!
 
 # Configuration for new-pr-welcome - https://github.com/behaviorbot/new-pr-welcome
 # Comment to be posted to on PRs from first time contributors in your repository
 newPRWelcomeComment: >
-  Дзякуй за стварэнне твайго першага pull request тут! Калі ласка азнаемся з [правіламі афармлення PR](/CONTRIBUTING.md).
+  Дзякуй за стварэнне твайго першага Pull Request для Doika 👍! Калі ласка азнаемся з [правіламі афармлення PR](/diglabby/doika/CONTRIBUTING.md).
 
 # Configuration for first-pr-merge - https://github.com/behaviorbot/first-pr-merge
 # Comment to be posted to on pull requests merged by a first time user
@@ -24,7 +24,7 @@ firstPRMergeComment: >
 # Configuration for Request-info bot - https://github.com/behaviorbot/request-info
 # *Required* Comment to reply with
 requestInfoReplyComment: >
-  Мы былі б ўдзячныя, калі вы маглі б даць нам больш інфармацыі аб гэтай іш'ю!
+  👀 Мы былі б ўдзячныя, калі вы маглі б даць нам больш інфармацыі аб гэтай іш'ю!
 
 # *OPTIONAL* default titles to check against for lack of descriptiveness
 # MUST BE ALL LOWERCASE
