@@ -1,10 +1,10 @@
 # Як далучыцца да каманды распрацоўкі
 
-Кароткі адказ: знайсці сабе задачу на GitHib і разгарнуць працоўнае асяроддзе.
+Кароткі адказ: знайсці сабе задачу на GitHib і [разгарнуць працоўнае асяроддзе](/docs/how-to-install-for-dev.md).
 
 ## Як пачаць распрацоўку?
 1. Праглядзець статус і роадмэп распрацоўкi праекта на старонцы [milestones](https://github.com/diglabby/doika/milestones?direction=asc&sort=due_date&state=open).
-2. Як разгарнуць лакальны асяродак для распрацоўкі [інструкцыя] (TODO).
+2. [Разгарнуць лакальны асяродак для распрацоўкі](/docs/how-to-install-for-dev.md).
 3. Праглядзець [дакументацыю](https://realtimeboard.com/app/board/o9J_k0X88dM=/). 
 - [Архiтэктура файлаў i базы](https://realtimeboard.com/app/board/o9J_k0X88dM=/?moveToWidget=3074457346027045333)
 - [Блок-схемы](https://realtimeboard.com/app/board/o9J_k0X88dM=/?moveToWidget=3074457346144718504)
