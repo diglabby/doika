@@ -22,7 +22,7 @@ class BePaidWebhookHandlerTest extends TestCase
             $this->loadRequestPayload('BePaidWebhookHandlerTest.donated.json')
         );
 
-        $response->assertOk();
+        $response->assertStatus(201);
         $this->assertDatabaseHas('transactions', [
             'campaign_id' => $campaign->id,
             'subscription_id' => null,
