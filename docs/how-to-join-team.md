@@ -13,4 +13,4 @@
 - Пры з'яўленні пытанняў і цяжкасцей запытаць у Slack бягучых удзельнікаў каманды: @fr0zen, @tyuba4, @Сёмка, @SvetaN (інвайт у канал Slack магчыма атрымаць звярнуўшыся да нас праз [форму](https://docs.google.com/forms/d/e/1FAIpQLSf3q7HMtfJly4wCrRyIlHDdAzFExSjw2vqbA62XFJHofjMqjg/viewform)).
 - Увага! Робім пул рэквэсты ў галіну dev.
 
-[Як зрабіць свой унёсак (CONTRIBUTING guide)](CONTRIBUTING.md)
+[Як зрабіць свой унёсак (CONTRIBUTING guide)](/CONTRIBUTING.md)
