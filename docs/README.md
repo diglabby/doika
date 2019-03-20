@@ -1,43 +1,11 @@
-[Хатняя старонка doika: https://doika.falanster.by/](https://doika.falanster.by/)
-=======
-гэтая старонка даступна праз [https://diglabby.github.io/doika/](https://diglabby.github.io/doika/)
+# Doika
 
-Heading
-=======
+- Хатняя старонка doika: [https://doika.falanster.by/](https://doika.falanster.by/)
+- Бягучая старонка даступна праз [https://diglabby.github.io/doika/](https://diglabby.github.io/doika/)
 
-## Sub-heading
+## Аглаўленне
+- [Устаноўка для Распрацоўшчыкаў](/docs/how-to-install-for-dev.md)
+- [Усталеўка для Арганізацый](/docs/how-to-install-to-for-organisations.md)
+- [Як далучыцца да каманды распрацоўкі](/docs/how-to-join-team.md)
+- [Як далучыцца да каманды распрацоўкі](/docs/how-to-join-team.md)
 
-Paragraphs are separated
-by a blank line.
-
-Two spaces at the end of a line  
-produces a line break.
-
-Text attributes _italic_, 
-**bold**, `monospace`.
-
-Horizontal rule:
-
----
-
-Bullet list:
-
-  * apples
-  * oranges
-  * pears
-
-Numbered list:
-
-  1. wash
-  2. rinse
-  3. repeat
-
-A [link][example].
-
-  [example]: http://example.com
-
-![Image](Icon-pictures.png "icon")
-
-> Markdown uses email-style > characters for blockquoting.
-
-Inline <abbr title="Hypertext Markup Language">HTML</abbr> is supported.

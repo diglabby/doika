@@ -1,4 +1,4 @@
-# Устаноўка для Распрацоўшчыкаў 
+# Устаноўка для Распрацоўшчыкаў
 
 ## Тэхнічныя патрабаванні да распрацоўкі
 * PHP >= 7.1.3 (OpenSSL, PDO, Mbstring, Tokenizer, XML, Ctype, JSON, BCMath Extensions)
