@@ -29,7 +29,7 @@
         {!! json_encode([
             'locale' => app()->getLocale(),
             'appName' => config('app.name'),
-            'homePath' => route('home'),
+            'homePath' => route('widget.home'),
             //'adminHomePath' => route('admin.home', [], false),
             'adminHomePath' => '/doika/admin',
             'adminPathName' => config('app.admin_path'),
