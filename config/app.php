@@ -176,6 +176,7 @@ return [
 //        App\Providers\RouteServiceProvider::class,
         \Diglabby\Doika\Providers\RouteServiceProvider::class,
         \Diglabby\Doika\Providers\ViewServiceProvider::class,
+        \Diglabby\Doika\Providers\PaymentGatewayServiceProvider::class,
 //        \Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
     ],
 
