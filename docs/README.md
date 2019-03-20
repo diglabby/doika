@@ -7,5 +7,4 @@
 - [Устаноўка для Распрацоўшчыкаў](/docs/how-to-install-for-dev.md)
 - [Усталеўка для Арганізацый](/docs/how-to-install-to-for-organisations.md)
 - [Як далучыцца да каманды распрацоўкі](/docs/how-to-join-team.md)
-- [Як далучыцца да каманды распрацоўкі](/docs/how-to-join-team.md)
-
+- [Гласарый тэрмінаў](/docs/glossary.md)
