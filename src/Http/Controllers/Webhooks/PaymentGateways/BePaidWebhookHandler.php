@@ -20,7 +20,7 @@ final class BePaidWebhookHandler extends Controller
         /** @var Donator $donator */
         $donator = Donator::query()->firstOrCreate(['email' => $request->json('transaction.customer.email')]);
 
-        Transaction::query()->create([
+        $transaction = new Transaction([
             'campaign_id' => $campaignId,
             'donator_id' => $donator->id,
             'payment_gateway' => 'bePaid',
@@ -30,6 +30,7 @@ final class BePaidWebhookHandler extends Controller
             'status' => Transaction::STATUS_SUCCESSFUL,
             'status_message' => $request->json('transaction.payment.message'),
         ]);
+        $transaction->save();
 
         return response('', Response::HTTP_CREATED);
     }
