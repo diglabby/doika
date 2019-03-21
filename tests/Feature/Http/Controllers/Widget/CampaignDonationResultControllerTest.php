@@ -18,7 +18,7 @@ class CampaignDonationResultControllerTest extends TestCase
     {
         $campaign = factory(Campaign::class)->create();
 
-        $response = $this->get(route('widget.campaign.donation-result', ['campaignId' => $campaign->id, 'status' => $status]));
+        $response = $this->get(route('widget.campaign.donation-result', ['campaign' => $campaign->id, 'status' => $status]));
 
         $response->assertSeeText($status);
     }

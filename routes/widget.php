@@ -14,7 +14,7 @@
 
 Route::get('/', 'Widget\WidgetController@index')->name('widget.home');
 Route::get('campaigns/{campaignId}', 'Widget\CampaignController@show')->name('widget.campaign.show')->where('campaignId', '[0-9]+');
-Route::get('campaigns/{campaignId}/donation-result', 'Widget\CampaignDonationResultController@show')->name('widget.campaign.donation-result');
+Route::get('campaigns/{campaign}/donation-result', 'Widget\CampaignDonationResultController@show')->name('widget.campaign.donation-result');
 
 Route::get('help', 'Widget\HelpController@show')->name('widget.help.show');
 Route::get('feedback', 'Widget\FeedbackController@show')->name('widget.feedbacks.show');
