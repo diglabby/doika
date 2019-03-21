@@ -4,4 +4,4 @@
  * @var \Diglabby\Doika\Models\Campaign $campaign
  */
 ?>
-{{ $status }}
+Transaction status: {{ $status }}
