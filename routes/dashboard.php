@@ -20,7 +20,3 @@ Route::delete('/donators/{id}', 'Dashboard\DonatorController@delete')->name('das
 Route::get('/{vue_capture?}', 'Dashboard\DashboardController@index')
     ->where('vue_capture', '[\/\w\.-]*')
     ->name('dashboard.home');
-
-Route::post('doika/webhooks/bepaid/donated/{campaignId}', function () {
-    echo 'stub';
-})->name('webhooks.bepaid.donated');

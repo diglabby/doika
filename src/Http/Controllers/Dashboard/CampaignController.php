@@ -16,7 +16,7 @@ final class CampaignController extends Controller
     public function show(int $campaignId)
     {
         return view('backend.admin.campaign', [
-            'camplaign' => factory(Campaign::class)->make(['id' => $campaignId])
+            'campaign' => factory(Campaign::class)->make(['id' => $campaignId])
         ]);
     }
 
