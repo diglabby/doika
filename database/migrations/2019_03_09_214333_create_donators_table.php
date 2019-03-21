@@ -15,7 +15,7 @@ class CreateDonatorsTable extends Migration
     {
         Schema::create('donators', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->string('name')->nullable();
             $table->unsignedInteger('phone')->nullable()->comment('Phone using international format (without leading "+" sign)');
             $table->timestamps();

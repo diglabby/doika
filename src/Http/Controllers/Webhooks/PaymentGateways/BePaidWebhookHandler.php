@@ -17,8 +17,8 @@ final class BePaidWebhookHandler extends Controller
     {
         \Log::debug('bePaid donated webhook', ['headers' => $request->headers->all(), 'input' => $request->all(),]);
 
-        /** @var Donator $donator */
-        $donator = Donator::query()->firstOrCreate(['email' => $request->json('transaction.customer.email')]);
+        $donator = new Donator(['email' => $request->json('transaction.customer.email')]);
+        $donator->save();
 
         $transaction = new Transaction([
             'campaign_id' => $campaignId,

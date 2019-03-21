@@ -9,7 +9,7 @@ use Illuminate\Support\Carbon;
 
 /**
  * @property int $id
- * @property string $email
+ * @property string|null $email
  * @property string|null $name
  * @property int|null $phone
  * @property Carbon $created_at

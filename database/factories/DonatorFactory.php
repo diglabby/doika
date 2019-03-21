@@ -5,6 +5,11 @@ use Diglabby\Doika\Models\Donator;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
+/**
+ * @see https://github.com/fzaninotto/Faker#formatters
+ * @var \Illuminate\Database\Eloquent\Factory $factory
+ */
+
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -16,10 +21,10 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(Donator::class, function (Faker $faker) {
+$factory->define(Donator::class, function () {
     return [
         'name' => null,
-        'email' => $faker->unique()->email,
+        'email' => null,
         'phone' => null,
     ];
 });
