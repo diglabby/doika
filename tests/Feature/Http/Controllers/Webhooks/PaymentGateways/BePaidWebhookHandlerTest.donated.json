@@ -52,7 +52,7 @@
       "language": "ru",
       "redirect_url": "https://gateway.bepaid.by/process/12019567-c74ce49914",
       "credit_card": {
-        "holder": "ALIAKSEI KIRPICHENKAU",
+        "holder": "ALIAKSEI KIRPICHENKAS",
         "stamp": "57c8a35be60e24f73b694f86ec17fbe43ab9e33a3d80682004c6a94eaea98d61",
         "brand": "master",
         "last_4": "3053",
@@ -63,7 +63,7 @@
         "product": "MNW",
         "exp_month": 6,
         "exp_year": 2021,
-        "token": "b1ded78b-27e9-48ca-829d-5c9278d52617"
+        "token": "b1ded78b-27e9-caca-829d-5c9278d52617"
       },
       "id": "12019567-c74ce49914",
       "additional_data": {
