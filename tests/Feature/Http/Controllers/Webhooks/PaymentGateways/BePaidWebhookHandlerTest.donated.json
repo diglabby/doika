@@ -1,47 +1,168 @@
 {
-  "transaction":{
-    "customer":{
-      "ip":"127.0.0.1",
-      "email":"john@example.com"
-    },
-    "credit_card":{
-      "holder":"John Doe",
-      "stamp":"3709786942408b77017a3aac8390d46d77d181e34554df527a71919a856d0f28",
-      "token":"d46d77d181e34554df527a71919a856d0f283709786942408b77017a3aac8390",
-      "brand":"visa",
-      "last_4":"0000",
-      "first_1":"4",
-      "exp_month":5,
-      "exp_year":2022
-    },
-    "billing_address":{
-      "first_name":"John",
-      "last_name":"Doe",
-      "address":"1st Street",
-      "country":"US",
-      "city":"Denver",
-      "zip":"96002",
-      "state":"CO",
-      "phone":null
-    },
-    "payment":{
-      "auth_code":"654321",
-      "bank_code":"05",
-      "rrn":"999",
-      "ref_id":"777888",
-      "message":"Payment was approved",
-      "gateway_id":317,
-      "billing_descriptor":"TEST GATEWAY BILLING DESCRIPTOR",
-      "status":"successful"
-    },
-    "uid":"1-310b0da80b",
-    "status":"successful",
-    "message":"Successfully processed",
-    "amount":100,
-    "test":false,
-    "currency":"BYN",
-    "description":"Donate",
-    "tracking_id": "my_tracking_id",
-    "type":"payment"
+  "headers": {
+    "authorization": "Basic MjIyMjo0ODcxOWZiODU0ZjQxZTQ0NjBhYTMwNzc4MTNlZGQ2ZTAwYTJhYWQ3MDFkYXM1YjMyYzAxYmFjOWYzOTYxNDcx",
+    "host": [
+      "clubmate.falanster.by"
+    ],
+    "x-real-ip": [
+      "54.246.193.48"
+    ],
+    "x-forwarded-for": [
+      "54.246.193.48"
+    ],
+    "connection": [
+      "close"
+    ],
+    "content-length": [
+      "3594"
+    ],
+    "accept": [
+      "application/json"
+    ],
+    "content-type": [
+      "application/json"
+    ],
+    "user-agent": [
+      "Faraday v0.15.4"
+    ],
+    "accept-encoding": [
+      "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+    ],
+    "php-auth-user": "2222",
+    "php-auth-pw": "48719fb854f41e4460aa3077813edd6e00a2aad701das5b32c01bac9f3961471"
+  },
+  "input": {
+    "transaction": {
+      "uid": "12019567-c74ce49914",
+      "status": "successful",
+      "amount": 500,
+      "currency": "BYN",
+      "description": "Order description",
+      "type": "payment",
+      "payment_method_type": "credit_card",
+      "tracking_id": null,
+      "message": "Successfully processed",
+      "test": false,
+      "created_at": "2019-03-21T11:34:52.884Z",
+      "updated_at": "2019-03-21T11:37:11.718Z",
+      "paid_at": "2019-03-21T11:37:11.704Z",
+      "expired_at": null,
+      "closed_at": null,
+      "settled_at": null,
+      "language": "ru",
+      "redirect_url": "https://gateway.bepaid.by/process/12019567-c74ce49914",
+      "credit_card": {
+        "holder": "ALIAKSEI KIRPICHENKAS",
+        "stamp": "57c8a35be60e24f73b694f86ec17fbe43ab9e33a3d80682004c6a94eaea98d61",
+        "brand": "master",
+        "last_4": "3053",
+        "first_1": "5",
+        "bin": "545621",
+        "issuer_country": "BY",
+        "issuer_name": "BELVNESHECONOMBANK",
+        "product": "MNW",
+        "exp_month": 6,
+        "exp_year": 2021,
+        "token": "b1ded78b-27e9-caca-829d-5c9278d52617"
+      },
+      "id": "12019567-c74ce49914",
+      "additional_data": {
+        "vendor": {
+          "name": "CTP",
+          "token": "4d9f844846738ac39693727b4c065e045ffc8622feb9090039ae347d1228d210"
+        }
+      },
+      "be_protected_verification": {
+        "status": "successful",
+        "message": null,
+        "white_black_list": {
+          "email": "absent",
+          "ip": "absent",
+          "card_number": "absent"
+        },
+        "rules": {
+          "9_2081_It.falanster.by": {
+            "Min payment amount": {
+              "Transaction amount less than 1 BYN per Payment transaction": "passed"
+            },
+            "Max Payment Turnover Per Day Per PAN": {
+              "Total successful payment transactions amount more than 2500 BYN per PAN in 1 days": "passed"
+            },
+            "Max Payment Quantity Per Day": {
+              "Total successful payment transactions count more than 100 in 1 days": "passed"
+            },
+            "Max Payment Count Per Day Per PAN": {
+              "Total successful payment transactions count more than 5 per PAN in 1 days": "passed"
+            },
+            "Max payment amount": {
+              "Transaction amount more than 2000 BYN per Payment transaction": "passed"
+            },
+            "Max monthly volume": {
+              "Total successful payment transactions amount more than 15000 BYN in current month": "passed"
+            },
+            "Max daily volume": {
+              "Total successful payment transactions amount more than 5000 BYN in 1 days": "passed"
+            }
+          },
+          "9_Волчек Михаил": [],
+          "bePaid": {
+            "HighRiskBIN_Alert": {
+              "BIN is in HighRisk_BIN": "passed"
+            }
+          }
+        }
+      },
+      "three_d_secure_verification": {
+        "status": "successful",
+        "message": "Authentication Successful",
+        "ve_status": "Y",
+        "acs_url": "https://www.sbs4u.by:443/way4acs/pa?id=XJN2323eT7uv5N0mxfZBdA",
+        "pa_req": "eJxdUmFTozAQ/SuM3yUJBFo6a2bogVfnRgVanPG+5cLacrW0htSh//4SrHr6bd/m5e3bl8BqoxGzJaqjRgG32PdyjV7bXF0s7vNkEaU8o9dlMeUVzfLVhYAirfBFwCvqvt13gvnUD4C8Q6ug1UZ2RoBUL/ObOxHxIOYRkDOEHeqbTEw5DSYxpUDeMHRyh6I1/pN8ll1vUPt/TkDGLqj9sTP6JBizk94BHPWz2Bhz6GeEfLtIgLhTIJ9uiqOreqs2tI1Y5sn1fb1m5arKb/PfVZ2taf13nlcP5RUQx4BGGhQBZQkNA+YxNgv5LAqBjH2QO2dDRD6l3vzxzq731oCDm5OeT91+/zfApqyxUyeRhFbqAwEOh32HlmEX/KihwV6J8DJbek977Rk9eMwZiuLJpZpwhTxJGLeOHA3I54Y/Fi59ZWyuqSynW6bUplFVvS0m5eEnD34N26qPU/cmI8mNb22kAaPxON8BIE6GnJ/bJjn+DFt9+TH/AM6su4Q=",
+        "md": "2477867",
+        "pa_res_url": "https://gateway.bepaid.by/process/12019567-c74ce49914",
+        "eci": "02",
+        "pa_status": "Y",
+        "xid": "SE9FOUg1QTREMEZRUDg0UjBERVQ=",
+        "cavv": "jJ55s4rSPufUCRFaQmRBAGEAAAA=",
+        "cavv_algorithm": "3",
+        "fail_reason": null
+      },
+      "payment": {
+        "auth_code": "258001",
+        "bank_code": "000",
+        "rrn": "908011905945",
+        "ref_id": "908011905945",
+        "message": "The operation was successfully processed.",
+        "amount": 500,
+        "currency": "BYN",
+        "billing_descriptor": "it.falanster.by",
+        "gateway_id": 5565,
+        "status": "successful"
+      },
+      "avs_cvc_verification": {
+        "avs_verification": {
+          "result_code": "1"
+        },
+        "cvc_verification": {
+          "result_code": "1"
+        }
+      },
+      "customer": {
+        "ip": "86.57.154.97",
+        "email": "jake@example.com",
+        "device_id": "353473235",
+        "birth_date": null
+      },
+      "billing_address": {
+        "first_name": null,
+        "last_name": null,
+        "address": "Baker street 221b",
+        "country": "GB",
+        "city": "London",
+        "zip": null,
+        "state": null,
+        "phone": null
+      }
+    }
   }
 }
