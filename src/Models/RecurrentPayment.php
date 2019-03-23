@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mac
- * Date: 2019-03-23
- * Time: 16:17
- */
 
 namespace Diglabby\Doika\Models;
 
@@ -138,5 +132,4 @@ class RecurrentPayment
 
         return $this->responseFromPaymentGateway;
     }
-
 }
