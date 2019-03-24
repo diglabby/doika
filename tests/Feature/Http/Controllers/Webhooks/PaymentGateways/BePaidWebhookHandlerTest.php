@@ -11,6 +11,7 @@ use Tests\TestCase;
 class BePaidWebhookHandlerTest extends TestCase
 {
     use RefreshDatabase;
+    use LoadsRequestFixture;
 
     /** @test */
     function it_creates_successful_transaction_from_webhook_request()
@@ -27,7 +28,7 @@ class BePaidWebhookHandlerTest extends TestCase
             $requestData['headers']
         );
 
-        $response->assertSuccessful();
+        $response->assertOk();
         $this->assertDatabaseHas('transactions', [
             'campaign_id' => $campaign->id,
             'subscription_id' => null,
@@ -40,11 +41,5 @@ class BePaidWebhookHandlerTest extends TestCase
         $this->assertDatabaseHas('donators', [
             'email' => 'jake@example.com',
         ]);
-    }
-
-    public function getRequestData(string $fixtureFilename): array
-    {
-        $fixtureFile = __DIR__.DIRECTORY_SEPARATOR.$fixtureFilename;
-        return json_decode(file_get_contents($fixtureFile), true);
     }
 }
