@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * @property int $idIlluminate\Support\Carbon
+ * @property int $id
  * @property int $donator_id
+ * @property int $campaign_id
  * @property string $payment_gateway ("bePaid", etc)
  * @property string $payment_gateway_subscription_id
  * @property int $amount
