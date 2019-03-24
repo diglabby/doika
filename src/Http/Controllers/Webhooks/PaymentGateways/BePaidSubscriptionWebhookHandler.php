@@ -22,7 +22,6 @@ final class BePaidSubscriptionWebhookHandler extends Controller
             DeleteCanceledSubscription::class,
         ],
         'error' => [],
-        'successful' => [],
     ];
 
     public function __invoke(Request $request): Response

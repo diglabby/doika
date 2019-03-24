@@ -63,8 +63,6 @@ class BePaidSubscriptionWebhookHandlerTest extends TestCase
         );
 
         $response->assertOk();
-        $this->assertDatabaseMissing('subscriptions', [
-            'id' => $subscription->id,
-        ]);
+        $this->assertNotNull($subscription->refresh()->deleted_at);
     }
 }
