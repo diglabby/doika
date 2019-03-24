@@ -21,3 +21,4 @@ npm-debug.log
 
 /docker/apache/logs
 /docker/node/logs
+/storage/debugbar

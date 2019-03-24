@@ -11,9 +11,9 @@ goto :parse
 
 :install
 	docker exec -it doika-webserver cp .env.docker .env
-	docker exec -it doika-webserver php artisan key:generate
-	docker exec -it doika-webserver php artisan storage:link
-	docker exec -it doika-webserver php artisan migrate --seed
+	docker exec -it doika-webserver php /var/www/html/doika/artisan key:generate
+	docker exec -it doika-webserver php /var/www/html/doika/artisan storage:link
+	docker exec -it doika-webserver php /var/www/html/doika/artisan migrate --seed
 	goto :end
 
 :stop

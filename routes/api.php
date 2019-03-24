@@ -1,12 +1,7 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+use Diglabby\Doika\Http\Middleware\VerifyBePaidSignature;
+
+Route::post('doika/webhooks/bepaid/donated/{campaignId}', 'Webhooks\PaymentGateways\BePaidWebhookHandler@donated')
+    ->name('webhooks.bepaid.donated')
+    ->middleware([VerifyBePaidSignature::class]);

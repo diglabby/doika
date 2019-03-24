@@ -176,7 +176,8 @@ return [
 //        App\Providers\RouteServiceProvider::class,
         \Diglabby\Doika\Providers\RouteServiceProvider::class,
         \Diglabby\Doika\Providers\ViewServiceProvider::class,
-        \Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
+        \Diglabby\Doika\Providers\PaymentGatewayServiceProvider::class,
+//        \Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
     ],
 
     /*
@@ -228,7 +229,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        'LaravelLocalization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
+//        'LaravelLocalization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
     ],
 
 ];

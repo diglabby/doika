@@ -78,15 +78,6 @@
                             </div><!--col-->
                         </div><!--row-->
 
-                        @if(config('access.captcha.registration'))
-                            <div class="row">
-                                <div class="col">
-                                    {!! Captcha::display() !!}
-                                    {{ html()->hidden('captcha_status', 'true') }}
-                                </div><!--col-->
-                            </div><!--row-->
-                        @endif
-
                         <div class="row">
                             <div class="col">
                                 <div class="form-group mb-0 clearfix">
@@ -96,22 +87,8 @@
                         </div><!--row-->
                     {{ html()->form()->close() }}
 
-                    <div class="row">
-                        <div class="col">
-                            <div class="text-center">
-                                {!! $socialiteLinks !!}
-                            </div>
-                        </div><!--/ .col -->
-                    </div><!-- / .row -->
-
                 </div><!-- card-body -->
             </div><!-- card -->
         </div><!-- col-md-8 -->
     </div><!-- row -->
 @endsection
-
-@push('after-scripts')
-    @if(config('access.captcha.registration'))
-        {!! Captcha::script() !!}
-    @endif
-@endpush

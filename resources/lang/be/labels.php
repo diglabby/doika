@@ -71,14 +71,14 @@ return [
 			'title' => 'Спіс кампаній',
 			'header' => 'Спіс кампаній',
 			'breadcrumb' => 'Спіс кампаній',
-			'name' => 'Назва кампаніі',
-            'status' => 'Статус кампаніі',
+			'name' => 'Назва',
+            'status' => 'Статус',
 			'backers' => 'Ахвярадаўцы',
 			'recurrent' => 'Падпіска',
 			'average' => 'Сярэдні чэк',
 			'recieved' => 'Сабраная сума',
 			'goal' => 'Мэтавая сума',
-			'days' => 'Колькасць дзён да заканчэння',
+			'days' => 'Дзён да заканчэння',
 			'description' => 'Апісанне',
 			'image' => 'Выява кампаніі',
 			'uploadImage' => 'Загрузіць малюнак',
@@ -146,18 +146,14 @@ return [
 			'payments' => [
 				'header' => 'Злучэнне з плацежнай сістэмай',
 				'idMarket' => 'Bepaid Market ID',
-				'artPayIdMarket' => 'Artpay Market Id',
 				'keyMarket' => 'Bepaid Market key',
-				'artPayKeyMarket' => 'Artpay Market key',
 				'test' => 'Адключыць тэставыя плацяжы',
 				'maxPayment' => 'Максімальны плацёж, бел.руб',
 				'minPayment' => 'Мінімальны плацёж, бел.руб',
 				'termsOfUse' => 'Текст условий сервиса сбора пожертвований',
 				'placeholder' => [
 					'idMarket' => 'Bepaid Market ID',
-					'artPayIdMarket' => 'Artpay Market Id',
 					'keyMarket' => 'Bepaid Market key',
-					'artPayKeyMarket' => 'Artpay Market key',
 					'test' => 'Адключыць тэставыя плацяжы',
 					'maxPayment' => 'Максімальны плацёж, бел.руб',
 					'minPayment' => 'Мінімальны плацёж, бел.руб',
@@ -191,11 +187,11 @@ return [
 		'feedback' => [
 			'title' => 'Зваротная сувязь',
 			'header' => 'Зваротная сувязь',
-			'email' => 'Ваш Email',
+			'email' => 'E-mail',
 			'name' => 'Імя',
 			'message' => 'Паведамленне',
 			'placeholder' => [
-				'email' => 'Ваш Email',
+				'email' => 'E-mail',
 				'name' => 'Імя',
 				'message' => 'Напішыце Ваш зварот'
 			]
@@ -229,7 +225,7 @@ return [
 
 		]
     ],
-	'client' => [
+	'widget' => [
 		'title' => 'Дадзеныя карыстальніка',
 		'name' => 'Імя Прозвішча',
 		'email' => 'Пошта',

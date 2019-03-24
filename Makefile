@@ -9,9 +9,9 @@ start:
 PHONY: install
 install:
 	docker exec -it doika-webserver cp .env.docker .env
-	docker exec -it doika-webserver php /app/artisan key:generate
-	docker exec -it doika-webserver php /app/artisan storage:link
-	docker exec -it doika-webserver php /app/artisan migrate --seed
+	docker exec -it doika-webserver php /var/www/html/doika/artisan key:generate
+	docker exec -it doika-webserver php /var/www/html/doika/artisan storage:link
+	docker exec -it doika-webserver php /var/www/html/doika/artisan migrate --seed
 
 PHONY: stop
 stop:

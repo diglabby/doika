@@ -35,7 +35,7 @@ return [
 		],
 		
 	],
-	'client' => [
+	'widget' => [
 		'back' => 'Back',
 		'confirm' => 'Confirm',
 		'proceed' => 'Proceed'

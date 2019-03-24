@@ -12,7 +12,7 @@
                     height="550" frameborder="0" allowfullscreen></iframe>
         </div>
         <div class="col-md-6">
-            <form action="{{ route('contact') }}" method="POST">
+            <form action="{{ route('widget.feedbacks.store') }}" method="POST">
                 @csrf
 
                 <div class="form-group">
@@ -66,7 +66,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    {!! Captcha::script() !!}
-@endpush

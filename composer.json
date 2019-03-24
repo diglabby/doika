@@ -7,7 +7,7 @@
         "laravel",
         "bePaid"
     ],
-    "license": "MIT",
+    "license": "GPL-3.0-or-later",
     "require": {
         "php": "^7.1.3",
         "ext-PDO": "*",
@@ -16,14 +16,16 @@
         "ext-mbstring": "*",
         "ext-zip": "*",
         "fideloper/proxy": "^4.0",
+        "guzzlehttp/guzzle": "^6.3",
         "hieu-le/active": "^3.5",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.7",
         "martinlindhe/laravel-vue-i18n-generator": "^0.1.22",
-        "mcamara/laravel-localization": "^1.3"
+        "moneyphp/money": "^3.2"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-ide-helper": "^2.5",
         "beyondcode/laravel-dump-server": "^1.2",
         "filp/whoops": "^2.0",
@@ -78,7 +80,7 @@
         "post-create-project-cmd": [
             "@php artisan key:generate"
         ],
-        "test": "vendor/bin/phpunit",
-        "test:ci": "@test"
+        "test": "./vendor/bin/phpunit --colors=always",
+        "test:ci": "@test --exclude-group=real-api"
     }
 }

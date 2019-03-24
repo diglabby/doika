@@ -3,8 +3,6 @@
 namespace Diglabby\Doika\Http\Controllers\Widget;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Contracts\TagRepository;
-use App\Repositories\Contracts\UserRepository;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Facades\View;
 
@@ -12,7 +10,7 @@ class WidgetController extends Controller
 {
     public function index(): Renderable
     {
-        return view('client.campaign');
+        return view('widget.campaign');
     }
 
     /**

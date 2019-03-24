@@ -20,7 +20,7 @@ $factory->define(Campaign::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->state(Campaign::class, 'inctive', [
+$factory->state(Campaign::class, 'inactive', [
     'active_status' => 0,
 ]);
 

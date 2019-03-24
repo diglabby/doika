@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}" dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
+<html lang="{{ app()->getLocale() }}">
 <head>
-    @include('frontend.scripts.gtm')
+{{--    @include('frontend.scripts.gtm')--}}
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +11,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @if (count(config('laravellocalization.supportedLocales')) > 1)
-    @include('partials.alternates')
+{{--    @include('partials.alternates')--}}
     @endif
 
     <!-- Styles -->
@@ -42,7 +42,7 @@
     </script>
 </head>
 <body class="@yield('body_class')">
-    @include('frontend.scripts.gtmiframe')
+{{--    @include('frontend.scripts.gtmiframe')--}}
 
     <div id="app">
         @include('partials.logged-as')
@@ -72,7 +72,7 @@
             </div>
         </div>
 
-        @include('frontend.partials.footer')
+        @include('dashboard.includes.footer')
     </div>
 
     @stack('scripts')

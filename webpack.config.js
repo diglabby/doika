@@ -74,7 +74,7 @@ function getEntryConfig (name, analyzerPort, alias = {}) {
       ]
     },
     output: {
-      path: path.resolve(__dirname, 'public' + publicPathFolder),	  
+      path: path.resolve(__dirname, 'public' + publicPathFolder),
       filename: production ? 'js/[name].[chunkhash].js' : 'js/[name].js',
       publicPath: '/doika/public' + publicPathFolder
     },
@@ -120,7 +120,7 @@ function getEntryConfig (name, analyzerPort, alias = {}) {
           use: [
             {
               loader: 'url-loader',
-              options: {				
+              options: {
                 //name: (path) => {
                 //  if (!/node_modules/.test(path)) {
                 //    return 'images/[name].[ext]?[hash]'
@@ -141,7 +141,7 @@ function getEntryConfig (name, analyzerPort, alias = {}) {
         {
           test: /\.(woff2?|ttf|eot|svg|otf)$/,
           loader: 'url-loader',
-          options: {			
+          options: {
             name: (path) => {
              if (!/node_modules/.test(path)) {
                 return 'fonts/[name].[ext]?[hash]'
@@ -149,7 +149,7 @@ function getEntryConfig (name, analyzerPort, alias = {}) {
 
               return `fonts/vendor-${name}/[name].[ext]?[hash]`
             },
-			
+
             limit: 4096
           }
         }
@@ -198,8 +198,8 @@ function getEntryConfig (name, analyzerPort, alias = {}) {
 }
 
 module.exports = [
-  getEntryConfig('client', 8888, {
+  getEntryConfig('widget', 8888, {
     'vue$': 'vue/dist/vue.esm.js'
   }),
-  getEntryConfig('backend', 8889)
+  getEntryConfig('dashboard', 8889)
 ]
