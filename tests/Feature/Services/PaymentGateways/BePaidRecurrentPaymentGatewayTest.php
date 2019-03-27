@@ -44,5 +44,20 @@ class BePaidRecurrentPaymentGatewayTest extends TestCase
         $this->assertSame('P1M', $subscription->payment_interval);
         $this->assertSame(1, Subscription::query()->count());
     }
+
+    /**
+     * @test
+     * @group real-api
+     * @group network
+     */
+    function it_creates_a_customer()
+    {
+        /** @var Donator $donator */
+        $donator = factory(Donator::class)->create();
+
+        $customerId = $this->service->createCustomer($donator);
+
+        $this->assertNotSame('', $customerId);
+    }
 }
 

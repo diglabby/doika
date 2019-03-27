@@ -37,14 +37,14 @@ final class BePaidRecurrentPaymentGateway
     /**
      * @see https://docs.bepaid.by/ru/subscriptions/customers
      */
-    private function createCustomer(Donator $donator): string
+    public function createCustomer(Donator $donator): string
     {
         $GetCustomerParams = [
             'test' => ! $this->apiContext->live,
 //            'first_name' => $donator->name,
 //            'last_name' => '',
             'email' => $donator->email,
-            'phone' => $donator->phone,
+//            'phone' => $donator->phone,
             'country' => self::COUNTRY_OWNER,
             'ip' => self::DEFAULT_VALUE,
 //            'city' => self::DEFAULT_VALUE,
