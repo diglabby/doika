@@ -19,44 +19,29 @@ class RecurrentPayment
 
     protected const REDIRECT_URL = 'https://doika.falanster.by';
 
-    protected $firstName;
-
-    protected $lastName;
-
-    protected $email;
-
-    protected $phone;
-
-    protected $idCustomer;
-
-    protected $idPlan;
-
-    protected $idSubscription;
-
     protected $responseFromPaymentGateway;
 
     protected $apiContext;
 
     protected $httpClient;
 
-    public function __construct(BePaidApiContext $apiContext, HttpClient $httpClient, $firstName, $lastName, $email, $phone)
+    public function __construct(BePaidApiContext $apiContext, HttpClient $httpClient)
     {
         $this->apiContext = $apiContext;
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->email = $email;
-        $this->phone = $phone;
         $this->httpClient = $httpClient;
     }
 
-    private function createCustomer()
+    /**
+     * @see https://docs.bepaid.by/ru/subscriptions/customers
+     */
+    private function createCustomer(Donator $donator)
     {
         $GetCustomerParams = [
             'test' => ! $this->apiContext->live,
-            'first_name' => $this->firstName,
-            'last_name' => $this->lastName,
-            'email' => $this->email,
-            'phone' => $this->phone,
+            'first_name' => $donator->name,
+            'last_name' => '',
+            'email' => $donator->email,
+            'phone' => $donator->phone,
             'country' => self::COUNTRY_OWNER,
             'ip' => self::DEFAULT_VALUE,
             'city' => self::DEFAULT_VALUE,
