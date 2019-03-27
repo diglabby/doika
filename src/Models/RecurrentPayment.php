@@ -11,15 +11,16 @@ class RecurrentPayment
 {
     private const GATEWAY_ID = 'bePaid';
 
+    /** @deprecated */
     protected const COUNTRY_OWNER = 'BY';
 
+    /** @deprecated */
     protected const DEFAULT_VALUE = 'default';
 
     protected const BASE_PAYMENT_GATEWAY_URI = 'https://api.bepaid.by';
 
+    /** @deprecated */
     protected const REDIRECT_URL = 'https://doika.falanster.by';
-
-    protected $responseFromPaymentGateway;
 
     protected $apiContext;
 
