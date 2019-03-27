@@ -26,11 +26,11 @@ final class Donator extends Model
 
     public function subscriptions(): HasMany
     {
-        $this->hasMany(Subscription::class);
+        return $this->hasMany(Subscription::class);
     }
 
     public function transactions(): HasMany
     {
-        $this->hasMany(Transaction::class);
+        return $this->hasMany(Transaction::class);
     }
 }
