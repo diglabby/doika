@@ -7,6 +7,7 @@ use Collective\Html\HtmlFacade;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
+/** @deprecated Use HTML code instead */
 class ViewServiceProvider extends ServiceProvider
 {
     /**
@@ -61,15 +62,9 @@ class ViewServiceProvider extends ServiceProvider
                 $view->with('flashType', 'danger');
             }
         });
+
         View::composer('*', function (\Illuminate\View\View $view) {
             $view->with('loggedInUser', auth()->user());
         });
-    }
-
-    /**
-     * Register the application services.
-     */
-    public function register()
-    {
     }
 }

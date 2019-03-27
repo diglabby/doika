@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('dashboard.layouts.app')
 
 @section('body_class', 'login-page')
 
@@ -16,7 +16,7 @@
                             <label for="email" class="col-md-4 col-form-label">@lang('validation.attributes.email')</label>
 
                             <div class="col-md-8">
-                                {{ Form::bsEmail('email', null, ['required', 'placeholder' => __('validation.attributes.email')]) }}
+                                <input id="email" type="email" class="form-control" required placeholder="{{ __('validation.attributes.email') }}">
                             </div>
                         </div>
 
@@ -24,13 +24,17 @@
                             <label for="password" class="col-md-4 col-form-label">@lang('validation.attributes.password')</label>
 
                             <div class="col-md-8">
-                                {{ Form::bsPassword('password', ['required', 'placeholder' => __('validation.attributes.password')]) }}
+                                <input id="password" type="password" class="form-control" required placeholder="{{ __('validation.attributes.password') }}">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-8 ml-auto">
-                                {{ Form::bsCheckbox('remember', __('labels.user.remember')) }}
+
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="remember" name="remember" value="1">
+                                    <label class="custom-control-label" for="remember">{{ __('labels.user.remember') }}</label>
+                                </div>
                             </div>
                         </div>
 
