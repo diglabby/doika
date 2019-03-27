@@ -2,6 +2,7 @@
 
 namespace Diglabby\Doika\Models;
 
+use Diglabby\Doika\Services\PaymentGateways\BePaidApiContext;
 use GuzzleHttp\Client;
 
 class RecurrentPayment
@@ -22,10 +23,6 @@ class RecurrentPayment
 
     protected $phone;
 
-    protected $idMarket;
-
-    protected $keyMarket;
-
     protected $idCustomer;
 
     protected $idPlan;
@@ -34,14 +31,15 @@ class RecurrentPayment
 
     protected $responseFromPaymentGateway;
 
-    public function __construct($firstName, $lastName, $email, $phone, $idMarket, $keyMarket)
+    protected $apiContext;
+
+    public function __construct(BePaidApiContext $apiContext, $firstName, $lastName, $email, $phone)
     {
+        $this->apiContext = $apiContext;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->email = $email;
         $this->phone = $phone;
-        $this->idMarket = $idMarket;
-        $this->keyMarket = $keyMarket;
     }
 
     public function createCustomer()
@@ -62,10 +60,10 @@ class RecurrentPayment
             'base_uri' => self::BASE_PAYMENT_GATEWAY_URI
         ]);
         $response = $client->request('POST', '/customers', [
-            'auth' => [$this->idMarket, $this->keyMarket],
+            'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
             'headers' => ['Accept' => 'application/json'],
             'json' => $GetCustomerParams,
-            'verify' => false
+            'verify' => false,
         ]);
         $this->responseFromPaymentGateway = $response->getBody();
         $this->idCustomer = $this->responseFromPaymentGateway->id;
@@ -91,7 +89,7 @@ class RecurrentPayment
             'base_uri' => self::BASE_PAYMENT_GATEWAY_URI
         ]);
         $response = $client->request('POST', '/plans', [
-            'auth' => [$this->idMarket, $this->keyMarket],
+            'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
             'headers' => ['Accept' => 'application/json'],
             'json' => $GetTokenParams,
             'verify' => false
@@ -120,7 +118,7 @@ class RecurrentPayment
             'base_uri' => self::BASE_PAYMENT_GATEWAY_URI
         ]);
         $response = $client->request('POST', '/subscriptions', [
-            'auth' => [$this->idMarket, $this->keyMarket],
+            'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
             'headers' => ['Accept' => 'application/json'],
             'json' => $GetSubscriptionParams,
             'verify' => false
