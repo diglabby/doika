@@ -15,6 +15,7 @@
         "ext-json": "*",
         "ext-mbstring": "*",
         "ext-zip": "*",
+        "carbondate/carbon": "^1.33",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.3",
         "hieu-le/active": "^3.5",
