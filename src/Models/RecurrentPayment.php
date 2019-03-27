@@ -47,7 +47,7 @@ class RecurrentPayment
             'ip' => self::DEFAULT_VALUE,
             'city' => self::DEFAULT_VALUE,
             'address' => self::DEFAULT_VALUE,
-            'zip' => self::DEFAULT_VALUE
+            'zip' => self::DEFAULT_VALUE,
         ];
         $response = $this->httpClient->request('POST', '/customers', [
             'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
