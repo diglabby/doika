@@ -13,12 +13,6 @@ final class BePaidRecurrentPaymentGateway
 {
     private const GATEWAY_ID = 'bePaid';
 
-    /** @deprecated */
-    private const COUNTRY_OWNER = 'BY';
-
-    /** @deprecated */
-    private const DEFAULT_VALUE = 'default';
-
     private const BASE_PAYMENT_GATEWAY_URI = 'https://api.bepaid.by';
 
     /** @deprecated */
@@ -45,11 +39,11 @@ final class BePaidRecurrentPaymentGateway
 //            'last_name' => '',
             'email' => $donator->email,
 //            'phone' => $donator->phone,
-            'country' => self::COUNTRY_OWNER,
-            'ip' => self::DEFAULT_VALUE,
-//            'city' => self::DEFAULT_VALUE,
-//            'address' => self::DEFAULT_VALUE,
-            'zip' => self::DEFAULT_VALUE,
+            'country' => 'BY',
+            'ip' => '127.0.0.1',
+//            'city' => '',
+//            'address' => '',
+            'zip' => '220000',
         ];
         $response = $this->httpClient->request('POST', self::BASE_PAYMENT_GATEWAY_URI.'/customers', [
             'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
@@ -108,10 +102,11 @@ final class BePaidRecurrentPaymentGateway
             'plan' => [
                 'id' => $planId,
             ],
-            'return_url' => self::REDIRECT_URL,
+//            'return_url' => '',
+            'notification_url' => route('webhooks.bepaid.subscriptions'),
             'settings' => [
                 'language' => app()->getLocale(),
-            ]
+            ],
         ];
         $response = $this->httpClient->request('POST', self::BASE_PAYMENT_GATEWAY_URI.'/subscriptions', [
             'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
