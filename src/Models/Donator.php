@@ -21,6 +21,7 @@ use Illuminate\Support\Carbon;
  */
 final class Donator extends Model
 {
+    /** @var array The attributes that aren't mass assignable */
     protected $guarded = [];
 
     public function subscriptions(): HasMany
