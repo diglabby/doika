@@ -102,7 +102,7 @@ final class BePaidRecurrentPaymentGateway
             'plan' => [
                 'id' => $planId,
             ],
-//            'return_url' => '',
+            'return_url' => route('webhooks.bepaid.donated', ['campaignId' => $campaign->id]),
             'notification_url' => route('webhooks.bepaid.subscriptions'),
             'settings' => [
                 'language' => app()->getLocale(),
