@@ -37,8 +37,6 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
             throw new \InvalidArgumentException('Amount should be a positive number');
         }
 
-        $appUrl = $this->config->get('app.url');
-        $appUrl .= (strpos($appUrl, '?') > 0) ? '&' : '?';
         $checkoutParams = [
             'checkout' => [
                 'test' => ! $this->apiContext->live,

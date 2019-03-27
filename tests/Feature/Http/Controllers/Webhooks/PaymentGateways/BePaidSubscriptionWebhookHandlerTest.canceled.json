@@ -1,0 +1,64 @@
+{
+  "headers": {
+    "authorization": "Basic MjIyMjo0ODcxOWZiODU0ZjQxZTQ0NjBhYTMwNzc4MTNlZGQ2ZTAwYTJhYWQ3MDFkYXM1YjMyYzAxYmFjOWYzOTYxNDcx",
+    "host": [
+      "clubmate.falanster.by"
+    ],
+    "x-real-ip": [
+      "54.246.193.48"
+    ],
+    "x-forwarded-for": [
+      "54.246.193.48"
+    ],
+    "connection": [
+      "close"
+    ],
+    "content-length": [
+      "3594"
+    ],
+    "accept": [
+      "application/json"
+    ],
+    "content-type": [
+      "application/json"
+    ],
+    "user-agent": [
+      "Faraday v0.15.4"
+    ],
+    "accept-encoding": [
+      "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+    ],
+    "php-auth-user": "2222",
+    "php-auth-pw": "48719fb854f41e4460aa3077813edd6e00a2aad701das5b32c01bac9f3961471"
+  },
+  "input": {
+    "card": {
+      "token": "9990edb8e6f2af5d93a6259b690c50a7410bf9f97235f2e051345e01b580f699"
+    },
+    "created_at": "2015-06-18T12:02:42.731Z",
+    "customer": {
+      "id": "cst_2a46e8b7ff87df2d"
+    },
+    "device_id": "any device_id",
+    "id": "sbs_1cc338f74bc9bfb7",
+    "last_transaction": null,
+    "plan": {
+      "currency": "BYN",
+      "id": "pln_0b4ba2f1ab0c1988",
+      "plan": {
+        "amount": 100,
+        "interval": 1,
+        "interval_unit": "month"
+      },
+      "title": "Title 1",
+      "trial": {
+        "amount": 10,
+        "interval": 40,
+        "interval_unit": "hour"
+      }
+    },
+    "renew_at": null,
+    "state": "canceled",
+    "tracking_id": "any tracking_id"
+  }
+}
