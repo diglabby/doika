@@ -1,4 +1,4 @@
->[![Build Status](https://travis-ci.org/diglabby/doika.svg?branch=dev)](https://travis-ci.org/diglabby/doika)
+[![Build Status](https://travis-ci.org/diglabby/doika.svg?branch=dev)](https://travis-ci.org/diglabby/doika)
 
 # 🚧️ Doika
 Doika - модуль, які дапамагае прымаць ахвяраванні з дапамогай банкаўскіх картак і наладзіць новы падыход у фандрэйзінгу беларускіх некамерцыйных грамадскіх арганізацый на сваіх сайтах.
