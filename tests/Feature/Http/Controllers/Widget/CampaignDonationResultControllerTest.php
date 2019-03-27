@@ -20,6 +20,7 @@ class CampaignDonationResultControllerTest extends TestCase
 
         $response = $this->get(route('widget.campaign.donation-result', ['campaign' => $campaign->id, 'status' => $status]));
 
+        $response->assertOk();
         $response->assertSeeText($status);
     }
 
