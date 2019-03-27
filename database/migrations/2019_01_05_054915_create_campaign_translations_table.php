@@ -14,7 +14,7 @@ class CreateCampaignTranslationsTable extends Migration
     public function up()
     {
         Schema::create('campaign_translations', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('campaign_id');
             $table->string('locale', 2);
             $table->string('name');
