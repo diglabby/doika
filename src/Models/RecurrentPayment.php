@@ -35,16 +35,14 @@ class RecurrentPayment
 
     protected $httpClient;
 
-    public function __construct(BePaidApiContext $apiContext, $firstName, $lastName, $email, $phone)
+    public function __construct(BePaidApiContext $apiContext, HttpClient $httpClient, $firstName, $lastName, $email, $phone)
     {
         $this->apiContext = $apiContext;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->email = $email;
         $this->phone = $phone;
-        $this->httpClient = new Client([
-            'base_uri' => self::BASE_PAYMENT_GATEWAY_URI,
-        ]);
+        $this->httpClient = $httpClient;
     }
 
     public function createCustomer()
