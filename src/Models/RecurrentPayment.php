@@ -34,7 +34,7 @@ class RecurrentPayment
     /**
      * @see https://docs.bepaid.by/ru/subscriptions/customers
      */
-    private function createCustomer(Donator $donator)
+    private function createCustomer(Donator $donator): string
     {
         $GetCustomerParams = [
             'test' => ! $this->apiContext->live,
@@ -54,10 +54,8 @@ class RecurrentPayment
             'json' => $GetCustomerParams,
             'verify' => false,
         ]);
-        $this->responseFromPaymentGateway = $response->getBody();
-        $this->idCustomer = $this->responseFromPaymentGateway->id;
 
-        return $this->responseFromPaymentGateway;
+        return $response->getBody()->id;
     }
 
     private function generatePlanName(Money $money, Campaign $campaign): string
@@ -90,20 +88,19 @@ class RecurrentPayment
             'json' => $getTokenParams,
             'verify' => false,
         ]);
-        $this->responseFromPaymentGateway = $response->getBody();
 
-        return $this->responseFromPaymentGateway->id;
+        return $response->getBody()->id;
     }
 
     public function createSubscription(Money $money, Campaign $campaign, Donator $donator, string $paymentInterval): Subscription
     {
         $dateInterval = new CarbonInterval($paymentInterval);
         $planId = $this->createPlan($money, $campaign, $dateInterval);
-        $customerId = $this->createCustomer();
+        $customerId = $this->createCustomer($donator);
 
         $GetSubscriptionParams = [
             'customer' => [
-                'id' => $customerId
+                'id' => $customerId,
             ],
             'plan' => [
                 'id' => $planId,
@@ -120,8 +117,7 @@ class RecurrentPayment
             'verify' => false,
         ]);
 
-        $this->responseFromPaymentGateway = $response->getBody();
-        $gatewaySubscriptionId = $this->responseFromPaymentGateway->id;
+        $gatewaySubscriptionId = $response->getBody()->id;
 
         $subscription = new Subscription([
             'donator_id' => $donator->id,
