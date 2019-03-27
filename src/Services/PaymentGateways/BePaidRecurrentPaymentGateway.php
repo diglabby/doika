@@ -1,30 +1,32 @@
 <?php
 
-namespace Diglabby\Doika\Models;
+namespace Diglabby\Doika\Services\PaymentGateways;
 
 use Carbon\CarbonInterval;
-use Diglabby\Doika\Services\PaymentGateways\BePaidApiContext;
+use Diglabby\Doika\Models\Campaign;
+use Diglabby\Doika\Models\Donator;
+use Diglabby\Doika\Models\Subscription;
 use GuzzleHttp\Client as HttpClient;
 use Money\Money;
 
-class RecurrentPayment
+final class BePaidRecurrentPaymentGateway
 {
     private const GATEWAY_ID = 'bePaid';
 
     /** @deprecated */
-    protected const COUNTRY_OWNER = 'BY';
+    private const COUNTRY_OWNER = 'BY';
 
     /** @deprecated */
-    protected const DEFAULT_VALUE = 'default';
+    private const DEFAULT_VALUE = 'default';
 
-    protected const BASE_PAYMENT_GATEWAY_URI = 'https://api.bepaid.by';
+    private const BASE_PAYMENT_GATEWAY_URI = 'https://api.bepaid.by';
 
     /** @deprecated */
-    protected const REDIRECT_URL = 'https://doika.falanster.by';
+    private const REDIRECT_URL = 'https://doika.falanster.by';
 
-    protected $apiContext;
+    private $apiContext;
 
-    protected $httpClient;
+    private $httpClient;
 
     public function __construct(BePaidApiContext $apiContext, HttpClient $httpClient)
     {
@@ -99,7 +101,7 @@ class RecurrentPayment
         $planId = $this->createPlan($money, $campaign, $dateInterval);
         $customerId = $this->createCustomer($donator);
 
-        $GetSubscriptionParams = [
+        $getSubscriptionParams = [
             'customer' => [
                 'id' => $customerId,
             ],
@@ -114,7 +116,7 @@ class RecurrentPayment
         $response = $this->httpClient->request('POST', '/subscriptions', [
             'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
             'headers' => ['Accept' => 'application/json'],
-            'json' => $GetSubscriptionParams,
+            'json' => $getSubscriptionParams,
             'verify' => false,
         ]);
 
