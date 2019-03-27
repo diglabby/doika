@@ -41,24 +41,24 @@ final class BePaidRecurrentPaymentGateway
     {
         $GetCustomerParams = [
             'test' => ! $this->apiContext->live,
-            'first_name' => $donator->name,
-            'last_name' => '',
+//            'first_name' => $donator->name,
+//            'last_name' => '',
             'email' => $donator->email,
             'phone' => $donator->phone,
             'country' => self::COUNTRY_OWNER,
             'ip' => self::DEFAULT_VALUE,
-            'city' => self::DEFAULT_VALUE,
-            'address' => self::DEFAULT_VALUE,
+//            'city' => self::DEFAULT_VALUE,
+//            'address' => self::DEFAULT_VALUE,
             'zip' => self::DEFAULT_VALUE,
         ];
-        $response = $this->httpClient->request('POST', '/customers', [
+        $response = $this->httpClient->request('POST', self::BASE_PAYMENT_GATEWAY_URI.'/customers', [
             'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
             'headers' => ['Accept' => 'application/json'],
             'json' => $GetCustomerParams,
             'verify' => false,
         ]);
 
-        return $response->getBody()->id;
+        return json_decode($response->getBody()->getContents())->id;
     }
 
     private function generatePlanName(Money $money, Campaign $campaign): string
@@ -85,14 +85,14 @@ final class BePaidRecurrentPaymentGateway
             'language' => app()->getLocale(),
             'infinite' => true,
         ];
-        $response = $this->httpClient->request('POST', '/plans', [
+        $response = $this->httpClient->request('POST', self::BASE_PAYMENT_GATEWAY_URI.'/plans', [
             'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
             'headers' => ['Accept' => 'application/json'],
             'json' => $getTokenParams,
             'verify' => false,
         ]);
 
-        return $response->getBody()->id;
+        return json_decode($response->getBody()->getContents())->id;
     }
 
     public function createSubscription(Money $money, Campaign $campaign, Donator $donator, string $paymentInterval): Subscription
@@ -113,14 +113,14 @@ final class BePaidRecurrentPaymentGateway
                 'language' => app()->getLocale(),
             ]
         ];
-        $response = $this->httpClient->request('POST', '/subscriptions', [
+        $response = $this->httpClient->request('POST', self::BASE_PAYMENT_GATEWAY_URI.'/subscriptions', [
             'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
             'headers' => ['Accept' => 'application/json'],
             'json' => $getSubscriptionParams,
             'verify' => false,
         ]);
 
-        $gatewaySubscriptionId = $response->getBody()->id;
+        $gatewaySubscriptionId = json_decode($response->getBody()->getContents())->id;
 
         $subscription = new Subscription([
             'donator_id' => $donator->id,
