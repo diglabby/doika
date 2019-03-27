@@ -22,13 +22,14 @@ class LoginControllerTest extends TestCase
     /** @test */
     function admin_can_login()
     {
-        factory(Admin::class)->create([
+        $admin = factory(Admin::class)->create([
             'email' => 'example@example.com',
             'password' => bcrypt('secret'),
         ]);
 
         $response = $this->post(route('login', ['email' => 'example@example.com', 'password' => 'secret']));
 
+        $this->assertAuthenticatedAs($admin);
         $response->assertSessionHasNoErrors();
         $response->assertRedirect(route('dashboard.home'));
     }
@@ -43,6 +44,7 @@ class LoginControllerTest extends TestCase
 
         $response = $this->post(route('login', ['email' => 'example🤬@example.com', 'password' => 'secret']));
 
+        $this->assertGuest();
         $response->assertSessionHasErrors('email');
     }
 
@@ -56,6 +58,7 @@ class LoginControllerTest extends TestCase
 
         $response = $this->post(route('login', ['email' => 'example@example.com', 'password' => '🤬secret']));
 
+        $this->assertGuest();
         $response->assertSessionHasErrors('email');
     }
 }
