@@ -2,11 +2,15 @@
 
 namespace Diglabby\Doika\Models;
 
+use Carbon\CarbonInterval;
 use Diglabby\Doika\Services\PaymentGateways\BePaidApiContext;
-use GuzzleHttp\Client;
+use GuzzleHttp\Client as HttpClient;
+use Money\Money;
 
 class RecurrentPayment
 {
+    private const GATEWAY_ID = 'bePaid';
+
     protected const COUNTRY_OWNER = 'BY';
 
     protected const DEFAULT_VALUE = 'default';
@@ -45,10 +49,10 @@ class RecurrentPayment
         $this->httpClient = $httpClient;
     }
 
-    public function createCustomer()
+    private function createCustomer()
     {
         $GetCustomerParams = [
-            'test' => true,
+            'test' => ! $this->apiContext->live,
             'first_name' => $this->firstName,
             'last_name' => $this->lastName,
             'email' => $this->email,
@@ -71,56 +75,80 @@ class RecurrentPayment
         return $this->responseFromPaymentGateway;
     }
 
-    public function createPlan($planName)
+    private function generatePlanName(Money $money, Campaign $campaign): string
     {
-        $GetTokenParams = [
-            'test' => true,
+        return "Campaign: $campaign->name, {$money->getCurrency()->getCode()} {$money->getAmount()}";
+    }
+
+    /**
+     * @see https://docs.bepaid.by/ru/subscriptions/plans
+     */
+    private function createPlan(Money $money, Campaign $campaign, CarbonInterval $dateInterval): string
+    {
+        $planName = $this->generatePlanName($money, $campaign);
+
+        $getTokenParams = [
+            'test' => ! $this->apiContext->live,
             'title' => $planName,
-            'currency' => 'BYN',
+            'currency' => $money->getCurrency()->getCode(),
             'plan' => [
-                'amount' => 20,
-                'interval' => 20,
-                'interval_unit' => 'day'
+                'amount' => (int) $money->getAmount(),
+                'interval' => $dateInterval->months,
+                'interval_unit' => 'month',
             ],
-            'language' => 'ru',
-            'infinite' => true
+            'language' => app()->getLocale(),
+            'infinite' => true,
         ];
         $response = $this->httpClient->request('POST', '/plans', [
             'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
             'headers' => ['Accept' => 'application/json'],
-            'json' => $GetTokenParams,
-            'verify' => false
+            'json' => $getTokenParams,
+            'verify' => false,
         ]);
         $this->responseFromPaymentGateway = $response->getBody();
-        $this->idPlan = $this->responseFromPaymentGateway->id;
 
-        return $this->responseFromPaymentGateway;
+        return $this->responseFromPaymentGateway->id;
     }
 
-    public function createSubscription()
+    public function createSubscription(Money $money, Campaign $campaign, Donator $donator, string $paymentInterval): Subscription
     {
+        $dateInterval = new CarbonInterval($paymentInterval);
+        $planId = $this->createPlan($money, $campaign, $dateInterval);
+        $customerId = $this->createCustomer();
+
         $GetSubscriptionParams = [
             'customer' => [
-                'id' => $this->idCustomer
+                'id' => $customerId
             ],
             'plan' => [
-                'id' => $this->idPlan
+                'id' => $planId,
             ],
             'return_url' => self::REDIRECT_URL,
             'settings' => [
-                'language' => 'ru'
+                'language' => app()->getLocale(),
             ]
         ];
         $response = $this->httpClient->request('POST', '/subscriptions', [
             'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
             'headers' => ['Accept' => 'application/json'],
             'json' => $GetSubscriptionParams,
-            'verify' => false
+            'verify' => false,
         ]);
 
         $this->responseFromPaymentGateway = $response->getBody();
-        $this->idSubscription = $this->responseFromPaymentGateway->id;
+        $gatewaySubscriptionId = $this->responseFromPaymentGateway->id;
 
-        return $this->responseFromPaymentGateway;
+        $subscription = new Subscription([
+            'donator_id' => $donator->id,
+            'campaign_id' => $campaign->id,
+            'payment_gateway' => self::GATEWAY_ID,
+            'payment_gateway_subscription_id' => $gatewaySubscriptionId,
+            'amount' => (int) $money->getAmount(),
+            'currency' => $money->getCurrency()->getCode(),
+            'payment_interval' => $paymentInterval,
+        ]);
+        $subscription->save();
+
+        return $subscription;
     }
 }
