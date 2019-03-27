@@ -33,6 +33,8 @@ class RecurrentPayment
 
     protected $apiContext;
 
+    protected $httpClient;
+
     public function __construct(BePaidApiContext $apiContext, $firstName, $lastName, $email, $phone)
     {
         $this->apiContext = $apiContext;
@@ -40,6 +42,9 @@ class RecurrentPayment
         $this->lastName = $lastName;
         $this->email = $email;
         $this->phone = $phone;
+        $this->httpClient = new Client([
+            'base_uri' => self::BASE_PAYMENT_GATEWAY_URI,
+        ]);
     }
 
     public function createCustomer()
@@ -56,10 +61,7 @@ class RecurrentPayment
             'address' => self::DEFAULT_VALUE,
             'zip' => self::DEFAULT_VALUE
         ];
-        $client = new Client([
-            'base_uri' => self::BASE_PAYMENT_GATEWAY_URI
-        ]);
-        $response = $client->request('POST', '/customers', [
+        $response = $this->httpClient->request('POST', '/customers', [
             'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
             'headers' => ['Accept' => 'application/json'],
             'json' => $GetCustomerParams,
@@ -85,10 +87,7 @@ class RecurrentPayment
             'language' => 'ru',
             'infinite' => true
         ];
-        $client = new Client([
-            'base_uri' => self::BASE_PAYMENT_GATEWAY_URI
-        ]);
-        $response = $client->request('POST', '/plans', [
+        $response = $this->httpClient->request('POST', '/plans', [
             'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
             'headers' => ['Accept' => 'application/json'],
             'json' => $GetTokenParams,
@@ -114,10 +113,7 @@ class RecurrentPayment
                 'language' => 'ru'
             ]
         ];
-        $client = new Client([
-            'base_uri' => self::BASE_PAYMENT_GATEWAY_URI
-        ]);
-        $response = $client->request('POST', '/subscriptions', [
+        $response = $this->httpClient->request('POST', '/subscriptions', [
             'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
             'headers' => ['Accept' => 'application/json'],
             'json' => $GetSubscriptionParams,
