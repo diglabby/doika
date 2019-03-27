@@ -26,9 +26,17 @@ final class RouteServiceProvider extends BasicRouteServiceProvider
      */
     public function map()
     {
+        $this->mapApiRoutes();
         $this->mapWidgetRoutes();
         $this->mapDashboardRoutes();
         $this->mapRedirectRoutes();
+    }
+
+    protected function mapApiRoutes()
+    {
+        Route::middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
     }
 
     protected function mapWidgetRoutes()

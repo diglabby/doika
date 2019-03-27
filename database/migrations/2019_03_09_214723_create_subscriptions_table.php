@@ -23,6 +23,7 @@ class CreateSubscriptionsTable extends Migration
             $table->string('currency', 3);
             $table->string('payment_interval')->comment('An ISO 8601 repeating interval specification');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('donator_id')->references('id')->on('donators');
             $table->foreign('campaign_id')->references('id')->on('campaigns');

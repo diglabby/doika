@@ -11,7 +11,7 @@ class WidgetControllerTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $response = $this->get(route('home'));
+        $response = $this->get(route('widget.home'));
 
         $response->assertOk();
     }

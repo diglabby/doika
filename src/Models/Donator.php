@@ -21,6 +21,8 @@ use Illuminate\Support\Carbon;
  */
 final class Donator extends Model
 {
+    protected $guarded = [];
+
     public function subscriptions(): HasMany
     {
         $this->hasMany(Subscription::class);

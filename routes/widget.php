@@ -12,13 +12,11 @@
 |
 */
 
-Route::get('/', 'Widget\WidgetController@index')->name('home');
-Route::get('campaign/{campaignId}', 'Widget\CampaignController@show')->name('campaign.show')->where('campaignId', '[0-9]+');
-Route::post('campaign/{campaignId}/donate', 'Widget\CampaignController@donate')->name('campaign.donate')->where('campaignId', '[0-9]+');
-Route::get('campaign/{campaignId}/recurrent/create-donator', 'Widget\CampaignController@createDonator')->name('campaign.recurrent')->where('campaignId', '[0-9]+');
-Route::post('campaign/{campaignId}/recurrent/donate', 'Widget\CampaignController@donateRecurrent')->name('campaign.recurrent.donate')->where('campaignId', '[0-9]+');
+Route::get('/', 'Widget\WidgetController@index')->name('widget.home');
+Route::get('campaigns/{campaignId}', 'Widget\CampaignController@show')->name('widget.campaign.show')->where('campaignId', '[0-9]+');
+Route::get('campaigns/{campaign}/donation-result', 'Widget\CampaignDonationResultController@show')->name('widget.campaign.donation-result');
 
-/** @todo @fr0zen will remove it */
-Route::get('about', function () { return 'this route is deprecated'; })->name('about');
-Route::get('contact', function () { return 'this route is deprecated'; })->name('contact');
-Route::get('legal-mentions', function () { return 'this route is deprecated'; })->name('legal-mentions');
+Route::get('help', 'Widget\HelpController@show')->name('widget.help.show');
+
+Route::get('feedback', 'Widget\FeedbackController@show')->name('widget.feedbacks.show');
+Route::post('feedback', 'Widget\FeedbackController@store')->name('widget.feedbacks.store');
