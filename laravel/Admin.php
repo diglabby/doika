@@ -9,29 +9,25 @@ final class Admin extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
+    /** @var array Default attributes */
+    protected $attributes = [
+        'locale' => 'be',
+        'timezone' => 'Europe/Minsk',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+    /** @var array The attributes that are mass assignable */
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
+
+    /** @var array The attributes that should be hidden for arrays */
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
+    /** @var array The attributes that should be cast to native types */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];

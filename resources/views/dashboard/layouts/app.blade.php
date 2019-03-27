@@ -43,7 +43,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('dashboard.login') }}">Лагін</a></li>
+                            <li><a href="{{ route('login') }}">Лагін</a></li>
                             <!-- <li><a href="#">Register</a></li> -->
                         @else
                             <li class="dropdown">
