@@ -15,9 +15,6 @@ final class BePaidRecurrentPaymentGateway
 
     private const BASE_PAYMENT_GATEWAY_URI = 'https://api.bepaid.by';
 
-    /** @deprecated */
-    private const REDIRECT_URL = 'https://doika.falanster.by';
-
     private $apiContext;
 
     private $httpClient;
@@ -26,33 +23,6 @@ final class BePaidRecurrentPaymentGateway
     {
         $this->apiContext = $apiContext;
         $this->httpClient = $httpClient;
-    }
-
-    /**
-     * @see https://docs.bepaid.by/ru/subscriptions/customers
-     */
-    public function createCustomer(Donator $donator): string
-    {
-        $GetCustomerParams = [
-            'test' => ! $this->apiContext->live,
-//            'first_name' => $donator->name,
-//            'last_name' => '',
-            'email' => $donator->email,
-//            'phone' => $donator->phone,
-            'country' => 'BY',
-            'ip' => '127.0.0.1',
-//            'city' => '',
-//            'address' => '',
-            'zip' => '220000',
-        ];
-        $response = $this->httpClient->request('POST', self::BASE_PAYMENT_GATEWAY_URI.'/customers', [
-            'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
-            'headers' => ['Accept' => 'application/json'],
-            'json' => $GetCustomerParams,
-            'verify' => false,
-        ]);
-
-        return json_decode($response->getBody()->getContents())->id;
     }
 
     private function generatePlanName(Money $money, Campaign $campaign): string
@@ -93,16 +63,12 @@ final class BePaidRecurrentPaymentGateway
     {
         $dateInterval = new CarbonInterval($paymentInterval);
         $planId = $this->createPlan($money, $campaign, $dateInterval);
-        $customerId = $this->createCustomer($donator);
 
         $getSubscriptionParams = [
-            'customer' => [
-                'id' => $customerId,
-            ],
             'plan' => [
                 'id' => $planId,
             ],
-            'return_url' => route('webhooks.bepaid.donated', ['campaignId' => $campaign->id]),
+            'return_url' => url('/'),
             'notification_url' => route('webhooks.bepaid.subscriptions'),
             'settings' => [
                 'language' => app()->getLocale(),
