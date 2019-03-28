@@ -61,4 +61,21 @@ class LoginControllerTest extends TestCase
         $this->assertGuest();
         $response->assertSessionHasErrors('email');
     }
+
+    /** @test */
+    function admin_can_logout()
+    {
+        $admin = factory(Admin::class)->create([
+            'email' => 'example@example.com',
+            'password' => bcrypt('secret'),
+        ]);
+
+        $response = $this
+            ->actingAs($admin)
+            ->post(route('logout'));
+
+        $this->assertGuest();
+        $response->assertSessionHasNoErrors();
+        $response->assertRedirect();
+    }
 }
