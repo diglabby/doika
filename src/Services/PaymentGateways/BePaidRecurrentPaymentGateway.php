@@ -30,43 +30,21 @@ final class BePaidRecurrentPaymentGateway
         return "Campaign: $campaign->name, {$money->getCurrency()->getCode()} {$money->getAmount()}";
     }
 
-    /**
-     * @see https://docs.bepaid.by/ru/subscriptions/plans
-     */
-    private function createPlan(Money $money, Campaign $campaign, CarbonInterval $dateInterval): string
-    {
-        $planName = $this->generatePlanName($money, $campaign);
-
-        $getTokenParams = [
-            'test' => ! $this->apiContext->live,
-            'title' => $planName,
-            'currency' => $money->getCurrency()->getCode(),
-            'plan' => [
-                'amount' => (int) $money->getAmount(),
-                'interval' => $dateInterval->months,
-                'interval_unit' => 'month',
-            ],
-            'language' => app()->getLocale(),
-            'infinite' => true,
-        ];
-        $response = $this->httpClient->request('POST', self::BASE_PAYMENT_GATEWAY_URI.'/plans', [
-            'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
-            'headers' => ['Accept' => 'application/json'],
-            'json' => $getTokenParams,
-            'verify' => false,
-        ]);
-
-        return json_decode($response->getBody()->getContents())->id;
-    }
-
     public function createSubscription(Money $money, Campaign $campaign, Donator $donator, string $paymentInterval): Subscription
     {
         $dateInterval = new CarbonInterval($paymentInterval);
-        $planId = $this->createPlan($money, $campaign, $dateInterval);
+        $planName = $this->generatePlanName($money, $campaign);
 
         $getSubscriptionParams = [
             'plan' => [
-                'id' => $planId,
+                'test' => ! $this->apiContext->live,
+                'title' => $planName,
+                'currency' => $money->getCurrency()->getCode(),
+                'plan' => [
+                    'amount' => (int) $money->getAmount(),
+                    'interval' => $dateInterval->months,
+                    'interval_unit' => 'month',
+                ],
             ],
             'return_url' => url('/'),
             'notification_url' => route('webhooks.bepaid.subscriptions'),
