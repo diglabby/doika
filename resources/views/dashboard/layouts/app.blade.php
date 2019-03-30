@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('public/css/dashboard.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/build/css/dashboard.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -75,6 +75,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('public/js/dashboard.js') }}"></script>
+    <script src="{{ asset('public/build/js/dashboard.js') }}"></script>
 </body>
 </html>
