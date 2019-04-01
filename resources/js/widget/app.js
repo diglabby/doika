@@ -2,7 +2,7 @@ import './load-client-scripts'
 
 // Vue & axios
 import Vue from 'vue'
-import '../axios-config'
+import '../vendor/axios-config'
 
 import 'babel-polyfill'
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm'
@@ -18,7 +18,7 @@ import vSelect from './components/Plugins/Select'
 
 import { createRouter } from './router'
 import { createStore } from './store'
-import { createLocales } from '../vue-i18n-config'
+import { createLocales } from '../vendor/vue-i18n-config'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default-dark.css'
