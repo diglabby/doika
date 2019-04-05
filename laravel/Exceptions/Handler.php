@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Support\Facades\View;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -47,5 +48,14 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         return parent::render($request, $exception);
+    }
+
+    protected function registerErrorViewPaths()
+    {
+        $paths = collect(config('view.paths'));
+
+        View::replaceNamespace('errors', $paths->map(function ($path) {
+            return "{$path}/dashboard/pages/errors";
+        })->push(__DIR__.'/views')->all());
     }
 }
