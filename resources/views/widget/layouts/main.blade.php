@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}" dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,7 +40,6 @@
         'adminPathName' => config('app.admin_path'),
         'editorName' => config('app.editor_name'),
         'editorSiteUrl' => config('app.editor_site_url'),
-        'locales' => LaravelLocalization::getSupportedLocales(),
         'user' => $loggedInUser,
         'permissions' => session()->get('permissions'),
         'isImpersonation' => session()->has('admin_user_id') && session()->has('temp_user_id'),
