@@ -15,16 +15,16 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        FormFacade::component('bsText', 'dashboard.partials.components.form.input', ['name', 'value' => null, 'attributes' => [], 'type' => 'text']);
-        FormFacade::component('bsEmail', 'dashboard.partials.components.form.input', ['name', 'value' => null, 'attributes' => [], 'type' => 'email']);
-        FormFacade::component('bsTel', 'dashboard.partials.components.form.input', ['name', 'value' => null, 'attributes' => [], 'type' => 'tel']);
-        FormFacade::component('bsNumber', 'dashboard.partials.components.form.input', ['name', 'value' => null, 'attributes' => [], 'type' => 'number']);
-        FormFacade::component('bsDatetime', 'dashboard.partials.components.form.input', ['name', 'value' => null, 'attributes' => [], 'type' => 'datetime']);
-        FormFacade::component('bsPassword', 'dashboard.partials.components.form.input', ['name', 'attributes' => [], 'value' => '', 'type' => 'password']);
-        FormFacade::component('bsFile', 'dashboard.partials.components.form.input', ['name', 'attributes' => [], 'value' => null, 'type' => 'file']);
-        FormFacade::component('bsTextarea', 'dashboard.partials.components.form.textarea', ['name', 'value' => null, 'attributes' => []]);
-        FormFacade::component('bsSelect', 'dashboard.partials.components.form.select', ['name', 'list' => [], 'selected' => null, 'attributes' => []]);
-        FormFacade::component('bsCheckbox', 'dashboard.partials.components.form.custom-control', ['name', 'description', 'value' => null, 'type' => 'checkbox']);
+        FormFacade::component('bsText', 'dashboard.components.form.input', ['name', 'value' => null, 'attributes' => [], 'type' => 'text']);
+        FormFacade::component('bsEmail', 'dashboard.components.form.input', ['name', 'value' => null, 'attributes' => [], 'type' => 'email']);
+        FormFacade::component('bsTel', 'dashboard.components.form.input', ['name', 'value' => null, 'attributes' => [], 'type' => 'tel']);
+        FormFacade::component('bsNumber', 'dashboard.components.form.input', ['name', 'value' => null, 'attributes' => [], 'type' => 'number']);
+        FormFacade::component('bsDatetime', 'dashboard.components.form.input', ['name', 'value' => null, 'attributes' => [], 'type' => 'datetime']);
+        FormFacade::component('bsPassword', 'dashboard.components.form.input', ['name', 'attributes' => [], 'value' => '', 'type' => 'password']);
+        FormFacade::component('bsFile', 'dashboard.components.form.input', ['name', 'attributes' => [], 'value' => null, 'type' => 'file']);
+        FormFacade::component('bsTextarea', 'dashboard.components.form.textarea', ['name', 'value' => null, 'attributes' => []]);
+        FormFacade::component('bsSelect', 'dashboard.components.form.select', ['name', 'list' => [], 'selected' => null, 'attributes' => []]);
+        FormFacade::component('bsCheckbox', 'dashboard.components.form.custom-control', ['name', 'description', 'value' => null, 'type' => 'checkbox']);
         HtmlFacade::macro('asset', function ($manifestName, $path) {
             static $manifest;
             $basePath = app()->environment('production') ? 'dist' : 'build';
