@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('dashboard.layouts.app')
 @section('title', 'Канфігурацыя кампаніі')
 @section('top_scripts')
 <script src="js/jscolor.js"></script>

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('dashboard.layouts.app')
 @section('title', 'Асобная кампанія')
 @section('top_scripts')
 <script src="js/campaignPage.js"></script>
