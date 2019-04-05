@@ -40,7 +40,7 @@ class LoginController extends Controller
     }
 
     /**
-     *  Get the post register / login redirect path.
+     * Get the post register / login redirect path.
      * @see \Illuminate\Foundation\Auth\RedirectsUsers::redirectPath
      * @return string
      */
