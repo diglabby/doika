@@ -82,5 +82,5 @@
 		</form>
 @endsection
 @section('popups')
-	@include('shared.popup.language')
+	@include('dashboard.partials.popup.language')
 @endsection

@@ -69,8 +69,8 @@
         <div class="desc-of-campaign">
           <label for="descriptionOfCampaign" class="input-title title-info title-star">Апісанне кампаніі</label>
           <textarea class="desc-of-campaign__input" name="description" id="descriptionOfCampaign" cols="30" rows="10" maxlength="418">{{ $description }}</textarea>
-          <p class="remark">* Аб’ём тэкста з малюнкам - 418 сiмвалау з прабелам</p>
-          <p class="remark">* Аб’ём тэкста без малюнка - 488 сiмвалау з прабелам</p>
+          <p class="remark">* Аб’ём тэкста з малюнкам - 418 сімвалаў з прабелам</p>
+          <p class="remark">* Аб’ём тэкста без малюнка - 488 сімвалаў з прабелам</p>
         </div>
         <div class="add-picture">
           <label for="photo" class="input-title photo-select">Змяніць малюнак</label>
@@ -92,11 +92,11 @@
 					</label>
 					<span class="toggler__label input-title">Выключыць прагрэс-бар</span>
 				</div>
-				<button id="test" class="main-buttons__create-campaign add-language-button" class="input-title">Дадаць мову</button>
+				<button id="test" class="main-buttons__create-campaign add-language-button input-title">Дадаць мову</button>
 			</div>
       <button class="submit-button main-buttons__create-campaign">Захаваць</button>
 		</form>
 @endsection
 @section('popups')
-    @include('shared.popup.language')
+    @include('dashboard.partials.popup.language')
 @endsection
