@@ -98,5 +98,5 @@
 		</form>
 @endsection
 @section('popups')
-    @include('dashboard.partials.popup.language')
+    @include('dashboard.partials.popups.language')
 @endsection

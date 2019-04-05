@@ -56,5 +56,5 @@
 	</table>
 @endsection
 @section('popups')
-@includeWhen(!isset($first_login), 'dashboard.partials.popup.first')
+@includeWhen(!isset($first_login), 'dashboard.partials.popups.first')
 @endsection
