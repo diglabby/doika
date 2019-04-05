@@ -9,7 +9,6 @@ class AdminSeeder extends Seeder
         factory(\App\Admin::class)->create([
             'name' => 'Admin',
             'slug' => 'admin',
-            'password' => 'secret',
         ]);
     }
 }
