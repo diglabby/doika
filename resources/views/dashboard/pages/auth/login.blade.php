@@ -7,12 +7,12 @@
                 <div class="col-md-4">
                     <div class="card p-4">
                         <div class="card-body">
-                            <form action="{{ route('login') }}" method="post">
+                            <form action="{{ route('login') }}" method="POST">
                                 @csrf
 
-                								<div class="card-logo">
-                									<img src="/doika/public/images/Doika-logo.png" />
-                								</div>
+                                <div class="card-logo">
+                                    <img src="/doika/public/images/Doika-logo.png" />
+                                </div>
 
                                 <h1>@lang('labels.admin.login.header')</h1>
 
