@@ -75,7 +75,9 @@
         <div class="add-picture">
           <label for="photo" class="input-title photo-select">Змяніць малюнак</label>
           <input  type="file" name="photo" id="photo" class="photo-input">
-          <div class="selected-picture"><img id="image" src="{{ 'public/images/'.$photo }}"></div>
+          <div class="selected-picture">
+              <img id="image" src="{{ asset('images/'.$photo) }}">
+          </div>
         </div>
       </div>
       <div class="form__other row">
