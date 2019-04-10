@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.app')
 @section('title', 'Канфігурацыя кампаніі')
 @section('top_scripts')
-<script src="js/jscolor.js"></script>
+<script src="{{ asset('build/js/jscolor.js') }}"></script>
 @endsection
 @section('content')
     <div class="breadcrumbs">Адмін > Галоўная старонка > Канфігурацыя модуля</div>

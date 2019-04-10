@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.app')
 @section('title', 'Асобная кампанія')
 @section('top_scripts')
-<script src="js/campaignPage.js"></script>
+<script src="{{ asset('build/js/campaignPage.js') }}"></script>
 @endsection
 @section('content')
 		<div class="breadcrumbs">Адмін > Галоўная старонка > Асобная кампанія</div>
