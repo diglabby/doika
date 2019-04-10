@@ -11,7 +11,20 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('public/build/css/dashboard.css') }}" rel="stylesheet">
+    <script type="application/json" data-settings-selector="settings-json">
+        {!! json_encode([
+            'locale' => app()->getLocale(),
+            'appName' => config('app.name'),
+            'homePath' => route('dashboard.home'),
+            //'adminHomePath' => route('admin.home', [], false),
+            'dashboardBasePath' => '/doika/doika/dashboard',
+            'adminPathName' => config('app.admin_path'),
+            'locales' => 'en',
+            'user' => $loggedInUser,
+        ]) !!}
+    </script>
+    <link href="{{ mix('css/dashboard.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -75,6 +88,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('public/build/js/dashboard.js') }}"></script>
+    <script src="{{ mix('js/dashboard.js') }}"></script>
 </body>
 </html>
