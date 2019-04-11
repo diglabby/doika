@@ -27,6 +27,9 @@ final class Subscription extends Model
 {
     use SoftDeletes;
 
+    /** @var array The attributes that aren't mass assignable */
+    protected $guarded = [];
+
     /** @var array Default attributes */
     protected $attributes = [
         'currency' => 'BYN',

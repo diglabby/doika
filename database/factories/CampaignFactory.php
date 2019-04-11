@@ -11,7 +11,7 @@ $factory->define(Campaign::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->words(3, true),
         'description' => $faker->sentence,
-        'picture_url' => $faker->imageUrl(),
+        'picture_url' => $faker->imageUrl(640, 640, 'animals'),
         'target_amount' => 10000,
         'currency' => 'BYN',
         'started_at' => today(),

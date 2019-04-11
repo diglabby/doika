@@ -21,15 +21,16 @@ use Illuminate\Support\Carbon;
  */
 final class Donator extends Model
 {
+    /** @var array The attributes that aren't mass assignable */
     protected $guarded = [];
 
     public function subscriptions(): HasMany
     {
-        $this->hasMany(Subscription::class);
+        return $this->hasMany(Subscription::class);
     }
 
     public function transactions(): HasMany
     {
-        $this->hasMany(Transaction::class);
+        return $this->hasMany(Transaction::class);
     }
 }

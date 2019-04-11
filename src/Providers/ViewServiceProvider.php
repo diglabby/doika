@@ -7,6 +7,7 @@ use Collective\Html\HtmlFacade;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
+/** @deprecated Use HTML code instead */
 class ViewServiceProvider extends ServiceProvider
 {
     /**
@@ -14,16 +15,16 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        FormFacade::component('bsText', 'components.form.input', ['name', 'value' => null, 'attributes' => [], 'type' => 'text']);
-        FormFacade::component('bsEmail', 'components.form.input', ['name', 'value' => null, 'attributes' => [], 'type' => 'email']);
-        FormFacade::component('bsTel', 'components.form.input', ['name', 'value' => null, 'attributes' => [], 'type' => 'tel']);
-        FormFacade::component('bsNumber', 'components.form.input', ['name', 'value' => null, 'attributes' => [], 'type' => 'number']);
-        FormFacade::component('bsDatetime', 'components.form.input', ['name', 'value' => null, 'attributes' => [], 'type' => 'datetime']);
-        FormFacade::component('bsPassword', 'components.form.input', ['name', 'attributes' => [], 'value' => '', 'type' => 'password']);
-        FormFacade::component('bsFile', 'components.form.input', ['name', 'attributes' => [], 'value' => null, 'type' => 'file']);
-        FormFacade::component('bsTextarea', 'components.form.textarea', ['name', 'value' => null, 'attributes' => []]);
-        FormFacade::component('bsSelect', 'components.form.select', ['name', 'list' => [], 'selected' => null, 'attributes' => []]);
-        FormFacade::component('bsCheckbox', 'components.form.custom-control', ['name', 'description', 'value' => null, 'type' => 'checkbox']);
+        FormFacade::component('bsText', 'dashboard.components.form.input', ['name', 'value' => null, 'attributes' => [], 'type' => 'text']);
+        FormFacade::component('bsEmail', 'dashboard.components.form.input', ['name', 'value' => null, 'attributes' => [], 'type' => 'email']);
+        FormFacade::component('bsTel', 'dashboard.components.form.input', ['name', 'value' => null, 'attributes' => [], 'type' => 'tel']);
+        FormFacade::component('bsNumber', 'dashboard.components.form.input', ['name', 'value' => null, 'attributes' => [], 'type' => 'number']);
+        FormFacade::component('bsDatetime', 'dashboard.components.form.input', ['name', 'value' => null, 'attributes' => [], 'type' => 'datetime']);
+        FormFacade::component('bsPassword', 'dashboard.components.form.input', ['name', 'attributes' => [], 'value' => '', 'type' => 'password']);
+        FormFacade::component('bsFile', 'dashboard.components.form.input', ['name', 'attributes' => [], 'value' => null, 'type' => 'file']);
+        FormFacade::component('bsTextarea', 'dashboard.components.form.textarea', ['name', 'value' => null, 'attributes' => []]);
+        FormFacade::component('bsSelect', 'dashboard.components.form.select', ['name', 'list' => [], 'selected' => null, 'attributes' => []]);
+        FormFacade::component('bsCheckbox', 'dashboard.components.form.custom-control', ['name', 'description', 'value' => null, 'type' => 'checkbox']);
         HtmlFacade::macro('asset', function ($manifestName, $path) {
             static $manifest;
             $basePath = app()->environment('production') ? 'dist' : 'build';
@@ -61,15 +62,9 @@ class ViewServiceProvider extends ServiceProvider
                 $view->with('flashType', 'danger');
             }
         });
+
         View::composer('*', function (\Illuminate\View\View $view) {
             $view->with('loggedInUser', auth()->user());
         });
-    }
-
-    /**
-     * Register the application services.
-     */
-    public function register()
-    {
     }
 }
