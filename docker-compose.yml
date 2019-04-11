@@ -52,7 +52,7 @@ services:
       PMA_HOST: mysql
       PMA_PORT: 3306
     ports:
-      - '8080:80'
+      - '8085:80'
   node:
     container_name: 'doika-node'
     build:
