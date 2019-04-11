@@ -5,29 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Doika Admin Panel | {{ config('app.name') }}</title>
+    <title>Doika Login</title>
 
-    <!-- Styles -->
-
-    {{-- @if ($stylePath = Html::asset('dashboard', 'dashboard.css'))
-    <link rel="stylesheet" href="{{ $stylePath }}">
-    @endif --}}
-    <link rel="stylesheet" href="/doika/public/build/css/dashboard.css">
+    <link rel="stylesheet" href={{ asset(mix("/build/css/dashboard.css")) }}>
 
 
-    <!-- CDN -->
-    <script defer src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script defer src="//cdn.ckeditor.com/ckeditor5/10.1.0/classic/ckeditor.js"></script>
 
-    <!--
-    <script defer src="{{ Html::asset('dashboard', 'vendor-dashboard.js') }}"></script>
-    <script defer src="{{ Html::asset('dashboard', 'dashboard.js') }}"></script>
-  -->
-    <script defer src="/doika/public/build/js/vendor-dashboard.js"></script>
-    <script defer src="/doika/public/build/js/dashboard.js"></script>
+     <script defer src={{ asset(mix("/build/js/dashboard.js")) }}></script>
 
     <!-- JS settings -->
     <script type="application/json" data-settings-selector="settings-json">
