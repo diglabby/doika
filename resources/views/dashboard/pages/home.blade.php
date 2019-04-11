@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('dashboard.layouts.app')
 
 @section('body_class', 'app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden')
 

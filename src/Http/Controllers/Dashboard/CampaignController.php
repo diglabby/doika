@@ -10,12 +10,12 @@ final class CampaignController extends Controller
 {
     public function index()
     {
-        return view('backend.admin.list', ['campaigns' => factory(Campaign::class, 10)->make()]);
+        return view('dashboard.pages.campaigns.index', ['campaigns' => factory(Campaign::class, 10)->make()]);
     }
 
     public function show(int $campaignId)
     {
-        return view('backend.admin.campaign', [
+        return view('dashboard.pages.campaigns.show', [
             'campaign' => factory(Campaign::class)->make(['id' => $campaignId])
         ]);
     }

@@ -1,55 +1,47 @@
-@extends('dashboard.layouts.app')
+@extends('dashboard.layouts.main')
 
-@section('body_class', 'login-page')
+@section('body')
+    <div class="app flex-row align-items-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="card p-4">
+                        <div class="card-body">
+                            <form action="{{ route('login') }}" method="POST">
+                                @csrf
 
-@section('content')
-    <div class="row">
-        <div class="col-md-12 col-lg-6 mx-auto">
-            <div class="card">
-                
-                <div class="card-header">@lang('labels.user.login')</div>
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label">@lang('validation.attributes.email')</label>
-
-                            <div class="col-md-8">
-                                <input id="email" type="email" class="form-control" required placeholder="{{ __('validation.attributes.email') }}">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label">@lang('validation.attributes.password')</label>
-
-                            <div class="col-md-8">
-                                <input id="password" type="password" class="form-control" required placeholder="{{ __('validation.attributes.password') }}">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-8 ml-auto">
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="remember" name="remember" value="1">
-                                    <label class="custom-control-label" for="remember">{{ __('labels.user.remember') }}</label>
+                                <div class="card-logo">
+                                    <img src="{{ asset('images/Doika-logo.png') }}" />
                                 </div>
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <div class="col-md-8 ml-auto">
-                                <button  class="btn btn-primary">
-                                    @lang('labels.user.login')
-                                </button>
+                                <h1>@lang('labels.admin.login.header')</h1>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    @lang('labels.user.password_forgot')
-                                </a>
-                            </div>
+                                <div class="form-group">
+                                    <label for="email">@lang('labels.admin.login.email')</label>
+                                    {{ Form::bsEmail('email', null, ['required', 'placeholder' => __('labels.admin.login.placeholder.email')]) }}
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password">
+                                        @lang('labels.admin.login.password')
+                                    </label>
+                                    {{ Form::bsPassword('password', ['required', 'placeholder' => __('labels.admin.login.placeholder.password')]) }}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ Form::bsCheckbox('remember', __('labels.admin.login.remember')) }}
+                                </div>
+
+                                <div class="d-flex align-items-center">
+                                    <button type="submit" class="btn btn-primary"><i class="fe fe-log-in"></i>&nbsp;@lang('buttons.admin.login.submit')</button>
+
+                                    <a href="{{ route('password.reset', 'token') }}" class="ml-auto small">
+                                        @lang('labels.admin.login.reset.link')
+                                    </a>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

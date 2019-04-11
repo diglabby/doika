@@ -1,7 +1,7 @@
-@extends('layouts.admin')
+@extends('dashboard.layouts.app')
 @section('title', 'Асобная кампанія')
 @section('top_scripts')
-<script src="js/campaignPage.js"></script>
+<script src="{{ asset('build/js/campaignPage.js') }}"></script>
 @endsection
 @section('content')
 		<div class="breadcrumbs">Адмін > Галоўная старонка > Асобная кампанія</div>
@@ -69,13 +69,15 @@
         <div class="desc-of-campaign">
           <label for="descriptionOfCampaign" class="input-title title-info title-star">Апісанне кампаніі</label>
           <textarea class="desc-of-campaign__input" name="description" id="descriptionOfCampaign" cols="30" rows="10" maxlength="418">{{ $description }}</textarea>
-          <p class="remark">* Аб’ём тэкста з малюнкам - 418 сiмвалау з прабелам</p>
-          <p class="remark">* Аб’ём тэкста без малюнка - 488 сiмвалау з прабелам</p>
+          <p class="remark">* Аб’ём тэкста з малюнкам - 418 сімвалаў з прабелам</p>
+          <p class="remark">* Аб’ём тэкста без малюнка - 488 сімвалаў з прабелам</p>
         </div>
         <div class="add-picture">
           <label for="photo" class="input-title photo-select">Змяніць малюнак</label>
           <input  type="file" name="photo" id="photo" class="photo-input">
-          <div class="selected-picture"><img id="image" src="{{ 'public/images/'.$photo }}"></div>
+          <div class="selected-picture">
+              <img id="image" src="{{ asset('images/'.$photo) }}">
+          </div>
         </div>
       </div>
       <div class="form__other row">
@@ -92,11 +94,11 @@
 					</label>
 					<span class="toggler__label input-title">Выключыць прагрэс-бар</span>
 				</div>
-				<button id="test" class="main-buttons__create-campaign add-language-button" class="input-title">Дадаць мову</button>
+				<button id="test" class="main-buttons__create-campaign add-language-button input-title">Дадаць мову</button>
 			</div>
       <button class="submit-button main-buttons__create-campaign">Захаваць</button>
 		</form>
 @endsection
 @section('popups')
-    @include('shared.popup.language')
+    @include('dashboard.partials.popups.language')
 @endsection
