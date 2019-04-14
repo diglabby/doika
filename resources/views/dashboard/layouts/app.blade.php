@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Doika') }}</title>
 
-    <!-- Styles -->
+    <!-- Scripts -->
+
     <script type="application/json" data-settings-selector="settings-json">
         {!! json_encode([
             'locale' => app()->getLocale(),
@@ -18,15 +18,22 @@
             'homePath' => route('dashboard.home'),
             //'adminHomePath' => route('admin.home', [], false),
             'dashboardBasePath' => '/doika/doika/dashboard',
-            'adminPathName' => config('app.admin_path'),
             'locales' => 'en',
             'user' => $loggedInUser,
         ]) !!}
     </script>
-    <link href="{{ mix('css/dashboard.css') }}" rel="stylesheet">
+
+
+    <!-- Styles -->
+
+    <link href="{{ asset(mix('build/css/dashboard/dashboard.css')) }}" rel="stylesheet">
+
+    <!-- Named routes shortcut -->
+    @routes()
 
 </head>
 <body>
+
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -41,23 +48,18 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/doika') }}">
+                    <a class="navbar-brand" href="{{ url('/doika/doika/dashboard/') }}">
                         {{ config('app.name', 'Doika') }}
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Лагін</a></li>
-                            <!-- <li><a href="#">Register</a></li> -->
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -88,6 +90,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ mix('js/dashboard.js') }}"></script>
+    <script src="{{ asset(mix('build/js/dashboard/dashboard.js')) }}"></script>
 </body>
 </html>

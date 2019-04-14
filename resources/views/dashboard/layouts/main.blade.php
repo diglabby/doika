@@ -9,11 +9,9 @@
 
     <title>Doika Login</title>
 
-    <link rel="stylesheet" href={{ asset(mix("/build/css/dashboard.css")) }}>
+    <link rel="stylesheet" href={{ asset(mix("build/css/dashboard/dashboard.css")) }}>
 
-
-
-     <script defer src={{ asset(mix("/build/js/dashboard.js")) }}></script>
+    <script defer src={{ asset(mix("build/js/dashboard/dashboard.js")) }}></script>
 
     <!-- JS settings -->
     <script type="application/json" data-settings-selector="settings-json">
@@ -21,9 +19,6 @@
             'locale' => app()->getLocale(),
             'appName' => config('app.name'),
             'homePath' => route('dashboard.home'),
-            //'adminHomePath' => route('admin.home', [], false),
-            'adminHomePath' => '/doika/dashboard',
-            'adminPathName' => config('app.admin_path'),
             'locales' => 'en',
             'user' => $loggedInUser,
         ]) !!}
