@@ -13,6 +13,8 @@ class LoginControllerTest extends TestCase
     /** @test */
     function visitor_can_open_login_page()
     {
+        $this->withoutExceptionHandling();
+
         $response = $this->get(route('login'));
 
         $response->assertOk();
