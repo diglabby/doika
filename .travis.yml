@@ -4,10 +4,15 @@ php:
   - 7.1.3
   - 7.2
   - 7.3
+services:
+  - mysql
 
 cache:
   directories:
     - $HOME/.composer/cache
+
+before_install:
+  - mysql -e 'CREATE DATABASE doika_db;'
 
 before_script:
   # disable xdebug if not coverage
@@ -15,6 +20,7 @@ before_script:
   - cp .env.example .env
   - composer install --no-interaction --prefer-dist
   - php artisan key:generate
+  - php artisan migrate:fresh --seed
 
 script:
   - composer test:ci
