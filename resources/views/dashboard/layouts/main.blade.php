@@ -22,8 +22,8 @@
     <script defer src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script defer src="//cdn.ckeditor.com/ckeditor5/10.1.0/classic/ckeditor.js"></script>
 
-    <script defer src="{{ assert('build/js/vendor-dashboard.js') }}"></script>
-    <script defer src="{{ assert('build/js/dashboard.js') }}"></script>
+    <script defer src="{{ asset('build/js/vendor-dashboard.js') }}"></script>
+    <script defer src="{{ asset('build/js/dashboard.js') }}"></script>
 
     <!-- JS settings -->
     <script type="application/json" data-settings-selector="settings-json">
