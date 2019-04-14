@@ -12,14 +12,15 @@ let mix = require('laravel-mix');
  | file for your application, as well as bundling up your JS files.
  |
  */
-mix.js('resources/js/dashboard/app.js', 'public/js/dashboard.js')
-    .sass('resources/sass/dashboard/app.scss', 'public/css/dashboard.css', {
+
+
+mix.js('resources/js/dashboard/app.js', 'public/build/js/dashboard/dashboard.js')
+    .sass('resources/sass/dashboard/app.scss', 'public/build/css/dashboard/dashboard.css', {
     implementation: require('node-sass')
     })
     .options({
         processCssUrls: false
     })
-    .version()
     .webpackConfig({
         watchOptions: {
             ignored: /node_modules/
