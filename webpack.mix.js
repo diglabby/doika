@@ -13,7 +13,6 @@ let mix = require('laravel-mix');
  |
  */
 
-
 mix.js('resources/js/dashboard/app.js', 'public/build/js/dashboard/dashboard.js')
     .sass('resources/sass/dashboard/app.scss', 'public/build/css/dashboard/dashboard.css', {
     implementation: require('node-sass')
@@ -27,8 +26,7 @@ mix.js('resources/js/dashboard/app.js', 'public/build/js/dashboard/dashboard.js'
         }
     });
 
-
-
+mix.copy('resources/images/dashboard', 'public/images/dashboard')
 
 // Full API
 // mix.js(src, output);
