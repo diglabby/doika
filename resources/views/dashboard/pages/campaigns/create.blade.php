@@ -1,8 +1,8 @@
 @extends('dashboard.layouts.app')
 @section('title', 'Стварэнне кампаніі')
 @section('top_scripts')
-<script src="index.js"></script>
-<script src="js/campaignPage.js"></script>
+<script src="{{ asset('index.js') }}"></script>
+<script src="{{ asset('build/js/campaignPage.js') }}"></script>
 @endsection
 @section('content')
 		<div class="breadcrumbs">Адмін > Галоўная старонка > Стварэнне кампаніі</div>
