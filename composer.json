@@ -22,7 +22,8 @@
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.7",
         "martinlindhe/laravel-vue-i18n-generator": "^0.1.22",
-        "moneyphp/money": "^3.2"
+        "moneyphp/money": "^3.2",
+        "tightenco/ziggy": "^0.6.9"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
