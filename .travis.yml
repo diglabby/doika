@@ -1,5 +1,9 @@
 language: php
 
+services:
+  # 5.6.x by default
+  - mysql
+
 php:
   - 7.1.3
   - 7.2
@@ -9,16 +13,20 @@ cache:
   directories:
     - $HOME/.composer/cache
 
+before_install:
+  - mysql -e 'CREATE DATABASE doika;'
+
 before_script:
   # disable xdebug if not coverage
   - if [[ $COVERAGE == "" ]]; then phpenv config-rm xdebug.ini; fi
-  - cp .env.example .env
+  - cp .env.ci .env
   - composer install --no-progress --no-interaction --prefer-dist --no-suggest
   - php artisan key:generate
 
 script:
   - composer test:ci
   - php artisan route:list
+  - php artisan migrate:fresh --seed
 
 after_script:
   - |
