@@ -16,7 +16,6 @@ enabled:
   - no_whitespace_in_blank_line
   - return_type_declaration
   - short_scalar_cast
-  - single_import_per_statement
   - standardize_not_equals
   - trim_array_spaces
   - unix_line_endings
