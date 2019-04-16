@@ -2,10 +2,10 @@
 // Prefixed by /doika/dashboard
 
 Route::get('/campaigns', 'Dashboard\CampaignController@index')->name('dashboard.campaigns.index');
-Route::get('/campaigns/{id}', 'Dashboard\CampaignController@show')->name('dashboard.campaigns.index');
+Route::get('/campaigns/{campaign}', 'Dashboard\CampaignController@show')->name('dashboard.campaigns.index');
 Route::post('/campaigns', 'Dashboard\CampaignController@store')->name('dashboard.campaigns.store');
-Route::put('/campaigns/{id}', 'Dashboard\CampaignController@update')->name('dashboard.campaigns.update');
-Route::delete('/campaigns/{id}', 'Dashboard\CampaignController@delete')->name('dashboard.campaigns.delete');
+Route::put('/campaigns/{campaign}', 'Dashboard\CampaignController@update')->name('dashboard.campaigns.update');
+Route::delete('/campaigns/{campaign}', 'Dashboard\CampaignController@delete')->name('dashboard.campaigns.delete');
 
 Route::get('/transactions', 'Dashboard\TransactionController@index')->name('dashboard.transactions.index');
 Route::get('/transactions/{id}', 'Dashboard\TransactionController@show')->name('dashboard.transactions.show');

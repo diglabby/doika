@@ -22,6 +22,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $deleted_at
  *
  * Relationships
+ * @property Donator[] $donators
  * @property Transaction[] $translations
  */
 final class Campaign extends Model
@@ -46,6 +47,11 @@ final class Campaign extends Model
     protected $attributes = [
         'active_status' => false,
     ];
+
+    public function donators(): HasMany
+    {
+        return $this->hasMany(Donator::class);
+    }
 
     public function translations(): HasMany
     {
