@@ -18,5 +18,4 @@ enabled:
   - short_scalar_cast
   - standardize_not_equals
   - trim_array_spaces
-  - unix_line_endings
   - whitespace_after_comma_in_array
