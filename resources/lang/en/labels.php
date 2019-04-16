@@ -4,8 +4,8 @@ return [
     'http' => [
         '404' => [
             'title' => '404',
-            'description' => ''
-        ]
+            'description' => '',
+        ],
     ],
     'admin' => [
         'title' => 'Administration',
@@ -14,7 +14,7 @@ return [
             'entriesPerPage' => 'entries per page',
             'search' => 'Search',
             'actions' => 'Actions',
-            'info' => ''
+            'info' => '',
         ],
         'common' => [
             'search' => 'Search',
@@ -22,32 +22,32 @@ return [
                 'left' => 'Powered by',
                 'with' => 'with',
                 'by' => 'by',
-                'supporter' => 'Supported by the European Union'
+                'supporter' => 'Supported by the European Union',
             ],
-            'confirmation' => 'Are you sure?'
+            'confirmation' => 'Are you sure?',
         ],
         'newMenu' => [
             'header' => 'Add',
             'campaign' => 'New campaign',
-            'user' => 'New user'
+            'user' => 'New user',
         ],
         'languageMenu' => [
             'header' => 'Language',
             'be' => 'Belarussian',
             'ru' => 'Russian',
-            'en' => 'English'
+            'en' => 'English',
         ],
         'accountMenu' => [
             'header' => 'My profile',
             'avatar' => 'User avatar',
-            'logout' => 'Logout'
+            'logout' => 'Logout',
         ],
         'rightMenu' => [
             'divider' => [
                 'configuration' => 'MODULE CONFIGURATION',
                 'access' => 'ACCESS MANAGEMENT',
                 'help' => 'FAQ',
-                'feedback' => 'FEEDBACK'
+                'feedback' => 'FEEDBACK',
             ],
         ],
         'login' => [
@@ -63,9 +63,9 @@ return [
                 'link' => 'Forget password?',
                 'title' => 'Password reset',
                 'submit' => 'Send reset password link',
-                'header' => 'Login'
+                'header' => 'Login',
             ],
-            'header' => 'Login'
+            'header' => 'Login',
         ],
         'campaigns' => [
             'title' => 'Campaigns',
@@ -108,7 +108,7 @@ return [
                 'title' => 'Edit campaign',
                 'header' => 'Edit campaign',
                 'breadcrumb' => 'Edit',
-            ]
+            ],
         ],
         'payments' => [
             'title' => 'Payments',
@@ -124,7 +124,7 @@ return [
             'statuses' => [
                 'success' => 'Success',
                 'failed' => 'Failed',
-                'error' => 'Error'
+                'error' => 'Error',
             ],
             'show' => [
                 'title' => 'Show payment',
@@ -161,10 +161,10 @@ return [
                     'test' => 'Turn off test payments',
                     'maxPayment' => 'Max payment amount',
                     'minPayment' => 'Min payment amount',
-                ]
+                ],
             ],
             'layout' => [
-                'header' => 'Layout options'
+                'header' => 'Layout options',
             ],
             'notifications' => [
                 'address' => 'Server address',
@@ -181,12 +181,12 @@ return [
                     'user' => 'Email user',
                     'password' => 'Email password',
                     'email' => 'Email address',
-                ]
-            ]
+                ],
+            ],
         ],
         'help' => [
             'title' => 'FAQ',
-            'header' => 'Frequently asked questions'
+            'header' => 'Frequently asked questions',
         ],
         'feedback' => [
             'title' => 'Feedback',
@@ -197,8 +197,8 @@ return [
             'placeholder' => [
                 'email' => 'Your Email',
                 'name' => 'Name',
-                'message' => 'Write your message'
-            ]
+                'message' => 'Write your message',
+            ],
         ],
         'users' => [
             'title' => 'Users',
@@ -216,23 +216,23 @@ return [
                 'email' => 'Email',
                 'name' => 'Name',
                 'message' => 'Write your message',
-                'password' => 'Password'
+                'password' => 'Password',
             ],
             'create' => [
                 'breadcrumb' => 'Create',
-                'header' => 'Create user'
+                'header' => 'Create user',
             ],
             'edit' => [
                 'breadcrumb' => 'Edit',
-                'header' => 'Edit user'
-            ]
+                'header' => 'Edit user',
+            ],
 
-        ]
+        ],
     ],
     'widget' => [
         'paymentInfo' => 'Terms of Use',
         'input' => 'Summ',
         'recieved' => 'Recieved',
-        'needed' => 'Needed'
-    ]
+        'needed' => 'Needed',
+    ],
 ];

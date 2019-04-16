@@ -19,13 +19,13 @@ return [
         ],
         'support' => 'Help Doika Team',
         'login' => [
-            'submit' => 'Login'
+            'submit' => 'Login',
         ],
         'feedback' => [
-            'submit' => 'Send'
+            'submit' => 'Send',
         ],
         'users' => [
-            'create' => 'Create new user'
+            'create' => 'Create new user',
         ],
         'campaigns' => [
             'create' => 'Create campaign',
@@ -33,11 +33,11 @@ return [
             'uploadImage' => 'Upload image',
             'deleteImage' => 'Delete image',
         ],
-        
+
     ],
     'widget' => [
         'back' => 'Back',
         'confirm' => 'Confirm',
-        'proceed' => 'Proceed'
-    ]
+        'proceed' => 'Proceed',
+    ],
 ];
