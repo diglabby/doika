@@ -5,15 +5,15 @@ return [
         'common' => [
             'search' => [
                 'noResult' => 'Not found',
-                'noMatchResult' => 'No match'
-            ]
+                'noMatchResult' => 'No match',
+            ],
         ],
         'login' => [
-            'error' => 'These credentials do not match our records.'
+            'error' => 'These credentials do not match our records.',
         ],
         'feedback' => [
             'error' => 'Sending error!',
-            'success' => 'Message sent successfully'
-        ]
-    ]
+            'success' => 'Message sent successfully',
+        ],
+    ],
 ];
