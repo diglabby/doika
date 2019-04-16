@@ -7,7 +7,7 @@ use Tests\TestCase;
 class CampaignControllerTest extends TestCase
 {
     /** @test */
-    function it_displays_campaign()
+    public function it_displays_campaign()
     {
         $this->withoutExceptionHandling();
 
