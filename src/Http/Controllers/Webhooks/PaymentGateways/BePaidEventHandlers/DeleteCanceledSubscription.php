@@ -2,8 +2,8 @@
 
 namespace Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers;
 
-use Diglabby\Doika\Models\Subscription;
 use Illuminate\Http\Request;
+use Diglabby\Doika\Models\Subscription;
 
 /**
  * @see https://docs.bepaid.by/ru/webhooks#a-idcanceled-subscriptiona--
@@ -20,6 +20,7 @@ final class DeleteCanceledSubscription
 
         if (! $subscription) {
             \Log::alert('Webhook event received for unknown subscription', $request->all());
+
             return;
         }
 

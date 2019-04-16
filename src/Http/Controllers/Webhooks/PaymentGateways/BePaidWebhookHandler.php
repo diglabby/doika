@@ -2,11 +2,11 @@
 
 namespace Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways;
 
-use App\Http\Controllers\Controller;
-use Diglabby\Doika\Models\Donator;
-use Diglabby\Doika\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Diglabby\Doika\Models\Donator;
+use App\Http\Controllers\Controller;
+use Diglabby\Doika\Models\Transaction;
 
 /**
  * @see https://docs.bepaid.by/ru/webhooks

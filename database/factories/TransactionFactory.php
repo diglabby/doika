@@ -1,10 +1,10 @@
 <?php
 
-use Diglabby\Doika\Models\Campaign;
 use Diglabby\Doika\Models\Donator;
+use Diglabby\Doika\Models\Campaign;
 use Diglabby\Doika\Models\Transaction;
 
-/**
+/*
  * @see https://github.com/fzaninotto/Faker#formatters
  * @var \Illuminate\Database\Eloquent\Factory $factory
  */

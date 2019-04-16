@@ -1,4 +1,5 @@
 <?php
+
 // Prefixed by /doika/dashboard
 
 Route::get('/campaigns', 'Dashboard\CampaignController@index')->name('dashboard.campaigns.index');

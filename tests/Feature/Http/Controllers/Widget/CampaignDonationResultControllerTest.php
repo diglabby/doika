@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Http\Controllers\Widget;
 
+use Tests\TestCase;
 use Diglabby\Doika\Models\Campaign;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
 
 class CampaignDonationResultControllerTest extends TestCase
 {
@@ -14,7 +14,7 @@ class CampaignDonationResultControllerTest extends TestCase
      * @test
      * @dataProvider validTransactionStatusProvider
      */
-    function it_disaplays_a_status_message($status)
+    public function it_disaplays_a_status_message($status)
     {
         $campaign = factory(Campaign::class)->create();
 
@@ -24,7 +24,7 @@ class CampaignDonationResultControllerTest extends TestCase
         $response->assertSeeText($status);
     }
 
-    function validTransactionStatusProvider(): array
+    public function validTransactionStatusProvider(): array
     {
         return [
             ['success'],

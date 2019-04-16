@@ -1,11 +1,11 @@
 <?php
 
 use App\Admin;
-use Faker\Generator as Faker;
 use Illuminate\Support\Str;
+use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Hash;
 
-/**
+/*
  * @see https://github.com/fzaninotto/Faker#formatters
  * @var \Illuminate\Database\Eloquent\Factory $factory
  */

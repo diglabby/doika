@@ -2,9 +2,9 @@
 
 namespace Diglabby\Doika\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
-use Diglabby\Doika\Models\Campaign;
 use Illuminate\Http\Request;
+use Diglabby\Doika\Models\Campaign;
+use App\Http\Controllers\Controller;
 
 final class CampaignController extends Controller
 {
@@ -16,7 +16,7 @@ final class CampaignController extends Controller
     public function show(int $campaignId)
     {
         return view('dashboard.pages.campaigns.show', [
-            'campaign' => factory(Campaign::class)->make(['id' => $campaignId])
+            'campaign' => factory(Campaign::class)->make(['id' => $campaignId]),
         ]);
     }
 

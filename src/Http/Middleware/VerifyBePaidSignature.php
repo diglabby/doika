@@ -2,13 +2,12 @@
 
 namespace Diglabby\Doika\Http\Middleware;
 
-use Diglabby\Doika\Exceptions\WebhookFailed;
 use Illuminate\Http\Request;
+use Diglabby\Doika\Exceptions\WebhookFailed;
 
 final class VerifyBePaidSignature
 {
     /**
-     * {@inheritdoc}
      * @throws WebhookFailed
      */
     public function handle(Request $request, \Closure $next)

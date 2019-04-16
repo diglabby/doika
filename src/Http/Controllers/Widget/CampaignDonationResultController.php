@@ -2,10 +2,10 @@
 
 namespace Diglabby\Doika\Http\Controllers\Widget;
 
-use App\Http\Controllers\Controller;
-use Diglabby\Doika\Models\Campaign;
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Diglabby\Doika\Models\Campaign;
+use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Support\Renderable;
 
 final class CampaignDonationResultController extends Controller
 {

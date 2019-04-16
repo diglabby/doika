@@ -2,9 +2,9 @@
 
 namespace Diglabby\Doika\Http\Controllers\Dashboard;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Diglabby\Doika\Models\Transaction;
-use Illuminate\Http\Request;
 
 final class TransactionController extends Controller
 {
@@ -26,4 +26,3 @@ final class TransactionController extends Controller
         return $transaction;
     }
 }
-

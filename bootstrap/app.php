@@ -16,7 +16,7 @@ $app = new Illuminate\Foundation\Application(
 );
 
 // Custom Doika path to app so artisan make: will use it
-$app->useAppPath(realpath(__DIR__ . '/../src'));
+$app->useAppPath(realpath(__DIR__.'/../src'));
 
 /*
 |--------------------------------------------------------------------------

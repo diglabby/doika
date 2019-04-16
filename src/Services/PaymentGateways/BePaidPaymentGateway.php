@@ -1,15 +1,17 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace Diglabby\Doika\Services\PaymentGateways;
 
-use Diglabby\Doika\Exceptions\InvalidConfigException;
-use Diglabby\Doika\Models\Campaign;
+use Money\Money;
 use Diglabby\Doika\Models\Donator;
+use Diglabby\Doika\Models\Campaign;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
+use Diglabby\Doika\Exceptions\InvalidConfigException;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
-use Money\Money;
 
 final class BePaidPaymentGateway implements OffsitePaymentGateway
 {
@@ -28,7 +30,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      * @see https://docs.bepaid.by/ru/checkout/payment-token
      */
     public function tokenizePayment(Money $money, Donator $donator, Campaign $campaign): string
@@ -58,7 +60,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
                 'customer' => [
                     'email' => $donator->email,
                 ],
-            ]
+            ],
         ];
 
         $httpClient = new HttpClient(['base_uri' => self::BASE_API_URI]);

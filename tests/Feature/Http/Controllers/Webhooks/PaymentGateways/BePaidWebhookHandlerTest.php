@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Http\Controllers\Webhooks\PaymentGateways;
 
-use Diglabby\Doika\Http\Middleware\VerifyBePaidSignature;
+use Tests\TestCase;
 use Diglabby\Doika\Models\Campaign;
 use Diglabby\Doika\Models\Transaction;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
+use Diglabby\Doika\Http\Middleware\VerifyBePaidSignature;
 
 class BePaidWebhookHandlerTest extends TestCase
 {
@@ -14,7 +14,7 @@ class BePaidWebhookHandlerTest extends TestCase
     use LoadsRequestFixture;
 
     /** @test */
-    function it_creates_successful_transaction_from_webhook_request()
+    public function it_creates_successful_transaction_from_webhook_request()
     {
         $this->withoutExceptionHandling();
         $this->withoutMiddleware([VerifyBePaidSignature::class]);

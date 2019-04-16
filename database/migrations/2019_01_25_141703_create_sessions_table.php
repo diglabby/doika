@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateSessionsTable extends Migration
 {
@@ -22,7 +22,6 @@ class CreateSessionsTable extends Migration
         });
     }
 
-
     /**
      * Reverse the migrations.
      *
@@ -32,5 +31,4 @@ class CreateSessionsTable extends Migration
     {
         Schema::drop('sessions');
     }
-
 }

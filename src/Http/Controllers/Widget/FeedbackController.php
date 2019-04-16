@@ -2,9 +2,9 @@
 
 namespace Diglabby\Doika\Http\Controllers\Widget;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
 
 final class FeedbackController extends Controller
 {

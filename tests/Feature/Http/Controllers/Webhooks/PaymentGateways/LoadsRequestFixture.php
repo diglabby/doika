@@ -11,6 +11,7 @@ trait LoadsRequestFixture
     public function getRequestData(string $fixtureFilename): array
     {
         $fixtureFile = __DIR__.DIRECTORY_SEPARATOR.$fixtureFilename;
+
         return json_decode(file_get_contents($fixtureFile), true);
     }
 }

@@ -2,10 +2,10 @@
 
 namespace Diglabby\Doika\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
-use Diglabby\Doika\Models\Donator;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Diglabby\Doika\Models\Donator;
+use App\Http\Controllers\Controller;
 
 final class DonatorController extends Controller
 {

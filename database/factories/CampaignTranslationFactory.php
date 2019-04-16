@@ -3,7 +3,7 @@
 use Diglabby\Doika\Models\Campaign;
 use Diglabby\Doika\Models\CampaignTranslation;
 
-/**
+/*
  * @see https://github.com/fzaninotto/Faker#formatters
  * @var \Illuminate\Database\Eloquent\Factory $factory
  */
@@ -19,6 +19,6 @@ $factory->define(CampaignTranslation::class, function (Faker\Generator $faker) {
 
 $factory->state(CampaignTranslation::class, 'with_campaign', function () {
     return [
-        'campaign_id' => factory(Campaign::class)->lazy()
+        'campaign_id' => factory(Campaign::class)->lazy(),
     ];
 });

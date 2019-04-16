@@ -2,7 +2,7 @@
 
 use Diglabby\Doika\Models\Campaign;
 
-/**
+/*
  * @see https://github.com/fzaninotto/Faker#formatters
  * @var \Illuminate\Database\Eloquent\Factory $factory
  */

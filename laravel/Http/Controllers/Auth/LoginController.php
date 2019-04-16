@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\View\View;
 
 class LoginController extends Controller
 {
@@ -32,7 +32,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Show the application's login form
+     * Show the application's login form.
      */
     public function showLoginForm(): View
     {
