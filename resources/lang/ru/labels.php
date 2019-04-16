@@ -4,8 +4,8 @@ return [
     'http' => [
         '404' => [
             'title' => '404',
-            'description' => ''
-        ]
+            'description' => '',
+        ],
     ],
     'admin' => [
         'title' => 'Управление',
@@ -14,7 +14,7 @@ return [
             'entriesPerPage' => 'записей на странице',
             'search' => 'Поиск',
             'actions' => 'Действия',
-            'info' => 'Справка'
+            'info' => 'Справка',
         ],
         'common' => [
             'search' => 'Поиск',
@@ -22,32 +22,32 @@ return [
                 'left' => 'Powered by',
                 'with' => 'with',
                 'by' => 'by',
-                'supporter' => 'Supported by the European Union'
+                'supporter' => 'Supported by the European Union',
             ],
-            'confirmation' => 'Вы уверены?'
+            'confirmation' => 'Вы уверены?',
         ],
         'newMenu' => [
             'header' => 'Добавить',
             'campaign' => 'Новая кампания',
-            'user' => 'Новый пользователь'
+            'user' => 'Новый пользователь',
         ],
         'languageMenu' => [
             'header' => 'Язык',
             'be' => 'Белорусский',
             'ru' => 'Русский',
-            'en' => 'Английский'
+            'en' => 'Английский',
         ],
         'accountMenu' => [
             'header' => 'Профиль',
             'avatar' => 'Аватар пользователя',
-            'logout' => 'Выйти'
+            'logout' => 'Выйти',
         ],
         'rightMenu' => [
             'divider' => [
                 'configuration' => 'Конфигурация модуля',
                 'access' => 'Управление доступом',
                 'help' => 'FAQ',
-                'feedback' => 'Обратная связь'
+                'feedback' => 'Обратная связь',
             ],
         ],
         'login' => [
@@ -63,9 +63,9 @@ return [
                 'link' => 'Забыли пароль?',
                 'title' => 'Сброс пароля',
                 'submit' => 'Отправить ссылку на сброс пароля',
-                'header' => 'Логин'
+                'header' => 'Логин',
             ],
-            'header' => 'Логин'
+            'header' => 'Логин',
         ],
         'campaigns' => [
             'title' => 'Список кампаний',
@@ -108,7 +108,7 @@ return [
                 'title' => 'Редактировать кампанию',
                 'header' => 'Редактировать кампанию',
                 'breadcrumb' => 'Редактировать',
-            ]
+            ],
         ],
         'payments' => [
             'title' => 'Список пожертвований',
@@ -124,7 +124,7 @@ return [
             'statuses' => [
                 'success' => 'Успешно',
                 'failed' => 'Не успешно',
-                'error' => 'Не завершено'
+                'error' => 'Не завершено',
             ],
             'show' => [
                 'title' => 'Показать платеж',
@@ -161,10 +161,10 @@ return [
                     'test' => 'Отключить тестовые платежи',
                     'maxPayment' => 'Максимальный платеж, бел.руб',
                     'minPayment' => 'Минимальный платеж, бел.руб',
-                ]
+                ],
             ],
             'layout' => [
-                'header' => 'Параметры макета'
+                'header' => 'Параметры макета',
             ],
             'notifications' => [
                 'address' => 'Адрес сервера',
@@ -181,12 +181,12 @@ return [
                     'user' => 'Пользователь электронной почты',
                     'password' => 'Пароль',
                     'email' => 'Адрес электронный почты',
-                ]
-            ]
+                ],
+            ],
         ],
         'help' => [
             'title' => 'FAQ',
-            'header' => 'Как пользоваться модулем'
+            'header' => 'Как пользоваться модулем',
         ],
         'feedback' => [
             'title' => 'Обратная связь',
@@ -197,8 +197,8 @@ return [
             'placeholder' => [
                 'email' => 'Ваш Email',
                 'name' => 'Имя',
-                'message' => 'Напишите Ваше обращение'
-            ]
+                'message' => 'Напишите Ваше обращение',
+            ],
         ],
         'users' => [
             'title' => 'Список пользователей',
@@ -216,23 +216,23 @@ return [
                 'email' => 'E-mail',
                 'name' => 'Имя',
                 'message' => 'Напишите Ваше сообщение',
-                'password' => 'Password'
+                'password' => 'Password',
             ],
             'create' => [
                 'breadcrumb' => 'Создать',
-                'header' => 'Создать пользователя'
+                'header' => 'Создать пользователя',
             ],
             'edit' => [
                 'breadcrumb' => 'Редактировать',
-                'header' => 'Редактирование пользователя'
-            ]
+                'header' => 'Редактирование пользователя',
+            ],
 
-        ]
+        ],
     ],
     'widget' => [
         'paymentInfo' => 'Terms of Use',
         'input' => 'Сумма',
         'recieved' => 'Собранная сумма',
-        'needed' => 'Целевая сумма'
-    ]
+        'needed' => 'Целевая сумма',
+    ],
 ];

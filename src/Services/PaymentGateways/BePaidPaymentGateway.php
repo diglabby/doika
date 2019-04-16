@@ -58,7 +58,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
                 'customer' => [
                     'email' => $donator->email,
                 ],
-            ]
+            ],
         ];
 
         $httpClient = new HttpClient(['base_uri' => self::BASE_API_URI]);
