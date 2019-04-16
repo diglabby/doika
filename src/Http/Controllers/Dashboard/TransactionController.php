@@ -26,4 +26,3 @@ final class TransactionController extends Controller
         return $transaction;
     }
 }
-

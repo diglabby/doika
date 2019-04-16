@@ -24,7 +24,7 @@ class BePaidOffsitePaymentGatewayTest extends TestCase
      * @group real-api
      * @group network
      */
-    function it_returns_payment_token()
+    public function it_returns_payment_token()
     {
         $donator = factory(Donator::class)->make();
         $campaign = factory(Campaign::class)->make();
@@ -35,7 +35,7 @@ class BePaidOffsitePaymentGatewayTest extends TestCase
     }
 
     /** @test */
-    function it_throws_an_exception_on_zero_amount()
+    public function it_throws_an_exception_on_zero_amount()
     {
         $this->expectException(\InvalidArgumentException::class);
 
@@ -46,7 +46,7 @@ class BePaidOffsitePaymentGatewayTest extends TestCase
     }
 
     /** @test */
-    function it_throws_an_exception_on_nagative_amount()
+    public function it_throws_an_exception_on_nagative_amount()
     {
         $this->expectException(\InvalidArgumentException::class);
 
@@ -56,4 +56,3 @@ class BePaidOffsitePaymentGatewayTest extends TestCase
         $this->bePaid->tokenizePayment(Money::BYN(-20), $donator, $campaign);
     }
 }
-

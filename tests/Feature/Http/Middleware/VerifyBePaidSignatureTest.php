@@ -12,7 +12,7 @@ use Tests\TestCase;
 class VerifyBePaidSignatureTest extends TestCase
 {
     /** @test */
-    function it_allow_requests_with_valid_auth_headers()
+    public function it_allow_requests_with_valid_auth_headers()
     {
         config()->set('services.bepaid.marketId', 2222);
         config()->set('services.bepaid.marketKey', 'random_valid_key');
@@ -23,7 +23,7 @@ class VerifyBePaidSignatureTest extends TestCase
     }
 
     /** @test */
-    function it_forbids_requests_without_authorization_header()
+    public function it_forbids_requests_without_authorization_header()
     {
         $this->expectException(WebhookFailed::class);
         $response = $this->getResponseFromRouteWithMiddleware([]);
@@ -32,7 +32,7 @@ class VerifyBePaidSignatureTest extends TestCase
     }
 
     /** @test */
-    function it_forbids_requests_with_invalid_marked_id()
+    public function it_forbids_requests_with_invalid_marked_id()
     {
         config()->set('services.bepaid.marketId', 2222);
         config()->set('services.bepaid.marketKey', 'random_valid_key');
@@ -44,7 +44,7 @@ class VerifyBePaidSignatureTest extends TestCase
     }
 
     /** @test */
-    function it_forbids_requests_with_invalid_marked_key()
+    public function it_forbids_requests_with_invalid_marked_key()
     {
         config()->set('services.bepaid.marketId', 2222);
         config()->set('services.bepaid.marketKey', 'random_valid_key');
@@ -80,5 +80,4 @@ class VerifyBePaidSignatureTest extends TestCase
         $encodedCredentials = base64_encode($phpAuthUser.':'.$phpAuthPw);
         return "Basic: $encodedCredentials";
     }
-
 }
