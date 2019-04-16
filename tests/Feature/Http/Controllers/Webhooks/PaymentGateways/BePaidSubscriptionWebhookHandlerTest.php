@@ -15,7 +15,7 @@ class BePaidSubscriptionWebhookHandlerTest extends TestCase
     use LoadsRequestFixture;
 
     /** @test */
-    function it_creates_a_new_transaction_on_success_subscription_renew()
+    public function it_creates_a_new_transaction_on_success_subscription_renew()
     {
         $this->withoutExceptionHandling();
         $this->withoutMiddleware([VerifyBePaidSignature::class]);
@@ -45,7 +45,7 @@ class BePaidSubscriptionWebhookHandlerTest extends TestCase
     }
 
     /** @test */
-    function it_deletes_subscription_on_error()
+    public function it_deletes_subscription_on_error()
     {
         $this->withoutExceptionHandling();
         $this->withoutMiddleware([VerifyBePaidSignature::class]);

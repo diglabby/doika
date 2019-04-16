@@ -13,7 +13,7 @@ before_script:
   # disable xdebug if not coverage
   - if [[ $COVERAGE == "" ]]; then phpenv config-rm xdebug.ini; fi
   - cp .env.example .env
-  - composer install --no-interaction --prefer-dist
+  - composer install --no-progress --no-interaction --prefer-dist --no-suggest
   - php artisan key:generate
 
 script:
