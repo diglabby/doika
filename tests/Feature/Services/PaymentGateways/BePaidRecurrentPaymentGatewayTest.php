@@ -28,7 +28,7 @@ class BePaidRecurrentPaymentGatewayTest extends TestCase
      * @group real-api
      * @group network
      */
-    function it_creates_a_subscription()
+    public function it_creates_a_subscription()
     {
         /** @var Donator $donator */
         $donator = factory(Donator::class)->create();
@@ -45,4 +45,3 @@ class BePaidRecurrentPaymentGatewayTest extends TestCase
         $this->assertSame(1, Subscription::query()->count());
     }
 }
-
