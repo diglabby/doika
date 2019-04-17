@@ -20,3 +20,9 @@ Route::get('help', 'Widget\HelpController@show')->name('widget.help.show');
 
 Route::get('feedback', 'Widget\FeedbackController@show')->name('widget.feedbacks.show');
 Route::post('feedback', 'Widget\FeedbackController@store')->name('widget.feedbacks.store');
+
+
+/* Test widget routes */
+
+Route::get('/test/{campaignId}', 'Widget\TestWidgetController@showForm');
+Route::post('/test/test-form', 'Widget\TestWidgetController@sendForm');
