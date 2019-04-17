@@ -4,6 +4,7 @@ namespace Diglabby\Doika\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 
@@ -23,7 +24,8 @@ use Illuminate\Support\Carbon;
  *
  * Relationships
  * @property Donator[] $donators
- * @property Transaction[] $translations
+ * @property Transaction[] $transactions
+ * @property CampaignTranslation[] $translations
  */
 final class Campaign extends Model
 {
@@ -48,9 +50,9 @@ final class Campaign extends Model
         'active_status' => false,
     ];
 
-    public function donators(): HasMany
+    public function transactions(): HasMany
     {
-        return $this->hasMany(Donator::class);
+        return $this->hasMany(Transaction::class);
     }
 
     public function translations(): HasMany

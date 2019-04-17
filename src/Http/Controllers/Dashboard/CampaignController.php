@@ -13,7 +13,7 @@ final class CampaignController extends Controller
     public function index(): Paginator
     {
         return QueryBuilder::for(Campaign::class)
-            ->allowedIncludes('donators')
+            ->allowedIncludes('transactions')
             ->simplePaginate();
     }
 
