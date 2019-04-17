@@ -1,4 +1,4 @@
-<form action="test-form" method="get">
+<form action="/doika/doika/test-form" method="get">
     Amount of donation<br>
     <input type="text" name="amount"><br>
     Email<br>

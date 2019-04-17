@@ -30,7 +30,7 @@ final class BePaidRecurrentPaymentGateway
         return "Campaign: $campaign->name, {$money->getCurrency()->getCode()} {$money->getAmount()}";
     }
 
-    public function createSubscription(Money $money, Campaign $campaign, Donator $donator, string $paymentInterval): Subscription
+    public function createSubscription(Money $money, Campaign $campaign, Donator $donator, string $paymentInterval)
     {
         $dateInterval = new CarbonInterval($paymentInterval);
         $planName = $this->generatePlanName($money, $campaign);
@@ -59,7 +59,9 @@ final class BePaidRecurrentPaymentGateway
             'verify' => false,
         ]);
 
-        $gatewaySubscriptionId = json_decode($response->getBody()->getContents())->id;
+        $response = json_decode($response->getBody()->getContents());
+
+        $gatewaySubscriptionId = $response->id;
 
         $subscription = new Subscription([
             'donator_id' => $donator->id,
@@ -72,6 +74,6 @@ final class BePaidRecurrentPaymentGateway
         ]);
         $subscription->save();
 
-        return $subscription;
+        return $response->redirect_url;
     }
 }

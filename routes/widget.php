@@ -25,4 +25,4 @@ Route::post('feedback', 'Widget\FeedbackController@store')->name('widget.feedbac
 /* Test widget routes */
 
 Route::get('/test/{campaignId}', 'Widget\TestWidgetController@showForm');
-Route::post('/test/test-form', 'Widget\TestWidgetController@sendForm');
+Route::get('/test-form', 'Widget\TestWidgetController@sendForm');

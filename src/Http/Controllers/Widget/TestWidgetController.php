@@ -31,6 +31,11 @@ class TestWidgetController extends Controller
         $campaign = Campaign::find($request->campaign_id);
 
         $donator = new Donator();
+        $donator->email = $request->email;
+        $donator->phone = $request->phone;
+        $donator->name = $request->name;
+        $donator->save();
+
         $apiContext = new BePaidApiContext([
             'marketId' => Config::get('bepaid.marketId'),
             'marketKey' => Config::get('bepaid.marketKey'),
@@ -38,8 +43,9 @@ class TestWidgetController extends Controller
         ]);
         $httpClient = new HttpClient();
         $recurrentPaumentsGateway = new BePaidRecurrentPaymentGateway($apiContext, $httpClient);
-        $recurrentPaumentsGateway->createSubscription($money, $campaign, $donator, $paymentInterval);
+        $redirectUrl = $recurrentPaumentsGateway->createSubscription($money, $campaign, $donator, $paymentInterval);
 
+        return redirect($redirectUrl);
 
     }
 
