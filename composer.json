@@ -80,7 +80,7 @@
         "post-create-project-cmd": [
             "@php artisan key:generate"
         ],
-        "test": "./vendor/bin/phpunit --colors=always",
-        "test:ci": "@test --exclude-group=real-api"
+        "test": "./vendor/bin/phpunit --colors=always --exclude-group=real-api",
+        "test:ci": "@test"
     }
 }

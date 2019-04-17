@@ -8,11 +8,11 @@ use Illuminate\Contracts\Support\Renderable;
 
 final class CampaignController extends Controller
 {
-    public function show(int $compaignId): Renderable
+    public function show(int $campaignId): Renderable
     {
         /** @var Campaign $campaign */
-        $campaign = factory(Campaign::class)->make();
+        $campaign = factory(Campaign::class)->make(['id' => $campaignId]);
 
-        return view('client.campaign', ['campaign' => $campaign]);
+        return view('widget.pages.campaigns.show', ['campaign' => $campaign]);
     }
 }
