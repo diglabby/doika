@@ -15,7 +15,7 @@ class SettingsControllerTest extends TestCase
         setting(['existing_key' => 'value'])->save();
 
         $response = $this->withoutMiddleware()
-            ->get(route('dashboard.settings.index', ['settings' => ['existing_key', 'not_existing_key']]));
+            ->get(route('dashboard.settings.index', ['keys' => ['existing_key', 'not_existing_key']]));
 
         $response->assertJson(['settings' => [
             'existing_key' => 'value',
