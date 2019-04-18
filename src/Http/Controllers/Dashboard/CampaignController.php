@@ -37,12 +37,12 @@ final class CampaignController extends Controller
     public function update(Campaign $campaign, Request $request)
     {
         $campaign->update($request->all());
-
         return $campaign;
     }
 
     public function delete(Campaign $campaign)
     {
-        return $campaign->delete();
+        $campaign->delete();
+        return $campaign;
     }
 }

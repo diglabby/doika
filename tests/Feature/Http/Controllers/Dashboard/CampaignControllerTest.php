@@ -55,4 +55,62 @@ class CampaignControllerTest extends TestCase
         ]);
         $response->assertJsonMissing(['data.transactions']);
     }
+
+    /** @test */
+    public function it_returns_single_campaign()
+    {
+        /** @var Campaign $campaign */
+        $campaign = factory(Campaign::class)->create();
+
+        $response = $this
+            ->withoutMiddleware([\App\Http\Middleware\Authenticate::class])
+            ->get(route('dashboard.campaigns.show', [$campaign->id]));
+
+        $response->assertJsonStructure([
+            'data' => [
+                'id',
+                'name',
+                'description',
+                'picture_url',
+                'target_amount',
+                'currency',
+                'active_status',
+                'started_at',
+                'finished_at',
+                'amount_collected',
+            ],
+        ]);
+    }
+
+    /** @test */
+    public function it_updates_a_campaign()
+    {
+        /** @var Campaign $campaign */
+        $campaign = factory(Campaign::class)->create(['active_status' => false]);
+
+        $response = $this
+            ->withoutMiddleware([\App\Http\Middleware\Authenticate::class])
+            ->put(route('dashboard.campaigns.update', [$campaign->id]), [
+                'active_status' => true,
+            ]);
+
+        $response->assertOk();
+        $this->assertTrue($response->json('active_status'));
+        $this->assertTrue($campaign->refresh()->active_status);
+    }
+
+    /** @test */
+    public function it_deletes_a_campaign()
+    {
+        /** @var Campaign $campaign */
+        $campaign = factory(Campaign::class)->create();
+
+        $response = $this
+            ->withoutMiddleware([\App\Http\Middleware\Authenticate::class])
+            ->delete(route('dashboard.campaigns.delete', [$campaign->id]));
+
+        $response->assertOk();
+        $this->assertNotNull($response->json('deleted_at'));
+        $this->assertSame(0, Campaign::query()->count());
+    }
 }

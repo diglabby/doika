@@ -32,6 +32,9 @@ final class Campaign extends Model
 {
     use SoftDeletes;
 
+    /** @var array The attributes that aren't mass assignable */
+    protected $guarded = [];
+
     /** @var array The attributes that should be mutated to dates */
     protected $dates = [
         'started_at',
