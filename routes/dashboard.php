@@ -20,6 +20,9 @@ Route::post('/donators', 'Dashboard\DonatorController@store')->name('dashboard.d
 Route::put('/donators/{id}', 'Dashboard\DonatorController@update')->name('dashboard.donators.update');
 Route::delete('/donators/{id}', 'Dashboard\DonatorController@delete')->name('dashboard.donators.delete');
 
+Route::get('/settings', 'Dashboard\SettingsController@index')->name('dashboard.settings.index');
+Route::match(['POST', 'PUT'], '/settings', 'Dashboard\SettingsController@store')->name('dashboard.settings.store');
+
 Route::get('/{vue_capture?}', 'Dashboard\DashboardController@index')
     ->where('vue_capture', '[\/\w\.-]*')
     ->name('dashboard.home');
