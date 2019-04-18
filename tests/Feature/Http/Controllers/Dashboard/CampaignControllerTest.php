@@ -22,33 +22,37 @@ class CampaignControllerTest extends TestCase
             ->get(route('dashboard.campaigns.index'));
 
         $response->assertJsonStructure([
-            'current_page',
             'data',
-            'first_page_url',
-            'from',
-            'next_page_url',
-            'path',
-            'per_page',
-            'prev_page_url',
-            'to',
+            'links',
+            'meta',
         ]);
         $response->assertJsonCount(15, 'data');
     }
 
     /** @test */
-    public function it_returns_page_of_campaigns_that_include_donators()
+    public function it_returns_page_of_campaigns_that_include_counts()
     {
-        factory(Transaction::class)->create([
-            'campaign_id' => factory(Campaign::class)->create(),
+        $campaign = factory(Campaign::class)->create();
+        factory(Transaction::class, 1)->create([
+            'campaign_id' => $campaign,
             'donator_id' => factory(Donator::class)->create(),
         ]);
 
+        \DB::enableQueryLog();
         $response = $this
             ->withoutMiddleware()
-            ->get(route('dashboard.campaigns.index', ['include' => ['transactions']]));
+            ->get(route('dashboard.campaigns.index'));
+        \DB::disableQueryLog();
 
+        $this->assertLessThanOrEqual(3, count(\DB::getQueryLog()));
         $response->assertJsonStructure([
-            'data' => [['id', 'transactions']],
+            'data' => [[
+                'id',
+                'transactions_count',
+                'subscriptions_count',
+                'amount_collected',
+            ]],
         ]);
+        $response->assertJsonMissing(['data.transactions']);
     }
 }

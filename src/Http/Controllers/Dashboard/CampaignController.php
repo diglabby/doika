@@ -3,18 +3,22 @@
 namespace Diglabby\Doika\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use Diglabby\Doika\Http\Resources\Dashboard\Campaign as CampaignResource;
 use Diglabby\Doika\Models\Campaign;
-use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 
 final class CampaignController extends Controller
 {
-    public function index(): Paginator
+    public function index()
     {
-        return QueryBuilder::for(Campaign::class)
-            ->allowedIncludes('transactions')
-            ->simplePaginate();
+        $query = Campaign::query()
+            ->with('transactions') // to calc sum of transactions
+            ->withCount(['subscriptions', 'transactions']);
+
+        return CampaignResource::collection(
+            QueryBuilder::for($query)->paginate()
+        );
     }
 
     public function show(Campaign $campaign)
