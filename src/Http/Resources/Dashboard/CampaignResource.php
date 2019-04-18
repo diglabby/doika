@@ -4,7 +4,7 @@ namespace Diglabby\Doika\Http\Resources\Dashboard;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-final class Campaign extends JsonResource
+final class CampaignResource extends JsonResource
 {
     /** @inheritDoc */
     public function toArray($request): array

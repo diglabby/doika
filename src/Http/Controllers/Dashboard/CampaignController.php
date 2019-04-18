@@ -3,7 +3,7 @@
 namespace Diglabby\Doika\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use Diglabby\Doika\Http\Resources\Dashboard\Campaign as CampaignResource;
+use Diglabby\Doika\Http\Resources\Dashboard\CampaignResource;
 use Diglabby\Doika\Models\Campaign;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -23,7 +23,7 @@ final class CampaignController extends Controller
 
     public function show(Campaign $campaign)
     {
-        return $campaign;
+        return new CampaignResource($campaign);
     }
 
     public function store(Request $request)
