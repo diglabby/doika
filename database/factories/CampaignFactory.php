@@ -14,9 +14,9 @@ $factory->define(Campaign::class, function (Faker\Generator $faker) {
         'picture_url' => $faker->imageUrl(640, 640, 'animals'),
         'target_amount' => 10000,
         'currency' => 'BYN',
+        'active_status' => 1,
         'started_at' => today(),
         'finished_at' => today()->addMonths(1),
-        'active_status' => 1,
     ];
 });
 
