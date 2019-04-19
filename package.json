@@ -4,12 +4,13 @@
     "node": ">=8.10"
   },
   "scripts": {
-    "clean": "rimraf public/build",
-    "build": "npm run clean && webpack --mode development --progress",
-    "watch": "npm run clean && npm run build -- --watch",
-    "dev": "npm run clean && webpack-dev-server --mode development --hot --progress",
-    "prod": "rimraf public/dist && cross-env NODE_ENV=production webpack --mode production --progress",
-    "lint": "eslint  --fix --ext .js,.vue resources/js"
+    "lint": "eslint  --fix --ext .js,.vue resources/js",
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --watch-poll --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
