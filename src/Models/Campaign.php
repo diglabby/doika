@@ -17,6 +17,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon $started_at
  * @property Carbon $finished_at
  * @property bool $active_status
+ * @property string $visual_settings (json)
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property Carbon|null $deleted_at
@@ -40,6 +41,7 @@ final class Campaign extends Model
     /** @var array The attributes that should be cast to native types */
     protected $casts = [
         'active_status' => 'bool',
+        'visual_settings' => 'array',
     ];
 
     /** @var array Default attribute values */
