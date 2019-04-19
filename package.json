@@ -40,6 +40,7 @@
     "friendly-errors-webpack-plugin": "^1.7.0",
     "intl-tel-input": "^14.0.3",
     "jquery": "^3.3.1",
+    "laravel-mix": "^4.0.15",
     "lodash": "^4.17.11",
     "mini-css-extract-plugin": "^0.4.3",
     "node-sass": "^4.9.3",
