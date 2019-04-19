@@ -12,8 +12,6 @@
 |
 */
 
-Route::redirect('/', '/doika/campaigns/1'); // temp redirection for testers and new devs to make then understand that everything works
-
 Route::get('campaigns/{campaignId}', 'Widget\CampaignController@show')->name('widget.campaign.show')->where('campaignId', '[0-9]+');
 Route::get('campaigns/{campaign}/donation-result', 'Widget\CampaignDonationResultController@show')->name('widget.campaign.donation-result');
 
