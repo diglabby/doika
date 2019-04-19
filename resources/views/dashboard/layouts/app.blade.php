@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('build/css/dashboard.css') }}" rel="stylesheet">
+
+    @routes()
 </head>
 <body>
     <div id="app">
