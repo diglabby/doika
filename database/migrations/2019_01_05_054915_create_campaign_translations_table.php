@@ -20,7 +20,6 @@ class CreateCampaignTranslationsTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->longText('terms_of_use')->comment('HTML text');
-            $table->longText('visual_settings')->comment('Button preset, colors, etc. (as json)');
             $table->timestamps();
 
             $table->foreign('campaign_id')->references('id')->on('campaigns');

@@ -23,6 +23,7 @@ class CreateCampaignsTable extends Migration
             $table->date('started_at');
             $table->date('finished_at');
             $table->integer('active_status');
+            $table->longText('visual_settings')->comment('Button preset, colors, etc. (as json)');
             $table->timestamps();
             $table->softDeletes();
         });
