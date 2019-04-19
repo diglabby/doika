@@ -25,12 +25,12 @@ before_script:
   - php artisan key:generate
   - npm config set registry http://registry.npmjs.org/
   - npm install
+  - npm run dev
 
-script:
+script:  
   - composer test:ci
   - php artisan route:list
-  - php artisan migrate:fresh --seed
-  - npm run dev
+  - php artisan migrate:fresh --seed  
 
 after_script:
   - |
