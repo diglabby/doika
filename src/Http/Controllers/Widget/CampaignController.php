@@ -4,15 +4,12 @@ namespace Diglabby\Doika\Http\Controllers\Widget;
 
 use App\Http\Controllers\Controller;
 use Diglabby\Doika\Models\Campaign;
-use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Contracts\Support\Jsonable;
 
 final class CampaignController extends Controller
 {
-    public function show(int $campaignId): Renderable
+    public function show(Campaign $campaign): Jsonable
     {
-        /** @var Campaign $campaign */
-        $campaign = factory(Campaign::class)->make(['id' => $campaignId]);
-
-        return view('widget.pages.campaigns.show', ['campaign' => $campaign]);
+        return $campaign;
     }
 }
