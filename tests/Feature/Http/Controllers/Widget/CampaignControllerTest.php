@@ -26,7 +26,7 @@ class CampaignControllerTest extends TestCase
                 'picture_url',
                 'visual_settings',
                 'amount_collected',
-            ]
+            ],
         ]);
     }
 }
