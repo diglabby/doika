@@ -2,7 +2,7 @@
 
 namespace Diglabby\Doika\Providers;
 
-use App\Providers\RouteServiceProvider as BasicRouteServiceProvider;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as BasicRouteServiceProvider;
 use Illuminate\Support\Facades\Route;
 
 final class RouteServiceProvider extends BasicRouteServiceProvider
