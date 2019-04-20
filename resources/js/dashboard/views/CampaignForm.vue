@@ -36,7 +36,7 @@
                     name="title"
                     required
                     :placeholder="$t('labels.admin.campaigns.placeholder.name')"
-                    v-model="model.title"
+                    v-model="model.name"
                     :state="state('title')"
                   ></b-form-input>
                 </b-form-group>
@@ -51,16 +51,16 @@
             >
               <p-richtexteditor
                 name="body"
-                v-model="model.body"
+                v-model="model.description"
               ></p-richtexteditor>
             </b-form-group>
 
             <b-form-group
               :label="$t('labels.admin.campaigns.image')"
-              label-for="featured_image"
+              label-for="picture_url"
               horizontal
               :label-cols="2"
-              :feedback="feedback('featured_image')"
+              :feedback="feedback('picture_url')"
             >
               <div class="media">
                 <img class="mr-2" v-if="model.thumbnail_image_path" :src="model.thumbnail_image_path" alt="">
@@ -70,18 +70,18 @@
                   <b-row>
                     <b-col lg="9">
                       <b-form-file
-                        id="featured_image"
-                        name="featured_image"
+                        id="picture_url"
+                        name="picture_url"
                         ref="featuredImageInput"
                         :placeholder="$t('labels.admin.campaigns.placeholder.image')"
-                        v-model="model.featured_image"
-                        :state="state('featured_image')"
+                        v-model="model.picture_url"
+                        :state="state('picture_url')"
                         v-b-tooltip.hover
                         :title="$t('labels.admin.campaigns.allowedImageTypes')"
                         @change="previewImage"
                         style="margin-top auto; margin-bottom: auto;"
                       ></b-form-file>
-                      <a href="#" class="d-block mt-1" v-if="model.has_featured_image || model.featured_image" @click.prevent="deleteFeaturedImage">{{ $t('buttons.campaign.deleteImage') }}</a>
+                      <a href="#" class="d-block mt-1" v-if="model.has_picture_url || model.picture_url" @click.prevent="deleteFeaturedImage">{{ $t('buttons.campaign.deleteImage') }}</a>
                     </b-col>
                     <b-col lg="3">
                       <div class="image-preview" v-if="imageData.length > 0">
@@ -188,7 +188,7 @@
                       <b-col lg="5" offset-lg="1">
                         <c-switch
                           name="pinned"
-                          v-model="model.active"
+                          v-model="model.active_status ? true : false"
                           :description="$t('labels.admin.campaigns.active')"
                         ></c-switch>
                       </b-col>
@@ -245,7 +245,7 @@
               <b-col md>
                 <input name="status" type="hidden" value="publish">
 
-                <b-button right split class="float-right" variant="success" @click="model.status = 'publish'; onSubmit()" :disabled="pending">
+                <b-button right split class="float-right" variant="success" @click="model.active_status = 'true'; onSubmit()" :disabled="pending">
                   {{ $t('buttons.admin.common.save') }}
                 </b-button>
               </b-col>
@@ -280,48 +280,26 @@ export default {
       modelName: 'campaign',
       resourceRoute: 'campaigns',
       listPath: '/campaigns',
-      tags: [],
       imageData: '',
       model: {
-        title: null,
-        summary: null,
-        body: null,
-        tags: [],
-        featured_image: null,
+        name: null,
+        description: null,
+        picture_url: null,
         thumbnail_image_path: null,
-        status: null,
-        amount: null,
-        state: null,
-        status_label: null,
-        owner: {
-          name: null
-        },
+        active_status: null,
+        target_amount: null,
         startAt: null,
-        finishAt: null,
-        pinned: false,
-        promoted: false,
-        meta: {
-          title: null,
-          description: null
-        },
-        has_featured_image: false
+        finishAt: null,        
+        has_picture_url: false
       }
     }
   },
   methods: {
-    async getTags(search) {
-      let { data } = await axios.get(this.$app.route('admin.tags.search'), {
-        params: {
-          q: search
-        }
-      })
-
-      this.tags = data.items
-    },
+    
     deleteFeaturedImage() {
       this.$refs.featuredImageInput.reset()
       this.model.thumbnail_image_path = null
-      this.model.has_featured_image = false
+      this.model.has_picture_url = false
     },
     previewImage: function(event) {
       // Reference to the DOM input element
