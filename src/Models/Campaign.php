@@ -15,21 +15,26 @@ use Illuminate\Support\Carbon;
  * @property string $picture_url
  * @property int $target_amount
  * @property string $currency
+ * @property bool $active_status
  * @property Carbon $started_at
  * @property Carbon $finished_at
- * @property bool $active_status
  * @property string $visual_settings (json)
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property Carbon|null $deleted_at
  *
  * Relationships
- * @property Collection|Transaction[] $translations
+ * @property Collection|Donator[] $donators
+ * @property Collection|Subscription[] $subscriptions
  * @property Collection|Transaction[] $transactions
+ * @property Collection|CampaignTranslation[] $translations
  */
 final class Campaign extends Model
 {
     use SoftDeletes;
+
+    /** @var array The attributes that aren't mass assignable */
+    protected $guarded = [];
 
     /** @var array The attributes that should be mutated to dates */
     protected $dates = [
@@ -54,6 +59,11 @@ final class Campaign extends Model
     public function transactions(): HasMany
     {
         return $this->hasMany(Transaction::class);
+    }
+
+    public function subscriptions(): HasMany
+    {
+        return $this->hasMany(Subscription::class);
     }
 
     public function translations(): HasMany
