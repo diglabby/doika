@@ -15,6 +15,7 @@ cache:
 
 before_install:
   - mysql -e 'CREATE DATABASE doika;'
+  - nvm install 10
 
 before_script:
   # disable xdebug if not coverage
@@ -22,11 +23,14 @@ before_script:
   - cp .env.ci .env
   - composer install --no-progress --no-interaction --prefer-dist --no-suggest
   - php artisan key:generate
+  - npm config set registry http://registry.npmjs.org/
+  - npm install
+  - npm run dev
 
-script:
+script:  
   - composer test:ci
   - php artisan route:list
-  - php artisan migrate:fresh --seed
+  - php artisan migrate:fresh --seed  
 
 after_script:
   - |
