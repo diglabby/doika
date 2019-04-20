@@ -80,19 +80,14 @@ export default {
     },
     async loadData(sortBy, sortDesc) {
       try {
-        let { data } = await axios.get(this.$app.route(this.searchRoute), {
-          params: {
-            page: this.currentPage,
-            perPage: this.perPage,
-            column: sortBy,
-            direction: sortDesc ? 'desc' : 'asc',
-            search: this.searchQuery
-          }
-        })
+          console.log(this.$app.route(this.searchRoute))
+        let { data } = await axios.get(this.$app.route(this.searchRoute))
 
         this.totalRows = data.total
+          console.log(data)
         return data.data
       } catch (e) {
+          console.log(e)
         this.$app.error(e)
         return []
       }

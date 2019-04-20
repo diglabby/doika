@@ -44,7 +44,7 @@
           </span>
         </template>
         <template slot="dropdown">
-          <b-dropdown-item :href="$app.route('logout')">
+          <b-dropdown-item v-on:click="logout">
             <i class="fe fe-log-out"></i>&nbsp;&nbsp;{{ $t('labels.admin.accountMenu.logout') }}
           </b-dropdown-item>
         </template>
@@ -55,6 +55,16 @@
 
 <script>
 export default {
-  name: 'AppHeader'
+  name: 'AppHeader',
+  methods: {
+      logout() {
+          axios.post($app.route('logout')).then(response => {
+              this.$router.push($app.route('login'))
+
+          }).catch(error => {
+              location.reload();
+          });
+      }
+  }
 }
 </script>
