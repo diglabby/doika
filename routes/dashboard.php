@@ -4,7 +4,7 @@
  * @see \Diglabby\Doika\Providers\RouteServiceProvider::mapDashboardRoutes
  */
 
-Route::get('/campaigns', 'Dashboard\CampaignController@index')->name('dashboard.campaigns.index');
+Route::get('/campaigns/index', 'Dashboard\CampaignController@index')->name('dashboard.campaigns.index');
 Route::get('/campaigns/{campaign}', 'Dashboard\CampaignController@show')->name('dashboard.campaigns.show');
 Route::post('/campaigns', 'Dashboard\CampaignController@store')->name('dashboard.campaigns.store');
 Route::put('/campaigns/{campaign}', 'Dashboard\CampaignController@update')->name('dashboard.campaigns.update');
