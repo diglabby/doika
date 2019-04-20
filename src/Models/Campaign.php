@@ -18,6 +18,7 @@ use Illuminate\Support\Carbon;
  * @property bool $active_status
  * @property Carbon $started_at
  * @property Carbon $finished_at
+ * @property string $visual_settings (json)
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property Carbon|null $deleted_at
@@ -47,6 +48,7 @@ final class Campaign extends Model
     /** @var array The attributes that should be cast to native types */
     protected $casts = [
         'active_status' => 'bool',
+        'visual_settings' => 'array',
     ];
 
     /** @var array Default attribute values */
@@ -59,13 +61,13 @@ final class Campaign extends Model
         return $this->hasMany(Transaction::class);
     }
 
-    public function translations(): HasMany
-    {
-        return $this->hasMany(CampaignTranslation::class);
-    }
-
     public function subscriptions(): HasMany
     {
         return $this->hasMany(Subscription::class);
+    }
+
+    public function translations(): HasMany
+    {
+        return $this->hasMany(CampaignTranslation::class);
     }
 }

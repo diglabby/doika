@@ -2,7 +2,7 @@
 
 namespace Diglabby\Doika\Providers;
 
-use App\Providers\RouteServiceProvider as BasicRouteServiceProvider;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as BasicRouteServiceProvider;
 use Illuminate\Support\Facades\Route;
 
 final class RouteServiceProvider extends BasicRouteServiceProvider
@@ -42,7 +42,7 @@ final class RouteServiceProvider extends BasicRouteServiceProvider
     protected function mapWidgetRoutes()
     {
         Route::middleware('web')
-            ->prefix('doika')
+            ->prefix('doika/widget/')
             ->namespace($this->namespace)
             ->group(base_path('routes/widget.php'));
     }
