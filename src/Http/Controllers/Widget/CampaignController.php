@@ -1,18 +1,16 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Diglabby\Doika\Http\Controllers\Widget;
 
 use App\Http\Controllers\Controller;
+use Diglabby\Doika\Http\Resources\Widget\CampaignResource;
 use Diglabby\Doika\Models\Campaign;
-use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Contracts\Support\Responsable;
 
 final class CampaignController extends Controller
 {
-    public function show(int $campaignId): Renderable
+    public function show(Campaign $campaign): Responsable
     {
-        /** @var Campaign $campaign */
-        $campaign = factory(Campaign::class)->make(['id' => $campaignId]);
-
-        return view('widget.pages.campaigns.show', ['campaign' => $campaign]);
+        return new CampaignResource($campaign);
     }
 }

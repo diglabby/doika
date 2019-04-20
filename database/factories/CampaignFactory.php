@@ -17,6 +17,7 @@ $factory->define(Campaign::class, function (Faker\Generator $faker) {
         'started_at' => today(),
         'finished_at' => today()->addMonths(1),
         'active_status' => 1,
+        'visual_settings' => [],
     ];
 });
 

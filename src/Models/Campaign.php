@@ -2,6 +2,7 @@
 
 namespace Diglabby\Doika\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -17,12 +18,14 @@ use Illuminate\Support\Carbon;
  * @property Carbon $started_at
  * @property Carbon $finished_at
  * @property bool $active_status
+ * @property string $visual_settings (json)
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property Carbon|null $deleted_at
  *
  * Relationships
- * @property Transaction[] $translations
+ * @property Collection|Transaction[] $translations
+ * @property Collection|Transaction[] $transactions
  */
 final class Campaign extends Model
 {
@@ -40,12 +43,18 @@ final class Campaign extends Model
     /** @var array The attributes that should be cast to native types */
     protected $casts = [
         'active_status' => 'bool',
+        'visual_settings' => 'array',
     ];
 
     /** @var array Default attribute values */
     protected $attributes = [
         'active_status' => false,
     ];
+
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class);
+    }
 
     public function translations(): HasMany
     {
