@@ -16,6 +16,7 @@
         "ext-mbstring": "*",
         "ext-zip": "*",
         "anlutro/l4-settings": "^0.8.1",
+        "carbondate/carbon": "^1.33",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.3",
         "hieu-le/active": "^3.5",
