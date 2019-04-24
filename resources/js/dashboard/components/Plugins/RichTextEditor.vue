@@ -60,7 +60,7 @@ export default {
               styles: ['full', 'alignLeft', 'alignRight']
             },
             ckfinder: {
-              uploadUrl: this.$app.route('admin.images.upload')
+              uploadUrl: this.$app.route('images.upload')
             }
           })
         } catch (e) {

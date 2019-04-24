@@ -4,7 +4,7 @@
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-| Prefixed by /doika
+| Prefixed by /doika/widget
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
@@ -12,9 +12,7 @@
 |
 */
 
-Route::redirect('/', '/doika/campaigns/1'); // temp redirection for testers and new devs to make then understand that everything works
-
-Route::get('campaigns/{campaignId}', 'Widget\CampaignController@show')->name('widget.campaign.show')->where('campaignId', '[0-9]+');
+Route::get('campaigns/{campaign}', 'Widget\CampaignController@show')->name('widget.campaign.show')->where('campaignId', '[0-9]+');
 Route::get('campaigns/{campaign}/donation-result', 'Widget\CampaignDonationResultController@show')->name('widget.campaign.donation-result');
 
 Route::get('help', 'Widget\HelpController@show')->name('widget.help.show');

@@ -23,13 +23,15 @@ services:
   webserver:
     build: 
       context: './'
-      dockerfile: 'docker/apache/Dockerfile'  
+      dockerfile: 'docker/apache/Dockerfile'
     container_name: 'doika-webserver'
     restart: 'always'
     working_dir: /var/www/html/doika
     ports:
       - "80:80"
       - "443:443"
+    expose:
+      - "9000"
     links: 
       - mysql
     volumes: 
@@ -46,7 +48,7 @@ services:
       PMA_HOST: mysql
       PMA_PORT: 3306
     ports:
-      - '8080:80'
+      - '8085:80'
   node:
     container_name: 'doika-node'
     build:
@@ -65,10 +67,16 @@ services:
     expose:
       - '4000'      
     command: >
-      sh -c '
-      npm install && 
-      npm run build
-      '
+        sh -c '
+        if test -d node_modules;
+        then
+          echo node_modules_exists ;
+        else
+          cp -a /tmp/node_modules /usr/src/app;
+        fi &&
+          npm install &&
+          npm run watch
+        '
       
   
   
