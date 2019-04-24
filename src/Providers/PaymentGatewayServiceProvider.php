@@ -9,7 +9,7 @@ use Illuminate\Support\ServiceProvider;
 
 final class PaymentGatewayServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-    /** @inheritdoc */
+    /** @inheritDoc */
     public function register(): void
     {
         $this->app->singleton(BePaidApiContext::class, function () {
@@ -23,7 +23,7 @@ final class PaymentGatewayServiceProvider extends ServiceProvider implements Def
         $this->app->bind(BePaidPaymentGateway::class, BePaidPaymentGateway::class);
     }
 
-    /** @inheritdoc */
+    /** @inheritDoc */
     public function provides(): array
     {
         return [

@@ -28,7 +28,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
     }
 
     /**
-     * @inheritdoc
+     * {@inheritDoc}
      * @see https://docs.bepaid.by/ru/checkout/payment-token
      */
     public function tokenizePayment(Money $money, Donator $donator, Campaign $campaign): string

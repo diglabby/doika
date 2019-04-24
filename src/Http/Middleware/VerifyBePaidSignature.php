@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 final class VerifyBePaidSignature
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      * @throws WebhookFailed
      */
     public function handle(Request $request, \Closure $next)
