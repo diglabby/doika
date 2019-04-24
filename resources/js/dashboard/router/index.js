@@ -73,7 +73,7 @@ export function createRouter(base, i18n) {
                 }
               },
               {
-                path: ':id/edit',
+                path: ':id',
                 name: 'campaigns_edit',
                 component: CampaignForm,
                 props: true,

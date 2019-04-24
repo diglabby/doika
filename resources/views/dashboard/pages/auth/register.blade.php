@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('layouts.main')
 
 @section('content')
     <div class="container">
@@ -39,12 +39,6 @@
 
                                 <div class="col-md-9">
                                     {{ Form::bsPassword('password_confirmation', ['required', 'placeholder' => __('validation.attributes.password_confirmation')]) }}
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-md-9 ml-auto">
-                                    {!! Form::captcha() !!}
                                 </div>
                             </div>
 

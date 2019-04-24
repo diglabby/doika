@@ -3,21 +3,27 @@
 namespace Diglabby\Doika\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use Diglabby\Doika\Http\Resources\Dashboard\CampaignResource;
 use Diglabby\Doika\Models\Campaign;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 
 final class CampaignController extends Controller
 {
     public function index()
     {
-        return view('dashboard.pages.campaigns.index', ['campaigns' => factory(Campaign::class, 10)->make()]);
+        $query = Campaign::query()
+            ->with('transactions') // to calc sum of transactions
+            ->withCount(['subscriptions', 'transactions']);
+
+        return CampaignResource::collection(
+            QueryBuilder::for($query)->paginate()
+        );
     }
 
-    public function show(int $campaignId)
+    public function show(Campaign $campaign)
     {
-        return view('dashboard.pages.campaigns.show', [
-            'campaign' => factory(Campaign::class)->make(['id' => $campaignId]),
-        ]);
+        return new CampaignResource($campaign);
     }
 
     public function store(Request $request)
@@ -28,13 +34,15 @@ final class CampaignController extends Controller
         return $campaign;
     }
 
-    public function update(int $campaignId, Request $request)
+    public function update(Campaign $campaign, Request $request)
     {
-        return Campaign::query()->findOrFail($campaignId);
+        $campaign->update($request->all());
+        return $campaign;
     }
 
     public function delete(Campaign $campaign)
     {
-        return $campaign->delete();
+        $campaign->delete();
+        return $campaign;
     }
 }
