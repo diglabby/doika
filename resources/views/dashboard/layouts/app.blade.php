@@ -49,6 +49,7 @@
                     <a class="navbar-brand" href="{{ url('/doika/doika/dashboard/') }}">
                         {{ config('app.name', 'Doika') }}
                     </a>
+                    
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
