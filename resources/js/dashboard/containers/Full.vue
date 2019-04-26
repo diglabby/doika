@@ -1,3 +1,8 @@
+<style>
+  .sidebar .nav-link{
+    padding: 0.5rem 1rem;
+  }
+</style>
 <template>
   <div class="app">
     <AppHeader></AppHeader>
@@ -6,7 +11,7 @@
         <AppSearch></AppSearch>
         <SidebarNav :nav-items="nav">
         </SidebarNav>
-        <b-button class="container-fluid btn btn-success" style="margin-top:auto !important; margin-bottom:20px; width: 80%; height: 50px;">
+        <b-button class="container-fluid btn btn-success" style="margin-top:auto !important; margin-bottom:50px; width: 80%;">
           {{ $t('buttons.admin.support') }}
         </b-button>
         <SidebarFooter>
