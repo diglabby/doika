@@ -13,6 +13,7 @@
                   <b-form-input
                     id="title"
                     name="shortcode"
+                    v-if="!isNew"
                     required
                     :placeholder="$t('labels.admin.campaigns.placeholder.shortcode')"
                     v-model="model.shortcode"
@@ -49,10 +50,7 @@
               horizontal
               :label-cols="2"
             >
-              <p-richtexteditor
-                name="body"
-                v-model="model.description"
-              ></p-richtexteditor>
+              <vue-editor name="description" v-model="model.description"></vue-editor>
             </b-form-group>
 
             <b-form-group
@@ -63,7 +61,7 @@
               :feedback="feedback('picture_url')"
             >
               <div class="media">
-                <img class="mr-2" v-if="model.thumbnail_image_path" :src="model.thumbnail_image_path" alt="">
+                <img class="mr-2" v-if="image.thumbnail_image_path" :src="image.thumbnail_image_path" alt="">
 
                 <div class="media-body">
                   <h6>{{ $t('buttons.admin.campaigns.uploadImage') }}</h6>
@@ -81,7 +79,7 @@
                         @change="previewImage"
                         style="margin-top auto; margin-bottom: auto;"
                       ></b-form-file>
-                      <a href="#" class="d-block mt-1" v-if="model.has_picture_url || model.picture_url" @click.prevent="deleteFeaturedImage">{{ $t('buttons.campaign.deleteImage') }}</a>
+                      <a href="#" class="d-block mt-1" v-if="image.has_picture_url || model.picture_url" @click.prevent="deleteFeaturedImage">{{ $t('buttons.campaign.deleteImage') }}</a>
                     </b-col>
                     <b-col lg="3">
                       <div class="image-preview" v-if="imageData.length > 0">
@@ -117,7 +115,7 @@
                             id="start_at"
                             name="start_at"
                             :config="config"
-                            v-model="model.startAt"
+                            v-model="model.started_at"
                           ></p-datetimepicker>
                           <b-input-group-append>
                             <b-input-group-text data-toggle>
@@ -132,7 +130,6 @@
                     </b-col>
                     <b-col lg="6">
                       <b-form-group
-                        v-if="this.$app.user.can('publish campaigns')"
                         :label="$t('labels.admin.campaigns.finishAt')"
                         label-for="finishAt"
                         horizontal
@@ -143,7 +140,7 @@
                             id="finishAt"
                             name="finishAt"
                             :config="config"
-                            v-model="model.finishedAt"
+                            v-model="model.finished_at"
                           ></p-datetimepicker>
                           <b-input-group-append>
                             <b-input-group-text data-toggle>
@@ -174,7 +171,7 @@
                           name="amount"
                           required
                           :placeholder="$t('labels.admin.campaigns.placeholder.amount')"
-                          v-model="model.amount"
+                          v-model="model.target_amount"
                           :state="state('amount')"
                         ></b-form-input>
                       </b-form-group>
@@ -195,7 +192,6 @@
                       <b-col lg="5" offset-lg="1">
                         <c-switch
                           name="recurrent"
-                          v-model="model.reccurent"
                           :description="$t('labels.admin.campaigns.recurrent')"
                         ></c-switch>
                       </b-col>
@@ -204,14 +200,12 @@
                       <b-col lg="5" offset-lg="1">
                         <c-switch
                           name="topBanner"
-                          v-model="model.topBanner"
                           :description="$t('labels.admin.campaigns.topBanner')"
                         ></c-switch>
                       </b-col>
                       <b-col lg="5" offset-lg="1">
                         <c-switch
                           name="progressBar"
-                          v-model="model.progressBar"
                           :description="$t('labels.admin.campaigns.progressBar')"
                         ></c-switch>
                       </b-col>
@@ -245,7 +239,7 @@
               <b-col md>
                 <input name="status" type="hidden" value="publish">
 
-                <b-button right split class="float-right" variant="success" @click="model.active_status = 'true'; onSubmit()" :disabled="pending">
+                <b-button right split class="float-right" variant="success" @click="onSubmit()" :disabled="pending">
                   {{ $t('buttons.admin.common.save') }}
                 </b-button>
               </b-col>
@@ -260,10 +254,13 @@
 <script>
 import axios from 'axios'
 import form from '../mixins/form'
-
+import { VueEditor } from 'vue2-editor'
 export default {
   name: 'CampaignForm',
   mixins: [form],
+    components: {
+        VueEditor
+    },
   data() {
     return {
       config: {
@@ -274,7 +271,7 @@ export default {
           instance.close()
         }
       },
-
+        id: null,
       counter: 45,
       max: 100,
       modelName: 'campaign',
@@ -285,12 +282,15 @@ export default {
         name: null,
         description: null,
         picture_url: null,
-        thumbnail_image_path: null,
-        active_status: null,
+        active_status: 1,
         target_amount: null,
-        startAt: null,
-        finishAt: null,        
-        has_picture_url: false
+        currency: 'BYN',
+        started_at: null,
+        finished_at: null,
+      },
+      image: {
+          thumbnail_image_path: null,
+          has_picture_url: false
       }
     }
   },
@@ -298,8 +298,8 @@ export default {
     
     deleteFeaturedImage() {
       this.$refs.featuredImageInput.reset()
-      this.model.thumbnail_image_path = null
-      this.model.has_picture_url = false
+      this.image.thumbnail_image_path = null
+      this.image.has_picture_url = false
     },
     previewImage: function(event) {
       // Reference to the DOM input element
