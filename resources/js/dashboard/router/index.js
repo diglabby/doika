@@ -73,7 +73,7 @@ export function createRouter(base, i18n) {
                 }
               },
               {
-                path: ':id',
+                path: ':id/edit',
                 name: 'campaigns_edit',
                 component: CampaignForm,
                 props: true,
@@ -84,31 +84,31 @@ export function createRouter(base, i18n) {
             ]
           },
           {
-            path: 'payments',
-            name: 'payments',
+            path: 'transactions',
+            name: 'transactions',
             component: Payments,
             meta: {
-              label: i18n.t('labels.admin.payments.title')
+              label: i18n.t('labels.admin.transactions.title')
             }
           },
           {
-            path: 'payments',
+            path: 'transactions',
             component: {
               render(c) {
                 return c('router-view')
               }
             },
             meta: {
-              label: i18n.t('labels.admin.payments.title')
+              label: i18n.t('labels.admin.transactions.title')
             },
             children: [
               {
                 path: ':id/edit',
-                name: 'payments_edit',
+                name: 'transactions_edit',
                 component: PaymentForm,
                 props: true,
                 meta: {
-                  label: i18n.t('labels.admin.payments.show.title')
+                  label: i18n.t('labels.admin.transactions.show.title')
                 }
               }
             ]
