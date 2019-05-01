@@ -70,7 +70,7 @@ class BePaidPaymentGatewayTest extends TestCase
         $campaign = factory(Campaign::class)->create();
         $money = Money::BYN(100);
 
-        $subscription = $this->bePaid->createSubscription($money, $campaign, $donator, 'P1M');
+        $subscription = $this->bePaid->subscribe($donator, $campaign, $money, 'P1M');
 
         $this->assertSame('bePaid', $subscription->payment_gateway);
         $this->assertSame('BYN', $subscription->currency);

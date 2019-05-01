@@ -12,6 +12,9 @@ use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
 use Money\Money;
 
+/**
+ * @see https://docs.bepaid.by/ru/introduction
+ */
 final class BePaidPaymentGateway implements OffsitePaymentGateway
 {
     private const GATEWAY_ID = 'bePaid';
@@ -20,6 +23,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
 
     /** @var BePaidApiContext */
     private $apiContext;
+
     /** @var HttpClient */
     private $httpClient;
 
@@ -88,15 +92,14 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
         return $paymentToken;
     }
 
-    private function generatePlanName(Money $money, Campaign $campaign): string
-    {
-        return "Campaign: $campaign->name, {$money->getCurrency()->getCode()} {$money->getAmount()}";
-    }
-
-    public function createSubscription(Money $money, Campaign $campaign, Donator $donator, string $paymentInterval): Subscription
+    /**
+     * Subscribe a Donator to a Campaign
+     * @see https://docs.bepaid.by/ru/subscriptions/intro
+     */
+    public function subscribe(Donator $donator, Campaign $campaign, Money $money, string $paymentInterval): Subscription
     {
         $dateInterval = new CarbonInterval($paymentInterval);
-        $planName = $this->generatePlanName($money, $campaign);
+        $planName = ((int) $money->getAmount() / 100)."{$money->getCurrency()->getCode()} subscription plan";
 
         $getSubscriptionParams = [
             'plan' => [
@@ -106,7 +109,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
                 'plan' => [
                     'amount' => (int) $money->getAmount(),
                     'interval' => $dateInterval->months,
-                    'interval_unit' => 'month',
+                    'interval_unit' => 'month', // hour, day, month
                 ],
             ],
             'return_url' => url('/'),
@@ -122,7 +125,9 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
             'verify' => false,
         ]);
 
-        $gatewaySubscriptionId = json_decode($response->getBody()->getContents())->id;
+        /** @var array $gatewaySubscriptionData */
+        $gatewaySubscriptionData = json_decode($response->getBody()->getContents(), true);
+        $gatewaySubscriptionId = $gatewaySubscriptionData['id'];
 
         $subscription = new Subscription([
             'donator_id' => $donator->id,
