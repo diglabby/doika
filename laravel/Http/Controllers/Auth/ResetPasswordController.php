@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\Request;
 
 class ResetPasswordController extends Controller
 {
@@ -38,5 +39,16 @@ class ResetPasswordController extends Controller
     protected function redirectTo(): string
     {
         return route('dashboard.home');
+    }
+
+    /**
+     * @inheritDoc
+     * @see \Illuminate\Foundation\Auth\ResetsPasswords::showResetForm
+     */
+    public function showResetForm(Request $request, $token = null)
+    {
+        return view('dashboard.pages.auth.passwords.reset')->with(
+            ['token' => $token, 'email' => $request->get('email')]
+        );
     }
 }
