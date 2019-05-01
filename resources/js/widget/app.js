@@ -40,9 +40,10 @@ Vue.component('b-datatable', DataTable)
 export function createApp() {
   // Init router and store
   const i18n = createLocales(window.settings.locale)
-  const router = createRouter('/doika/' + window.settings.locale, i18n)
+  let basePath = window.settings.widgetBasePath
+  const router = createRouter(basePath, i18n)
   const store = createStore(window.route)
-
+  console.log(router)
   /**
    * Server-side settings
    */

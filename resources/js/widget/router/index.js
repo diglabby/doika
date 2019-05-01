@@ -22,7 +22,7 @@ export function createRouter(base, i18n) {
     scrollBehavior: () => ({ y: 0 }),
     routes: [
       {
-        path: '/campaign/',
+        path: '/campaigns/',
         name: 'campaign',
         component: Full,
         meta: {
