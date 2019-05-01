@@ -98,7 +98,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
     public function tokenizeSubscriptionIntend(Donator $donator, Campaign $campaign, Money $money, string $paymentInterval): string
     {
         $dateInterval = new CarbonInterval($paymentInterval);
-        $planName = ((int) $money->getAmount() / 100)."{$money->getCurrency()->getCode()} subscription plan";
+        $planName = ((int) $money->getAmount() / 100)."{$money->getCurrency()->getCode()} для {$campaign->name}";
 
         $getSubscriptionParams = [
             'plan' => [
