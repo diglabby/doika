@@ -4,7 +4,6 @@ namespace Tests\Feature\Services\PaymentGateways;
 
 use Diglabby\Doika\Models\Campaign;
 use Diglabby\Doika\Models\Donator;
-use Diglabby\Doika\Models\Subscription;
 use Diglabby\Doika\Services\PaymentGateways\BePaidPaymentGateway;
 use Money\Money;
 use Tests\TestCase;
@@ -30,9 +29,9 @@ class BePaidPaymentGatewayTest extends TestCase
         $donator = factory(Donator::class)->make();
         $campaign = factory(Campaign::class)->make();
 
-        $token = $this->bePaid->tokenizePayment(Money::BYN(100), $donator, $campaign);
+        $redirectUrl = $this->bePaid->tokenizePaymentIntend(Money::BYN(100), $donator, $campaign);
 
-        $this->assertSame(64, strlen($token));
+        $this->assertContains('?token=', $redirectUrl);
     }
 
     /** @test */
@@ -43,7 +42,7 @@ class BePaidPaymentGatewayTest extends TestCase
         $donator = factory(Donator::class)->make();
         $campaign = factory(Campaign::class)->make();
 
-        $this->bePaid->tokenizePayment(Money::BYN(0), $donator, $campaign);
+        $this->bePaid->tokenizePaymentIntend(Money::BYN(0), $donator, $campaign);
     }
 
     /** @test */
@@ -54,7 +53,7 @@ class BePaidPaymentGatewayTest extends TestCase
         $donator = factory(Donator::class)->make();
         $campaign = factory(Campaign::class)->make();
 
-        $this->bePaid->tokenizePayment(Money::BYN(-20), $donator, $campaign);
+        $this->bePaid->tokenizePaymentIntend(Money::BYN(-20), $donator, $campaign);
     }
 
     /**
@@ -65,17 +64,13 @@ class BePaidPaymentGatewayTest extends TestCase
     public function it_creates_a_subscription()
     {
         /** @var Donator $donator */
-        $donator = factory(Donator::class)->create();
+        $donator = factory(Donator::class)->make(['id' => 1]);
         /** @var Campaign $campaign */
-        $campaign = factory(Campaign::class)->create();
+        $campaign = factory(Campaign::class)->make(['id' => 1]);
         $money = Money::BYN(100);
 
-        $subscription = $this->bePaid->subscribe($donator, $campaign, $money, 'P1M');
+        $redirectUrl = $this->bePaid->tokenizeSubscriptionIntend($donator, $campaign, $money, 'P1M');
 
-        $this->assertSame('bePaid', $subscription->payment_gateway);
-        $this->assertSame('BYN', $subscription->currency);
-        $this->assertSame(100, $subscription->amount);
-        $this->assertSame('P1M', $subscription->payment_interval);
-        $this->assertSame(1, Subscription::query()->count());
+        $this->assertContains('?token=', $redirectUrl);
     }
 }

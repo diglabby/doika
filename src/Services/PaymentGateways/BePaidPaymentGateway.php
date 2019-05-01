@@ -42,7 +42,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
      * {@inheritDoc}
      * @see https://docs.bepaid.by/ru/checkout/payment-token
      */
-    public function tokenizePayment(Money $money, Donator $donator, Campaign $campaign): string
+    public function tokenizePaymentIntend(Money $money, Donator $donator, Campaign $campaign): string
     {
         if ($money->getAmount() < 1) {
             throw new \InvalidArgumentException('Amount should be a positive number');
@@ -95,7 +95,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
      * Subscribe a Donator to a Campaign
      * @see https://docs.bepaid.by/ru/subscriptions/intro
      */
-    public function subscribe(Donator $donator, Campaign $campaign, Money $money, string $paymentInterval): string
+    public function tokenizeSubscriptionIntend(Donator $donator, Campaign $campaign, Money $money, string $paymentInterval): string
     {
         $dateInterval = new CarbonInterval($paymentInterval);
         $planName = ((int) $money->getAmount() / 100)."{$money->getCurrency()->getCode()} subscription plan";
