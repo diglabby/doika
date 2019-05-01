@@ -6,7 +6,6 @@ use Carbon\CarbonInterval;
 use Diglabby\Doika\Exceptions\InvalidConfigException;
 use Diglabby\Doika\Models\Campaign;
 use Diglabby\Doika\Models\Donator;
-use Diglabby\Doika\Models\Subscription;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
@@ -43,7 +42,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
      * {@inheritDoc}
      * @see https://docs.bepaid.by/ru/checkout/payment-token
      */
-    public function tokenizePayment(Money $money, Donator $donator, Campaign $campaign): string
+    public function tokenizePaymentIntend(Money $money, Donator $donator, Campaign $campaign): string
     {
         if ($money->getAmount() < 1) {
             throw new \InvalidArgumentException('Amount should be a positive number');
@@ -86,20 +85,20 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
             throw new \DomainException($exception->getMessage(), $exception->getCode(), $exception);
         }
 
-        /** @var string $paymentToken */
-        $paymentToken = json_decode($response->getBody()->getContents())->checkout->token;
+        /** @var array $paymentData */
+        $paymentData = json_decode($response->getBody()->getContents(), true)->checkout->token;
 
-        return $paymentToken;
+        return $paymentData['checkout']['redirect_url'];
     }
 
     /**
      * Subscribe a Donator to a Campaign
      * @see https://docs.bepaid.by/ru/subscriptions/intro
      */
-    public function subscribe(Donator $donator, Campaign $campaign, Money $money, string $paymentInterval): Subscription
+    public function tokenizeSubscriptionIntend(Donator $donator, Campaign $campaign, Money $money, string $paymentInterval): string
     {
         $dateInterval = new CarbonInterval($paymentInterval);
-        $planName = ((int) $money->getAmount() / 100)."{$money->getCurrency()->getCode()} subscription plan";
+        $planName = ((int) $money->getAmount() / 100)."{$money->getCurrency()->getCode()} для {$campaign->name}";
 
         $getSubscriptionParams = [
             'plan' => [
@@ -112,8 +111,12 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
                     'interval_unit' => 'month', // hour, day, month
                 ],
             ],
-            'return_url' => url('/'),
+            'return_url' => url('/', ['gateway' => $this->getGatewayId()]),
             'notification_url' => route('webhooks.bepaid.subscriptions'),
+            'additional_data' => [
+                'campaign_id' => $campaign->id,
+                'donator_id' => $donator->id,
+            ],
             'settings' => [
                 'language' => app()->getLocale(),
             ],
@@ -125,21 +128,9 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
             'verify' => false,
         ]);
 
-        /** @var array $gatewaySubscriptionData */
-        $gatewaySubscriptionData = json_decode($response->getBody()->getContents(), true);
-        $gatewaySubscriptionId = $gatewaySubscriptionData['id'];
+        /** @var array $subscriptionData */
+        $subscriptionData = json_decode($response->getBody()->getContents(), true);
 
-        $subscription = new Subscription([
-            'donator_id' => $donator->id,
-            'campaign_id' => $campaign->id,
-            'payment_gateway' => self::GATEWAY_ID,
-            'payment_gateway_subscription_id' => $gatewaySubscriptionId,
-            'amount' => (int) $money->getAmount(),
-            'currency' => $money->getCurrency()->getCode(),
-            'payment_interval' => $paymentInterval,
-        ]);
-        $subscription->save();
-
-        return $subscription;
+        return $subscriptionData['redirect_url'];
     }
 }

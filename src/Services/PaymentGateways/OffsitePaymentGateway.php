@@ -9,11 +9,13 @@ use Money\Money;
 interface OffsitePaymentGateway extends PaymentGateway
 {
     /**
-     * Create a token from payment data so we can use it on next steps instead passing all required params
+     * Create a token from payment data and get a redirect URL
+     * so we can redirect visitor to a payment page
+     * where visitor can input payment data.
      * @param Money $money
      * @param Donator $donator
      * @param Campaign $campaign
      * @return string
      */
-    public function tokenizePayment(Money $money, Donator $donator, Campaign $campaign): string;
+    public function tokenizePaymentIntend(Money $money, Donator $donator, Campaign $campaign): string;
 }
