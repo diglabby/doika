@@ -91,10 +91,11 @@ export default {
   },
   methods: {
     dataLoadProvider(ctx) {
-        console.log(this.$refs.datasource.loadData(ctx.sortBy, ctx.sortDesc))
+
       return this.$refs.datasource.loadData(ctx.sortBy, ctx.sortDesc)
     },
     onContextChanged() {
+
       return this.$refs.datatable.refresh()
     }
   }
