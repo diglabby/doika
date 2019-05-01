@@ -4,11 +4,12 @@ namespace Tests\Feature\Services\PaymentGateways;
 
 use Diglabby\Doika\Models\Campaign;
 use Diglabby\Doika\Models\Donator;
+use Diglabby\Doika\Models\Subscription;
 use Diglabby\Doika\Services\PaymentGateways\BePaidPaymentGateway;
 use Money\Money;
 use Tests\TestCase;
 
-class BePaidOffsitePaymentGatewayTest extends TestCase
+class BePaidPaymentGatewayTest extends TestCase
 {
     /** @var BePaidPaymentGateway */
     private $bePaid;
@@ -54,5 +55,27 @@ class BePaidOffsitePaymentGatewayTest extends TestCase
         $campaign = factory(Campaign::class)->make();
 
         $this->bePaid->tokenizePayment(Money::BYN(-20), $donator, $campaign);
+    }
+
+    /**
+     * @test
+     * @group real-api
+     * @group network
+     */
+    public function it_creates_a_subscription()
+    {
+        /** @var Donator $donator */
+        $donator = factory(Donator::class)->create();
+        /** @var Campaign $campaign */
+        $campaign = factory(Campaign::class)->create();
+        $money = Money::BYN(100);
+
+        $subscription = $this->bePaid->createSubscription($money, $campaign, $donator, 'P1M');
+
+        $this->assertSame('bePaid', $subscription->payment_gateway);
+        $this->assertSame('BYN', $subscription->currency);
+        $this->assertSame(100, $subscription->amount);
+        $this->assertSame('P1M', $subscription->payment_interval);
+        $this->assertSame(1, Subscription::query()->count());
     }
 }
