@@ -10,27 +10,22 @@ use Diglabby\Doika\Models\Subscription;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
-use Illuminate\Contracts\Config\Repository as ConfigRepository;
 use Money\Money;
 
 final class BePaidPaymentGateway implements OffsitePaymentGateway
 {
     private const GATEWAY_ID = 'bePaid';
     private const API_VERSION = '2.1';
-    private const BASE_API_URI = 'https://checkout.bepaid.by';
-    private const BASE_PAYMENT_GATEWAY_URI = 'https://api.bepaid.by';
+    private const API_ENDPOINT = 'https://api.bepaid.by';
 
-    /** @var ConfigRepository */
-    private $config;
     /** @var BePaidApiContext */
     private $apiContext;
     /** @var HttpClient */
     private $httpClient;
 
-    public function __construct(BePaidApiContext $apiContext, ConfigRepository $config, HttpClient $httpClient)
+    public function __construct(BePaidApiContext $apiContext, HttpClient $httpClient)
     {
         $this->apiContext = $apiContext;
-        $this->config = $config;
         $this->httpClient = $httpClient;
     }
 
@@ -55,7 +50,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
                     'decline_url' => route('widget.campaign.donation-result', ['campaign' => $campaign->id, 'status' => 'decline']),
                     'fail_url' => route('widget.campaign.donation-result', ['campaignId' => $campaign->id, 'status' => 'fail']),
                     'notification_url' => route('webhooks.bepaid.donated', [$campaign->id]),
-                    'language' => $this->config->get('app.locale'),
+                    'language' => app()->getLocale(),
                 ],
                 'order' => [
                     'amount' => $money->getAmount(),
@@ -68,7 +63,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
             ],
         ];
 
-        $httpClient = new HttpClient(['base_uri' => self::BASE_API_URI]);
+        $httpClient = new HttpClient(['base_uri' => 'https://checkout.bepaid.by']);
         try {
             $response = $httpClient->request('POST', '/ctp/api/checkouts', [
                 'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
@@ -114,7 +109,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
                 'language' => app()->getLocale(),
             ],
         ];
-        $response = $this->httpClient->request('POST', self::BASE_PAYMENT_GATEWAY_URI.'/subscriptions', [
+        $response = $this->httpClient->request('POST', self::API_ENDPOINT.'/subscriptions', [
             'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
             'headers' => ['Accept' => 'application/json'],
             'json' => $getSubscriptionParams,
