@@ -55,9 +55,9 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
                 'version' => self::API_VERSION,
                 'attempts' => 3,
                 'settings' => [
-                    'success_url' => route('widget.campaign.donation-result', ['campaign' => $campaign->id, 'status' => 'success']),
-                    'decline_url' => route('widget.campaign.donation-result', ['campaign' => $campaign->id, 'status' => 'decline']),
-                    'fail_url' => route('widget.campaign.donation-result', ['campaignId' => $campaign->id, 'status' => 'fail']),
+                    'success_url' => route('widget.campaigns.donation-result', ['campaign' => $campaign->id, 'status' => 'success']),
+                    'decline_url' => route('widget.campaigns.donation-result', ['campaign' => $campaign->id, 'status' => 'decline']),
+                    'fail_url' => route('widget.campaigns.donation-result', ['campaignId' => $campaign->id, 'status' => 'fail']),
                     'notification_url' => route('webhooks.bepaid.donated', [$campaign->id]),
                     'language' => app()->getLocale(),
                 ],
