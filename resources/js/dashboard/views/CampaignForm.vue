@@ -49,10 +49,7 @@
               horizontal
               :label-cols="2"
             >
-              <p-richtexteditor
-                name="body"
-                v-model="model.description"
-              ></p-richtexteditor>
+              <vue-editor name="description" v-model="model.description"></vue-editor>
             </b-form-group>
 
             <b-form-group
