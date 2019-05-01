@@ -43,7 +43,7 @@ export function createApp() {
   let basePath = window.settings.widgetBasePath
   const router = createRouter(basePath, i18n)
   const store = createStore(window.route)
-  console.log(router)
+
   /**
    * Server-side settings
    */
