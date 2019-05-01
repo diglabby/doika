@@ -113,6 +113,10 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
             ],
             'return_url' => url('/', ['gateway' => $this->getGatewayId()]),
             'notification_url' => route('webhooks.bepaid.subscriptions'),
+            'additional_data' => [
+                'campaign_id' => $campaign->id,
+                'donator_id' => $donator->id,
+            ],
             'settings' => [
                 'language' => app()->getLocale(),
             ],
