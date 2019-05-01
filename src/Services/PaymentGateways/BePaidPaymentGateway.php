@@ -29,6 +29,12 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
         $this->httpClient = $httpClient;
     }
 
+    /** @inheritDoc */
+    public function getGatewayId(): string
+    {
+        return self::GATEWAY_ID;
+    }
+
     /**
      * {@inheritDoc}
      * @see https://docs.bepaid.by/ru/checkout/payment-token

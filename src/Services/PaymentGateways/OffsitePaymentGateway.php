@@ -6,7 +6,7 @@ use Diglabby\Doika\Models\Campaign;
 use Diglabby\Doika\Models\Donator;
 use Money\Money;
 
-interface OffsitePaymentGateway
+interface OffsitePaymentGateway extends PaymentGateway
 {
     /**
      * Create a token from payment data so we can use it on next steps instead passing all required params
