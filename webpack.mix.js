@@ -14,10 +14,11 @@ let mix = require('laravel-mix');
  */
 
 
-mix.js('resources/js/dashboard/app.js', 'public/build/js/dashboard/dashboard.js')
-    .sass('resources/sass/dashboard/app.scss', 'public/build/css/dashboard/dashboard.css', {
-    implementation: require('node-sass')
-    })
+mix
+    .js('resources/js/dashboard/app.js', 'public/build/js/dashboard/dashboard.js')
+    .js('resources/js/widget/app.js', 'public/build/js/widget/widget.js')
+    .sass('resources/sass/dashboard/app.scss', 'public/build/css/dashboard/dashboard.css', { implementation: require('node-sass') })
+    .sass('resources/sass/widget/app.scss', 'public/build/css/widget/widget.css', { implementation: require('node-sass') })
     .options({
         processCssUrls: false
     })
@@ -26,9 +27,6 @@ mix.js('resources/js/dashboard/app.js', 'public/build/js/dashboard/dashboard.js'
             ignored: /node_modules/
         }
     });
-
-
-
 
 // Full API
 // mix.js(src, output);
