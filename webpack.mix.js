@@ -28,6 +28,16 @@ mix
         }
     });
 
+mix.extend('assetsConfig', new class {
+    webpackConfig(webpackConfig) {
+        webpackConfig.resolve.extensions.push('.js', '.vue', '.json','.png');
+        webpackConfig.resolve.alias = {
+            '@': __dirname + '/resources/images'
+        };
+    }
+}).setResourceRoot('/doika/public/');
+mix.assetsConfig();
+
 // Full API
 // mix.js(src, output);
 // mix.react(src, output); <-- Identical to mix.js(), but registers React Babel compilation.

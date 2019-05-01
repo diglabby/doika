@@ -8,7 +8,7 @@ use Diglabby\Doika\Services\PaymentGateways\BePaidPaymentGateway;
 use Money\Money;
 use Tests\TestCase;
 
-class BePaidOffsitePaymentGatewayTest extends TestCase
+class BePaidPaymentGatewayTest extends TestCase
 {
     /** @var BePaidPaymentGateway */
     private $bePaid;
@@ -29,9 +29,9 @@ class BePaidOffsitePaymentGatewayTest extends TestCase
         $donator = factory(Donator::class)->make();
         $campaign = factory(Campaign::class)->make();
 
-        $token = $this->bePaid->tokenizePayment(Money::BYN(100), $donator, $campaign);
+        $redirectUrl = $this->bePaid->tokenizePaymentIntend(Money::BYN(100), $donator, $campaign);
 
-        $this->assertSame(64, strlen($token));
+        $this->assertContains('?token=', $redirectUrl);
     }
 
     /** @test */
@@ -42,7 +42,7 @@ class BePaidOffsitePaymentGatewayTest extends TestCase
         $donator = factory(Donator::class)->make();
         $campaign = factory(Campaign::class)->make();
 
-        $this->bePaid->tokenizePayment(Money::BYN(0), $donator, $campaign);
+        $this->bePaid->tokenizePaymentIntend(Money::BYN(0), $donator, $campaign);
     }
 
     /** @test */
@@ -53,6 +53,24 @@ class BePaidOffsitePaymentGatewayTest extends TestCase
         $donator = factory(Donator::class)->make();
         $campaign = factory(Campaign::class)->make();
 
-        $this->bePaid->tokenizePayment(Money::BYN(-20), $donator, $campaign);
+        $this->bePaid->tokenizePaymentIntend(Money::BYN(-20), $donator, $campaign);
+    }
+
+    /**
+     * @test
+     * @group real-api
+     * @group network
+     */
+    public function it_creates_a_subscription()
+    {
+        /** @var Donator $donator */
+        $donator = factory(Donator::class)->make(['id' => 1]);
+        /** @var Campaign $campaign */
+        $campaign = factory(Campaign::class)->make(['id' => 1]);
+        $money = Money::BYN(100);
+
+        $redirectUrl = $this->bePaid->tokenizeSubscriptionIntend($donator, $campaign, $money, 'P1M');
+
+        $this->assertContains('?token=', $redirectUrl);
     }
 }
