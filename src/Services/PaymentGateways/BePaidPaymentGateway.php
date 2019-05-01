@@ -112,7 +112,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
                     'interval_unit' => 'month', // hour, day, month
                 ],
             ],
-            'return_url' => url('/'),
+            'return_url' => url('/', ['gateway' => $this->getGatewayId()]),
             'notification_url' => route('webhooks.bepaid.subscriptions'),
             'settings' => [
                 'language' => app()->getLocale(),
