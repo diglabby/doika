@@ -2,10 +2,10 @@
 
 namespace Diglabby\Doika\Services\PaymentGateways;
 
-use Carbon\CarbonInterval;
 use Diglabby\Doika\Exceptions\InvalidConfigException;
 use Diglabby\Doika\Models\Campaign;
 use Diglabby\Doika\Models\Donator;
+use Diglabby\Doika\Models\SubscriptionIntend;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
@@ -95,27 +95,24 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
      * Subscribe a Donator to a Campaign
      * @see https://docs.bepaid.by/ru/subscriptions/intro
      */
-    public function tokenizeSubscriptionIntend(Donator $donator, Campaign $campaign, Money $money, string $paymentInterval): string
+    public function tokenizeSubscriptionIntend(SubscriptionIntend $subscriptionIntend): string
     {
-        $dateInterval = new CarbonInterval($paymentInterval);
-        $planName = ((int) $money->getAmount() / 100)."{$money->getCurrency()->getCode()} для {$campaign->name}";
-
         $getSubscriptionParams = [
             'plan' => [
                 'test' => $this->apiContext->isTest(),
-                'title' => $planName,
-                'currency' => $money->getCurrency()->getCode(),
+                'title' => $subscriptionIntend->getPlanName(),
+                'currency' => $subscriptionIntend->money->getCurrency()->getCode(),
                 'plan' => [
-                    'amount' => (int) $money->getAmount(),
-                    'interval' => $dateInterval->months,
-                    'interval_unit' => 'month', // hour, day, month
+                    'amount' => (int) $subscriptionIntend->money->getAmount(),
+                    'interval' => $subscriptionIntend->getPlannedTimesToPay(),
+                    'interval_unit' => 'month', // hour|day|month
                 ],
             ],
             'return_url' => url('/', ['gateway' => $this->getGatewayId()]),
             'notification_url' => route('webhooks.bepaid.subscriptions'),
             'additional_data' => [
-                'campaign_id' => $campaign->id,
-                'donator_id' => $donator->id,
+                'campaign_id' => $subscriptionIntend->campaign->id,
+                'donator_id' => $subscriptionIntend->donator->id,
             ],
             'settings' => [
                 'language' => app()->getLocale(),

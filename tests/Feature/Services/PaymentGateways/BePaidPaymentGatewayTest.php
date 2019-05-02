@@ -4,6 +4,7 @@ namespace Tests\Feature\Services\PaymentGateways;
 
 use Diglabby\Doika\Models\Campaign;
 use Diglabby\Doika\Models\Donator;
+use Diglabby\Doika\Models\SubscriptionIntend;
 use Diglabby\Doika\Services\PaymentGateways\BePaidPaymentGateway;
 use Money\Money;
 use Tests\TestCase;
@@ -67,9 +68,9 @@ class BePaidPaymentGatewayTest extends TestCase
         $donator = factory(Donator::class)->make(['id' => 1]);
         /** @var Campaign $campaign */
         $campaign = factory(Campaign::class)->make(['id' => 1]);
-        $money = Money::BYN(100);
+        $subscriptionIntend = SubscriptionIntend::monthly(Money::BYN(100), $donator, $campaign);
 
-        $redirectUrl = $this->bePaid->tokenizeSubscriptionIntend($donator, $campaign, $money, 'P1M');
+        $redirectUrl = $this->bePaid->tokenizeSubscriptionIntend($subscriptionIntend);
 
         $this->assertContains('?token=', $redirectUrl);
     }
