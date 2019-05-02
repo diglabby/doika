@@ -14,7 +14,7 @@ class SubscriptionIntendTest extends TestCase
      * @test
      * @dataProvider plannedTimesToPayForFutureDatesProvider
      */
-    function it_properly_calculates_times_to_pay_for_future_dates(int $plannedTimesToPay, string $dateMofifier)
+    public function it_properly_calculates_times_to_pay_for_future_dates(int $plannedTimesToPay, string $dateMofifier)
     {
         // ⚠️ Test execution takes some tune, for this reason now() created here
         // != now() created in SubscriptionIntend, so we need to use addSecond()
@@ -49,7 +49,7 @@ class SubscriptionIntendTest extends TestCase
      * @test
      * @dataProvider pastDatesProvider
      */
-    function can_not_calculate_times_to_pay_for_past_dates(\DateTime $campaignFinishTime)
+    public function can_not_calculate_times_to_pay_for_past_dates(\DateTime $campaignFinishTime)
     {
         $this->expectException(\DomainException::class);
 
