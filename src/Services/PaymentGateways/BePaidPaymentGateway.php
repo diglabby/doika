@@ -104,9 +104,11 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
                 'currency' => $subscriptionIntend->money->getCurrency()->getCode(),
                 'plan' => [
                     'amount' => (int) $subscriptionIntend->money->getAmount(),
-                    'interval' => $subscriptionIntend->getPlannedTimesToPay(),
+                    'interval' => 1,
                     'interval_unit' => 'month', // hour|day|month
                 ],
+                'infinite' => false,
+                'billing_cycles' => $subscriptionIntend->getBillingCyclesCount(),
             ],
             'return_url' => url('/', ['gateway' => $this->getGatewayId()]),
             'notification_url' => route('webhooks.bepaid.subscriptions'),

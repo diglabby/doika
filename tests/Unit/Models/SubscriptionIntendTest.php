@@ -25,7 +25,7 @@ class SubscriptionIntendTest extends TestCase
             factory(Campaign::class)->make(['finished_at' => $campaignFinishTime])
         );
 
-        $calculatedTimesToPay = $subscriptionIntend->getPlannedTimesToPay();
+        $calculatedTimesToPay = $subscriptionIntend->getBillingCyclesCount();
 
         $this->assertSame($plannedTimesToPay, $calculatedTimesToPay);
     }
@@ -59,7 +59,7 @@ class SubscriptionIntendTest extends TestCase
             factory(Campaign::class)->make(['finished_at' => $campaignFinishTime])
         );
 
-        $subscriptionIntend->getPlannedTimesToPay();
+        $subscriptionIntend->getBillingCyclesCount();
     }
 
     public function pastDatesProvider(): array

@@ -59,7 +59,7 @@ final class SubscriptionIntend
         return new self($money, $donator, $campaign, $interval);
     }
 
-    public function getPlannedTimesToPay(): int
+    public function getBillingCyclesCount(): int
     {
         $period = $this->interval->toPeriod(now(), $this->campaign->finished_at);
         return $period->count();
