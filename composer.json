@@ -19,7 +19,6 @@
         "carbondate/carbon": "^1.33",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.3",
-        "hieu-le/active": "^3.5",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.7",
