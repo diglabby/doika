@@ -50,7 +50,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
 
         $checkoutParams = [
             'checkout' => [
-                'test' => ! $this->apiContext->live,
+                'test' => $this->apiContext->isTest(),
                 'transaction_type' => 'payment',
                 'version' => self::API_VERSION,
                 'attempts' => 3,
@@ -102,7 +102,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
 
         $getSubscriptionParams = [
             'plan' => [
-                'test' => ! $this->apiContext->live,
+                'test' => $this->apiContext->isTest(),
                 'title' => $planName,
                 'currency' => $money->getCurrency()->getCode(),
                 'plan' => [
