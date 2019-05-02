@@ -70,4 +70,9 @@ final class Campaign extends Model
     {
         return $this->hasMany(CampaignTranslation::class);
     }
+
+    public function isFinished(): bool
+    {
+        return now() > $this->finished_at;
+    }
 }
