@@ -1,4 +1,4 @@
-# Dev/IDE (normally they shold be ignored on developer local machine level)
+# Dev/IDE (normally they should be ignored on developer local machine level)
 /.idea
 /.vscode
 /.vagrant
