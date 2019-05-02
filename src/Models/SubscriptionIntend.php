@@ -31,6 +31,13 @@ final class SubscriptionIntend
         $this->interval = $interval;
     }
 
+    public static function daily(Money $money, Donator $donator, Campaign $campaign): SubscriptionIntend
+    {
+        $interval = new CarbonInterval('P1D');
+
+        return new self($money, $donator, $campaign, $interval);
+    }
+
     public static function weekly(Money $money, Donator $donator, Campaign $campaign): SubscriptionIntend
     {
         $interval = new CarbonInterval('P1W');
@@ -41,6 +48,13 @@ final class SubscriptionIntend
     public static function monthly(Money $money, Donator $donator, Campaign $campaign): SubscriptionIntend
     {
         $interval = new CarbonInterval('P1M');
+
+        return new self($money, $donator, $campaign, $interval);
+    }
+
+    public static function yearly(Money $money, Donator $donator, Campaign $campaign): SubscriptionIntend
+    {
+        $interval = new CarbonInterval('P1Y');
 
         return new self($money, $donator, $campaign, $interval);
     }
