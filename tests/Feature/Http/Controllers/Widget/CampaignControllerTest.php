@@ -15,7 +15,7 @@ class CampaignControllerTest extends TestCase
     {
         $campaign = factory(Campaign::class)->create();
 
-        $response = $this->get(route('widget.campaign.show', [$campaign->id]));
+        $response = $this->get(route('widget.campaigns.show', [$campaign->id]));
 
         $response->assertOk();
         $response->assertJsonStructure([

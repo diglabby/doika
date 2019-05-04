@@ -27,8 +27,15 @@ mix.js('resources/js/dashboard/app.js', 'public/build/js/dashboard/dashboard.js'
         }
     });
 
-
-
+mix.extend('assetsConfig', new class {
+    webpackConfig(webpackConfig) {
+        webpackConfig.resolve.extensions.push('.js', '.vue', '.json','.png');
+        webpackConfig.resolve.alias = {
+            '@': __dirname + '/resources/images'
+        };
+    }
+}).setResourceRoot('/doika/public/');
+mix.assetsConfig();
 
 // Full API
 // mix.js(src, output);

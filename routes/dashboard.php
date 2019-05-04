@@ -23,6 +23,8 @@ Route::delete('/donators/{id}', 'Dashboard\DonatorController@delete')->name('das
 Route::get('/settings', 'Dashboard\SettingsController@index')->name('dashboard.settings.index');
 Route::match(['POST', 'PUT'], '/settings', 'Dashboard\SettingsController@store')->name('dashboard.settings.store');
 
+Route::post('/images/upload', 'Dashboard\ImageUploadController@store')->name('dashboard.images.store');
+
 Route::get('/{vue_capture?}', 'Dashboard\DashboardController@index')
     ->where('vue_capture', '[\/\w\.-]*')
     ->name('dashboard.home');
