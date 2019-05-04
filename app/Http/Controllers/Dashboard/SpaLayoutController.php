@@ -5,10 +5,10 @@ namespace Diglabby\Doika\Http\Controllers\Dashboard;
 use Diglabby\Doika\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
 
-class DashboardController extends Controller
+class SpaLayoutController extends Controller
 {
-    public function index(): Renderable
+    public function show(): Renderable
     {
-        return view('dashboard.pages.home');
+        return view('dashboard.pages.app');
     }
 }
