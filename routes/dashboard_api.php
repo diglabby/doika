@@ -1,6 +1,6 @@
 <?php
 /**
- * Prefixed by /doika/dashboard
+ * Prefixed by /doika/dashboard/api
  * @see \Diglabby\Doika\Providers\RouteServiceProvider::mapDashboardRoutes
  */
 
