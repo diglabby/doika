@@ -2,33 +2,30 @@ import axios from 'axios'
 
 export default {
   props: ['id'],
+
   data() {
     return {
       validation: {},
       pending: false
     }
   },
-  computed: {
-    isNew() {
-      return this.id === undefined
-    }
-  },
+
   methods: {
     async fetchData() {
-      if (!this.isNew) {
+        console.log(this.$route.params.id)
+
         let { data } = await axios.get(
-          this.$app.route(`admin.${this.resourceRoute}.show`, {
-            [this.modelName]: this.id
+          this.$app.route(`widget.${this.resourceRoute}.show`, {
+            [this.modelName]: this.$route.params.id
           })
         )
 
-        Object.keys(data).forEach(key => {
+        Object.keys(data.data).forEach(key => {
           if (key in this.model) {
-            this.model[key] = data[key]
+            this.model[key] = data.data[key]
           }
         })
         this.onModelChanged()
-      }
     },
     onModelChanged() {},
     feedback(name) {
