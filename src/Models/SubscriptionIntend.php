@@ -59,6 +59,11 @@ final class SubscriptionIntend
         return new self($money, $donator, $campaign, $interval);
     }
 
+    /**
+     * Return a number of billing cycles for a given campaign with a given period.
+     * For example for 1-month campaign with 1-month payment period it will return 2:
+     * pay now + pay in a month.
+     */
     public function getBillingCyclesCount(): int
     {
         $period = $this->interval->toPeriod(now(), $this->campaign->finished_at);
