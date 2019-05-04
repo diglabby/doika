@@ -26,7 +26,6 @@ final class RouteServiceProvider extends BasicRouteServiceProvider
         $this->mapWebhookRoutes();
         $this->mapWidgetRoutes();
         $this->mapDashboardRoutes();
-        $this->mapRedirectRoutes();
     }
 
     protected function mapWebhookRoutes()
@@ -55,12 +54,5 @@ final class RouteServiceProvider extends BasicRouteServiceProvider
             ->prefix('doika/dashboard/')
             ->namespace($this->namespace)
             ->group(base_path('routes/dashboard.php'));
-    }
-
-    protected function mapRedirectRoutes()
-    {
-        Route::middleware(['web'])
-            ->namespace($this->namespace)
-            ->group(base_path('routes/redirects.php'));
     }
 }
