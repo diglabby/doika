@@ -37,6 +37,11 @@ final class RouteServiceProvider extends BasicRouteServiceProvider
 
     protected function mapWidgetRoutes()
     {
+        Route::middleware(['api'])
+            ->prefix('doika/widget/api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/widget_api.php'));
+
         Route::middleware('web')
             ->prefix('doika/widget')
             ->namespace($this->namespace)
