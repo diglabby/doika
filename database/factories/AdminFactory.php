@@ -1,6 +1,6 @@
 <?php
 
-use App\Admin;
+use Diglabby\Doika\Models\Admin;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
