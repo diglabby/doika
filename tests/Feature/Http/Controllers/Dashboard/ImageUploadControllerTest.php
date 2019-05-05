@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Http\Controllers\Dashboard;
 
-use Diglabby\Doika\Http\Middleware\Authenticate;
 use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
@@ -15,7 +14,7 @@ class ImageUploadControllerTest extends TestCase
         $image = UploadedFile::fake()->image('my-cool-image.jpg');
 
         $response = $this
-            ->withoutMiddleware([Authenticate::class])
+            ->withoutMiddleware([\App\Http\Middleware\Authenticate::class])
             ->post(route('dashboard.images.store'), ['image' => $image]);
 
         $response->assertOk();
@@ -29,7 +28,7 @@ class ImageUploadControllerTest extends TestCase
         $nonImage = UploadedFile::fake()->create('my-cool-document.txt', 20);
 
         $response = $this
-            ->withoutMiddleware([Authenticate::class])
+            ->withoutMiddleware([\App\Http\Middleware\Authenticate::class])
             ->postJson(route('dashboard.images.store'), ['image' => $nonImage]);
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);

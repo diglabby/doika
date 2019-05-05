@@ -14,6 +14,7 @@
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
+        "ext-zip": "*",
         "anlutro/l4-settings": "^0.8.1",
         "carbondate/carbon": "^1.33",
         "fideloper/proxy": "^4.0",
@@ -49,14 +50,15 @@
     },
     "autoload": {
         "psr-4": {
-            "Diglabby\\Doika\\": "app/"
+            "App\\": "laravel/",
+            "Diglabby\\Doika\\": "src/"
         },
         "classmap": [
             "database/seeds",
             "database/factories"
         ],
         "files": [
-            "app/helpers.php"
+            "laravel/helpers.php"
         ]
     },
     "autoload-dev": {
