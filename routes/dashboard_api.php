@@ -1,6 +1,6 @@
 <?php
 /**
- * Prefixed by /doika/dashboard
+ * Prefixed by /doika/dashboard/api
  * @see \Diglabby\Doika\Providers\RouteServiceProvider::mapDashboardRoutes
  */
 
@@ -24,7 +24,3 @@ Route::get('/settings', 'Dashboard\SettingsController@index')->name('dashboard.s
 Route::match(['POST', 'PUT'], '/settings', 'Dashboard\SettingsController@store')->name('dashboard.settings.store');
 
 Route::post('/images/upload', 'Dashboard\ImageUploadController@store')->name('dashboard.images.store');
-
-Route::get('/{vue_capture?}', 'Dashboard\DashboardController@index')
-    ->where('vue_capture', '[\/\w\.-]*')
-    ->name('dashboard.home');
