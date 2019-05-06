@@ -56,9 +56,6 @@
         "classmap": [
             "database/seeds",
             "database/factories"
-        ],
-        "files": [
-            "laravel/helpers.php"
         ]
     },
     "autoload-dev": {

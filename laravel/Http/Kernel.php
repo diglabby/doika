@@ -43,11 +43,6 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
-
-        'locale' => [
-//            \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
-//            \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
-        ],
     ];
 
     /**
@@ -67,7 +62,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-//        'localize' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
     ];
 
     /**
