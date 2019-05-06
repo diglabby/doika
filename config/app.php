@@ -169,11 +169,11 @@ return [
         /*
          * Application Service Providers...
          */
-        \Diglabby\Doika\Providers\AppServiceProvider::class,
-        \Diglabby\Doika\Providers\AuthServiceProvider::class,
-        // \Diglabby\Doika\Providers\BroadcastServiceProvider::class,
-        \Diglabby\Doika\Providers\EventServiceProvider::class,
-//        \Diglabby\Doika\Providers\RouteServiceProvider::class,
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+//        App\Providers\RouteServiceProvider::class,
         \Diglabby\Doika\Providers\RouteServiceProvider::class,
         \Diglabby\Doika\Providers\ViewServiceProvider::class,
         \Diglabby\Doika\Providers\PaymentGatewayServiceProvider::class,

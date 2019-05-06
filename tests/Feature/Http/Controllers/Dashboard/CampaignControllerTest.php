@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Http\Controllers\Dashboard;
 
-use Diglabby\Doika\Http\Middleware\Authenticate;
 use Diglabby\Doika\Models\Campaign;
 use Diglabby\Doika\Models\Donator;
 use Diglabby\Doika\Models\Transaction;
@@ -64,7 +63,7 @@ class CampaignControllerTest extends TestCase
         $campaign = factory(Campaign::class)->create();
 
         $response = $this
-            ->withoutMiddleware([Authenticate::class])
+            ->withoutMiddleware([\App\Http\Middleware\Authenticate::class])
             ->get(route('dashboard.campaigns.show', [$campaign->id]));
 
         $response->assertJsonStructure([
@@ -90,7 +89,7 @@ class CampaignControllerTest extends TestCase
         $campaign = factory(Campaign::class)->create(['active_status' => false]);
 
         $response = $this
-            ->withoutMiddleware([Authenticate::class])
+            ->withoutMiddleware([\App\Http\Middleware\Authenticate::class])
             ->put(route('dashboard.campaigns.update', [$campaign->id]), [
                 'active_status' => true,
             ]);
@@ -107,7 +106,7 @@ class CampaignControllerTest extends TestCase
         $campaign = factory(Campaign::class)->create();
 
         $response = $this
-            ->withoutMiddleware([Authenticate::class])
+            ->withoutMiddleware([\App\Http\Middleware\Authenticate::class])
             ->delete(route('dashboard.campaigns.delete', [$campaign->id]));
 
         $response->assertOk();
