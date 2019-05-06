@@ -35,7 +35,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => App\Admin::class,
+        'model' => \Diglabby\Doika\Models\Admin::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
         'webhook' => [

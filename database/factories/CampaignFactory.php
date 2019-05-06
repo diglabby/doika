@@ -11,12 +11,13 @@ $factory->define(Campaign::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->words(3, true),
         'description' => $faker->sentence,
-        'picture_url' => $faker->imageUrl(),
+        'picture_url' => $faker->imageUrl(640, 640, 'animals'),
         'target_amount' => 10000,
         'currency' => 'BYN',
+        'active_status' => 1,
         'started_at' => today(),
         'finished_at' => today()->addMonths(1),
-        'active_status' => 1,
+        'visual_settings' => [],
     ];
 });
 

@@ -2,7 +2,7 @@ import './load-client-scripts'
 
 // Vue & axios
 import Vue from 'vue'
-import '../axios-config'
+import '../vendor/axios-config'
 
 import 'babel-polyfill'
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm'
@@ -17,7 +17,7 @@ import vSelect from './components/Plugins/Select'
 
 import { createRouter } from './router'
 import { createStore } from './store'
-import { createLocales } from '../vue-i18n-config'
+import { createLocales } from '../vendor/vue-i18n-config'
 
 import App from './App.vue'
 import Noty from 'noty'
@@ -38,11 +38,7 @@ export function createApp() {
   // Init router and store
   const i18n = createLocales(window.settings.locale)
 
-  //construct base path for Vue router /doika/{locale}/admin
-  let basePath = window.settings.adminHomePath.split('/')
-  basePath.splice(2, 0, i18n.locale)
-  basePath = basePath.join('/')
-
+  let basePath = window.settings.dashboardBasePath
   const router = createRouter(basePath, i18n)
   const store = createStore(window.route)
 

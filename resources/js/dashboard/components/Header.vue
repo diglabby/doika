@@ -1,10 +1,15 @@
 <template>
   <Header fixed>
+
     <SidebarToggler class="d-lg-none" display="md" mobile></SidebarToggler>
+
     <a class="navbar-brand" :href="$app.homePath" target="_blank">
-      <img class="navbar-brand-full" src="../../../sass/vendor/tabler/brand/logo.png" height="30" alt="Doika-logo">
-      <img class="navbar-brand-minimized" src="../../../sass/vendor/tabler/brand/logo-symbol.png" width="30" height="30" alt="Doika-logo">
+  
+      <img class="navbar-brand-full" :src="require('@/dashboard/logo')" height="30" alt="Doika-logo">
+      <img class="navbar-brand-minimized" :src="require('@/dashboard/Doika-logo')" width="30" height="30" alt="Doika-logo">
+
     </a>
+
     <SidebarToggler class="d-md-down-none" display="lg"></SidebarToggler>
     <b-navbar-nav class="ml-auto">
       <HeaderDropdown right class="px-3 d-none d-md-block">
@@ -37,26 +42,37 @@
       </HeaderDropdown>
       <HeaderDropdown right class="px-3">
         <template slot="header">
-          <img :src="this.$app.user.avatar" class="img-avatar" :alt="$t('labels.admin.accountMenu.avatar')">
           <span class="d-md-down-none">
             {{ this.$app.user.name }}
           </span>
         </template>
         <template slot="dropdown">
-          <!--<b-dropdown-item :href="$app.route('user.account')">
-            <i class="fe fe-user"></i>&nbsp;&nbsp;{{ $t('labels.admin.accountMenu.header') }}
-          </b-dropdown-item>-->
-          <b-dropdown-item :href="$app.route('admin.logout')">
+          <b-dropdown-item v-on:click="logout">
             <i class="fe fe-log-out"></i>&nbsp;&nbsp;{{ $t('labels.admin.accountMenu.logout') }}
           </b-dropdown-item>
         </template>
       </HeaderDropdown>
     </b-navbar-nav>
   </Header>
+
+
+
 </template>
 
 <script>
+
+
 export default {
-  name: 'AppHeader'
+  name: 'AppHeader',
+  methods: {
+      logout() {
+          axios.post($app.route('logout')).then(response => {
+              this.$router.push($app.route('login'))
+
+          }).catch(error => {
+              location.reload();
+          });
+      }
+  }
 }
 </script>

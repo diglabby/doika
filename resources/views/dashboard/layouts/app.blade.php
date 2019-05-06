@@ -10,8 +10,26 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <title>{{ config('app.name', 'Doika') }}</title>
+
+    <!-- Scripts -->
+
+    <script type="application/json" data-settings-selector="settings-json">
+        {!! json_encode([
+            'locale' => app()->getLocale(),
+            'appName' => config('app.name'),
+            'homePath' => route('dashboard.home'),
+            'dashboardBasePath' => '/doika/doika/dashboard',
+            'locales' => 'en',
+            'user' => $loggedInUser,
+        ]) !!}
+    </script>
+
     <!-- Styles -->
-    <link href="{{ asset('public/css/dashboard.css') }}" rel="stylesheet">
+
+    <link href="{{ asset(mix('build/css/dashboard/dashboard.css')) }}" rel="stylesheet">
+
+    @routes()
 </head>
 <body>
     <div id="app">
@@ -28,9 +46,10 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/doika') }}">
+                    <a class="navbar-brand" href="{{ url('/doika/doika/dashboard/') }}">
                         {{ config('app.name', 'Doika') }}
                     </a>
+                    
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -43,7 +62,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('dashboard.login') }}">Лагін</a></li>
+                            <li><a href="{{ route('login') }}">Лагін</a></li>
                             <!-- <li><a href="#">Register</a></li> -->
                         @else
                             <li class="dropdown">
@@ -53,13 +72,13 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ route('dashboard.logout') }}"
+                                        <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('dashboard.logout') }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
@@ -75,6 +94,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('public/js/dashboard.js') }}"></script>
+    <script src="{{ asset(mix('build/js/dashboard/dashboard.js')) }}"></script>
 </body>
 </html>
