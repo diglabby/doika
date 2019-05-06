@@ -14,7 +14,6 @@
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "ext-zip": "*",
         "anlutro/l4-settings": "^0.8.1",
         "carbondate/carbon": "^1.33",
         "fideloper/proxy": "^4.0",
@@ -28,6 +27,7 @@
         "tightenco/ziggy": "^0.6.9"
     },
     "require-dev": {
+        "ext-zip": "*",
         "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-ide-helper": "^2.5",
         "beyondcode/laravel-dump-server": "^1.2",
