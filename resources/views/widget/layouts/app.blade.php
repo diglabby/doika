@@ -16,7 +16,7 @@
         {!! json_encode([
             'locale' => app()->getLocale(),
             'appName' => config('app.name'),
-            'homePath' => route('widget.home'),
+            'homePath' => url()->current(),
             'widgetBasePath' => '/doika/doika/widget',
             'locales' => 'en',
             'user' => $loggedInUser,
