@@ -243,7 +243,6 @@
   .module-donate__main-panel {
     height: auto;
     width: auto;
-    height: 195px;
     max-width: 265px;
   }
 
@@ -345,7 +344,9 @@
     justify-content: center;
     -webkit-font-smoothing: antialiased;
   }
-
+  #button__confirm.disabled {
+    background-color: #cccccc !important;
+  }
   .module-donate__button-select.clicked {
     outline: none !important;
     background-color: #383838 !important;
@@ -703,17 +704,15 @@
   }
 
   .payment__description {
-    display: inline-block;
     font-family: Ubuntu, sans-serif;
     color:  #94989c;
     font-size: 13px;
     font-weight: 400;
     text-align: left;
-    margin-left: auto;
     text-decoration: underline !important;
     cursor: pointer;
-    width: 100%;
-    text-align: right;
+    vertical-align: text-bottom;
+    margin-top: -2px;
   }
   .module-donate__version.donateWindow {
     margin-top: 55px;
@@ -791,7 +790,6 @@
   .module-donate__main-panel {
     height: auto;
     width: 50%;
-    height: 230px;
   }
 
   .module-donate__image {
@@ -875,6 +873,7 @@
         flex-wrap: wrap;
     -ms-flex-pack: distribute;
         justify-content: space-around;
+    align-content: start;
   }
 
   .module-donate__button-select {
@@ -955,6 +954,13 @@
   }
 }
 
+.checkbox-agreement {
+  width: 100%;
+  text-align: right;
+  display: inline-flex;
+  height: 18px;
+  justify-content: flex-end;
+}
 
 .modal-mask {
   position: fixed;

@@ -20,8 +20,21 @@
           <input type="number" class="module-donate__text-input" :placeholder="$t('labels.client.input')">
           <b-button class="module-donate__button-select payment" @click="recurrent = '/donate'" :class="{clicked: (recurrent=='/donate')}">One time</b-button>
           <b-button class="module-donate__button-select payment" @click="recurrent = '/recurrent'" :class="{clicked: (recurrent=='/recurrent')}">Recurrent</b-button>
-          <b-button :to="'/campaigns/' + model.id + recurrent" class="module-donate__button-select confirm">{{ $t('buttons.client.confirm') }}</b-button>
-          <a class="payment__description" id="show-modal" @click="showModal = true">{{ $t('labels.client.paymentInfo') }}</a>
+          <b-button id="button__confirm" :to="'/campaigns/' + model.id + recurrent" :disabled="agreement_status == false" class="module-donate__button-select confirm" >{{ $t('buttons.client.confirm') }}</b-button>
+          <div class="checkbox-agreement">
+            <b-form-checkbox
+                    id="checkbox-agreement"
+                    v-model="agreement_status"
+                    name="checkbox-agreement"
+                    value="true"
+                    unchecked-value="false"
+            >&nbsp;
+            </b-form-checkbox>
+            <a class="payment__description" id="show-modal" @click="showModal = true">
+              {{ $t('labels.client.paymentInfo') }}
+            </a>
+          </div>
+
           <transition name="modal" v-if="showModal">
             <div class="modal-mask">
               <div class="modal-wrapper">
@@ -68,6 +81,7 @@ export default {
       showModal: false,
       campaign: [],
       buttons: [],
+      agreement_status: false,
       recurrent: '/donate',
       recurrentFlag: false,
         resourceRoute: 'campaigns',
