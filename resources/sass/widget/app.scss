@@ -971,6 +971,8 @@
 .modal-wrapper {
   display: table-cell;
   vertical-align: middle;
+  min-height: 10vh;
+  width: 35vw;
 }
 
 .modal-container {
@@ -1005,7 +1007,35 @@
 .modal-body {
   margin: 20px 0;
   text-align: justify;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding-right: 15px;
+
+  &::-webkit-scrollbar-track
+  {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+
+  }
+
+  &::-webkit-scrollbar
+  {
+    width: 10px;
+    background-color: #F5F5F5;
+    padding-left: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb
+  {
+
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #cccccc;
+    border: solid 3px transparent;
+  }
 }
+
 
 
 /*
