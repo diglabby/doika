@@ -86,7 +86,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
         }
 
         /** @var array $paymentData */
-        $paymentData = json_decode($response->getBody()->getContents(), true)->checkout->token;
+        $paymentData = json_decode($response->getBody()->getContents(), true);
 
         return $paymentData['checkout']['redirect_url'];
     }
