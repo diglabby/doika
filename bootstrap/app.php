@@ -15,9 +15,6 @@ $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
-// Custom Doika path to app so artisan make: will use it
-$app->useAppPath(realpath(__DIR__ . '/../src'));
-
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces
@@ -31,17 +28,17 @@ $app->useAppPath(realpath(__DIR__ . '/../src'));
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
-    App\Http\Kernel::class
+    Diglabby\Doika\Http\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    App\Console\Kernel::class
+    Diglabby\Doika\Console\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    App\Exceptions\Handler::class
+    Diglabby\Doika\Exceptions\Handler::class
 );
 
 /*

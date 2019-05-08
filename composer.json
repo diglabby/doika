@@ -50,8 +50,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "laravel/",
-            "Diglabby\\Doika\\": "src/"
+            "Diglabby\\Doika\\": "app/"
         },
         "classmap": [
             "database/seeds",
