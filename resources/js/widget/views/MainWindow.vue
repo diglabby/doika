@@ -44,7 +44,7 @@
         </div>
       </div>
     </div>
-    <b-progress :value="value" :max="max" class="progress__bar"></b-progress>
+    <b-progress :value="model.amount_collected" :max="model.target_amount" class="progress__bar"></b-progress>
     <div class="module-donate__footer">
       <p class="result__description">{{ $t('labels.client.recieved') }}: <span class="summ__highlight">{{ model.amount_collected }} {{ model.currency }}</span></p>
       <p class="result__recieved">{{ $t('labels.client.needed') }}: <span class="summ__highlight">{{ model.target_amount }} {{ model.currency }}</span></p>
@@ -68,8 +68,6 @@ export default {
       showModal: false,
       campaign: [],
       buttons: [],
-      max: 50,
-      value: 33,
       recurrent: '/donate',
       recurrentFlag: false,
         resourceRoute: 'campaigns',
