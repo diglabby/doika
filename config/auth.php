@@ -1,5 +1,7 @@
 <?php
 
+use Diglabby\Doika\Models\Admin;
+
 return [
 
     /*
@@ -68,7 +70,7 @@ return [
     'providers' => [
         'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Admin::class,
+            'model' => Admin::class,
         ],
 
         // 'users' => [

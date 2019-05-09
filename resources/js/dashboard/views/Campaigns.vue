@@ -20,7 +20,7 @@
                  striped
                  bordered
                  show-empty
-                 stacked="md"
+                 responsive
                  no-local-sorting
                  :empty-text="$t('alerts.admin.common.search.noResult')"
                  :empty-filtered-text="$t('alerts.admin.common.search.noMatchResult')"
