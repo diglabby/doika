@@ -263,11 +263,8 @@ export default {
 
         model: {
             settings: {
-                title: null,
                 bePaidIdMarket: null,
                 bePaidKeyMarket: null,
-                bePaidMinPayment: null,
-                bePaidMaxPayment: null,
                 termsOfUse: null,
                 disableLivePayments: null,
                 minPayment: null,
