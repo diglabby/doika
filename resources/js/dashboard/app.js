@@ -20,11 +20,12 @@ import { createStore } from './store'
 import { createLocales } from '../vendor/vue-i18n-config'
 
 import App from './App.vue'
-import Noty from 'noty'
 
+import Noty from 'noty'
 // Bootstrap Vue
 Vue.use(BootstrapVue)
-
+import moment from 'moment'
+Vue.prototype.moment = moment
 // vue-select
 Vue.component('v-select', vSelect)
 
