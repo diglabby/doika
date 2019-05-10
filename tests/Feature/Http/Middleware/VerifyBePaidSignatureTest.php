@@ -14,8 +14,8 @@ class VerifyBePaidSignatureTest extends TestCase
     /** @test */
     public function it_allow_requests_with_valid_auth_headers()
     {
-        config()->set('services.bepaid.marketId', 2222);
-        config()->set('services.bepaid.marketKey', 'random_valid_key');
+        setting(['gateways.bePaid.marketId', 2222]);
+        setting(['gateways.bePaid.marketKey', 'random_valid_key']);
 
         $response = $this->getResponseFromRouteWithMiddleware(['PHP_AUTH_USER' => 2222, 'PHP_AUTH_PW' => 'random_valid_key']);
 
@@ -34,8 +34,8 @@ class VerifyBePaidSignatureTest extends TestCase
     /** @test */
     public function it_forbids_requests_with_invalid_marked_id()
     {
-        config()->set('services.bepaid.marketId', 2222);
-        config()->set('services.bepaid.marketKey', 'random_valid_key');
+        setting(['gateways.bePaid.marketId', 2222]);
+        setting(['gateways.bePaid.marketKey', 'random_valid_key']);
 
         $this->expectException(WebhookFailed::class);
         $response = $this->getResponseFromRouteWithMiddleware(['PHP_AUTH_USER' => 2223, 'PHP_AUTH_PW' => 'random_valid_key']);
@@ -46,8 +46,8 @@ class VerifyBePaidSignatureTest extends TestCase
     /** @test */
     public function it_forbids_requests_with_invalid_marked_key()
     {
-        config()->set('services.bepaid.marketId', 2222);
-        config()->set('services.bepaid.marketKey', 'random_valid_key');
+        setting(['gateways.bePaid.marketId', 2222]);
+        setting(['gateways.bePaid.marketKey', 'random_valid_key']);
 
         $this->expectException(WebhookFailed::class);
         $response = $this->getResponseFromRouteWithMiddleware(['PHP_AUTH_USER' => 2222, 'PHP_AUTH_PW' => 'random_INVALID_key']);
@@ -63,7 +63,7 @@ class VerifyBePaidSignatureTest extends TestCase
         }
 
         $request = Request::create('_fake_webhook_route', 'GET', [], [], [], $headers);
-        $middleware = new VerifyBePaidSignature();
+        $middleware = resolve(VerifyBePaidSignature::class);
 
         return $middleware->handle($request, function () {
             return new TestResponse(new Response());
