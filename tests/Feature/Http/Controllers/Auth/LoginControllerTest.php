@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers\Auth;
 
-use App\Admin;
+use Diglabby\Doika\Models\Admin;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -67,10 +67,7 @@ class LoginControllerTest extends TestCase
     /** @test */
     public function admin_can_logout()
     {
-        $admin = factory(Admin::class)->create([
-            'email' => 'example@example.com',
-            'password' => bcrypt('secret'),
-        ]);
+        $admin = factory(Admin::class)->create();
 
         $response = $this
             ->actingAs($admin)
@@ -79,5 +76,17 @@ class LoginControllerTest extends TestCase
         $this->assertGuest();
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
+    }
+
+    /** @test */
+    public function it_redirects_auth_user_from_login_to_dashboard()
+    {
+        $admin = factory(Admin::class)->create();
+
+        $response = $this
+            ->actingAs($admin)
+            ->get(route('login'));
+
+        $response->assertRedirect(route('dashboard.campaigns.index'));
     }
 }

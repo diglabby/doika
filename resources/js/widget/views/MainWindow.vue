@@ -1,27 +1,40 @@
 ﻿<template>
   <div class="container">
-    <p class="module-donate__title">{{ campaign.content.title }}</p>
+    <p class="module-donate__title">{{ model.name }}</p>
     <div class="module-donate__wrapper">
       <div class="module-donate__info">
         <div class="module-donate__image">
-          <img :src="'/doika/public/images/' + campaign.content.image" class="mainImage" alt="doika image">
+          <img :src="model.picture_url" class="mainImage" alt="doika image">
           <div class="blurredImage"></div>
         </div>
         <div class="module-donate__description-wrapper">
           <p class="module-donate__description">
-            {{ campaign.content.description }}
+            {{ model.description }}
           </p>
         </div>
       </div>
 
       <div class="module-donate__main-panel">
         <div class="module-donate__input">
-          <b-button v-for="button in campaign.content.button_values" @click="provide(button)" :class="{clicked: contains(buttons, button)}" class="module-donate__button-select" :key="button">{{ button }} {{ campaign.content.currency }}</b-button>
+          <b-button v-for="button in model.button_values" @click="provide(button)" :class="{clicked: contains(buttons, button)}" class="module-donate__button-select" :key="button">{{ button }} {{ model.currency }}</b-button>
           <input type="number" class="module-donate__text-input" :placeholder="$t('labels.client.input')">
           <b-button class="module-donate__button-select payment" @click="recurrent = '/donate'" :class="{clicked: (recurrent=='/donate')}">One time</b-button>
           <b-button class="module-donate__button-select payment" @click="recurrent = '/recurrent'" :class="{clicked: (recurrent=='/recurrent')}">Recurrent</b-button>
-          <b-button :to="'/campaign/1' + recurrent" class="module-donate__button-select confirm">{{ $t('buttons.client.confirm') }}</b-button>
-          <a class="payment__description" id="show-modal" @click="showModal = true">{{ $t('labels.client.paymentInfo') }}</a>
+          <b-button id="button__confirm" :to="'/campaigns/' + model.id + recurrent" :disabled="agreement_status == false" class="module-donate__button-select confirm" >{{ $t('buttons.client.confirm') }}</b-button>
+          <div class="checkbox-agreement">
+            <b-form-checkbox
+                    id="checkbox-agreement"
+                    v-model="agreement_status"
+                    name="checkbox-agreement"
+                    value="true"
+                    unchecked-value="false"
+            >&nbsp;
+            </b-form-checkbox>
+            <a class="payment__description" id="show-modal" @click="showModal = true">
+              {{ $t('labels.client.paymentInfo') }}
+            </a>
+          </div>
+
           <transition name="modal" v-if="showModal">
             <div class="modal-mask">
               <div class="modal-wrapper">
@@ -44,10 +57,10 @@
         </div>
       </div>
     </div>
-    <b-progress :value="value" :max="max" class="progress__bar"></b-progress>
+    <b-progress :value="model.amount_collected" :max="model.target_amount" class="progress__bar"></b-progress>
     <div class="module-donate__footer">
-      <p class="result__description">{{ $t('labels.client.recieved') }}: <span class="summ__highlight">{{ campaign.funded.current }} {{ campaign.content.currency }}</span></p>
-      <p class="result__recieved">{{ $t('labels.client.needed') }}: <span class="summ__highlight">{{ campaign.funded.goal }} {{ campaign.content.currency }}</span></p>
+      <p class="result__description">{{ $t('labels.client.recieved') }}: <span class="summ__highlight">{{ model.amount_collected }} {{ model.currency }}</span></p>
+      <p class="result__recieved">{{ $t('labels.client.needed') }}: <span class="summ__highlight">{{ model.target_amount }} {{ model.currency }}</span></p>
       <p class="module-donate__version">powered by <a href="#" target="_blank">Doika</a></p>
     </div>
 
@@ -58,29 +71,40 @@
 
 <script>
 import axios from 'axios'
+import form from '../mixins/form'
 
 export default {
   name: 'MainWindow',
+    mixins: [form],
   data() {
     return {
       showModal: false,
       campaign: [],
       buttons: [],
-      max: 50,
-      value: 33,
+      agreement_status: false,
       recurrent: '/donate',
-      recurrentFlag: false
+      recurrentFlag: false,
+        resourceRoute: 'campaigns',
+        modelName: 'campaign',
+        model: {
+          id: null,
+            name: null,
+            description: null,
+            picture_url: null,
+            active_status: null,
+            target_amount: null,
+            amount_collected: null,
+            startAt: null,
+            finishAt: null,
+            currency: null,
+            has_picture_url: false,
+            button_values: [2, 4, 6, 8]
+        }
     }
-  },
-  async created() {
-    let { data } = await axios.get(this.$app.route('campaign.get'))
-    this.campaign = data
-    console.log(this.campaign)
-    //this.campaign = data
   },
   methods: {
     provide: function(item) {
-      this.buttons = null
+      this.buttons = []
       this.buttons.push(item)
     },
     contains: function(arr, item) {

@@ -8,7 +8,7 @@ export default (app, i18n, newPostsCount, pendingPostsCount) => {
     },
     {
       name: i18n.t('labels.admin.payments.title'),
-      url: '/payments',
+      url: '/transactions',
       icon: 'fe fe-dollar-sign',
       access: true
     },
