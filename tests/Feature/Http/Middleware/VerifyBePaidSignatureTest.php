@@ -14,8 +14,9 @@ class VerifyBePaidSignatureTest extends TestCase
     /** @test */
     public function it_allow_requests_with_valid_auth_headers()
     {
-        setting(['gateways.bePaid.marketId', 2222]);
-        setting(['gateways.bePaid.marketKey', 'random_valid_key']);
+        setting()->set('gateways.bePaid.marketId', 2222);
+        setting()->set('gateways.bePaid.marketKey', 'random_valid_key');
+        setting()->save();
 
         $response = $this->getResponseFromRouteWithMiddleware(['PHP_AUTH_USER' => 2222, 'PHP_AUTH_PW' => 'random_valid_key']);
 
@@ -34,8 +35,9 @@ class VerifyBePaidSignatureTest extends TestCase
     /** @test */
     public function it_forbids_requests_with_invalid_marked_id()
     {
-        setting(['gateways.bePaid.marketId', 2222]);
-        setting(['gateways.bePaid.marketKey', 'random_valid_key']);
+        setting()->set('gateways.bePaid.marketId', 2222);
+        setting()->set('gateways.bePaid.marketKey', 'random_valid_key');
+        setting()->save();
 
         $this->expectException(WebhookFailed::class);
         $response = $this->getResponseFromRouteWithMiddleware(['PHP_AUTH_USER' => 2223, 'PHP_AUTH_PW' => 'random_valid_key']);
@@ -46,8 +48,9 @@ class VerifyBePaidSignatureTest extends TestCase
     /** @test */
     public function it_forbids_requests_with_invalid_marked_key()
     {
-        setting(['gateways.bePaid.marketId', 2222]);
-        setting(['gateways.bePaid.marketKey', 'random_valid_key']);
+        setting()->set('gateways.bePaid.marketId', 2222);
+        setting()->set('gateways.bePaid.marketKey', 'random_valid_key');
+        setting()->save();
 
         $this->expectException(WebhookFailed::class);
         $response = $this->getResponseFromRouteWithMiddleware(['PHP_AUTH_USER' => 2222, 'PHP_AUTH_PW' => 'random_INVALID_key']);
