@@ -6,6 +6,7 @@ use Diglabby\Doika\Services\PaymentGateways\SupportsSubscriptionsGateway;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 /**
  * @property int $id
@@ -16,6 +17,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int $amount
  * @property string $currency
  * @property string $payment_interval (Time interval in ISO 8601, "P1M" by default)
+ * @property string $unsubscribe_token
  * @property string|null $cancel_reason
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
@@ -44,6 +46,16 @@ final class Subscription extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        self::creating(function (Subscription $subscription) {
+            $subscription->unsubscribe_token = Str::random();
+        });
+    }
+
 
     public function donator(): BelongsTo
     {
