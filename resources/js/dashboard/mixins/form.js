@@ -23,11 +23,13 @@ export default {
           })
         )
 
-        Object.keys(data).forEach(key => {
+        Object.keys(data.data).forEach(key => {
           if (key in this.model) {
-            this.model[key] = data[key]
+
+            this.model[key] = data.data[key]
           }
         })
+
         this.onModelChanged()
       }
     },
@@ -54,10 +56,10 @@ export default {
 
       let formData = this.$app.objectToFormData(this.model)
 
-      //if (!this.isNew) {
+      if (!this.isNew) {
         formData.append('_method', 'PUT')
 
-     // }
+      }
 
       try {
         let { data } = await axios.post(action, formData)
