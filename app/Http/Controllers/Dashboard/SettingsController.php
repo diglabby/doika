@@ -30,10 +30,11 @@ final class SettingsController extends Controller
             'settings' => ['array'],
         ]);
 
-        $updatedSettings = collect($request->get('settings'))->mapWithKeys(function (string $value, string $key) {
-            $this->settingStore->set($key, $value);
-            return [$key => $value];
-        });
+        $updatedSettings = collect($request->get('settings'))
+            ->mapWithKeys(function (string $value, string $key) {
+                $this->settingStore->set($key, $value);
+                return [$key => $value];
+            });
 
         $this->settingStore->save();
 

@@ -12,7 +12,8 @@ class SettingsControllerTest extends TestCase
     /** @test */
     public function it_gets_settings()
     {
-        setting(['existing_key' => 'value'])->save();
+        setting()->set('existing_key', 'value');
+        setting()->save();
 
         $response = $this->withoutMiddleware()
             ->get(route('dashboard.settings.index', ['keys' => ['existing_key', 'not_existing_key']]));
