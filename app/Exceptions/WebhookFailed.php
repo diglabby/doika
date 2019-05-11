@@ -16,11 +16,11 @@ class WebhookFailed extends \Exception implements DoikaException
 
     public static function invalidMarket(string $marketId): WebhookFailed
     {
-        return new static("The bepaid market id is not properly configured or invalid, please check BEPAID_MARKET_ID variable in your .env file. Received Market ID: $marketId");
+        return new static("The bepaid market id is not properly configured or invalid, please check bePaid settings. Received Market ID: $marketId");
     }
 
     public static function invalidMarketKey(string $marketKey): WebhookFailed
     {
-        return new static("The bepaid market key is not properly configured or invalid, please check BEPAID_MARKET_KEY variable in your .env file. Received Market Key: $marketKey");
+        return new static("The bepaid market key is not properly configured or invalid, please check bePaid settings. Received Market Key: $marketKey");
     }
 }
