@@ -3,8 +3,10 @@
 namespace Diglabby\Doika\Services\PaymentGateways;
 
 use Diglabby\Doika\Exceptions\InvalidConfigException;
+use Diglabby\Doika\Exceptions\UnexpectedGatewayResponse;
 use Diglabby\Doika\Models\Campaign;
 use Diglabby\Doika\Models\Donator;
+use Diglabby\Doika\Models\Subscription;
 use Diglabby\Doika\Models\SubscriptionIntend;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\ClientException;
@@ -14,7 +16,7 @@ use Money\Money;
 /**
  * @see https://docs.bepaid.by/ru/introduction
  */
-final class BePaidPaymentGateway implements OffsitePaymentGateway
+final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubscriptionsGateway
 {
     private const GATEWAY_ID = 'bePaid';
     private const API_VERSION = '2.1';
@@ -131,5 +133,36 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway
         $subscriptionData = json_decode($response->getBody()->getContents(), true);
 
         return $subscriptionData['redirect_url'];
+    }
+
+    /**
+     * Cancel existing subscription
+     * https://docs.bepaid.by/ru/subscriptions/subscriptions#a-idcancel-subscriptiona--
+     */
+    public function unsubscribe(Subscription $subscription, string $reason): void
+    {
+        if ($subscription->payment_gateway !== $this->getGatewayId()) {
+            throw new \InvalidArgumentException('Unexpected subscription to cancel');
+        }
+
+        $payload = [
+            'cancel_reason' => $reason,
+        ];
+
+        $response = $this->httpClient->request(
+            'POST',
+            self::API_ENDPOINT."/subscriptions/{$subscription->payment_gateway_subscription_id}/cancel",
+            [
+                'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
+                'headers' => ['Accept' => 'application/json'],
+                'json' => $payload,
+            ]
+        );
+
+        $responseBody = $response->getBody()->getContents();
+        $subscriptionData = json_decode($responseBody, true);
+        if ($subscriptionData['state'] !== 'canceled') {
+            throw UnexpectedGatewayResponse::withBody($responseBody);
+        }
     }
 }

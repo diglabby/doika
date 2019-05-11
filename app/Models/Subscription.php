@@ -2,6 +2,7 @@
 
 namespace Diglabby\Doika\Models;
 
+use Diglabby\Doika\Services\PaymentGateways\SupportsSubscriptionsGateway;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -15,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int $amount
  * @property string $currency
  * @property string $payment_interval (Time interval in ISO 8601, "P1M" by default)
+ * @property string|null $cancel_reason
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $deleted_at
@@ -43,6 +45,16 @@ final class Subscription extends Model
         'deleted_at',
     ];
 
+    /** @inheritDoc */
+    public static function boot(): void
+    {
+        parent::boot();
+
+        self::deleting(function (Subscription $subscription) {
+            $subscription->paymentGateway()->unsubscribe($subscription, $subscription->cancel_reason);
+        });
+    }
+
     public function donator(): BelongsTo
     {
         return $this->belongsTo(Donator::class);
@@ -51,5 +63,16 @@ final class Subscription extends Model
     public function campaign(): BelongsTo
     {
         return $this->belongsTo(Campaign::class);
+    }
+
+    public function paymentGateway(): SupportsSubscriptionsGateway
+    {
+        return resolve($this->payment_gateway);
+    }
+
+    public function cancel(string $reason = "Customer's request"): void
+    {
+        $this->cancel_reason = $reason;
+        $this->delete();
     }
 }
