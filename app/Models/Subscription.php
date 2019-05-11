@@ -45,16 +45,6 @@ final class Subscription extends Model
         'deleted_at',
     ];
 
-    /** @inheritDoc */
-    public static function boot(): void
-    {
-        parent::boot();
-
-        self::deleting(function (Subscription $subscription) {
-            $subscription->paymentGateway()->unsubscribe($subscription, $subscription->cancel_reason);
-        });
-    }
-
     public function donator(): BelongsTo
     {
         return $this->belongsTo(Donator::class);
@@ -72,7 +62,13 @@ final class Subscription extends Model
 
     public function cancel(string $reason = "Customer's request"): void
     {
+        $this->paymentGateway()->unsubscribe($this, $reason);
         $this->cancel_reason = $reason;
         $this->delete();
+    }
+
+    public function isCanceled(): bool
+    {
+        return $this->deleted_at !== null;
     }
 }
