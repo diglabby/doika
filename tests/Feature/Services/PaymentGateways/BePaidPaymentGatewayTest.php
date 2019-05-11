@@ -5,34 +5,31 @@ namespace Tests\Feature\Services\PaymentGateways;
 use Diglabby\Doika\Models\Campaign;
 use Diglabby\Doika\Models\Donator;
 use Diglabby\Doika\Models\SubscriptionIntend;
+use Diglabby\Doika\Services\PaymentGateways\BePaidApiContext;
 use Diglabby\Doika\Services\PaymentGateways\BePaidPaymentGateway;
 use Money\Money;
 use Tests\TestCase;
 
 class BePaidPaymentGatewayTest extends TestCase
 {
+    private const MARKET_ID = 1111;
+    private const MARKET_KEY = 'random_valid_key';
+
     /** @var BePaidPaymentGateway */
     private $bePaid;
 
     protected function setUp(): void
     {
         parent::setUp();
+        $this->app->bind(BePaidApiContext::class, function () {
+            return new BePaidApiContext([
+                'marketId' => self::MARKET_ID,
+                'marketKey' => self::MARKET_KEY,
+                'live' => false,
+            ]);
+        });
+
         $this->bePaid = resolve(BePaidPaymentGateway::class);
-    }
-
-    /**
-     * @test
-     * @group real-api
-     * @group network
-     */
-    public function it_returns_payment_token()
-    {
-        $donator = factory(Donator::class)->make();
-        $campaign = factory(Campaign::class)->make();
-
-        $redirectUrl = $this->bePaid->tokenizePaymentIntend(Money::BYN(100), $donator, $campaign);
-
-        $this->assertContains('?token=', $redirectUrl);
     }
 
     /** @test */
@@ -58,6 +55,23 @@ class BePaidPaymentGatewayTest extends TestCase
     }
 
     /**
+     * ⚠ This test works with real integration data only!
+     * @test
+     * @group real-api
+     * @group network
+     */
+    public function it_returns_payment_token()
+    {
+        $donator = factory(Donator::class)->make();
+        $campaign = factory(Campaign::class)->make();
+
+        $redirectUrl = $this->bePaid->tokenizePaymentIntend(Money::BYN(100), $donator, $campaign);
+
+        $this->assertContains('?token=', $redirectUrl);
+    }
+
+    /**
+     * ⚠ This test works with real integration data only!
      * @test
      * @group real-api
      * @group network
