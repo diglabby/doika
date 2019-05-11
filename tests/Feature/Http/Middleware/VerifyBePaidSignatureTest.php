@@ -4,6 +4,7 @@ namespace Tests\Feature\Http\Middleware;
 
 use Diglabby\Doika\Exceptions\WebhookFailed;
 use Diglabby\Doika\Http\Middleware\VerifyBePaidSignature;
+use Diglabby\Doika\Services\PaymentGateways\BePaidApiContext;
 use Illuminate\Foundation\Testing\TestResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -11,14 +12,16 @@ use Tests\TestCase;
 
 class VerifyBePaidSignatureTest extends TestCase
 {
+    private const VALID_MARKET_ID = 1111;
+    private const VALID_MARKET_KEY = 'random_valid_key';
+
     /** @test */
     public function it_allow_requests_with_valid_auth_headers()
     {
-        setting()->set('gateways.bePaid.marketId', 2222);
-        setting()->set('gateways.bePaid.marketKey', 'random_valid_key');
-        setting()->save();
-
-        $response = $this->getResponseFromRouteWithMiddleware(['PHP_AUTH_USER' => 2222, 'PHP_AUTH_PW' => 'random_valid_key']);
+        $response = $this->getResponseFromRouteWithMiddleware([
+            'PHP_AUTH_USER' => self::VALID_MARKET_ID,
+            'PHP_AUTH_PW' => self::VALID_MARKET_KEY,
+        ]);
 
         $response->assertOk();
     }
@@ -27,6 +30,7 @@ class VerifyBePaidSignatureTest extends TestCase
     public function it_forbids_requests_without_authorization_header()
     {
         $this->expectException(WebhookFailed::class);
+
         $response = $this->getResponseFromRouteWithMiddleware([]);
 
         $response->assertOk();
@@ -35,12 +39,12 @@ class VerifyBePaidSignatureTest extends TestCase
     /** @test */
     public function it_forbids_requests_with_invalid_marked_id()
     {
-        setting()->set('gateways.bePaid.marketId', 2222);
-        setting()->set('gateways.bePaid.marketKey', 'random_valid_key');
-        setting()->save();
-
         $this->expectException(WebhookFailed::class);
-        $response = $this->getResponseFromRouteWithMiddleware(['PHP_AUTH_USER' => 2223, 'PHP_AUTH_PW' => 'random_valid_key']);
+
+        $response = $this->getResponseFromRouteWithMiddleware([
+            'PHP_AUTH_USER' => self::VALID_MARKET_ID + 1,
+            'PHP_AUTH_PW' => self::VALID_MARKET_KEY,
+        ]);
 
         $response->assertOk();
     }
@@ -48,24 +52,32 @@ class VerifyBePaidSignatureTest extends TestCase
     /** @test */
     public function it_forbids_requests_with_invalid_marked_key()
     {
-        setting()->set('gateways.bePaid.marketId', 2222);
-        setting()->set('gateways.bePaid.marketKey', 'random_valid_key');
-        setting()->save();
-
         $this->expectException(WebhookFailed::class);
-        $response = $this->getResponseFromRouteWithMiddleware(['PHP_AUTH_USER' => 2222, 'PHP_AUTH_PW' => 'random_INVALID_key']);
+
+        $response = $this->getResponseFromRouteWithMiddleware([
+            'PHP_AUTH_USER' => self::VALID_MARKET_ID,
+            'PHP_AUTH_PW' => 'random_INVALID_key',
+        ]);
 
         $response->assertOk();
     }
 
-    private function getResponseFromRouteWithMiddleware(array $headers): TestResponse
+    private function getResponseFromRouteWithMiddleware(array $sendRequestWithHeaders): TestResponse
     {
-        if (array_key_exists('PHP_AUTH_USER', $headers) && array_key_exists('PHP_AUTH_PW', $headers)) {
-            $authorization = $this->generateAuthorizationHeader($headers['PHP_AUTH_USER'], $headers['PHP_AUTH_PW']);
-            $headers['HTTP_AUTHORIZATION'] = $authorization;
+        $this->app->bind(BePaidApiContext::class, function () {
+            return new BePaidApiContext([
+                'marketId' => self::VALID_MARKET_ID,
+                'marketKey' => self::VALID_MARKET_KEY,
+                'live' => false,
+            ]);
+        });
+
+        if (array_key_exists('PHP_AUTH_USER', $sendRequestWithHeaders) && array_key_exists('PHP_AUTH_PW', $sendRequestWithHeaders)) {
+            $authorization = $this->generateAuthorizationHeader($sendRequestWithHeaders['PHP_AUTH_USER'], $sendRequestWithHeaders['PHP_AUTH_PW']);
+            $sendRequestWithHeaders['HTTP_AUTHORIZATION'] = $authorization;
         }
 
-        $request = Request::create('_fake_webhook_route', 'GET', [], [], [], $headers);
+        $request = Request::create('_fake_webhook_route', 'GET', [], [], [], $sendRequestWithHeaders);
         $middleware = resolve(VerifyBePaidSignature::class);
 
         return $middleware->handle($request, function () {
