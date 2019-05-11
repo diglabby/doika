@@ -47,7 +47,7 @@ final class Subscription extends Model
         'deleted_at',
     ];
 
-    public static function boot()
+    public static function boot(): void
     {
         parent::boot();
 
@@ -82,5 +82,10 @@ final class Subscription extends Model
     public function isCanceled(): bool
     {
         return $this->deleted_at !== null;
+    }
+
+    public function getCancelationUrl(): string
+    {
+        return route('widget.subscriptions.delete', ['secret' => $this->unsubscribe_token]);
     }
 }
