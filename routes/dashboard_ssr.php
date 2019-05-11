@@ -1,4 +1,9 @@
 <?php
+/**
+ * URIs prefixed by /doika/dashboard
+ * @see \Diglabby\Doika\Providers\RouteServiceProvider::mapDashboardRoutes()
+ * Applied middleware groups: web
+ */
 
 Auth::routes(['register' => false]);
 
