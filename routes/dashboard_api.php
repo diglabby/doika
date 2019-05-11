@@ -12,8 +12,7 @@ Route::put('/campaigns/{campaign}', 'Dashboard\CampaignController@update')->name
 Route::delete('/campaigns/{campaign}', 'Dashboard\CampaignController@delete')->name('dashboard.campaigns.delete');
 
 Route::get('/transactions', 'Dashboard\TransactionController@index')->name('dashboard.transactions.index');
-Route::get('/transactions/{id}', 'Dashboard\TransactionController@show')->name('dashboard.transactions.show');
-Route::post('/transactions', 'Dashboard\TransactionController@store')->name('dashboard.transactions.store');
+Route::get('/transactions/{transaction}', 'Dashboard\TransactionController@show')->name('dashboard.transactions.show');
 
 Route::get('/donators', 'Dashboard\DonatorController@index')->name('dashboard.donators.index');
 Route::get('/donators/{id}', 'Dashboard\DonatorController@show')->name('dashboard.donators.show');
