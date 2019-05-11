@@ -16,7 +16,7 @@ final class PaymentGatewayServiceProvider extends ServiceProvider implements Def
             return new BePaidApiContext([
                 'marketId' => setting('gateways.bePaid.marketId'),
                 'marketKey' => setting('gateways.bePaid.marketKey'),
-                'live' => setting('gateways.bePaid.live'),
+                'mode' => setting('gateways.bePaid.mode') === 'live' ? 'live' : 'test',
             ]);
         });
 

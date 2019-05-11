@@ -25,7 +25,7 @@ class BePaidPaymentGatewayTest extends TestCase
             return new BePaidApiContext([
                 'marketId' => self::MARKET_ID,
                 'marketKey' => self::MARKET_KEY,
-                'live' => false,
+                'mode' => 'test',
             ]);
         });
 

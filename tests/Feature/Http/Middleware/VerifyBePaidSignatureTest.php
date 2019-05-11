@@ -68,7 +68,7 @@ class VerifyBePaidSignatureTest extends TestCase
             return new BePaidApiContext([
                 'marketId' => self::VALID_MARKET_ID,
                 'marketKey' => self::VALID_MARKET_KEY,
-                'live' => false,
+                'mode' => 'test',
             ]);
         });
 
