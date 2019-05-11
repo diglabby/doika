@@ -3,10 +3,19 @@
 namespace Diglabby\Doika\Http\Middleware;
 
 use Diglabby\Doika\Exceptions\WebhookFailed;
+use Diglabby\Doika\Services\PaymentGateways\BePaidApiContext;
 use Illuminate\Http\Request;
 
 final class VerifyBePaidSignature
 {
+    /** @var BePaidApiContext */
+    private $apiContext;
+
+    public function __construct(BePaidApiContext $apiContext)
+    {
+        $this->apiContext = $apiContext;
+    }
+
     /**
      * {@inheritDoc}
      * @throws WebhookFailed
@@ -22,13 +31,13 @@ final class VerifyBePaidSignature
         }
 
         $marketIdFromRequest = (string) $request->headers->get('PHP_AUTH_USER');
-        $isValidMarketId = $marketIdFromRequest === (string) config('services.bepaid.marketId');
+        $isValidMarketId = $marketIdFromRequest === (string) $this->apiContext->marketId;
         if (! $isValidMarketId) {
             throw WebhookFailed::invalidMarket($marketIdFromRequest);
         }
 
         $marketKeyFromRequest = $request->headers->get('PHP_AUTH_PW');
-        $isValidMarketKey = $marketKeyFromRequest === config('services.bepaid.marketKey');
+        $isValidMarketKey = $marketKeyFromRequest === $this->apiContext->marketKey;
         if (! $isValidMarketKey) {
             throw WebhookFailed::invalidMarketKey($marketKeyFromRequest);
         }
