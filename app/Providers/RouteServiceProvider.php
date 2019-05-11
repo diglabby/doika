@@ -31,6 +31,7 @@ final class RouteServiceProvider extends BasicRouteServiceProvider
     protected function mapWebhookRoutes()
     {
         Route::middleware('api')
+            ->prefix('doika/webhooks')
             ->namespace($this->namespace)
             ->group(base_path('routes/webhook.php'));
     }
