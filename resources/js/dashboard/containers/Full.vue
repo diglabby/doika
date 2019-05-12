@@ -11,7 +11,7 @@
         <AppSearch></AppSearch>
         <SidebarNav :nav-items="nav">
         </SidebarNav>
-        <b-button class="container-fluid btn btn-success" style="margin-top:auto !important; margin-bottom:50px; width: 80%;">
+        <b-button class="container-fluid btn btn-success" style="margin-top:auto !important; margin-bottom:50px; width: 80%;" href="https://doika.falanster.by">
           {{ $t('buttons.admin.support') }}
         </b-button>
         <SidebarFooter>
