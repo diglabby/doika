@@ -51,7 +51,7 @@ final class RouteServiceProvider extends BasicRouteServiceProvider
 
     protected function mapDashboardRoutes()
     {
-        Route::middleware(['api'])
+        Route::middleware(['api', 'auth'])
             ->prefix('doika/dashboard/api')
             ->namespace($this->namespace)
             ->group(base_path('routes/dashboard_api.php'));

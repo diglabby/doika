@@ -36,11 +36,14 @@ class Kernel extends HttpKernel
             \Diglabby\Doika\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
 
-//            \Diglabby\Doika\Http\Middleware\SetLocale::class,
+            // \Diglabby\Doika\Http\Middleware\SetLocale::class,
         ],
 
         'api' => [
             'throttle:60,1',
+            \Diglabby\Doika\Http\Middleware\EncryptCookies::class,
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
             'bindings',
         ],
     ];

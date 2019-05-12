@@ -2,7 +2,7 @@
 /**
  * URIs prefixed by /doika/dashboard/api
  * @see \Diglabby\Doika\Providers\RouteServiceProvider::mapDashboardRoutes()
- * Applied middleware groups: api
+ * Applied middleware groups: api, auth
  */
 
 Route::get('/campaigns', 'Dashboard\CampaignController@index')->name('dashboard.campaigns.index');
