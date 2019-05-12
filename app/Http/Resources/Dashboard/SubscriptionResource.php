@@ -11,7 +11,7 @@ final class SubscriptionResource extends JsonResource
     {
         /** @var \Diglabby\Doika\Models\Subscription $subscription */
         $subscription = $this->resource;
-        $subscription->load(['donator', 'campaign']);
+        $subscription->loadMissing(['donator', 'campaign']);
 
         return [
             'id' => $subscription->id,
