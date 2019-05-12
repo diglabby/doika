@@ -8,7 +8,6 @@
     <AppHeader></AppHeader>
     <div class="app-body">
       <Sidebar fixed>
-        <AppSearch></AppSearch>
         <SidebarNav :nav-items="nav">
         </SidebarNav>
         <b-button class="container-fluid btn btn-success" style="margin-top:auto !important; margin-bottom:50px; width: 80%;" href="https://doika.falanster.by">
