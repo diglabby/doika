@@ -41,7 +41,7 @@ return [
         'proceed' => 'Працягнуць',
         'oneTime' => 'Плацеж',
         'subscribe' => 'Падпіска',
-        'email' => 'Email для падзякі'
+        'email' => 'Email для падзякі',
 
     ],
 ];
