@@ -21,8 +21,8 @@ class CreateCampaignsTable extends Migration
             $table->unsignedInteger('target_amount')->comment('Target amount in cents');
             $table->string('currency', 3);
             $table->tinyInteger('active_status');
-            $table->date('started_at');
-            $table->date('finished_at');
+            $table->timestamp('started_at');
+            $table->timestamp('finished_at');
             $table->longText('visual_settings')->comment('Button preset, colors, etc. (as json)');
             $table->timestamps();
             $table->softDeletes();
