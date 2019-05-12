@@ -36,14 +36,12 @@ import nav from '../_nav'
 
 import AppFooter from '../components/Footer'
 import AppHeader from '../components/Header'
-import AppSearch from '../components/Search'
 
 export default {
   name: 'Full',
   components: {
     AppHeader,
     AppFooter,
-    AppSearch
   },
   data() {
     return {
