@@ -21,6 +21,10 @@ Route::post('/donators', 'Dashboard\DonatorController@store')->name('dashboard.d
 Route::put('/donators/{id}', 'Dashboard\DonatorController@update')->name('dashboard.donators.update');
 Route::delete('/donators/{id}', 'Dashboard\DonatorController@delete')->name('dashboard.donators.delete');
 
+Route::get('/subscriptions', 'Dashboard\SubscriptionController@index')->name('dashboard.subscriptions.index');
+Route::get('/subscriptions/{subscription}', 'Dashboard\SubscriptionController@show')->name('dashboard.subscriptions.show');
+Route::delete('/subscriptions/{subscription}', 'Dashboard\SubscriptionController@delete')->name('dashboard.subscriptions.delete');
+
 Route::get('/settings', 'Dashboard\SettingsController@index')->name('dashboard.settings.index');
 Route::match(['POST', 'PUT'], '/settings', 'Dashboard\SettingsController@store')->name('dashboard.settings.store');
 
