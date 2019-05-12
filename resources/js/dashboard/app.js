@@ -14,6 +14,7 @@ import RichTextEditor from './components/Plugins/RichTextEditor'
 import DateTimePicker from './components/Plugins/DateTimePicker'
 import Switch from './components/Plugins/Switch'
 import vSelect from './components/Plugins/Select'
+import vColorPicker from './components/Plugins/ColorPicker'
 
 import { createRouter } from './router'
 import { createStore } from './store'
@@ -28,7 +29,7 @@ import moment from 'moment'
 Vue.prototype.moment = moment
 // vue-select
 Vue.component('v-select', vSelect)
-
+Vue.component('colorpicker', vColorPicker)
 // Custom components
 Vue.component('c-switch', Switch)
 Vue.component('p-datetimepicker', DateTimePicker)
