@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use Money\Money;
 use Money\Currency;
 
-
 class CampaignPaymentIntendController extends Controller
 {
     public function store(Campaign $campaign, BePaidPaymentGateway $gateway, Request $request)
