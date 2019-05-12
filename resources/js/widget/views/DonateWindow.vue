@@ -23,10 +23,10 @@ export default {
     return {
       campaign: [],
       redirect_url: null,
-      placeholder: 'Email for thanks',
+      placeholder: this.$t('buttons.widget.email'),
         model: {
-          email: 'alex@tut.by',
-          amount: 102,
+          email: 'test@mail.by',
+          amount: sessionStorage.getItem('amount'),
           currency_code: 'BYN'
         }
     }
@@ -36,7 +36,7 @@ export default {
           formData.append('_method', 'POST')
       let action = this.$app.route('widget.campaigns.payment-intends.store',
           {
-              'campaign': 1,
+              'campaign': this.id,
               'paymentGateway': 1,
           })
     let { data } = await axios.post(action,formData)

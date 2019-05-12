@@ -44,9 +44,8 @@
                   <div class="modal-header">
                     {{ $t('labels.widget.terms') }}
                   </div>
-                  <div class="modal-body">
-                    Грошы будуць прымацца як добраахвотныя ахвяраванні на дзейнасць Арганізацыі. Па націсканні кнопкі “Ахвяруй!” для Вас будзе выведзеная адмысловая плацёжная форма працэсінгавай сістэмы bePaid.Для аплаты Вам спатрэбіцца ўвесці дадзеныя сваёй карты і пацвердзіць плацёж кнопкай “Аплаціць N руб.”, дзе N ― вызначаная Вамі сума.Мы прымаем плацяжы з наступных банкаўскіх картаў: MasterCard, Maestro, Visa, Visa Electron, Белкарт.
-                    Плацяжы з банкаўскіх картак ажыццяўляюцца праз сістэму электронных плацяжоў bePaid. Плацёжная форма сістэмы адпавядае ўсім патрабаванням бяспекі перадачы звестак (PCI DSS Level 1). Усе канфідэнцыйныя звесткі захоўваюцца ў зашыфраваным выглядзе і максімальна ўстойлівыя да ўзлому. Зварот грашовых сум, калі вы ўжо здзейснілі ахвяраванне, не ажыццяўляецца.
+                  <div class="modal-body" v-html="settings.termsOfUse">
+
                   </div>
                 </div>
               </div>
@@ -106,6 +105,7 @@ export default {
             donateButtonBackground: '',
             progressBarColor: '#000',
             fontColor: '#000',
+            termsOfUse: ""
         }
     }
   },
@@ -121,12 +121,13 @@ export default {
     provide: function(item) {
       this.buttons = []
       this.buttons.push(item)
+      this.donate_amount = item
     },
     contains: function(arr, item) {
       return arr.indexOf(item) != -1
     },
     setAmount: function() {
-        sessionStorage.setItem('amount', this.donate_amount)
+        sessionStorage.setItem('amount', this.donate_amount * 100)
     },
     async getColors() {
           let { data } = await axios.get(
@@ -135,7 +136,7 @@ export default {
                   params:
                       {
                           keys:
-                              ['widgetBackground', 'buttonBackground', 'progressBarColor', 'fontColor']
+                              ['widgetBackground', 'buttonBackground', 'progressBarColor', 'fontColor', 'termsOfUse']
                       }
               })
           this.settings = data.settings
