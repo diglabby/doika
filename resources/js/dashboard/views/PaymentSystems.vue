@@ -31,7 +31,7 @@
                                 name="title"
                                 required
                                 :placeholder="$t('labels.admin.settings.payments.placeholder.bePaidIdMarket')"
-                                v-model="model.bePaidIdMarket"
+                                v-model="model.settings.bePaidIdMarket"
                                 :state="state('title')"
                               ></b-form-input>
                             </b-form-group>
@@ -50,7 +50,7 @@
                                 name="title"
                                 required
                                 :placeholder="$t('labels.admin.settings.payments.placeholder.bePaidKeyMarket')"
-                                v-model="model.bePaidKeyMarket"
+                                v-model="model.settings.bePaidKeyMarket"
                                 :state="state('title')"
                               ></b-form-input>
                             </b-form-group>
@@ -71,7 +71,7 @@
                                 name="title"
                                 required
                                 :placeholder="$t('labels.admin.settings.payments.placeholder.minPayment')"
-                                v-model="model.bePaidMinPayment"
+                                v-model="model.settings.minPayment"
                                 :state="state('title')"
                               ></b-form-input>
                             </b-form-group>
@@ -87,10 +87,10 @@
                             >
                               <b-form-input
                                 id="bePaidMaxPayment"
-                                name="title"
+                                name="max"
                                 required
                                 :placeholder="$t('labels.admin.settings.payments.placeholder.maxPayment')"
-                                v-model="model.bePaidMaxPayment"
+                                v-model="model.settings.maxPayment"
                                 :state="state('title')"
                               ></b-form-input>
                             </b-form-group>
@@ -101,7 +101,7 @@
                             <b-col lg="5" offset-lg="2">
                               <c-switch
                                 name="test"
-                                v-model="model.test"
+                                v-model="model.settings.disableLivePayments"
                                 :description="$t('labels.admin.settings.payments.test')"
                               ></c-switch>
                             </b-col>
@@ -113,14 +113,11 @@
                           horizontal
                           :label-cols="2"
                         >
-                          <p-richtexteditor
-                            name="body"
-                            v-model="model.body"
-                          ></p-richtexteditor>
+                          <vue-editor name="termsOfUse" v-model="model.settings.termsOfUse"></vue-editor>
                         </b-form-group>
                       </b-card-body>
                     </b-tab>
-                    <b-tab title = "Artpay">
+                   <!-- <b-tab title = "Artpay">
                       <b-card-body>
                         <b-row>
                           <b-col md>
@@ -221,7 +218,7 @@
 
                         </b-form-group>
                       </b-card-body>
-                    </b-tab>
+                    </b-tab>-->
                   </b-tabs>
                 </div>
 
@@ -233,7 +230,7 @@
               <b-col md>
                 <input name="status" type="hidden" value="publish">
 
-                <b-button right split class="float-right" variant="success" @click="model.status = 'publish'; onSubmit()" :disabled="pending">
+                <b-button right split class="float-right" variant="success" @click="onSubmit()" :disabled="pending">
                   {{ $t('buttons.admin.common.apply') }}
                 </b-button>
               </b-col>
@@ -250,70 +247,46 @@ import axios from 'axios'
 import form from '../mixins/form'
 
 export default {
+
   name: 'PaymentSystems',
   mixins: [form],
-  data() {
-    return {
-      config: {
-        wrap: true,
-        time_24hr: true,
-        enableTime: true
-      },
 
-      counter: 45,
-      max: 100,
-      modelName: 'campaign',
-      resourceRoute: 'campaigns',
-      listPath: '/campaigns',
-      tags: [],
-      model: {
-        title: null,
-        bePaidIdMarket: null,
-        bePaidKeyMarket: null,
-        bePaidMinPayment: null,
-        bePaidMaxPayment: null,
-        artPayIdMarket: null,
-        artPayKeyMarket: null,
-        artPayMinPayment: null,
-        artPayMaxPayment: null,
-        summary: null,
-        body: null,
-        tags: [],
-        featured_image: null,
-        thumbnail_image_path: null,
-        status: null,
-        state: null,
-        status_label: null,
-        owner: {
-          name: null
-        },
-        startAt: null,
-        finishAt: null,
-        pinned: false,
-        promoted: false,
-        meta: {
-          title: null,
-          description: null
-        },
-        has_featured_image: false
-      }
-    }
-  },
-  methods: {
-    async getTags(search) {
-      let { data } = await axios.get(this.$app.route('admin.tags.search'), {
-        params: {
-          q: search
+    data() {
+      return {
+
+        modelName: 'settings',
+        resourceRoute: 'settings',
+        listPath: '/paymentSystems',
+
+        model: {
+            settings: {
+                bePaidIdMarket: null,
+                bePaidKeyMarket: null,
+                termsOfUse: null,
+                disableLivePayments: null,
+                minPayment: null,
+                maxPayment: null
+            }
         }
-      })
-
-      this.tags = data.items
+      }
     },
-    deleteFeaturedImage() {
-      this.$refs.featuredImageInput.reset()
-      this.model.thumbnail_image_path = null
-      this.model.has_featured_image = false
+    mounted: function() {
+        this.getCredentials()
+    },
+    methods: {
+        async getCredentials() {
+            let { data } = await axios.get(
+                this.$app.route('dashboard.settings.index'),
+                {
+                    params:
+                        {
+                            keys:
+                                ['bePaidIdMarket', 'bePaidKeyMarket', 'termsOfUse', 'disableLivePayments']
+                        }
+                })
+
+            this.model.settings = data.settings
+        }
     }
-  }
 }
 </script>
