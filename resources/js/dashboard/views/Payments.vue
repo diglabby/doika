@@ -2,7 +2,7 @@
   <div>
     <b-card>
       <template slot="header">
-        <h3 class="card-title">{{ $t('labels.admin.payments.title') }}</h3>
+        <h3 class="card-title">{{ $t('labels.admin.transactions.title') }}</h3>
       </template>
       <b-datatable ref="datasource"
                    @context-changed="onContextChanged"
@@ -15,7 +15,7 @@
                  show-empty
                  stacked="md"
                  no-local-sorting
-                 :empty-text="$t('alerts.dashboard.common.search.noResult')"
+                 :empty-text="$t('alerts.admin.common.search.noResult')"
                  :empty-filtered-text="$t('alerts.dashboard.common.search.noMatchResult')"
                  :fields="fields"
                  :items="dataLoadProvider"
@@ -56,33 +56,33 @@ export default {
       fields: [
         {
           key: 'campaign',
-          label: this.$t('labels.admin.payments.campaign'),
+          label: this.$t('labels.admin.transactions.campaign'),
           sortable: true
         },
         {
           key: 'status',
-          label: this.$t('labels.admin.payments.status'),
+          label: this.$t('labels.admin.transactions.status'),
           sortable: true
         },
         {
           key: 'donator',
-          label: this.$t('labels.admin.payments.backer'),
+          label: this.$t('labels.admin.transactions.backer'),
           class: 'text-center',
           sortable: true
         },
         {
           key: 'amount',
-          label: this.$t('labels.admin.payments.amount'),
+          label: this.$t('labels.admin.transactions.amount'),
           class: 'text-center'
         },
         {
           key: 'currency',
-          label: this.$t('labels.admin.payments.currency'),
+          label: this.$t('labels.admin.transactions.currency'),
           class: 'text-center'
         },
         {
           key: 'created_at',
-          label: this.$t('labels.admin.payments.created_at'),
+          label: this.$t('labels.admin.transactions.created_at'),
           class: 'text-center',
           sortable: true
         }

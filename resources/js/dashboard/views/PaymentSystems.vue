@@ -218,10 +218,7 @@
                           horizontal
                           :label-cols="2"
                         >
-                          <p-richtexteditor
-                            name="body"
-                            v-model="model.body"
-                          ></p-richtexteditor>
+
                         </b-form-group>
                       </b-card-body>
                     </b-tab>

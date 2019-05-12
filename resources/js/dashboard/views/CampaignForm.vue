@@ -16,7 +16,7 @@
                     v-if="!isNew"
                     required
                     :placeholder="$t('labels.admin.campaigns.placeholder.shortcode')"
-                    v-model="model.shortcode"
+                    v-model="shortcode"
                     :state="state('Shortcode')"
                   ></b-form-input>
                 </b-col>
@@ -38,7 +38,8 @@
                     required
                     :placeholder="$t('labels.admin.campaigns.placeholder.name')"
                     v-model="model.name"
-                    :state="state('title')"
+                    :state="nameState"
+                    trim
                   ></b-form-input>
                 </b-form-group>
               </b-col>
@@ -71,9 +72,10 @@
                         id="picture_url"
                         name="picture_url"
                         ref="featuredImageInput"
-                        :placeholder="$t('labels.admin.campaigns.placeholder.image')"
+                        :placeholder="model.picture_url? model.picture_url: $t('labels.admin.campaigns.placeholder.image')"
                         v-model="model.picture_url"
-                        :state="state('picture_url')"
+                        :state="pictureState"
+                        required
                         v-b-tooltip.hover
                         :title="$t('labels.admin.campaigns.allowedImageTypes')"
                         @change="previewImage"
@@ -82,8 +84,8 @@
                       <a href="#" class="d-block mt-1" v-if="image.has_picture_url || model.picture_url" @click.prevent="deleteFeaturedImage">{{ $t('buttons.campaign.deleteImage') }}</a>
                     </b-col>
                     <b-col lg="3">
-                      <div class="image-preview" v-if="imageData.length > 0">
-                        <img class="preview" :src="imageData">
+                      <div class="image-preview">
+                        <b-img class="preview" :src="model.picture_url"></b-img>
                       </div>
                     </b-col>
                   </b-row>
@@ -102,13 +104,15 @@
               <b-collapse id="collapseOne" visible accordion="campaign-accordion" role="tabpanel">
                 <b-card-body>
                   <b-row>
-                    <b-col lg="6">
+                    <b-col lg="5">
                       <b-form-group
                         v-if="this.$app.user.can('publish campaigns')"
                         :label="$t('labels.admin.campaigns.startAt')"
                         label-for="start_at"
                         horizontal
-                        :label-cols="2"
+                        required
+                        :label-cols="4"
+                        :state="startAtState"
                       >
                         <b-input-group>
                           <p-datetimepicker
@@ -128,19 +132,21 @@
                         </b-input-group>
                       </b-form-group>
                     </b-col>
-                    <b-col lg="6">
+                    <b-col  offset-lg="1" lg="5">
                       <b-form-group
                         :label="$t('labels.admin.campaigns.finishAt')"
                         label-for="finishAt"
                         horizontal
-                        :label-cols="2"
+                        :label-cols="4"
                       >
                         <b-input-group>
                           <p-datetimepicker
                             id="finishAt"
                             name="finishAt"
+                            required
                             :config="config"
                             v-model="model.finished_at"
+                            :state="finishAtState"
                           ></p-datetimepicker>
                           <b-input-group-append>
                             <b-input-group-text data-toggle>
@@ -155,15 +161,13 @@
                     </b-col>
                   </b-row>
 
-
-
                   <b-row>
-                    <b-col lg="4">
+                    <b-col lg="5">
                       <b-form-group
                         :label="$t('labels.admin.campaigns.amount')"
                         label-for="amount"
                         horizontal
-                        :label-cols="3"
+                        :label-cols="4"
                         :feedback="feedback('amount')"
                       >
                         <b-form-input
@@ -172,7 +176,7 @@
                           required
                           :placeholder="$t('labels.admin.campaigns.placeholder.amount')"
                           v-model="model.target_amount"
-                          :state="state('amount')"
+                          :state="amountState"
                         ></b-form-input>
                       </b-form-group>
                     </b-col>
@@ -206,6 +210,7 @@
                       <b-col lg="5" offset-lg="1">
                         <c-switch
                           name="progressBar"
+                          v-model="model.visual_settings.progressBar"
                           :description="$t('labels.admin.campaigns.progressBar')"
                         ></c-switch>
                       </b-col>
@@ -213,7 +218,7 @@
                   </div>
                 </b-card-body>
               </b-collapse>
-              <b-card no-body class="mb-0">
+              <!--<b-card no-body class="mb-0">
                 <b-card-header header-tag="header" role="tab">
                   <h5 class="card-title">
                     <a href="#" v-b-toggle.recurrent>
@@ -227,7 +232,7 @@
                     </div>
                   </b-card-body>
                 </b-collapse>
-              </b-card>
+              </b-card>-->
             </b-card>
 
             <b-row slot="footer">
@@ -239,7 +244,7 @@
               <b-col md>
                 <input name="status" type="hidden" value="publish">
 
-                <b-button right split class="float-right" variant="success" @click="onSubmit()" :disabled="pending">
+                <b-button right split class="float-right" variant="success" @click="onSubmit()" :disabled="buttonState">
                   {{ $t('buttons.admin.common.save') }}
                 </b-button>
               </b-col>
@@ -279,29 +284,65 @@ export default {
       listPath: '/campaigns',
       imageData: '',
       model: {
-        name: null,
-        description: null,
-        picture_url: null,
+        name: "",
+        description: "",
+        picture_url: "",
         active_status: 1,
-        target_amount: null,
+        target_amount: 0,
         currency: 'BYN',
         started_at: null,
         finished_at: null,
+        visual_settings: {
+            buttons: [
+            5, 10, 25, 50,
+            ],
+            progressBar: true
+          }
       },
       image: {
           thumbnail_image_path: null,
-          has_picture_url: false
+          has_picture_url: false,
+      },
+      images: {
+          image: null,
+          imageData: null
       }
     }
   },
+
+    computed: {
+        shortcode() {
+            return "<iframe width='750' height='550' frameborder='0' src='/doika/doika/widget/campaigns/"+ this.id +"'></iframe>"
+        },
+        nameState() {
+            return ((this.model.name.length > 2) && (this.model.name.length < 255)) ? true : false
+        },
+
+        pictureState() {
+            return (this.model.picture_url != "") ? true : false
+        },
+        buttonState() {
+            return !(this.nameState && this.pictureState && this.amountState)
+        },
+        startAtState() {
+            return this.model.started_at != null
+        },
+        finishAtState() {
+            return this.model.finished_at != null
+        },
+        amountState() {
+            return (this.model.target_amount > 0) ? true : false
+        }
+    },
   methods: {
     
     deleteFeaturedImage() {
       this.$refs.featuredImageInput.reset()
       this.image.thumbnail_image_path = null
       this.image.has_picture_url = false
+        this.model.picture_url = ""
     },
-    previewImage: function(event) {
+    previewImage: async  function(event) {
       // Reference to the DOM input element
       var input = event.target
       // Ensure that you have a file before attempting to read it
@@ -312,12 +353,28 @@ export default {
         reader.onload = e => {
           // Note: arrow function used here, so that "this.imageData" refers to the imageData of Vue component
           // Read image as base64 and set to imageData
-          this.imageData = e.target.result
+          this.images.imageData = e.target.result
+
+            this.imageData = e.target.result
+
         }
         // Start the reader job - read file as a data url (base64 format)
         reader.readAsDataURL(input.files[0])
+
+          this.images.image = input.files[0]
+
       }
-    }
+
+        let formData = new FormData()
+        formData.append('image', input.files[0], input.files[0].name)
+
+        let action = this.$app.route('dashboard.images.store')
+        let { data } = await axios.post(action, formData, {headers: {
+            'Content-Type': 'multipart/form-data',
+        }})
+        this.model.picture_url = data;
+    },
+
   }
 }
 </script>
