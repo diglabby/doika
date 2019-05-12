@@ -12,7 +12,6 @@ export default {
 
   methods: {
     async fetchData() {
-        console.log(this.$route.params.id)
 
         let { data } = await axios.get(
           this.$app.route(`widget.${this.resourceRoute}.show`, {

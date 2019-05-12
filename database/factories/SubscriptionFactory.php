@@ -18,5 +18,6 @@ $factory->define(Subscription::class, function (\Faker\Generator $faker) {
         'amount' => 1000, // 10 BYN
         'currency' => 'BYN',
         'payment_interval' => 'P1M',
+        'cancel_reason' => null,
     ];
 });

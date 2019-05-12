@@ -3,26 +3,23 @@
 namespace Diglabby\Doika\Http\Controllers\Dashboard;
 
 use Diglabby\Doika\Http\Controllers\Controller;
+use Diglabby\Doika\Http\Resources\Dashboard\TransactionResource;
 use Diglabby\Doika\Models\Transaction;
-use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 
 final class TransactionController extends Controller
 {
-    public function index()
+    public function index(): \JsonSerializable
     {
-        return factory(Transaction::class, 10)->make();
+        $query = Transaction::query();
+
+        return TransactionResource::collection(
+            QueryBuilder::for($query)->paginate()
+        );
     }
 
-    public function show(int $transactionId)
+    public function show(Transaction $transaction): \JsonSerializable
     {
-        return factory(Transaction::class)->make();
-    }
-
-    public function store(Request $request)
-    {
-        $transaction = new Transaction($request->all());
-        $transaction->save();
-
-        return $transaction;
+        return new TransactionResource($transaction);
     }
 }

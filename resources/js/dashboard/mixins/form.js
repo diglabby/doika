@@ -31,6 +31,7 @@ export default {
         })
 
         this.onModelChanged()
+
       }
     },
     onModelChanged() {},
@@ -69,10 +70,10 @@ export default {
         if (this.listPath) {
           router.push(this.listPath)
         }
+
       } catch (e) {
         this.pending = false
-        console.log(e)
-        // Validation errors
+
         if (e.response.status === 422) {
           this.validation = e.response.data
           return

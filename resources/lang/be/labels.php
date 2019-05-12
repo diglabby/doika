@@ -46,7 +46,7 @@ return [
             'divider' => [
                 'configuration' => 'Канфігурацыя модуля',
                 'access' => 'Кіраванне доступам',
-                'help' => 'FAQ',
+                'help' => 'Частыя пытанні',
                 'feedback' => 'Зваротная сувязь',
             ],
         ],
@@ -89,6 +89,7 @@ return [
             'colors' => 'Канфігурацыя колераў',
             'preview' => 'Прагляд кампаніі',
             'active' => 'Дзеючая',
+            'amount' => 'Колькасць',
             'topBanner' => 'Верхні банэр',
             'progressBar' => 'Паласа прагрэсу',
             'options' => 'Параметры',
@@ -110,7 +111,7 @@ return [
                 'breadcrumb' => 'Рэдагаваць',
             ],
         ],
-        'payments' => [
+        'transactions' => [
             'title' => 'Спіс ахвяраванняў',
             'header' => 'Спіс ахвяраванняў',
             'breadcrumb' => 'Спіс ахвяраванняў',
@@ -120,6 +121,8 @@ return [
             'backer' => 'Ахвярадаўца',
             'recurrent' => 'Падпіска на кампанію',
             'status' => 'Статус аплаты',
+            'currency' => 'Валюта',
+            'created_at' => 'Дата стварэння',
             'backerStatus' => 'Статус карты',
             'statuses' => [
                 'success' => 'Паспяхова',
@@ -140,6 +143,19 @@ return [
                 'status' => 'Статус аплаты',
                 'backerStatus' => 'Статус карты',
             ],
+        ],
+        'paymentSystems' => [
+            'title' => 'Плацежныя сістэмы',
+        ],
+        'layout' => [
+            'title' => 'Знешні выгляд',
+            'font' => 'Колер шрыфта',
+            'background' => 'Колер фона',
+            'progressBar' => 'Колер паласы прагрэсу',
+            'button' => 'Колер кнопак',
+        ],
+        'notifications' => [
+            'title' => 'Паведамленні',
         ],
         'settings' => [
             'title' => 'Налады',
@@ -185,7 +201,7 @@ return [
             ],
         ],
         'help' => [
-            'title' => 'FAQ',
+            'title' => 'Агульная інфа',
             'header' => 'Як карыстацца модулям',
         ],
         'feedback' => [
@@ -235,11 +251,11 @@ return [
         'email' => 'Пошта',
         'phone' => 'Тэлефон',
         'mask' => '(+375)',
-        'termsOfUse' => 'Я згодны/згодна з правіламі карыстання',
-        'paymentInfo' => 'Terms of Use',
         'input' => 'Сума',
         'recieved' => 'Сабраная сума',
         'needed' => 'Мэтавая сума',
         'thanks' => 'Вялікі дзякуй за дапамогу!',
+        'paymentInfo' => 'Я згаджаюся з правіламі',
+        'terms' => 'Правілы данэйта',
     ],
 ];

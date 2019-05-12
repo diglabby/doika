@@ -19,14 +19,15 @@
           </span>
         </template>
         <template slot="dropdown">
-          <b-dropdown-item to="/campaigns/create" v-if="this.$app.user.can('create campaign')">
+          <b-dropdown-item to="/campaigns/create">
             <i class="fe fe-book"></i>&nbsp;&nbsp;{{ $t('labels.admin.newMenu.campaign') }}
           </b-dropdown-item>
-          <b-dropdown-item to="/users/create" v-if="this.$app.user.can('create user')">
+          <b-dropdown-item to="/users/create"">
             <i class="fe fe-users"></i>&nbsp;&nbsp;{{ $t('labels.admin.newMenu.user') }}
           </b-dropdown-item>
         </template>
       </HeaderDropdown>
+      <!--
       <HeaderDropdown right class="px-3 d-none d-md-block">
         <template slot="header">
           <span class="d-md-down-none">{{ $t('labels.admin.languageMenu.header') }}</span>
@@ -40,6 +41,7 @@
           </b-dropdown-item>
         </template>
       </HeaderDropdown>
+      -->
       <HeaderDropdown right class="px-3">
         <template slot="header">
           <span class="d-md-down-none">
