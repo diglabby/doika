@@ -1,6 +1,6 @@
-﻿<template>
-  <div class="container">
-    <p class="module-donate__title">{{ model.name }}</p>
+﻿﻿<template>
+  <div class="container" :style="{ background: settings.widgetBackground }">
+    <p class="module-donate__title" :style="{ color: settings.fontColor }">{{ model.name }}</p>
     <div class="module-donate__wrapper">
       <div class="module-donate__info">
         <div class="module-donate__image">
@@ -8,19 +8,18 @@
           <div class="blurredImage"></div>
         </div>
         <div class="module-donate__description-wrapper">
-          <p class="module-donate__description">
-            {{ model.description }}
+          <p class="module-donate__description" v-html="model.description">
           </p>
         </div>
       </div>
 
       <div class="module-donate__main-panel">
         <div class="module-donate__input">
-          <b-button v-for="button in model.button_values" @click="provide(button)" :class="{clicked: contains(buttons, button)}" class="module-donate__button-select" :key="button">{{ button }} {{ model.currency }}</b-button>
-          <input type="number" class="module-donate__text-input" :placeholder="$t('labels.client.input')">
-          <b-button class="module-donate__button-select payment" @click="recurrent = '/donate'" :class="{clicked: (recurrent=='/donate')}">One time</b-button>
-          <b-button class="module-donate__button-select payment" @click="recurrent = '/recurrent'" :class="{clicked: (recurrent=='/recurrent')}">Recurrent</b-button>
-          <b-button id="button__confirm" :to="'/campaigns/' + model.id + recurrent" :disabled="agreement_status == false" class="module-donate__button-select confirm" >{{ $t('buttons.client.confirm') }}</b-button>
+          <b-button v-model="donate_amount" :style="{ background: settings.buttonBackground, color: settings.fontColor }" v-for="button in model.visual_settings.buttons" @click="provide(button)" :class="{clicked: contains(buttons, button)}" class="module-donate__button-select" :key="button">{{ button }} {{ model.currency }}</b-button>
+          <input type="number"  :style="{ background:  settings.buttonBackground, color: settings.fontColor }" class="module-donate__text-input" :placeholder="$t('labels.widget.input')" v-model="donate_amount">
+          <b-button :style="{ background:  settings.buttonBackground, color: settings.fontColor }" class="module-donate__button-select payment" @click="recurrent = '/donate'" :class="{clicked: (recurrent=='/donate')}">{{ $t('buttons.widget.oneTime') }}</b-button>
+          <b-button :style="{ background:  settings.buttonBackground, color: settings.fontColor }" class="module-donate__button-select payment" @click="recurrent = '/recurrent'" :class="{clicked: (recurrent=='/recurrent')}">{{ $t('buttons.widget.subscribe') }}</b-button>
+          <b-button :style="{ color: settings.fontColor }" id="button__confirm" :to="'/campaigns/' + model.id + recurrent" @click="setAmount" :disabled="agreement_status == false" class="module-donate__button-select confirm" >{{ $t('buttons.widget.confirm') }}</b-button>
           <div class="checkbox-agreement">
             <b-form-checkbox
                     id="checkbox-agreement"
@@ -30,8 +29,8 @@
                     unchecked-value="false"
             >&nbsp;
             </b-form-checkbox>
-            <a class="payment__description" id="show-modal" @click="showModal = true">
-              {{ $t('labels.client.paymentInfo') }}
+            <a class="payment__description" id="show-modal" :style="{ color: settings.fontColor }" @click="showModal = true">
+              {{ $t('labels.widget.paymentInfo') }}
             </a>
           </div>
 
@@ -43,7 +42,7 @@
                     X
                   </a>
                   <div class="modal-header">
-                    Terms of use
+                    {{ $t('labels.widget.terms') }}
                   </div>
                   <div class="modal-body">
                     Грошы будуць прымацца як добраахвотныя ахвяраванні на дзейнасць Арганізацыі. Па націсканні кнопкі “Ахвяруй!” для Вас будзе выведзеная адмысловая плацёжная форма працэсінгавай сістэмы bePaid.Для аплаты Вам спатрэбіцца ўвесці дадзеныя сваёй карты і пацвердзіць плацёж кнопкай “Аплаціць N руб.”, дзе N ― вызначаная Вамі сума.Мы прымаем плацяжы з наступных банкаўскіх картаў: MasterCard, Maestro, Visa, Visa Electron, Белкарт.
@@ -57,11 +56,11 @@
         </div>
       </div>
     </div>
-    <b-progress :value="model.amount_collected" :max="model.target_amount" class="progress__bar"></b-progress>
+    <b-progress v-if="showProgress" :value="model.amount_collected" :max="model.target_amount" class="progress__bar" :style="{ background: settings.progressBarColor}"></b-progress>
     <div class="module-donate__footer">
-      <p class="result__description">{{ $t('labels.client.recieved') }}: <span class="summ__highlight">{{ model.amount_collected }} {{ model.currency }}</span></p>
-      <p class="result__recieved">{{ $t('labels.client.needed') }}: <span class="summ__highlight">{{ model.target_amount }} {{ model.currency }}</span></p>
-      <p class="module-donate__version">powered by <a href="#" target="_blank">Doika</a></p>
+      <p class="result__description" :style="{ color: settings.fontColor }">{{ $t('labels.widget.recieved') }}: <span class="summ__highlight">{{ model.amount_collected }} {{ model.currency }}</span></p>
+      <p class="result__recieved" :style="{ color: settings.fontColor }">{{ $t('labels.widget.needed') }}: <span class="summ__highlight">{{ model.target_amount }} {{ model.currency }}</span></p>
+      <p class="module-donate__version" :style="{ color: settings.fontColor }">powered by <a href="#" target="_blank">Doika</a></p>
     </div>
 
 
@@ -82,26 +81,42 @@ export default {
       campaign: [],
       buttons: [],
       agreement_status: false,
+      donate_amount: 0,
       recurrent: '/donate',
       recurrentFlag: false,
         resourceRoute: 'campaigns',
         modelName: 'campaign',
         model: {
           id: null,
-            name: null,
-            description: null,
+            name: 'Назва кампаніі',
+            description: 'Апісанне кампаніі',
             picture_url: null,
             active_status: null,
-            target_amount: null,
-            amount_collected: null,
+            target_amount: 0,
+            amount_collected: 0,
             startAt: null,
             finishAt: null,
-            currency: null,
+            currency: 'BYN',
             has_picture_url: false,
-            button_values: [2, 4, 6, 8]
+            visual_settings: null
+        },
+        settings: {
+            widgetBackground: '#ccc',
+            buttonBackground: '#ccc',
+            donateButtonBackground: '',
+            progressBarColor: '#000',
+            fontColor: '#000',
         }
     }
   },
+    computed: {
+      showProgress(){
+          return (this.model.visual_settings.progressBar != "0")
+      }
+    },
+    mounted: function () {
+      this.getColors()
+    },
   methods: {
     provide: function(item) {
       this.buttons = []
@@ -109,7 +124,23 @@ export default {
     },
     contains: function(arr, item) {
       return arr.indexOf(item) != -1
-    }
-  }
+    },
+    setAmount: function() {
+        sessionStorage.setItem('amount', this.donate_amount)
+    },
+    async getColors() {
+          let { data } = await axios.get(
+              this.$app.route('dashboard.settings.index'),
+              {
+                  params:
+                      {
+                          keys:
+                              ['widgetBackground', 'buttonBackground', 'progressBarColor', 'fontColor']
+                      }
+              })
+          this.settings = data.settings
+
+      }
+   }
 }
 </script>
