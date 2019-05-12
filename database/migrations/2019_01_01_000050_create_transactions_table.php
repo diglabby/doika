@@ -19,7 +19,7 @@ class CreateTransactionsTable extends Migration
             $table->unsignedBigInteger('campaign_id');
             $table->unsignedBigInteger('subscription_id')->nullable();
             $table->string('payment_gateway');
-            $table->string('payment_gateway_transaction_id')->comment('Native trsanction ID on PG');
+            $table->string('payment_gateway_transaction_id')->comment('Native transaction ID on Payment Gateway');
             $table->unsignedBigInteger('amount')->comment('Amount in cents');
             $table->string('currency', 3);
             $table->string('status');
