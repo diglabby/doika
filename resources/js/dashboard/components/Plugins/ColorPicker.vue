@@ -1,6 +1,6 @@
 <template>
 
-    <b-input-group prepend="Font color" class="mt-3">
+    <b-input-group :prepend="section_name" class="mt-3">
         <b-form-input v-model="colorValue" @focus="showPicker()" @input="updateFromInput"></b-form-input>
         <b-input-group-append>
 
@@ -37,7 +37,7 @@ export default {
     components: {
         'chrome-picker': Chrome,
     },
-    props: ['color'],
+    props: ['color', 'section_name'],
     data() {
         return {
             colors: {

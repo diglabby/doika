@@ -19,9 +19,9 @@
                       <div class="row">
                         <div class="col-md-10 col-md-offset-2">
                           <div class="form-group">
-                            <label class="col-sm-4 control-label">Font color</label>
+
                             <div class="col-sm-8">
-                              <colorpicker
+                              <colorpicker :section_name="$t('labels.admin.layout.font')"
                                       :color="model.settings.fontColor"
                                       v-model="model.settings.fontColor"  />
                             </div>
@@ -31,9 +31,8 @@
                       <div class="row">
                         <div class="col-md-10 col-md-offset-2">
                           <div class="form-group">
-                            <label class="col-sm-4 control-label">Background color</label>
                             <div class="col-sm-8">
-                              <colorpicker
+                              <colorpicker :section_name="$t('labels.admin.layout.background')"
                                       :color="model.settings.widgetBackground"
                                       v-model="model.settings.widgetBackground" />
                             </div>
@@ -43,9 +42,8 @@
                       <div class="row">
                         <div class="col-md-10 col-md-offset-2">
                           <div class="form-group">
-                            <label class="col-sm-4 control-label">Button color</label>
                             <div class="col-sm-8">
-                              <colorpicker
+                              <colorpicker :section_name="$t('labels.admin.layout.button')"
                                      :color="model.settings.buttonBackground"
                                      v-model="model.settings.buttonBackground" />
                             </div>
@@ -55,9 +53,8 @@
                       <div class="row">
                         <div class="col-md-10 col-md-offset-2">
                           <div class="form-group">
-                            <label class="col-sm-4 control-label">ProgressBar color</label>
                             <div class="col-sm-8">
-                              <colorpicker
+                              <colorpicker :section_name="$t('labels.admin.layout.progressBar')"
                                       :color="model.settings.progressBarColor"
                                       v-model="model.settings.progressBarColor" />
                             </div>
@@ -85,18 +82,18 @@
                           <div class="module-donate__main-panel">
                             <div class="module-donate__input">
                               <b-button v-for="button in fakeCampaign.button_values"  class="module-donate__button-select" :key="button" :style="{ background: model.settings.buttonBackground, color: model.settings.fontColor }">{{ button }} {{ fakeCampaign.currency }}</b-button>
-                              <input type="number" :style="{ background:  model.settings.buttonBackground, color: model.settings.fontColor }" class="module-donate__text-input" :placeholder="$t('labels.client.input')" >
-                              <b-button class="module-donate__button-select payment" :style="{ background:  model.settings.buttonBackground, color: model.settings.fontColor }">One time</b-button>
-                              <b-button class="module-donate__button-select payment" :style="{ background:  model.settings.buttonBackground, color: model.settings.fontColor }">Recurrent</b-button>
-                              <b-button id="button__confirm" :disabled="false" class="module-donate__button-select confirm" :style="{ color: model.settings.fontColor }">{{ $t('buttons.client.confirm') }}</b-button>
+                              <input type="number" :style="{ background:  model.settings.buttonBackground, color: model.settings.fontColor }" class="module-donate__text-input" :placeholder="$t('labels.widget.input')" >
+                              <b-button class="module-donate__button-select payment" :style="{ background:  model.settings.buttonBackground, color: model.settings.fontColor }">{{ $t('buttons.widget.oneTime') }}</b-button>
+                              <b-button class="module-donate__button-select payment" :style="{ background:  model.settings.buttonBackground, color: model.settings.fontColor }">{{ $t('buttons.widget.subscribe') }}</b-button>
+                              <b-button id="button__confirm" :disabled="false" class="module-donate__button-select confirm" :style="{ color: model.settings.fontColor }">{{ $t('buttons.widget.confirm') }}</b-button>
                               <p class="module-donate__warning"></p>
                             </div>
                           </div>
                         </div>
                         <b-progress  :style="{ background: model.settings.progressBarColor}" :value="fakeCampaign.amount_collected" :max="fakeCampaign.target_amount" class="progress__bar"></b-progress>
                         <div class="module-donate__footer">
-                          <p class="result__description" :style="{ color: model.settings.fontColor }">{{ $t('labels.client.recieved') }}: <span class="summ__highlight">{{ fakeCampaign.amount_collected }} {{ fakeCampaign.currency }}</span></p>
-                          <p class="result__recieved" :style="{ color: model.settings.fontColor }">{{ $t('labels.client.needed') }}: <span class="summ__highlight">{{ fakeCampaign.target_amount }} {{ fakeCampaign.currency }}</span></p>
+                          <p class="result__description" :style="{ color: model.settings.fontColor }">{{ $t('labels.widget.recieved') }}: <span class="summ__highlight">{{ fakeCampaign.amount_collected }} {{ fakeCampaign.currency }}</span></p>
+                          <p class="result__recieved" :style="{ color: model.settings.fontColor }">{{ $t('labels.widget.needed') }}: <span class="summ__highlight">{{ fakeCampaign.target_amount }} {{ fakeCampaign.currency }}</span></p>
                           <p class="module-donate__version" :style="{ color: model.settings.fontColor }">powered by <a href="#" target="_blank">Doika</a></p>
                         </div>
                       </div>
@@ -955,7 +952,7 @@
     width: 600px;
     margin: 0px auto;
     padding: 20px 30px;
-    background-color: #fff;
+    background-color: #000;
     border-radius: 2px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
     transition: all .3s ease;
@@ -1041,6 +1038,7 @@ export default {
               }
           })
       this.model.settings = data.settings
+        console.log(data)
     }
   }
 }
