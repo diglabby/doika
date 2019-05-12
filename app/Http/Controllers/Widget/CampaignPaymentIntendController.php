@@ -8,6 +8,8 @@ use Diglabby\Doika\Models\Donator;
 use Diglabby\Doika\Services\PaymentGateways\BePaidPaymentGateway;
 use Illuminate\Http\Request;
 use Money\Money;
+use Money\Currency;
+
 
 class CampaignPaymentIntendController extends Controller
 {
@@ -25,7 +27,7 @@ class CampaignPaymentIntendController extends Controller
             'name' => $request->get('name'),
         ]);
 
-        $money = new Money($request->get('amount'), $request->get('currency_code'));
+        $money = new Money($request->get('amount'), new Currency($request->get('currency_code')));
 
         $redirectUrl = $gateway->tokenizePaymentIntend($money, $donator, $campaign);
 
