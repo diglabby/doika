@@ -108,7 +108,7 @@
                         :label="$t('labels.admin.campaigns.startAt')"
                         label-for="start_at"
                         horizontal
-                        :label-cols="2"
+                        :label-cols="6"
                       >
                         <b-input-group>
                           <p-datetimepicker
@@ -133,7 +133,7 @@
                         :label="$t('labels.admin.campaigns.finishAt')"
                         label-for="finishAt"
                         horizontal
-                        :label-cols="2"
+                        :label-cols="6"
                       >
                         <b-input-group>
                           <p-datetimepicker
@@ -295,7 +295,7 @@ export default {
     }
   },
   methods: {
-    
+
     deleteFeaturedImage() {
       this.$refs.featuredImageInput.reset()
       this.image.thumbnail_image_path = null
