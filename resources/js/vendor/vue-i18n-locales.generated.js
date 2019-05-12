@@ -60,7 +60,8 @@ export default {
                 "confirm": "Пацвердзіць",
                 "proceed": "Працягнуць",
                 "oneTime": "Плацеж",
-                "subscribe": "Падпіска"
+                "subscribe": "Падпіска",
+                "email": "Email для падзякі"
             }
         },
         "labels": {
