@@ -49,8 +49,8 @@ return [
     | Note: the path will be prepended to point to the App directory.
     |
     */
-    'jsPath' => '/resources/lang/',
-    'jsFile' => '/resources/lang/js/vue-i18n-locales.generated.js',
+    'jsPath' => '/resources/js/vendor',
+    'jsFile' => '/resources/js/vendor/vue-i18n-locales.generated.js',
     /*
     |--------------------------------------------------------------------------
     | i18n library

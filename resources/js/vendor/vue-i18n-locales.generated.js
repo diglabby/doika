@@ -55,10 +55,12 @@ export default {
                     "deleteImage": "Выдаліць малюнак"
                 }
             },
-            "client": {
+            "widget": {
                 "back": "Назад",
                 "confirm": "Пацвердзіць",
-                "proceed": "Працягнуць"
+                "proceed": "Працягнуць",
+                "oneTime": "Плацеж",
+                "subscribe": "Падпіска"
             }
         },
         "labels": {
@@ -107,7 +109,7 @@ export default {
                     "divider": {
                         "configuration": "Канфігурацыя модуля",
                         "access": "Кіраванне доступам",
-                        "help": "FAQ",
+                        "help": "Частыя пытанні",
                         "feedback": "Зваротная сувязь"
                     }
                 },
@@ -150,6 +152,7 @@ export default {
                     "colors": "Канфігурацыя колераў",
                     "preview": "Прагляд кампаніі",
                     "active": "Дзеючая",
+                    "amount": "Колькасць",
                     "topBanner": "Верхні банэр",
                     "progressBar": "Паласа прагрэсу",
                     "options": "Параметры",
@@ -171,7 +174,7 @@ export default {
                         "breadcrumb": "Рэдагаваць"
                     }
                 },
-                "payments": {
+                "transactions": {
                     "title": "Спіс ахвяраванняў",
                     "header": "Спіс ахвяраванняў",
                     "breadcrumb": "Спіс ахвяраванняў",
@@ -181,6 +184,8 @@ export default {
                     "backer": "Ахвярадаўца",
                     "recurrent": "Падпіска на кампанію",
                     "status": "Статус аплаты",
+                    "currency": "Валюта",
+                    "created_at": "Дата стварэння",
                     "backerStatus": "Статус карты",
                     "statuses": {
                         "success": "Паспяхова",
@@ -202,22 +207,35 @@ export default {
                         "backerStatus": "Статус карты"
                     }
                 },
+                "paymentSystems": {
+                    "title": "Плацежныя сістэмы"
+                },
+                "layout": {
+                    "title": "Знешні выгляд",
+                    "font": "Колер шрыфта",
+                    "background": "Колер фона",
+                    "progressBar": "Колер паласы прагрэсу",
+                    "button": "Колер кнопак"
+                },
+                "notifications": {
+                    "title": "Паведамленні"
+                },
                 "settings": {
                     "title": "Налады",
                     "payments": {
                         "header": "Злучэнне з плацежнай сістэмай",
-                        "idMarket": "Bepaid Market ID",
+                        "bePaidIdMarket": "Bepaid Market ID",
                         "artPayIdMarket": "Artpay Market Id",
-                        "keyMarket": "Bepaid Market key",
+                        "bePaidKeyMarket": "Bepaid Market key",
                         "artPayKeyMarket": "Artpay Market key",
                         "test": "Адключыць тэставыя плацяжы",
                         "maxPayment": "Максімальны плацёж, бел.руб",
                         "minPayment": "Мінімальны плацёж, бел.руб",
                         "termsOfUse": "Текст условий сервиса сбора пожертвований",
                         "placeholder": {
-                            "idMarket": "Bepaid Market ID",
+                            "bePaidIdMarket": "Bepaid Market ID",
                             "artPayIdMarket": "Artpay Market Id",
-                            "keyMarket": "Bepaid Market key",
+                            "bePaidKeyMarket": "Bepaid Market key",
                             "artPayKeyMarket": "Artpay Market key",
                             "test": "Адключыць тэставыя плацяжы",
                             "maxPayment": "Максімальны плацёж, бел.руб",
@@ -246,7 +264,7 @@ export default {
                     }
                 },
                 "help": {
-                    "title": "FAQ",
+                    "title": "Агульная інфа",
                     "header": "Як карыстацца модулям"
                 },
                 "feedback": {
@@ -289,18 +307,18 @@ export default {
                     }
                 }
             },
-            "client": {
+            "widget": {
                 "title": "Дадзеныя карыстальніка",
                 "name": "Імя Прозвішча",
                 "email": "Пошта",
                 "phone": "Тэлефон",
                 "mask": "(+375)",
-                "termsOfUse": "Я згодны/згодна з правіламі карыстання",
-                "paymentInfo": "Terms of Use",
                 "input": "Сума",
                 "recieved": "Сабраная сума",
                 "needed": "Мэтавая сума",
-                "thanks": "Вялікі дзякуй за дапамогу!"
+                "thanks": "Вялікі дзякуй за дапамогу!",
+                "paymentInfo": "Я згаджаюся з правіламі",
+                "terms": "Правілы данэйта"
             }
         },
         "pagination": {
@@ -453,7 +471,7 @@ export default {
                     "deleteImage": "Delete image"
                 }
             },
-            "client": {
+            "widget": {
                 "back": "Back",
                 "confirm": "Confirm",
                 "proceed": "Proceed"
@@ -604,18 +622,18 @@ export default {
                     "title": "Settings",
                     "payments": {
                         "header": "Payment systems options",
-                        "idMarket": "Bepaid Market Id",
+                        "bePaidIdMarket": "Bepaid Market Id",
                         "artPayIdMarket": "Artpay Market Id",
-                        "keyMarket": "Bepaid Market key",
+                        "bePaidKeyMarket": "Bepaid Market key",
                         "artPayKeyMarket": "Artpay Market key",
                         "test": "Turn off test payments",
                         "maxPayment": "Max payment amount",
                         "minPayment": "Min payment amount",
                         "termsOfUse": "Terms of use",
                         "placeholder": {
-                            "idMarket": "Bepaid Market Id",
+                            "bePaidIdMarket": "Bepaid Market Id",
                             "artPayIdMarket": "Artpay Market Id",
-                            "keyMarket": "Bepaid Market key",
+                            "bePaidKeyMarket": "Bepaid Market key",
                             "artPayKeyMarket": "Artpay Market key",
                             "test": "Turn off test payments",
                             "maxPayment": "Max payment amount",
@@ -687,7 +705,7 @@ export default {
                     }
                 }
             },
-            "client": {
+            "widget": {
                 "paymentInfo": "Terms of Use",
                 "input": "Summ",
                 "recieved": "Recieved",
@@ -699,7 +717,7 @@ export default {
             "next": "Next &raquo;"
         },
         "passwords": {
-            "password": "Passwords must be at least six characters and match the confirmation.",
+            "password": "Passwords must be at least eight characters and match the confirmation.",
             "reset": "Your password has been reset!",
             "sent": "We have e-mailed your password reset link!",
             "token": "This password reset token is invalid.",
@@ -711,7 +729,7 @@ export default {
             "after": "The {attribute} must be a date after {date}.",
             "after_or_equal": "The {attribute} must be a date after or equal to {date}.",
             "alpha": "The {attribute} may only contain letters.",
-            "alpha_dash": "The {attribute} may only contain letters, numbers, and dashes.",
+            "alpha_dash": "The {attribute} may only contain letters, numbers, dashes and underscores.",
             "alpha_num": "The {attribute} may only contain letters and numbers.",
             "array": "The {attribute} must be an array.",
             "before": "The {attribute} must be a date before {date}.",
@@ -725,6 +743,7 @@ export default {
             "boolean": "The {attribute} field must be true or false.",
             "confirmed": "The {attribute} confirmation does not match.",
             "date": "The {attribute} is not a valid date.",
+            "date_equals": "The {attribute} must be a date equal to {date}.",
             "date_format": "The {attribute} does not match the format {format}.",
             "different": "The {attribute} and {other} must be different.",
             "digits": "The {attribute} must be {digits} digits.",
@@ -735,6 +754,18 @@ export default {
             "exists": "The selected {attribute} is invalid.",
             "file": "The {attribute} must be a file.",
             "filled": "The {attribute} field must have a value.",
+            "gt": {
+                "numeric": "The {attribute} must be greater than {value}.",
+                "file": "The {attribute} must be greater than {value} kilobytes.",
+                "string": "The {attribute} must be greater than {value} characters.",
+                "array": "The {attribute} must have more than {value} items."
+            },
+            "gte": {
+                "numeric": "The {attribute} must be greater than or equal {value}.",
+                "file": "The {attribute} must be greater than or equal {value} kilobytes.",
+                "string": "The {attribute} must be greater than or equal {value} characters.",
+                "array": "The {attribute} must have {value} items or more."
+            },
             "image": "The {attribute} must be an image.",
             "in": "The selected {attribute} is invalid.",
             "in_array": "The {attribute} field does not exist in {other}.",
@@ -743,6 +774,18 @@ export default {
             "ipv4": "The {attribute} must be a valid IPv4 address.",
             "ipv6": "The {attribute} must be a valid IPv6 address.",
             "json": "The {attribute} must be a valid JSON string.",
+            "lt": {
+                "numeric": "The {attribute} must be less than {value}.",
+                "file": "The {attribute} must be less than {value} kilobytes.",
+                "string": "The {attribute} must be less than {value} characters.",
+                "array": "The {attribute} must have less than {value} items."
+            },
+            "lte": {
+                "numeric": "The {attribute} must be less than or equal {value}.",
+                "file": "The {attribute} must be less than or equal {value} kilobytes.",
+                "string": "The {attribute} must be less than or equal {value} characters.",
+                "array": "The {attribute} must not have more than {value} items."
+            },
             "max": {
                 "numeric": "The {attribute} may not be greater than {max}.",
                 "file": "The {attribute} may not be greater than {max} kilobytes.",
@@ -758,6 +801,7 @@ export default {
                 "array": "The {attribute} must have at least {min} items."
             },
             "not_in": "The selected {attribute} is invalid.",
+            "not_regex": "The {attribute} format is invalid.",
             "numeric": "The {attribute} must be a number.",
             "present": "The {attribute} field must be present.",
             "regex": "The {attribute} format is invalid.",
@@ -765,7 +809,7 @@ export default {
             "required_if": "The {attribute} field is required when {other} is {value}.",
             "required_unless": "The {attribute} field is required unless {other} is in {values}.",
             "required_with": "The {attribute} field is required when {values} is present.",
-            "required_with_all": "The {attribute} field is required when {values} is present.",
+            "required_with_all": "The {attribute} field is required when {values} are present.",
             "required_without": "The {attribute} field is required when {values} is not present.",
             "required_without_all": "The {attribute} field is required when none of {values} are present.",
             "same": "The {attribute} and {other} must match.",
@@ -775,11 +819,13 @@ export default {
                 "string": "The {attribute} must be {size} characters.",
                 "array": "The {attribute} must contain {size} items."
             },
+            "starts_with": "The {attribute} must start with one of the following: {values}",
             "string": "The {attribute} must be a string.",
             "timezone": "The {attribute} must be a valid zone.",
             "unique": "The {attribute} has already been taken.",
             "uploaded": "The {attribute} failed to upload.",
             "url": "The {attribute} format is invalid.",
+            "uuid": "The {attribute} must be a valid UUID.",
             "custom": {
                 "attribute-name": {
                     "rule-name": "custom-message"
@@ -844,7 +890,7 @@ export default {
                     "deleteImage": "Удалить изображение"
                 }
             },
-            "client": {
+            "widget": {
                 "back": "Назад",
                 "confirm": "Подтвердить",
                 "proceed": "Продолжить"
@@ -995,18 +1041,18 @@ export default {
                     "title": "Настройки",
                     "payments": {
                         "header": "Объединение с платёжной системой",
-                        "idMarket": "Bepaid Market ID",
+                        "bePaidIdMarket": "Bepaid Market ID",
                         "artPayIdMarket": "Artpay Market Id",
-                        "keyMarket": "Bepaid Market key",
+                        "bePaidKeyMarket": "Bepaid Market key",
                         "artPayKeyMarket": "Artpay Market key",
                         "test": "Отключить тестовые платежи",
                         "maxPayment": "Максимальный платеж, бел.руб",
                         "minPayment": "Минимальный платеж, бел.руб",
                         "termsOfUse": "Текст условий сервиса сбора пожертвований",
                         "placeholder": {
-                            "idMarket": "Bepaid Market ID",
+                            "bePaidIdMarket": "Bepaid Market ID",
                             "artPayIdMarket": "Artpay Market Id",
-                            "keyMarket": "Bepaid Market key",
+                            "bePaidKeyMarket": "Bepaid Market key",
                             "artPayKeyMarket": "Artpay Market key",
                             "test": "Отключить тестовые платежи",
                             "maxPayment": "Максимальный платеж, бел.руб",
@@ -1078,7 +1124,7 @@ export default {
                     }
                 }
             },
-            "client": {
+            "widget": {
                 "paymentInfo": "Terms of Use",
                 "input": "Сумма",
                 "recieved": "Собранная сумма",
