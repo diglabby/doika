@@ -51,7 +51,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('public'),
-            'url' => env('APP_URL').'/doika/storage/public',
+            'url' => '/doika/storage/public',
             'visibility' => 'public',
         ],
 
