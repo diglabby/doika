@@ -22,10 +22,10 @@
         >
 
           <template slot="campaign" slot-scope="row">
-            <router-link :to="`/transactions/${row.item.id}/edit`" v-text="row.item.campaign_id"></router-link>
+            <router-link :to="`/transactions/${row.item.id}/edit`" v-text="row.item.campaign"></router-link>
           </template>
           <template slot="status" slot-scope="row">
-            <span v-text="row.item.status"></span>
+            <span v-text="row.item.status_message"></span>
           </template>
           <template slot="donator" slot-scope="row">
             <span v-text="row.item.donator"></span>
@@ -37,7 +37,7 @@
             <span v-text="row.item.currency"></span>
           </template>
           <template slot="created_at" slot-scope="row">
-            <span v-text="row.item.created_at"></span>
+            <span v-text="new Date(row.item.created_at * 1000).toLocaleDateString('ru-RU')"></span>
           </template>
         </b-table>
       </b-datatable>
