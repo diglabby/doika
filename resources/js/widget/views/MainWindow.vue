@@ -1,6 +1,6 @@
 ﻿﻿<template>
-  <div class="container" :style="{ background: settings.widgetBackground }">
-    <p class="module-donate__title" :style="{ color: settings.fontColor }">{{ model.name }}</p>
+  <div class="container" :style="{ background: model.visual_settings.colors.widgetBackground }">
+    <p class="module-donate__title" :style="{ color: model.visual_settings.colors.fontColor }">{{ model.name }}</p>
     <div class="module-donate__wrapper">
       <div class="module-donate__info">
         <div class="module-donate__image">
@@ -15,11 +15,11 @@
 
       <div class="module-donate__main-panel">
         <div class="module-donate__input">
-          <b-button v-model="donate_amount" :style="{ background: settings.buttonBackground, color: settings.fontColor }" v-for="button in model.visual_settings.buttons" @click="provide(button)" :class="{clicked: contains(buttons, button)}" class="module-donate__button-select" :key="button">{{ button }} {{ model.currency }}</b-button>
-          <input type="number"  :style="{ background:  settings.buttonBackground, color: settings.fontColor }" class="module-donate__text-input" :placeholder="$t('labels.widget.input')" v-model="donate_amount">
-          <b-button :style="{ background:  settings.buttonBackground, color: settings.fontColor }" class="module-donate__button-select payment" @click="recurrent = '/donate'" :class="{clicked: (recurrent=='/donate')}">{{ $t('buttons.widget.oneTime') }}</b-button>
-          <b-button :style="{ background:  settings.buttonBackground, color: settings.fontColor }" class="module-donate__button-select payment" @click="recurrent = '/recurrent'" :class="{clicked: (recurrent=='/recurrent')}">{{ $t('buttons.widget.subscribe') }}</b-button>
-          <b-button :style="{ color: settings.fontColor }" id="button__confirm" :to="'/campaigns/' + model.id + recurrent" @click="setAmount" :disabled="agreement_status == false" class="module-donate__button-select confirm" >{{ $t('buttons.widget.confirm') }}</b-button>
+          <b-button v-model="donate_amount" :style="{ background: model.visual_settings.colors.buttonBackground, color: model.visual_settings.colors.fontColor }" v-for="button in model.visual_settings.buttons" @click="provide(button)" :class="{clicked: contains(buttons, button)}" class="module-donate__button-select" :key="button">{{ button }} {{ model.currency }}</b-button>
+          <input type="number"  :style="{ background:  model.visual_settings.colors.buttonBackground, color: model.visual_settings.colors.fontColor }" class="module-donate__text-input" :placeholder="$t('labels.widget.input')" v-model="donate_amount">
+          <b-button :style="{ background:  model.visual_settings.colors.buttonBackground, color: model.visual_settings.colors.fontColor }" class="module-donate__button-select payment" @click="recurrent = '/donate'" :class="{clicked: (recurrent=='/donate')}">{{ $t('buttons.widget.oneTime') }}</b-button>
+          <b-button :style="{ background:  model.visual_settings.colors.buttonBackground, color: model.visual_settings.colors.fontColor }" class="module-donate__button-select payment" @click="recurrent = '/recurrent'" :class="{clicked: (recurrent=='/recurrent')}">{{ $t('buttons.widget.subscribe') }}</b-button>
+          <b-button :style="{ color: model.visual_settings.colors.fontColor }" id="button__confirm" :to="'/campaigns/' + model.id + recurrent" @click="setAmount" :disabled="agreement_status == false" class="module-donate__button-select confirm" >{{ $t('buttons.widget.confirm') }}</b-button>
           <div class="checkbox-agreement">
             <b-form-checkbox
                     id="checkbox-agreement"
@@ -29,7 +29,7 @@
                     unchecked-value="false"
             >&nbsp;
             </b-form-checkbox>
-            <a class="payment__description" id="show-modal" :style="{ color: settings.fontColor }" @click="showModal = true">
+            <a class="payment__description" id="show-modal" :style="{ color: model.visual_settings.colors.fontColor }" @click="showModal = true">
               {{ $t('labels.widget.paymentInfo') }}
             </a>
           </div>
@@ -44,7 +44,7 @@
                   <div class="modal-header">
                     {{ $t('labels.widget.terms') }}
                   </div>
-                  <div class="modal-body" v-html="settings.termsOfUse">
+                  <div class="modal-body" v-html="model.visual_settings.colors.termsOfUse">
 
                   </div>
                 </div>
@@ -55,11 +55,11 @@
         </div>
       </div>
     </div>
-    <b-progress v-if="showProgress" :value="model.amount_collected" :max="model.target_amount" class="progress__bar" :style="{ background: settings.progressBarColor}"></b-progress>
+    <b-progress v-if="showProgress" :value="model.amount_collected" :max="model.target_amount" class="progress__bar" :style="{ background: model.visual_settings.colors.progressBarColor}"></b-progress>
     <div class="module-donate__footer">
-      <p class="result__description" :style="{ color: settings.fontColor }">{{ $t('labels.widget.recieved') }}: <span class="summ__highlight">{{ model.amount_collected }} {{ model.currency }}</span></p>
-      <p class="result__recieved" :style="{ color: settings.fontColor }">{{ $t('labels.widget.needed') }}: <span class="summ__highlight">{{ model.target_amount }} {{ model.currency }}</span></p>
-      <p class="module-donate__version" :style="{ color: settings.fontColor }">powered by <a href="#" target="_blank">Doika</a></p>
+      <p class="result__description" :style="{ color: model.visual_settings.colors.fontColor }">{{ $t('labels.widget.recieved') }}: <span class="summ__highlight">{{ model.amount_collected }} {{ model.currency }}</span></p>
+      <p class="result__recieved" :style="{ color: model.visual_settings.colors.fontColor }">{{ $t('labels.widget.needed') }}: <span class="summ__highlight">{{ model.target_amount }} {{ model.currency }}</span></p>
+      <p class="module-donate__version" :style="{ color: model.visual_settings.colors.fontColor }">powered by <a href="#" target="_blank">Doika</a></p>
     </div>
 
 
