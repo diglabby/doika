@@ -81,7 +81,7 @@
                         @change="previewImage"
                         style="margin-top auto; margin-bottom: auto;"
                       ></b-form-file>
-                      <a href="#" class="d-block mt-1" v-if="image.has_picture_url || model.picture_url" @click.prevent="deleteFeaturedImage">{{ $t('buttons.campaign.deleteImage') }}</a>
+                      <a href="#" class="d-block mt-1" v-if="image.has_picture_url || model.picture_url" @click.prevent="deleteFeaturedImage">{{ $t('buttons.admin.campaigns.deleteImage') }}</a>
                     </b-col>
                     <b-col lg="3">
                       <div class="image-preview">
@@ -294,11 +294,13 @@ export default {
         finished_at: null,
         visual_settings: {
             buttons: [
-            5, 10, 25, 50,
+             5, 10, 25, 50,
             ],
-            progressBar: true
+            progressBar: true,
+            colors: null
           }
       },
+
       image: {
           thumbnail_image_path: null,
           has_picture_url: false,
@@ -309,7 +311,10 @@ export default {
       }
     }
   },
-
+    mounted: function(){
+      this.getColors()
+        console.log(this.model)
+    },
     computed: {
         shortcode() {
             return "<iframe width='750' height='550' frameborder='0' src='/doika/doika/widget/campaigns/"+ this.id +"'></iframe>"
@@ -335,7 +340,19 @@ export default {
         }
     },
   methods: {
-    
+      async getColors() {
+          let { data } = await axios.get(
+              this.$app.route('dashboard.settings.index'),
+              {
+                  params:
+                      {
+                          keys:
+                              ['widgetBackground', 'buttonBackground', 'progressBarColor', 'fontColor', 'termsOfUse']
+                      }
+              })
+          this.model.visual_settings.colors = data.settings
+          console.log(this.model)
+      },
     deleteFeaturedImage() {
       this.$refs.featuredImageInput.reset()
       this.image.thumbnail_image_path = null
