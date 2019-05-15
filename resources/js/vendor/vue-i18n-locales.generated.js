@@ -232,7 +232,7 @@ export default {
                         "test": "Адключыць тэставыя плацяжы",
                         "maxPayment": "Максімальны плацёж, бел.руб",
                         "minPayment": "Мінімальны плацёж, бел.руб",
-                        "termsOfUse": "Текст условий сервиса сбора пожертвований",
+                        "termsOfUse": "Тэкст умовы карыстання модулем",
                         "placeholder": {
                             "bePaidIdMarket": "Bepaid Market ID",
                             "artPayIdMarket": "Artpay Market Id",
@@ -247,17 +247,17 @@ export default {
                         "header": "Параметры макета"
                     },
                     "notifications": {
-                        "address": "Адрас сервера",
-                        "port": "Порт сервера",
-                        "user": "Карыстальнік электронная пошты",
+                        "address": "Адрас сэрвера",
+                        "port": "Порт сэрвера",
+                        "user": "Карыстальнік электроннай пошты",
                         "password": "Пароль",
                         "email": "Адрас электроннай пошты",
                         "header": "Наладка паведамленняў",
                         "reccurentTemplate": "Шаблон электроннага ліста для рэкурэнтных плацяжоў",
                         "singleTemplate": "Удзячнасць за зроблены плацеж на пошту",
                         "placeholder": {
-                            "address": "Адрас сервера",
-                            "port": "Порт сервера",
+                            "address": "Адрас сэрвера",
+                            "port": "Порт сэрвера",
                             "user": "Карыстальнік электронная пошты",
                             "password": "Пароль",
                             "email": "Адрас электроннай пошты"
@@ -296,7 +296,8 @@ export default {
                         "email": "E-mail",
                         "name": "Імя",
                         "message": "Напішыце Ваша паведамленне",
-                        "password": "Пароль"
+                        "password": "Пароль",
+                        "passwordConfirmation": "Паўтарыце пароль"
                     },
                     "create": {
                         "breadcrumb": "Стварыць",
