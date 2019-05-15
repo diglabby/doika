@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Doika') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Scripts -->
 
@@ -17,7 +17,7 @@
             'appName' => config('app.name'),
             'homePath' => url()->current(),
             'widgetBasePath' => '/doika/doika/widget',
-            'locale' => 'be',
+            'locale' => app()->getLocale(),
             'user' => $loggedInUser,
         ]) !!}
     </script>
