@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('dashboard.layouts.ssr')
 
 @section('body')
     Not implemented yet
