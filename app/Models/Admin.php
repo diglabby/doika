@@ -13,8 +13,6 @@ use Illuminate\Notifications\Notifiable;
  * @property string $password
  * @property string $remember_token
  * @property string $locale
- * @property string $timezone
- * @property string $slug
  * @property \Illuminate\Support\Carbon|null $last_access_at
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
@@ -26,7 +24,6 @@ final class Admin extends Authenticatable
     /** @var array Default attributes */
     protected $attributes = [
         'locale' => 'be',
-        'timezone' => 'Europe/Minsk',
     ];
 
     /** @var array The attributes that are mass assignable */

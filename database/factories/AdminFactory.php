@@ -15,7 +15,6 @@ $factory->define(Admin::class, function (Faker $faker) {
         'name' => $faker->name,
         'email' => 'demo@example.com',
         'email_verified_at' => now(),
-        'slug' => $faker->unique()->slug,
         'password' => Hash::make('password'), // password
         'remember_token' => Str::random(10),
     ];
