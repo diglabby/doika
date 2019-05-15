@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'ContactForm',
   data() {
@@ -44,7 +46,7 @@ export default {
         this.success = false
         this.errors = {}
         axios
-          .post('/submit', this.fields)
+          .post(this.$app.route('dashboard.feedback.send'), this.fields)
           .then(response => {
             this.fields = {} //Clear input fields.
             this.loaded = true
