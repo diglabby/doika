@@ -62,14 +62,14 @@
 </template>
 
 <script>
-
+import axios from 'axios'
 
 export default {
   name: 'AppHeader',
   methods: {
       logout() {
-          axios.post($app.route('logout')).then(response => {
-              this.$router.push($app.route('login'))
+          axios.post(this.$app.route('logout')).then(response => {
+              this.$router.push(this.$app.route('login'))
 
           }).catch(error => {
               location.reload();
