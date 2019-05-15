@@ -193,12 +193,13 @@
                           :description="$t('labels.admin.campaigns.active')"
                         ></c-switch>
                       </b-col>
+                      <!--
                       <b-col lg="5" offset-lg="1">
                         <c-switch
                           name="recurrent"
                           :description="$t('labels.admin.campaigns.recurrent')"
                         ></c-switch>
-                      </b-col>
+                      </b-col>-->
                     </b-row>
                     <b-row>
                       <b-col lg="5" offset-lg="1">
