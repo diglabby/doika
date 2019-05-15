@@ -56,7 +56,7 @@ final class RouteServiceProvider extends BasicRouteServiceProvider
             ->namespace($this->namespace)
             ->group(base_path('routes/dashboard_api.php'));
 
-        Route::middleware(['web'])
+        Route::middleware(['web', 'localize'])
             ->prefix('doika/dashboard')
             ->namespace($this->namespace)
             ->group(base_path('routes/dashboard_ssr.php'));
