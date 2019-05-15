@@ -8,7 +8,7 @@ use Diglabby\Doika\Models\Admin;
 use Diglabby\Doika\Models\Transaction;
 use Spatie\QueryBuilder\QueryBuilder;
 
-final class AdminController  extends Controller
+final class AdminController extends Controller
 {
     public function index(): \JsonSerializable
     {
