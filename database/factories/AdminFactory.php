@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Hash;
 $factory->define(Admin::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'email' => 'demo@example.com',
+        'email' => $faker->email,
         'email_verified_at' => now(),
         'password' => Hash::make('password'), // password
         'remember_token' => Str::random(10),
