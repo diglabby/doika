@@ -56,7 +56,6 @@ final class Subscription extends Model
         });
     }
 
-
     public function donator(): BelongsTo
     {
         return $this->belongsTo(Donator::class);
