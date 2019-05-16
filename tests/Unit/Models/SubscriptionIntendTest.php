@@ -17,8 +17,8 @@ class SubscriptionIntendTest extends TestCase
     public function it_properly_calculates_times_to_pay_for_future_dates(int $plannedTimesToPay, string $dateMofifier)
     {
         // ⚠️ Test execution takes some tune, for this reason now() created here
-        // != now() created in SubscriptionIntend, so we need to use addSecond()
-        $campaignFinishTime = now()->modify($dateMofifier)->modify('+1 second');
+        // != now() created in SubscriptionIntend, so we need to add second(s)
+        $campaignFinishTime = now()->modify($dateMofifier)->modify('+2 second');
         $subscriptionIntend = SubscriptionIntend::monthly(
             Money::BYN(100),
             factory(Donator::class)->make(),

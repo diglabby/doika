@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubscriptionsTable extends Migration
+class CreateTransactionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,22 @@ class CreateSubscriptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('subscriptions', function (Blueprint $table) {
+        Schema::create('transactions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('donator_id');
             $table->unsignedBigInteger('campaign_id');
+            $table->unsignedBigInteger('subscription_id')->nullable();
             $table->string('payment_gateway');
-            $table->string('payment_gateway_subscription_id')->comment('Native subscription ID on PG');
-            $table->unsignedInteger('amount')->comment('Amount in cents');
+            $table->string('payment_gateway_transaction_id')->comment('Native transaction ID on Payment Gateway');
+            $table->unsignedBigInteger('amount')->comment('Amount in cents');
             $table->string('currency', 3);
-            $table->string('payment_interval')->comment('An ISO 8601 repeating interval specification');
+            $table->string('status');
+            $table->string('status_message');
             $table->timestamps();
-            $table->softDeletes();
 
             $table->foreign('donator_id')->references('id')->on('donators');
             $table->foreign('campaign_id')->references('id')->on('campaigns');
+            $table->foreign('subscription_id')->references('id')->on('subscriptions');
         });
     }
 
@@ -37,6 +39,6 @@ class CreateSubscriptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subscriptions');
+        Schema::dropIfExists('transactions');
     }
 }

@@ -131,21 +131,21 @@ export function createRouter(base, i18n) {
             path: 'layout',
             component: Layout,
             meta: {
-              label: 'Layout'
+              label: i18n.t('labels.admin.layout.title')
             }
           },
           {
             path: 'paymentSystems',
             component: PaymentSystems,
             meta: {
-              label: 'Payment systems'
+              label: i18n.t('labels.admin.paymentSystems.title')
             }
           },
           {
             path: 'notifications',
             component: Notifications,
             meta: {
-              label: 'Notifications'
+              label: i18n.t('labels.admin.notifications.title')
             }
           },
           {

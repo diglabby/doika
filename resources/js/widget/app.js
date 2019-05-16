@@ -10,7 +10,6 @@ import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm'
 // Vendor plugins components
 import '../vendor/coreui/components'
 import DataTable from './components/Plugins/DataTable'
-import RichTextEditor from './components/Plugins/RichTextEditor'
 import DateTimePicker from './components/Plugins/DateTimePicker'
 import Switch from './components/Plugins/Switch'
 import ModalWindow from './components/Plugins/ModalWindow'
@@ -34,7 +33,6 @@ Vue.component('v-select', vSelect)
 // Custom components
 Vue.component('c-switch', Switch)
 Vue.component('p-datetimepicker', DateTimePicker)
-Vue.component('p-richtexteditor', RichTextEditor)
 Vue.component('b-datatable', DataTable)
 
 export function createApp() {

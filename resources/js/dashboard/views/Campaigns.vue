@@ -66,6 +66,7 @@
             </b-button>
           </template>
         </b-table>
+
       </b-datatable>
     </b-card>
   </div>
@@ -79,6 +80,7 @@ export default {
   data() {
     return {
       selected: [],
+
       fields: [
         { key: 'checkbox' },
         {
@@ -136,7 +138,8 @@ export default {
   },
   methods: {
     dataLoadProvider(ctx) {
-      return this.$refs.datasource.loadData(ctx.sortBy, ctx.sortDesc)
+      let data = this.$refs.datasource.loadData(ctx.sortBy, ctx.sortDesc)
+      return data
     },
 
     onContextChanged() {

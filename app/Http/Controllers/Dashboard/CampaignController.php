@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Diglabby\Doika\Http\Controllers\Dashboard;
 
@@ -10,7 +10,7 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 final class CampaignController extends Controller
 {
-    public function index()
+    public function index(): \JsonSerializable
     {
         $query = Campaign::query()
             ->with('transactions') // to calc sum of transactions

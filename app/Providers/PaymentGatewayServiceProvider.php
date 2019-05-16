@@ -20,6 +20,7 @@ final class PaymentGatewayServiceProvider extends ServiceProvider implements Def
             ]);
         });
 
+        $this->app->bind('bePaid', BePaidPaymentGateway::class);
         $this->app->bind(BePaidPaymentGateway::class, BePaidPaymentGateway::class);
     }
 
@@ -28,6 +29,7 @@ final class PaymentGatewayServiceProvider extends ServiceProvider implements Def
     {
         return [
             BePaidApiContext::class,
+            'bePaid',
             BePaidPaymentGateway::class,
         ];
     }

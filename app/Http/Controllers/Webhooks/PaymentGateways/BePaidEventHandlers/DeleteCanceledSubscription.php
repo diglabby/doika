@@ -23,6 +23,11 @@ final class DeleteCanceledSubscription
             return;
         }
 
+        if ($subscription->isCanceled()) {
+            return;
+        }
+
+        // Don't use $subscription->cancel() to avoid race condition
         $subscription->delete();
     }
 }

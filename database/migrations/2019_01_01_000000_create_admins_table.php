@@ -20,8 +20,6 @@ class CreateAdminsTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->string('locale');
-            $table->string('timezone');
-            $table->string('slug')->unique();
             $table->dateTime('last_access_at')->nullable();
             $table->timestamps();
         });
