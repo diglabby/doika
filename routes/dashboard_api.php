@@ -17,6 +17,11 @@ Route::get('/transactions/{transaction}', 'Dashboard\TransactionController@show'
 Route::get('/donators', 'Dashboard\DonatorController@index')->name('dashboard.donators.index');
 Route::get('/donators/{donator}', 'Dashboard\DonatorController@show')->name('dashboard.donators.show');
 
+Route::get('/admins', 'Dashboard\AdminController@index')->name('dashboard.admins.index');
+Route::get('/admins/{admin}', 'Dashboard\AdminController@show')->name('dashboard.admins.show');
+Route::put('/admins/{admin}', 'Dashboard\AdminController@update')->name('dashboard.admins.update');
+Route::delete('/admins/{admin}', 'Dashboard\AdminController@delete')->name('dashboard.admins.delete');
+
 Route::get('/settings', 'Dashboard\SettingsController@index')->name('dashboard.settings.index');
 Route::match(['POST', 'PUT'], '/settings', 'Dashboard\SettingsController@store')->name('dashboard.settings.store');
 
