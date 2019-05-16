@@ -18,7 +18,7 @@ use Money\Money;
  */
 final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubscriptionsGateway
 {
-    private const GATEWAY_ID = 'bePaid';
+    public const GATEWAY_ID = 'bePaid';
     private const API_VERSION = '2.1';
     private const API_ENDPOINT = 'https://api.bepaid.by';
 
