@@ -38,8 +38,10 @@ final class CampaignSubscriptionIntendController extends Controller
         ]);
 
         $money = new Money($request->get('amount'), new Currency($request->get('currency_code')));
+        $interval = new CarbonInterval($request->get('payment_interval'));
+        $subscriptionIntend = new SubscriptionIntend($money, $donator, $campaign, $interval);
 
-        $redirectUrl = $gateway->tokenizeSubscriptionIntend(new SubscriptionIntend($money, $donator, $campaign, new CarbonInterval($request->get('payment_interval'))));
+        $redirectUrl = $gateway->tokenizeSubscriptionIntend($subscriptionIntend);
 
         return $redirectUrl;
     }
