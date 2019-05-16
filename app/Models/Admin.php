@@ -21,6 +21,9 @@ final class Admin extends Authenticatable
 {
     use Notifiable;
 
+    /** @var array The attributes that aren't mass assignable */
+    protected $guarded = [];
+
     /** @var array Default attributes */
     protected $attributes = [
         'locale' => 'be',
