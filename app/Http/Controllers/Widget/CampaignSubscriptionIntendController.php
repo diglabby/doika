@@ -2,14 +2,17 @@
 
 namespace Diglabby\Doika\Http\Controllers\Widget;
 
+use Carbon\CarbonInterval;
 use Diglabby\Doika\Http\Controllers\Controller;
 use Diglabby\Doika\Models\Campaign;
 use Diglabby\Doika\Models\Donator;
+use Diglabby\Doika\Models\SubscriptionIntend;
 use Diglabby\Doika\Services\PaymentGateways\BePaidPaymentGateway;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Money\Money;
+use Money\Currency;
 
 final class CampaignSubscriptionIntendController extends Controller
 {
@@ -34,9 +37,9 @@ final class CampaignSubscriptionIntendController extends Controller
             'name' => $request->get('name'),
         ]);
 
-        $money = new Money($request->get('amount'), $request->get('currency_code'));
+        $money = new Money($request->get('amount'), new Currency($request->get('currency_code')));
 
-        $redirectUrl = $gateway->tokenizeSubscriptionIntend($donator, $campaign, $money, $request->get('payment_interval'));
+        $redirectUrl = $gateway->tokenizeSubscriptionIntend(new SubscriptionIntend($money, $donator, $campaign, new CarbonInterval($request->get('payment_interval'))));
 
         return $redirectUrl;
     }
