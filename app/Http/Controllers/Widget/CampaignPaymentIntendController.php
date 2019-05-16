@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Diglabby\Doika\Http\Controllers\Widget;
 
@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Money\Money;
 use Money\Currency;
 
-class CampaignPaymentIntendController extends Controller
+final class CampaignPaymentIntendController extends Controller
 {
     public function store(Campaign $campaign, BePaidPaymentGateway $gateway, Request $request)
     {
