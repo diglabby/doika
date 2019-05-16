@@ -15,10 +15,7 @@ Route::get('/transactions', 'Dashboard\TransactionController@index')->name('dash
 Route::get('/transactions/{transaction}', 'Dashboard\TransactionController@show')->name('dashboard.transactions.show');
 
 Route::get('/donators', 'Dashboard\DonatorController@index')->name('dashboard.donators.index');
-Route::get('/donators/{id}', 'Dashboard\DonatorController@show')->name('dashboard.donators.show');
-Route::post('/donators', 'Dashboard\DonatorController@store')->name('dashboard.donators.store');
-Route::put('/donators/{id}', 'Dashboard\DonatorController@update')->name('dashboard.donators.update');
-Route::delete('/donators/{id}', 'Dashboard\DonatorController@delete')->name('dashboard.donators.delete');
+Route::get('/donators/{donator}', 'Dashboard\DonatorController@show')->name('dashboard.donators.show');
 
 Route::get('/settings', 'Dashboard\SettingsController@index')->name('dashboard.settings.index');
 Route::match(['POST', 'PUT'], '/settings', 'Dashboard\SettingsController@store')->name('dashboard.settings.store');
