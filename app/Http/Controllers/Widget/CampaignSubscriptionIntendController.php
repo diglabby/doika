@@ -16,7 +16,7 @@ use Money\Currency;
 
 final class CampaignSubscriptionIntendController extends Controller
 {
-    public function store(Campaign $campaign, Request $request, BePaidPaymentGateway $gateway): Responsable
+    public function store(Campaign $campaign, Request $request, BePaidPaymentGateway $gateway)
     {
         $this->validate($request, [
             'amount' => ['required', 'integer', 'min:100'], // in cents!
