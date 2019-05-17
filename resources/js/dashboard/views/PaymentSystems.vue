@@ -31,7 +31,7 @@
                                 name="title"
                                 required
                                 :placeholder="$t('labels.admin.settings.payments.placeholder.bePaidIdMarket')"
-                                v-model="model.settings.bePaidIdMarket"
+                                v-model="model.settings.gateway_bePaid_idMarket"
                                 :state="state('title')"
                               ></b-form-input>
                             </b-form-group>
@@ -50,7 +50,7 @@
                                 name="title"
                                 required
                                 :placeholder="$t('labels.admin.settings.payments.placeholder.bePaidKeyMarket')"
-                                v-model="model.settings.bePaidKeyMarket"
+                                v-model="model.settings.gateway_bePaid_keyMarket"
                                 :state="state('title')"
                               ></b-form-input>
                             </b-form-group>
@@ -101,7 +101,7 @@
                             <b-col lg="5" offset-lg="2">
                               <c-switch
                                 name="test"
-                                v-model="model.settings.disableLivePayments"
+                                v-model="liveMode"
                                 :description="$t('labels.admin.settings.payments.test')"
                               ></c-switch>
                             </b-col>
@@ -260,10 +260,10 @@ export default {
 
         model: {
             settings: {
-                bePaidIdMarket: null,
-                bePaidKeyMarket: null,
+                gateway_bePaid_idMarket: null,
+                gateway_bePaid_keyMarket: null,
                 termsOfUse: null,
-                disableLivePayments: null,
+                disableLivePayments: "test",
                 minPayment: null,
                 maxPayment: null
             }
@@ -273,6 +273,11 @@ export default {
     mounted: function() {
         this.getCredentials()
     },
+    computed: {
+        liveMode: function() {
+            return this.model.settings.disableLivePayments ? this.model.settings.disableLivePayments: "test";
+        },
+    },
     methods: {
         async getCredentials() {
             let { data } = await axios.get(
@@ -281,7 +286,7 @@ export default {
                     params:
                         {
                             keys:
-                                ['bePaidIdMarket', 'bePaidKeyMarket', 'termsOfUse', 'disableLivePayments']
+                                ['gateway_bePaid_idMarket', 'gateway_bePaid_keyMarket', 'termsOfUse', 'disableLivePayments']
                         }
                 })
 

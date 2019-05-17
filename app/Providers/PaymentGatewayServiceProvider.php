@@ -14,8 +14,8 @@ final class PaymentGatewayServiceProvider extends ServiceProvider implements Def
     {
         $this->app->singleton(BePaidApiContext::class, function () {
             return new BePaidApiContext([
-                'marketId' => setting('gateways.bePaid.marketId'),
-                'marketKey' => setting('gateways.bePaid.marketKey'),
+                'marketId' => setting('gateway_bePaid_idMarket'),
+                'marketKey' => setting('gateway_bePaid_keyMarket'),
                 'mode' => setting('gateways.bePaid.mode') === 'live' ? 'live' : 'test',
             ]);
         });
