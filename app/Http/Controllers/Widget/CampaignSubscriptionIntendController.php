@@ -8,7 +8,6 @@ use Diglabby\Doika\Models\Campaign;
 use Diglabby\Doika\Models\Donator;
 use Diglabby\Doika\Models\SubscriptionIntend;
 use Diglabby\Doika\Services\PaymentGateways\BePaidPaymentGateway;
-use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Money\Money;
