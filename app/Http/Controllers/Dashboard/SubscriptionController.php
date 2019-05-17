@@ -28,7 +28,7 @@ final class SubscriptionController extends Controller
 
     public function delete(Subscription $subscription, Request $request)
     {
-        $subscription->cancel($request->get('reason') ?: "Admin's action");
+        $subscription->cancel($request->get('reason', "Admin's action"));
 
         return response('', Response::HTTP_NO_CONTENT);
     }
