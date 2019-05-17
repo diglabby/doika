@@ -20,8 +20,7 @@ class CampaignDonationResultControllerTest extends TestCase
 
         $response = $this->get(route('widget.campaigns.donation-result', ['campaign' => $campaign->id, 'status' => $status]));
 
-        $response->assertOk();
-        $response->assertSeeText($status);
+        $response->assertRedirect();
     }
 
     public function validTransactionStatusProvider(): array
