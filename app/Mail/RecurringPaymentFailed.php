@@ -12,7 +12,7 @@ class RecurringPaymentFailed extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.recurringPayments.recurringPaymentFailed',[
+        return $this->view('emails.recurringPayments.recurringPaymentFailed', [
             'message' => 'We are going to change your card',
         ]);
     }
