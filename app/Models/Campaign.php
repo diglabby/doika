@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Diglabby\Doika\Models;
 
@@ -53,6 +53,7 @@ final class Campaign extends Model
 
     /** @var array Default attribute values */
     protected $attributes = [
+        'description' => '',
         'active_status' => false,
     ];
 

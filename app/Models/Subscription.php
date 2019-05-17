@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Diglabby\Doika\Models;
 
@@ -34,7 +34,7 @@ final class Subscription extends Model
     /** @var array The attributes that aren't mass assignable */
     protected $guarded = [];
 
-    /** @var array Default attributes */
+    /** @var array Default attribute values */
     protected $attributes = [
         'currency' => 'BYN',
         'payment_interval' => 'P1M', // means "Period: 1 Month"
@@ -55,7 +55,6 @@ final class Subscription extends Model
             $subscription->unsubscribe_token = Str::random();
         });
     }
-
 
     public function donator(): BelongsTo
     {
@@ -81,7 +80,7 @@ final class Subscription extends Model
 
     public function isCanceled(): bool
     {
-        return $this->deleted_at !== null;
+        return $this->trashed();
     }
 
     public function getCancelationUrl(): string

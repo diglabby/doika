@@ -21,26 +21,35 @@ final class CampaignController extends Controller
         );
     }
 
-    public function show(Campaign $campaign)
+    public function show(Campaign $campaign): \JsonSerializable
     {
         return new CampaignResource($campaign);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): \JsonSerializable
     {
+        $this->validate($request, [
+            'name' => ['required', 'max:255'],
+            'description' => ['required', 'max:488'],
+            'target_amount' => ['required', 'integer', 'min:1'],
+            'currency' => ['required', 'string', 'size:3'],
+            'started_at' => ['required', 'date'],
+            'finished_at' => ['required', 'date', 'after:started_at'],
+        ]);
+
         $campaign = new Campaign($request->all());
         $campaign->save();
 
         return $campaign;
     }
 
-    public function update(Campaign $campaign, Request $request)
+    public function update(Campaign $campaign, Request $request): \JsonSerializable
     {
         $campaign->update($request->all());
         return $campaign;
     }
 
-    public function delete(Campaign $campaign)
+    public function delete(Campaign $campaign): \JsonSerializable
     {
         $campaign->delete();
         return $campaign;
