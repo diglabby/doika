@@ -33,8 +33,8 @@ final class CampaignController extends Controller
             'description' => ['required', 'max:488'],
             'target_amount' => ['required', 'integer', 'min:1'],
             'currency' => ['required', 'string', 'size:3'],
-            'started_at' => ['required', 'date'],
-            'finished_at' => ['required', 'date', 'after:started_at'],
+            'start_at' => ['required', 'date'],
+            'finish_at' => ['required', 'date', 'after:start_at'],
         ]);
 
         $campaign = new Campaign($request->all());
