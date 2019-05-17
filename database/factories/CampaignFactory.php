@@ -17,7 +17,7 @@ $factory->define(Campaign::class, function (Faker\Generator $faker) {
         'active_status' => 1,
         'started_at' => today(),
         'finished_at' => today()->addMonths(1),
-        'visual_settings' => [],
+        'visual_settings' => '{"buttons":["5","10","25","50"],"progressBar":"1","colors":{"widgetBackground":null,"buttonBackground":null,"progressBarColor":null,"fontColor":null,"termsOfUse":null}}',
     ];
 });
 
