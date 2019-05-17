@@ -3,6 +3,7 @@
 namespace Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways;
 
 use Diglabby\Doika\Http\Controllers\Controller;
+use Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers\CreateSubscription;
 use Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers\CreateTransactionForProcessedSubscription;
 use Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers\DeleteCanceledSubscription;
 use Illuminate\Http\Request;
@@ -15,6 +16,9 @@ final class BePaidSubscriptionWebhookHandler extends Controller
 {
     /** @var array The event listener mappings */
     private $listen = [
+        'created.subscription' => [
+            CreateSubscription::class,
+        ],
         'active' => [
             CreateTransactionForProcessedSubscription::class,
         ],
@@ -28,9 +32,9 @@ final class BePaidSubscriptionWebhookHandler extends Controller
     {
         \Log::debug('bePaid donated webhook', ['headers' => $request->headers->all(), 'input' => $request->all()]);
 
-        $status = $request->json('state');
+        $event = $request->json('event') ?: $request->json('state');
 
-        $handlers = $this->listen[$status] ?? [];
+        $handlers = $this->listen[$event] ?? [];
 
         foreach ($handlers as $handler) {
             resolve($handler)->handle($request);
