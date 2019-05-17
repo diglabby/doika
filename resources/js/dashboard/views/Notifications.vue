@@ -28,7 +28,7 @@
                           name="title"
                           required
                           :placeholder="$t('labels.admin.settings.notifications.placeholder.address')"
-                          v-model="model.notificationsAddress"
+                          v-model="model.settings.notificationsAddress"
                           :state="state('title')"
                         ></b-form-input>
                       </b-form-group>
@@ -46,7 +46,7 @@
                           name="title"
                           required
                           :placeholder="$t('labels.admin.settings.notifications.placeholder.port')"
-                          v-model="model.notificationsPort"
+                          v-model="model.settings.notificationsPort"
                           :state="state('title')"
                         ></b-form-input>
                       </b-form-group>
@@ -66,7 +66,7 @@
                           name="title"
                           required
                           :placeholder="$t('labels.admin.settings.notifications.placeholder.user')"
-                          v-model="model.notificationsUser"
+                          v-model="model.settings.notificationsUser"
                           :state="state('title')"
                         ></b-form-input>
                       </b-form-group>
@@ -84,7 +84,7 @@
                           name="title"
                           required
                           :placeholder="$t('labels.admin.settings.notifications.placeholder.password')"
-                          v-model="model.notificationsPassword"
+                          v-model="model.settings.notificationsPassword"
                           :state="state('title')"
                         ></b-form-input>
                       </b-form-group>
@@ -104,7 +104,7 @@
                           name="title"
                           required
                           :placeholder="$t('labels.admin.settings.notifications.placeholder.email')"
-                          v-model="model.notificationsEmail"
+                          v-model="model.settings.notificationsEmail"
                           :state="state('title')"
                         ></b-form-input>
                       </b-form-group>
@@ -112,24 +112,26 @@
                   </b-row>
                   <b-form-group
                     :label="$t('labels.admin.settings.notifications.reccurentTemplate')"
-                    label-for="body"
+                    label-for="reccurent"
                     horizontal
                     :label-cols="2"
                   >
                     <vue-editor
-                      name="body"
-                      v-model="model.body"
+                            id="reccurent"
+                      name="messageReccurent"
+                      v-model="model.settings.messageReccurentTransaction"
                     ></vue-editor>
                   </b-form-group>
                   <b-form-group
                     :label="$t('labels.admin.settings.notifications.singleTemplate')"
-                    label-for="body"
+                    label-for="single"
                     horizontal
                     :label-cols="2"
                   >
                     <vue-editor
-                      name="body"
-                      v-model="model.body"
+                            id="single"
+                      name="messageSingle"
+                      v-model="model.settings.messageSingleTransaction"
                     ></vue-editor>
                   </b-form-group>
                 </b-card-body>
@@ -162,63 +164,39 @@ export default {
   mixins: [form],
   data() {
     return {
-      config: {
-        wrap: true,
-        time_24hr: true,
-        enableTime: true
-      },
-
-      counter: 45,
-      max: 100,
-      modelName: 'campaign',
-      resourceRoute: 'campaigns',
-      listPath: '/campaigns',
-      tags: [],
+      modelName: 'settings',
+      resourceRoute: 'settings',
+      listPath: '/notifications',
       model: {
-        title: null,
-        notificationsAddress: null,
-        notificationsPort: null,
-        notificationsUser: null,
-        notificationsPassword: null,
-        notificationsEmail: null,
-        summary: null,
-        body: null,
-        tags: [],
-        featured_image: null,
-        thumbnail_image_path: null,
-        status: null,
-        state: null,
-        status_label: null,
-        owner: {
-          name: null
-        },
-        startAt: null,
-        finishAt: null,
-        pinned: false,
-        promoted: false,
-        meta: {
-          title: null,
-          description: null
-        },
-        has_featured_image: false
+          settings: {
+              notificationsAddress: null,
+              notificationsPort: null,
+              notificationsUser: null,
+              notificationsPassword: null,
+              notificationsEmail: null,
+              messageSingleTransaction: null,
+              messageReccurentTransaction: null,
+          }
       }
     }
   },
-  methods: {
-    async getTags(search) {
-      let { data } = await axios.get(this.$app.route('admin.tags.search'), {
-        params: {
-          q: search
-        }
-      })
-
-      this.tags = data.items
+    mounted: function() {
+        this.getCredentials()
     },
-    deleteFeaturedImage() {
-      this.$refs.featuredImageInput.reset()
-      this.model.thumbnail_image_path = null
-      this.model.has_featured_image = false
+    methods: {
+        async getCredentials() {
+            let { data } = await axios.get(
+                this.$app.route('dashboard.settings.index'),
+                {
+                    params:
+                        {
+                            keys:
+                                ['notificationsAddress', 'notificationsPort', 'notificationsUser', 'notificationsPassword', 'notificationsEmail', 'messageSingleTransaction','messageReccurentTransaction']
+                        }
+                })
+
+            this.model.settings = data.settings
+        }
     }
-  }
 }
 </script>
