@@ -29,7 +29,7 @@ final class CreateSubscriptionWithTransaction
         $transaction = new Transaction([
             'amount' => $request->json('plan.plan.amount'),
             'currency' => $request->json('plan.currency'),
-            'campaign_id' => $subscription->id,
+            'campaign_id' => $subscription->campaign->id,
             'donator_id' => $subscription->donator_id,
             'subscription_id' => $subscription->id,
             'payment_gateway' => 'bePaid',

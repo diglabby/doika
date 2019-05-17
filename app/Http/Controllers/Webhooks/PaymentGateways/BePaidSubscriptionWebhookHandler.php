@@ -19,6 +19,9 @@ final class BePaidSubscriptionWebhookHandler extends Controller
         'created.subscription' => [
             CreateSubscriptionWithTransaction::class,
         ],
+        'failed.subscription' => [
+            CreateFiledTransaction::class,
+        ],
         'canceled.subscription' => [
             DeleteCanceledSubscription::class,
         ],
