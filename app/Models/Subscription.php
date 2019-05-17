@@ -56,7 +56,6 @@ final class Subscription extends Model
         });
     }
 
-
     public function donator(): BelongsTo
     {
         return $this->belongsTo(Donator::class);
@@ -81,7 +80,7 @@ final class Subscription extends Model
 
     public function isCanceled(): bool
     {
-        return $this->deleted_at !== null;
+        return $this->trashed();
     }
 
     public function getCancelationUrl(): string

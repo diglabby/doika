@@ -17,6 +17,10 @@ Route::get('/transactions/{transaction}', 'Dashboard\TransactionController@show'
 Route::get('/donators', 'Dashboard\DonatorController@index')->name('dashboard.donators.index');
 Route::get('/donators/{donator}', 'Dashboard\DonatorController@show')->name('dashboard.donators.show');
 
+Route::get('/subscriptions', 'Dashboard\SubscriptionController@index')->name('dashboard.subscriptions.index');
+Route::get('/subscriptions/{subscription}', 'Dashboard\SubscriptionController@show')->name('dashboard.subscriptions.show');
+Route::delete('/subscriptions/{subscription}', 'Dashboard\SubscriptionController@delete')->name('dashboard.subscriptions.delete');
+
 Route::get('/admins', 'Dashboard\AdminController@index')->name('dashboard.admins.index');
 Route::get('/admins/{admin}', 'Dashboard\AdminController@show')->name('dashboard.admins.show');
 Route::put('/admins/{admin}', 'Dashboard\AdminController@update')->name('dashboard.admins.update');
