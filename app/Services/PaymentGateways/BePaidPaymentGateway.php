@@ -112,7 +112,10 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
                 'infinite' => false,
                 'billing_cycles' => $subscriptionIntend->getBillingCyclesCount(),
             ],
-            'return_url' => route('widget.campaigns.donation-result', ['campaignId' => $subscriptionIntend->campaign->id, 'status' => 'subscribed']),
+            'return_url' => route('widget.campaigns.donation-result', [
+                'campaign' => $subscriptionIntend->campaign,
+                'status' => 'subscribed',
+            ]),
             'notification_url' => route('webhooks.bepaid.subscriptions'),
             'additional_data' => [
                 'campaign_id' => $subscriptionIntend->campaign->id,
