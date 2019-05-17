@@ -34,7 +34,7 @@ final class Subscription extends Model
     /** @var array The attributes that aren't mass assignable */
     protected $guarded = [];
 
-    /** @var array Default attributes */
+    /** @var array Default attribute values */
     protected $attributes = [
         'currency' => 'BYN',
         'payment_interval' => 'P1M', // means "Period: 1 Month"
