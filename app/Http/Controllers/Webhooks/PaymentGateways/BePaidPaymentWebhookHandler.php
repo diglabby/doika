@@ -11,7 +11,7 @@ use Illuminate\Http\Response;
 /**
  * @see https://docs.bepaid.by/ru/webhooks
  */
-final class BePaidWebhookHandler extends Controller
+final class BePaidPaymentWebhookHandler extends Controller
 {
     public function donated(Request $request, int $campaignId)
     {
