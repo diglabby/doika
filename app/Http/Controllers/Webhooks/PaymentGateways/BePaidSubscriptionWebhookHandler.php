@@ -5,7 +5,6 @@ namespace Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways;
 use Diglabby\Doika\Http\Controllers\Controller;
 use Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers\CreateFailedTransaction;
 use Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers\CreateSubscriptionWithTransaction;
-use Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers\CreateTransactionForProcessedSubscription;
 use Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers\DeleteCanceledSubscription;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
