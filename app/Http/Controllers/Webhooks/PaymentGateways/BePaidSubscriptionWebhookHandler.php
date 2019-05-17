@@ -19,11 +19,11 @@ final class BePaidSubscriptionWebhookHandler extends Controller
         'created.subscription' => [
             CreateSubscription::class,
         ],
+        'canceled.subscription' => [
+            DeleteCanceledSubscription::class,
+        ],
         'active' => [
             CreateTransactionForProcessedSubscription::class,
-        ],
-        'canceled' => [
-            DeleteCanceledSubscription::class,
         ],
         'error' => [],
     ];
@@ -32,7 +32,7 @@ final class BePaidSubscriptionWebhookHandler extends Controller
     {
         $event = $request->json('event') ?: $request->json('state');
 
-        \Log::debug("bePaid webhook event $event", ['headers' => $request->headers->all(), 'input' => $request->all()]);
+        \Log::debug("bePaid webhook event $event", $request->all());
 
         $handlers = $this->listen[$event] ?? [];
 
