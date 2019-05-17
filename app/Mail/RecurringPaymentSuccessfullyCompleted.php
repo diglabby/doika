@@ -1,16 +1,13 @@
-<?php
+<?php declare(strict_types = 1);
 
-namespace App\Mail;
+namespace Diglabby\Doika\Mail;
 
 use Illuminate\Mail\Mailable;
 
-class RecurringPaymentSuccessfullyCompleted extends Mailable
+final class RecurringPaymentSuccessfullyCompleted extends Mailable
 {
-    /**
-     * Build the message.
-     * @return $this
-     */
-    public function build()
+    /** @inheritDoc */
+    public function build(): self
     {
         return $this->view('emails.recurringPayments.recurringPaymentSuccessfullyCompleted', [
             'message' => '🚀',
