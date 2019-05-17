@@ -1,10 +1,15 @@
 <template>
   <Header fixed>
+
     <SidebarToggler class="d-lg-none" display="md" mobile></SidebarToggler>
+
     <a class="navbar-brand" :href="$app.homePath" target="_blank">
-      <img class="navbar-brand-full" src="../../../sass/vendor/tabler/brand/logo.png" height="30" alt="Doika-logo">
-      <img class="navbar-brand-minimized" src="../../../sass/vendor/tabler/brand/logo-symbol.png" width="30" height="30" alt="Doika-logo">
+  
+      <img class="navbar-brand-full" :src="require('@/dashboard/logo')" height="30" alt="Doika-logo">
+      <img class="navbar-brand-minimized" :src="require('@/dashboard/Doika-logo')" width="30" height="30" alt="Doika-logo">
+
     </a>
+
     <SidebarToggler class="d-md-down-none" display="lg"></SidebarToggler>
     <b-navbar-nav class="ml-auto">
       <HeaderDropdown right class="px-3 d-none d-md-block">
@@ -14,14 +19,15 @@
           </span>
         </template>
         <template slot="dropdown">
-          <b-dropdown-item to="/campaigns/create" v-if="this.$app.user.can('create campaign')">
+          <b-dropdown-item to="/campaigns/create">
             <i class="fe fe-book"></i>&nbsp;&nbsp;{{ $t('labels.admin.newMenu.campaign') }}
           </b-dropdown-item>
-          <b-dropdown-item to="/users/create" v-if="this.$app.user.can('create user')">
+          <b-dropdown-item to="/users/create"">
             <i class="fe fe-users"></i>&nbsp;&nbsp;{{ $t('labels.admin.newMenu.user') }}
           </b-dropdown-item>
         </template>
       </HeaderDropdown>
+      <!--
       <HeaderDropdown right class="px-3 d-none d-md-block">
         <template slot="header">
           <span class="d-md-down-none">{{ $t('labels.admin.languageMenu.header') }}</span>
@@ -35,28 +41,40 @@
           </b-dropdown-item>
         </template>
       </HeaderDropdown>
+      -->
       <HeaderDropdown right class="px-3">
         <template slot="header">
-          <img :src="this.$app.user.avatar" class="img-avatar" :alt="$t('labels.admin.accountMenu.avatar')">
           <span class="d-md-down-none">
             {{ this.$app.user.name }}
           </span>
         </template>
         <template slot="dropdown">
-          <!--<b-dropdown-item :href="$app.route('user.account')">
-            <i class="fe fe-user"></i>&nbsp;&nbsp;{{ $t('labels.admin.accountMenu.header') }}
-          </b-dropdown-item>-->
-          <b-dropdown-item :href="$app.route('admin.logout')">
+          <b-dropdown-item v-on:click="logout">
             <i class="fe fe-log-out"></i>&nbsp;&nbsp;{{ $t('labels.admin.accountMenu.logout') }}
           </b-dropdown-item>
         </template>
       </HeaderDropdown>
     </b-navbar-nav>
   </Header>
+
+
+
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
-  name: 'AppHeader'
+  name: 'AppHeader',
+  methods: {
+      logout() {
+          axios.post(this.$app.route('logout')).then(response => {
+              this.$router.push(this.$app.route('login'))
+
+          }).catch(error => {
+              location.reload();
+          });
+      }
+  }
 }
 </script>

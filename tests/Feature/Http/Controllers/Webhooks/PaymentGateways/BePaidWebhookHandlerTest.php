@@ -14,7 +14,7 @@ class BePaidWebhookHandlerTest extends TestCase
     use LoadsRequestFixture;
 
     /** @test */
-    function it_creates_successful_transaction_from_webhook_request()
+    public function it_creates_successful_transaction_from_webhook_request()
     {
         $this->withoutExceptionHandling();
         $this->withoutMiddleware([VerifyBePaidSignature::class]);

@@ -12,11 +12,12 @@ $factory->define(Campaign::class, function (Faker\Generator $faker) {
         'name' => $faker->words(3, true),
         'description' => $faker->sentence,
         'picture_url' => $faker->imageUrl(640, 640, 'animals'),
-        'target_amount' => 10000,
+        'target_amount' => $faker->randomDigit * 1000, // in cents,
         'currency' => 'BYN',
+        'active_status' => 1,
         'started_at' => today(),
         'finished_at' => today()->addMonths(1),
-        'active_status' => 1,
+        'visual_settings' => [],
     ];
 });
 

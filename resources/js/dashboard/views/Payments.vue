@@ -2,12 +2,11 @@
   <div>
     <b-card>
       <template slot="header">
-        <h3 class="card-title">{{ $t('labels.admin.payments.title') }}</h3>
+        <h3 class="card-title">{{ $t('labels.admin.transactions.title') }}</h3>
       </template>
       <b-datatable ref="datasource"
                    @context-changed="onContextChanged"
-                   search-route="admin.payments.search"
-                   delete-route="admin.payments.destroy"
+                   search-route="dashboard.transactions.index"
                    :selected.sync="selected"
       >
         <b-table ref="datatable"
@@ -17,29 +16,28 @@
                  stacked="md"
                  no-local-sorting
                  :empty-text="$t('alerts.admin.common.search.noResult')"
-                 :empty-filtered-text="$t('alerts.admin.common.search.noMatchResult')"
+                 :empty-filtered-text="$t('alerts.dashboard.common.search.noMatchResult')"
                  :fields="fields"
                  :items="dataLoadProvider"
         >
 
           <template slot="campaign" slot-scope="row">
-            <router-link v-if="row.item.can_edit" :to="`/payments/${row.item.id}/edit`" v-text="row.value"></router-link>
-            <span v-else v-text="row.value"></span>
+            <router-link :to="`/transactions/${row.item.id}/edit`" v-text="row.item.campaign"></router-link>
           </template>
           <template slot="status" slot-scope="row">
-            <span v-text="row.value"></span>
+            <span v-text="row.item.status_message"></span>
           </template>
-          <template slot="backer" slot-scope="row">
-            <span v-text="row.value"></span>
+          <template slot="donator" slot-scope="row">
+            <span v-text="row.item.donator"></span>
           </template>
           <template slot="amount" slot-scope="row">
-            <span v-text="row.value"></span>
+            <span v-text="row.item.amount"></span>
           </template>
-          <template slot="recurrent" slot-scope="row">
-            <span v-text="row.value"></span>
+          <template slot="currency" slot-scope="row">
+            <span v-text="row.item.currency"></span>
           </template>
-          <template slot="datetime" slot-scope="row">
-            <span v-text="row.value"></span>
+          <template slot="created_at" slot-scope="row">
+            <span v-text="new Date(row.item.created_at * 1000).toLocaleDateString('ru-RU')"></span>
           </template>
         </b-table>
       </b-datatable>
@@ -58,33 +56,33 @@ export default {
       fields: [
         {
           key: 'campaign',
-          label: this.$t('labels.admin.payments.campaign'),
+          label: this.$t('labels.admin.transactions.campaign'),
           sortable: true
         },
         {
           key: 'status',
-          label: this.$t('labels.admin.payments.status'),
+          label: this.$t('labels.admin.transactions.status'),
           sortable: true
         },
         {
-          key: 'backer',
-          label: this.$t('labels.admin.payments.backer'),
+          key: 'donator',
+          label: this.$t('labels.admin.transactions.backer'),
           class: 'text-center',
           sortable: true
         },
         {
           key: 'amount',
-          label: this.$t('labels.admin.payments.amount'),
+          label: this.$t('labels.admin.transactions.amount'),
           class: 'text-center'
         },
         {
-          key: 'recurrent',
-          label: this.$t('labels.admin.payments.recurrent'),
+          key: 'currency',
+          label: this.$t('labels.admin.transactions.currency'),
           class: 'text-center'
         },
         {
-          key: 'datetime',
-          label: this.$t('labels.admin.payments.date'),
+          key: 'created_at',
+          label: this.$t('labels.admin.transactions.created_at'),
           class: 'text-center',
           sortable: true
         }
@@ -93,34 +91,12 @@ export default {
   },
   methods: {
     dataLoadProvider(ctx) {
-      //return this.$refs.datasource.loadData(ctx.sortBy, ctx.sortDesc)
-      const rec = [
-        {
-          id: '1',
-          campaign: 'First campaign',
-          status: 'success',
-          backer: 'xxxxxxxxx4567',
-          amount: '45',
-          recurrent: 'true',
-          datetime: '04.11.2018 18:43:05',
-          can_edit: true,
-          can_delete: true
-        }
-      ]
-      return rec
+
+      return this.$refs.datasource.loadData(ctx.sortBy, ctx.sortDesc)
     },
     onContextChanged() {
+
       return this.$refs.datatable.refresh()
-    },
-    onDelete(id) {
-      this.$refs.datasource.deleteRow({ payment: id })
-    },
-    onActiveToggle(id) {
-      // axios
-      //   .post(this.$app.route('admin.payments.active', { payment: id }))
-      //   .catch(error => {
-      //     this.$app.error(error)
-      //   })
     }
   }
 }

@@ -4,7 +4,7 @@
  */
 ?>
 
-@extends('widget.layouts.main')
+@extends('widget.layouts.ssr')
 
 @section('body')
     <h1>Not implemented yet, you can do it 👍</h1>

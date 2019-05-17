@@ -54,7 +54,7 @@ export default {
   data() {
     return {
       currentPage: 1,
-      perPage: 15,
+      perPage: 100,
       totalRows: 0,
       pageOptions: [5, 10, 15, 25, 50],
       searchQuery: null,
@@ -80,19 +80,15 @@ export default {
     },
     async loadData(sortBy, sortDesc) {
       try {
-        let { data } = await axios.get(this.$app.route(this.searchRoute), {
-          params: {
-            page: this.currentPage,
-            perPage: this.perPage,
-            column: sortBy,
-            direction: sortDesc ? 'desc' : 'asc',
-            search: this.searchQuery
-          }
-        })
 
-        this.totalRows = data.total
+        let { data } = await axios.get(this.$app.route(this.searchRoute))
+        console.log(data.data)
+
+
+
         return data.data
       } catch (e) {
+          console.log(e)
         this.$app.error(e)
         return []
       }

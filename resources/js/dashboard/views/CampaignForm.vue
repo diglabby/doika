@@ -13,9 +13,10 @@
                   <b-form-input
                     id="title"
                     name="shortcode"
+                    v-if="!isNew"
                     required
                     :placeholder="$t('labels.admin.campaigns.placeholder.shortcode')"
-                    v-model="model.shortcode"
+                    v-model="shortcode"
                     :state="state('Shortcode')"
                   ></b-form-input>
                 </b-col>
@@ -36,8 +37,9 @@
                     name="title"
                     required
                     :placeholder="$t('labels.admin.campaigns.placeholder.name')"
-                    v-model="model.title"
-                    :state="state('title')"
+                    v-model="model.name"
+                    :state="nameState"
+                    trim
                   ></b-form-input>
                 </b-form-group>
               </b-col>
@@ -49,43 +51,41 @@
               horizontal
               :label-cols="2"
             >
-              <p-richtexteditor
-                name="body"
-                v-model="model.body"
-              ></p-richtexteditor>
+              <vue-editor name="description" v-model="model.description"></vue-editor>
             </b-form-group>
 
             <b-form-group
               :label="$t('labels.admin.campaigns.image')"
-              label-for="featured_image"
+              label-for="picture_url"
               horizontal
               :label-cols="2"
-              :feedback="feedback('featured_image')"
+              :feedback="feedback('picture_url')"
             >
               <div class="media">
-                <img class="mr-2" v-if="model.thumbnail_image_path" :src="model.thumbnail_image_path" alt="">
+                <img class="mr-2" v-if="image.thumbnail_image_path" :src="image.thumbnail_image_path" alt="">
 
                 <div class="media-body">
                   <h6>{{ $t('buttons.admin.campaigns.uploadImage') }}</h6>
                   <b-row>
                     <b-col lg="9">
                       <b-form-file
-                        id="featured_image"
-                        name="featured_image"
+                        id="picture_url"
+                        name="picture_url"
                         ref="featuredImageInput"
-                        :placeholder="$t('labels.admin.campaigns.placeholder.image')"
-                        v-model="model.featured_image"
-                        :state="state('featured_image')"
+                        :placeholder="model.picture_url? model.picture_url: $t('labels.admin.campaigns.placeholder.image')"
+                        v-model="model.picture_url"
+                        :state="pictureState"
+                        required
                         v-b-tooltip.hover
                         :title="$t('labels.admin.campaigns.allowedImageTypes')"
                         @change="previewImage"
                         style="margin-top auto; margin-bottom: auto;"
                       ></b-form-file>
-                      <a href="#" class="d-block mt-1" v-if="model.has_featured_image || model.featured_image" @click.prevent="deleteFeaturedImage">{{ $t('buttons.campaign.deleteImage') }}</a>
+                      <a href="#" class="d-block mt-1" v-if="image.has_picture_url || model.picture_url" @click.prevent="deleteFeaturedImage">{{ $t('buttons.admin.campaigns.deleteImage') }}</a>
                     </b-col>
                     <b-col lg="3">
-                      <div class="image-preview" v-if="imageData.length > 0">
-                        <img class="preview" :src="imageData">
+                      <div class="image-preview">
+                        <b-img class="preview" :src="model.picture_url"></b-img>
                       </div>
                     </b-col>
                   </b-row>
@@ -104,20 +104,22 @@
               <b-collapse id="collapseOne" visible accordion="campaign-accordion" role="tabpanel">
                 <b-card-body>
                   <b-row>
-                    <b-col lg="6">
+                    <b-col lg="5">
                       <b-form-group
                         v-if="this.$app.user.can('publish campaigns')"
                         :label="$t('labels.admin.campaigns.startAt')"
                         label-for="start_at"
                         horizontal
-                        :label-cols="2"
+                        required
+                        :label-cols="4"
+                        :state="startAtState"
                       >
                         <b-input-group>
                           <p-datetimepicker
                             id="start_at"
                             name="start_at"
                             :config="config"
-                            v-model="model.startAt"
+                            v-model="model.started_at"
                           ></p-datetimepicker>
                           <b-input-group-append>
                             <b-input-group-text data-toggle>
@@ -130,20 +132,21 @@
                         </b-input-group>
                       </b-form-group>
                     </b-col>
-                    <b-col lg="6">
+                    <b-col  offset-lg="1" lg="5">
                       <b-form-group
-                        v-if="this.$app.user.can('publish campaigns')"
                         :label="$t('labels.admin.campaigns.finishAt')"
                         label-for="finishAt"
                         horizontal
-                        :label-cols="2"
+                        :label-cols="4"
                       >
                         <b-input-group>
                           <p-datetimepicker
                             id="finishAt"
                             name="finishAt"
+                            required
                             :config="config"
-                            v-model="model.finishedAt"
+                            v-model="model.finished_at"
+                            :state="finishAtState"
                           ></p-datetimepicker>
                           <b-input-group-append>
                             <b-input-group-text data-toggle>
@@ -158,15 +161,13 @@
                     </b-col>
                   </b-row>
 
-
-
                   <b-row>
-                    <b-col lg="4">
+                    <b-col lg="5">
                       <b-form-group
                         :label="$t('labels.admin.campaigns.amount')"
                         label-for="amount"
                         horizontal
-                        :label-cols="3"
+                        :label-cols="4"
                         :feedback="feedback('amount')"
                       >
                         <b-form-input
@@ -174,8 +175,8 @@
                           name="amount"
                           required
                           :placeholder="$t('labels.admin.campaigns.placeholder.amount')"
-                          v-model="model.amount"
-                          :state="state('amount')"
+                          v-model="model.target_amount"
+                          :state="amountState"
                         ></b-form-input>
                       </b-form-group>
                     </b-col>
@@ -188,30 +189,29 @@
                       <b-col lg="5" offset-lg="1">
                         <c-switch
                           name="pinned"
-                          v-model="model.active"
+                          v-model="model.active_status ? true : false"
                           :description="$t('labels.admin.campaigns.active')"
                         ></c-switch>
                       </b-col>
+                      <!--
                       <b-col lg="5" offset-lg="1">
                         <c-switch
                           name="recurrent"
-                          v-model="model.reccurent"
                           :description="$t('labels.admin.campaigns.recurrent')"
                         ></c-switch>
-                      </b-col>
+                      </b-col>-->
                     </b-row>
                     <b-row>
                       <b-col lg="5" offset-lg="1">
                         <c-switch
                           name="topBanner"
-                          v-model="model.topBanner"
                           :description="$t('labels.admin.campaigns.topBanner')"
                         ></c-switch>
                       </b-col>
                       <b-col lg="5" offset-lg="1">
                         <c-switch
                           name="progressBar"
-                          v-model="model.progressBar"
+                          v-model="model.visual_settings.progressBar"
                           :description="$t('labels.admin.campaigns.progressBar')"
                         ></c-switch>
                       </b-col>
@@ -219,7 +219,7 @@
                   </div>
                 </b-card-body>
               </b-collapse>
-              <b-card no-body class="mb-0">
+              <!--<b-card no-body class="mb-0">
                 <b-card-header header-tag="header" role="tab">
                   <h5 class="card-title">
                     <a href="#" v-b-toggle.recurrent>
@@ -233,7 +233,7 @@
                     </div>
                   </b-card-body>
                 </b-collapse>
-              </b-card>
+              </b-card>-->
             </b-card>
 
             <b-row slot="footer">
@@ -245,7 +245,7 @@
               <b-col md>
                 <input name="status" type="hidden" value="publish">
 
-                <b-button right split class="float-right" variant="success" @click="model.status = 'publish'; onSubmit()" :disabled="pending">
+                <b-button right split class="float-right" variant="success" @click="onSubmit()" :disabled="buttonState">
                   {{ $t('buttons.admin.common.save') }}
                 </b-button>
               </b-col>
@@ -260,10 +260,13 @@
 <script>
 import axios from 'axios'
 import form from '../mixins/form'
-
+import { VueEditor } from 'vue2-editor'
 export default {
   name: 'CampaignForm',
   mixins: [form],
+    components: {
+        VueEditor
+    },
   data() {
     return {
       config: {
@@ -274,56 +277,90 @@ export default {
           instance.close()
         }
       },
-
+        id: null,
       counter: 45,
       max: 100,
       modelName: 'campaign',
       resourceRoute: 'campaigns',
       listPath: '/campaigns',
-      tags: [],
       imageData: '',
       model: {
-        title: null,
-        summary: null,
-        body: null,
-        tags: [],
-        featured_image: null,
-        thumbnail_image_path: null,
-        status: null,
-        amount: null,
-        state: null,
-        status_label: null,
-        owner: {
-          name: null
-        },
-        startAt: null,
-        finishAt: null,
-        pinned: false,
-        promoted: false,
-        meta: {
-          title: null,
-          description: null
-        },
-        has_featured_image: false
+        name: "",
+        description: "",
+        picture_url: "",
+        active_status: 1,
+        target_amount: 0,
+        currency: 'BYN',
+        started_at: null,
+        finished_at: null,
+        visual_settings: {
+            buttons: [
+             5, 10, 25, 50,
+            ],
+            progressBar: true,
+            colors: null
+          }
+      },
+
+      image: {
+          thumbnail_image_path: null,
+          has_picture_url: false,
+      },
+      images: {
+          image: null,
+          imageData: null
       }
     }
   },
-  methods: {
-    async getTags(search) {
-      let { data } = await axios.get(this.$app.route('admin.tags.search'), {
-        params: {
-          q: search
-        }
-      })
-
-      this.tags = data.items
+    mounted: function(){
+      this.getColors()
+        console.log(this.model)
     },
+    computed: {
+        shortcode() {
+            return "<iframe width='750' height='550' frameborder='0' src='/doika/doika/widget/campaigns/"+ this.id +"'></iframe>"
+        },
+        nameState() {
+            return ((this.model.name.length > 2) && (this.model.name.length < 255)) ? true : false
+        },
+
+        pictureState() {
+            return (this.model.picture_url != "") ? true : false
+        },
+        buttonState() {
+            return !(this.nameState && this.pictureState && this.amountState)
+        },
+        startAtState() {
+            return this.model.started_at != null
+        },
+        finishAtState() {
+            return this.model.finished_at != null
+        },
+        amountState() {
+            return (this.model.target_amount > 0) ? true : false
+        }
+    },
+  methods: {
+      async getColors() {
+          let { data } = await axios.get(
+              this.$app.route('dashboard.settings.index'),
+              {
+                  params:
+                      {
+                          keys:
+                              ['widgetBackground', 'buttonBackground', 'progressBarColor', 'fontColor', 'termsOfUse']
+                      }
+              })
+          this.model.visual_settings.colors = data.settings
+          console.log(this.model)
+      },
     deleteFeaturedImage() {
       this.$refs.featuredImageInput.reset()
-      this.model.thumbnail_image_path = null
-      this.model.has_featured_image = false
+      this.image.thumbnail_image_path = null
+      this.image.has_picture_url = false
+        this.model.picture_url = ""
     },
-    previewImage: function(event) {
+    previewImage: async  function(event) {
       // Reference to the DOM input element
       var input = event.target
       // Ensure that you have a file before attempting to read it
@@ -334,12 +371,28 @@ export default {
         reader.onload = e => {
           // Note: arrow function used here, so that "this.imageData" refers to the imageData of Vue component
           // Read image as base64 and set to imageData
-          this.imageData = e.target.result
+          this.images.imageData = e.target.result
+
+            this.imageData = e.target.result
+
         }
         // Start the reader job - read file as a data url (base64 format)
         reader.readAsDataURL(input.files[0])
+
+          this.images.image = input.files[0]
+
       }
-    }
+
+        let formData = new FormData()
+        formData.append('image', input.files[0], input.files[0].name)
+
+        let action = this.$app.route('dashboard.images.store')
+        let { data } = await axios.post(action, formData, {headers: {
+            'Content-Type': 'multipart/form-data',
+        }})
+        this.model.picture_url = data;
+    },
+
   }
 }
 </script>

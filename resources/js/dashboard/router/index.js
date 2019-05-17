@@ -84,31 +84,31 @@ export function createRouter(base, i18n) {
             ]
           },
           {
-            path: 'payments',
-            name: 'payments',
+            path: 'transactions',
+            name: 'transactions',
             component: Payments,
             meta: {
-              label: i18n.t('labels.admin.payments.title')
+              label: i18n.t('labels.admin.transactions.title')
             }
           },
           {
-            path: 'payments',
+            path: 'transactions',
             component: {
               render(c) {
                 return c('router-view')
               }
             },
             meta: {
-              label: i18n.t('labels.admin.payments.title')
+              label: i18n.t('labels.admin.transactions.title')
             },
             children: [
               {
                 path: ':id/edit',
-                name: 'payments_edit',
+                name: 'transactions_edit',
                 component: PaymentForm,
                 props: true,
                 meta: {
-                  label: i18n.t('labels.admin.payments.show.title')
+                  label: i18n.t('labels.admin.transactions.show.title')
                 }
               }
             ]
@@ -131,21 +131,21 @@ export function createRouter(base, i18n) {
             path: 'layout',
             component: Layout,
             meta: {
-              label: 'Layout'
+              label: i18n.t('labels.admin.layout.title')
             }
           },
           {
             path: 'paymentSystems',
             component: PaymentSystems,
             meta: {
-              label: 'Payment systems'
+              label: i18n.t('labels.admin.paymentSystems.title')
             }
           },
           {
             path: 'notifications',
             component: Notifications,
             meta: {
-              label: 'Notifications'
+              label: i18n.t('labels.admin.notifications.title')
             }
           },
           {

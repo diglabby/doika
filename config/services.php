@@ -35,18 +35,12 @@ return [
     ],
 
     'stripe' => [
-        'model' => App\Admin::class,
+        'model' => \Diglabby\Doika\Models\Admin::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
         'webhook' => [
             'secret' => env('STRIPE_WEBHOOK_SECRET'),
             'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
         ],
-    ],
-
-    'bepaid' => [
-        'marketId' => env('BEPAID_MARKET_ID'),
-        'marketKey' => env('BEPAID_MARKET_KEY'),
-        'live' => env('BEPAID_MARKET_LIVE_MODE', false),
     ],
 ];

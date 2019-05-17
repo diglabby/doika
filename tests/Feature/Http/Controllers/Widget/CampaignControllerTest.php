@@ -2,18 +2,31 @@
 
 namespace Tests\Feature\Http\Controllers\Widget;
 
+use Diglabby\Doika\Models\Campaign;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class CampaignControllerTest extends TestCase
 {
-    /** @test */
-    function it_displays_campaign()
-    {
-        $this->withoutExceptionHandling();
+    use RefreshDatabase;
 
-        $response = $this->get(route('widget.campaign.show', [1]));
+    /** @test */
+    public function it_displays_campaign()
+    {
+        $campaign = factory(Campaign::class)->create();
+
+        $response = $this->get(route('widget.campaigns.show', [$campaign->id]));
 
         $response->assertOk();
-        $response->assertViewIs('widget.pages.campaigns.show');
+        $response->assertJsonStructure([
+            'data' => [
+                'id',
+                'name',
+                'description',
+                'picture_url',
+                'visual_settings',
+                'amount_collected',
+            ],
+        ]);
     }
 }

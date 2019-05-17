@@ -7,8 +7,8 @@ export default (app, i18n, newPostsCount, pendingPostsCount) => {
       access: true
     },
     {
-      name: i18n.t('labels.admin.payments.title'),
-      url: '/payments',
+      name: i18n.t('labels.admin.transactions.title'),
+      url: '/transactions',
       icon: 'fe fe-dollar-sign',
       access: true
     },
@@ -22,7 +22,7 @@ export default (app, i18n, newPostsCount, pendingPostsCount) => {
       access: true
     },
     {
-      name: 'Payment systems',
+      name:  i18n.t('labels.admin.paymentSystems.title'),
       url: '/paymentSystems',
       icon: 'fe fe-settings',
       access: true
@@ -32,7 +32,7 @@ export default (app, i18n, newPostsCount, pendingPostsCount) => {
       access: true
     },
     {
-      name: 'Layout',
+      name: i18n.t('labels.admin.layout.title'),
       url: '/layout',
       icon: 'fe fe-settings',
       access: true
@@ -42,7 +42,7 @@ export default (app, i18n, newPostsCount, pendingPostsCount) => {
       access: true
     },
     {
-      name: 'Notificatons',
+      name: i18n.t('labels.admin.notifications.title'),
       url: '/notifications',
       icon: 'fe fe-settings',
       access: true

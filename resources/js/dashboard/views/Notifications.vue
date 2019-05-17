@@ -18,17 +18,17 @@
                     <b-col md>
                       <b-form-group
                         :label="$t('labels.admin.settings.notifications.address')"
-                        label-for="title"
+                        label-for="notificationsAddress"
                         horizontal
                         :label-cols="4"
                         :feedback="feedback('title')"
                       >
                         <b-form-input
-                          id="title"
+                          id="notificationsAddress"
                           name="title"
                           required
                           :placeholder="$t('labels.admin.settings.notifications.placeholder.address')"
-                          v-model="model.title"
+                          v-model="model.notificationsAddress"
                           :state="state('title')"
                         ></b-form-input>
                       </b-form-group>
@@ -36,17 +36,17 @@
                     <b-col md>
                       <b-form-group
                         :label="$t('labels.admin.settings.notifications.port')"
-                        label-for="title"
+                        label-for="notificationsPort"
                         horizontal
                         :label-cols="4"
                         :feedback="feedback('title')"
                       >
                         <b-form-input
-                          id="title"
+                          id="notificationsPort"
                           name="title"
                           required
                           :placeholder="$t('labels.admin.settings.notifications.placeholder.port')"
-                          v-model="model.title"
+                          v-model="model.notificationsPort"
                           :state="state('title')"
                         ></b-form-input>
                       </b-form-group>
@@ -56,17 +56,17 @@
                     <b-col md>
                       <b-form-group
                         :label="$t('labels.admin.settings.notifications.user')"
-                        label-for="title"
+                        label-for="notificationsUser"
                         horizontal
                         :label-cols="4"
                         :feedback="feedback('title')"
                       >
                         <b-form-input
-                          id="title"
+                          id="notificationsUser"
                           name="title"
                           required
                           :placeholder="$t('labels.admin.settings.notifications.placeholder.user')"
-                          v-model="model.title"
+                          v-model="model.notificationsUser"
                           :state="state('title')"
                         ></b-form-input>
                       </b-form-group>
@@ -74,17 +74,17 @@
                     <b-col md>
                       <b-form-group
                         :label="$t('labels.admin.settings.notifications.password')"
-                        label-for="title"
+                        label-for="notificationsPassword"
                         horizontal
                         :label-cols="4"
                         :feedback="feedback('title')"
                       >
                         <b-form-input
-                          id="title"
+                          id="notificationsPassword"
                           name="title"
                           required
                           :placeholder="$t('labels.admin.settings.notifications.placeholder.password')"
-                          v-model="model.title"
+                          v-model="model.notificationsPassword"
                           :state="state('title')"
                         ></b-form-input>
                       </b-form-group>
@@ -94,17 +94,17 @@
                     <b-col lg="6">
                       <b-form-group
                         :label="$t('labels.admin.settings.notifications.email')"
-                        label-for="title"
+                        label-for="notificationsEmail"
                         horizontal
                         :label-cols="4"
                         :feedback="feedback('title')"
                       >
                         <b-form-input
-                          id="title"
+                          id="notificationsEmail"
                           name="title"
                           required
                           :placeholder="$t('labels.admin.settings.notifications.placeholder.email')"
-                          v-model="model.title"
+                          v-model="model.notificationsEmail"
                           :state="state('title')"
                         ></b-form-input>
                       </b-form-group>
@@ -116,10 +116,10 @@
                     horizontal
                     :label-cols="2"
                   >
-                    <p-richtexteditor
+                    <vue-editor
                       name="body"
                       v-model="model.body"
-                    ></p-richtexteditor>
+                    ></vue-editor>
                   </b-form-group>
                   <b-form-group
                     :label="$t('labels.admin.settings.notifications.singleTemplate')"
@@ -127,10 +127,10 @@
                     horizontal
                     :label-cols="2"
                   >
-                    <p-richtexteditor
+                    <vue-editor
                       name="body"
                       v-model="model.body"
-                    ></p-richtexteditor>
+                    ></vue-editor>
                   </b-form-group>
                 </b-card-body>
               </b-collapse>
@@ -176,6 +176,11 @@ export default {
       tags: [],
       model: {
         title: null,
+        notificationsAddress: null,
+        notificationsPort: null,
+        notificationsUser: null,
+        notificationsPassword: null,
+        notificationsEmail: null,
         summary: null,
         body: null,
         tags: [],

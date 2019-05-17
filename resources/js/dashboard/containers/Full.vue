@@ -1,12 +1,16 @@
+<style>
+  .sidebar .nav-link{
+    padding: 0.5rem 1rem;
+  }
+</style>
 <template>
   <div class="app">
     <AppHeader></AppHeader>
     <div class="app-body">
       <Sidebar fixed>
-        <AppSearch></AppSearch>
         <SidebarNav :nav-items="nav">
         </SidebarNav>
-        <b-button class="container-fluid btn btn-success" style="margin-top:auto !important; margin-bottom:20px; width: 80%; height: 50px;">
+        <b-button class="container-fluid btn btn-success" style="margin-top:auto !important; margin-bottom:50px; width: 80%;" href="https://doika.falanster.by">
           {{ $t('buttons.admin.support') }}
         </b-button>
         <SidebarFooter>
@@ -31,14 +35,12 @@ import nav from '../_nav'
 
 import AppFooter from '../components/Footer'
 import AppHeader from '../components/Header'
-import AppSearch from '../components/Search'
 
 export default {
   name: 'Full',
   components: {
     AppHeader,
     AppFooter,
-    AppSearch
   },
   data() {
     return {

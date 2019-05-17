@@ -20,18 +20,18 @@
                         <b-row>
                           <b-col md>
                             <b-form-group
-                              :label="$t('labels.admin.settings.payments.idMarket')"
-                              label-for="title"
+                              :label="$t('labels.admin.settings.payments.bePaidIdMarket')"
+                              label-for="bePaidIdMarket"
                               horizontal
                               :label-cols="4"
                               :feedback="feedback('title')"
                             >
                               <b-form-input
-                                id="title"
+                                id="bePaidIdMarket"
                                 name="title"
                                 required
-                                :placeholder="$t('labels.admin.settings.payments.placeholder.idMarket')"
-                                v-model="model.title"
+                                :placeholder="$t('labels.admin.settings.payments.placeholder.bePaidIdMarket')"
+                                v-model="model.settings.bePaidIdMarket"
                                 :state="state('title')"
                               ></b-form-input>
                             </b-form-group>
@@ -39,18 +39,18 @@
 
                           <b-col md>
                             <b-form-group
-                              :label="$t('labels.admin.settings.payments.keyMarket')"
-                              label-for="title"
+                              :label="$t('labels.admin.settings.payments.bePaidKeyMarket')"
+                              label-for="bePaidKeyMarket"
                               horizontal
                               :label-cols="4"
                               :feedback="feedback('title')"
                             >
                               <b-form-input
-                                id="title"
+                                id="bePaidKeyMarket"
                                 name="title"
                                 required
-                                :placeholder="$t('labels.admin.settings.payments.placeholder.keyMarket')"
-                                v-model="model.title"
+                                :placeholder="$t('labels.admin.settings.payments.placeholder.bePaidKeyMarket')"
+                                v-model="model.settings.bePaidKeyMarket"
                                 :state="state('title')"
                               ></b-form-input>
                             </b-form-group>
@@ -61,17 +61,17 @@
                           <b-col md>
                             <b-form-group
                               :label="$t('labels.admin.settings.payments.minPayment')"
-                              label-for="title"
+                              label-for="bePaidMinPayment"
                               horizontal
                               :label-cols="4"
                               :feedback="feedback('title')"
                             >
                               <b-form-input
-                                id="title"
+                                id="bePaidMinPayment"
                                 name="title"
                                 required
                                 :placeholder="$t('labels.admin.settings.payments.placeholder.minPayment')"
-                                v-model="model.title"
+                                v-model="model.settings.minPayment"
                                 :state="state('title')"
                               ></b-form-input>
                             </b-form-group>
@@ -80,17 +80,17 @@
                           <b-col md>
                             <b-form-group
                               :label="$t('labels.admin.settings.payments.maxPayment')"
-                              label-for="title"
+                              label-for="bePaidMaxPayment"
                               horizontal
                               :label-cols="4"
                               :feedback="feedback('title')"
                             >
                               <b-form-input
-                                id="title"
-                                name="title"
+                                id="bePaidMaxPayment"
+                                name="max"
                                 required
                                 :placeholder="$t('labels.admin.settings.payments.placeholder.maxPayment')"
-                                v-model="model.title"
+                                v-model="model.settings.maxPayment"
                                 :state="state('title')"
                               ></b-form-input>
                             </b-form-group>
@@ -101,7 +101,7 @@
                             <b-col lg="5" offset-lg="2">
                               <c-switch
                                 name="test"
-                                v-model="model.test"
+                                v-model="model.settings.disableLivePayments"
                                 :description="$t('labels.admin.settings.payments.test')"
                               ></c-switch>
                             </b-col>
@@ -113,30 +113,27 @@
                           horizontal
                           :label-cols="2"
                         >
-                          <p-richtexteditor
-                            name="body"
-                            v-model="model.body"
-                          ></p-richtexteditor>
+                          <vue-editor name="termsOfUse" v-model="model.settings.termsOfUse"></vue-editor>
                         </b-form-group>
                       </b-card-body>
                     </b-tab>
-                    <b-tab title = "Artpay">
+                   <!-- <b-tab title = "Artpay">
                       <b-card-body>
                         <b-row>
                           <b-col md>
                             <b-form-group
                               :label="$t('labels.admin.settings.payments.artPayIdMarket')"
-                              label-for="title"
+                              label-for="artPayIdMarket"
                               horizontal
                               :label-cols="4"
                               :feedback="feedback('title')"
                             >
                               <b-form-input
-                                id="title"
+                                id="artPayIdMarket"
                                 name="title"
                                 required
                                 :placeholder="$t('labels.admin.settings.payments.placeholder.artPayIdMarket')"
-                                v-model="model.title"
+                                v-model="model.artPayIdMarket"
                                 :state="state('title')"
                               ></b-form-input>
                             </b-form-group>
@@ -145,17 +142,17 @@
                           <b-col md>
                             <b-form-group
                               :label="$t('labels.admin.settings.payments.artPayKeyMarket')"
-                              label-for="title"
+                              label-for="artPayKeyMarket"
                               horizontal
                               :label-cols="4"
                               :feedback="feedback('title')"
                             >
                               <b-form-input
-                                id="title"
+                                id="artPayKeyMarket"
                                 name="title"
                                 required
                                 :placeholder="$t('labels.admin.settings.payments.placeholder.artPayKeyMarket')"
-                                v-model="model.title"
+                                v-model="model.artPayKeyMarket"
                                 :state="state('title')"
                               ></b-form-input>
                             </b-form-group>
@@ -166,17 +163,17 @@
                           <b-col md>
                             <b-form-group
                               :label="$t('labels.admin.settings.payments.minPayment')"
-                              label-for="title"
+                              label-for="artPayMinPayment"
                               horizontal
                               :label-cols="4"
                               :feedback="feedback('title')"
                             >
                               <b-form-input
-                                id="title"
+                                id="artPayMinPayment"
                                 name="title"
                                 required
                                 :placeholder="$t('labels.admin.settings.payments.placeholder.minPayment')"
-                                v-model="model.title"
+                                v-model="model.artPayMinPayment"
                                 :state="state('title')"
                               ></b-form-input>
                             </b-form-group>
@@ -185,17 +182,17 @@
                           <b-col md>
                             <b-form-group
                               :label="$t('labels.admin.settings.payments.maxPayment')"
-                              label-for="title"
+                              label-for="artPayMaxPayment"
                               horizontal
                               :label-cols="4"
                               :feedback="feedback('title')"
                             >
                               <b-form-input
-                                id="title"
+                                id="artPayMaxPayment"
                                 name="title"
                                 required
                                 :placeholder="$t('labels.admin.settings.payments.placeholder.maxPayment')"
-                                v-model="model.title"
+                                v-model="model.artPayMaxPayment"
                                 :state="state('title')"
                               ></b-form-input>
                             </b-form-group>
@@ -218,13 +215,10 @@
                           horizontal
                           :label-cols="2"
                         >
-                          <p-richtexteditor
-                            name="body"
-                            v-model="model.body"
-                          ></p-richtexteditor>
+
                         </b-form-group>
                       </b-card-body>
-                    </b-tab>
+                    </b-tab>-->
                   </b-tabs>
                 </div>
 
@@ -236,7 +230,7 @@
               <b-col md>
                 <input name="status" type="hidden" value="publish">
 
-                <b-button right split class="float-right" variant="success" @click="model.status = 'publish'; onSubmit()" :disabled="pending">
+                <b-button right split class="float-right" variant="success" @click="onSubmit()" :disabled="pending">
                   {{ $t('buttons.admin.common.apply') }}
                 </b-button>
               </b-col>
@@ -253,62 +247,46 @@ import axios from 'axios'
 import form from '../mixins/form'
 
 export default {
+
   name: 'PaymentSystems',
   mixins: [form],
-  data() {
-    return {
-      config: {
-        wrap: true,
-        time_24hr: true,
-        enableTime: true
-      },
 
-      counter: 45,
-      max: 100,
-      modelName: 'campaign',
-      resourceRoute: 'campaigns',
-      listPath: '/campaigns',
-      tags: [],
-      model: {
-        title: null,
-        summary: null,
-        body: null,
-        tags: [],
-        featured_image: null,
-        thumbnail_image_path: null,
-        status: null,
-        state: null,
-        status_label: null,
-        owner: {
-          name: null
-        },
-        startAt: null,
-        finishAt: null,
-        pinned: false,
-        promoted: false,
-        meta: {
-          title: null,
-          description: null
-        },
-        has_featured_image: false
-      }
-    }
-  },
-  methods: {
-    async getTags(search) {
-      let { data } = await axios.get(this.$app.route('admin.tags.search'), {
-        params: {
-          q: search
+    data() {
+      return {
+
+        modelName: 'settings',
+        resourceRoute: 'settings',
+        listPath: '/paymentSystems',
+
+        model: {
+            settings: {
+                bePaidIdMarket: null,
+                bePaidKeyMarket: null,
+                termsOfUse: null,
+                disableLivePayments: null,
+                minPayment: null,
+                maxPayment: null
+            }
         }
-      })
-
-      this.tags = data.items
+      }
     },
-    deleteFeaturedImage() {
-      this.$refs.featuredImageInput.reset()
-      this.model.thumbnail_image_path = null
-      this.model.has_featured_image = false
+    mounted: function() {
+        this.getCredentials()
+    },
+    methods: {
+        async getCredentials() {
+            let { data } = await axios.get(
+                this.$app.route('dashboard.settings.index'),
+                {
+                    params:
+                        {
+                            keys:
+                                ['bePaidIdMarket', 'bePaidKeyMarket', 'termsOfUse', 'disableLivePayments']
+                        }
+                })
+
+            this.model.settings = data.settings
+        }
     }
-  }
 }
 </script>

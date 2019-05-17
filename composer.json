@@ -14,15 +14,17 @@
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "ext-zip": "*",
+        "anlutro/l4-settings": "^0.8.1",
+        "carbondate/carbon": "^1.33",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.3",
-        "hieu-le/active": "^3.5",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.7",
         "martinlindhe/laravel-vue-i18n-generator": "^0.1.22",
-        "moneyphp/money": "^3.2"
+        "moneyphp/money": "^3.2",
+        "spatie/laravel-query-builder": "^1.17",
+        "tightenco/ziggy": "^0.6.9"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
@@ -32,7 +34,7 @@
         "fzaninotto/faker": "^1.4",
         "laravel/dusk": "^4.0",
         "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^2.0",
+        "nunomaduro/collision": "^3.0",
         "phpunit/phpunit": "^7.5"
     },
     "config": {
@@ -47,15 +49,11 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "laravel/",
-            "Diglabby\\Doika\\": "src/"
+            "Diglabby\\Doika\\": "app/"
         },
         "classmap": [
             "database/seeds",
             "database/factories"
-        ],
-        "files": [
-            "laravel/helpers.php"
         ]
     },
     "autoload-dev": {

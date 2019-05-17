@@ -22,7 +22,7 @@ export function createRouter(base, i18n) {
     scrollBehavior: () => ({ y: 0 }),
     routes: [
       {
-        path: '/campaign/',
+        path: '/campaigns/',
         name: 'campaign',
         component: Full,
         meta: {
@@ -41,6 +41,7 @@ export function createRouter(base, i18n) {
             path: ':id/donate',
             name: 'donate',
             component: DonateWindow,
+            props:true,
             meta: {
               label: i18n.t('labels.admin.campaigns.title')
             }
@@ -76,8 +77,17 @@ export function createRouter(base, i18n) {
             meta: {
               label: i18n.t('labels.admin.campaigns.title')
             }
+          },
+          {
+              path: ':id/donation-result/:status',
+              name: 'status',
+              component: StatusWindow,
+              props: true,
+              meta: {
+                  label: i18n.t('labels.admin.campaigns.title')
+              }
           }
-        ]
+      ]
       }
     ]
   })

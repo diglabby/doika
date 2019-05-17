@@ -73,7 +73,7 @@
         <div class="modal-dialog" role="document">
             <form id="delete-log-form" action="{{ route('log-viewer::logs.delete') }}" method="POST">
                 <input type="hidden" name="_method" value="DELETE">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                @csrf
                 <input type="hidden" name="date" value="">
                 <div class="modal-content">
                     <div class="modal-header">

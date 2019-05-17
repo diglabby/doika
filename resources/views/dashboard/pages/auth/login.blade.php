@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('dashboard.layouts.ssr')
 
 @section('body')
     <div class="app flex-row align-items-center">
