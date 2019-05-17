@@ -1,0 +1,48 @@
+{
+  "id": "sbs_648d04a2c5108b04",
+  "state": "failed",
+  "tracking_id": null,
+  "device_id": null,
+  "created_at": "2019-05-17T20:58:03.641Z",
+  "renew_at": null,
+  "active_to": null,
+  "card": {
+    "token": "9574afe8-722f-4cd9-af35-5536043f9d83"
+  },
+  "customer": {
+    "id": "cst_82233b86417ae2b7"
+  },
+  "paid_billing_cycles": 0,
+  "number_failed_payment_attempts": 0,
+  "additional_data": {
+    "campaign_id": 1,
+    "donator_id": 84
+  },
+  "plan": {
+    "id": "pln_abc1a06e564855d2",
+    "title": "5BYN для Дайка!",
+    "currency": "BYN",
+    "language": null,
+    "infinite": false,
+    "billing_cycles": 1,
+    "trial": {
+      "amount": null,
+      "interval": null,
+      "interval_unit": null
+    },
+    "plan": {
+      "amount": 500,
+      "interval": 1,
+      "interval_unit": "month"
+    },
+    "number_payment_attempts": 3,
+    "test": true
+  },
+  "last_transaction": {
+    "uid": "13415143-07971449d8",
+    "status": "failed",
+    "message": "Payment was declined",
+    "created_at": "2019-05-17T20:58:26.403Z"
+  },
+  "event": "failed.subscription"
+}

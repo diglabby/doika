@@ -40,7 +40,7 @@ final class CreateSubscriptionWithTransaction
         $transaction->save();
 
         // @todo dispatch an Event instead and send from a Listener
-        Mail::to($subscription->donator)
-            ->send(new SubscriptionSuccessfullyCharged($subscription, $transaction));
+//        Mail::to($subscription->donator)
+//            ->send(new SubscriptionSuccessfullyCharged($subscription, $transaction));
     }
 }

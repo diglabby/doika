@@ -21,11 +21,10 @@ class BePaidPaymentWebhookHandlerTest extends TestCase
         /** @var Campaign $campaign */
         $campaign = factory(Campaign::class)->create();
 
-        $requestData = $this->getRequestData('BePaidPaymentWebhookHandlerTest.donated.json');
+        $requestData = $this->getRequestData('donated.json');
         $response = $this->postJson(
             route('webhooks.bepaid.donated', $campaign->id),
-            $requestData['input'],
-            $requestData['headers']
+            $requestData['input']
         );
 
         $response->assertOk();

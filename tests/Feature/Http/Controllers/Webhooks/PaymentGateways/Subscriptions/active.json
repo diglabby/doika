@@ -1,0 +1,35 @@
+{
+  "card": {
+    "token": "2ed0b389f63c9198160bd7b8e98f6b42eb4c56e3b659a8070248b28cd3376d9d"
+  },
+  "created_at": "2015-06-18T12:02:42.521Z",
+  "customer": {
+    "id": "cst_ae00d2582d001228"
+  },
+  "device_id": "any device_id",
+  "id": "sbs_f140af88af4aaf88",
+  "last_transaction": {
+    "created_at": "2015-01-12T09:04:59.000Z",
+    "message": "Successfully processed",
+    "status": "successful",
+    "uid": "4107-310b0da80b"
+  },
+  "plan": {
+    "currency": "BYN",
+    "id": "pln_0b4ba2f1ab0c1988",
+    "plan": {
+      "amount": 100,
+      "interval": 1,
+      "interval_unit": "month"
+    },
+    "title": "Title 1",
+    "trial": {
+      "amount": 10,
+      "interval": 40,
+      "interval_unit": "hour"
+    }
+  },
+  "renew_at": "2015-06-24T12:02:42.499Z",
+  "state": "active",
+  "tracking_id": "any tracking_id"
+}
