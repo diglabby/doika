@@ -47,6 +47,10 @@ export default {
                 this.image = "/doika/public/images/sadsmile.png"
                 this.message = 'Время обработки транзакции истекло'
                 break;
+            case 'subscribed':  // if (x === 'value2')
+                this.image = "/doika/public/images/smile.png"
+                this.message = 'Вы паспяхова падпісаны!'
+                break;
             default:
                 this.image = "/doika/public/images/sadsmile.png"
                 this.message = 'Немагчыма правесці аплату'
