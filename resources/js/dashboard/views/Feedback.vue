@@ -12,32 +12,31 @@
 </template>
 
 <script>
-import axios from 'axios'
-import ContactForm from './ContactForm'
-
-export default {
-  name: 'Feedback',
-  components: {
-    ContactForm
-  },
-  props: {
-    id: {
-      type: String,
-      default: null
+    import axios from 'axios'
+    import ContactForm from './ContactForm'
+    export default {
+        name: 'Feedback',
+        components: {
+            ContactForm
+        },
+        props: {
+            id: {
+                type: String,
+                default: null
+            }
+        },
+        data() {
+            return {
+                submission: null
+            }
+        },
+        async created() {
+            // let { data } = await axios.get(
+            //   this.$app.route('admin.feedback.show', {
+            //     form_submission: this.id
+            //   })
+            // )
+            // this.submission = data
+        }
     }
-  },
-  data() {
-    return {
-      submission: null
-    }
-  },
-  async created() {
-    // let { data } = await axios.get(
-    //   this.$app.route('admin.feedback.show', {
-    //     form_submission: this.id
-    //   })
-    // )
-    // this.submission = data
-  }
-}
 </script>
