@@ -12,14 +12,14 @@ final class SubscriptionController extends Controller
 {
     public function delete(Request $request)
     {
-        if (! $request->has('secret')) {
-            throw new NotFoundHttpException('Missing unsubscribe secret');
-        }
-
         /** @var Subscription $subscription */
         $subscription = Subscription::query()
             ->where('unsubscribe_token', $request->get('secret'))
-            ->firstOrFail();
+            ->first();
+
+        if ($subscription === null) {
+            throw new NotFoundHttpException('Missing or invalid unsubscribe secret');
+        }
 
         $subscription->cancel();
 
