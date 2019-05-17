@@ -30,9 +30,9 @@ final class BePaidSubscriptionWebhookHandler extends Controller
 
     public function __invoke(Request $request): Response
     {
-        \Log::debug('bePaid donated webhook', ['headers' => $request->headers->all(), 'input' => $request->all()]);
-
         $event = $request->json('event') ?: $request->json('state');
+
+        \Log::debug("bePaid webhook event $event", ['headers' => $request->headers->all(), 'input' => $request->all()]);
 
         $handlers = $this->listen[$event] ?? [];
 
