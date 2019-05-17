@@ -12,7 +12,7 @@ class IntendToCharge extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.recurringPayments.intendToCharge',[
+        return $this->view('emails.recurringPayments.intendToCharge', [
             'message' => 'We are going to change your card',
         ]);
     }
