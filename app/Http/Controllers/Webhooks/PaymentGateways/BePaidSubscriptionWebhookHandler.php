@@ -5,6 +5,7 @@ namespace Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways;
 use Diglabby\Doika\Http\Controllers\Controller;
 use Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers\CreateFailedTransaction;
 use Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers\CreateSubscriptionWithTransaction;
+use Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers\CreateTransactionForRenewedSubscription;
 use Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers\DeleteCanceledSubscription;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -23,7 +24,7 @@ final class BePaidSubscriptionWebhookHandler extends Controller
             CreateFailedTransaction::class,
         ],
         'renewed.subscription' => [
-            // @todo implement it: create a Transaction and send an email
+            CreateTransactionForRenewedSubscription::class,
         ],
         'canceled.subscription' => [
             DeleteCanceledSubscription::class,
