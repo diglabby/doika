@@ -112,24 +112,24 @@
                   </b-row>
                   <b-form-group
                     :label="$t('labels.admin.settings.notifications.reccurentTemplate')"
-                    label-for="body"
+                    label-for="reccurentTemplate"
                     horizontal
                     :label-cols="2"
                   >
                     <vue-editor
-                      name="body"
-                      v-model="model.body"
+                      name="reccurentTemplate"
+                      v-model="model.reccurentTemplate"
                     ></vue-editor>
                   </b-form-group>
                   <b-form-group
                     :label="$t('labels.admin.settings.notifications.singleTemplate')"
-                    label-for="body"
+                    label-for="singleTemplate"
                     horizontal
                     :label-cols="2"
                   >
                     <vue-editor
-                      name="body"
-                      v-model="model.body"
+                      name="singleTemplate"
+                      v-model="model.singleTemplate"
                     ></vue-editor>
                   </b-form-group>
                 </b-card-body>
@@ -183,6 +183,8 @@ export default {
         notificationsEmail: null,
         summary: null,
         body: null,
+        reccurentTemplate:null,
+        singleTemplate:null,
         tags: [],
         featured_image: null,
         thumbnail_image_path: null,
