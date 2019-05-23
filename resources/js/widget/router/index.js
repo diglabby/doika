@@ -58,6 +58,7 @@ export function createRouter(base, i18n) {
             path: ':id/recurrent',
             name: 'recurrent',
             component: RecurrentWindow,
+            props:true,
             meta: {
               label: i18n.t('labels.admin.campaigns.title')
             }
@@ -66,6 +67,7 @@ export function createRouter(base, i18n) {
             path: ':id/recurrent/donate',
             name: 'recurrentDonate',
             component: RecurrentDonateWindow,
+            props:true,
             meta: {
               label: i18n.t('labels.admin.campaigns.title')
             }

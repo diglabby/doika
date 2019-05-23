@@ -1,0 +1,48 @@
+{
+  "id": "sbs_78385ae0bfed80b3",
+  "state": "active",
+  "tracking_id": null,
+  "device_id": null,
+  "created_at": "2019-05-17T23:36:48.041Z",
+  "renew_at": "2019-05-18T05:37:09.847Z",
+  "active_to": "2019-05-18T05:37:09.847Z",
+  "card": {
+    "token": "876c849b-7299-4d24-b0cc-47b740e16bb9"
+  },
+  "customer": {
+    "id": "cst_a3d29e0df01183aa"
+  },
+  "paid_billing_cycles": 6,
+  "number_failed_payment_attempts": 0,
+  "additional_data": {
+    "campaign_id": 1,
+    "donator_id": 88
+  },
+  "plan": {
+    "id": "pln_695cd9adaad353e2",
+    "title": "50BYN для Дайка!",
+    "currency": "BYN",
+    "language": null,
+    "infinite": false,
+    "billing_cycles": 10,
+    "trial": {
+      "amount": null,
+      "interval": null,
+      "interval_unit": null
+    },
+    "plan": {
+      "amount": 5000,
+      "interval": 1,
+      "interval_unit": "hour"
+    },
+    "number_payment_attempts": 3,
+    "test": true
+  },
+  "last_transaction": {
+    "uid": "13419828-fa480d13aa",
+    "status": "successful",
+    "message": "Successfully processed",
+    "created_at": "2019-05-18T04:45:05.381Z"
+  },
+  "event": "renewed.subscription"
+}

@@ -5,7 +5,7 @@
  * Applied middleware groups: web
  */
 
-Route::get('/unsubscribe', 'Widget\SubscriptionController@delete')
+Route::get('/subscriptions/cancel', 'Widget\SubscriptionController@delete')
     ->name('widget.subscriptions.delete');
 
 Route::get('/widget/{any}', 'Widget\SpaLayoutController@show')->where('any', '[\/\w\.-]*')

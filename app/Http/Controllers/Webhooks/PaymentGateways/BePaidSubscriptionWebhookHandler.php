@@ -3,8 +3,9 @@
 namespace Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways;
 
 use Diglabby\Doika\Http\Controllers\Controller;
-use Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers\CreateSubscription;
-use Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers\CreateTransactionForProcessedSubscription;
+use Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers\CreateFailedTransaction;
+use Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers\CreateSubscriptionWithTransaction;
+use Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers\CreateTransactionForRenewedSubscription;
 use Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers\DeleteCanceledSubscription;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -17,22 +18,24 @@ final class BePaidSubscriptionWebhookHandler extends Controller
     /** @var array The event listener mappings */
     private $listen = [
         'created.subscription' => [
-            CreateSubscription::class,
+            CreateSubscriptionWithTransaction::class,
         ],
-        'active' => [
-            CreateTransactionForProcessedSubscription::class,
+        'failed.subscription' => [
+            CreateFailedTransaction::class,
         ],
-        'canceled' => [
+        'renewed.subscription' => [
+            CreateTransactionForRenewedSubscription::class,
+        ],
+        'canceled.subscription' => [
             DeleteCanceledSubscription::class,
         ],
-        'error' => [],
     ];
 
     public function __invoke(Request $request): Response
     {
-        \Log::debug('bePaid donated webhook', ['headers' => $request->headers->all(), 'input' => $request->all()]);
-
         $event = $request->json('event') ?: $request->json('state');
+
+        \Log::debug("bePaid webhook event $event:", $request->all());
 
         $handlers = $this->listen[$event] ?? [];
 

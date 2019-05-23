@@ -18,6 +18,7 @@ class CreateDonatorsTable extends Migration
             $table->string('email')->unique();
             $table->string('name')->nullable();
             $table->unsignedInteger('phone')->nullable()->comment('Phone using international format (without leading "+" sign)');
+            $table->string('locale', 2);
             $table->timestamps();
         });
     }

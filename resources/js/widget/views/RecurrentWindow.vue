@@ -1,29 +1,20 @@
 <template>
-  <div class="module-donate__donateWindow">
-    <p class="module-donate__title recurrent">{{ $t('labels.client.title') }}</p>
-    <b-container fluid>
-      <b-row class="my-1" v-for="field in fields" :key="field">
-        <b-col sm="6">
-          <md-field>
-            <label>{{ field }}</label>
-            <md-input v-model="type" class="donateWindow__input"></md-input>            
-          </md-field>
-        </b-col>
-      </b-row>
-      <b-form-checkbox id="checkbox1"
-                       v-model="status"
-                       value="accepted"
-                       unchecked-value="not_accepted"
-                       class="donate__checkbox"
-      >
-        {{ $t('labels.client.termsOfUse') }}
-      </b-form-checkbox>
-    </b-container>
-    <div class="donateWindow__footer">
-      <b-button to="/campaign/1" class="module-donate__button-nonselect confirm back">{{ $t('buttons.client.back') }}</b-button>
-      <b-button to="/campaign/1/recurrent/donate" class="module-donate__button-select confirm">{{ $t('buttons.client.proceed') }}</b-button>
+  <div class="container">
+    <div class="module-donate__donateWindow">
+      <p class="module-donate__title recurrent">{{ $t('labels.widget.title') }}</p>
+
+        <div class="donateReccurentWindow__footer">
+          <input type="name" id="name" class="donate__email module-donate__text-input" v-model="model.name" :placeholder="$t('labels.widget.name')">
+          <input type="email" id="email" class="donate__email module-donate__text-input" v-model="model.email" :placeholder="$t('labels.widget.email')">
+          <input type="phone" id="phone" class="donate__email module-donate__text-input" v-model="model.phone" :placeholder="$t('labels.widget.phone')">
+        </div>
+
+      <div class="donateReccurentWindow__footer">
+        <b-button :to=" '/campaigns/' + id"  class="module-donate__button-select confirm back">{{ $t('buttons.widget.back') }}</b-button>
+        <b-button :to=" '/campaigns/' + id + '/recurrent/donate'" @click="submit" class="module-donate__button-select confirm">{{ $t('buttons.widget.proceed') }}</b-button>
+      </div>
+      <p class="module-donate__version">powered by <a href="#" target="_blank">Doika</a></p>
     </div>
-    <p class="module-donate__version">powered by <a href="#" target="_blank">Doika</a></p>
   </div>
 </template>
 
@@ -45,33 +36,30 @@
 </style>
 
 <script>
-import axios from 'axios'
+    import axios from 'axios'
 
-export default {
-  name: 'RecurrentWindow',
-  data() {
-    return {
-      campaign: [],
-      fields: [
-        this.$t('labels.client.name'),
-        this.$t('labels.client.email'),
-        this.$t('labels.client.phone')
-      ],
-      initial: 'Initial Value',
-      type: null,
-      withLabel: null,
-      inline: null,
-      number: null,
-      textarea: null,
-      autogrow: null,
-      disabled: null
+    export default {
+        name: 'RecurrentWindow',
+        props: ['id'],
+        data() {
+            return {
+                campaign: [],
+                redirect_url: null,
+                model: {
+                    email: "",
+                    name: "",
+                    phone: "",
+                    amount: sessionStorage.getItem('amount'),
+                    currency_code: 'BYN'
+                }
+            }
+        },
+        methods: {
+            submit: function() {
+                sessionStorage.setItem('email', this.model.email)
+                sessionStorage.setItem('name', this.model.name)
+                sessionStorage.setItem('phone', this.model.phone)
+            },
+        }
     }
-  },
-  async created() {
-    let { data } = await axios.get(
-      this.$app.route('campaign.get', { campaignId: '1' })
-    )
-    this.campaign = data
-  }
-}
 </script>

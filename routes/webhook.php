@@ -7,7 +7,7 @@
 
 use Diglabby\Doika\Http\Middleware\VerifyBePaidSignature;
 
-Route::post('/bepaid/donated/{campaignId}', 'Webhooks\PaymentGateways\BePaidWebhookHandler@donated')
+Route::post('/bepaid/donated/{campaignId}', 'Webhooks\PaymentGateways\BePaidPaymentWebhookHandler@donated')
     ->name('webhooks.bepaid.donated')
     ->middleware([VerifyBePaidSignature::class]);
 

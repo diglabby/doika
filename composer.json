@@ -24,7 +24,7 @@
         "martinlindhe/laravel-vue-i18n-generator": "^0.1.22",
         "moneyphp/money": "^3.2",
         "spatie/laravel-query-builder": "^1.17",
-        "tightenco/ziggy": "^0.6.9"
+        "tightenco/ziggy": "^0.7.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
@@ -32,7 +32,7 @@
         "beyondcode/laravel-dump-server": "^1.2",
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
-        "laravel/dusk": "^4.0",
+        "laravel/dusk": "^5.1",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
         "phpunit/phpunit": "^7.5"

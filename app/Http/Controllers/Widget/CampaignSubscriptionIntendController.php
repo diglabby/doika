@@ -8,7 +8,6 @@ use Diglabby\Doika\Models\Campaign;
 use Diglabby\Doika\Models\Donator;
 use Diglabby\Doika\Models\SubscriptionIntend;
 use Diglabby\Doika\Services\PaymentGateways\BePaidPaymentGateway;
-use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Money\Money;
@@ -16,7 +15,7 @@ use Money\Currency;
 
 final class CampaignSubscriptionIntendController extends Controller
 {
-    public function store(Campaign $campaign, Request $request, BePaidPaymentGateway $gateway): Responsable
+    public function store(Campaign $campaign, Request $request, BePaidPaymentGateway $gateway)
     {
         $this->validate($request, [
             'amount' => ['required', 'integer', 'min:100'], // in cents!

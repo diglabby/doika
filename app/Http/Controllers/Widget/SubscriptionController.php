@@ -6,6 +6,7 @@ use Diglabby\Doika\Http\Controllers\Controller;
 use Diglabby\Doika\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 final class SubscriptionController extends Controller
 {
@@ -14,7 +15,11 @@ final class SubscriptionController extends Controller
         /** @var Subscription $subscription */
         $subscription = Subscription::query()
             ->where('unsubscribe_token', $request->get('secret'))
-            ->firstOrFail();
+            ->first();
+
+        if ($subscription === null) {
+            throw new NotFoundHttpException('Missing or invalid unsubscribe secret');
+        }
 
         $subscription->cancel();
 
