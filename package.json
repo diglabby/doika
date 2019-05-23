@@ -79,7 +79,7 @@
     "babel-polyfill": "^6.26.0",
     "mdbvue": "^5.1.0",
     "verte": "0.0.7",
-    "vue-material": "^1.0.0-beta-10.2",
+    "vue-material": "^1.0.0-beta-11",
     "vue-moment": "^4.0.0",
     "vue2-editor": "^2.6.6"
   },
