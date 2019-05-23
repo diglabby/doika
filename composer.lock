@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e02c470be5b50591f31b5d5b71ab5244",
+    "content-hash": "da8cbda438fff2cfa5669b247aa877ef",
     "packages": [
         {
             "name": "anlutro/l4-settings",
@@ -2597,7 +2597,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "backendtea@gmail.com"
+                    "email": "BackEndTea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -4170,35 +4170,39 @@
         },
         {
             "name": "laravel/dusk",
-            "version": "v4.0.5",
+            "version": "v5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/dusk.git",
-                "reference": "c30c8a01d35661e253a7d3ea7ae6a79faf3f8d92"
+                "reference": "a6ac3e6489dc774445aa9459cdc332104591634a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/dusk/zipball/c30c8a01d35661e253a7d3ea7ae6a79faf3f8d92",
-                "reference": "c30c8a01d35661e253a7d3ea7ae6a79faf3f8d92",
+                "url": "https://api.github.com/repos/laravel/dusk/zipball/a6ac3e6489dc774445aa9459cdc332104591634a",
+                "reference": "a6ac3e6489dc774445aa9459cdc332104591634a",
                 "shasum": ""
             },
             "require": {
-                "facebook/webdriver": "~1.3",
-                "illuminate/console": "~5.6",
-                "illuminate/support": "~5.6",
-                "nesbot/carbon": "~1.20",
+                "ext-json": "*",
+                "ext-zip": "*",
+                "facebook/webdriver": "^1.3",
+                "illuminate/console": "~5.7.0|~5.8.0|~5.9.0",
+                "illuminate/support": "~5.7.0|~5.8.0|~5.9.0",
+                "nesbot/carbon": "^1.20|^2.0",
                 "php": ">=7.1.0",
-                "symfony/console": "~4.0",
-                "symfony/process": "~4.0"
+                "symfony/console": "^4.0",
+                "symfony/finder": "^4.0",
+                "symfony/process": "^4.0",
+                "vlucas/phpdotenv": "^2.2|^3.3"
             },
             "require-dev": {
-                "mockery/mockery": "~1.0",
-                "phpunit/phpunit": "~7.0"
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^7.5|^8.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.0-dev"
+                    "dev-master": "5.0-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -4227,7 +4231,7 @@
                 "testing",
                 "webdriver"
             ],
-            "time": "2019-01-10T14:22:35+00:00"
+            "time": "2019-05-02T15:08:14+00:00"
         },
         {
             "name": "maximebf/debugbar",
