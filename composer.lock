@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e02c470be5b50591f31b5d5b71ab5244",
+    "content-hash": "7c7c0721a4107d5f52dea4679f63d8d0",
     "packages": [
         {
             "name": "anlutro/l4-settings",
@@ -3123,16 +3123,16 @@
         },
         {
             "name": "tightenco/ziggy",
-            "version": "v0.6.9",
+            "version": "v0.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tightenco/ziggy.git",
-                "reference": "0f59b703236f6b19002bc28d1d3eafcbf479bd43"
+                "reference": "aa4c42aaec9516da892bc2e9f6e992582646af77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tightenco/ziggy/zipball/0f59b703236f6b19002bc28d1d3eafcbf479bd43",
-                "reference": "0f59b703236f6b19002bc28d1d3eafcbf479bd43",
+                "url": "https://api.github.com/repos/tightenco/ziggy/zipball/aa4c42aaec9516da892bc2e9f6e992582646af77",
+                "reference": "aa4c42aaec9516da892bc2e9f6e992582646af77",
                 "shasum": ""
             },
             "require": {
@@ -3170,7 +3170,7 @@
                 }
             ],
             "description": "Generates a Blade directive exporting all of your named Laravel routes. Also provides a nice route() helper function in JavaScript.",
-            "time": "2018-10-29T06:06:46+00:00"
+            "time": "2019-04-26T22:03:47+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
