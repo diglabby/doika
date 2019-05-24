@@ -18,7 +18,7 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect(route('dashboard.campaigns.index'));
+            return redirect(route('dashboard.home'));
         }
 
         return $next($request);

@@ -39,5 +39,9 @@ return [
         'back' => 'Назад',
         'confirm' => 'Пацвердзіць',
         'proceed' => 'Працягнуць',
+        'oneTime' => 'Плацеж',
+        'subscribe' => 'Падпіска',
+        'email' => 'Email для падзякі',
+
     ],
 ];

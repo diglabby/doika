@@ -49,10 +49,7 @@
             <span v-text="(row.item.amount_collected / row.item.transactions_count) || 0"></span>
           </template>
           <template slot="recieved" slot-scope="row">
-            <span v-text="row.item.amount_collected"></span>
-          </template>
-          <template slot="goal" slot-scope="row">
-            <span v-text="row.item.target_amount"></span>
+            <span v-text="`${row.item.amount_collected}/${row.item.target_amount}`"></span>
           </template>
           <template slot="days" slot-scope="row">
             <span v-text="(moment(row.item.finished_at).fromNow())"></span>
@@ -66,6 +63,7 @@
             </b-button>
           </template>
         </b-table>
+
       </b-datatable>
     </b-card>
   </div>
@@ -79,12 +77,13 @@ export default {
   data() {
     return {
       selected: [],
+
       fields: [
         { key: 'checkbox' },
         {
           key: 'title',
           label: this.$t('labels.admin.campaigns.name'),
-          class: 'text-center'
+          class: 'text-left'
         },
         {
           key: 'status',
@@ -110,12 +109,7 @@ export default {
           key: 'recieved',
           label: this.$t('labels.admin.campaigns.recieved'),
           class: 'text-center'
-        },
-        {
-          key: 'goal',
-          label: this.$t('labels.admin.campaigns.goal'),
-          class: 'text-center'
-        },
+        },        
         {
           key: 'days',
           label: this.$t('labels.admin.campaigns.days'),
@@ -136,7 +130,8 @@ export default {
   },
   methods: {
     dataLoadProvider(ctx) {
-      return this.$refs.datasource.loadData(ctx.sortBy, ctx.sortDesc)
+      let data = this.$refs.datasource.loadData(ctx.sortBy, ctx.sortDesc)
+      return data
     },
 
     onContextChanged() {

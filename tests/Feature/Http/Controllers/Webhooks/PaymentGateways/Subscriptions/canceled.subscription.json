@@ -1,0 +1,50 @@
+{
+  "id": "sbs_ee95ad918715be5d",
+  "state": "canceled",
+  "tracking_id": null,
+  "device_id": null,
+  "created_at": "2019-05-17T20:49:26.899Z",
+  "renew_at": null,
+  "active_to": "2019-06-17T20:50:31.035Z",
+  "card": {
+    "token": "eb38437e-70a3-4997-8373-8849aa50abb0"
+  },
+  "customer": {
+    "id": "cst_8ce3e9839d624c42"
+  },
+  "paid_billing_cycles": 1,
+  "number_failed_payment_attempts": 0,
+  "additional_data": {
+    "campaign_id": 1,
+    "donator_id": 83
+  },
+  "cancel_reason": "Customer's request",
+  "cancelled_at": "2019-05-17T21:09:09.942Z",
+  "plan": {
+    "id": "pln_1c20dc4025f57036",
+    "title": "5BYN для Дайка!",
+    "currency": "BYN",
+    "language": null,
+    "infinite": false,
+    "billing_cycles": 1,
+    "trial": {
+      "amount": null,
+      "interval": null,
+      "interval_unit": null
+    },
+    "plan": {
+      "amount": 500,
+      "interval": 1,
+      "interval_unit": "month"
+    },
+    "number_payment_attempts": 3,
+    "test": true
+  },
+  "last_transaction": {
+    "uid": "13414980-5e92a2f998",
+    "status": "successful",
+    "message": "Successfully processed",
+    "created_at": "2019-05-17T20:50:22.741Z"
+  },
+  "event": "canceled.subscription"
+}

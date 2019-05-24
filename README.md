@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/diglabby/doika.svg?branch=dev)](https://travis-ci.org/diglabby/doika) [![StyleCI](https://github.styleci.io/repos/137777868/shield?branch=develop)](https://github.styleci.io/repos/137777868)
+[![Build Status](https://travis-ci.org/diglabby/doika.svg?branch=dev)](https://travis-ci.org/diglabby/doika) [![StyleCI](https://github.styleci.io/repos/137777868/shield?branch=develop)](https://github.styleci.io/repos/137777868) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 # 🚧️ Doika
  - модуль, які дапамагае прымаць ахвяраванні з дапамогай банкаўскіх картак і наладзіць новы падыход у фандрэйзінгу беларускіх некамерцыйных грамадскіх арганізацый на сваіх сайтах.

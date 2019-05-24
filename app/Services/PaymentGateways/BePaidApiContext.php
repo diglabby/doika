@@ -10,19 +10,19 @@ final class BePaidApiContext
     /** @var string */
     public $marketKey;
 
-    /** @var bool */
-    protected $live;
+    /** @var string */
+    protected $mode;
 
     public function __construct(array $context)
     {
         $this->marketId = $context['marketId'];
         $this->marketKey = $context['marketKey'];
-        $this->live = (bool) $context['live'];
+        $this->mode = $context['mode'];
     }
 
     public function isLive(): bool
     {
-        return $this->live;
+        return $this->mode === 'live';
     }
 
     public function isTest(): bool

@@ -43,10 +43,4 @@ return [
             'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
         ],
     ],
-
-    'bepaid' => [
-        'marketId' => env('BEPAID_MARKET_ID'),
-        'marketKey' => env('BEPAID_MARKET_KEY'),
-        'live' => env('BEPAID_MARKET_LIVE_MODE', false),
-    ],
 ];

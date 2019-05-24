@@ -1,9 +1,11 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways;
 
 use Diglabby\Doika\Http\Controllers\Controller;
-use Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers\CreateTransactionForProcessedSubscription;
+use Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers\CreateFailedTransaction;
+use Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers\CreateSubscriptionWithTransaction;
+use Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers\CreateTransactionForRenewedSubscription;
 use Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers\DeleteCanceledSubscription;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -15,22 +17,27 @@ final class BePaidSubscriptionWebhookHandler extends Controller
 {
     /** @var array The event listener mappings */
     private $listen = [
-        'active' => [
-            CreateTransactionForProcessedSubscription::class,
+        'created.subscription' => [
+            CreateSubscriptionWithTransaction::class,
         ],
-        'canceled' => [
+        'failed.subscription' => [
+            CreateFailedTransaction::class,
+        ],
+        'renewed.subscription' => [
+            CreateTransactionForRenewedSubscription::class,
+        ],
+        'canceled.subscription' => [
             DeleteCanceledSubscription::class,
         ],
-        'error' => [],
     ];
 
     public function __invoke(Request $request): Response
     {
-        \Log::debug('bePaid donated webhook', ['headers' => $request->headers->all(), 'input' => $request->all()]);
+        $event = $request->json('event') ?: $request->json('state');
 
-        $status = $request->json('state');
+        \Log::debug("bePaid webhook event $event:", $request->all());
 
-        $handlers = $this->listen[$status] ?? [];
+        $handlers = $this->listen[$event] ?? [];
 
         foreach ($handlers as $handler) {
             resolve($handler)->handle($request);

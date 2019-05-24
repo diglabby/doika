@@ -8,20 +8,22 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Doika') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Scripts -->
 
     <script type="application/json" data-settings-selector="settings-json">
         {!! json_encode([
-            'locale' => app()->getLocale(),
             'appName' => config('app.name'),
             'homePath' => url()->current(),
             'widgetBasePath' => '/doika/doika/widget',
-            'locales' => 'en',
+            'locale' => app()->getLocale(),
             'user' => $loggedInUser,
         ]) !!}
     </script>
+
+    <script type="text/javascript" src="https://js.bepaid.by/begateway-1-latest.min.js"></script>
+
 
     <!-- Styles -->
 

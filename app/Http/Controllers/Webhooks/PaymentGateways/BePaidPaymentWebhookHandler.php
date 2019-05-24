@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways;
 
@@ -11,11 +11,11 @@ use Illuminate\Http\Response;
 /**
  * @see https://docs.bepaid.by/ru/webhooks
  */
-final class BePaidWebhookHandler extends Controller
+final class BePaidPaymentWebhookHandler extends Controller
 {
     public function donated(Request $request, int $campaignId)
     {
-        \Log::debug('bePaid donated webhook', ['headers' => $request->headers->all(), 'input' => $request->all()]);
+        \Log::debug('bePaid donated webhook', [$request->all()]);
 
         /** @var Donator $donator */
         $donator = Donator::query()->firstOrCreate(['email' => $request->json('transaction.customer.email')]);

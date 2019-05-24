@@ -8,11 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Doika Login</title>
+    <title>{{ config('app.name') }} Login</title>
 
-    <link rel="stylesheet" href={{ asset(mix("build/css/dashboard/dashboard.css")) }}>
+    <link rel="stylesheet" href={{ asset(mix('build/css/dashboard/dashboard.css')) }}>
 
-    <script defer src={{ asset(mix("build/js/dashboard/dashboard.js")) }}></script>
+    <script defer src={{ asset(mix('build/js/dashboard/dashboard.js')) }}></script>
 
     <!-- JS settings -->
     <script type="application/json" data-settings-selector="settings-json">

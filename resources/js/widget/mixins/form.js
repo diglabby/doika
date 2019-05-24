@@ -6,14 +6,13 @@ export default {
   data() {
     return {
       validation: {},
-      pending: false
+      isLoading: true
     }
   },
 
   methods: {
     async fetchData() {
-        console.log(this.$route.params.id)
-
+        this.isLoading = true;
         let { data } = await axios.get(
           this.$app.route(`widget.${this.resourceRoute}.show`, {
             [this.modelName]: this.$route.params.id
@@ -26,6 +25,7 @@ export default {
           }
         })
         this.onModelChanged()
+        this.isLoading = false
     },
     onModelChanged() {},
     feedback(name) {
@@ -40,7 +40,7 @@ export default {
         : null
     },
     async onSubmit() {
-      this.pending = true
+      this.isLoading = true
       let router = this.$router
       let action = this.isNew
         ? this.$app.route(`admin.${this.resourceRoute}.store`)
@@ -56,14 +56,14 @@ export default {
 
       try {
         let { data } = await axios.post(action, formData)
-        this.pending = false
+        this.isLoading = false
 
         this.$app.noty[data.status](data.message)
         if (this.listPath) {
           router.push(this.listPath)
         }
       } catch (e) {
-        this.pending = false
+        this.isLoading = false
 
         // Validation errors
         if (e.response.status === 422) {

@@ -8,7 +8,7 @@ use Diglabby\Doika\Models\Transaction;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class BePaidWebhookHandlerTest extends TestCase
+class BePaidPaymentWebhookHandlerTest extends TestCase
 {
     use RefreshDatabase;
     use LoadsRequestFixture;
@@ -21,11 +21,10 @@ class BePaidWebhookHandlerTest extends TestCase
         /** @var Campaign $campaign */
         $campaign = factory(Campaign::class)->create();
 
-        $requestData = $this->getRequestData('BePaidWebhookHandlerTest.donated.json');
+        $requestData = $this->getRequestData('donated.json');
         $response = $this->postJson(
             route('webhooks.bepaid.donated', $campaign->id),
-            $requestData['input'],
-            $requestData['headers']
+            $requestData['input']
         );
 
         $response->assertOk();

@@ -25,7 +25,7 @@ class BePaidPaymentGatewayTest extends TestCase
             return new BePaidApiContext([
                 'marketId' => self::MARKET_ID,
                 'marketKey' => self::MARKET_KEY,
-                'live' => false,
+                'mode' => 'test',
             ]);
         });
 
@@ -76,7 +76,7 @@ class BePaidPaymentGatewayTest extends TestCase
      * @group real-api
      * @group network
      */
-    public function it_creates_a_subscription()
+    public function it_creates_a_subscription_intend()
     {
         /** @var Donator $donator */
         $donator = factory(Donator::class)->make(['id' => 1]);

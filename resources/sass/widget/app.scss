@@ -1,4 +1,4 @@
-﻿
+﻿﻿
 
 // Custom Variables
 @import "variables";
@@ -92,17 +92,19 @@
     outline: 5px auto pink;
   }
   .app {
-    max-width: 750px;
+    //max-width: 750px;
   }
   .app {
     background-color: #e7eef4;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
     min-height: 430px;
-    max-width: 750px;
+    //max-width: 750px;
+    background: none transparent;
   }
   html {
     overflow: hidden;
+    background: none transparent;
   }
 
   body, html {
@@ -179,8 +181,10 @@
   }
 
   .module-donate__card {
-    width: 400px;
-    height: 300px;
+    width: auto;
+    height: auto;
+    overflow:hidden;
+    position:relative;
   }
 
   .card__placeholder {
@@ -197,16 +201,18 @@
     min-height: 400px;
     margin: 0;
     overflow: hidden;
-    padding: 30px 50px 15px 45px;
     -webkit-box-shadow: 0px 4px 21px -3px rgba(51,51,3,0.61);
     -moz-box-shadow: 0px 4px 21px -3px rgba(51,51,3,0.61);
     box-shadow: 0px 4px 21px -3px rgba(51,51,3,0.61);
     background: #f1f1f1;
+    width: 100vw;
+    height: 100vh;
   }
   .container {
     display: flex;
     flex-direction: column;
     align-content: space-between;
+    padding: 30px 50px 15px 45px;
   }
 
   .module-donate__title {
@@ -454,6 +460,7 @@
   }
 
   .donateWindow__footer {
+    position: absolute;
     margin-top: 50px;
     font-size: 0;
     width: 400px;
@@ -470,13 +477,45 @@
             align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
-  }
-  .donateWindow__footer .back {
-    margin-left: 0;
+    pointer-events: none;
   }
 
+.donateReccurentWindow__footer {
+
+  font-size: 0;
+  width: 400px;
+  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+  .donateWindow__footer .back {
+    margin-left: 0;
+    pointer-events: auto;
+  }
+.donateReccurentWindow__footer .back {
+  margin-left: 0;
+  pointer-events: auto;
+}
+  .module-donate__status + .module-donate__button-select {
+    margin: auto;
+    margin-top: -60px;
+    margin-bottom: 60px;
+  }
   .donate__email {
     width: 250px !important;
+    margin: auto;
+    pointer-events: auto;
+    margin-bottom: 10px;
   }
   .module-donate__text-input {
     font-family: Ubuntu, sans-serif;
@@ -608,6 +647,7 @@
     margin-top: 30px;
     height: 15px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.07), 0 3px 6px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
   }
 
   .progress-bar {

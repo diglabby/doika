@@ -87,6 +87,6 @@ class LoginControllerTest extends TestCase
             ->actingAs($admin)
             ->get(route('login'));
 
-        $response->assertRedirect(route('dashboard.campaigns.index'));
+        $response->assertRedirect(route('dashboard.home'));
     }
 }

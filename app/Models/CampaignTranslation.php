@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Diglabby\Doika\Models;
 
@@ -21,7 +21,7 @@ use Illuminate\Support\Carbon;
  */
 final class CampaignTranslation extends Model
 {
-    /** @var array Default attributes */
+    /** @var array Default attribute values */
     protected $attributes = [
         'description' => '',
     ];

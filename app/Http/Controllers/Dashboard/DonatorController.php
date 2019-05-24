@@ -1,36 +1,25 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Diglabby\Doika\Http\Controllers\Dashboard;
 
 use Diglabby\Doika\Http\Controllers\Controller;
+use Diglabby\Doika\Http\Resources\Dashboard\DonatorResource;
 use Diglabby\Doika\Models\Donator;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Spatie\QueryBuilder\QueryBuilder;
 
 final class DonatorController extends Controller
 {
-    public function index()
+    public function index(): \JsonSerializable
     {
-        return factory(Donator::class, 10)->make();
+        $query = Donator::query();
+
+        return DonatorResource::collection(
+            QueryBuilder::for($query)->paginate()
+        );
     }
 
-    public function show(int $donatorId)
+    public function show(Donator $donator): \JsonSerializable
     {
-        return factory(Donator::class)->make();
-    }
-
-    public function store(Request $request)
-    {
-        return response()->json([], Response::HTTP_ACCEPTED);
-    }
-
-    public function update(int $donatorId)
-    {
-        return response()->json([], Response::HTTP_ACCEPTED);
-    }
-
-    public function delete(int $donatorId)
-    {
-        return response()->json([], Response::HTTP_ACCEPTED);
+        return new DonatorResource($donator);
     }
 }

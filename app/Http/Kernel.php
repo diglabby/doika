@@ -36,11 +36,14 @@ class Kernel extends HttpKernel
             \Diglabby\Doika\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
 
-//            \Diglabby\Doika\Http\Middleware\SetLocale::class,
+            // \Diglabby\Doika\Http\Middleware\SetLocale::class,
         ],
 
         'api' => [
             'throttle:60,1',
+            \Diglabby\Doika\Http\Middleware\EncryptCookies::class,
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
             'bindings',
         ],
     ];
@@ -59,6 +62,7 @@ class Kernel extends HttpKernel
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \Diglabby\Doika\Http\Middleware\RedirectIfAuthenticated::class,
+        'localize' => \Diglabby\Doika\Http\Middleware\Localize::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,

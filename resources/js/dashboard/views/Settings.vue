@@ -111,10 +111,10 @@
                     horizontal
                     :label-cols="2"
                   >
-                    <p-richtexteditor
+                    <vue-editor
                       name="body"
                       v-model="model.body"
-                    ></p-richtexteditor>
+                    ></vue-editor>
                   </b-form-group>
                 </b-card-body>
               </b-collapse>
@@ -244,10 +244,10 @@
                     horizontal
                     :label-cols="2"
                   >
-                    <p-richtexteditor
+                    <vue-editor
                       name="body"
                       v-model="model.body"
-                    ></p-richtexteditor>
+                    ></vue-editor>
                   </b-form-group>
                   <b-form-group
                     :label="$t('labels.admin.settings.notifications.singleTemplate')"
@@ -255,10 +255,10 @@
                     horizontal
                     :label-cols="2"
                   >
-                    <p-richtexteditor
+                    <vue-editor
                       name="body"
                       v-model="model.body"
-                    ></p-richtexteditor>
+                    ></vue-editor>
                   </b-form-group>
                 </b-card-body>
               </b-collapse>
