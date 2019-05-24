@@ -86,7 +86,7 @@ export default {
         {
           key: 'title',
           label: this.$t('labels.admin.campaigns.name'),
-          class: 'text-center'
+          class: 'text-left'
         },
         {
           key: 'status',
