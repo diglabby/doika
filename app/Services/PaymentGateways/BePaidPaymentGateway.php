@@ -2,6 +2,7 @@
 
 namespace Diglabby\Doika\Services\PaymentGateways;
 
+use Carbon\CarbonInterval;
 use Diglabby\Doika\Exceptions\InvalidConfigException;
 use Diglabby\Doika\Exceptions\UnexpectedGatewayResponse;
 use Diglabby\Doika\Models\Campaign;
@@ -105,9 +106,9 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
                 'title' => $subscriptionIntend->getPlanName(),
                 'currency' => $subscriptionIntend->money->getCurrency()->getCode(),
                 'plan' => [
-                    'amount' => (int) $subscriptionIntend->money->getAmount(),
-                    'interval' => 1,
-                    'interval_unit' => 'month', // hour|day|month
+                    array_merge([
+                        'amount' => (int) $subscriptionIntend->money->getAmount(),
+                    ], $this->parseDateInterval($subscriptionIntend->getInterval()))
                 ],
                 'infinite' => false,
                 'billing_cycles' => $subscriptionIntend->getBillingCyclesCount(),
@@ -136,6 +137,41 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
         $subscriptionData = json_decode($response->getBody()->getContents(), true);
 
         return $subscriptionData['redirect_url'];
+    }
+
+    /**
+     * Parse CarbonInterval into bePaid format
+     * @see https://docs.bepaid.by/ru/subscriptions/plans
+     * @param CarbonInterval $interval
+     * @return array
+     */
+    private function parseDateInterval(CarbonInterval $interval): array
+    {
+        $isMatched = preg_match('/^P  (\d+)   ([HDM]) $/x', $interval->spec(), $intervalParts);
+        if ($isMatched === false || $isMatched === 0) {
+            throw new \InvalidArgumentException('Unprocessable payment interval: '.$interval->spec());
+        }
+
+        [$intervalSize, $intervalUnit] = $intervalParts;
+
+        switch ($intervalUnit) {
+            case 'M':
+                $convertedIntervalUnit = 'month';
+                break;
+            case 'D':
+                $convertedIntervalUnit = 'day';
+                break;
+            case 'H':
+                $convertedIntervalUnit = 'hour';
+                break;
+            default:
+                throw new \InvalidArgumentException('Unprocessable payment interval: '.$interval->spec());
+        }
+
+        return [
+            'interval' => $intervalSize,
+            'interval_unit' => $convertedIntervalUnit, // hour|day|month
+        ];
     }
 
     /**
