@@ -106,9 +106,10 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
                 'title' => $subscriptionIntend->getPlanName(),
                 'currency' => $subscriptionIntend->money->getCurrency()->getCode(),
                 'plan' => [
-                    array_merge([
-                        'amount' => (int) $subscriptionIntend->money->getAmount(),
-                    ], $this->parseDateInterval($subscriptionIntend->getInterval()))
+                    array_merge(
+                        ['amount' => (int) $subscriptionIntend->money->getAmount()],
+                        $this->parseDateInterval($subscriptionIntend->getInterval())
+                    )
                 ],
                 'infinite' => false,
                 'billing_cycles' => $subscriptionIntend->getBillingCyclesCount(),
