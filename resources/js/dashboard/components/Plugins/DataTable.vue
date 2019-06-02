@@ -1,6 +1,18 @@
 <template>
   <div>
-    <slot></slot>    
+    <slot></slot>
+    <b-row>
+      <b-col md="12">
+        <b-pagination
+                :total-rows="totalRows"
+                :per-page="perPage"
+                v-model="currentPage"
+                v-if="paging && totalRows > perPage"
+                class="justify-content-center"
+                @input="onContextChanged"
+        ></b-pagination>
+      </b-col>
+    </b-row>
   </div>
 </template>
 
@@ -18,6 +30,7 @@ export default {
       type: Boolean,
       default: true
     },
+
     infos: {
       type: Boolean,
       default: true
@@ -49,16 +62,18 @@ export default {
     selected: {
       type: Array,
       default: () => []
-    }
+    },
+      busy : false
   },
   data() {
     return {
       currentPage: 1,
-      perPage: 100,
+      perPage: 10,
       totalRows: 0,
       pageOptions: [5, 10, 15, 25, 50],
       searchQuery: null,
-      action: null
+      action: null,
+        isBusy: false
     }
   },
   watch: {
@@ -80,13 +95,21 @@ export default {
     },
     async loadData(sortBy, sortDesc) {
       try {
+          this.isBusy = true
 
-        let { data } = await axios.get(this.$app.route(this.searchRoute))
-        console.log(data.data)
+          let { data } = await axios.get(this.$app.route(this.searchRoute), {
+              params: {
+                  page: this.currentPage,
+                  perPage: this.perPage
+              }
+          })
 
-
+          this.busy = false
+          this.totalRows = data.meta.total
+          this.perPage = data.meta.per_page
 
         return data.data
+
       } catch (e) {
           console.log(e)
         this.$app.error(e)
