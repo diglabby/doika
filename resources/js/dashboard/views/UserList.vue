@@ -43,6 +43,11 @@
               <i class="fe fe-edit"></i>
             </b-button>          
           </template>
+          <template slot="table-busy">
+            <div class="text-center">
+              <b-spinner label="Loading..."></b-spinner>
+            </div>
+          </template>
         </b-table>
       </b-datatable>
     </b-card>
