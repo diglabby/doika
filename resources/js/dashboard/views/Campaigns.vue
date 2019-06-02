@@ -29,10 +29,6 @@
                  sort-by="campaign.created_at"
                  :sort-desc="true"
         >
-          <template slot="HEAD_checkbox" slot-scope="data"></template>
-          <template slot="checkbox" slot-scope="row">
-            <b-form-checkbox :value="row.item.id" v-model="selected"></b-form-checkbox>
-          </template>
           <template slot="title" slot-scope="row">
             <router-link :to="`/campaigns/${row.item.id}/edit`" v-text="row.item.name"></router-link>
           </template>
@@ -62,6 +58,11 @@
               <i class="fe fe-trash"></i>
             </b-button>
           </template>
+          <template slot="table-busy">
+            <div class="text-center">
+              <b-spinner label="Loading..."></b-spinner>
+            </div>
+          </template>
         </b-table>
 
       </b-datatable>
@@ -77,9 +78,8 @@ export default {
   data() {
     return {
       selected: [],
-
+      isBusy: true,
       fields: [
-        { key: 'checkbox' },
         {
           key: 'title',
           label: this.$t('labels.admin.campaigns.name'),
@@ -115,11 +115,6 @@ export default {
           label: this.$t('labels.admin.campaigns.days'),
           class: 'text-center'
         },
-        {
-          key: 'actions',
-          label: this.$t('labels.admin.datatables.actions'),
-          class: 'nowrap'
-        }
       ],
       actions: {
         destroy: this.$t('buttons.admin.common.removeSelected'),
