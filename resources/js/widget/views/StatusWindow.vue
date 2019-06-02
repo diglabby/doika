@@ -64,6 +64,7 @@ export default {
                 this.message = 'Немагчыма правесці аплату'
                 break;
         }
+        this.isBusy = false;
     },
   async created() {
    // let { data } = await axios.get(
