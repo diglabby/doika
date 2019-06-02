@@ -140,8 +140,9 @@ export default {
                     "backers": "Ахвярадаўцы",
                     "recurrent": "Падпіска",
                     "average": "Сярэдні чэк",
-                    "recieved": "Сабраная сума / Мэтавая сума",
-                    "days": "Засталося дзён",
+                    "recieved": "Сабраная сума",
+                    "goal": "Мэтавая сума",
+                    "days": "Колькасць дзён да заканчэння",
                     "description": "Апісанне",
                     "image": "Выява кампаніі",
                     "uploadImage": "Загрузіць малюнак",
@@ -228,6 +229,11 @@ export default {
                         "artPayIdMarket": "Artpay Market Id",
                         "bePaidKeyMarket": "Bepaid Market key",
                         "artPayKeyMarket": "Artpay Market key",
+                        "paymentInterval": "Абярыце інтэрвал рэкурэнтага плацяжу",
+                        "paymentInterval1D": "1 дзень",
+                        "paymentInterval1H": "1 гадзіна",
+                        "paymentInterval1M": "1 месяц",
+                        "paymentInterval1Y": "1 год",
                         "test": "Адключыць тэставыя плацяжы",
                         "maxPayment": "Максімальны плацёж, бел.руб",
                         "minPayment": "Мінімальны плацёж, бел.руб",
@@ -257,7 +263,7 @@ export default {
                         "placeholder": {
                             "address": "Адрас сэрвера",
                             "port": "Порт сэрвера",
-                            "user": "Карыстальнік электронная пошты",
+                            "user": "Карыстальнік электроннай пошты",
                             "password": "Пароль",
                             "email": "Адрас электроннай пошты"
                         }
