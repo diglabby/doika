@@ -18,7 +18,7 @@ class SubscriptionIntendTest extends TestCase
     {
         // ⚠️ Test execution takes some tune, for this reason now() created here
         // != now() created in SubscriptionIntend, so we need to add second(s)
-        $campaignFinishTime = now()->modify($dateMofifier)->modify('+2 second');
+        $campaignFinishTime = now()->modify($dateMofifier)->modify('+5 second');
         $subscriptionIntend = SubscriptionIntend::monthly(
             Money::BYN(100),
             factory(Donator::class)->make(),
