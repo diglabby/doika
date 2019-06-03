@@ -33,6 +33,7 @@
                       name="checkbox-agreement"
                       value="true"
                       unchecked-value="false"
+                      button-variant="secondary"
               >&nbsp;
               </b-form-checkbox>
               <a class="payment__description" id="show-modal" :style="{ color: model.visual_settings.colors.fontColor }" @click="showModal = true">
@@ -122,7 +123,7 @@ export default {
       }
     },
     mounted: function () {
-      this.isBusy = true;
+      this.isBusy = false;
     },
   methods: {
     provide: function(item) {
