@@ -20,7 +20,7 @@ class IsoTimeDurationTest extends TestCase
      * @test
      * @dataProvider validDurationsProvider
      */
-    function it_passes_on_valid_input(string $duration)
+    public function it_passes_on_valid_input(string $duration)
     {
         $this->assertTrue($this->rule->passes('interval', $duration));
     }
@@ -45,7 +45,7 @@ class IsoTimeDurationTest extends TestCase
      * @test
      * @dataProvider invalidDurationsProvider
      */
-    function it_fails_on_invalid_input(string $duration)
+    public function it_fails_on_invalid_input(string $duration)
     {
         $this->assertFalse($this->rule->passes('interval', $duration));
     }
