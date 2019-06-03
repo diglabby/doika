@@ -148,12 +148,12 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
      */
     private function parseDateInterval(CarbonInterval $interval): array
     {
-        $isMatched = preg_match('/^P  (\d+)   ([HDM]) $/x', $interval->spec(), $intervalParts);
+        $isMatched = preg_match('/^P[T]?  (\d+)   ([HDM]) $/x', $interval->spec(), $intervalParts);
         if ($isMatched === false || $isMatched === 0) {
             throw new \InvalidArgumentException('Unprocessable payment interval: '.$interval->spec());
         }
 
-        [$intervalSize, $intervalUnit] = $intervalParts;
+        [$intervalAsSpec, $intervalSize, $intervalUnit] = $intervalParts;
 
         switch ($intervalUnit) {
             case 'M':
@@ -166,7 +166,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
                 $convertedIntervalUnit = 'hour';
                 break;
             default:
-                throw new \InvalidArgumentException('Unprocessable payment interval: '.$interval->spec());
+                throw new \InvalidArgumentException("Unprocessable payment interval: {$interval->spec()}, unit: $intervalUnit");
         }
 
         return [
