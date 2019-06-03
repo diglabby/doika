@@ -226,6 +226,27 @@
   height: 100%;
   align-items: center;
 }
+
+.custom-control-input ~ .custom-control-label::before {
+  background-color: #FF80B4 !important;
+  border-color: #FF80B4 !important;
+  outline: none !important;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #FF80B4 !important;
+  border-color: #FF80B4 !important;
+  outline: none !important;
+}
+
+.custom-control-input:not(:disabled):active ~ .custom-control-label::before {
+  background-color: #FF80B4 !important;
+  border-color: #FF80B4 !important;
+  outline: none !important;
+}
+
+
+
   .module-donate__title {
     font-family: 'Ubuntu', sans-serif;
     font-weight: 500;
