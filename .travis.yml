@@ -39,3 +39,27 @@ after_script:
       wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.1.0/php-coveralls.phar
       php php-coveralls.phar --verbose
     fi
+
+jobs:
+  include:
+    - stage: Release
+      env:
+        - BUILD=true
+      script:
+        - NAME="doika"
+        - zip -r $NAME ./ -x .git/\* -x .github/\* -x .gitignore -x .travis.yml -x .editorconfig -x composer.json -x composer.lock -x node_modules/\*
+        - TAG=$(git describe --tags)
+        - FILE="./$NAME.zip"
+        - if [[ -e $FILE ]]; then
+          NEW_NAME="$NAME-$TAG.$TRAVIS_JOB_ID";
+          mv $NAME.zip $NEW_NAME.zip;
+          fi
+      deploy:
+        provider: releases
+        api_key:
+          secure: someinvalidkey
+        file: "$NEW_NAME.zip"
+        skip_cleanup: true
+        on:
+          tags: true
+          repo: diglabby/doika
