@@ -118,24 +118,20 @@ export default {
   mixins: [form],
   data() {
     return {
-      roles: [],
-      modelName: 'user',
-      resourceRoute: 'users',
-      listPath: '/users',
+      modelName: 'admin',
+      resourceRoute: 'admins',
+      listPath: '/admins',
       model: {
         name: null,
         email: null,
         active: true,
         password: null,
         confirm_password: null,
-        roles: []
       }
     }
   },
   async created() {
     this.fetchData()
-    let { data } = await axios.get(this.$app.route(`admin.users.get_roles`))
-    this.roles = data
   },
   methods: {
     onModelChanged() {

@@ -7,6 +7,7 @@ use Diglabby\Doika\Http\Controllers\Controller;
 use Diglabby\Doika\Models\Campaign;
 use Diglabby\Doika\Models\Donator;
 use Diglabby\Doika\Models\SubscriptionIntend;
+use Diglabby\Doika\Rules\IsoTimeDuration;
 use Diglabby\Doika\Services\PaymentGateways\BePaidPaymentGateway;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -20,7 +21,7 @@ final class CampaignSubscriptionIntendController extends Controller
         $this->validate($request, [
             'amount' => ['required', 'integer', 'min:100'], // in cents!
             'currency_code' => ['string', 'size:3'],
-            'payment_interval' => ['required'], // P1M (means 1 month)
+            'payment_interval' => ['required', new IsoTimeDuration()], // P1M (means 1 month)
             'email' => ['required', 'email'],
         ]);
 

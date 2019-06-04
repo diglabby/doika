@@ -75,4 +75,9 @@ final class SubscriptionIntend
         $currencyCode = $this->money->getCurrency()->getCode();
         return ((int) $this->money->getAmount() / 100)."{$currencyCode} для {$this->campaign->name}";
     }
+
+    public function getInterval(): CarbonInterval
+    {
+        return clone $this->interval;
+    }
 }

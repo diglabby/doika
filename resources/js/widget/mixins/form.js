@@ -25,7 +25,7 @@ export default {
           }
         })
         this.onModelChanged()
-        this.isLoading = false
+        this.isBusy = false
     },
     onModelChanged() {},
     feedback(name) {
@@ -56,14 +56,14 @@ export default {
 
       try {
         let { data } = await axios.post(action, formData)
-        this.isLoading = false
+          this.isBusy = false
 
         this.$app.noty[data.status](data.message)
         if (this.listPath) {
           router.push(this.listPath)
         }
       } catch (e) {
-        this.isLoading = false
+        this.isBusy = false
 
         // Validation errors
         if (e.response.status === 422) {

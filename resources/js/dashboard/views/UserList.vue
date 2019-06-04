@@ -11,9 +11,9 @@
       </template>
       <b-datatable ref="datasource"
                    @context-changed="onContextChanged"
-                   search-route="admin.users.search"
-                   delete-route="admin.users.destroy"
-                   action-route="admin.users.batch_action" :actions="actions"
+                   search-route="dashboard.admins.index"
+                   delete-route="dashboard.admins.destroy"
+                   action-route="dashboard.admins.batch_action" :actions="actions"
                    :selected.sync="selected"
       >
         <b-table ref="datatable"
@@ -32,16 +32,23 @@
             <b-form-checkbox :value="row.item.id" v-model="selected"></b-form-checkbox>
           </template>
           <template slot="name" slot-scope="row">
-            <router-link v-if="row.item.can_edit" :to="`/users/${row.item.id}/edit`" v-text="row.value"></router-link>
-            <span v-else v-text="row.value"></span>
+            <router-link :to="`/users/${row.item.id}/edit`" v-text="row.value"></router-link>
           </template>
           <template slot="active" slot-scope="row">
-            <c-switch v-if="row.item.can_edit" :checked="row.value" @change="onActiveToggle(row.item.id)"></c-switch>
+            <c-switch :checked="row.value" @change="onActiveToggle(row.item.id)"></c-switch>
+          </template>
+          <template slot="created_at" slot-scope="row">
+            <span v-text="new Date(row.item.created_at * 1000).toLocaleDateString('ru-RU')"></span>
           </template>
           <template slot="actions" slot-scope="row">
-            <b-button v-if="row.item.can_edit" size="sm" variant="primary" :to="`/users/${row.item.id}/edit`" v-b-tooltip.hover :title="$t('buttons.admin.common.edit')" class="mr-1">
+            <b-button size="sm" variant="primary" :to="`/users/${row.item.id}/edit`" v-b-tooltip.hover :title="$t('buttons.admin.common.edit')" class="mr-1">
               <i class="fe fe-edit"></i>
             </b-button>          
+          </template>
+          <template slot="table-busy">
+            <div class="text-center">
+              <b-spinner label="Loading..."></b-spinner>
+            </div>
           </template>
         </b-table>
       </b-datatable>
@@ -58,7 +65,6 @@ export default {
     return {
       selected: [],
       fields: [
-        { key: 'checkbox' },
         {
           key: 'name',
           label: this.$t('labels.admin.users.name'),
@@ -77,12 +83,6 @@ export default {
         {
           key: 'created_at',
           label: this.$t('labels.admin.users.createdAt'),
-          class: 'text-center',
-          sortable: true
-        },
-        {
-          key: 'updated_at',
-          label: this.$t('labels.admin.users.updatedAt'),
           class: 'text-center',
           sortable: true
         },
@@ -115,13 +115,6 @@ export default {
         .catch(error => {
           this.$app.error(error)
         })
-    },
-    formatRoles(roles) {
-      return roles
-        .map(key => {
-          return key.display_name
-        })
-        .join(', ')
     }
   }
 }

@@ -1,14 +1,19 @@
 <template>
-  <div class="container">
-    <div class="module-donate__donateWindow">
-      <div class="module-donate__card">
-        <div id="paymentForm"></div>
+  <div>
+    <div v-if="isBusy" class="d-flex justify-content-center mb-3 spinner-wrapper">
+      <b-spinner label="Loading..."></b-spinner>
+    </div>7
+    <div class="container">
+      <div class="module-donate__donateWindow">
+        <div class="module-donate__card">
+          <div id="paymentForm"></div>
+        </div>
+        <div class="donateWindow__footer">
+          <input type="email" id="email" class="donate__email module-donate__text-input" v-model="model.email" :placeholder="placeholder">
+          <b-button :to=" '/campaigns/' + id"  class="module-donate__button-select confirm back">{{ $t('buttons.widget.back') }}</b-button>
+        </div>
+        <p class="module-donate__version">powered by <a href="#" target="_blank">Doika</a></p>
       </div>
-      <div class="donateWindow__footer">
-        <input type="email" id="email" class="donate__email module-donate__text-input" v-model="model.email" :placeholder="placeholder">
-        <b-button :to=" '/campaigns/' + id"  class="module-donate__button-select confirm back">{{ $t('buttons.widget.back') }}</b-button>
-      </div>
-      <p class="module-donate__version">powered by <a href="#" target="_blank">Doika</a></p>
     </div>
   </div>
 </template>
@@ -21,6 +26,7 @@ export default {
     props:['id'],
   data() {
     return {
+        isBusy: true,
       campaign: [],
       redirect_url: null,
       placeholder: this.$t('buttons.widget.email'),
@@ -193,8 +199,8 @@ export default {
               max-width: 365px;\
               height: 186px;\
               position:relative;\
-              background: url("' + parent.document.location.protocol + '//'+ parent.document.location.host + '/doika/public/images/front-card.png"),\
-    url("' + parent.document.location.protocol + '//'+ parent.document.location.host + '/doika/public/images/back-card.png");\
+              background: url("https://'+ parent.document.location.host + '/doika/public/images/front-card.png"),\
+    url("https://'+ parent.document.location.host + '/doika/public/images/back-card.png");\
     background-repeat: no-repeat;\
     background-position: left top, right 20px;\
   }\
@@ -324,6 +330,7 @@ export default {
 
       var pf = new BeGateway(options);
       pf.buildForm();
+      this.isBusy = false;
   }
 }
 </script>

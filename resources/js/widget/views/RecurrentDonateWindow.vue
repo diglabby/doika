@@ -1,4 +1,9 @@
 <template>
+  <div>
+
+    <div v-if="isBusy" class="d-flex justify-content-center mb-3 spinner-wrapper">
+      <b-spinner label="Loading..."></b-spinner>
+    </div>
   <div class="container">
     <div class="module-donate__donateWindow">
       <div class="module-donate__card">
@@ -10,6 +15,7 @@
       <p class="module-donate__version">powered by <a href="#" target="_blank">Doika</a></p>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
@@ -20,6 +26,7 @@
         props:['id'],
         data() {
             return {
+                isBusy: true,
                 campaign: [],
                 redirect_url: null,
                 placeholder: this.$t('buttons.widget.email'),
@@ -42,7 +49,7 @@
                     'campaign': this.id,
                     'paymentGateway': 1,
                     'email': this.model.email,
-                    'payment_interval': 30
+                    'payment_interval': "P1M"
                 })
             let { data } = await axios.post(action,formData)
             this.redirect_url = data
@@ -329,6 +336,7 @@
 
             var pf = new BeGateway(options);
             pf.buildForm();
+            this.isBusy = false;
         }
     }
 </script>

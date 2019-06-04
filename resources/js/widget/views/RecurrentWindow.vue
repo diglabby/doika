@@ -1,4 +1,9 @@
 <template>
+  <div>
+
+    <div v-if="isBusy" class="d-flex justify-content-center mb-3 spinner-wrapper">
+      <b-spinner label="Loading..."></b-spinner>
+    </div>
   <div class="container">
     <div class="module-donate__donateWindow">
       <p class="module-donate__title recurrent">{{ $t('labels.widget.title') }}</p>
@@ -15,6 +20,7 @@
       </div>
       <p class="module-donate__version">powered by <a href="#" target="_blank">Doika</a></p>
     </div>
+  </div>
   </div>
 </template>
 
@@ -39,10 +45,12 @@
     import axios from 'axios'
 
     export default {
+
         name: 'RecurrentWindow',
         props: ['id'],
         data() {
             return {
+                isBusy: true,
                 campaign: [],
                 redirect_url: null,
                 model: {
@@ -54,12 +62,16 @@
                 }
             }
         },
+        mounted() {
+            this.isBusy = false;
+        },
         methods: {
             submit: function() {
                 sessionStorage.setItem('email', this.model.email)
                 sessionStorage.setItem('name', this.model.name)
                 sessionStorage.setItem('phone', this.model.phone)
             },
+
         }
     }
 </script>

@@ -39,7 +39,13 @@
           <template slot="created_at" slot-scope="row">
             <span v-text="new Date(row.item.created_at * 1000).toLocaleDateString('ru-RU')"></span>
           </template>
+          <template slot="table-busy">
+            <div class="text-center">
+              <b-spinner label="Loading..."></b-spinner>
+            </div>
+          </template>
         </b-table>
+
       </b-datatable>
     </b-card>
   </div>
