@@ -1926,16 +1926,16 @@
         },
         {
             "name": "spatie/laravel-query-builder",
-            "version": "1.17.3",
+            "version": "1.17.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-query-builder.git",
-                "reference": "59d623c8f92d02f40fcd896f398103ebd4de24e6"
+                "reference": "a0f5902c294d34744f46c2f88ae8a8b8d1c2dd45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/59d623c8f92d02f40fcd896f398103ebd4de24e6",
-                "reference": "59d623c8f92d02f40fcd896f398103ebd4de24e6",
+                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/a0f5902c294d34744f46c2f88ae8a8b8d1c2dd45",
+                "reference": "a0f5902c294d34744f46c2f88ae8a8b8d1c2dd45",
                 "shasum": ""
             },
             "require": {
@@ -1980,7 +1980,7 @@
                 "laravel-query-builder",
                 "spatie"
             ],
-            "time": "2019-04-16T15:08:03+00:00"
+            "time": "2019-06-03T09:47:17+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2605,7 +2605,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "backendtea@gmail.com"
+                    "email": "BackEndTea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
