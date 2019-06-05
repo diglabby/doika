@@ -66,7 +66,7 @@ final class SubscriptionIntend
      */
     public function getBillingCyclesCount(): int
     {
-        $period = $this->interval->toPeriod(now(), $this->campaign->finished_at);
+        $period = $this->interval->toPeriod(now(), $this->campaign->finish_at);
         return $period->count();
     }
 
@@ -74,5 +74,10 @@ final class SubscriptionIntend
     {
         $currencyCode = $this->money->getCurrency()->getCode();
         return ((int) $this->money->getAmount() / 100)."{$currencyCode} для {$this->campaign->name}";
+    }
+
+    public function getInterval(): CarbonInterval
+    {
+        return clone $this->interval;
     }
 }

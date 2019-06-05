@@ -39,3 +39,27 @@ after_script:
       wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.1.0/php-coveralls.phar
       php php-coveralls.phar --verbose
     fi
+
+jobs:
+  include:
+    - stage: Release
+      env:
+        - BUILD=true
+      script:
+        - NAME="doika"
+        - zip -r $NAME ./ -x .git/\* -x .github/\* -x .gitignore -x .travis.yml -x .editorconfig -x composer.json -x composer.lock -x node_modules/\*
+        - TAG=$(git describe --tags)
+        - FILE="./$NAME.zip"
+        - if [[ -e $FILE ]]; then
+          NEW_NAME="$NAME-$TAG.$TRAVIS_JOB_ID";
+          mv $NAME.zip $NEW_NAME.zip;
+          fi
+      deploy:
+        provider: releases
+        api_key:
+          secure: Lz6471uYFipVKYR7rk0AfMqb+ZRcTRUy3YnxFnMCJVg8mNQOzIpPf8/JW0yMVFxeVg74vZ8Bpd//sYd8333Gdd6KcYi1bpUXYBzXbwrVJ1ajm4MA3M/klPQJqOn884a6AYHlDpolkxTG47mcRZj7ycmhBV49ZZ6GIAkAfDE6/ZMzrofr2TVZzASCF+qcuNSQtZv326EWohtJLMewrs8qt4qvZL+4hfvgXGDBWRfzUyhC4tGrSpGZPk26kYSbsH49q+aq3+bdPZCxB6m1i3Y7e5JKCzVu3AMxq17LWCSfNX6/fV4XwACoLw5dMHin1XZLwyWw46kTaJ/izXiuuihId+hreHHyDwPzJle5qPcKyUVBB5xB4pKMwCbEKW7sA+rQQ0oGg4HvG3zSlD3XsB21hYKVgOvIiEXnh0APBJk6pGvAVNHFrzqOliQbTFPEzZ2LrgkVhRPl2Xs1AYwkABax3pJYXn+7b/T88oxLsIL9nvBnckyomZEwCjoYpvOTxw1gC9eD45BNDppschIMByEOAAaX3LqX8p2IRuQqjvJqQVF7ge0wYzB19dYZ9qGvsqjPoC6BS07VXqz5kZVmqUngM+8TrlLG9WmcpQTPeOYR/UiHli1m5cF4rcP6J4s6ZV5psDCUTVWL5dtArE8+l5TfjwVxCKF6S8I3UsrCf1nt67I=
+        file: "$NEW_NAME.zip"
+        skip_cleanup: true
+        on:
+          tags: true
+          repo: diglabby/doika

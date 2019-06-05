@@ -96,6 +96,27 @@
                             </b-form-group>
                           </b-col>
                         </b-row>
+                        <b-row>
+                          <b-col md>
+                            <b-form-group
+                                    :label="$t('labels.admin.settings.payments.paymentInterval')"
+                                    label-for="bePaidPaymentInterval"
+                                    horizontal
+                                    :label-cols="4"
+                                    :feedback="feedback('title')"
+                            >
+                              <b-form-select v-model="model.settings.paymentInterval" class="mb-3">
+                                <option :value="P1H">{{ $t('labels.admin.settings.payments.paymentInterval1H') }}</option>
+                                <option value="P1D">{{ $t('labels.admin.settings.payments.paymentInterval1D') }}</option>
+                                <option value="P1M">{{ $t('labels.admin.settings.payments.paymentInterval1M') }}</option>
+                                <option value="P1Y">{{ $t('labels.admin.settings.payments.paymentInterval1Y') }}</option>
+                              </b-form-select>
+                            </b-form-group>
+                          </b-col>
+
+                          <b-col md>
+                          </b-col>
+                        </b-row>
                         <div class="form-group">
                           <b-row class="mb-4 mt-4">
                             <b-col lg="5" offset-lg="2">
@@ -265,7 +286,8 @@ export default {
                 termsOfUse: null,
                 disableLivePayments: "test",
                 minPayment: null,
-                maxPayment: null
+                maxPayment: null,
+                paymentInterval: "P1H"
             }
         }
       }
@@ -286,7 +308,7 @@ export default {
                     params:
                         {
                             keys:
-                                ['gateway_bePaid_idMarket', 'gateway_bePaid_keyMarket', 'termsOfUse', 'disableLivePayments']
+                                ['gateway_bePaid_idMarket', 'gateway_bePaid_keyMarket', 'termsOfUse', 'disableLivePayments', 'minPayment', 'maxPayment', 'paymentInteval']
                         }
                 })
 

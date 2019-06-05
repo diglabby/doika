@@ -76,8 +76,8 @@ class CampaignControllerTest extends TestCase
                 'target_amount',
                 'currency',
                 'active_status',
-                'started_at',
-                'finished_at',
+                'start_at',
+                'finish_at',
                 'amount_collected',
             ],
         ]);

@@ -52,7 +52,7 @@
             <span v-text="`${row.item.amount_collected}/${row.item.target_amount}`"></span>
           </template>
           <template slot="days" slot-scope="row">
-            <span v-text="(moment(row.item.finished_at).fromNow())"></span>
+            <span v-text="(moment(row.item.finish_at).fromNow())"></span>
           </template>
           <template slot="actions" slot-scope="row">
             <b-button size="sm" variant="primary" :to="`/campaigns/${row.item.id}/edit`" v-b-tooltip.hover :title="$t('buttons.admin.common.edit')" class="mr-1">
@@ -61,6 +61,11 @@
             <b-button size="sm" variant="secondary" v-b-tooltip.hover :title="$t('buttons.admin.common.delete')" @click.stop="onDelete(row.item.id)">
               <i class="fe fe-trash"></i>
             </b-button>
+          </template>
+          <template slot="table-busy">
+            <div class="text-center">
+              <b-spinner label="Loading..."></b-spinner>
+            </div>
           </template>
         </b-table>
 
@@ -77,9 +82,7 @@ export default {
   data() {
     return {
       selected: [],
-
       fields: [
-        { key: 'checkbox' },
         {
           key: 'title',
           label: this.$t('labels.admin.campaigns.name'),
@@ -116,16 +119,17 @@ export default {
           class: 'text-center'
         },
         {
-          key: 'actions',
-          label: this.$t('labels.admin.datatables.actions'),
-          class: 'nowrap'
+            key: 'actions',
+            label: this.$t('labels.admin.datatables.actions'),
+            class: 'nowrap'
         }
       ],
-      actions: {
-        destroy: this.$t('buttons.admin.common.removeSelected'),
-        enable: this.$t('buttons.admin.common.enableSelected'),
-        disable: this.$t('buttons.admin.common.disableSelected')
-      }
+        actions: {
+            destroy: this.$t('buttons.admin.common.removeSelected'),
+            enable: this.$t('buttons.admin.common.enableSelected'),
+            disable: this.$t('buttons.admin.common.disableSelected')
+        }
+
     }
   },
   methods: {

@@ -5,7 +5,7 @@ import Vue from 'vue'
 import '../vendor/axios-config'
 
 import 'babel-polyfill'
-import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm'
+import BootstrapVue from 'bootstrap-vue'
 
 // Vendor plugins components
 import '../vendor/coreui/components'
@@ -25,6 +25,7 @@ import App from './App.vue'
 import Noty from 'noty'
 // Bootstrap Vue
 Vue.use(BootstrapVue)
+
 import moment from 'moment'
 Vue.prototype.moment = moment
 // vue-select

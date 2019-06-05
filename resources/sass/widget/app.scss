@@ -4,15 +4,16 @@
 @import "variables";
 
 // Thème CoreUI
+
+@import "~bootstrap/dist/css/bootstrap.css";
 @import "~bootstrap-vue/dist/bootstrap-vue.css";
 
 // Plugins
 
+
 @import "~noty/src/themes/bootstrap-v4";
 
 @import url('https://fonts.googleapis.com/css?family=Ubuntu:400,500,700&subset=cyrillic,cyrillic-ext');
-
-
 // Components
 
 
@@ -101,6 +102,7 @@
     min-height: 430px;
     //max-width: 750px;
     background: none transparent;
+    height: 100vh;
   }
   html {
     overflow: hidden;
@@ -214,6 +216,36 @@
     align-content: space-between;
     padding: 30px 50px 15px 45px;
   }
+  .app > .container-fluid {
+    height: 100%;
+  }
+.app > .container-fluid > div {
+  height: 100%;
+}
+.spinner-wrapper {
+  height: 100%;
+  align-items: center;
+}
+
+.custom-control-input ~ .custom-control-label::before {
+  background-color: #FF80B4 !important;
+  border-color: #FF80B4 !important;
+  outline: none !important;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #FF80B4 !important;
+  border-color: #FF80B4 !important;
+  outline: none !important;
+}
+
+.custom-control-input:not(:disabled):active ~ .custom-control-label::before {
+  background-color: #FF80B4 !important;
+  border-color: #FF80B4 !important;
+  outline: none !important;
+}
+
+
 
   .module-donate__title {
     font-family: 'Ubuntu', sans-serif;
@@ -362,7 +394,7 @@
   }
 
   .module-donate__button-select.payment {
-    width:50%;
+    width:48%;
   }
 
   .module-donate__button-select:focus {

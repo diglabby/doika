@@ -1,4 +1,9 @@
 <template>
+  <div>
+
+    <div v-if="isBusy" class="d-flex justify-content-center mb-3 spinner-wrapper">
+      <b-spinner label="Loading..."></b-spinner>
+    </div>
   <div class="container">
     <div class="module-donate__status">
       <p class="status__title">{{ message }}</p>
@@ -11,6 +16,7 @@
       <p class="module-donate__version">powered by <a href="#" target="_blank">Doika</a></p>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
@@ -20,7 +26,9 @@ export default {
   name: 'StatusWindow',
     props: ['id', 'status'],
   data() {
+
     return {
+        isBusy: true,
       campaign: [],
       placeholder: 'Email',
         image: null,
@@ -56,6 +64,7 @@ export default {
                 this.message = 'Немагчыма правесці аплату'
                 break;
         }
+        this.isBusy = false;
     },
   async created() {
    // let { data } = await axios.get(
