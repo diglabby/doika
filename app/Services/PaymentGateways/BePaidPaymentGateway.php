@@ -12,6 +12,7 @@ use Diglabby\Doika\Models\SubscriptionIntend;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\ServerException;
 use Money\Money;
 
 /**
@@ -22,6 +23,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
     public const GATEWAY_ID = 'bePaid';
     private const API_VERSION = '2.1';
     private const API_ENDPOINT = 'https://api.bepaid.by';
+    private const API_ENDPOINT_CHECKOUT = 'https://checkout.bepaid.by';
 
     /** @var BePaidApiContext */
     private $apiContext;
@@ -75,17 +77,18 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
             ],
         ];
 
-        $httpClient = new HttpClient(['base_uri' => 'https://checkout.bepaid.by']);
         try {
-            $response = $httpClient->request('POST', '/ctp/api/checkouts', [
+            $response = $this->httpClient->request('POST', self::API_ENDPOINT_CHECKOUT.'/ctp/api/checkouts', [
                 'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
                 'headers' => ['Accept' => 'application/json'],
                 'json' => $checkoutParams,
             ]);
         } catch (ClientException $exception) {
             throw new InvalidConfigException("Invalid API request: {$exception->getMessage()}", $exception->getCode(), $exception);
+        } catch (ServerException $exception) {
+            throw UnexpectedGatewayResponse::withBody($exception->getMessage(), $exception);
         } catch (GuzzleException $exception) {
-            throw new \DomainException($exception->getMessage(), $exception->getCode(), $exception);
+            throw new \DomainException('Unknown Guzzle HTTP client error', null, $exception);
         }
 
         /** @var array $paymentData */
@@ -127,12 +130,21 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
                 'language' => app()->getLocale(),
             ],
         ];
-        $response = $this->httpClient->request('POST', self::API_ENDPOINT.'/subscriptions', [
-            'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
-            'headers' => ['Accept' => 'application/json'],
-            'json' => $getSubscriptionParams,
-            'verify' => false,
-        ]);
+
+        try {
+            $response = $this->httpClient->request('POST', self::API_ENDPOINT.'/subscriptions', [
+                'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
+                'headers' => ['Accept' => 'application/json'],
+                'json' => $getSubscriptionParams,
+                'verify' => false,
+            ]);
+        } catch (ClientException $exception) {
+            throw new InvalidConfigException("Invalid API request: {$exception->getMessage()}", $exception->getCode(), $exception);
+        } catch (ServerException $exception) {
+            throw UnexpectedGatewayResponse::withBody($exception->getMessage(), $exception);
+        } catch (GuzzleException $exception) {
+            throw new \DomainException('Unknown Guzzle HTTP client error', null, $exception);
+        }
 
         /** @var array $subscriptionData */
         $subscriptionData = json_decode($response->getBody()->getContents(), true);
