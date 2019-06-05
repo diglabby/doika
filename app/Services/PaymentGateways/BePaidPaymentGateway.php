@@ -110,12 +110,10 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
                 'test' => $this->apiContext->isTest(),
                 'title' => $subscriptionIntend->getPlanName(),
                 'currency' => $subscriptionIntend->money->getCurrency()->getCode(),
-                'plan' => [
-                    array_merge(
-                        ['amount' => (int) $subscriptionIntend->money->getAmount()],
-                        $this->parseDateInterval($subscriptionIntend->getInterval())
-                    ),
-                ],
+                'plan' => array_merge(
+                    ['amount' => (int) $subscriptionIntend->money->getAmount()],
+                    $this->parseDateInterval($subscriptionIntend->getInterval())
+                ),
                 'infinite' => false,
                 'billing_cycles' => $subscriptionIntend->getBillingCyclesCount(),
             ],
@@ -131,6 +129,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
             'settings' => [
                 'language' => app()->getLocale(),
             ],
+            'number_payment_attempts' => 5, // Default: 3
         ];
 
         try {
@@ -184,7 +183,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
         }
 
         return [
-            'interval' => $intervalSize,
+            'interval' => (int) $intervalSize,
             'interval_unit' => $convertedIntervalUnit, // hour|day|month
         ];
     }
