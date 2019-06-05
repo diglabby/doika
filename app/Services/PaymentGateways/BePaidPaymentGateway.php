@@ -21,9 +21,11 @@ use Money\Money;
 final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubscriptionsGateway
 {
     public const GATEWAY_ID = 'bePaid';
+
     private const API_VERSION = '2.1';
     private const API_ENDPOINT = 'https://api.bepaid.by';
-    private const API_ENDPOINT_CHECKOUT = 'https://checkout.bepaid.by';
+
+    private const CHECKOUT_ENDPOINT = 'https://checkout.bepaid.by';
 
     /** @var BePaidApiContext */
     private $apiContext;
@@ -78,7 +80,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
         ];
 
         try {
-            $response = $this->httpClient->request('POST', self::API_ENDPOINT_CHECKOUT.'/ctp/api/checkouts', [
+            $response = $this->httpClient->request('POST', self::CHECKOUT_ENDPOINT.'/ctp/api/checkouts', [
                 'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
                 'headers' => ['Accept' => 'application/json'],
                 'json' => $checkoutParams,
