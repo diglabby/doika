@@ -119,7 +119,7 @@
                             id="start_at"
                             name="start_at"
                             :config="config"
-                            v-model="model.started_at"
+                            v-model="model.start_at"
                           ></p-datetimepicker>
                           <b-input-group-append>
                             <b-input-group-text data-toggle>
@@ -145,7 +145,7 @@
                             name="finishAt"
                             required
                             :config="config"
-                            v-model="model.finished_at"
+                            v-model="model.finish_at"
                             :state="finishAtState"
                           ></p-datetimepicker>
                           <b-input-group-append>
@@ -291,8 +291,8 @@ export default {
         active_status: 1,
         target_amount: 0,
         currency: 'BYN',
-        started_at: null,
-        finished_at: null,
+        start_at: null,
+        finish_at: null,
         visual_settings: {
             buttons: [
              5, 10, 25, 50,
@@ -331,10 +331,10 @@ export default {
             return !(this.nameState && this.pictureState && this.amountState)
         },
         startAtState() {
-            return this.model.started_at != null
+            return this.model.start_at != null
         },
         finishAtState() {
-            return this.model.finished_at != null
+            return this.model.finish_at != null
         },
         amountState() {
             return (this.model.target_amount > 0) ? true : false

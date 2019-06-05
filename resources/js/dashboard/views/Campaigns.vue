@@ -52,7 +52,7 @@
             <span v-text="`${row.item.amount_collected}/${row.item.target_amount}`"></span>
           </template>
           <template slot="days" slot-scope="row">
-            <span v-text="(moment(row.item.finished_at).fromNow())"></span>
+            <span v-text="(moment(row.item.finish_at).fromNow())"></span>
           </template>
           <template slot="actions" slot-scope="row">
             <b-button size="sm" variant="primary" :to="`/campaigns/${row.item.id}/edit`" v-b-tooltip.hover :title="$t('buttons.admin.common.edit')" class="mr-1">
