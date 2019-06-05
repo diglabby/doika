@@ -65,7 +65,7 @@ class BePaidSubscriptionWebhookHandlerTest extends TestCase
         $this->withoutExceptionHandling();
         $this->withoutMiddleware([VerifyBePaidSignature::class]);
         $requestData = $this->getRequestData('failed.subscription.json');
-        /** @var Subscription $subscription */
+        factory(Donator::class)->create(['id' => $requestData['additional_data']['donator_id']]);
         factory(Campaign::class)->create(['id' => $requestData['additional_data']['campaign_id']]);
 
         $response = $this->postJson(
