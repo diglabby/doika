@@ -47,7 +47,7 @@ jobs:
         - BUILD=true
       script:
         - NAME="doika"
-        - zip -r $NAME ./ -x .git/\* -x .github/\* -x .gitignore -x .travis.yml -x .editorconfig -x composer.json -x composer.lock -x node_modules/\*
+        - zip -r $NAME ./ -x .git/\* -x .github/\* -x .env .env.docker -x .git* -x .travis.yml -x .editorconfig -x composer.* -x docker/\*  -x node_modules/\* -x storage/\* -x tests/\*
         - TAG=$(git describe --tags)
         - FILE="./$NAME.zip"
         - if [[ -e $FILE ]]; then
