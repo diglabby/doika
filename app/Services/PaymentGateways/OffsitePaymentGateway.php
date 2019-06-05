@@ -3,7 +3,6 @@
 namespace Diglabby\Doika\Services\PaymentGateways;
 
 use Diglabby\Doika\Models\Campaign;
-use Diglabby\Doika\Models\Donator;
 use Money\Money;
 
 interface OffsitePaymentGateway extends PaymentGateway
@@ -13,9 +12,8 @@ interface OffsitePaymentGateway extends PaymentGateway
      * so we can redirect visitor to a payment page
      * where visitor can input payment data.
      * @param Money $money
-     * @param Donator $donator
      * @param Campaign $campaign
      * @return string
      */
-    public function tokenizePaymentIntend(Money $money, Donator $donator, Campaign $campaign): string;
+    public function tokenizePaymentIntend(Money $money, Campaign $campaign): string;
 }

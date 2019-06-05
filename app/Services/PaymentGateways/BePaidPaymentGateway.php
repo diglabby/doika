@@ -6,7 +6,6 @@ use Carbon\CarbonInterval;
 use Diglabby\Doika\Exceptions\InvalidConfigException;
 use Diglabby\Doika\Exceptions\UnexpectedGatewayResponse;
 use Diglabby\Doika\Models\Campaign;
-use Diglabby\Doika\Models\Donator;
 use Diglabby\Doika\Models\Subscription;
 use Diglabby\Doika\Models\SubscriptionIntend;
 use GuzzleHttp\Client as HttpClient;
@@ -49,7 +48,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
      * {@inheritDoc}
      * @see https://docs.bepaid.by/ru/checkout/payment-token
      */
-    public function tokenizePaymentIntend(Money $money, Donator $donator, Campaign $campaign): string
+    public function tokenizePaymentIntend(Money $money, Campaign $campaign): string
     {
         if ($money->getAmount() < 1) {
             throw new \InvalidArgumentException('Amount should be a positive number');
@@ -75,9 +74,6 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
                     'amount' => $money->getAmount(),
                     'currency' => $money->getCurrency()->getCode(),
                     'description' => sprintf('Donation for "%s" campaign', $campaign->name),
-                ],
-                'customer' => [
-                    'email' => $donator->email,
                 ],
             ],
         ];
