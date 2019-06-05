@@ -8,22 +8,26 @@ use Diglabby\Doika\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
+/**
+ * Handled on failed attempt to create a subscription.
+ * Probably on failed renew attempt also, need to check (@todo)
+ */
 final class CreateFailedTransaction
 {
     public function handle(Request $request): void
     {
-        /** @var Subscription $subscription */
+        /** @var Subscription|null $subscription */
         $subscription = Subscription::query()
             ->where('payment_gateway_subscription_id', $request->json('id'))
             ->where('payment_gateway', 'bePaid')
             ->withTrashed()
-            ->firstOrFail();
+            ->first();
 
         $transaction = new Transaction([
             'amount' => $request->json('plan.plan.amount'),
             'currency' => $request->json('plan.currency'),
             'campaign_id' => $request->json('additional_data.campaign_id'),
-            'subscription_id' => $subscription->id,
+            'subscription_id' => $subscription ? $subscription->id : null,
             'donator_id' => $request->json('additional_data.donator_id'),
             'payment_gateway' => 'bePaid',
             'payment_gateway_transaction_id' => $request->json('last_transaction.uid'),

@@ -8,12 +8,12 @@ use Illuminate\Mail\Mailable;
 
 final class SubscriptionChargeFailed extends Mailable
 {
-    /** @var Subscription */
+    /** @var Subscription|null */
     public $subscription;
     /** @var Transaction */
     private $transaction;
 
-    public function __construct(Subscription $subscription, Transaction $transaction)
+    public function __construct(?Subscription $subscription, Transaction $transaction)
     {
         $this->subscription = $subscription;
         $this->transaction = $transaction;

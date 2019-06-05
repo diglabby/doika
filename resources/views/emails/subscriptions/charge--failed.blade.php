@@ -18,7 +18,9 @@
     @component('mail::panel')
         Час заканчэння кампаніі "{{ $campaign->name }}": {{ $campaign->finish_at->toFormattedDateString() }}
 
-        Вы можаце у любы час адпісацца па спасыльцы: <a href="{{ $subscription->getCancelationUrl() }}">адпісацца</a>.
+        @if($subscription)
+            Вы можаце у любы час адпісацца па спасыльцы: <a href="{{ $subscription->getCancelationUrl() }}">адпісацца</a>.
+        @endif
     @endcomponent
 
     {{-- Salutations --}}
