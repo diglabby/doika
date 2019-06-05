@@ -67,6 +67,9 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
                     'fail_url' => route('widget.campaigns.donation-result', ['campaignId' => $campaign->id, 'status' => 'fail']),
                     'notification_url' => route('webhooks.bepaid.donated', [$campaign->id]),
                     'language' => app()->getLocale(),
+                    'customer_fields' => [
+                        'visible' => ['email'],
+                    ],
                 ],
                 'order' => [
                     'amount' => $money->getAmount(),
