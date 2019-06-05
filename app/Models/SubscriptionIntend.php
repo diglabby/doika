@@ -66,7 +66,7 @@ final class SubscriptionIntend
      */
     public function getBillingCyclesCount(): int
     {
-        $period = $this->interval->toPeriod(now(), $this->campaign->finished_at);
+        $period = $this->interval->toPeriod(now(), $this->campaign->finish_at);
         return $period->count();
     }
 

@@ -16,8 +16,8 @@ use Illuminate\Support\Carbon;
  * @property int $target_amount
  * @property string $currency
  * @property bool $active_status
- * @property Carbon $started_at
- * @property Carbon $finished_at
+ * @property Carbon $start_at
+ * @property Carbon $finish_at
  * @property string $visual_settings (json)
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -38,8 +38,8 @@ final class Campaign extends Model
 
     /** @var array The attributes that should be mutated to dates */
     protected $dates = [
-        'started_at',
-        'finished_at',
+        'start_at',
+        'finish_at',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -74,6 +74,6 @@ final class Campaign extends Model
 
     public function isFinished(): bool
     {
-        return now() > $this->finished_at;
+        return now() > $this->finish_at;
     }
 }
