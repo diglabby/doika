@@ -6,12 +6,12 @@ use Carbon\CarbonInterval;
 use Diglabby\Doika\Exceptions\InvalidConfigException;
 use Diglabby\Doika\Exceptions\UnexpectedGatewayResponse;
 use Diglabby\Doika\Models\Campaign;
-use Diglabby\Doika\Models\Donator;
 use Diglabby\Doika\Models\Subscription;
 use Diglabby\Doika\Models\SubscriptionIntend;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\ServerException;
 use Money\Money;
 
 /**
@@ -20,8 +20,11 @@ use Money\Money;
 final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubscriptionsGateway
 {
     public const GATEWAY_ID = 'bePaid';
+
     private const API_VERSION = '2.1';
     private const API_ENDPOINT = 'https://api.bepaid.by';
+
+    private const CHECKOUT_ENDPOINT = 'https://checkout.bepaid.by';
 
     /** @var BePaidApiContext */
     private $apiContext;
@@ -45,7 +48,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
      * {@inheritDoc}
      * @see https://docs.bepaid.by/ru/checkout/payment-token
      */
-    public function tokenizePaymentIntend(Money $money, Donator $donator, Campaign $campaign): string
+    public function tokenizePaymentIntend(Money $money, Campaign $campaign): string
     {
         if ($money->getAmount() < 1) {
             throw new \InvalidArgumentException('Amount should be a positive number');
@@ -63,29 +66,30 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
                     'fail_url' => route('widget.campaigns.donation-result', ['campaignId' => $campaign->id, 'status' => 'fail']),
                     'notification_url' => route('webhooks.bepaid.donated', [$campaign->id]),
                     'language' => app()->getLocale(),
+                    'customer_fields' => [
+                        'visible' => ['email'],
+                    ],
                 ],
                 'order' => [
                     'amount' => $money->getAmount(),
                     'currency' => $money->getCurrency()->getCode(),
                     'description' => sprintf('Donation for "%s" campaign', $campaign->name),
                 ],
-                'customer' => [
-                    'email' => $donator->email,
-                ],
             ],
         ];
 
-        $httpClient = new HttpClient(['base_uri' => 'https://checkout.bepaid.by']);
         try {
-            $response = $httpClient->request('POST', '/ctp/api/checkouts', [
+            $response = $this->httpClient->request('POST', self::CHECKOUT_ENDPOINT.'/ctp/api/checkouts', [
                 'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
                 'headers' => ['Accept' => 'application/json'],
                 'json' => $checkoutParams,
             ]);
         } catch (ClientException $exception) {
             throw new InvalidConfigException("Invalid API request: {$exception->getMessage()}", $exception->getCode(), $exception);
+        } catch (ServerException $exception) {
+            throw UnexpectedGatewayResponse::withBody($exception->getMessage(), $exception);
         } catch (GuzzleException $exception) {
-            throw new \DomainException($exception->getMessage(), $exception->getCode(), $exception);
+            throw new \DomainException('Unknown Guzzle HTTP client error', null, $exception);
         }
 
         /** @var array $paymentData */
@@ -105,12 +109,10 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
                 'test' => $this->apiContext->isTest(),
                 'title' => $subscriptionIntend->getPlanName(),
                 'currency' => $subscriptionIntend->money->getCurrency()->getCode(),
-                'plan' => [
-                    array_merge(
-                        ['amount' => (int) $subscriptionIntend->money->getAmount()],
-                        $this->parseDateInterval($subscriptionIntend->getInterval())
-                    ),
-                ],
+                'plan' => array_merge(
+                    ['amount' => (int) $subscriptionIntend->money->getAmount()],
+                    $this->parseDateInterval($subscriptionIntend->getInterval())
+                ),
                 'infinite' => false,
                 'billing_cycles' => $subscriptionIntend->getBillingCyclesCount(),
             ],
@@ -126,13 +128,23 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
             'settings' => [
                 'language' => app()->getLocale(),
             ],
+            'number_payment_attempts' => 5, // Default: 3
         ];
-        $response = $this->httpClient->request('POST', self::API_ENDPOINT.'/subscriptions', [
-            'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
-            'headers' => ['Accept' => 'application/json'],
-            'json' => $getSubscriptionParams,
-            'verify' => false,
-        ]);
+
+        try {
+            $response = $this->httpClient->request('POST', self::API_ENDPOINT.'/subscriptions', [
+                'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
+                'headers' => ['Accept' => 'application/json'],
+                'json' => $getSubscriptionParams,
+                'verify' => false,
+            ]);
+        } catch (ClientException $exception) {
+            throw new InvalidConfigException("Invalid API request: {$exception->getMessage()}", $exception->getCode(), $exception);
+        } catch (ServerException $exception) {
+            throw UnexpectedGatewayResponse::withBody($exception->getMessage(), $exception);
+        } catch (GuzzleException $exception) {
+            throw new \DomainException('Unknown Guzzle HTTP client error', null, $exception);
+        }
 
         /** @var array $subscriptionData */
         $subscriptionData = json_decode($response->getBody()->getContents(), true);
@@ -170,7 +182,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
         }
 
         return [
-            'interval' => $intervalSize,
+            'interval' => (int) $intervalSize,
             'interval_unit' => $convertedIntervalUnit, // hour|day|month
         ];
     }

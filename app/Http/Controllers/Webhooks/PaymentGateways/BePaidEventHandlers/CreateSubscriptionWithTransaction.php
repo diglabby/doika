@@ -2,6 +2,7 @@
 
 namespace Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers;
 
+use Carbon\CarbonInterval;
 use Diglabby\Doika\Mail\SubscriptionSuccessfullyCharged;
 use Diglabby\Doika\Models\Subscription;
 use Diglabby\Doika\Models\Transaction;
@@ -13,6 +14,8 @@ final class CreateSubscriptionWithTransaction
 {
     public function handle(Request $request): void
     {
+        $interval = CarbonInterval::fromString($request->json('plan.plan.interval').' '.$request->json('plan.plan.interval_unit'));
+
         $subscription = new Subscription([
             'donator_id' => $request->json('additional_data.donator_id'),
             'campaign_id' => $request->json('additional_data.campaign_id'),
@@ -20,9 +23,7 @@ final class CreateSubscriptionWithTransaction
             'payment_gateway_subscription_id' => $request->json('id'),
             'amount' => (int) $request->json('plan.plan.amount'),
             'currency' => $request->json('plan.currency'),
-            'payment_interval' => 'P'
-                .$request->json('plan.plan.interval')
-                .ucfirst($request->json('plan.plan.interval_unit')[0]), // P1M
+            'payment_interval' => $interval->spec(),
         ]);
         $subscription->save();
 

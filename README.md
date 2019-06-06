@@ -18,8 +18,9 @@
     - [Файлавая структура праекта](https://github.com/diglabby/doika/wiki/Файлавая-структура-праекта)
 
 ## Бягучыя задачы праекта
-- [ ] Рэфактарынг кода iтэрацыi 1.2 для пераносу на бягучую (1.3) iтэрацыю. Перанос фронтэнда на Vue.js
-- [ ] Дадаем падтрымку [рэкурэнтных плацяжоў](https://docs.bepaid.by/ru/subscriptions/intro) ад bePaid
+- [x] Рэфактарынг кода версіі 1.2.
+- [x] Дадаем падтрымку [рэкурэнтных плацяжоў](https://docs.bepaid.by/ru/subscriptions/intro) ад bePaid
+- [ ] Перанос фронтэнда на Vue.js
 
 ## Ліцэнзіі
 Выкарыстоўваем наступныя ліцэнзіі:
@@ -33,4 +34,3 @@
 * [Прэзентацыя (слайды)](https://docs.google.com/presentation/d/144zEv4DyBoa0jDKwee30Rip0oKZ8QzkeUKaNCRWy1qY/edit#slide=id.g42bd4a5055_0_28)
 * [FAQ](https://github.com/diglabby/doika/wiki/FAQ)
 * [Telegram тэх-падтрымкі](https://t.me/joinchat/FCPQXhFMFgED8krhwVt5IQ)
-

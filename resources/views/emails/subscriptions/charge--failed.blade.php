@@ -6,22 +6,22 @@
  */
 ?>
 @component('mail::message')
-    {{-- Greeting --}}
-    @lang('mails.layout.hello')
+{{-- Greeting --}}
+@lang('mails.layout.hello')
 
-    @component('mail::panel')
-        Сумма не адбыўшайся транзакціі {{ $transaction->amount / 100 }} {{ $transaction->currency }}.
+@component('mail::panel')
+Сума не адбыўшайся транзакцыі {{ $transaction->amount / 100 }} {{ $transaction->currency }}.
 
-        Прычына: {{ $transaction->status_message }}.
-    @endcomponent
+Прычына: {!! $transaction->status_message !!}.
+@endcomponent
 
-    @component('mail::panel')
-        Час заканчэння кампаніі "{{ $campaign->name }}": {{ $campaign->finish_at->toFormattedDateString() }}
+Час заканчэння кампаніі "{{ $campaign->name }}": {{ $campaign->finish_at->toFormattedDateString() }}
 
-        Вы можаце у любы час адпісацца па спасыльцы: <a href="{{ $subscription->getCancelationUrl() }}">адпісацца</a>.
-    @endcomponent
-
-    {{-- Salutations --}}
-    @lang('mails.layout.regards'), {{ config('app.name') }}
+@if($subscription)
+<small>Вы можаце у любы час адпісацца па спасыльцы: [адпісацца]({{ $subscription->getCancelationUrl() }}).</small>
+@endif
+_____________
+{{-- Salutations --}}
+@lang('mails.layout.regards'), {{ config('app.name') }}
 
 @endcomponent

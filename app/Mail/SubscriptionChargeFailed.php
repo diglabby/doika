@@ -8,12 +8,12 @@ use Illuminate\Mail\Mailable;
 
 final class SubscriptionChargeFailed extends Mailable
 {
-    /** @var Subscription */
+    /** @var Subscription|null */
     public $subscription;
     /** @var Transaction */
     private $transaction;
 
-    public function __construct(Subscription $subscription, Transaction $transaction)
+    public function __construct(?Subscription $subscription, Transaction $transaction)
     {
         $this->subscription = $subscription;
         $this->transaction = $transaction;
@@ -22,10 +22,12 @@ final class SubscriptionChargeFailed extends Mailable
     /** @inheritDoc */
     public function build(): self
     {
-        return $this->view('emails.subscriptions.charge--failed', [
-            'subscription' => $this->subscription,
-            'transaction' => $this->transaction,
-            'campaign' => $this->subscription->campaign,
-        ]);
+        return $this
+            ->subject('Памылка пры стварэнні падпіскі')
+            ->markdown('emails.subscriptions.charge--failed', [
+                'subscription' => $this->subscription,
+                'transaction' => $this->transaction,
+                'campaign' => $this->transaction->campaign,
+            ]);
     }
 }

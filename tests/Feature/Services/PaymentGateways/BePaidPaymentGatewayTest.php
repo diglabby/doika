@@ -12,8 +12,11 @@ use Tests\TestCase;
 
 class BePaidPaymentGatewayTest extends TestCase
 {
-    private const MARKET_ID = 1111;
-    private const MARKET_KEY = 'random_valid_key';
+    /**
+     * Public test data, @see https://bepaid.by/module/shop-script
+     */
+    private const MARKET_ID = 363;
+    private const MARKET_KEY = '4f585d2709776e53d080f36872fd1b63b700733e7624dfcadd057296daa37df6';
 
     /** @var BePaidPaymentGateway */
     private $bePaid;
@@ -37,10 +40,9 @@ class BePaidPaymentGatewayTest extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
 
-        $donator = factory(Donator::class)->make();
         $campaign = factory(Campaign::class)->make();
 
-        $this->bePaid->tokenizePaymentIntend(Money::BYN(0), $donator, $campaign);
+        $this->bePaid->tokenizePaymentIntend(Money::BYN(0), $campaign);
     }
 
     /** @test */
@@ -48,10 +50,9 @@ class BePaidPaymentGatewayTest extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
 
-        $donator = factory(Donator::class)->make();
         $campaign = factory(Campaign::class)->make();
 
-        $this->bePaid->tokenizePaymentIntend(Money::BYN(-20), $donator, $campaign);
+        $this->bePaid->tokenizePaymentIntend(Money::BYN(-20), $campaign);
     }
 
     /**
@@ -62,10 +63,9 @@ class BePaidPaymentGatewayTest extends TestCase
      */
     public function it_returns_payment_token()
     {
-        $donator = factory(Donator::class)->make();
         $campaign = factory(Campaign::class)->make();
 
-        $redirectUrl = $this->bePaid->tokenizePaymentIntend(Money::BYN(100), $donator, $campaign);
+        $redirectUrl = $this->bePaid->tokenizePaymentIntend(Money::BYN(100), $campaign);
 
         $this->assertContains('?token=', $redirectUrl);
     }
