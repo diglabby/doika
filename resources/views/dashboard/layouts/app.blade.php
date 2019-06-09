@@ -17,6 +17,7 @@
         {!! json_encode([
             'locale' => app()->getLocale(),
             'appName' => config('app.name'),
+            'appVersion' => config('app.version'),
             'homePath' => route('dashboard.home'),
             'dashboardBasePath' => '/doika/doika/dashboard',
             'locales' => 'en',
