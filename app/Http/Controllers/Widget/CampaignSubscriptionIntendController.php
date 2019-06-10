@@ -23,7 +23,7 @@ final class CampaignSubscriptionIntendController extends Controller
             'currency_code' => ['string', 'size:3'],
             'payment_interval' => ['required', new IsoTimeDuration()], // P1M (means 1 month)
             'email' => ['required', 'email'],
-            'phone' => ['nullable', 'string', 'max:15'],
+            'phone' => ['nullable', 'string', 'max:20'],
         ]);
 
         if ($campaign->isFinished()) {
