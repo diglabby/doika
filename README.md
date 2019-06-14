@@ -18,7 +18,7 @@
     - [Файлавая структура праекта](https://github.com/diglabby/doika/wiki/Файлавая-структура-праекта)
 
 ## Бягучыя задачы праекта
-- [x] Рэфактарынг кода версіі 1.2.
+- [x] Рэфактарынг кода [Doika v1.2](https://github.com/diglabby/doika_1.2).
 - [x] Дадаем падтрымку [рэкурэнтных плацяжоў](https://docs.bepaid.by/ru/subscriptions/intro) ад bePaid
 - [ ] Перанос фронтэнда на Vue.js
 
