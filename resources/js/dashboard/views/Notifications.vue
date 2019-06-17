@@ -15,7 +15,7 @@
               <b-collapse id="notifications" aria-expanded="true" visible role="tabpanel">
                 <div>
                   <b-tabs>
-                    <b-tab title = "Email server" active>
+                    <b-tab :title = "$t('labels.emailserver')" active>
                       <b-card-body>
                         <b-row>
                           <b-col md>
@@ -95,7 +95,7 @@
                         </b-row>
                       </b-card-body>
                     </b-tab>
-                    <b-tab title = "Recurrent payment">
+                    <b-tab :title = "$t('labels.recurrent')">
                       <b-card-body>
                         <b-row>
                           <b-col lg="6">
@@ -131,7 +131,7 @@
                         </b-form-group>
                       </b-card-body>
                     </b-tab>
-                    <b-tab title = "Single payment">
+                    <b-tab :title = "$t('labels.single')">
                       <b-card-body>
                         <b-row>
                           <b-col lg="6">

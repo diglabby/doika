@@ -18,7 +18,7 @@ export default {
             }
         },
         "auth": {
-            "failed": "E-mail и пароль не існуюць.",
+            "failed": "E-mail ці пароль не існуюць.",
             "throttle": "Занадта шмат спробаў увахода. Паўтарыце спробу праз {seconds} seconds."
         },
         "buttons": {
@@ -71,6 +71,9 @@ export default {
                     "description": ""
                 }
             },
+            "emailserver": "Паштовы сэрвер",
+            "recurrent": "Падпіска",
+            "single": "Аднаразовы плацёж",
             "admin": {
                 "title": "Кіраванне",
                 "datatables": {
@@ -271,7 +274,7 @@ export default {
                 },
                 "help": {
                     "title": "Агульная інфа",
-                    "header": "Як карыстацца модулям"
+                    "header": "Як карыстацца модулем"
                 },
                 "feedback": {
                     "title": "Зваротная сувязь",
@@ -326,6 +329,12 @@ export default {
                 "thanks": "Вялікі дзякуй за дапамогу!",
                 "paymentInfo": "Я згаджаюся з правіламі",
                 "terms": "Правілы данэйта"
+            }
+        },
+        "mails": {
+            "layout": {
+                "hello": "Вітаем!",
+                "regards": "З павагай"
             }
         },
         "pagination": {
@@ -717,6 +726,12 @@ export default {
                 "input": "Summ",
                 "recieved": "Recieved",
                 "needed": "Needed"
+            }
+        },
+        "mails": {
+            "layout": {
+                "hello": "Hello!",
+                "regards": "Best regards"
             }
         },
         "pagination": {
@@ -1136,6 +1151,12 @@ export default {
                 "input": "Сумма",
                 "recieved": "Собранная сумма",
                 "needed": "Целевая сумма"
+            }
+        },
+        "mails": {
+            "layout": {
+                "hello": "Здравствуйте!",
+                "regards": "С уважением"
             }
         },
         "pagination": {
