@@ -118,7 +118,6 @@
                           <p-datetimepicker
                             id="start_at"
                             name="start_at"
-                            :config="config"
                             v-model="model.start_at"
                           ></p-datetimepicker>
                           <b-input-group-append>
@@ -144,7 +143,6 @@
                             id="finishAt"
                             name="finishAt"
                             required
-                            :config="config"
                             v-model="model.finish_at"
                             :state="finishAtState"
                           ></p-datetimepicker>
