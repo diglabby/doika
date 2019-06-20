@@ -23,7 +23,10 @@ export default {
     config: {
       type: Object,
       default: () => ({
-        wrap: false
+        wrap: true,
+        altInput: true,
+        altFormat: "d-m-Y",
+        dateFormat: "Y-m-d",
       })
     },
     placeholder: {
