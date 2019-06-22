@@ -80,6 +80,8 @@ export default {
                     "actions": "Дзеянні",
                     "info": "Даведка"
                 },
+                "send_password_link": "Узнаўленне пароля",
+                "password_set_email": "Ваш email",
                 "common": {
                     "search": "Пошук",
                     "footer": {
@@ -326,6 +328,12 @@ export default {
                 "thanks": "Вялікі дзякуй за дапамогу!",
                 "paymentInfo": "Я згаджаюся з правіламі",
                 "terms": "Правілы данэйта"
+            }
+        },
+        "mails": {
+            "layout": {
+                "hello": "Вітаем!",
+                "regards": "З павагай"
             }
         },
         "pagination": {
@@ -717,6 +725,12 @@ export default {
                 "input": "Summ",
                 "recieved": "Recieved",
                 "needed": "Needed"
+            }
+        },
+        "mails": {
+            "layout": {
+                "hello": "Hello!",
+                "regards": "Best regards"
             }
         },
         "pagination": {
@@ -1136,6 +1150,12 @@ export default {
                 "input": "Сумма",
                 "recieved": "Собранная сумма",
                 "needed": "Целевая сумма"
+            }
+        },
+        "mails": {
+            "layout": {
+                "hello": "Здравствуйте!",
+                "regards": "С уважением"
             }
         },
         "pagination": {

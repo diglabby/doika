@@ -16,6 +16,8 @@ return [
             'actions' => 'Дзеянні',
             'info' => 'Даведка',
         ],
+        'send_password_link' => 'Узнаўленне пароля',
+        'password_set_email' => 'Ваш email',
         'common' => [
             'search' => 'Пошук',
             'footer' => [
