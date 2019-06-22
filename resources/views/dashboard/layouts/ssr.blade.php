@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}" >
+<html lang="{{ app()->getLocale() }}">
 <head>
     <link rel="shortcut icon" href="{{ asset('images/Doika-logo.png') }}" type="image/x-icon" />
     <meta charset="utf-8">
@@ -15,7 +15,6 @@
 
     <script defer src={{ asset(mix('build/js/dashboard/dashboard.js')) }}></script>
 
-    <!-- JS settings -->
     <script type="application/json" data-settings-selector="settings-json">
         {!! json_encode([
             'locale' => app()->getLocale(),

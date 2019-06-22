@@ -11,8 +11,6 @@
 
     <title>{{ config('app.name') }}</title>
 
-    <!-- Scripts -->
-
     <script type="application/json" data-settings-selector="settings-json">
         {!! json_encode([
             'locale' => app()->getLocale(),
@@ -24,8 +22,6 @@
             'user' => $loggedInUser,
         ]) !!}
     </script>
-
-    <!-- Styles -->
 
     <link href="{{ asset(mix('build/css/dashboard/dashboard.css')) }}" rel="stylesheet">
 
@@ -93,7 +89,6 @@
         @yield('content')
     </div>
 
-    <!-- Scripts -->
     <script src="{{ asset(mix('build/js/dashboard/dashboard.js')) }}"></script>
 </body>
 </html>
