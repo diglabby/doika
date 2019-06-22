@@ -419,6 +419,15 @@
     overflow: hidden;
     background-color: #FF80B4;
     margin-bottom: 10px;
+    margin-top: 80px;
+  }
+
+  .module-donate__button-select.confirm.reccurent {
+    height: 50px;
+    width: 165px;
+    overflow: hidden;
+    background-color: #FF80B4;
+    margin-bottom: 10px;
     margin-top: 15px;
   }
   
@@ -774,7 +783,9 @@
     justify-content: space-between;
     margin-top: 14px;
   }
-
+  #paymentForm {
+    height: 450px;
+  }
   .payment__description {
     font-family: Ubuntu, sans-serif;
     color:  #94989c;

@@ -10,7 +10,7 @@
         <div id="paymentForm"></div>
       </div>
       <div class="donateWindow__footer">
-        <b-button :to=" '/campaigns/' + id + '/recurrent'"  class="module-donate__button-select confirm back">{{ $t('buttons.widget.back') }}</b-button>
+        <b-button :to=" '/campaigns/' + id + '/recurrent'"  class="module-donate__button-select confirm reccurent back">{{ $t('buttons.widget.back') }}</b-button>
       </div>
       <p class="module-donate__version">powered by <a href="#" target="_blank">Doika</a></p>
     </div>
@@ -26,7 +26,7 @@
         props:['id'],
         data() {
             return {
-                isBusy: true,
+
                 campaign: [],
                 redirect_url: null,
                 placeholder: this.$t('buttons.widget.email'),
@@ -36,7 +36,7 @@
                     name: sessionStorage.getItem('name'),
                     phone: sessionStorage.getItem('phone'),
                     currency_code: 'BYN',
-                    payment_interval: 30
+                    payment_interval: "P1M"
                 }
             }
         },
@@ -336,7 +336,7 @@
 
             var pf = new BeGateway(options);
             pf.buildForm();
-            this.isBusy = false;
+
         }
     }
 </script>

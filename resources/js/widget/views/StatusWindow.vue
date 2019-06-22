@@ -38,7 +38,7 @@ export default {
     mounted: function() {
 
         switch(this.status) {
-            case 'successful':
+            case 'success':
                 this.image = "/doika/public/images/smile.png"
                 this.message = this.$t('labels.widget.thanks')
                 break;

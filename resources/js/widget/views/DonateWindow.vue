@@ -2,14 +2,14 @@
   <div>
     <div v-if="isBusy" class="d-flex justify-content-center mb-3 spinner-wrapper">
       <b-spinner label="Loading..."></b-spinner>
-    </div>7
+    </div>
     <div class="container">
       <div class="module-donate__donateWindow">
         <div class="module-donate__card">
-          <div id="paymentForm"></div>
+          <div id="paymentForm">
+          </div>
         </div>
         <div class="donateWindow__footer">
-          <input type="email" id="email" class="donate__email module-donate__text-input" v-model="model.email" :placeholder="placeholder">
           <b-button :to=" '/campaigns/' + id"  class="module-donate__button-select confirm back">{{ $t('buttons.widget.back') }}</b-button>
         </div>
         <p class="module-donate__version">powered by <a href="#" target="_blank">Doika</a></p>
@@ -26,7 +26,7 @@ export default {
     props:['id'],
   data() {
     return {
-        isBusy: true,
+      isBusy: false,
       campaign: [],
       redirect_url: null,
       placeholder: this.$t('buttons.widget.email'),
@@ -38,6 +38,7 @@ export default {
     }
   },
   async created() {
+
       let formData = this.$app.objectToFormData(this.model)
           formData.append('_method', 'POST')
       let action = this.$app.route('widget.campaigns.payment-intends.store',
@@ -199,12 +200,39 @@ export default {
               max-width: 365px;\
               height: 186px;\
               position:relative;\
-              background: url("https://'+ parent.document.location.host + '/doika/public/images/front-card.png"),\
-    url("https://'+ parent.document.location.host + '/doika/public/images/back-card.png");\
+              background: url("https://' + parent.document.location.host + '/doika/public/images/front-card.png"),\
+    url("https://' + parent.document.location.host + '/doika/public/images/back-card.png");\
     background-repeat: no-repeat;\
     background-position: left top, right 20px;\
   }\
   #request .verification-value label {\
+    display: none;\
+  }\
+  #request_customer_email {\
+          width: 250px !important;\
+          margin: auto !important;\
+          margin-top: 20px !important;\
+          pointer-events: auto !important;\
+          font-family: Ubuntu, sans-serif !important;\
+          font-size: 18px !important;\
+          font-weight: 500 !important;\
+          text-align: left !important;\
+          width: 250px !important;\
+          height: 50px !important;\
+          color: #191919 !important;\
+          border: none !important;\
+          -webkit-box-sizing: border-box !important;\
+          box-sizing: border-box !important;\
+          padding: 0px 5px 0px 15px !important;\
+          color: #31383e !important;\
+          -moz-appearance: textfield !important;\
+          -webkit-appearance: none !important;\
+          -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.07), 0 3px 6px rgba(0, 0, 0, 0.08) !important;\
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.07), 0 3px 6px rgba(0, 0, 0, 0.08) !important;\
+          -webkit-transition: all 0.3s ease 0s !important;\
+          transition: all 0.3s ease 0s !important;\
+      }\
+  .email-icon {\
     display: none;\
   }\
   .credentials {\
@@ -261,7 +289,7 @@ export default {
     margin: auto;\
   }\
   #request .submit-button {\
-      margin: 75px auto;\
+      margin: 0px auto;\
       display: flex;\
       flex-direction: column;\
       }\
@@ -330,7 +358,7 @@ export default {
 
       var pf = new BeGateway(options);
       pf.buildForm();
-      this.isBusy = false;
+
   }
 }
 </script>
