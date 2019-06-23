@@ -119,6 +119,7 @@
                             id="start_at"
                             name="start_at"
                             v-model="model.start_at"
+                            :config="config"
                           ></p-datetimepicker>
                           <b-input-group-append>
                             <b-input-group-text data-toggle>
@@ -145,6 +146,7 @@
                             required
                             v-model="model.finish_at"
                             :state="finishAtState"
+                            :config="config"
                           ></p-datetimepicker>
                           <b-input-group-append>
                             <b-input-group-text data-toggle>
@@ -269,8 +271,9 @@ export default {
     return {
       config: {
         wrap: true,
-        time_24hr: false,
-        enableTime: false,
+        altInput: true,
+        altFormat: "d-m-Y",
+        dateFormat: "Y-m-d",
         onChange: function(selectedDates, dateStr, instance) {
           instance.close()
         }
