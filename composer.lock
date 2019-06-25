@@ -8,21 +8,21 @@
     "packages": [
         {
             "name": "anlutro/l4-settings",
-            "version": "v0.8.1",
+            "version": "v0.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/anlutro/laravel-settings.git",
-                "reference": "fa9635df8c17d78bd1928a4f31c5ecdd17a080bd"
+                "reference": "64847e5e0eddd62aaa5b32166fe8ff776ae66252"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anlutro/laravel-settings/zipball/fa9635df8c17d78bd1928a4f31c5ecdd17a080bd",
-                "reference": "fa9635df8c17d78bd1928a4f31c5ecdd17a080bd",
+                "url": "https://api.github.com/repos/anlutro/laravel-settings/zipball/64847e5e0eddd62aaa5b32166fe8ff776ae66252",
+                "reference": "64847e5e0eddd62aaa5b32166fe8ff776ae66252",
                 "shasum": ""
             },
             "require": {
                 "illuminate/support": ">=4.1 <6.0",
-                "php": ">=5.3.0"
+                "php": ">=5.4.0"
             },
             "require-dev": {
                 "laravel/framework": ">=4.1 <6.0",
@@ -63,7 +63,7 @@
                 }
             ],
             "description": "Persistent settings in Laravel.",
-            "time": "2019-03-29T18:02:04+00:00"
+            "time": "2019-06-24T12:24:32+00:00"
         },
         {
             "name": "carbondate/carbon",
