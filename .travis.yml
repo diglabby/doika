@@ -24,8 +24,8 @@ before_script:
   - composer install --no-progress --no-interaction --prefer-dist --no-suggest
   - php artisan key:generate
   - npm config set registry http://registry.npmjs.org/
-  - npm install
-  - npm run dev
+  - npm ci
+  - npm run prod
 
 script:  
   - composer test:ci
