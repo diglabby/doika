@@ -94,7 +94,7 @@
                         <div class="module-donate__footer">
                           <p class="result__description" :style="{ color: model.settings.fontColor }">{{ $t('labels.widget.received') }}: <span class="summ__highlight">{{ fakeCampaign.amount_collected }} {{ fakeCampaign.currency }}</span></p>
                           <p class="result__received" :style="{ color: model.settings.fontColor }">{{ $t('labels.widget.needed') }}: <span class="summ__highlight">{{ fakeCampaign.target_amount }} {{ fakeCampaign.currency }}</span></p>
-                          <p class="module-donate__version" :style="{ color: model.settings.fontColor }">powered by <a href="#" target="_blank">Doika</a></p>
+                          <p class="module-donate__version" :style="{ color: model.settings.fontColor }">powered by <a href="https://doika.falanster.by/" target="_blank">Doika</a></p>
                         </div>
                       </div>
                       </b-card>

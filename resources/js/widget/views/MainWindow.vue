@@ -66,7 +66,7 @@
       <div class="module-donate__footer">
         <p class="result__description" :style="{ color: model.visual_settings.colors.fontColor }">{{ $t('labels.widget.received') }}: <span class="summ__highlight">{{ model.amount_collected }} {{ model.currency }}</span></p>
         <p class="result__received" :style="{ color: model.visual_settings.colors.fontColor }">{{ $t('labels.widget.needed') }}: <span class="summ__highlight">{{ model.target_amount }} {{ model.currency }}</span></p>
-        <p class="module-donate__version" :style="{ color: model.visual_settings.colors.fontColor }">powered by <a href="#" target="_blank">Doika</a></p>
+        <p class="module-donate__version" :style="{ color: model.visual_settings.colors.fontColor }">powered by <a href="https://doika.falanster.by/" target="_blank">Doika</a></p>
       </div>
 
     </div>

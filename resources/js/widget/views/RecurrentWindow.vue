@@ -18,7 +18,7 @@
         <b-button :to=" '/campaigns/' + id"  class="module-donate__button-select confirm back">{{ $t('buttons.widget.back') }}</b-button>
         <b-button :to=" '/campaigns/' + id + '/recurrent/donate'" @click="submit" class="module-donate__button-select confirm">{{ $t('buttons.widget.proceed') }}</b-button>
       </div>
-      <p class="module-donate__version">powered by <a href="#" target="_blank">Doika</a></p>
+      <p class="module-donate__version">powered by <a href="https://doika.falanster.by/" target="_blank">Doika</a></p>
     </div>
   </div>
   </div>
