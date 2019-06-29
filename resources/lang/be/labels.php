@@ -7,6 +7,10 @@ return [
             'description' => '',
         ],
     ],
+    'emailserver' => 'Паштовы сэрвер',
+    'recurrent' => 'Падпіска',
+    'single' => 'Аднаразовы плацёж',
+
     'admin' => [
         'title' => 'Кіраванне',
         'datatables' => [
@@ -15,9 +19,8 @@ return [
             'search' => 'Пошук',
             'actions' => 'Дзеянні',
             'info' => 'Даведка',
-        ],
-        'send_password_link' => 'Узнаўленне пароля',
-        'password_set_email' => 'Ваш email',
+        ],    
+       
         'common' => [
             'search' => 'Пошук',
             'footer' => [
@@ -209,7 +212,7 @@ return [
         ],
         'help' => [
             'title' => 'Агульная інфа',
-            'header' => 'Як карыстацца модулям',
+            'header' => 'Як карыстацца модулем',
         ],
         'feedback' => [
             'title' => 'Зваротная сувязь',

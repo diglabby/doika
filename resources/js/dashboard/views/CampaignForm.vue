@@ -238,7 +238,7 @@
 
             <b-row slot="footer">
               <b-col md>
-                <b-button to="/campaigns" exact variant="secondary" size="sm">
+                <b-button to="/campaigns" exact variant="secondary" >
                   {{ $t('buttons.admin.common.back') }}
                 </b-button>
               </b-col>
