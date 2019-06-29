@@ -3,8 +3,8 @@
 namespace Diglabby\Doika\Exceptions;
 
 use Exception;
-use Illuminate\Support\Facades\View;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\View;
 
 class Handler extends ExceptionHandler
 {

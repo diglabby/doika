@@ -11,8 +11,8 @@ use Diglabby\Doika\Rules\IsoTimeDuration;
 use Diglabby\Doika\Services\PaymentGateways\BePaidPaymentGateway;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Money\Money;
 use Money\Currency;
+use Money\Money;
 
 final class CampaignSubscriptionIntendController extends Controller
 {
