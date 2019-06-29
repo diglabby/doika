@@ -30,6 +30,7 @@
         "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-ide-helper": "^2.5",
         "beyondcode/laravel-dump-server": "^1.2",
+        "doctrine/dbal": "^2.9",
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
         "laravel/dusk": "^5.1",
@@ -66,6 +67,7 @@
     "scripts": {
         "post-update-cmd": [
             "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:models",
             "@php artisan ide-helper:meta"
         ],
         "post-autoload-dump": [
