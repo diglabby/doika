@@ -5,10 +5,10 @@ services:
     container_name: 'doika-composer'
     restart: 'no'
     image: composer
-    working_dir: /app    
+    working_dir: /app
     volumes:
       - ./:/app
-    command: 'install --ignore-platform-reqs'        
+    command: 'install --ignore-platform-reqs'
   mysql:
     build: ./docker/mysql
     container_name: 'doika-mysql'
@@ -21,7 +21,7 @@ services:
       MYSQL_USER: admin
       MYSQL_PASSWORD: root
   webserver:
-    build: 
+    build:
       context: './'
       dockerfile: 'docker/apache/Dockerfile'
     container_name: 'doika-webserver'
@@ -32,9 +32,9 @@ services:
       - "443:443"
     expose:
       - "9000"
-    links: 
+    links:
       - mysql
-    volumes: 
+    volumes:
       - ./:/var/www/html/doika
       - ./docker/apache/logs:/var/log/apache2
       - ./docker/php/php.ini:/usr/local/etc/php/php.ini
@@ -53,31 +53,26 @@ services:
     container_name: 'doika-node'
     build:
       context: './'
-      dockerfile: 'docker/node/Dockerfile' 
+      dockerfile: 'docker/node/Dockerfile'
     working_dir: /app
     environment:
       - NODE_ENV=dev
-      - DEV_SERVER_PORT=4000  
+      - DEV_SERVER_PORT=4000
     volumes:
-      - .:/app/:rw     
+      - .:/app/:rw
       - /app/node_modules/
-      - ./docker/node/logs:/root/.npm/_logs     
+      - ./docker/node/logs:/root/.npm/_logs
     ports:
-    - '4000:4000'
+      - '4000:4000'
     expose:
-      - '4000'      
+      - '4000'
     command: >
-        sh -c '
-        if test -d node_modules;
-        then
-          echo node_modules_exists ;
-        else
-          cp -a /tmp/node_modules /usr/src/app;
-        fi &&
-          npm ci &&
-          npm run watch
-        '
-      
-  
-  
-    
+      sh -c '
+      if test -d node_modules;
+      then
+        echo node_modules_exists ;
+      else
+        cp -a /tmp/node_modules /usr/src/app;
+      fi &&
+        npm ci &&
+        npm run watch
