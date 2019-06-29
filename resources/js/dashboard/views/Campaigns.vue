@@ -48,7 +48,7 @@
           <template slot="average" slot-scope="row">
             <span v-text="(row.item.amount_collected / row.item.transactions_count) || 0"></span>
           </template>
-          <template slot="recieved" slot-scope="row">
+          <template slot="received" slot-scope="row">
             <span v-text="`${row.item.amount_collected}/${row.item.target_amount}`"></span>
           </template>
           <template slot="days" slot-scope="row">
@@ -109,8 +109,8 @@ export default {
           class: 'text-center'
         },
         {
-          key: 'recieved',
-          label: this.$t('labels.admin.campaigns.recieved'),
+          key: 'received',
+          label: this.$t('labels.admin.campaigns.received'),
           class: 'text-center'
         },        
         {

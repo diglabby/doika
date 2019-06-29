@@ -76,7 +76,7 @@ return [
             'backers' => 'Жертвователи',
             'recurrent' => 'Подписка',
             'average' => 'Средний чек',
-            'recieved' => 'Собранная сумма',
+            'received' => 'Собранная сумма',
             'goal' => 'Целевая сумма',
             'days' => 'Количество дней до окончания',
             'description' => 'Описание',
@@ -232,7 +232,7 @@ return [
     'widget' => [
         'paymentInfo' => 'Terms of Use',
         'input' => 'Сумма',
-        'recieved' => 'Собранная сумма',
+        'received' => 'Собранная сумма',
         'needed' => 'Целевая сумма',
     ],
 ];

@@ -76,7 +76,7 @@ return [
             'backers' => 'Backers',
             'recurrent' => 'Recurrent',
             'average' => 'Average',
-            'recieved' => 'Recieved',
+            'received' => 'received',
             'goal' => 'Goal',
             'days' => 'Days',
             'description' => 'Description',
@@ -232,7 +232,7 @@ return [
     'widget' => [
         'paymentInfo' => 'Terms of Use',
         'input' => 'Summ',
-        'recieved' => 'Recieved',
+        'received' => 'received',
         'needed' => 'Needed',
     ],
 ];

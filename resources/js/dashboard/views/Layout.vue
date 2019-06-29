@@ -92,8 +92,8 @@
                         </div>
                         <b-progress  :style="{ background: model.settings.progressBarColor}" :value="fakeCampaign.amount_collected" :max="fakeCampaign.target_amount" class="progress__bar"></b-progress>
                         <div class="module-donate__footer">
-                          <p class="result__description" :style="{ color: model.settings.fontColor }">{{ $t('labels.widget.recieved') }}: <span class="summ__highlight">{{ fakeCampaign.amount_collected }} {{ fakeCampaign.currency }}</span></p>
-                          <p class="result__recieved" :style="{ color: model.settings.fontColor }">{{ $t('labels.widget.needed') }}: <span class="summ__highlight">{{ fakeCampaign.target_amount }} {{ fakeCampaign.currency }}</span></p>
+                          <p class="result__description" :style="{ color: model.settings.fontColor }">{{ $t('labels.widget.received') }}: <span class="summ__highlight">{{ fakeCampaign.amount_collected }} {{ fakeCampaign.currency }}</span></p>
+                          <p class="result__received" :style="{ color: model.settings.fontColor }">{{ $t('labels.widget.needed') }}: <span class="summ__highlight">{{ fakeCampaign.target_amount }} {{ fakeCampaign.currency }}</span></p>
                           <p class="module-donate__version" :style="{ color: model.settings.fontColor }">powered by <a href="#" target="_blank">Doika</a></p>
                         </div>
                       </div>
@@ -717,7 +717,7 @@
     white-space: nowrap;
   }
 
-  .result__recieved {
+  .result__received {
     font-family: Ubuntu, sans-serif;
     color:  #191919;
     font-size: 18px;

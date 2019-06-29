@@ -142,7 +142,7 @@ export default {
                     "backers": "Ахвярадаўцы",
                     "recurrent": "Падпіска",
                     "average": "Сярэдні чэк",
-                    "recieved": "Сабраная сума",
+                    "received": "Сабраная сума",
                     "goal": "Мэтавая сума",
                     "days": "Колькасць дзён да заканчэння",
                     "description": "Апісанне",
@@ -323,7 +323,7 @@ export default {
                 "phone": "Тэлефон",
                 "mask": "(+375)",
                 "input": "Сума",
-                "recieved": "Сабраная сума",
+                "received": "Сабраная сума",
                 "needed": "Мэтавая сума",
                 "thanks": "Вялікі дзякуй за дапамогу!",
                 "paymentInfo": "Я згаджаюся з правіламі",
@@ -568,7 +568,7 @@ export default {
                     "backers": "Backers",
                     "recurrent": "Recurrent",
                     "average": "Average",
-                    "recieved": "Recieved",
+                    "received": "received",
                     "goal": "Goal",
                     "days": "Days",
                     "description": "Description",
@@ -723,7 +723,7 @@ export default {
             "widget": {
                 "paymentInfo": "Terms of Use",
                 "input": "Summ",
-                "recieved": "Recieved",
+                "received": "received",
                 "needed": "Needed"
             }
         },
@@ -993,7 +993,7 @@ export default {
                     "backers": "Жертвователи",
                     "recurrent": "Подписка",
                     "average": "Средний чек",
-                    "recieved": "Собранная сумма",
+                    "received": "Собранная сумма",
                     "goal": "Целевая сумма",
                     "days": "Количество дней до окончания",
                     "description": "Описание",
@@ -1148,7 +1148,7 @@ export default {
             "widget": {
                 "paymentInfo": "Terms of Use",
                 "input": "Сумма",
-                "recieved": "Собранная сумма",
+                "received": "Собранная сумма",
                 "needed": "Целевая сумма"
             }
         },

@@ -64,8 +64,8 @@
       </div>
       <b-progress v-if="showProgress" :value="model.amount_collected" :max="model.target_amount" class="progress__bar" :style="{ background: model.visual_settings.colors.progressBarColor}"></b-progress>
       <div class="module-donate__footer">
-        <p class="result__description" :style="{ color: model.visual_settings.colors.fontColor }">{{ $t('labels.widget.recieved') }}: <span class="summ__highlight">{{ model.amount_collected }} {{ model.currency }}</span></p>
-        <p class="result__recieved" :style="{ color: model.visual_settings.colors.fontColor }">{{ $t('labels.widget.needed') }}: <span class="summ__highlight">{{ model.target_amount }} {{ model.currency }}</span></p>
+        <p class="result__description" :style="{ color: model.visual_settings.colors.fontColor }">{{ $t('labels.widget.received') }}: <span class="summ__highlight">{{ model.amount_collected }} {{ model.currency }}</span></p>
+        <p class="result__received" :style="{ color: model.visual_settings.colors.fontColor }">{{ $t('labels.widget.needed') }}: <span class="summ__highlight">{{ model.target_amount }} {{ model.currency }}</span></p>
         <p class="module-donate__version" :style="{ color: model.visual_settings.colors.fontColor }">powered by <a href="#" target="_blank">Doika</a></p>
       </div>
 
