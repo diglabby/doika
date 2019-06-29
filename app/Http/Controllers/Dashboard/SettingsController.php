@@ -19,7 +19,7 @@ final class SettingsController extends Controller
     public function index(Request $request): array
     {
         $settingsKeys = $request->get('keys') ?: [];
-        $settingsValues = $this->settingStore->get($settingsKeys);
+        $settingsValues = $this->settingStore->get($settingsKeys, []);
 
         return ['settings' => array_combine($settingsKeys, $settingsValues)];
     }
