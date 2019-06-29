@@ -4,22 +4,25 @@ namespace Diglabby\Doika\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Carbon;
 
 /**
+ * Diglabby\Doika\Models\CampaignTranslation
+ *
  * @property int $id
  * @property int $campaign_id
  * @property string $locale
  * @property string $name
  * @property string $description
- * @property string $terms_of_use
- * @property Carbon $created_at
- * @property Carbon $updated_at
- *
- * Relationships:
- * @property-read Campaign $campaign
+ * @property string $terms_of_use HTML text
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Diglabby\Doika\Models\Campaign $campaign
+ * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\CampaignTranslation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\CampaignTranslation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\CampaignTranslation query()
+ * @mixin \Eloquent
  */
-final class CampaignTranslation extends Model
+class CampaignTranslation extends Model
 {
     /** @var array Default attribute values */
     protected $attributes = [

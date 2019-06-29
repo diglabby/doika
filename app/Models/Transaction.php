@@ -4,26 +4,30 @@ namespace Diglabby\Doika\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Carbon;
 
 /**
+ * Diglabby\Doika\Models\Transaction
+ *
  * @property int $id
  * @property int $donator_id
  * @property int $campaign_id
- * @property int $subscription_id
- * @property string $payment_gateway ("bePaid", etc)
- * @property string $payment_gateway_transaction_id
- * @property int $amount
+ * @property int|null $subscription_id
+ * @property string $payment_gateway
+ * @property string $payment_gateway_transaction_id Native transaction ID on Payment Gateway
+ * @property int $amount Amount in cents
  * @property string $currency
  * @property string $status
  * @property string $status_message
- * @property Carbon $created_at
- * @property Carbon $updated_at
- *
- * @property-read Campaign $campaign
- * @property-read Donator $donator
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Diglabby\Doika\Models\Campaign $campaign
+ * @property-read \Diglabby\Doika\Models\Donator $donator
+ * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\Transaction newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\Transaction newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\Transaction query()
+ * @mixin \Eloquent
  */
-final class Transaction extends Model
+class Transaction extends Model
 {
     protected $guarded = [];
 

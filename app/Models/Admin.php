@@ -6,18 +6,25 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 /**
+ * Diglabby\Doika\Models\Admin
+ *
  * @property int $id
  * @property string $name
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
- * @property string $remember_token
+ * @property string|null $remember_token
  * @property string $locale
- * @property \Illuminate\Support\Carbon|null $last_access_at
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
+ * @property string|null $last_access_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\Admin newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\Admin newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\Admin query()
+ * @mixin \Eloquent
  */
-final class Admin extends Authenticatable
+class Admin extends Authenticatable
 {
     use Notifiable;
 

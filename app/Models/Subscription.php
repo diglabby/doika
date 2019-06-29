@@ -9,25 +9,34 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
 /**
+ * Diglabby\Doika\Models\Subscription
+ *
  * @property int $id
  * @property int $donator_id
  * @property int $campaign_id
- * @property string $payment_gateway ("bePaid", etc)
- * @property string $payment_gateway_subscription_id
- * @property int $amount
+ * @property string $payment_gateway
+ * @property string $payment_gateway_subscription_id Native subscription ID on PG
+ * @property int $amount Amount in cents
  * @property string $currency
- * @property string $payment_interval (Time interval in ISO 8601, "P1M" by default)
+ * @property string $payment_interval An ISO 8601 repeating interval specification
  * @property string $unsubscribe_token
- * @property string|null $cancel_reason
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
- * @property \Illuminate\Support\Carbon $deleted_at
- *
- * Relationships:
- * @property-read Donator $donator
- * @property-read Campaign $campaign
+ * @property string|null $cancel_reason A reason of subscription cancellation
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read \Diglabby\Doika\Models\Campaign $campaign
+ * @property-read \Diglabby\Doika\Models\Donator $donator
+ * @method static bool|null forceDelete()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\Subscription newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\Subscription newQuery()
+ * @method static \Illuminate\Database\Query\Builder|\Diglabby\Doika\Models\Subscription onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\Subscription query()
+ * @method static bool|null restore()
+ * @method static \Illuminate\Database\Query\Builder|\Diglabby\Doika\Models\Subscription withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\Diglabby\Doika\Models\Subscription withoutTrashed()
+ * @mixin \Eloquent
  */
-final class Subscription extends Model
+class Subscription extends Model
 {
     use SoftDeletes;
 

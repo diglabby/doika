@@ -2,34 +2,40 @@
 
 namespace Diglabby\Doika\Models;
 
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Carbon;
 
 /**
+ * Diglabby\Doika\Models\Campaign
+ *
  * @property int $id
  * @property string $name
  * @property string $description
  * @property string $picture_url
- * @property int $target_amount
+ * @property int $target_amount Target amount in cents
  * @property string $currency
  * @property bool $active_status
- * @property Carbon $start_at
- * @property Carbon $finish_at
- * @property string $visual_settings (json)
- * @property Carbon $created_at
- * @property Carbon $updated_at
- * @property Carbon|null $deleted_at
- *
- * Relationships
- * @property Collection|Donator[] $donators
- * @property Collection|Subscription[] $subscriptions
- * @property Collection|Transaction[] $transactions
- * @property Collection|CampaignTranslation[] $translations
+ * @property \Illuminate\Support\Carbon|null $start_at
+ * @property \Illuminate\Support\Carbon|null $finish_at
+ * @property array $visual_settings Button preset, colors, etc. (as json)
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Diglabby\Doika\Models\Subscription[] $subscriptions
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Diglabby\Doika\Models\Transaction[] $transactions
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Diglabby\Doika\Models\CampaignTranslation[] $translations
+ * @method static bool|null forceDelete()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\Campaign newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\Campaign newQuery()
+ * @method static \Illuminate\Database\Query\Builder|\Diglabby\Doika\Models\Campaign onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\Campaign query()
+ * @method static bool|null restore()
+ * @method static \Illuminate\Database\Query\Builder|\Diglabby\Doika\Models\Campaign withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\Diglabby\Doika\Models\Campaign withoutTrashed()
+ * @mixin \Eloquent
  */
-final class Campaign extends Model
+class Campaign extends Model
 {
     use SoftDeletes;
 
