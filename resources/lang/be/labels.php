@@ -19,8 +19,8 @@ return [
             'search' => 'Пошук',
             'actions' => 'Дзеянні',
             'info' => 'Даведка',
-        ],    
-       
+        ],
+
         'common' => [
             'search' => 'Пошук',
             'footer' => [
@@ -165,28 +165,28 @@ return [
         'settings' => [
             'title' => 'Налады',
             'payments' => [
-              'header' => 'Злучэнне з плацежнай сістэмай',
-              'bePaidIdMarket' => 'Bepaid Market ID',
-              'artPayIdMarket' => 'Artpay Market Id',
-              'bePaidKeyMarket' => 'Bepaid Market key',
-              'artPayKeyMarket' => 'Artpay Market key',
-              'paymentInterval' => 'Абярыце інтэрвал рэкурэнтага плацяжу',
+                'header' => 'Злучэнне з плацежнай сістэмай',
+                'bePaidIdMarket' => 'Bepaid Market ID',
+                'artPayIdMarket' => 'Artpay Market Id',
+                'bePaidKeyMarket' => 'Bepaid Market key',
+                'artPayKeyMarket' => 'Artpay Market key',
+                'paymentInterval' => 'Абярыце інтэрвал рэкурэнтага плацяжу',
                 'paymentInterval1D' => '1 дзень',
                 'paymentInterval1H' => '1 гадзіна',
                 'paymentInterval1M' => '1 месяц',
                 'paymentInterval1Y' => '1 год',
-              'test' => 'Адключыць тэставыя плацяжы',
-              'maxPayment' => 'Максімальны плацёж, бел.руб',
-              'minPayment' => 'Мінімальны плацёж, бел.руб',
-              'termsOfUse' => 'Тэкст умовы карыстання модулем',
-              'placeholder' => [
-                  'bePaidIdMarket' => 'Bepaid Market ID',
-                  'artPayIdMarket' => 'Artpay Market Id',
-                  'bePaidKeyMarket' => 'Bepaid Market key',
-                  'artPayKeyMarket' => 'Artpay Market key',
-                  'test' => 'Адключыць тэставыя плацяжы',
-                  'maxPayment' => 'Максімальны плацёж, бел.руб',
-                  'minPayment' => 'Мінімальны плацёж, бел.руб',
+                'test' => 'Адключыць тэставыя плацяжы',
+                'maxPayment' => 'Максімальны плацёж, бел.руб',
+                'minPayment' => 'Мінімальны плацёж, бел.руб',
+                'termsOfUse' => 'Тэкст умовы карыстання модулем',
+                'placeholder' => [
+                    'bePaidIdMarket' => 'Bepaid Market ID',
+                    'artPayIdMarket' => 'Artpay Market Id',
+                    'bePaidKeyMarket' => 'Bepaid Market key',
+                    'artPayKeyMarket' => 'Artpay Market key',
+                    'test' => 'Адключыць тэставыя плацяжы',
+                    'maxPayment' => 'Максімальны плацёж, бел.руб',
+                    'minPayment' => 'Мінімальны плацёж, бел.руб',
                 ],
             ],
             'layout' => [
