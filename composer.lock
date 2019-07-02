@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "anlutro/l4-settings",
-            "version": "v0.8.2",
+            "version": "v0.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/anlutro/laravel-settings.git",
-                "reference": "64847e5e0eddd62aaa5b32166fe8ff776ae66252"
+                "reference": "851dd685b5659edc07a34df0a5415217a6595654"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anlutro/laravel-settings/zipball/64847e5e0eddd62aaa5b32166fe8ff776ae66252",
-                "reference": "64847e5e0eddd62aaa5b32166fe8ff776ae66252",
+                "url": "https://api.github.com/repos/anlutro/laravel-settings/zipball/851dd685b5659edc07a34df0a5415217a6595654",
+                "reference": "851dd685b5659edc07a34df0a5415217a6595654",
                 "shasum": ""
             },
             "require": {
@@ -63,7 +63,7 @@
                 }
             ],
             "description": "Persistent settings in Laravel.",
-            "time": "2019-06-24T12:24:32+00:00"
+            "time": "2019-07-01T13:08:13+00:00"
         },
         {
             "name": "carbondate/carbon",
@@ -2662,7 +2662,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "backendtea@gmail.com"
+                    "email": "BackEndTea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
