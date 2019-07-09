@@ -1932,16 +1932,16 @@
         },
         {
             "name": "spatie/laravel-query-builder",
-            "version": "1.17.4",
+            "version": "1.17.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-query-builder.git",
-                "reference": "a0f5902c294d34744f46c2f88ae8a8b8d1c2dd45"
+                "reference": "8c5cecd27f69d8d4e6817a9207e796d34dab6a70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/a0f5902c294d34744f46c2f88ae8a8b8d1c2dd45",
-                "reference": "a0f5902c294d34744f46c2f88ae8a8b8d1c2dd45",
+                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/8c5cecd27f69d8d4e6817a9207e796d34dab6a70",
+                "reference": "8c5cecd27f69d8d4e6817a9207e796d34dab6a70",
                 "shasum": ""
             },
             "require": {
@@ -1986,7 +1986,7 @@
                 "laravel-query-builder",
                 "spatie"
             ],
-            "time": "2019-06-03T09:47:17+00:00"
+            "time": "2019-07-08T09:08:34+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
