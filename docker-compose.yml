@@ -75,4 +75,4 @@ services:
         cp -a /tmp/node_modules /usr/src/app;
       fi &&
         npm ci &&
-        npm run watch
+        npm run watch'
