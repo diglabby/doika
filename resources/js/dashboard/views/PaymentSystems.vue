@@ -96,7 +96,7 @@
                             </b-form-group>
                           </b-col>
                         </b-row>
-                        <b-row>
+                        <!--<b-row>
                           <b-col md>
                             <b-form-group
                                     :label="$t('labels.admin.settings.payments.paymentInterval')"
@@ -116,7 +116,7 @@
 
                           <b-col md>
                           </b-col>
-                        </b-row>
+                        </b-row>-->
                         <div class="form-group">
                           <b-row class="mb-4 mt-4">
                             <b-col lg="5" offset-lg="2">
