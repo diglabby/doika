@@ -25,7 +25,7 @@
             <input type="number"  :style="{ background:  model.visual_settings.colors.buttonBackground, color: model.visual_settings.colors.fontColor }" class="module-donate__text-input" :placeholder="$t('labels.widget.input')" v-model="donate_amount">
             <b-button :style="{ background:  model.visual_settings.colors.buttonBackground, color: model.visual_settings.colors.fontColor }" class="module-donate__button-select payment" @click="recurrent = '/donate'" :class="{clicked: (recurrent=='/donate')}">{{ $t('buttons.widget.oneTime') }}</b-button>
             <b-button :style="{ background:  model.visual_settings.colors.buttonBackground, color: model.visual_settings.colors.fontColor }" class="module-donate__button-select payment" @click="recurrent = '/recurrent'" :class="{clicked: (recurrent=='/recurrent')}">{{ $t('buttons.widget.subscribe') }}</b-button>
-            <b-button :style="{ color: model.visual_settings.colors.fontColor }" id="button__confirm" :to="'/campaigns/' + model.id + recurrent" @click="setAmount" :disabled="agreement_status == false" class="module-donate__button-select confirm" >{{ $t('buttons.widget.confirm') }}</b-button>
+            <b-button :style="{ color: model.visual_settings.colors.fontColor }" id="button__confirm" :to="'/campaigns/' + model.id + recurrent" @click="setAmount" :disabled="agreement_status == 'false'" class="module-donate__button-select confirm" >{{ $t('buttons.widget.confirm') }}</b-button>
             <div class="checkbox-agreement">
               <b-form-checkbox
                       id="checkbox-agreement"
@@ -87,7 +87,7 @@ export default {
       campaign: [],
       buttons: [],
         isBusy: true,
-      agreement_status: false,
+      agreement_status: 'false',
       donate_amount: 0,
       recurrent: '/donate',
       recurrentFlag: false,
