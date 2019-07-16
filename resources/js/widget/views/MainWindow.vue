@@ -1,7 +1,7 @@
 ﻿﻿<template>
-  <div>
+  <div >
 
-    <div v-if="isBusy" class="d-flex justify-content-center mb-3 spinner-wrapper">
+    <div v-if="isBusy" class="d-flex justify-content-center mb-3 spinner-wrapper" >
       <b-spinner label="Loading..."></b-spinner>
     </div>
 

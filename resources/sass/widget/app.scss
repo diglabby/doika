@@ -98,7 +98,7 @@
   }
   .wrapper {
     padding: 25px;
-    height: 100%;
+    height: auto;
   }
   .app {
     background-color: #e7eef4;
@@ -230,6 +230,7 @@
 .spinner-wrapper {
   height: 100%;
   align-items: center;
+  margin: 0 !important;
 }
 
 .custom-control-input ~ .custom-control-label::before {
@@ -892,10 +893,10 @@
   }
   .checkbox-agreement {
     justify-content: center !important;
+
   }
 }
 @media all and (max-width: 700px) {
-
 
   .module-donate__title {
     text-align: center;
@@ -1046,6 +1047,8 @@
   text-align: right;
   height: 18px;
   justify-content: flex-end;
+  display: flex;
+  align-items: center;
 }
 
 .modal-mask {
