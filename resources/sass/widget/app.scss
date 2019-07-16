@@ -94,6 +94,11 @@
   }
   .app {
     //max-width: 750px;
+    overflow-x: hidden;
+  }
+  .wrapper {
+    padding: 25px;
+    height: 100%;
   }
   .app {
     background-color: #e7eef4;
@@ -202,7 +207,7 @@
     width: 100%;
     min-height: 400px;
     margin: 0;
-    overflow: hidden;
+    overflow-x: hidden;
     -webkit-box-shadow: 0px 4px 21px -3px rgba(51,51,3,0.61);
     -moz-box-shadow: 0px 4px 21px -3px rgba(51,51,3,0.61);
     box-shadow: 0px 4px 21px -3px rgba(51,51,3,0.61);
@@ -281,6 +286,7 @@
   .module-donate__main-panel {
     height: auto;
     width: auto;
+    max-height: 300px;
     max-width: 265px;
   }
 
@@ -419,7 +425,6 @@
     overflow: hidden;
     background-color: #FF80B4;
     margin-bottom: 10px;
-    margin-top: 80px;
   }
 
   .module-donate__button-select.confirm.reccurent {
@@ -866,9 +871,8 @@
 
 @media all and (max-width: 740px) {
 
-  .app {
-    overflow: hidden;
-    padding: 15px 40px 15px 40px;
+  .wrapper {
+    height: auto;
   }
   .module-donate__main-panel {
     height: auto;
@@ -880,20 +884,18 @@
     width: 50%;
     overflow: hidden;
     position: relative;
+    margin: auto;
   }
 
   .module-donate__description {
     text-align: justify;
   }
-
+  .checkbox-agreement {
+    justify-content: center !important;
+  }
 }
 @media all and (max-width: 700px) {
 
-  .app {
-    overflow: hidden;
-    height: 100%;
-    padding: 15px 40px 0px 40px;
-  }
 
   .module-donate__title {
     text-align: center;
@@ -993,6 +995,10 @@
 
 @media all and (max-width: 450px) {
 
+  .wrapper {
+    height: auto;
+  }
+
   .module-donate__text-input.warning-open, .module-donate__button-confirm.warning-open {
     margin-top: 0;
   }
@@ -1018,9 +1024,7 @@
   }
 
   .app {
-    overflow: hidden;
-    height: 100%;
-    padding: 10px 10px 0px 10px;
+    overflow-x: hidden;
   }
 
   .module-donate__description {
@@ -1040,7 +1044,6 @@
 .checkbox-agreement {
   width: 100%;
   text-align: right;
-  display: inline-flex;
   height: 18px;
   justify-content: flex-end;
 }

@@ -5,8 +5,9 @@
       <b-spinner label="Loading..."></b-spinner>
     </div>
 
-    <div v-else class="container" :style="{ background: model.visual_settings.colors.widgetBackground }">
-      <p class="module-donate__title" :style="{ color: model.visual_settings.colors.fontColor }">{{ model.name }}</p>
+    <div v-else class="wrapper" :style="{ background: widgetBackground }">
+      <p class="module-donate__title" :style="{ color: fontColor }">{{ model.name }}</p>
+
       <div class="module-donate__wrapper">
         <div class="module-donate__info">
           <div class="module-donate__image">
@@ -21,11 +22,11 @@
 
         <div class="module-donate__main-panel">
           <div class="module-donate__input">
-            <b-button v-model="donate_amount" :style="{ background: model.visual_settings.colors.buttonBackground, color: model.visual_settings.colors.fontColor }" v-for="button in model.visual_settings.buttons" @click="provide(button)" :class="{clicked: contains(buttons, button)}" class="module-donate__button-select" :key="button">{{ button }} {{ model.currency }}</b-button>
-            <input type="number"  :style="{ background:  model.visual_settings.colors.buttonBackground, color: model.visual_settings.colors.fontColor }" class="module-donate__text-input" :placeholder="$t('labels.widget.input')" v-model="donate_amount">
-            <b-button :style="{ background:  model.visual_settings.colors.buttonBackground, color: model.visual_settings.colors.fontColor }" class="module-donate__button-select payment" @click="recurrent = '/donate'" :class="{clicked: (recurrent=='/donate')}">{{ $t('buttons.widget.oneTime') }}</b-button>
-            <b-button :style="{ background:  model.visual_settings.colors.buttonBackground, color: model.visual_settings.colors.fontColor }" class="module-donate__button-select payment" @click="recurrent = '/recurrent'" :class="{clicked: (recurrent=='/recurrent')}">{{ $t('buttons.widget.subscribe') }}</b-button>
-            <b-button :style="{ color: model.visual_settings.colors.fontColor }" id="button__confirm" :to="'/campaigns/' + model.id + recurrent" @click="setAmount" :disabled="agreement_status == 'false'" class="module-donate__button-select confirm" >{{ $t('buttons.widget.confirm') }}</b-button>
+            <b-button v-model="donate_amount" :style="{ background: buttonBackground, color: fontColor }" v-for="button in getButtons" @click="provide(button)" :class="{clicked: contains(buttons, button)}" class="module-donate__button-select" :key="button">{{ button }} {{ model.currency }}</b-button>
+            <input type="number"  :style="{ background:  buttonBackground, color: fontColor }" class="module-donate__text-input" :placeholder="$t('labels.widget.input')" v-model="donate_amount">
+            <b-button :style="{ background:  buttonBackground, color: fontColor }" class="module-donate__button-select payment" @click="recurrent = '/donate'" :class="{clicked: (recurrent=='/donate')}">{{ $t('buttons.widget.oneTime') }}</b-button>
+            <b-button :style="{ background:  buttonBackground, color: fontColor }" class="module-donate__button-select payment" @click="recurrent = '/recurrent'" :class="{clicked: (recurrent=='/recurrent')}">{{ $t('buttons.widget.subscribe') }}</b-button>
+            <b-button :style="{ color: fontColor }" id="button__confirm" :to="'/campaigns/' + model.id + recurrent" @click="setAmount" :disabled="agreement_status == 'false'" class="module-donate__button-select confirm" >{{ $t('buttons.widget.confirm') }}</b-button>
             <div class="checkbox-agreement">
               <b-form-checkbox
                       id="checkbox-agreement"
@@ -36,7 +37,7 @@
                       button-variant="secondary"
               >&nbsp;
               </b-form-checkbox>
-              <a class="payment__description" id="show-modal" :style="{ color: model.visual_settings.colors.fontColor }" @click="showModal = true">
+              <a class="payment__description" id="show-modal" :style="{ color: fontColor }" @click="showModal = true">
                 {{ $t('labels.widget.paymentInfo') }}
               </a>
             </div>
@@ -51,8 +52,7 @@
                     <div class="modal-header">
                       {{ $t('labels.widget.terms') }}
                     </div>
-                    <div class="modal-body" v-html="model.visual_settings.colors.termsOfUse">
-
+                    <div class="modal-body" v-html="model.termsOfUse">
                     </div>
                   </div>
                 </div>
@@ -62,11 +62,11 @@
           </div>
         </div>
       </div>
-      <b-progress v-if="showProgress" :value="model.amount_collected" :max="model.target_amount" class="progress__bar" :style="{ background: model.visual_settings.colors.progressBarColor}"></b-progress>
+      <b-progress v-if="showProgress" :value="model.amount_collected" :max="model.target_amount" class="progress__bar" :style="{ background: progressBarColor}"></b-progress>
       <div class="module-donate__footer">
-        <p class="result__description" :style="{ color: model.visual_settings.colors.fontColor }">{{ $t('labels.widget.received') }}: <span class="summ__highlight">{{ model.amount_collected }} {{ model.currency }}</span></p>
-        <p class="result__received" :style="{ color: model.visual_settings.colors.fontColor }">{{ $t('labels.widget.needed') }}: <span class="summ__highlight">{{ model.target_amount }} {{ model.currency }}</span></p>
-        <p class="module-donate__version" :style="{ color: model.visual_settings.colors.fontColor }">powered by <a href="https://doika.falanster.by/" target="_blank">Doika</a></p>
+        <p class="result__description" :style="{ color: fontColor }">{{ $t('labels.widget.received') }}: <span class="summ__highlight">{{ model.amount_collected }} {{ model.currency }}</span></p>
+        <p class="result__received" :style="{ color: fontColor }">{{ $t('labels.widget.needed') }}: <span class="summ__highlight">{{ model.target_amount }} {{ model.currency }}</span></p>
+        <p class="module-donate__version" :style="{ color: fontColor }">powered by <a href="https://doika.falanster.by/" target="_blank">Doika</a></p>
       </div>
 
     </div>
@@ -86,7 +86,7 @@ export default {
       showModal: false,
       campaign: [],
       buttons: [],
-        isBusy: true,
+      isBusy: true,
       agreement_status: 'false',
       donate_amount: 0,
       recurrent: '/donate',
@@ -113,18 +113,98 @@ export default {
             donateButtonBackground: '',
             progressBarColor: '#000',
             fontColor: '#000',
-            termsOfUse: ""
+            termsOfUse: "",
+            buttons: []
         }
     }
   },
     computed: {
+
       showProgress(){
-          return (this.model.visual_settings.progressBar != "0")
-      }
+          try {
+              return (this.model.visual_settings.progressBar != "0");
+          } catch (e) {
+              return false;
+          }
+      },
+
+      widgetBackground(){
+          try {
+              if (!this.model.visual_settings.colors.widgetBackground) {
+                  return this.settings.widgetBackground;
+              }
+          } catch (e) {
+              return this.settings.widgetBackground;
+          }
+          return this.model.visual_settings.colors.widgetBackground;
+      },
+
+      fontColor(){
+          try {
+              if (!this.model.visual_settings.colors.fontColor) {
+                  return this.settings.fontColor;
+              }
+          } catch (e) {
+              return this.settings.fontColor;
+          }
+          return this.model.visual_settings.colors.fontColor;
+      },
+
+        progressBarColor(){
+            try {
+                if (!this.model.visual_settings.colors.progressBarColor) {
+                    return this.settings.progressBarColor;
+                }
+            } catch (e) {
+                return this.settings.progressBarColor;
+            }
+            return this.model.visual_settings.colors.progressBarColor;
+        },
+
+        termsOfUse(){
+            try {
+                if (!this.model.visual_settings.colors.termsOfUse) {
+                    return this.settings.termsOfUse;
+                }
+            } catch (e) {
+                return this.settings.termsOfUse;
+            }
+            return this.model.visual_settings.colors.termsOfUse;
+        },
+        buttonBackground() {
+            try {
+                if (!this.model.visual_settings.colors.buttonBackground) {
+                    return this.settings.buttonBackground;
+                }
+            } catch (e) {
+                return this.settings.buttonBackground;
+            }
+            return this.model.visual_settings.colors.buttonBackground;
+        },
+        buttonBackground() {
+            try {
+                if (!this.model.visual_settings.colors.buttonBackground) {
+                    return this.settings.buttonBackground;
+                }
+            } catch (e) {
+                return this.settings.buttonBackground;
+            }
+            return this.model.visual_settings.colors.buttonBackground;
+        },
+        getButtons() {
+            try {
+                if (!this.model.visual_settings.buttons) {
+                    return this.settings.buttons;
+                }
+            } catch (e) {
+                return this.settings.buttons;
+            }
+            return this.model.visual_settings.buttons;
+        },
+
+
     },
-    mounted: function () {
-      this.isBusy = false;
-    },
+
   methods: {
     provide: function(item) {
       this.buttons = []
