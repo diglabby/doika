@@ -893,7 +893,8 @@
   }
   .checkbox-agreement {
     justify-content: center !important;
-
+    display: flex;
+    align-items: center;
   }
 }
 @media all and (max-width: 700px) {

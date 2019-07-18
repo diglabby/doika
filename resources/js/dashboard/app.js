@@ -27,7 +27,9 @@ import Noty from 'noty'
 Vue.use(BootstrapVue)
 
 import moment from 'moment'
+moment.locale('be')
 Vue.prototype.moment = moment
+
 // vue-select
 Vue.component('v-select', vSelect)
 Vue.component('colorpicker', vColorPicker)

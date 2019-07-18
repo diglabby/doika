@@ -12,6 +12,7 @@
                     horizontal
                     :label-cols="3"
                     :feedback="feedback('campaign')"
+                    :readonly="true"
             >
               <b-form-input
                       id="campaign"
@@ -19,6 +20,7 @@
                       :placeholder="$t('labels.admin.payments.placeholder.campaign')"
                       v-model="model.campaign"
                       :state="state('campaign')"
+                      :readonly="true"
               ></b-form-input>
             </b-form-group>
 
@@ -28,6 +30,7 @@
                     horizontal
                     :label-cols="3"
                     :feedback="feedback('backer')"
+                    :readonly="true"
             >
               <b-form-input
                       id="backer"
@@ -35,6 +38,7 @@
                       :placeholder="$t('labels.admin.payments.placeholder.backer')"
                       v-model="model.donator"
                       :state="state('backer')"
+                      :readonly="true"
               ></b-form-input>
             </b-form-group>
 
@@ -44,6 +48,7 @@
                     horizontal
                     :label-cols="3"
                     :feedback="feedback('amount')"
+                    :readonly="true"
             >
               <b-form-input
                       id="amount"
@@ -51,6 +56,7 @@
                       :placeholder="$t('labels.admin.payments.placeholder.amount')"
                       v-model="model.amount"
                       :state="state('amount')"
+                      :readonly="true"
               ></b-form-input>
             </b-form-group>
 
@@ -67,6 +73,7 @@
                       :placeholder="$t('labels.admin.payments.placeholder.date')"
                       v-model="model.created_at"
                       :state="state('date')"
+                      :readonly="true"
               ></b-form-input>
             </b-form-group>
 
@@ -83,6 +90,7 @@
                       :placeholder="$t('labels.admin.payments.placeholder.status')"
                       v-model="model.status"
                       :state="state('status')"
+                      :readonly="true"
               ></b-form-input>
             </b-form-group>
 

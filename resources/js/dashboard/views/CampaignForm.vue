@@ -17,7 +17,6 @@
                     required
                     :placeholder="$t('labels.admin.campaigns.placeholder.shortcode')"
                     v-model="shortcode"
-                    :state="state('Shortcode')"
                   ></b-form-input>
                 </b-col>
               </b-row>
@@ -72,8 +71,8 @@
                         id="picture_url"
                         name="picture_url"
                         ref="featuredImageInput"
-                        :placeholder="model.picture_url? model.picture_url: $t('labels.admin.campaigns.placeholder.image')"
-                        v-model="model.picture_url"
+                        :placeholder="pictureName? pictureName: $t('labels.admin.campaigns.placeholder.image')"
+                        v-model="pictureName"
                         :state="pictureState"
                         required
                         v-b-tooltip.hover
@@ -81,7 +80,7 @@
                         @change="previewImage"
                         style="margin-top auto; margin-bottom: auto;"
                       ></b-form-file>
-                      <a href="#" class="d-block mt-1" v-if="image.has_picture_url || model.picture_url" @click.prevent="deleteFeaturedImage">{{ $t('buttons.admin.campaigns.deleteImage') }}</a>
+                      <a href="#" class="d-block mt-1" v-if="image.has_picture_url || pictureName" @click.prevent="deleteFeaturedImage">{{ $t('buttons.admin.campaigns.deleteImage') }}</a>
                     </b-col>
                     <b-col lg="3">
                       <div class="image-preview">
@@ -189,7 +188,8 @@
                       <b-col lg="5" offset-lg="1">
                         <c-switch
                           name="pinned"
-                          v-model="model.active_status ? true : false"
+                          v-model="model.active_status"
+                          :checked = "0"
                           :description="$t('labels.admin.campaigns.active')"
                         ></c-switch>
                       </b-col>
@@ -202,12 +202,12 @@
                       </b-col>-->
                     </b-row>
                     <b-row>
-                      <b-col lg="5" offset-lg="1">
+                      <!--<b-col lg="5" offset-lg="1">
                         <c-switch
                           name="topBanner"
                           :description="$t('labels.admin.campaigns.topBanner')"
                         ></c-switch>
-                      </b-col>
+                      </b-col>-->
                       <b-col lg="5" offset-lg="1">
                         <c-switch
                           name="progressBar"
@@ -278,7 +278,7 @@ export default {
           instance.close()
         }
       },
-        id: null,
+
       counter: 45,
       max: 100,
       modelName: 'campaign',
@@ -313,10 +313,7 @@ export default {
       }
     }
   },
-    mounted: function(){
-      this.getColors()
-        console.log(this.model)
-    },
+
     computed: {
         shortcode() {
             return "<iframe width='750' height='550' frameborder='0' src='/doika/doika/widget/campaigns/"+ this.id +"'></iframe>"
@@ -339,8 +336,12 @@ export default {
         },
         amountState() {
             return (this.model.target_amount > 0) ? true : false
-        }
+        },
+        pictureName: function () {
+            return this.model.picture_url.replace(/^.*[\\\/]/, '');
+        },
     },
+
   methods: {
       async getColors() {
           let { data } = await axios.get(
@@ -353,13 +354,14 @@ export default {
                       }
               })
           this.model.visual_settings.colors = data.settings
-          console.log(this.model)
+
       },
     deleteFeaturedImage() {
       this.$refs.featuredImageInput.reset()
       this.image.thumbnail_image_path = null
       this.image.has_picture_url = false
         this.model.picture_url = ""
+        this.pictureName = ""
     },
     previewImage: async  function(event) {
       // Reference to the DOM input element

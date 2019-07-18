@@ -46,10 +46,10 @@
             <span v-text="row.value"></span>
           </template>
           <template slot="average" slot-scope="row">
-            <span v-text="(row.item.amount_collected / row.item.transactions_count) || 0"></span>
+            <span v-text="average(row.item.transactions_count, row.item.amount_collected)"></span>
           </template>
           <template slot="received" slot-scope="row">
-            <span v-text="`${row.item.amount_collected}/${row.item.target_amount}`"></span>
+            <span v-text="`${(row.item.amount_collected/100).toFixed(2)}/${(row.item.target_amount/100).toFixed(2)}`"></span>
           </template>
           <template slot="days" slot-scope="row">
             <span v-text="(moment(row.item.finish_at).fromNow())"></span>
@@ -132,10 +132,19 @@ export default {
 
     }
   },
+  computed: {
+
+  },
   methods: {
     dataLoadProvider(ctx) {
       let data = this.$refs.datasource.loadData(ctx.sortBy, ctx.sortDesc)
       return data
+    },
+
+    average(count, summ) {
+        let result = (summ / count / 100).toFixed(2);
+        if(!isNaN(result)) return result;
+        else return 0;
     },
 
     onContextChanged() {

@@ -31,13 +31,13 @@
             <span v-text="row.item.donator"></span>
           </template>
           <template slot="amount" slot-scope="row">
-            <span v-text="row.item.amount"></span>
+            <span v-text="row.item.amount/100"></span>
           </template>
           <template slot="currency" slot-scope="row">
             <span v-text="row.item.currency"></span>
           </template>
           <template slot="created_at" slot-scope="row">
-            <span v-text="new Date(row.item.created_at * 1000).toLocaleDateString('ru-RU')"></span>
+            <span v-text="(new Date(row.item.created_at * 1000).toLocaleDateString('ru-RU')) + ' ' + (new Date(row.item.created_at * 1000).toLocaleTimeString('ru-RU'))"></span>
           </template>
           <template slot="table-busy">
             <div class="text-center">
