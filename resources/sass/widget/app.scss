@@ -172,6 +172,7 @@
   }
   .module-donate__donateWindow {
     padding: 16px 0 0px 0;
+    position: relative;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -507,10 +508,11 @@
   }
 
   .donateWindow__footer {
-    position: absolute;
-    margin-top: 50px;
-    font-size: 0;
-    width: 400px;
+    z-index: 9999;
+    width: 200px;
+    margin-top: -145px;
+    margin-left: -180px;
+    font-size: 0;    
     text-align: left;
     display: -webkit-box;
     display: -ms-flexbox;
