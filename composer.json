@@ -40,6 +40,9 @@
     },
     "config": {
         "optimize-autoloader": true,
+        "platform": {
+          "php": "7.1.12"
+        },
         "preferred-install": "dist",
         "sort-packages": true
     },
