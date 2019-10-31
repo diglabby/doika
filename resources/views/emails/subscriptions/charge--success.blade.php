@@ -7,17 +7,26 @@
 ?>
 @component('mail::message')
 {{-- Greeting --}}
-@lang('mails.layout.hello')
+Паважаны {{ $subscription->donator->name ?? 'Ахвярадаўца' }}, дзякуй, што падтрымалі нас!
 
 @component('mail::panel')
-Сума транзакцыі {{ $transaction->amount / 100 }} {{ $transaction->currency }}.
+## Інфармацыя аб плацяжы
+Назва арганізацыі: {{ config('app.name') }}
+
+Плацельшчык: {{ $subscription->donator->name }}
+
+Дата аперацыі: {{ $transaction->created_at }}
+
+Сума аперацыі: {{ $transaction->amount / 100 }}
+
+Вынік аперацыі: паспяхова
+{{--Плацёжны сродак:--}}
 @endcomponent
 
-Час заканчэння кампаніі "{{ $campaign->name }}": {{ $campaign->finish_at->toFormattedDateString() }}
-
-<small>Вы можаце у любы час адпісацца па спасыльцы: [адпісацца]({{ $subscription->getCancelationUrl() }}).</small>
+<small>Для таго, каб кіраваць скасаваць сваю падпіску, трэба пкреайсці па [спасылцы]({{ $subscription->getCancelationUrl() }}).</small>
 ______________
 {{-- Salutations --}}
-@lang('mails.layout.regards'), {{ config('app.name') }}
+@lang('mails.layout.regards'),
+{{ config('app.name') }}
 
 @endcomponent
