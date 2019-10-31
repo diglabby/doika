@@ -16,6 +16,13 @@
             'widgetBasePath' => '/doika/doika/widget',
             'locale' => app()->getLocale(),
             'user' => $loggedInUser,
+            'visualSettings' => [
+                'buttonBackground' => setting('buttonBackground'),
+                'widgetBackground' => setting('widgetBackground'),
+                'progressBarColor' => setting('progressBarColor'),
+                'fontColor' => setting('fontColor'),
+            ],
+            'termsOfUse' => setting('termsOfUse'),
         ]) !!}
     </script>
 
