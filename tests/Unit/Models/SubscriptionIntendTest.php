@@ -14,11 +14,10 @@ class SubscriptionIntendTest extends TestCase
      * @test
      * @dataProvider plannedTimesToPayForFutureDatesProvider
      */
-    public function it_properly_calculates_times_to_pay_for_future_dates(int $plannedTimesToPay, string $dateMofifier)
+    public function it_properly_calculates_times_to_pay_for_future_dates(int $plannedTimesToPay, \DateTimeInterface $dateTime)
     {
-        // ⚠️ Test execution takes some tune, for this reason now() created here
-        // != now() created in SubscriptionIntend, so we need to add second(s)
-        $campaignFinishTime = now()->modify($dateMofifier)->modify('+5 second');
+        // ⚠️ Test execution takes some time, for this reason we add some second(s)
+        $campaignFinishTime = $dateTime->modify('+5 second');
         $subscriptionIntend = SubscriptionIntend::monthly(
             Money::BYN(100),
             factory(Donator::class)->make(),
@@ -33,15 +32,15 @@ class SubscriptionIntendTest extends TestCase
     public function plannedTimesToPayForFutureDatesProvider(): array
     {
         return [
-            'finish in few seconds' => [1, '+1 seconds'],
-            'finish in 1 minute' => [1, '+1 minute'],
-            'finish in 1 day' => [1, '+1 day'],
-            'finish in 1 week' => [1, '+1 week'],
-            'finish in almost 1 month' => [1, '+1 month -1 minute'],
-            'finish in 1 month' => [2, '+1 month'],
-            'finish in almost 2 months' => [2, '+2 months -1 minute'],
-            'finish in 2 month' => [3, '+2 month'],
-            'finish in 1 year' => [13, '+1 year'],
+            'finish in few seconds' => [1, now()->addSeconds(1)],
+            'finish in 1 minute' => [1, now()->addMinutes(1)],
+            'finish in 1 day' => [1, now()->addDays(1)],
+            'finish in 1 week' => [1, now()->addWeeks(1)],
+            'finish in almost 1 month' => [1, now()->addMonthsWithOverflow(1)->subMinutes(1)],
+            'finish in 1 month' => [2, now()->addMonthsWithOverflow(1)],
+            'finish in almost 2 months' => [2, now()->addMonthsWithOverflow(2)->subMinutes(1)],
+            'finish in 2 month' => [3, now()->addMonthsWithOverflow(2)],
+            'finish in 1 year' => [13, now()->addYearsWithOverflow(1)],
         ];
     }
 
