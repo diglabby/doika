@@ -17,7 +17,7 @@ return [
             'print' => 'Расдрукаваць',
             'email' => 'Даслаць e-mail',
         ],
-        'support' => 'Дапамагі Камандзе Doika',
+        'support' => 'Дапамажы Камандзе Doika',
         'login' => [
             'submit' => 'Лагін',
         ],
