@@ -396,23 +396,28 @@
   .module-donate__button-select.clicked {
     outline: none !important;
     background-color: #383838 !important;
-    color: #FF80B4;
+    color: #303030;
     transition: all 0.3s ease 0s;
     -webkit-font-smoothing: antialiased;
   }
+  
 
   .module-donate__button-select.payment {
-    width:48%;
+    width: 48%;
+  }
+
+  .module-donate__button-select.payment.clicked {
+    color: #FF80B4;
   }
 
   .module-donate__button-select:focus {
     outline: none !important;
     background-color: #383838 !important;
-    color: #FF80B4;
+    color: #303030;
   }
 
   .module-donate__button-select:hover {
-    color: #FF80B4;
+    color: #303030;
     -webkit-transform: perspective(1px) scale(1.1);
         -ms-transform: perspective(1px) scale(1.1);
         transform: perspective(1px) scale(1.1);
