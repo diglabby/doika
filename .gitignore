@@ -17,6 +17,7 @@ npm-debug.log
 /public/build
 /public/dist
 /public/mix-manifest.json
+storage/public/uploads/
 
 .phpunit.result.cache
 
