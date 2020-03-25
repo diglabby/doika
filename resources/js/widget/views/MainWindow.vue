@@ -194,16 +194,16 @@ export default {
             }
             return this.model.visual_settings.buttons;
         },
-        buttonPaymentFontColor() {
-            try {
-              if (!this.model.visual_settings.colors.buttonPaymentFontColor) {
-                  return this.settings.buttonPaymentFontColor;
+        fontColor(){
+          try {
+              if (!this.model.visual_settings.colors.fontColor) {
+                  return this.settings.fontColor;
               }
           } catch (e) {
-              return this.settings.buttonPaymentFontColor;
+              return this.settings.fontColor;
           }
-          return this.model.visual_settings.colors.buttonPaymentFontColor;
-        }
+          return this.model.visual_settings.colors.fontColor;
+      },
 
     },
 
