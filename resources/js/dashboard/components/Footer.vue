@@ -12,7 +12,7 @@
           <i class="fe fe-code"></i> {{ $t('labels.admin.common.footer.with') }} <i class="fe fe-heart"></i> {{ $t('labels.admin.common.footer.by') }} <strong>{{ editorName }}</strong>
         </template>
       </template>
-         </span>
+    </span>
   </Footer>
 </template>
 <script>
