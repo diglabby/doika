@@ -24,8 +24,10 @@
           <div class="module-donate__input">
             <b-button v-model="donate_amount" :style="{ background: buttonBackground, color: fontColor }" v-for="button in getButtons" @click="provide(button)" :class="{clicked: contains(buttons, button)}" class="module-donate__button-select" :key="button">{{ button }} {{ model.currency }}</b-button>
             <input type="number"  :style="{ background:  buttonBackground, color: fontColor }" class="module-donate__text-input" :placeholder="$t('labels.widget.input')" v-model="donate_amount">
-            <b-button :style="{ background:  buttonBackground, color: fontColor }" class="module-donate__button-select payment" @click="recurrent = '/donate'" :class="{clicked: (recurrent=='/donate')}">{{ $t('buttons.widget.oneTime') }}</b-button>
-            <b-button :style="{ background:  buttonBackground, color: fontColor }" class="module-donate__button-select payment" @click="recurrent = '/recurrent'" :class="{clicked: (recurrent=='/recurrent')}">{{ $t('buttons.widget.subscribe') }}</b-button>
+            <b-button-group size="lg" class="btn-block">
+            <b-button :style="{ background:  buttonBackground, color: buttonPaymentFontColor }" class="module-donate__button-select payment" @click="recurrent = '/donate'" :class="{clicked: (recurrent=='/donate')}">{{ $t('buttons.widget.oneTime') }}</b-button>
+            <b-button :style="{ background:  buttonBackground, color: buttonPaymentFontColor }" class="module-donate__button-select payment" @click="recurrent = '/recurrent'" :class="{clicked: (recurrent=='/recurrent')}">{{ $t('buttons.widget.subscribe') }}</b-button>
+            </b-button-group>
             <b-button :style="{ color: fontColor }" id="button__confirm" :to="'/campaigns/' + model.id + recurrent" @click="setAmount" :disabled="agreement_status == 'false'" class="module-donate__button-select confirm" >{{ $t('buttons.widget.confirm') }}</b-button>
             <div class="checkbox-agreement">
               <b-form-checkbox
@@ -109,13 +111,15 @@ export default {
         },
         settings: {
             widgetBackground: '#ccc',
-            buttonBackground: '#ccc',
+            buttonBackground: '#ffffff',
             donateButtonBackground: '',
             progressBarColor: '#000',
             fontColor: '#000',
             termsOfUse: "",
-            buttons: []
-        }
+            buttons: [],
+            buttonPaymentFontColor: '#ff80b2'
+        },
+        
     }
   },
     computed: {
@@ -137,17 +141,6 @@ export default {
               return this.settings.widgetBackground;
           }
           return this.model.visual_settings.colors.widgetBackground;
-      },
-
-      fontColor(){
-          try {
-              if (!this.model.visual_settings.colors.fontColor) {
-                  return this.settings.fontColor;
-              }
-          } catch (e) {
-              return this.settings.fontColor;
-          }
-          return this.model.visual_settings.colors.fontColor;
       },
 
         progressBarColor(){
@@ -201,7 +194,16 @@ export default {
             }
             return this.model.visual_settings.buttons;
         },
-
+        fontColor(){
+          try {
+              if (!this.model.visual_settings.colors.fontColor) {
+                  return this.settings.fontColor;
+              }
+          } catch (e) {
+              return this.settings.fontColor;
+          }
+          return this.model.visual_settings.colors.fontColor;
+      },
 
     },
 
