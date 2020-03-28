@@ -6,6 +6,8 @@ import '../vendor/axios-config'
 
 import 'babel-polyfill'
 import BootstrapVue from 'bootstrap-vue'
+import VueSwal from 'vue-swal'
+Vue.use(VueSwal)
 
 // Vendor plugins components
 import '../vendor/coreui/components'
