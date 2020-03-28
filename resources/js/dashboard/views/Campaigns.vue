@@ -61,9 +61,16 @@
             <b-button size="sm" variant="primary" :to="`/campaigns/${data.item.id}/edit`" v-b-tooltip.hover :title="$t('buttons.admin.common.edit')" class="mr-1">
               <i class="fe fe-edit"></i>
             </b-button>
-            <b-button size="sm" variant="secondary" v-b-tooltip.hover :title="$t('buttons.admin.common.delete')" @click.stop="onDelete(data.item.id)">
-              <i class="fe fe-trash"></i>
+
+            <b-button
+              size="sm"
+              variant="secondary"
+              v-b-tooltip.hover
+              :title="$t('buttons.admin.common.delete')"
+              @click.stop="onDelete(data.item.id)">
+                <i class="fe fe-trash"></i>
             </b-button>
+
           </template>
 
         </b-table>
@@ -136,8 +143,8 @@ export default {
   },
   methods: {
     dataLoadProvider(ctx) {
-      let data = this.$refs.datasource.loadData(ctx.sortBy, ctx.sortDesc)
-      return data
+      let data = this.$refs.datasource.loadData(ctx.sortBy, ctx.sortDesc);
+      return data;
     },
 
     average(count, summ) {
@@ -150,8 +157,9 @@ export default {
 
       return this.$refs.datatable.refresh()
     },
+
     onDelete(id) {
-      this.$refs.datasource.deleteRow({ id: id })
+      this.$refs.datasource.deleteRow(id)
     },
 
     onActiveToggle(id) {

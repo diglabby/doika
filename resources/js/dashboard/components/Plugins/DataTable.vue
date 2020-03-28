@@ -123,27 +123,24 @@ export default {
       })
     },
     async deleteRow(params) {
-      let result = await window.swal({
-        title: this.$t('labels.admin.common.confirmation'),
-        type: 'warning',
-        showCancelButton: true,
-        cancelButtonText: this.$t('buttons.admin.common.cancel'),
-        confirmButtonColor: '#dd4b39',
-        confirmButtonText: this.$t('buttons.admin.common.delete')
-      })
 
-      if (result.value) {
-        try {
-          let { data } = await axios.delete(
-            this.$app.route(this.deleteRoute, params)
-          )
-          this.onContextChanged()
-          this.$app.noty[data.status](data.message)
-        } catch (e) {
-          this.$app.error(e)
-        }
-      }
+      window.swal({
+        title: this.$t('labels.admin.common.confirmation'),
+        text: "Выдаленая кампанія больш не ўзновіцца. Усе падпіскі прыпыняцца!",
+        icon: "warning",
+        buttons: ["Адмена", "Выдаліць!"
+        ]
+      })
+      .then((test) => {
+          //  console.log(this.$app.route(this.deleteRoute));
+          axios.delete(`/doika/doika/dashboard/api/campaigns/${params}`)
+          .then(({data}) => {
+              this.onContextChanged()
+          })
+          .catch((e)=>{ this.$app.error(e)});
+       });
     },
+
     async onBulkAction() {
       let result = await window.swal({
         title: this.$t('labels.are_you_sure'),
@@ -153,6 +150,7 @@ export default {
         confirmButtonColor: '#f66d9b',
         confirmButtonText: this.$t('buttons.confirm')
       })
+
 
       if (result.value) {
         try {
@@ -168,6 +166,7 @@ export default {
           this.$app.error(e)
         }
       }
+
     }
   }
 }
