@@ -51,6 +51,7 @@ export default {
         : null
     },
     async onSubmit() {
+
       this.isLoading = true
       let router = this.$router
       let action = this.isNew
@@ -69,6 +70,11 @@ export default {
       try {
         let { data } = await axios.post(action, formData)
         this.isLoading = false
+
+        window.swal("Поспех", "Новыя дадзеныя запісаны", "success", {
+          timer: 2000,
+          buttons: false,
+        })
 
         //this.$app.noty[data.status](data.message)
         if (this.listPath) {

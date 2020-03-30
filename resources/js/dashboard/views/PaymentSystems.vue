@@ -236,7 +236,6 @@
                           horizontal
                           :label-cols="2"
                         >
-
                         </b-form-group>
                       </b-card-body>
                     </b-tab>-->
@@ -284,7 +283,7 @@ export default {
                 gateway_bePaid_idMarket: null,
                 gateway_bePaid_keyMarket: null,
                 termsOfUse: null,
-                disableLivePayments: "test",
+                disableLivePayments: false,// "test",
                 minPayment: null,
                 maxPayment: null,
                 paymentInterval: "P1H"
@@ -297,7 +296,11 @@ export default {
     },
     computed: {
         liveMode: function() {
-            return this.model.settings.disableLivePayments ? this.model.settings.disableLivePayments: "test";
+            return this.model.settings.disableLivePayments ? this.model.settings.disableLivePayments: true; //"test";
+        },
+
+        //needs to be developed or deleted
+        pending () {
         },
     },
     methods: {
