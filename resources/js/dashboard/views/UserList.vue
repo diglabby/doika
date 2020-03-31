@@ -4,9 +4,11 @@
       <template slot="header">
         <h3 class="card-title">{{ $t('labels.admin.users.header') }}</h3>
         <div class="card-options" v-if="this.$app.user.can('create users')">
+          <!--
           <b-button to="/users/create" variant="success" size="sm">
             <i class="fe fe-plus-circle"></i> {{ $t('buttons.admin.users.create') }}
           </b-button>
+          -->
         </div>
       </template>
       <b-datatable ref="datasource"

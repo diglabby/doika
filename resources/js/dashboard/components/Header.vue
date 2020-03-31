@@ -21,10 +21,10 @@
         <template slot="dropdown">
           <b-dropdown-item to="/campaigns/create">
             <i class="fe fe-book"></i>&nbsp;&nbsp;{{ $t('labels.admin.newMenu.campaign') }}
-          </b-dropdown-item>
-          <b-dropdown-item to="/users/create"">
+          </b-dropdown-item><!--
+          <b-dropdown-item to="/users/create">
             <i class="fe fe-users"></i>&nbsp;&nbsp;{{ $t('labels.admin.newMenu.user') }}
-          </b-dropdown-item>
+          </b-dropdown-item>-->
         </template>
       </HeaderDropdown>
       <!--
