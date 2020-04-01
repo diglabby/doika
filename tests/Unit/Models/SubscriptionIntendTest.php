@@ -13,12 +13,14 @@ class SubscriptionIntendTest extends TestCase
 {
     protected function setUp(): void
     {
+        parent::setUp();
         $now = now();
         Carbon::setTestNow($now);
     }
 
     protected function tearDown(): void
     {
+        parent::tearDown();
         Carbon::setTestNow();
     }
 

@@ -6,8 +6,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 /**
- * Diglabby\Doika\Models\Admin
- *
  * @property int $id
  * @property string $name
  * @property string $email
