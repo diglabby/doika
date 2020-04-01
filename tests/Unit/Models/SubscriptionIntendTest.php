@@ -11,13 +11,13 @@ use Tests\TestCase;
 
 class SubscriptionIntendTest extends TestCase
 {
-    protected function setUp() :void
+    protected function setUp(): void
     {
         $now = now();
         Carbon::setTestNow($now);
     }
 
-    protected function tearDown() :void
+    protected function tearDown(): void
     {
         Carbon::setTestNow();
     }
