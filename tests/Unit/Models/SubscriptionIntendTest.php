@@ -14,6 +14,7 @@ class SubscriptionIntendTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+
         $now = now();
         Carbon::setTestNow($now);
     }
@@ -21,6 +22,7 @@ class SubscriptionIntendTest extends TestCase
     protected function tearDown(): void
     {
         parent::tearDown();
+
         Carbon::setTestNow();
     }
 
@@ -30,7 +32,8 @@ class SubscriptionIntendTest extends TestCase
      */
     public function it_properly_calculates_times_to_pay_for_future_dates(int $plannedTimesToPay, \DateTimeInterface $dateTime)
     {
-        $campaignFinishTime = $dateTime;
+        // Add few seconds to avoid runtime errors
+        $campaignFinishTime = (clone $dateTime)->addSeconds(2);
         $subscriptionIntend = SubscriptionIntend::monthly(
             Money::BYN(100),
             factory(Donator::class)->make(),
