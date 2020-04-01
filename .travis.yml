@@ -43,7 +43,9 @@ after_script:
 
 jobs:
   include:
-    - stage: Release
+    - # require a new git tag to create a zip ans upload it to github
+      if: tag IS present
+      stage: Release
       env:
         - BUILD=true
       script:
