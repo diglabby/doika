@@ -5,19 +5,30 @@ namespace Tests\Unit\Models;
 use Diglabby\Doika\Models\Campaign;
 use Diglabby\Doika\Models\Donator;
 use Diglabby\Doika\Models\SubscriptionIntend;
+use Illuminate\Support\Carbon;
 use Money\Money;
 use Tests\TestCase;
 
 class SubscriptionIntendTest extends TestCase
 {
+    protected function setUp() :void
+    {
+        $now = now();
+        Carbon::setTestNow($now);
+    }
+
+    protected function tearDown() :void
+    {
+        Carbon::setTestNow();
+    }
+
     /**
      * @test
      * @dataProvider plannedTimesToPayForFutureDatesProvider
      */
     public function it_properly_calculates_times_to_pay_for_future_dates(int $plannedTimesToPay, \DateTimeInterface $dateTime)
     {
-        // ⚠️ Test execution takes some time, for this reason we add some second(s)
-        $campaignFinishTime = $dateTime->modify('+5 second');
+        $campaignFinishTime = $dateTime;
         $subscriptionIntend = SubscriptionIntend::monthly(
             Money::BYN(100),
             factory(Donator::class)->make(),
