@@ -8,6 +8,7 @@ php:
   - 7.1.3
   - 7.2
   - 7.3
+  - 7.4
 
 cache:
   directories:
@@ -27,10 +28,10 @@ before_script:
   - npm ci
   - npm run prod
 
-script:  
+script:
   - composer test:ci
   - php artisan route:list
-  - php artisan migrate:fresh --seed  
+  - php artisan migrate:fresh --seed
 
 after_script:
   - |
