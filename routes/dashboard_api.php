@@ -14,6 +14,10 @@ Route::delete('/campaigns/{campaign}', 'Dashboard\CampaignController@delete')->n
 Route::get('/transactions', 'Dashboard\TransactionController@index')->name('dashboard.transactions.index');
 Route::get('/transactions/{transaction}', 'Dashboard\TransactionController@show')->name('dashboard.transactions.show');
 
+//Routes for notifications. Needs only index and update methods.
+Route::get('/notifications', 'Dashboard\NotificationsController@index')->name('dashboard.notifications.index');
+Route::put('/notifications/{notification}', 'Dashboard\NotificationsController@update')->name('dashboard.notifications.update');
+
 Route::get('/donators', 'Dashboard\DonatorController@index')->name('dashboard.donators.index');
 Route::get('/donators/{donator}', 'Dashboard\DonatorController@show')->name('dashboard.donators.show');
 
