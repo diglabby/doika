@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Notification;
 
 class NotificationSeeder extends Seeder
 {
@@ -12,9 +11,8 @@ class NotificationSeeder extends Seeder
      */
     public function run()
     {
-
-          \DB::table('notifications')->truncate();
-          \DB::table('notifications')->insert([
+        \DB::table('notifications')->truncate();
+        \DB::table('notifications')->insert([
               [
                 'purpose' => 'thanks',
                 'title' => 'Паспяховы плацёж на <назва сайта>',
@@ -94,7 +92,7 @@ class NotificationSeeder extends Seeder
   б) Плацёж не праведзены. Праверце рэквізіты банкаўскай карткі.
   в) Плацёж адхілены банкам. Праверце ці маеце дастаткова сродкаў.',
                 'regular' => true,
-              ]
+              ],
 
 
 
