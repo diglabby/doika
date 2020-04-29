@@ -16,6 +16,7 @@ import Settings from '../views/Settings'
 import UserForm from '../views/UserForm'
 import UserList from '../views/UserList'
 import Notifications from '../views/Notifications'
+import NotificationsForm from '../views/NotificationsForm'
 import PaymentSystems from '../views/PaymentSystems'
 import Layout from '../views/Layout'
 
@@ -144,9 +145,17 @@ export function createRouter(base, i18n) {
           {
             path: 'notifications',
             component: Notifications,
+            props: true,
             meta: {
               label: i18n.t('labels.admin.notifications.title')
-            }
+            },
+            children: [
+              {
+                path: ':id/edit',
+                name: 'notification_edit',
+                component: NotificationsForm,
+              }
+            ]
           },
           {
             path: 'users',
