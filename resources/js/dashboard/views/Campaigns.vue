@@ -50,7 +50,7 @@
           </template>
 
           <template v-slot:cell(received)="data">
-            <span v-text="`${(data.item.amount_collected/100).toFixed(2)}/${(data.item.target_amount/100).toFixed(2)}`"></span>
+            <span v-text="`${(data.item.amount_collected).toFixed(2)}/${(data.item.target_amount).toFixed(2)}`"></span>
           </template>
 
           <template v-slot:cell(days)="data">
