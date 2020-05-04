@@ -8,10 +8,9 @@
           {{ $t('labels.admin.common.footer.with') }} <i class="fe fe-heart"></i> {{ $t('labels.admin.common.footer.by') }}
           <a :href="editorSiteUrl" target="_blank"><strong>{{ editorName }}</strong></a>
         </template>
-        <template v-else>
-          <i class="fe fe-code"></i> {{ $t('labels.admin.common.footer.with') }} <i class="fe fe-heart"></i> {{ $t('labels.admin.common.footer.by') }} <strong>{{ editorName }}</strong>
-        </template>
       </template>
+       {{ $t('labels.admin.common.footer.with') }} <i class="fe fe-heart"></i> {{ $t('labels.admin.common.footer.by') }}
+          <a href="https://falanster.by/" target="_blank"><strong>Falanster</strong></a>
     </span>
   </Footer>
 </template>
