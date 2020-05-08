@@ -18,7 +18,7 @@ export default {
             }
         },
         "auth": {
-            "failed": "E-mail и пароль не існуюць.",
+            "failed": "E-mail ці пароль не існуюць.",
             "throttle": "Занадта шмат спробаў увахода. Паўтарыце спробу праз {seconds} seconds."
         },
         "buttons": {
@@ -35,7 +35,7 @@ export default {
                     "back": "Назад",
                     "save": "Захаваць",
                     "info": "Справка",
-                    "print": "Расдрукаваць",
+                    "print": "Раздрукаваць",
                     "email": "Даслаць e-mail"
                 },
                 "support": "Дапамажы Камандзе Doika",
@@ -71,6 +71,9 @@ export default {
                     "description": ""
                 }
             },
+            "emailserver": "Паштовы сэрвер",
+            "recurrent": "Падпіска",
+            "single": "Аднаразовы плацёж",
             "admin": {
                 "title": "Кіраванне",
                 "datatables": {
@@ -80,8 +83,6 @@ export default {
                     "actions": "Дзеянні",
                     "info": "Даведка"
                 },
-                "send_password_link": "Узнаўленне пароля",
-                "password_set_email": "Ваш email",
                 "common": {
                     "search": "Пошук",
                     "footer": {
@@ -137,14 +138,14 @@ export default {
                     "title": "Спіс кампаній",
                     "header": "Спіс кампаній",
                     "breadcrumb": "Спіс кампаній",
-                    "name": "Назва",
-                    "status": "Статус",
+                    "name": "Назва кампаніі",
+                    "status": "Статус кампаніі",
                     "backers": "Ахвярадаўцы",
                     "recurrent": "Падпіска",
-                    "average": "Сяр. чэк",
-                    "received": "Сабр. сума",
+                    "average": "Сярэдні чэк",
+                    "received": "Сабраная сума",
                     "goal": "Мэтавая сума",
-                    "days": "Дзён да заканчэння",
+                    "days": "Колькасць дзён да заканчэння",
                     "description": "Апісанне",
                     "image": "Выява кампаніі",
                     "uploadImage": "Загрузіць малюнак",
@@ -273,7 +274,7 @@ export default {
                 },
                 "help": {
                     "title": "Агульная інфа",
-                    "header": "Як карыстацца модулям"
+                    "header": "Як карыстацца модулем"
                 },
                 "feedback": {
                     "title": "Зваротная сувязь",
@@ -322,7 +323,7 @@ export default {
                 "email": "Пошта",
                 "phone": "Тэлефон",
                 "mask": "(+375)",
-                "input": "Сума",
+                "input": "Iншая сума",
                 "received": "Сабраная сума",
                 "needed": "Мэтавая сума",
                 "thanks": "Вялікі дзякуй за дапамогу!",
@@ -341,11 +342,11 @@ export default {
             "next": "Next &raquo;"
         },
         "passwords": {
-            "password": "Passwords must be at least six characters and match the confirmation.",
-            "reset": "Your password has been reset!",
-            "sent": "We have e-mailed your password reset link!",
-            "token": "This password reset token is invalid.",
-            "user": "We can't find a user with that e-mail address."
+            "password": "Пароль павінен змяшчаць не менш за шэсць сімвалаў.",
+            "reset": "Ваш пароль быў зменены!",
+            "sent": "На ваш e-mail адпраўлена спасылка для аднаўлення пароля",
+            "token": "Гэты пароль няправільны.",
+            "user": "Карыстальніка з такім e-mail адрасам знайсці немагчыма."
         },
         "validation": {
             "accepted": "The {attribute} must be accepted.",
