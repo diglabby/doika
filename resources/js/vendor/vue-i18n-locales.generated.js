@@ -723,7 +723,7 @@ export default {
             },
             "widget": {
                 "paymentInfo": "Terms of Use",
-                "input": "Summ",
+                "input": "Other amount",
                 "received": "received",
                 "needed": "Needed"
             }
@@ -1148,7 +1148,7 @@ export default {
             },
             "widget": {
                 "paymentInfo": "Terms of Use",
-                "input": "Сумма",
+                "input": "Другая сумма",
                 "received": "Собранная сумма",
                 "needed": "Целевая сумма"
             }
