@@ -182,6 +182,7 @@ return [
                     'password' => 'Email password',
                     'email' => 'Email address',
                 ],
+                'caution' => 'The deleted campaign will not resume. All subscriptions will be suspended!',
             ],
         ],
         'help' => [
