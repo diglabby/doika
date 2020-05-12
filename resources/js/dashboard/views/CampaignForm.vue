@@ -74,7 +74,6 @@
                         :placeholder="pictureName? pictureName: $t('labels.admin.campaigns.placeholder.image')"
                         v-model="pictureName"
                         :state="pictureState"
-                        required
                         v-b-tooltip.hover
                         :title="$t('labels.admin.campaigns.allowedImageTypes')"
                         @change="previewImage"
@@ -321,12 +320,14 @@ export default {
         nameState() {
             return ((this.model.name.length > 2) && (this.model.name.length < 255)) ? true : false
         },
-
         pictureState() {
-            return (this.model.picture_url != "") ? true : false
+      //      return (this.model.picture_url != "") ? true : false
         },
         buttonState() {
-            return !(this.nameState && this.pictureState && this.amountState)
+            return !(this.nameState && this.amountState && this.startAtState && this.finishAtState && this.descriptionState)
+        },
+        descriptionState() {
+          return (this.model.description) ? true : false;
         },
         startAtState() {
             return this.model.start_at != null
@@ -338,8 +339,8 @@ export default {
             return (this.model.target_amount > 0) ? true : false
         },
         pictureName: function () {
-            return this.model.picture_url.replace(/^.*[\\\/]/, '');
-        },
+             return this.model.picture_url ? this.model.picture_url.replace(/^.*[\\\/]/, ''):'';
+        }
     },
 
   methods: {
