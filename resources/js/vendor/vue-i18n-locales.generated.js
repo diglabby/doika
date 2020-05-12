@@ -35,6 +35,7 @@ export default {
                     "back": "Назад",
                     "save": "Захаваць",
                     "info": "Справка",
+                    "cancellation": "Адмена",
                     "print": "Раздрукаваць",
                     "email": "Даслаць e-mail"
                 },
@@ -51,6 +52,7 @@ export default {
                 "campaigns": {
                     "create": "Стварыць кампанию",
                     "save": "Захаваць кампанию",
+                    "delete": "Выдалiць!",
                     "uploadImage": "Загрузіць малюнак",
                     "deleteImage": "Выдаліць малюнак"
                 }
@@ -222,7 +224,8 @@ export default {
                     "button": "Колер кнопак"
                 },
                 "notifications": {
-                    "title": "Паведамленні"
+                    "title": "Паведамленні",
+                    "caution": "Выдаленая кампанія больш не ўзновіцца. Усе падпіскі прыпыняцца!"
                 },
                 "settings": {
                     "title": "Налады",
@@ -467,6 +470,7 @@ export default {
                     "back": "Back",
                     "save": "Save",
                     "info": "Info",
+                    "cancellation": "Cancel",
                     "print": "Print",
                     "email": "Send email"
                 },
@@ -483,6 +487,7 @@ export default {
                 "campaigns": {
                     "create": "Create campaign",
                     "save": "Save campaign",
+                    "delete": "Delete!",
                     "uploadImage": "Upload image",
                     "deleteImage": "Delete image"
                 }
@@ -674,7 +679,8 @@ export default {
                             "user": "Email user",
                             "password": "Email password",
                             "email": "Email address"
-                        }
+                        },
+                        "caution": "The deleted campaign will not resume. All subscriptions will be suspended!"
                     }
                 },
                 "help": {
@@ -892,6 +898,7 @@ export default {
                     "back": "Назад",
                     "save": "Сохранить",
                     "info": "Справка",
+                    "cancellation": "Отмена",
                     "print": "Распечатать",
                     "email": "Отправить e-mail"
                 },
@@ -908,6 +915,7 @@ export default {
                 "campaigns": {
                     "create": "Создать кампанию",
                     "save": "Сохранить кампанию",
+                    "delete": "Удалить!",
                     "uploadImage": "Загрузить изображение",
                     "deleteImage": "Удалить изображение"
                 }
@@ -1099,7 +1107,8 @@ export default {
                             "user": "Пользователь электронной почты",
                             "password": "Пароль",
                             "email": "Адрес электронный почты"
-                        }
+                        },
+                        "caution": "Удаленная кампания не возобновится. Все подписки будут приостановлены!"
                     }
                 },
                 "help": {
