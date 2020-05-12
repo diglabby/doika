@@ -14,6 +14,7 @@ return [
             'back' => 'Back',
             'save' => 'Save',
             'info' => 'Info',
+            'cancellation' => 'Cancel',
             'print' => 'Print',
             'email' => 'Send email',
         ],
@@ -30,6 +31,7 @@ return [
         'campaigns' => [
             'create' => 'Create campaign',
             'save' => 'Save campaign',
+            'delete' => 'Delete!',
             'uploadImage' => 'Upload image',
             'deleteImage' => 'Delete image',
         ],
