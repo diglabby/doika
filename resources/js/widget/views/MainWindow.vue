@@ -10,7 +10,7 @@
 
       <div class="module-donate__wrapper">
         <div class="module-donate__info">
-          <div class="module-donate__image">
+          <div class="module-donate__image" v-if="model.picture_url">
             <img :src="model.picture_url" class="mainImage" alt="doika image">
             <div class="blurredImage"></div>
           </div>
@@ -119,7 +119,7 @@ export default {
             buttons: [],
             buttonPaymentFontColor: '#ff80b2'
         },
-        
+
     }
   },
     computed: {
