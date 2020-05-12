@@ -126,9 +126,9 @@ export default {
 
       window.swal({
         title: this.$t('labels.admin.common.confirmation'),
-        text: "Выдаленая кампанія больш не ўзновіцца. Усе падпіскі прыпыняцца!",
+        text: this.$t('labels.admin.notifications.caution'),
         icon: "warning",
-        buttons: ["Адмена", "Выдаліць!"
+        buttons: [this.$t('buttons.admin.common.cancellation'), this.$t('buttons.admin.campaigns.delete')
         ]
       })
       .then((test) => {
