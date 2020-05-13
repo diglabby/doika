@@ -188,7 +188,7 @@
                         <c-switch
                           name="pinned"
                           v-model="model.active_status"
-                          :checked = "0"
+                          :checked = "false"
                           :description="$t('labels.admin.campaigns.active')"
                         ></c-switch>
                       </b-col>
