@@ -307,7 +307,7 @@ export default {
       },
       images: {
           image: null,
-          imageData: ''
+          imageData: null
       }
     }
   },
