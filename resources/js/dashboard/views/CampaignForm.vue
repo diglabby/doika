@@ -71,8 +71,7 @@
                         id="picture_url"
                         name="picture_url"
                         ref="featuredImageInput"
-                        :placeholder="pictureName? pictureName: $t('labels.admin.campaigns.placeholder.image')"
-                        v-model="pictureName"
+                        :placeholder="pictureName ? pictureName: $t('labels.admin.campaigns.placeholder.image')"
                         :state="pictureState"
                         v-b-tooltip.hover
                         :title="$t('labels.admin.campaigns.allowedImageTypes')"
@@ -188,7 +187,7 @@
                         <c-switch
                           name="pinned"
                           v-model="model.active_status"
-                          :checked = "0"
+                          :checked = "false"
                           :description="$t('labels.admin.campaigns.active')"
                         ></c-switch>
                       </b-col>
@@ -361,8 +360,8 @@ export default {
       this.$refs.featuredImageInput.reset()
       this.image.thumbnail_image_path = null
       this.image.has_picture_url = false
-        this.model.picture_url = ""
-        this.pictureName = ""
+      this.model.picture_url = ""
+      //this.pictureName = []
     },
     previewImage: async  function(event) {
       // Reference to the DOM input element
