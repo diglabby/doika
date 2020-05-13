@@ -90,8 +90,7 @@ export default {
                     "footer": {
                         "left": "Powered by",
                         "with": "with",
-                        "by": "by",
-                        "supporter": "Supported by the European Union"
+                        "by": "by"
                     },
                     "confirmation": "Вы ўпэўнены?"
                 },
@@ -519,8 +518,7 @@ export default {
                     "footer": {
                         "left": "Powered by",
                         "with": "with",
-                        "by": "by",
-                        "supporter": "Supported by the European Union"
+                        "by": "by"
                     },
                     "confirmation": "Are you sure?"
                 },
@@ -947,8 +945,7 @@ export default {
                     "footer": {
                         "left": "Powered by",
                         "with": "with",
-                        "by": "by",
-                        "supporter": "Supported by the European Union"
+                        "by": "by"
                     },
                     "confirmation": "Вы уверены?"
                 },
