@@ -22,7 +22,6 @@ return [
                 'left' => 'Powered by',
                 'with' => 'with',
                 'by' => 'by',
-                'supporter' => 'Supported by the European Union',
             ],
             'confirmation' => 'Вы уверены?',
         ],
