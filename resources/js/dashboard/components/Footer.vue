@@ -1,7 +1,7 @@
 <template>
   <Footer>
     <strong>{{ $t('labels.admin.common.footer.left') }} <a href="/" target="_blank">{{ name }}</a>.
-    </strong>&nbsp;{{ $t('labels.admin.common.footer.supporter') }}
+    </strong>
     <span class="ml-auto">
       <template v-if="editorName !== ''">
         <template v-if="editorSiteUrl !== ''">
