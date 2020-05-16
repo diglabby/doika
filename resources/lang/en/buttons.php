@@ -35,6 +35,15 @@ return [
             'uploadImage' => 'Upload image',
             'deleteImage' => 'Delete image',
         ],
+        'notifications' => [
+            'header' => [
+                'onePay' => 'For one-time payments',
+                'subscriptions' => 'For subscriptions',
+                'mailing' => 'Mailer settings',
+            ],
+            'description' => 'Description',
+            'change' => 'Change notification',
+        ],
 
     ],
     'widget' => [

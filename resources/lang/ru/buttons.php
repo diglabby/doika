@@ -35,6 +35,15 @@ return [
             'uploadImage' => 'Загрузить изображение',
             'deleteImage' => 'Удалить изображение',
         ],
+        'notifications' => [
+            'header' => [
+                'onePay' => 'Для одноразовых платежей',
+                'subscriptions' => 'Для подписок',
+                'mailing' => 'Настройки рассыльщика',
+            ],
+            'description' => 'Описание',
+            'change' => 'Изменить уведомление',
+        ],
 
     ],
     'widget' => [
