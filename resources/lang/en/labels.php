@@ -115,7 +115,7 @@ return [
             'breadcrumb' => 'Payments',
             'date' => 'Date',
             'campaign' => 'Campaign',
-            'amount' => 'Amount',
+            'amount' => 'Required sum',
             'backer' => 'Backer',
             'recurrent' => 'Recurrent',
             'status' => 'Payment status',
