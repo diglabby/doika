@@ -55,6 +55,15 @@ export default {
                     "delete": "Выдалiць!",
                     "uploadImage": "Загрузіць малюнак",
                     "deleteImage": "Выдаліць малюнак"
+                },
+                "notifications": {
+                    "header": {
+                        "onePay": "Для аднаразовых плацяжоў",
+                        "subscriptions": "Для падпісак",
+                        "mailing": "Наладкі рассыльшчыка"
+                    },
+                    "description": "Апісанне",
+                    "change": "Змяніць паведамленне"
                 }
             },
             "widget": {
@@ -224,6 +233,8 @@ export default {
                 },
                 "notifications": {
                     "title": "Паведамленні",
+                    "name": "Назва паведамлення",
+                    "text": "Апішыце лаканічна змест паведамлня",
                     "caution": "Выдаленая кампанія больш не ўзновіцца. Усе падпіскі прыпыняцца!"
                 },
                 "settings": {
@@ -489,6 +500,15 @@ export default {
                     "delete": "Delete!",
                     "uploadImage": "Upload image",
                     "deleteImage": "Delete image"
+                },
+                "notifications": {
+                    "header": {
+                        "onePay": "For one-time payments",
+                        "subscriptions": "For subscriptions",
+                        "mailing": "Mailer settings"
+                    },
+                    "description": "Description",
+                    "change": "Change notification"
                 }
             },
             "widget": {
@@ -678,6 +698,9 @@ export default {
                             "password": "Email password",
                             "email": "Email address"
                         },
+                        "title": "Notifications",
+                        "name": "Notification title",
+                        "text": "Describe the contents of the notification in a concise form",
                         "caution": "The deleted campaign will not resume. All subscriptions will be suspended!"
                     }
                 },
@@ -916,6 +939,15 @@ export default {
                     "delete": "Удалить!",
                     "uploadImage": "Загрузить изображение",
                     "deleteImage": "Удалить изображение"
+                },
+                "notifications": {
+                    "header": {
+                        "onePay": "Для одноразовых платежей",
+                        "subscriptions": "Для подписок",
+                        "mailing": "Настройки рассыльщика"
+                    },
+                    "description": "Описание",
+                    "change": "Изменить уведомление"
                 }
             },
             "widget": {
@@ -1105,6 +1137,9 @@ export default {
                             "password": "Пароль",
                             "email": "Адрес электронный почты"
                         },
+                        "title": "Уведомления",
+                        "name": "Название уведомления",
+                        "text": "Опишите лаконично содержание уведомления",
                         "caution": "Удаленная кампания не возобновится. Все подписки будут приостановлены!"
                     }
                 },
