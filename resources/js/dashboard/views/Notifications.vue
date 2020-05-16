@@ -3,7 +3,7 @@
     <div>
       <b-card no-body>
         <b-tabs pills card>
-          <b-tab title="Для аднаразовых плацяжоў" active>
+          <b-tab :title="$t('buttons.admin.notifications.header.onePay')" active>
             <b-card-text>
               <div v-for="notification in notifications">
                 <div v-if="notification.regular === 0">
@@ -11,10 +11,10 @@
                   <div>
                     <h2 class="mt-4">{{ notification.title }}</h2>
                     <b-tabs content-class="mt-3">
-                      <b-tab title="Апісаннне" active>
+                      <b-tab :title="$t('buttons.admin.notifications.description')" active>
                         <p>{{ notification.body }}</p><br><hr><br>
                       </b-tab>
-                      <b-tab title="Рэдагаваць">
+                      <b-tab :title="$t('buttons.admin.common.edit')">
                         <notifications-form :notification="notification"
                                              :key="notification.id"
                                              @submitted="editForm"></notifications-form>
@@ -25,17 +25,17 @@
               </div>
             </b-card-text>
           </b-tab>
-          <b-tab title="Для падпісак">
+          <b-tab :title="$t('buttons.admin.notifications.header.subscriptions')">
             <b-card-text>
               <div v-for="(notification, index) in notifications">
                 <div v-if="notification.regular === 1">
                   <div>
                     <h2 class="mt-4">{{ notification.title }}</h2>
                     <b-tabs content-class="mt-3">
-                      <b-tab title="Апісаннне" active>
+                      <b-tab :title="$t('buttons.admin.notifications.description')" active>
                         <p>{{ notification.body }}</p><br><hr><br>
                       </b-tab>
-                      <b-tab title="Рэдагаваць">
+                      <b-tab :title="$t('buttons.admin.common.edit')">
                         <notifications-form :notification="notification"
                                              :key="notification.id"
                                              @submitted="editForm"></notifications-form>
@@ -48,7 +48,7 @@
               </div>
             </b-card-text>
           </b-tab>
-          <b-tab title="Наладкі рассыльшчыка">
+          <b-tab :title="$t('buttons.admin.notifications.header.mailing')">
             <h2>Спіс опцый для рассылкі паведамленняў (магчыма выкарыстаць трэці сэрвіс sendgrid?)</h2>
           </b-tab>
         </b-tabs>
