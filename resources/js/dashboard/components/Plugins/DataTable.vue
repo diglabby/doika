@@ -63,10 +63,10 @@ export default {
       type: Array,
       default: () => []
     },
-      busy : false
   },
   data() {
     return {
+      busy: false,
       currentPage: 1,
       perPage: 10,
       totalRows: 0,

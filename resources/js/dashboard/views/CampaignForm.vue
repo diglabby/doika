@@ -71,10 +71,8 @@
                         id="picture_url"
                         name="picture_url"
                         ref="featuredImageInput"
-                        :placeholder="pictureName? pictureName: $t('labels.admin.campaigns.placeholder.image')"
-                        v-model="pictureName"
+                        :placeholder="pictureName ? pictureName: $t('labels.admin.campaigns.placeholder.image')"
                         :state="pictureState"
-                        required
                         v-b-tooltip.hover
                         :title="$t('labels.admin.campaigns.allowedImageTypes')"
                         @change="previewImage"
@@ -189,7 +187,7 @@
                         <c-switch
                           name="pinned"
                           v-model="model.active_status"
-                          :checked = "0"
+                          :checked = "false"
                           :description="$t('labels.admin.campaigns.active')"
                         ></c-switch>
                       </b-col>
@@ -321,12 +319,14 @@ export default {
         nameState() {
             return ((this.model.name.length > 2) && (this.model.name.length < 255)) ? true : false
         },
-
         pictureState() {
-            return (this.model.picture_url != "") ? true : false
+      //      return (this.model.picture_url != "") ? true : false
         },
         buttonState() {
-            return !(this.nameState && this.pictureState && this.amountState)
+            return !(this.nameState && this.amountState && this.startAtState && this.finishAtState && this.descriptionState)
+        },
+        descriptionState() {
+          return (this.model.description) ? true : false;
         },
         startAtState() {
             return this.model.start_at != null
@@ -338,8 +338,8 @@ export default {
             return (this.model.target_amount > 0) ? true : false
         },
         pictureName: function () {
-            return this.model.picture_url.replace(/^.*[\\\/]/, '');
-        },
+             return this.model.picture_url ? this.model.picture_url.replace(/^.*[\\\/]/, ''):'';
+        }
     },
 
   methods: {
@@ -360,8 +360,8 @@ export default {
       this.$refs.featuredImageInput.reset()
       this.image.thumbnail_image_path = null
       this.image.has_picture_url = false
-        this.model.picture_url = ""
-        this.pictureName = ""
+      this.model.picture_url = ""
+      //this.pictureName = []
     },
     previewImage: async  function(event) {
       // Reference to the DOM input element
