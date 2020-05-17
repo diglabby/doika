@@ -840,7 +840,7 @@
       flex-wrap: wrap;
       -ms-flex-pack: distribute;
       justify-content: space-around;
-      align-content: start;
+      align-content: flex-start;
     }
 
     .module-donate__button-select {
