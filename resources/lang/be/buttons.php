@@ -35,6 +35,15 @@ return [
             'uploadImage' => 'Загрузіць малюнак',
             'deleteImage' => 'Выдаліць малюнак',
         ],
+        'notifications' => [
+            'header' => [
+                'onePay' => 'Для аднаразовых плацяжоў',
+                'subscriptions' => 'Для падпісак',
+                'mailing' => 'Наладкі рассыльшчыка',
+            ],
+            'description' => 'Апісанне',
+            'change' => 'Змяніць паведамленне',
+        ],
 
     ],
     'widget' => [

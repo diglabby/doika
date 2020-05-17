@@ -1,7 +1,7 @@
 <template>
     <form @submit.prevent="handleSubmit">
       <div class="form-group">
-          <label for="notification-title">Назва паведамлення</label>
+          <label for="notification-title">{{ $t('labels.admin.notifications.name') }}</label>
           <b-form-input v-model="notification.title"
                         name="notification-title"
                         placeholder="Увядзіце назву паведамлення для атрымальнікаў"
@@ -13,7 +13,7 @@
           </div>
       </div>
       <div class="form-group">
-          <label for="notification-body">Апішыце лаканічна змест паведамлення</label>
+          <label for="notification-body">{{ $t('labels.admin.notifications.text') }}</label>
           <b-form-textarea
               id="textarea"
               v-model="notification.body"
@@ -104,7 +104,7 @@ export default {
 
     computed: {
         buttonText() {
-            return 'Змяніць паведамленне'
+            return this.$t('buttons.admin.notifications.change')
         }
     }
 }
