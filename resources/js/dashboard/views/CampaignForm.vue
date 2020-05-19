@@ -54,7 +54,12 @@
                 {{ $t('labels.admin.campaigns.description') }}
                 <span class="text-danger">*</span>
               </template>
-              <vue-editor name="description" v-model="model.description"></vue-editor>
+              <vue-editor
+                class="description-shadow"
+                :class="{'description-shadow_is-valid': this.model.description.length}"
+                name="description"
+                v-model="model.description"
+              ></vue-editor>
             </b-form-group>
 
             <b-form-group
@@ -187,7 +192,9 @@
                           id="amount"
                           name="amount"
                           required
-                          :placeholder="$t('labels.admin.campaigns.placeholder.amount')"
+                          :placeholder="
+                            $t('labels.admin.campaigns.placeholder.amount')
+                          "
                           v-model="model.target_amount"
                           :state="amountState"
                         ></b-form-input>
@@ -341,7 +348,9 @@ export default {
       )
     },
     nameState() {
-      return this.model.name.length > 2 && this.model.name.length < 255
+      return !this.model.name.length
+        ? null
+        : this.model.name.length > 2 && this.model.name.length < 255
         ? true
         : false
     },
@@ -367,7 +376,11 @@ export default {
       return this.model.finish_at != null
     },
     amountState() {
-      return this.model.target_amount > 0 ? true : false
+      return !this.model.target_amount
+        ? null
+        : this.model.target_amount > 0
+        ? true
+        : false
     },
     pictureName: function() {
       return this.model.picture_url
@@ -443,12 +456,23 @@ export default {
 }
 
 .form-control.is-valid {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E");
+  background: none;
 }
 
 .is-valid {
   border-color: #28a745;
   &:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+  }
+}
+
+.description-shadow {
+  border: 1px solid rgba(0, 40, 100, 0.12);
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
+  &_is-valid {
     border-color: #28a745;
     box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
   }
