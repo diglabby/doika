@@ -7,7 +7,10 @@
             <h3>
               <b-row>
                 <b-col lg="5">
-                  <h3 class="card-title" slot="header">{{ isNew ? $t('labels.admin.campaigns.create.title') : $t('labels.admin.campaigns.edit.title') }}</h3>
+                  <h3
+                    class="card-title"
+                    slot="header"
+                  >{{ isNew ? $t('labels.admin.campaigns.create.title') : $t('labels.admin.campaigns.edit.title') }}</h3>
                 </b-col>
                 <b-col offset-lg="2" lg="5">
                   <b-form-input
@@ -25,7 +28,7 @@
             <b-row>
               <b-col>
                 <b-form-group
-                  :label="$t('labels.admin.campaigns.name')"
+                  :label="`${$t('labels.admin.campaigns.name')} *`"
                   label-for="title"
                   horizontal
                   :label-cols="2"
@@ -45,7 +48,7 @@
             </b-row>
 
             <b-form-group
-              :label="$t('labels.admin.campaigns.description')"
+              :label="`${$t('labels.admin.campaigns.description')} *`"
               label-for="body"
               horizontal
               :label-cols="2"
@@ -61,7 +64,12 @@
               :feedback="feedback('picture_url')"
             >
               <div class="media">
-                <img class="mr-2" v-if="image.thumbnail_image_path" :src="image.thumbnail_image_path" alt="">
+                <img
+                  class="mr-2"
+                  v-if="image.thumbnail_image_path"
+                  :src="image.thumbnail_image_path"
+                  alt
+                />
 
                 <div class="media-body">
                   <h6>{{ $t('buttons.admin.campaigns.uploadImage') }}</h6>
@@ -78,7 +86,12 @@
                         @change="previewImage"
                         style="margin-top auto; margin-bottom: auto;"
                       ></b-form-file>
-                      <a href="#" class="d-block mt-1" v-if="image.has_picture_url || pictureName" @click.prevent="deleteFeaturedImage">{{ $t('buttons.admin.campaigns.deleteImage') }}</a>
+                      <a
+                        href="#"
+                        class="d-block mt-1"
+                        v-if="image.has_picture_url || pictureName"
+                        @click.prevent="deleteFeaturedImage"
+                      >{{ $t('buttons.admin.campaigns.deleteImage') }}</a>
                     </b-col>
                     <b-col lg="3">
                       <div class="image-preview">
@@ -86,16 +99,13 @@
                       </div>
                     </b-col>
                   </b-row>
-
                 </div>
               </div>
             </b-form-group>
             <b-card no-body class="mb-0">
               <b-card-header header-tag="header" role="tab">
                 <h5 class="card-title">
-                  <a href="#" v-b-toggle.collapseOne>
-                    {{ $t('labels.admin.campaigns.options') }}
-                  </a>
+                  <a href="#" v-b-toggle.collapseOne>{{ $t('labels.admin.campaigns.options') }}</a>
                 </h5>
               </b-card-header>
               <b-collapse id="collapseOne" visible accordion="campaign-accordion" role="tabpanel">
@@ -104,7 +114,7 @@
                     <b-col lg="5">
                       <b-form-group
                         v-if="this.$app.user.can('publish campaigns')"
-                        :label="$t('labels.admin.campaigns.startAt')"
+                        :label="`${$t('labels.admin.campaigns.startAt')} *`"
                         label-for="start_at"
                         horizontal
                         required
@@ -129,9 +139,9 @@
                         </b-input-group>
                       </b-form-group>
                     </b-col>
-                    <b-col  offset-lg="1" lg="5">
+                    <b-col offset-lg="1" lg="5">
                       <b-form-group
-                        :label="$t('labels.admin.campaigns.finishAt')"
+                        :label="`${$t('labels.admin.campaigns.finishAt')} *`"
                         label-for="finishAt"
                         horizontal
                         :label-cols="4"
@@ -161,7 +171,7 @@
                   <b-row>
                     <b-col lg="5">
                       <b-form-group
-                        :label="$t('labels.admin.campaigns.amount')"
+                        :label="`${$t('labels.admin.campaigns.amount')} *`"
                         label-for="amount"
                         horizontal
                         :label-cols="4"
@@ -177,8 +187,7 @@
                         ></b-form-input>
                       </b-form-group>
                     </b-col>
-                    <b-col offset-lg="2" lg="6">
-                    </b-col>
+                    <b-col offset-lg="2" lg="6"></b-col>
                   </b-row>
 
                   <div class="form-group">
@@ -187,7 +196,7 @@
                         <c-switch
                           name="pinned"
                           v-model="model.active_status"
-                          :checked = "false"
+                          :checked="false"
                           :description="$t('labels.admin.campaigns.active')"
                         ></c-switch>
                       </b-col>
@@ -236,16 +245,23 @@
 
             <b-row slot="footer">
               <b-col md>
-                <b-button to="/campaigns" exact variant="secondary" >
-                  {{ $t('buttons.admin.common.back') }}
-                </b-button>
+                <b-button
+                  to="/campaigns"
+                  exact
+                  variant="secondary"
+                >{{ $t('buttons.admin.common.back') }}</b-button>
               </b-col>
               <b-col md>
-                <input name="status" type="hidden" value="publish">
+                <input name="status" type="hidden" value="publish" />
 
-                <b-button right split class="float-right" variant="success" @click="onSubmit()" :disabled="buttonState">
-                  {{ $t('buttons.admin.common.save') }}
-                </b-button>
+                <b-button
+                  right
+                  split
+                  class="float-right"
+                  variant="success"
+                  @click="onSubmit()"
+                  :disabled="buttonState"
+                >{{ $t('buttons.admin.common.save') }}</b-button>
               </b-col>
             </b-row>
           </b-card>
@@ -262,16 +278,16 @@ import { VueEditor } from 'vue2-editor'
 export default {
   name: 'CampaignForm',
   mixins: [form],
-    components: {
-        VueEditor
-    },
+  components: {
+    VueEditor
+  },
   data() {
     return {
       config: {
         wrap: true,
         altInput: true,
-        altFormat: "d-m-Y",
-        dateFormat: "Y-m-d",
+        altFormat: 'd-m-Y',
+        dateFormat: 'Y-m-d',
         onChange: function(selectedDates, dateStr, instance) {
           instance.close()
         }
@@ -284,86 +300,102 @@ export default {
       listPath: '/campaigns',
       imageData: '',
       model: {
-        name: "",
-        description: "",
-        picture_url: "",
+        name: '',
+        description: '',
+        picture_url: '',
         active_status: 1,
         target_amount: 0,
         currency: 'BYN',
         start_at: null,
         finish_at: null,
         visual_settings: {
-            buttons: [
-             5, 10, 25, 50,
-            ],
-            progressBar: true,
-            colors: null
-          }
+          buttons: [5, 10, 25, 50],
+          progressBar: true,
+          colors: null
+        }
       },
 
       image: {
-          thumbnail_image_path: null,
-          has_picture_url: false,
+        thumbnail_image_path: null,
+        has_picture_url: false
       },
       images: {
-          image: null,
-          imageData: null
+        image: null,
+        imageData: null
       }
     }
   },
 
-    computed: {
-        shortcode() {
-            return "<iframe width='750' height='550' frameborder='0' src='/doika/doika/widget/campaigns/"+ this.id +"'></iframe>"
-        },
-        nameState() {
-            return ((this.model.name.length > 2) && (this.model.name.length < 255)) ? true : false
-        },
-        pictureState() {
-      //      return (this.model.picture_url != "") ? true : false
-        },
-        buttonState() {
-            return !(this.nameState && this.amountState && this.startAtState && this.finishAtState && this.descriptionState)
-        },
-        descriptionState() {
-          return (this.model.description) ? true : false;
-        },
-        startAtState() {
-            return this.model.start_at != null
-        },
-        finishAtState() {
-            return this.model.finish_at != null
-        },
-        amountState() {
-            return (this.model.target_amount > 0) ? true : false
-        },
-        pictureName: function () {
-             return this.model.picture_url ? this.model.picture_url.replace(/^.*[\\\/]/, ''):'';
-        }
+  computed: {
+    shortcode() {
+      return (
+        "<iframe width='750' height='550' frameborder='0' src='/doika/doika/widget/campaigns/" +
+        this.id +
+        "'></iframe>"
+      )
     },
+    nameState() {
+      return this.model.name.length > 2 && this.model.name.length < 255
+        ? true
+        : false
+    },
+    pictureState() {
+      //      return (this.model.picture_url != "") ? true : false
+    },
+    buttonState() {
+      return !(
+        this.nameState &&
+        this.amountState &&
+        this.startAtState &&
+        this.finishAtState &&
+        this.descriptionState
+      )
+    },
+    descriptionState() {
+      return this.model.description ? true : false
+    },
+    startAtState() {
+      return this.model.start_at != null
+    },
+    finishAtState() {
+      return this.model.finish_at != null
+    },
+    amountState() {
+      return this.model.target_amount > 0 ? true : false
+    },
+    pictureName: function() {
+      return this.model.picture_url
+        ? this.model.picture_url.replace(/^.*[\\\/]/, '')
+        : ''
+    }
+  },
 
   methods: {
-      async getColors() {
-          let { data } = await axios.get(
-              this.$app.route('dashboard.settings.index'),
-              {
-                  params:
-                      {
-                          keys:
-                              ['widgetBackground', 'buttonBackground', 'progressBarColor', 'fontColor', 'termsOfUse']
-                      }
-              })
-          this.model.visual_settings.colors = data.settings
-
-      },
+    async getColors() {
+      let { data } = await axios.get(
+        this.$app.route('dashboard.settings.index'),
+        {
+          params: {
+            keys: [
+              'widgetBackground',
+              'buttonBackground',
+              'progressBarColor',
+              'fontColor',
+              'termsOfUse'
+            ]
+          }
+        }
+      )
+      this.model.visual_settings.colors = data.settings
+    },
     deleteFeaturedImage() {
       this.$refs.featuredImageInput.reset()
       this.image.thumbnail_image_path = null
       this.image.has_picture_url = false
-      this.model.picture_url = ""
+      this.model.picture_url = ''
       //this.pictureName = []
     },
-    previewImage: async  function(event) {
+    previewImage: async function(event) {
       // Reference to the DOM input element
       var input = event.target
       // Ensure that you have a file before attempting to read it
@@ -376,26 +408,25 @@ export default {
           // Read image as base64 and set to imageData
           this.images.imageData = e.target.result
 
-            this.imageData = e.target.result
-
+          this.imageData = e.target.result
         }
         // Start the reader job - read file as a data url (base64 format)
         reader.readAsDataURL(input.files[0])
 
-          this.images.image = input.files[0]
-
+        this.images.image = input.files[0]
       }
 
-        let formData = new FormData()
-        formData.append('image', input.files[0], input.files[0].name)
+      let formData = new FormData()
+      formData.append('image', input.files[0], input.files[0].name)
 
-        let action = this.$app.route('dashboard.images.store')
-        let { data } = await axios.post(action, formData, {headers: {
-            'Content-Type': 'multipart/form-data',
-        }})
-        this.model.picture_url = data;
-    },
-
+      let action = this.$app.route('dashboard.images.store')
+      let { data } = await axios.post(action, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+      this.model.picture_url = data
+    }
   }
 }
 </script>
