@@ -28,12 +28,15 @@
             <b-row>
               <b-col>
                 <b-form-group
-                  :label="`${$t('labels.admin.campaigns.name')} *`"
                   label-for="title"
                   horizontal
                   :label-cols="2"
                   :feedback="feedback('title')"
                 >
+                  <template v-slot:label>
+                    {{ $t('labels.admin.campaigns.name') }}
+                    <span class="text-danger">*</span>
+                  </template>
                   <b-form-input
                     id="title"
                     name="title"
@@ -46,13 +49,11 @@
                 </b-form-group>
               </b-col>
             </b-row>
-
-            <b-form-group
-              :label="`${$t('labels.admin.campaigns.description')} *`"
-              label-for="body"
-              horizontal
-              :label-cols="2"
-            >
+            <b-form-group label-for="body" horizontal :label-cols="2">
+              <template v-slot:label>
+                {{ $t('labels.admin.campaigns.description') }}
+                <span class="text-danger">*</span>
+              </template>
               <vue-editor name="description" v-model="model.description"></vue-editor>
             </b-form-group>
 
@@ -114,13 +115,16 @@
                     <b-col lg="5">
                       <b-form-group
                         v-if="this.$app.user.can('publish campaigns')"
-                        :label="`${$t('labels.admin.campaigns.startAt')} *`"
                         label-for="start_at"
                         horizontal
                         required
                         :label-cols="4"
                         :state="startAtState"
                       >
+                        <template v-slot:label>
+                          {{ $t('labels.admin.campaigns.startAt') }}
+                          <span class="text-danger">*</span>
+                        </template>
                         <b-input-group>
                           <p-datetimepicker
                             id="start_at"
@@ -140,12 +144,11 @@
                       </b-form-group>
                     </b-col>
                     <b-col offset-lg="1" lg="5">
-                      <b-form-group
-                        :label="`${$t('labels.admin.campaigns.finishAt')} *`"
-                        label-for="finishAt"
-                        horizontal
-                        :label-cols="4"
-                      >
+                      <b-form-group label-for="finishAt" horizontal :label-cols="4">
+                        <template v-slot:label>
+                          {{ $t('labels.admin.campaigns.finishAt') }}
+                          <span class="text-danger">*</span>
+                        </template>
                         <b-input-group>
                           <p-datetimepicker
                             id="finishAt"
@@ -171,12 +174,15 @@
                   <b-row>
                     <b-col lg="5">
                       <b-form-group
-                        :label="`${$t('labels.admin.campaigns.amount')} *`"
                         label-for="amount"
                         horizontal
                         :label-cols="4"
                         :feedback="feedback('amount')"
                       >
+                        <template v-slot:label>
+                          {{ $t('labels.admin.campaigns.amount') }}
+                          <span class="text-danger">*</span>
+                        </template>
                         <b-form-input
                           id="amount"
                           name="amount"
