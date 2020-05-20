@@ -46,6 +46,7 @@
                     :state="nameState"
                     trim
                   ></b-form-input>
+                  <b-form-invalid-feedback id="title-feedback">Enter at least 3 letters</b-form-invalid-feedback>
                 </b-form-group>
               </b-col>
             </b-row>
@@ -198,6 +199,10 @@
                           v-model="model.target_amount"
                           :state="amountState"
                         ></b-form-input>
+                        <b-form-invalid-feedback id="amount-feedback">
+                          Please
+                          enter a number greater than zero
+                        </b-form-invalid-feedback>
                       </b-form-group>
                     </b-col>
                     <b-col offset-lg="2" lg="6"></b-col>
