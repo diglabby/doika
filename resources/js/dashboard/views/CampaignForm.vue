@@ -7,6 +7,7 @@
             <h3>
               <b-row>
                 <b-col lg="5">
+                  <p>{{ editorFocus }}</p>
                   <h3
                     class="card-title"
                     slot="header"
@@ -57,7 +58,11 @@
               </template>
               <vue-editor
                 class="description-shadow"
-                :class="{'description-shadow_is-valid': this.model.description.length}"
+                :class="{'description-shadow_is-valid': this.model.description.length,
+                        'description-shadow_is-valid-backlight': editorFocus && this.model.description.length,
+                        'description-shadow_is-invalid-backlight': editorFocus && !this.model.description.length}"
+                @blur="editorFocus = false"
+                @focus="editorFocus = true"
                 name="description"
                 v-model="model.description"
               ></vue-editor>
@@ -310,7 +315,7 @@ export default {
           instance.close()
         }
       },
-
+      editorFocus: false,
       counter: 45,
       max: 100,
       modelName: 'campaign',
@@ -412,6 +417,12 @@ export default {
       )
       this.model.visual_settings.colors = data.settings
     },
+    editorRemoveBacklight() {
+      console.log('BLUR!')
+    },
+    editorAddBacklight() {
+      console.log('FOCUS!')
+    },
     deleteFeaturedImage() {
       this.$refs.featuredImageInput.reset()
       this.image.thumbnail_image_path = null
@@ -479,7 +490,12 @@ export default {
     -webkit-box-shadow 0.15s ease-in-out;
   &_is-valid {
     border-color: #28a745;
+  }
+  &_is-valid-backlight {
     box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+  }
+  &_is-invalid-backlight {
+    box-shadow: 0 0 0 2px rgba(246, 109, 155, 0.25);
   }
 }
 </style>
