@@ -7,7 +7,6 @@
             <h3>
               <b-row>
                 <b-col lg="5">
-                  <p>{{ editorFocus }}</p>
                   <h3
                     class="card-title"
                     slot="header"
