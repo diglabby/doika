@@ -416,12 +416,6 @@ export default {
       )
       this.model.visual_settings.colors = data.settings
     },
-    editorRemoveBacklight() {
-      console.log('BLUR!')
-    },
-    editorAddBacklight() {
-      console.log('FOCUS!')
-    },
     deleteFeaturedImage() {
       this.$refs.featuredImageInput.reset()
       this.image.thumbnail_image_path = null
