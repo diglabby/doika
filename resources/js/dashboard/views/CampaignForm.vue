@@ -121,66 +121,63 @@
               </b-card-header>
               <b-collapse id="collapseOne" visible accordion="campaign-accordion" role="tabpanel">
                 <b-card-body>
-                  <b-row>
-                    <b-col lg="5">
-                      <b-form-group
-                        v-if="this.$app.user.can('publish campaigns')"
-                        label-for="start_at"
-                        horizontal
-                        required
-                        :label-cols="4"
-                        :state="startAtState"
-                      >
-                        <template v-slot:label>
-                          {{ $t('labels.admin.campaigns.startAt') }}
-                          <span class="text-danger">*</span>
-                        </template>
-                        <b-input-group>
-                          <p-datetimepicker
-                            id="start_at"
-                            name="start_at"
-                            v-model="model.start_at"
-                            :config="config"
-                          ></p-datetimepicker>
-                          <b-input-group-append>
-                            <b-input-group-text data-toggle>
-                              <i class="fe fe-calendar"></i>
-                            </b-input-group-text>
-                            <b-input-group-text data-clear>
-                              <i class="fe fe-x-circle"></i>
-                            </b-input-group-text>
-                          </b-input-group-append>
-                        </b-input-group>
-                      </b-form-group>
-                    </b-col>
-                    <b-col offset-lg="1" lg="5">
-                      <b-form-group label-for="finishAt" horizontal :label-cols="4">
-                        <template v-slot:label>
-                          {{ $t('labels.admin.campaigns.finishAt') }}
-                          <span class="text-danger">*</span>
-                        </template>
-                        <b-input-group>
-                          <p-datetimepicker
-                            id="finishAt"
-                            name="finishAt"
-                            required
-                            v-model="model.finish_at"
-                            :state="finishAtState"
-                            :config="config"
-                          ></p-datetimepicker>
-                          <b-input-group-append>
-                            <b-input-group-text data-toggle>
-                              <i class="fe fe-calendar"></i>
-                            </b-input-group-text>
-                            <b-input-group-text data-clear>
-                              <i class="fe fe-x-circle"></i>
-                            </b-input-group-text>
-                          </b-input-group-append>
-                        </b-input-group>
-                      </b-form-group>
-                    </b-col>
+                  <b-row class="date-field">
+                    <b-form-group
+                      v-if="this.$app.user.can('publish campaigns')"
+                      label-for="start_at"
+                      horizontal
+                      required
+                      :label-cols="4"
+                      :state="startAtState"
+                    >
+                      <template v-slot:label>
+                        {{ $t('labels.admin.campaigns.startAt') }}
+                        <span class="text-danger">*</span>
+                      </template>
+                      <b-input-group>
+                        <p-datetimepicker
+                          id="start_at"
+                          name="start_at"
+                          v-model="model.start_at"
+                          :config="config"
+                        ></p-datetimepicker>
+                        <b-input-group-append>
+                          <b-input-group-text data-toggle>
+                            <i class="fe fe-calendar"></i>
+                          </b-input-group-text>
+                          <b-input-group-text data-clear>
+                            <i class="fe fe-x-circle"></i>
+                          </b-input-group-text>
+                        </b-input-group-append>
+                      </b-input-group>
+                    </b-form-group>
                   </b-row>
-
+                  <b-row class="date-field">
+                    <b-form-group label-for="finishAt" horizontal :label-cols="4">
+                      <template v-slot:label>
+                        {{ $t('labels.admin.campaigns.finishAt') }}
+                        <span class="text-danger">*</span>
+                      </template>
+                      <b-input-group>
+                        <p-datetimepicker
+                          id="finishAt"
+                          name="finishAt"
+                          required
+                          v-model="model.finish_at"
+                          :state="finishAtState"
+                          :config="config"
+                        ></p-datetimepicker>
+                        <b-input-group-append>
+                          <b-input-group-text data-toggle>
+                            <i class="fe fe-calendar"></i>
+                          </b-input-group-text>
+                          <b-input-group-text data-clear>
+                            <i class="fe fe-x-circle"></i>
+                          </b-input-group-text>
+                        </b-input-group-append>
+                      </b-input-group>
+                    </b-form-group>
+                  </b-row>
                   <b-row>
                     <b-col lg="5">
                       <b-form-group
@@ -490,5 +487,9 @@ export default {
   &_is-invalid-backlight {
     box-shadow: 0 0 0 2px rgba(246, 109, 155, 0.25);
   }
+}
+
+.date-field > .form-group {
+  width: 450px;
 }
 </style>
