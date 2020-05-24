@@ -64,7 +64,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
                     'success_url' => route('widget.campaigns.donation-result', ['campaign' => $campaign->id, 'status' => 'success']),
                     'decline_url' => route('widget.campaigns.donation-result', ['campaign' => $campaign->id, 'status' => 'decline']),
                     'fail_url' => route('widget.campaigns.donation-result', ['campaignId' => $campaign->id, 'status' => 'fail']),
-                    'notification_url' => 'http://85941391.ngrok.io/doika/doika/webhooks/bepaid/donated/1',//route('webhooks.bepaid.donated', [$campaign->id]),
+                    'notification_url' => route('webhooks.bepaid.donated', [$campaign->id]),
                     'language' => app()->getLocale(),
                     'customer_fields' => [
                         'visible' => ['email'],
