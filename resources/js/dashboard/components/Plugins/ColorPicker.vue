@@ -1,9 +1,9 @@
 <template>
     <b-input-group class="mt-3 colorpicker">
         <p class="colorpicker__desc">{{ section_name }}</p>
-        <b-form-input class="colorpicker__input" v-model="colorValue" @focus="showPicker()" @input="updateFromInput"></b-form-input>
+        <b-form-input class="colorpicker__input" v-model="colorValue" @focus="showPicker" @input="updateFromInput"></b-form-input>
         <b-input-group-append>
-            <b-button class="color-picker__button" variant="primary"><span class="current-color" :style="'background-color: ' + colorValue" @click="togglePicker()"></span></b-button>
+            <b-button class="color-picker__button" variant="primary"><span class="current-color" :style="'background-color: ' + colorValue" @click="togglePicker"></span></b-button>
                 <chrome-picker :value="colors" @input="updateFromPicker" v-if="displayPicker"></chrome-picker>
                 <a href="#" v-if="displayPicker" class="colorpicker__close-btn" @click.prevent="hidePicker"><i class="nav-icon fe fe-x"></i></a>
         </b-input-group-append>
@@ -55,7 +55,9 @@ export default {
             }
         },
         showPicker() {
-            document.addEventListener('click', this.documentClick);
+            setTimeout(() => {
+                document.addEventListener('click', this.documentClick);
+            }, 0)
             this.displayPicker = true;
         },
         hidePicker() {
@@ -78,13 +80,9 @@ export default {
             }
         },
         documentClick(e) {
-            var el = this.$refs.colorpicker
-
-            let target = e.target;
-                if (el !== e.target && !el.contains(e.target)) {
-                    this.hidePicker()
-                }
-        }
+            if(this.displayPicker) {
+                this.hidePicker()
+        }}
     },
     watch: {
         colorValue(val) {

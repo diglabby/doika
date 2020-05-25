@@ -121,6 +121,64 @@
   </div>
 </template>
 
+<script>
+import axios from 'axios'
+import form from '../mixins/form'
+
+export default {
+  name: 'Layout',
+  mixins: [form],
+  data() {
+    return {
+
+        fakeCampaign: {
+          title: 'Прыклад кампаніі',
+          description: 'Тэкст кампаніі',
+          button_values: [
+              2, 4, 6, 8
+          ],
+          currency: 'BYN',
+          target_amount: 1000,
+          amount_collected: 10,
+          picture_url: '/doika/public/images/logo_campaign.png',
+        },
+
+        modelName: 'settings',
+        resourceRoute: 'settings',
+        listPath: '/layout',
+        model: {
+          settings: {
+              widgetBackground: '#ccc',
+              buttonBackground: '#ccc',
+              donateButtonBackground: '',
+              progressBarColor: '#000',
+              fontColor: '#000',
+          }
+        }
+    }
+  },
+
+  mounted: function() {
+      this.getColors()
+  },
+  methods: {
+    async getColors() {
+      let { data } = await axios.get(
+          this.$app.route('dashboard.settings.index'),
+          {
+              params:
+              {
+                  keys:
+                      ['widgetBackground', 'buttonBackground', 'progressBarColor', 'fontColor']
+              }
+          })
+      this.model.settings = data.settings
+        console.log(data)
+    }
+  }
+}
+</script>
+
 <style>
   @import url('https://fonts.googleapis.com/css?family=Ubuntu:400,500,700&subset=cyrillic,cyrillic-ext');
   .module-donate__status {
@@ -986,60 +1044,3 @@
   }
 </style>
 
-<script>
-import axios from 'axios'
-import form from '../mixins/form'
-
-export default {
-  name: 'Layout',
-  mixins: [form],
-  data() {
-    return {
-
-        fakeCampaign: {
-          title: 'Прыклад кампаніі',
-          description: 'Тэкст кампаніі',
-          button_values: [
-              2, 4, 6, 8
-          ],
-          currency: 'BYN',
-          target_amount: 1000,
-          amount_collected: 10,
-          picture_url: '/doika/public/images/logo_campaign.png',
-        },
-
-        modelName: 'settings',
-        resourceRoute: 'settings',
-        listPath: '/layout',
-        model: {
-          settings: {
-              widgetBackground: '#ccc',
-              buttonBackground: '#ccc',
-              donateButtonBackground: '',
-              progressBarColor: '#000',
-              fontColor: '#000',
-          }
-        }
-    }
-  },
-
-  mounted: function() {
-      this.getColors()
-  },
-  methods: {
-    async getColors() {
-      let { data } = await axios.get(
-          this.$app.route('dashboard.settings.index'),
-          {
-              params:
-              {
-                  keys:
-                      ['widgetBackground', 'buttonBackground', 'progressBarColor', 'fontColor']
-              }
-          })
-      this.model.settings = data.settings
-        console.log(data)
-    }
-  }
-}
-</script>
