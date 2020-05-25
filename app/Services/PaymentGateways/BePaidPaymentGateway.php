@@ -223,7 +223,8 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
      */
     public function checkPaymentStatus($request)
     {
-        if($request->has('token')){
+        if ($request->has('token')) {
+
             $token = $request->token;
         } else {
             throw new \InvalidArgumentException('Request must have token parameter!');
@@ -232,7 +233,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
         try {
             $response = $this->httpClient->request('GET', self::CHECKOUT_ENDPOINT.'/ctp/api/checkouts/'.$token, [
                 'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
-                'headers' => ['Accept' => 'application/json']
+                'headers' => ['Accept' => 'application/json'],
             ]);
         } catch (ClientException $exception) {
             throw new InvalidConfigException("Invalid API request: {$exception->getMessage()}", $exception->getCode(), $exception);
