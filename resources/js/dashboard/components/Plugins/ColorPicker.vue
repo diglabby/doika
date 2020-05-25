@@ -1,7 +1,7 @@
 <template>
     <b-input-group class="mt-3 colorpicker">
         <p class="colorpicker__desc">{{ section_name }}</p>
-        <b-form-input class="colorpicker__input" v-model="colorValue" @focus="showPicker" @input="updateFromInput"></b-form-input>
+        <b-form-input class="colorpicker__input" v-model="colorValue" @focus="togglePicker" @input="updateFromInput"></b-form-input>
         <b-input-group-append>
             <b-button class="color-picker__button" variant="primary"><span class="current-color" :style="'background-color: ' + colorValue" @click="togglePicker"></span></b-button>
                 <chrome-picker :value="colors" @input="updateFromPicker" v-if="displayPicker"></chrome-picker>
@@ -80,7 +80,7 @@ export default {
             }
         },
         documentClick(e) {
-            if(this.displayPicker) {
+            if(this.displayPicker && !e.target.closest(".vc-chrome")) {
                 this.hidePicker()
         }}
     },
@@ -91,18 +91,39 @@ export default {
                 this.$emit('input', val);
             }
         },
-
-        color: function(newVal, oldVal) {
-            this.setColor(newVal)
-        },
     },
 };
 </script>
 
 <style lang="scss">
+    .input-group-append {
+        @media(max-width: 590px) {
+                grid-area: button;
+            }
+            & > .btn {
+                border-radius: 0 3px 3px 0;
+                @media(max-width: 590px)  {
+                    width: 100%;
+                    border-radius: 0 0 3px 0;
+                }
+            }
+
+    }
     .colorpicker {
         display: grid;
         grid-template-columns: 190px 100px 30px;
+        @media(max-width: 590px)  {
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas: 
+            "desc desc"
+            "input button";
+        }
+        @media(max-width: 400px) {
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-areas: 
+            "desc desc desc desc"
+            "input input input button";
+        }
         &__desc {
             display: flex;
             align-items: center;
@@ -112,9 +133,23 @@ export default {
             border-right: none;
             border-radius: 3px 0 0 3px;
             background-color:rgba(0, 0, 0, 0.02);
+            @media(max-width: 590px) {
+                grid-area: desc;
+                height: 36px;
+                border-right: 1px solid rgba(0, 40, 100, 0.12);
+                border-bottom: none;
+                border-radius: 3px 3px 0 0;
+            }
+            @media(max-width: 400px) {
+                height: 45px;
+            }
             }
         &__input {
             width: 100% !important;
+            @media(max-width: 590px) {
+                grid-area: input;
+                border-radius: 0 0 0 3px !important;
+            }
         }
         &__close-btn {
             position: absolute;
@@ -146,7 +181,11 @@ export default {
         height: 38px;
         background-color: #000;
         cursor: pointer;
-        border-radius: 3px;
+        border-radius: 0 3px 3px 0;
+        @media(max-width: 590px) {
+            width: 100%;
+            border-radius: 0 0 3px 0;
+        }
     }
     .color-picker__button {
         padding: 0;
