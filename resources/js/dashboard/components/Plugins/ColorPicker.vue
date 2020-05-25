@@ -3,9 +3,9 @@
         <p class="colorpicker__desc">{{ section_name }}</p>
         <b-form-input class="colorpicker__input" v-model="colorValue" @focus="showPicker()" @input="updateFromInput"></b-form-input>
         <b-input-group-append>
-
             <b-button class="color-picker__button" variant="primary"><span class="current-color" :style="'background-color: ' + colorValue" @click="togglePicker()"></span></b-button>
-                <chrome-picker :value="colors" @input="updateFromPicker" v-if="displayPicker" />
+                <chrome-picker :value="colors" @input="updateFromPicker" v-if="displayPicker"></chrome-picker>
+                <a href="#" v-if="displayPicker" class="colorpicker__close-btn" @click.prevent="hidePicker"><i class="nav-icon fe fe-x"></i></a>
         </b-input-group-append>
     </b-input-group>
 </template>
@@ -118,11 +118,28 @@ export default {
         &__input {
             width: 100% !important;
         }
+        &__close-btn {
+            position: absolute;
+            display: flex;
+            top: 40px;
+            left: 330px;
+            width: 40px;
+            height: 40px;
+            z-index: 10;
+            transition: 300ms;
+            &:hover {
+                transform: rotateZ(90deg);
+            }
+            & > i {
+                color: #000000;
+                font-size: 40px;
+            }
+        }
         }
     .vc-chrome {
         position: absolute;
-        top: 35px;
-        right: 0;
+        top: 40px;
+        left: 100px;
         z-index: 9;
     }
     .current-color {

@@ -12,7 +12,7 @@
                   </a>
                 </h5>
               </b-card-header>
-              <b-collapse id="layout" aria-expanded="true" visible role="tabpanel">
+              <b-collapse id="layout" aria-expanded="true" visible role="tabpanel" >
                 <b-card-body>
                   <div class="row">
                     <div class="col-md-6 col-md-offset-6">
