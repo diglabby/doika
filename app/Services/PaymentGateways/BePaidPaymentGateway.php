@@ -224,7 +224,6 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
     public function checkPaymentStatus($request)
     {
         if ($request->has('token')) {
-
             $token = $request->token;
         } else {
             throw new \InvalidArgumentException('Request must have token parameter!');
