@@ -1,6 +1,9 @@
 <template>
   <Footer>
     <strong>{{ $t('labels.admin.common.footer.left') }} <a href="/" target="_blank">{{ name }}</a>.
+    Бягучая версiя {{ $t(appInfo.appVersion) }}
+
+</form>
     </strong>
     <span class="ml-auto">
       <template v-if="editorName !== ''">
@@ -29,6 +32,10 @@ export default {
     editorSiteUrl: {
       type: String,
       default: ''
+    },
+    appInfo: {
+      type: String,
+      default: window.settings
     }
   }
 }
