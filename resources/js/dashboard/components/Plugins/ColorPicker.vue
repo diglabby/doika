@@ -1,6 +1,6 @@
 <template>
-
-    <b-input-group :prepend="section_name" class="mt-3">
+    <b-input-group class="mt-3 colorpicker">
+        <p>{{ section_name }}</p>
         <b-form-input v-model="colorValue" @focus="showPicker()" @input="updateFromInput"></b-form-input>
         <b-input-group-append>
 
@@ -9,26 +9,7 @@
         </b-input-group-append>
     </b-input-group>
 </template>
-<style>
-    .vc-chrome {
-        position: absolute;
-        top: 35px;
-        right: 0;
-        z-index: 9;
-    }
-    .current-color {
-        display: block;
-        width: 38px;
-        height: 38px;
-        background-color: #000;
-        cursor: pointer;
-        border-radius: 3px;
-    }
-    .color-picker__button {
-        padding: 0;
-        border: none;
-    }
-    </style>
+
 <script>
 
 import { Chrome } from 'vue-color'
@@ -119,3 +100,28 @@ export default {
     },
 };
 </script>
+
+<style>
+    .colorpicker {
+        display: grid;
+        grid-template-columns: 190px 100px 30px;
+    }
+    .vc-chrome {
+        position: absolute;
+        top: 35px;
+        right: 0;
+        z-index: 9;
+    }
+    .current-color {
+        display: block;
+        width: 38px;
+        height: 38px;
+        background-color: #000;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+    .color-picker__button {
+        padding: 0;
+        border: none;
+    }
+</style>
