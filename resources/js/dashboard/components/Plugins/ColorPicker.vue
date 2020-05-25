@@ -1,7 +1,7 @@
 <template>
     <b-input-group class="mt-3 colorpicker">
         <p class="colorpicker__desc">{{ section_name }}</p>
-        <b-form-input class="colorpicker__input" v-model="colorValue" @focus="togglePicker" @input="updateFromInput"></b-form-input>
+        <b-form-input class="colorpicker__input" v-model="colorValue" @click="togglePicker" @input="updateFromInput"></b-form-input>
         <b-input-group-append>
             <b-button class="color-picker__button" variant="primary"><span class="current-color" :style="'background-color: ' + colorValue" @click="togglePicker"></span></b-button>
                 <chrome-picker :value="colors" @input="updateFromPicker" v-if="displayPicker"></chrome-picker>
