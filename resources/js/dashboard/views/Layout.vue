@@ -173,7 +173,6 @@ export default {
               }
           })
       this.model.settings = data.settings
-        console.log(data)
     }
   }
 }

@@ -1,11 +1,11 @@
 <template>
     <b-input-group class="mt-3 colorpicker">
         <p class="colorpicker__desc">{{ section_name }}</p>
-        <b-form-input ref="input" class="colorpicker__input" v-model="colorValue" @input="updateFromInput"></b-form-input>
+        <b-form-input ref="input" class="colorpicker__input" v-model="colorRgba" @input="updateFromInput"></b-form-input>
         <b-input-group-append>
-            <b-button class="color-picker__button" variant="primary"><span class="current-color" :style="'background-color: ' + colorValue" @click="togglePicker"></span></b-button>
+            <b-button class="color-picker__button" variant="primary"><span class="current-color" :style="'background-color: ' + colorRgba" @click="togglePicker"></span></b-button>
                 <chrome-picker :value="colors" @input="updateFromPicker" v-if="displayPicker"></chrome-picker>
-                <a href="#" v-if="displayPicker" class="colorpicker__close-btn" @click.prevent="hidePicker"><i class="nav-icon fe fe-x"></i></a>
+                <button v-if="displayPicker" class="colorpicker__close-btn" @click.prevent="hidePicker"><i class="nav-icon fe fe-x"></i></button>
         </b-input-group-append>
     </b-input-group>
 </template>
@@ -24,7 +24,7 @@ export default {
             colors: {
                 hex: '#000000',
             },
-            colorValue: '',
+            colorRgba: '',
             displayPicker: false,
         }
     },
@@ -34,7 +34,7 @@ export default {
     methods: {
         setColor(color) {
             this.updateColors(color);
-            this.colorValue = color;
+            this.colorRgba = color;
         },
 
         updateColors(color) {
@@ -69,15 +69,15 @@ export default {
             this.displayPicker ? this.hidePicker() : this.showPicker();
         },
         updateFromInput() {
-            this.updateColors(this.colorValue);
+            this.updateColors(this.colorRgba);
         },
         updateFromPicker(color) {
             this.colors = color;
             if(color.rgba.a == 1) {
-                this.colorValue = color.hex;
+                this.colorRgba = color.hex;
             }
             else {
-                this.colorValue = 'rgba(' + color.rgba.r + ', ' + color.rgba.g + ', ' + color.rgba.b + ', ' + color.rgba.a + ')';
+                this.colorRgba = 'rgba(' + color.rgba.r + ', ' + color.rgba.g + ', ' + color.rgba.b + ', ' + color.rgba.a + ')';
             }
         },
         documentClick(e) {
@@ -86,7 +86,7 @@ export default {
         }}
     },
     watch: {
-        colorValue(val) {
+        colorRgba(val) {
             if(val) {
                 this.updateColors(val);
                 this.$emit('input', val);
@@ -96,100 +96,120 @@ export default {
 };
 </script>
 
-<style lang="scss">
-    .input-group-append {
-        @media(max-width: 590px) {
-                grid-area: button;
-            }
-            & > .btn {
-                border-radius: 0 3px 3px 0;
-                @media(max-width: 590px)  {
-                    width: 100%;
-                    border-radius: 0 0 3px 0;
-                }
-            }
+<style>
 
+.input-group-append > .btn {
+    border-radius: 0 3px 3px 0;
+}
+
+
+.colorpicker {
+    display: grid;
+    grid-template-columns: 190px 100px 30px;
+}
+
+.vc-chrome {
+    position: absolute;
+    top: 40px;
+    left: 100px;
+    z-index: 9;
+}
+
+.current-color {
+    display: block;
+    width: 38px;
+    height: 38px;
+    background-color: #000;
+    cursor: pointer;
+    border-radius: 0 3px 3px 0;
+}
+
+.color-picker__button {
+    padding: 0;
+    border: none;
+}
+
+.colorpicker__desc {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding-left: 10px;
+    border: 1px solid rgba(0, 40, 100, 0.12);
+    border-right: none;
+    border-radius: 3px 0 0 3px;
+    background-color:rgba(0, 0, 0, 0.02);
+}
+
+.colorpicker__input {
+    width: 100% !important;
+}
+
+.colorpicker__close-btn {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 40px;
+    left: 330px;
+    width: 40px;
+    height: 40px;
+    z-index: 10;
+    transition: 300ms;
+    border: none;
+    background-color: transparent;
+    outline: none !important;
+}
+
+.colorpicker__close-btn:hover {
+    transform: rotateZ(90deg);
+}
+
+.colorpicker__close-btn > i {
+    color: #000000;
+    font-size: 40px;
+}
+
+@media(max-width: 590px) {
+    .input-group-append {
+        grid-area: button;
+    }
+    .input-group-append > .btn {
+        width: 100%;
+        border-radius: 0 0 3px 0;
     }
     .colorpicker {
-        display: grid;
-        grid-template-columns: 190px 100px 30px;
-        @media(max-width: 590px)  {
-            grid-template-columns: 1fr 1fr;
-            grid-template-areas: 
-            "desc desc"
-            "input button";
-        }
-        @media(max-width: 400px) {
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-areas: 
-            "desc desc desc desc"
-            "input input input button";
-        }
-        &__desc {
-            display: flex;
-            align-items: center;
-            margin: 0;
-            padding-left: 10px;
-            border: 1px solid rgba(0, 40, 100, 0.12);
-            border-right: none;
-            border-radius: 3px 0 0 3px;
-            background-color:rgba(0, 0, 0, 0.02);
-            @media(max-width: 590px) {
-                grid-area: desc;
-                height: 36px;
-                border-right: 1px solid rgba(0, 40, 100, 0.12);
-                border-bottom: none;
-                border-radius: 3px 3px 0 0;
-            }
-            @media(max-width: 400px) {
-                height: 45px;
-            }
-            }
-        &__input {
-            width: 100% !important;
-            @media(max-width: 590px) {
-                grid-area: input;
-                border-radius: 0 0 0 3px !important;
-            }
-        }
-        &__close-btn {
-            position: absolute;
-            display: flex;
-            top: 40px;
-            left: 330px;
-            width: 40px;
-            height: 40px;
-            z-index: 10;
-            transition: 300ms;
-            &:hover {
-                transform: rotateZ(90deg);
-            }
-            & > i {
-                color: #000000;
-                font-size: 40px;
-            }
-        }
-        }
-    .vc-chrome {
-        position: absolute;
-        top: 40px;
-        left: 100px;
-        z-index: 9;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+        "desc desc"
+        "input button";
+    }
+    .colorpicker__desc {
+        grid-area: desc;
+        height: 36px;
+        border-right: 1px solid rgba(0, 40, 100, 0.12);
+        border-bottom: none;
+        border-radius: 3px 3px 0 0;
+    }
+    .colorpicker__input {
+        grid-area: input;
+        border-radius: 0 0 0 3px !important;
     }
     .current-color {
-        display: block;
-        width: 38px;
-        height: 38px;
-        background-color: #000;
-        cursor: pointer;
-        border-radius: 0 3px 3px 0;
-        @media(max-width: 590px) {
-            width: 100%;
-            border-radius: 0 0 3px 0;
-        }
+        width: 100%;
+        border-radius: 0 0 3px 0;
     }
-    .color-picker__button {
-        padding: 0;
-        border: none;
+}
+
+@media(max-width: 400px) {
+    .colorpicker {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas: 
+        "desc desc desc desc"
+        "input input input button";
     }
+    .colorpicker__desc {
+        height: 45px;
+    }
+}
+
 </style>
