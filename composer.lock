@@ -4741,12 +4741,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/diglabby/laravel-find-missing-translations.git",
-                "reference": "ad779f6f4e67e1c61e84705c6bedbb8e8752609f"
+                "reference": "12d35370905981c5002c66c785cb2fb8a5e7a084"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/diglabby/laravel-find-missing-translations/zipball/ad779f6f4e67e1c61e84705c6bedbb8e8752609f",
-                "reference": "ad779f6f4e67e1c61e84705c6bedbb8e8752609f",
+                "url": "https://api.github.com/repos/diglabby/laravel-find-missing-translations/zipball/12d35370905981c5002c66c785cb2fb8a5e7a084",
+                "reference": "12d35370905981c5002c66c785cb2fb8a5e7a084",
                 "shasum": ""
             },
             "require": {
@@ -4793,7 +4793,7 @@
                     "url": "https://doika.falanster.by/"
                 }
             ],
-            "time": "2020-05-27T16:38:00+00:00"
+            "time": "2020-05-27T17:21:29+00:00"
         },
         {
             "name": "doctrine/instantiator",
