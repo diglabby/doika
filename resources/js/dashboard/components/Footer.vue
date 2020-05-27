@@ -33,7 +33,7 @@ export default {
     },
     appVersion: {
       type: String,
-      default: settings.appVersion
+      default: ''
     }
   }
 }
