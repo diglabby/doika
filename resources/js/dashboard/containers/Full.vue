@@ -26,6 +26,7 @@
     </div>
     <AppFooter :name="$app.appName" :editor-name="$app.editorName"
                :editor-site-url="$app.editorSiteUrl"
+               :app-version="$app.appVersion"
     ></AppFooter>
   </div>
 </template>
