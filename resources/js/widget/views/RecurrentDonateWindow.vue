@@ -1,20 +1,16 @@
 <template>
-  <div>
-
-    <div v-if="isBusy" class="d-flex justify-content-center mb-3 spinner-wrapper">
-      <b-spinner label="Loading..."></b-spinner>
-    </div>
-  <div class="container">
-    <div class="module-donate__donateWindow">
-      <div class="module-donate__card">
-        <div id="paymentForm"></div>
+  <div>  
+      <div class="container">
+        <div class="module-donate__donateWindow">
+          <div class="module-donate__card">
+            <div id="paymentForm"></div>
+          </div>
+          <div class="donateWindow__footer">
+            <b-button :to=" '/campaigns/' + id + '/recurrent'"  class="module-donate__button-select confirm reccurent back">{{ $t('buttons.widget.back')git  }}</b-button>
+          </div>
+          <p class="module-donate__version">powered by <a href="https://doika.falanster.by/" target="_blank">Doika</a></p>
+        </div>
       </div>
-      <div class="donateWindow__footer">
-        <b-button :to=" '/campaigns/' + id + '/recurrent'"  class="module-donate__button-select confirm reccurent back">{{ $t('buttons.widget.back') }}</b-button>
-      </div>
-      <p class="module-donate__version">powered by <a href="https://doika.falanster.by/" target="_blank">Doika</a></p>
-    </div>
-  </div>
   </div>
 </template>
 
