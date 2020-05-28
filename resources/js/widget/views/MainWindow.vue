@@ -1,4 +1,4 @@
-﻿﻿<template>
+﻿<template>
   <div >
 
     <div v-if="isBusy" class="d-flex justify-content-center mb-3 spinner-wrapper" >
@@ -23,7 +23,7 @@
         <div class="module-donate__main-panel">
           <div class="module-donate__input">
             <b-button v-model="donate_amount" :style="{ background: buttonBackground, color: fontColor }" v-for="button in getButtons" @click="provide(button)" :class="{clicked: contains(buttons, button)}" class="module-donate__button-select" :key="button">{{ button }} {{ model.currency }}</b-button>
-            <input type="number"  :style="{ background:  buttonBackground, color: fontColor }" class="module-donate__text-input" :placeholder="$t('labels.widget.input')" v-model="donate_amount">
+            <input type="number"  :style="{ background:  buttonBackground, color: fontColor }" @click="provide(button)" class="module-donate__text-input" :placeholder="$t('labels.widget.input')" v-model="donate_amount">
             <b-button-group size="lg" class="btn-block">
             <b-button :style="{ background:  buttonBackground, color: buttonPaymentFontColor }" class="module-donate__button-select payment" @click="recurrent = '/donate'" :class="{clicked: (recurrent=='/donate')}">{{ $t('buttons.widget.oneTime') }}</b-button>
             <b-button :style="{ background:  buttonBackground, color: buttonPaymentFontColor }" class="module-donate__button-select payment" @click="recurrent = '/recurrent'" :class="{clicked: (recurrent=='/recurrent')}">{{ $t('buttons.widget.subscribe') }}</b-button>
@@ -90,7 +90,7 @@ export default {
       buttons: [],
       isBusy: true,
       agreement_status: 'false',
-      donate_amount: 0,
+      donate_amount: null,
       recurrent: '/donate',
       recurrentFlag: false,
         resourceRoute: 'campaigns',
