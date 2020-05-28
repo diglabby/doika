@@ -6,7 +6,7 @@
             <div id="paymentForm"></div>
           </div>
           <div class="donateWindow__footer">
-            <b-button :to=" '/campaigns/' + id + '/recurrent'"  class="module-donate__button-select confirm reccurent back">{{ $t('buttons.widget.back')git  }}</b-button>
+            <b-button :to=" '/campaigns/' + id + '/recurrent'"  class="module-donate__button-select confirm reccurent back">{{ $t('buttons.widget.back')  }}</b-button>
           </div>
           <p class="module-donate__version">powered by <a href="https://doika.falanster.by/" target="_blank">Doika</a></p>
         </div>
