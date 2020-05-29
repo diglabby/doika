@@ -1,7 +1,8 @@
 <template>
   <Footer>
     <strong>{{ $t('labels.admin.common.footer.left') }} <a href="/" target="_blank">{{ name }}</a>.
-       v{{ appVersion }}
+    v{{ appVersion }}
+
     </strong>
     <span class="ml-auto">
       <template v-if="editorName !== ''">
@@ -33,8 +34,7 @@ export default {
     },
     appVersion: {
       type: String,
-      required: true,
-    }
+      required: true
   }
 }
 </script>
