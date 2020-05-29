@@ -11,7 +11,7 @@
         <div class="donateReccurentWindow__footer">
           <input type="name" id="name" class="donate__email module-donate__text-input" v-model="model.name" :placeholder="$t('labels.widget.name')">
           <input type="email" id="email" class="donate__email module-donate__text-input" v-model="model.email" :placeholder="$t('labels.widget.email')">
-          <input type="phone" id="phone" class="donate__email module-donate__text-input" v-model="model.phone" :placeholder="$t('labels.widget.phone')">
+          <input type="tel" id="phone" class="donate__email module-donate__text-input" v-model="model.phone" :placeholder="$t('labels.widget.phone')" @keypress="onlyNumbers">
         </div>
 
       <div class="donateReccurentWindow__footer">
@@ -53,6 +53,7 @@
                 isBusy: true,
                 campaign: [],
                 redirect_url: null,
+                maxQuantSymbols: 13,
                 model: {
                     email: "",
                     name: "",
@@ -70,6 +71,17 @@
                 sessionStorage.setItem('email', this.model.email)
                 sessionStorage.setItem('name', this.model.name)
                 sessionStorage.setItem('phone', this.model.phone)
+            },
+            onlyNumbers: function(evt) {
+                let keyCode = (evt.keyCode ? evt.keyCode : evt.which);
+
+                if ((keyCode < 48 && keyCode !== 43) || (keyCode > 57)) {
+                    evt.preventDefault();
+                }
+
+                if (this.model.phone.length >= this.maxQuantSymbols) {
+                  evt.preventDefault();
+                }
             },
 
         }
