@@ -13,9 +13,9 @@ class AddNullableDefaulValueToPictureUrlFieldCampaignsTable extends Migration
      */
     public function up()
     {
-      Schema::table('campaigns', function (Blueprint $table) {
-          $table->string('picture_url')->nullable()->change();
-      });
+        Schema::table('campaigns', function (Blueprint $table) {
+            $table->string('picture_url')->nullable()->change();
+        });
     }
 
     /**

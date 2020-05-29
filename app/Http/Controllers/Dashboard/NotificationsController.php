@@ -50,13 +50,11 @@ class NotificationsController extends Controller
      */
     public function update(Request $request, Notification $notification)
     {
-      $notification->update($request->all());
+        $notification->update($request->all());
 
-      return response()->json([
-           'message' => '!!!!!!!!!!!!!!!!!!!!!!!YOHOOOOO!!'
+        return response()->json([
+           'message' => '!!!!!!!!!!!!!!!!!!!!!!!YOHOOOOO!!',
         ]);
-      //return $notification;
+        //return $notification;
     }
-
-
 }

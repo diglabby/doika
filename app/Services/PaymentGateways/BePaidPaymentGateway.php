@@ -217,4 +217,38 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
             throw UnexpectedGatewayResponse::withBody($responseBody);
         }
     }
+    /**
+     * Check payment status
+     * https://docs.bepaid.by/ru/checkout/query
+     */
+    public function checkPaymentStatus($request)
+    {
+        if ($request->has('token')) {
+            $token = $request->token;
+        } else {
+            throw new \InvalidArgumentException('Request must have token parameter!');
+        }
+
+        try {
+            $response = $this->httpClient->request('GET', self::CHECKOUT_ENDPOINT.'/ctp/api/checkouts/'.$token, [
+                'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
+                'headers' => ['Accept' => 'application/json'],
+            ]);
+        } catch (ClientException $exception) {
+            throw new InvalidConfigException("Invalid API request: {$exception->getMessage()}", $exception->getCode(), $exception);
+        } catch (ServerException $exception) {
+            throw UnexpectedGatewayResponse::withBody($exception->getMessage(), $exception);
+        } catch (GuzzleException $exception) {
+            throw new \DomainException('Unknown Guzzle HTTP client error', null, $exception);
+        }
+
+        $response = $response->getBody()->getContents();
+        $arrResponse = json_decode($response);
+
+
+
+        echo $response;
+        echo '<br>// Status line: <br>';
+        echo $arrResponse->checkout->status;
+    }
 }

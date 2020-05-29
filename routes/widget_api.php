@@ -13,3 +13,4 @@ Route::get('/help', 'Widget\HelpController@show')->name('widget.help.show');
 
 Route::get('/feedback', 'Widget\FeedbackController@show')->name('widget.feedbacks.show');
 Route::post('/feedback', 'Widget\FeedbackController@store')->name('widget.feedbacks.store');
+Route::post('/check-payment-status', 'Widget\FeedbackController@checkPaymentStatus')->name('widget.feedbacks.check-payment-status');

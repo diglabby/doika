@@ -7,7 +7,10 @@
             <h3>
               <b-row>
                 <b-col lg="5">
-                  <h3 class="card-title" slot="header">{{ isNew ? $t('labels.admin.campaigns.create.title') : $t('labels.admin.campaigns.edit.title') }}</h3>
+                  <h3
+                    class="card-title"
+                    slot="header"
+                  >{{ isNew ? $t('labels.admin.campaigns.create.title') : $t('labels.admin.campaigns.edit.title') }}</h3>
                 </b-col>
                 <b-col offset-lg="2" lg="5">
                   <b-form-input
@@ -25,12 +28,15 @@
             <b-row>
               <b-col>
                 <b-form-group
-                  :label="$t('labels.admin.campaigns.name')"
                   label-for="title"
                   horizontal
                   :label-cols="2"
                   :feedback="feedback('title')"
                 >
+                  <template v-slot:label>
+                    {{ $t('labels.admin.campaigns.name') }}
+                    <span class="text-danger">*</span>
+                  </template>
                   <b-form-input
                     id="title"
                     name="title"
@@ -40,17 +46,25 @@
                     :state="nameState"
                     trim
                   ></b-form-input>
+                  <b-form-invalid-feedback id="title-feedback">Enter at least 3 letters</b-form-invalid-feedback>
                 </b-form-group>
               </b-col>
             </b-row>
-
-            <b-form-group
-              :label="$t('labels.admin.campaigns.description')"
-              label-for="body"
-              horizontal
-              :label-cols="2"
-            >
-              <vue-editor name="description" v-model="model.description"></vue-editor>
+            <b-form-group label-for="body" horizontal :label-cols="2">
+              <template v-slot:label>
+                {{ $t('labels.admin.campaigns.description') }}
+                <span class="text-danger">*</span>
+              </template>
+              <vue-editor
+                class="description-shadow"
+                :class="{'description-shadow_is-valid': this.model.description.length,
+                        'description-shadow_is-valid-backlight': editorFocus && this.model.description.length,
+                        'description-shadow_is-invalid-backlight': editorFocus && !this.model.description.length}"
+                @blur="editorFocus = false"
+                @focus="editorFocus = true"
+                name="description"
+                v-model="model.description"
+              ></vue-editor>
             </b-form-group>
 
             <b-form-group
@@ -61,7 +75,12 @@
               :feedback="feedback('picture_url')"
             >
               <div class="media">
-                <img class="mr-2" v-if="image.thumbnail_image_path" :src="image.thumbnail_image_path" alt="">
+                <img
+                  class="mr-2"
+                  v-if="image.thumbnail_image_path"
+                  :src="image.thumbnail_image_path"
+                  alt
+                />
 
                 <div class="media-body">
                   <h6>{{ $t('buttons.admin.campaigns.uploadImage') }}</h6>
@@ -78,7 +97,12 @@
                         @change="previewImage"
                         style="margin-top auto; margin-bottom: auto;"
                       ></b-form-file>
-                      <a href="#" class="d-block mt-1" v-if="image.has_picture_url || pictureName" @click.prevent="deleteFeaturedImage">{{ $t('buttons.admin.campaigns.deleteImage') }}</a>
+                      <a
+                        href="#"
+                        class="d-block mt-1"
+                        v-if="image.has_picture_url || pictureName"
+                        @click.prevent="deleteFeaturedImage"
+                      >{{ $t('buttons.admin.campaigns.deleteImage') }}</a>
                     </b-col>
                     <b-col lg="3">
                       <div class="image-preview">
@@ -86,99 +110,103 @@
                       </div>
                     </b-col>
                   </b-row>
-
                 </div>
               </div>
             </b-form-group>
             <b-card no-body class="mb-0">
               <b-card-header header-tag="header" role="tab">
                 <h5 class="card-title">
-                  <a href="#" v-b-toggle.collapseOne>
-                    {{ $t('labels.admin.campaigns.options') }}
-                  </a>
+                  <a href="#" v-b-toggle.collapseOne>{{ $t('labels.admin.campaigns.options') }}</a>
                 </h5>
               </b-card-header>
               <b-collapse id="collapseOne" visible accordion="campaign-accordion" role="tabpanel">
                 <b-card-body>
-                  <b-row>
-                    <b-col lg="5">
-                      <b-form-group
-                        v-if="this.$app.user.can('publish campaigns')"
-                        :label="$t('labels.admin.campaigns.startAt')"
-                        label-for="start_at"
-                        horizontal
-                        required
-                        :label-cols="4"
-                        :state="startAtState"
-                      >
-                        <b-input-group>
-                          <p-datetimepicker
-                            id="start_at"
-                            name="start_at"
-                            v-model="model.start_at"
-                            :config="config"
-                          ></p-datetimepicker>
-                          <b-input-group-append>
-                            <b-input-group-text data-toggle>
-                              <i class="fe fe-calendar"></i>
-                            </b-input-group-text>
-                            <b-input-group-text data-clear>
-                              <i class="fe fe-x-circle"></i>
-                            </b-input-group-text>
-                          </b-input-group-append>
-                        </b-input-group>
-                      </b-form-group>
-                    </b-col>
-                    <b-col  offset-lg="1" lg="5">
-                      <b-form-group
-                        :label="$t('labels.admin.campaigns.finishAt')"
-                        label-for="finishAt"
-                        horizontal
-                        :label-cols="4"
-                      >
-                        <b-input-group>
-                          <p-datetimepicker
-                            id="finishAt"
-                            name="finishAt"
-                            required
-                            v-model="model.finish_at"
-                            :state="finishAtState"
-                            :config="config"
-                          ></p-datetimepicker>
-                          <b-input-group-append>
-                            <b-input-group-text data-toggle>
-                              <i class="fe fe-calendar"></i>
-                            </b-input-group-text>
-                            <b-input-group-text data-clear>
-                              <i class="fe fe-x-circle"></i>
-                            </b-input-group-text>
-                          </b-input-group-append>
-                        </b-input-group>
-                      </b-form-group>
-                    </b-col>
+                  <b-row class="date-field">
+                    <b-form-group
+                      v-if="this.$app.user.can('publish campaigns')"
+                      label-for="start_at"
+                      horizontal
+                      required
+                      :label-cols="4"
+                      :state="startAtState"
+                    >
+                      <template v-slot:label>
+                        {{ $t('labels.admin.campaigns.startAt') }}
+                        <span class="text-danger">*</span>
+                      </template>
+                      <b-input-group>
+                        <p-datetimepicker
+                          id="start_at"
+                          name="start_at"
+                          v-model="model.start_at"
+                          :config="config"
+                        ></p-datetimepicker>
+                        <b-input-group-append>
+                          <b-input-group-text data-toggle>
+                            <i class="fe fe-calendar"></i>
+                          </b-input-group-text>
+                          <b-input-group-text data-clear>
+                            <i class="fe fe-x-circle"></i>
+                          </b-input-group-text>
+                        </b-input-group-append>
+                      </b-input-group>
+                    </b-form-group>
                   </b-row>
-
+                  <b-row class="date-field">
+                    <b-form-group label-for="finishAt" horizontal :label-cols="4">
+                      <template v-slot:label>
+                        {{ $t('labels.admin.campaigns.finishAt') }}
+                        <span class="text-danger">*</span>
+                      </template>
+                      <b-input-group>
+                        <p-datetimepicker
+                          id="finishAt"
+                          name="finishAt"
+                          required
+                          v-model="model.finish_at"
+                          :state="finishAtState"
+                          :config="config"
+                        ></p-datetimepicker>
+                        <b-input-group-append>
+                          <b-input-group-text data-toggle>
+                            <i class="fe fe-calendar"></i>
+                          </b-input-group-text>
+                          <b-input-group-text data-clear>
+                            <i class="fe fe-x-circle"></i>
+                          </b-input-group-text>
+                        </b-input-group-append>
+                      </b-input-group>
+                    </b-form-group>
+                  </b-row>
                   <b-row>
                     <b-col lg="5">
                       <b-form-group
-                        :label="$t('labels.admin.campaigns.amount')"
                         label-for="amount"
                         horizontal
                         :label-cols="4"
                         :feedback="feedback('amount')"
                       >
+                        <template v-slot:label>
+                          {{ $t('labels.admin.campaigns.amount') }}
+                          <span class="text-danger">*</span>
+                        </template>
                         <b-form-input
                           id="amount"
                           name="amount"
                           required
-                          :placeholder="$t('labels.admin.campaigns.placeholder.amount')"
+                          :placeholder="
+                            $t('labels.admin.campaigns.placeholder.amount')
+                          "
                           v-model="model.target_amount"
                           :state="amountState"
                         ></b-form-input>
+                        <b-form-invalid-feedback id="amount-feedback">
+                          Please
+                          enter a number greater than zero
+                        </b-form-invalid-feedback>
                       </b-form-group>
                     </b-col>
-                    <b-col offset-lg="2" lg="6">
-                    </b-col>
+                    <b-col offset-lg="2" lg="6"></b-col>
                   </b-row>
 
                   <div class="form-group">
@@ -187,7 +215,7 @@
                         <c-switch
                           name="pinned"
                           v-model="model.active_status"
-                          :checked = "false"
+                          :checked="false"
                           :description="$t('labels.admin.campaigns.active')"
                         ></c-switch>
                       </b-col>
@@ -236,16 +264,23 @@
 
             <b-row slot="footer">
               <b-col md>
-                <b-button to="/campaigns" exact variant="secondary" >
-                  {{ $t('buttons.admin.common.back') }}
-                </b-button>
+                <b-button
+                  to="/campaigns"
+                  exact
+                  variant="secondary"
+                >{{ $t('buttons.admin.common.back') }}</b-button>
               </b-col>
               <b-col md>
-                <input name="status" type="hidden" value="publish">
+                <input name="status" type="hidden" value="publish" />
 
-                <b-button right split class="float-right" variant="success" @click="onSubmit()" :disabled="buttonState">
-                  {{ $t('buttons.admin.common.save') }}
-                </b-button>
+                <b-button
+                  right
+                  split
+                  class="float-right"
+                  variant="success"
+                  @click="onSubmit()"
+                  :disabled="buttonState"
+                >{{ $t('buttons.admin.common.save') }}</b-button>
               </b-col>
             </b-row>
           </b-card>
@@ -262,21 +297,21 @@ import { VueEditor } from 'vue2-editor'
 export default {
   name: 'CampaignForm',
   mixins: [form],
-    components: {
-        VueEditor
-    },
+  components: {
+    VueEditor
+  },
   data() {
     return {
       config: {
         wrap: true,
         altInput: true,
-        altFormat: "d-m-Y",
-        dateFormat: "Y-m-d",
+        altFormat: 'd-m-Y',
+        dateFormat: 'Y-m-d',
         onChange: function(selectedDates, dateStr, instance) {
           instance.close()
         }
       },
-
+      editorFocus: false,
       counter: 45,
       max: 100,
       modelName: 'campaign',
@@ -284,86 +319,108 @@ export default {
       listPath: '/campaigns',
       imageData: '',
       model: {
-        name: "",
-        description: "",
-        picture_url: "",
+        name: '',
+        description: '',
+        picture_url: '',
         active_status: 1,
         target_amount: 0,
         currency: 'BYN',
         start_at: null,
         finish_at: null,
         visual_settings: {
-            buttons: [
-             5, 10, 25, 50,
-            ],
-            progressBar: true,
-            colors: null
-          }
+          buttons: [5, 10, 25, 50],
+          progressBar: true,
+          colors: null
+        }
       },
 
       image: {
-          thumbnail_image_path: null,
-          has_picture_url: false,
+        thumbnail_image_path: null,
+        has_picture_url: false
       },
       images: {
-          image: null,
-          imageData: null
+        image: null,
+        imageData: null
       }
     }
   },
 
-    computed: {
-        shortcode() {
-            return "<iframe width='750' height='550' frameborder='0' src='/doika/doika/widget/campaigns/"+ this.id +"'></iframe>"
-        },
-        nameState() {
-            return ((this.model.name.length > 2) && (this.model.name.length < 255)) ? true : false
-        },
-        pictureState() {
-      //      return (this.model.picture_url != "") ? true : false
-        },
-        buttonState() {
-            return !(this.nameState && this.amountState && this.startAtState && this.finishAtState && this.descriptionState)
-        },
-        descriptionState() {
-          return (this.model.description) ? true : false;
-        },
-        startAtState() {
-            return this.model.start_at != null
-        },
-        finishAtState() {
-            return this.model.finish_at != null
-        },
-        amountState() {
-            return (this.model.target_amount > 0) ? true : false
-        },
-        pictureName: function () {
-             return this.model.picture_url ? this.model.picture_url.replace(/^.*[\\\/]/, ''):'';
-        }
+  computed: {
+    shortcode() {
+      return (
+        "<iframe width='750' height='550' frameborder='0' src='/doika/doika/widget/campaigns/" +
+        this.id +
+        "'></iframe>"
+      )
     },
+    nameState() {
+      return !this.model.name.length
+        ? null
+        : this.model.name.length > 2 && this.model.name.length < 255
+        ? true
+        : false
+    },
+    pictureState() {
+      //      return (this.model.picture_url != "") ? true : false
+    },
+    buttonState() {
+      return !(
+        this.nameState &&
+        this.amountState &&
+        this.startAtState &&
+        this.finishAtState &&
+        this.descriptionState
+      )
+    },
+    descriptionState() {
+      return this.model.description ? true : false
+    },
+    startAtState() {
+      return this.model.start_at != null
+    },
+    finishAtState() {
+      return this.model.finish_at != null
+    },
+    amountState() {
+      return !this.model.target_amount
+        ? null
+        : this.model.target_amount > 0
+        ? true
+        : false
+    },
+    pictureName: function() {
+      return this.model.picture_url
+        ? this.model.picture_url.replace(/^.*[\\\/]/, '')
+        : ''
+    }
+  },
 
   methods: {
-      async getColors() {
-          let { data } = await axios.get(
-              this.$app.route('dashboard.settings.index'),
-              {
-                  params:
-                      {
-                          keys:
-                              ['widgetBackground', 'buttonBackground', 'progressBarColor', 'fontColor', 'termsOfUse']
-                      }
-              })
-          this.model.visual_settings.colors = data.settings
-
-      },
+    async getColors() {
+      let { data } = await axios.get(
+        this.$app.route('dashboard.settings.index'),
+        {
+          params: {
+            keys: [
+              'widgetBackground',
+              'buttonBackground',
+              'progressBarColor',
+              'fontColor',
+              'termsOfUse'
+            ]
+          }
+        }
+      )
+      this.model.visual_settings.colors = data.settings
+    },
     deleteFeaturedImage() {
       this.$refs.featuredImageInput.reset()
       this.image.thumbnail_image_path = null
       this.image.has_picture_url = false
-      this.model.picture_url = ""
+      this.model.picture_url = ''
       //this.pictureName = []
     },
-    previewImage: async  function(event) {
+    previewImage: async function(event) {
       // Reference to the DOM input element
       var input = event.target
       // Ensure that you have a file before attempting to read it
@@ -376,26 +433,63 @@ export default {
           // Read image as base64 and set to imageData
           this.images.imageData = e.target.result
 
-            this.imageData = e.target.result
-
+          this.imageData = e.target.result
         }
         // Start the reader job - read file as a data url (base64 format)
         reader.readAsDataURL(input.files[0])
 
-          this.images.image = input.files[0]
-
+        this.images.image = input.files[0]
       }
 
-        let formData = new FormData()
-        formData.append('image', input.files[0], input.files[0].name)
+      let formData = new FormData()
+      formData.append('image', input.files[0], input.files[0].name)
 
-        let action = this.$app.route('dashboard.images.store')
-        let { data } = await axios.post(action, formData, {headers: {
-            'Content-Type': 'multipart/form-data',
-        }})
-        this.model.picture_url = data;
-    },
-
+      let action = this.$app.route('dashboard.images.store')
+      let { data } = await axios.post(action, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+      this.model.picture_url = data
+    }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.form-control.is-invalid {
+  background-image: none;
+}
+
+.form-control.is-valid {
+  background: none;
+}
+
+.is-valid {
+  border-color: #28a745;
+  &:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+  }
+}
+
+.description-shadow {
+  border: 1px solid rgba(0, 40, 100, 0.12);
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
+  &_is-valid {
+    border-color: #28a745;
+  }
+  &_is-valid-backlight {
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+  }
+  &_is-invalid-backlight {
+    box-shadow: 0 0 0 2px rgba(246, 109, 155, 0.25);
+  }
+}
+
+.date-field > .form-group {
+  width: 450px;
+}
+</style>
