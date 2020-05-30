@@ -344,7 +344,6 @@ export default {
       }
     }
   },
-
   computed: {
     shortcode() {
       return (
@@ -394,7 +393,6 @@ export default {
         : ''
     }
   },
-
   methods: {
     async getColors() {
       let { data } = await axios.get(
@@ -440,10 +438,8 @@ export default {
 
         this.images.image = input.files[0]
       }
-
       let formData = new FormData()
       formData.append('image', input.files[0], input.files[0].name)
-
       let action = this.$app.route('dashboard.images.store')
       let { data } = await axios.post(action, formData, {
         headers: {
@@ -451,6 +447,13 @@ export default {
         }
       })
       this.model.picture_url = data
+    }
+  },
+  beforeRouteLeave(from, to, next) {
+    if (window.confirm('Сохранить введённые данные?')) {
+      next();
+    } else {
+      next(false);
     }
   }
 }

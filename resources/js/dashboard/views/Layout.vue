@@ -108,7 +108,6 @@
               </b-col>
               <b-col md>
                 <input name="status" type="hidden" value="publish">
-
                 <b-button right split class="float-right" variant="success" @click="onSubmit()">
                   {{ $t('buttons.admin.common.apply') }}
                 </b-button>
