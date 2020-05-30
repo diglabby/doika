@@ -450,10 +450,20 @@ export default {
     }
   },
   beforeRouteLeave(from, to, next) {
-    if (window.confirm('Сохранить введённые данные?')) {
-      next();
+    if (
+      this.model.name ||
+      this.model.description ||
+      this.model.start_at ||
+      this.model.finish_at ||
+      this.model.target_amount
+    ) {
+      if (window.confirm('Сохранить введённые данные?')) {
+        next()
+      } else {
+        next()
+      }
     } else {
-      next(false);
+      next()
     }
   }
 }
