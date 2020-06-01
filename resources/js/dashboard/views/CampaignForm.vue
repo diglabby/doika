@@ -278,7 +278,7 @@
                   split
                   class="float-right"
                   variant="success"
-                  @click="onSubmit()"
+                  @click="onSubmitClick"
                   :disabled="buttonState"
                 >{{ $t('buttons.admin.common.save') }}</b-button>
               </b-col>
@@ -319,14 +319,14 @@ export default {
       listPath: '/campaigns',
       imageData: '',
       model: {
-        name: '',
-        description: '',
+        name: 'Lorem', // ""
+        description: 'Lorem Ipsum', // ''
         picture_url: '',
         active_status: 1,
-        target_amount: 0,
+        target_amount: 10, // 0
         currency: 'BYN',
-        start_at: null,
-        finish_at: null,
+        start_at: '2020-06-01', // null
+        finish_at: '2020-06-05',
         visual_settings: {
           buttons: [5, 10, 25, 50],
           progressBar: true,
@@ -340,7 +340,8 @@ export default {
       images: {
         image: null,
         imageData: null
-      }
+      },
+      hideModalOnSubmit: false
     }
   },
   computed: {
@@ -410,6 +411,10 @@ export default {
     }
   },
   methods: {
+    onSubmitClick() {
+      this.hideModalOnSubmit = true;
+      this.onSubmit()
+    },
     async getColors() {
       let { data } = await axios.get(
         this.$app.route('dashboard.settings.index'),
@@ -467,11 +472,12 @@ export default {
   },
   beforeRouteLeave(from, to, next) {
     if (
-      this.model.name ||
-      this.model.description ||
-      this.model.start_at ||
-      this.model.finish_at ||
-      this.model.target_amount
+      (this.model.name ||
+        this.model.description ||
+        this.model.start_at ||
+        this.model.finish_at ||
+        this.model.target_amount) &&
+      this.hideModalOnSubmit === false
     ) {
       if (window.confirm('Сохранить введённые данные?')) {
         localStorage.name = this.model.name
