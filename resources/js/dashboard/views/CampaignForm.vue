@@ -319,14 +319,14 @@ export default {
       listPath: '/campaigns',
       imageData: '',
       model: {
-        name: 'Lorem', // ""
-        description: 'Lorem Ipsum', // ''
+        name: '',
+        description: '',
         picture_url: '',
         active_status: 1,
-        target_amount: 10, // 0
+        target_amount: 0,
         currency: 'BYN',
-        start_at: '2020-06-01', // null
-        finish_at: '2020-06-05',
+        start_at: null,
+        finish_at: null,
         visual_settings: {
           buttons: [5, 10, 25, 50],
           progressBar: true,
@@ -412,7 +412,7 @@ export default {
   },
   methods: {
     onSubmitClick() {
-      this.hideModalOnSubmit = true;
+      this.hideModalOnSubmit = true
       this.onSubmit()
     },
     async getColors() {
