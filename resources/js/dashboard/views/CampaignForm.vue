@@ -333,7 +333,6 @@ export default {
           colors: null
         }
       },
-
       image: {
         thumbnail_image_path: null,
         has_picture_url: false
@@ -458,13 +457,21 @@ export default {
       this.model.target_amount
     ) {
       if (window.confirm('Сохранить введённые данные?')) {
+        console.log('Leave OK!')
         next()
       } else {
+        console.log('Leave Cancel!')
         next()
       }
     } else {
+      console.log('Leave empty!')
       next()
     }
+  },
+  beforeRouteEnter(from, to, next) {
+    next(vm => {
+      console.log('Enter!')
+    })
   }
 }
 </script>
