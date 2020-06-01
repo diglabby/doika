@@ -4,7 +4,8 @@
     "node": ">=8.10"
   },
   "scripts": {
-    "lint": "eslint  --fix --ext .js,.vue resources/js",
+    "cs:lint": "eslint --ext .js,.vue resources/js",
+    "cs:fix": "eslint --fix --ext .js,.vue resources/js",
     "dev": "npm run development",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --watch-poll --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",

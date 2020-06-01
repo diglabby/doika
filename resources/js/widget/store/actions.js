@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 
 export function createActions(route) {
   return {
@@ -24,29 +24,29 @@ export function createActions(route) {
                 commit('SET_COUNTER', {
                   type: 'newPostsCount',
                   counter: newPostsCount.data
-                })
+                });
                 commit('SET_COUNTER', {
                   type: 'pendingPostsCount',
                   counter: pendingPostsCount.data
-                })
+                });
                 commit('SET_COUNTER', {
                   type: 'publishedPostsCount',
                   counter: publishedPostsCount.data
-                })
+                });
                 commit('SET_COUNTER', {
                   type: 'activeUsersCount',
                   counter: activeUsersCount.data
-                })
+                });
                 commit('SET_COUNTER', {
                   type: 'formSubmissionsCount',
                   counter: formSubmissionsCount.data
-                })
+                });
 
-                resolve()
+                resolve();
               }
             )
-          )
-      })
+          );
+      });
     }
-  }
+  };
 }

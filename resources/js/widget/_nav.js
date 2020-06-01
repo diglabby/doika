@@ -6,5 +6,5 @@ export default (app, i18n, newPostsCount, pendingPostsCount) => {
       icon: 'fe fe-trending-up',
       access: true
     }
-  ]
-}
+  ];
+};
