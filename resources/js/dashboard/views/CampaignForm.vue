@@ -319,14 +319,14 @@ export default {
       listPath: '/campaigns',
       imageData: '',
       model: {
-        name: '', // ''
-        description: '', // ''
+        name: '',
+        description: '',
         picture_url: '',
         active_status: 1,
-        target_amount: 0, // 0
+        target_amount: 0,
         currency: 'BYN',
-        start_at: null, // null | "2020-06-02"
-        finish_at: null, // null
+        start_at: null,
+        finish_at: null,
         visual_settings: {
           buttons: [5, 10, 25, 50],
           progressBar: true,
@@ -500,11 +500,6 @@ export default {
       localStorage.removeItem('target_amount')
       next()
     }
-  },
-  beforeRouteEnter(from, to, next) {
-    next(vm => {
-      console.log('Enter!')
-    })
   }
 }
 </script>
