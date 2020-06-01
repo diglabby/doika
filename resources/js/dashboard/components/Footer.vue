@@ -34,6 +34,7 @@ export default {
     appVersion: {
       type: String,
       required: true
+    }
   }
 }
 </script>
