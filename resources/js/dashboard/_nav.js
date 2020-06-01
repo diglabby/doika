@@ -22,7 +22,7 @@ export default (app, i18n, newPostsCount, pendingPostsCount) => {
       access: true
     },
     {
-      name:  i18n.t('labels.admin.paymentSystems.title'),
+      name: i18n.t('labels.admin.paymentSystems.title'),
       url: '/paymentSystems',
       icon: 'fe fe-settings',
       access: true
@@ -88,5 +88,5 @@ export default (app, i18n, newPostsCount, pendingPostsCount) => {
       icon: 'fe fe-tag',
       access: true
     }
-  ]
-}
+  ];
+};

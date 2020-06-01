@@ -1,13 +1,13 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-import { createActions } from './actions'
-import mutations from './mutations'
+import { createActions } from './actions';
+import mutations from './mutations';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export function createStore(route) {
-  const actions = createActions(route)
+  const actions = createActions(route);
 
   return new Vuex.Store({
     state: {
@@ -21,5 +21,5 @@ export function createStore(route) {
     },
     actions,
     mutations
-  })
+  });
 }

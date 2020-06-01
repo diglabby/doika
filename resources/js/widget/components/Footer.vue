@@ -3,7 +3,10 @@
     <div class="module-donate__footer">
       <a class="payment__description"></a>
       <p class="result__description"></p>
-      <div class="module-donate__version">powered by <a href="https://doika.falanster.by/" target="_blank">Doika</a></div>
+      <div class="module-donate__version">
+        powered by
+        <a href="https://doika.falanster.by/" target="_blank">Doika</a>
+      </div>
     </div>
   </Footer>
 </template>
@@ -24,5 +27,5 @@ export default {
       default: ''
     }
   }
-}
+};
 </script>

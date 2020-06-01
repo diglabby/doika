@@ -12,15 +12,24 @@
                   </a>
                 </h5>
               </b-card-header>
-              <b-collapse id="payment" aria-expanded="true" visible role="tabpanel">
+              <b-collapse
+                id="payment"
+                aria-expanded="true"
+                visible
+                role="tabpanel"
+              >
                 <div>
                   <b-tabs>
-                    <b-tab title = "BePaid" active>
+                    <b-tab title="BePaid" active>
                       <b-card-body>
                         <b-row>
                           <b-col md>
                             <b-form-group
-                              :label="$t('labels.admin.settings.payments.bePaidIdMarket')"
+                              :label="
+                                $t(
+                                  'labels.admin.settings.payments.bePaidIdMarket'
+                                )
+                              "
                               label-for="bePaidIdMarket"
                               horizontal
                               :label-cols="4"
@@ -30,7 +39,11 @@
                                 id="bePaidIdMarket"
                                 name="title"
                                 required
-                                :placeholder="$t('labels.admin.settings.payments.placeholder.bePaidIdMarket')"
+                                :placeholder="
+                                  $t(
+                                    'labels.admin.settings.payments.placeholder.bePaidIdMarket'
+                                  )
+                                "
                                 v-model="model.settings.gateway_bePaid_idMarket"
                                 :state="state('title')"
                               ></b-form-input>
@@ -39,7 +52,11 @@
 
                           <b-col md>
                             <b-form-group
-                              :label="$t('labels.admin.settings.payments.bePaidKeyMarket')"
+                              :label="
+                                $t(
+                                  'labels.admin.settings.payments.bePaidKeyMarket'
+                                )
+                              "
                               label-for="bePaidKeyMarket"
                               horizontal
                               :label-cols="4"
@@ -49,8 +66,14 @@
                                 id="bePaidKeyMarket"
                                 name="title"
                                 required
-                                :placeholder="$t('labels.admin.settings.payments.placeholder.bePaidKeyMarket')"
-                                v-model="model.settings.gateway_bePaid_keyMarket"
+                                :placeholder="
+                                  $t(
+                                    'labels.admin.settings.payments.placeholder.bePaidKeyMarket'
+                                  )
+                                "
+                                v-model="
+                                  model.settings.gateway_bePaid_keyMarket
+                                "
                                 :state="state('title')"
                               ></b-form-input>
                             </b-form-group>
@@ -60,7 +83,9 @@
                         <b-row>
                           <b-col md>
                             <b-form-group
-                              :label="$t('labels.admin.settings.payments.minPayment')"
+                              :label="
+                                $t('labels.admin.settings.payments.minPayment')
+                              "
                               label-for="bePaidMinPayment"
                               horizontal
                               :label-cols="4"
@@ -70,7 +95,11 @@
                                 id="bePaidMinPayment"
                                 name="title"
                                 required
-                                :placeholder="$t('labels.admin.settings.payments.placeholder.minPayment')"
+                                :placeholder="
+                                  $t(
+                                    'labels.admin.settings.payments.placeholder.minPayment'
+                                  )
+                                "
                                 v-model="model.settings.minPayment"
                                 :state="state('title')"
                               ></b-form-input>
@@ -79,7 +108,9 @@
 
                           <b-col md>
                             <b-form-group
-                              :label="$t('labels.admin.settings.payments.maxPayment')"
+                              :label="
+                                $t('labels.admin.settings.payments.maxPayment')
+                              "
                               label-for="bePaidMaxPayment"
                               horizontal
                               :label-cols="4"
@@ -89,7 +120,11 @@
                                 id="bePaidMaxPayment"
                                 name="max"
                                 required
-                                :placeholder="$t('labels.admin.settings.payments.placeholder.maxPayment')"
+                                :placeholder="
+                                  $t(
+                                    'labels.admin.settings.payments.placeholder.maxPayment'
+                                  )
+                                "
                                 v-model="model.settings.maxPayment"
                                 :state="state('title')"
                               ></b-form-input>
@@ -123,22 +158,29 @@
                               <c-switch
                                 name="test"
                                 v-model="liveMode"
-                                :description="$t('labels.admin.settings.payments.test')"
+                                :description="
+                                  $t('labels.admin.settings.payments.test')
+                                "
                               ></c-switch>
                             </b-col>
                           </b-row>
                         </div>
                         <b-form-group
-                          :label="$t('labels.admin.settings.payments.termsOfUse')"
+                          :label="
+                            $t('labels.admin.settings.payments.termsOfUse')
+                          "
                           label-for="body"
                           horizontal
                           :label-cols="2"
                         >
-                          <vue-editor name="termsOfUse" v-model="model.settings.termsOfUse"></vue-editor>
+                          <vue-editor
+                            name="termsOfUse"
+                            v-model="model.settings.termsOfUse"
+                          ></vue-editor>
                         </b-form-group>
                       </b-card-body>
                     </b-tab>
-                   <!-- <b-tab title = "Artpay">
+                    <!-- <b-tab title = "Artpay">
                       <b-card-body>
                         <b-row>
                           <b-col md>
@@ -241,16 +283,22 @@
                     </b-tab>-->
                   </b-tabs>
                 </div>
-
               </b-collapse>
             </b-card>
             <b-row slot="footer">
               <b-col md>
-              </b-col>
+</b-col>
               <b-col md>
                 <input name="status" type="hidden" value="publish">
 
-                <b-button right split class="float-right" variant="success" @click="onSubmit()" :disabled="pending">
+                <b-button
+                  right
+                  split
+                  class="float-right"
+                  variant="success"
+                  @click="onSubmit()"
+                  :disabled="pending"
+                >
                   {{ $t('buttons.admin.common.apply') }}
                 </b-button>
               </b-col>
@@ -263,60 +311,66 @@
 </template>
 
 <script>
-import axios from 'axios'
-import form from '../mixins/form'
+import axios from 'axios';
+import form from '../mixins/form';
 
 export default {
-
   name: 'PaymentSystems',
   mixins: [form],
 
-    data() {
-      return {
+  data() {
+    return {
+      modelName: 'settings',
+      resourceRoute: 'settings',
+      listPath: '/paymentSystems',
 
-        modelName: 'settings',
-        resourceRoute: 'settings',
-        listPath: '/paymentSystems',
-
-        model: {
-            settings: {
-                gateway_bePaid_idMarket: null,
-                gateway_bePaid_keyMarket: null,
-                termsOfUse: null,
-                disableLivePayments: false,// "test",
-                minPayment: null,
-                maxPayment: null,
-                paymentInterval: "P1H"
-            }
+      model: {
+        settings: {
+          gateway_bePaid_idMarket: null,
+          gateway_bePaid_keyMarket: null,
+          termsOfUse: null,
+          disableLivePayments: false, // "test",
+          minPayment: null,
+          maxPayment: null,
+          paymentInterval: 'P1H'
         }
       }
+    };
+  },
+  computed: {
+    liveMode: function() {
+      return this.model.settings.disableLivePayments
+        ? this.model.settings.disableLivePayments
+        : true; //"test";
     },
-    mounted: function() {
-        this.getCredentials()
-    },
-    computed: {
-        liveMode: function() {
-            return this.model.settings.disableLivePayments ? this.model.settings.disableLivePayments: true; //"test";
-        },
 
-        //needs to be developed or deleted
-        pending () {
-        },
-    },
-    methods: {
-        async getCredentials() {
-            let { data } = await axios.get(
-                this.$app.route('dashboard.settings.index'),
-                {
-                    params:
-                        {
-                            keys:
-                                ['gateway_bePaid_idMarket', 'gateway_bePaid_keyMarket', 'termsOfUse', 'disableLivePayments', 'minPayment', 'maxPayment', 'paymentInteval']
-                        }
-                })
-
-            this.model.settings = data.settings
+    //needs to be developed or deleted
+    pending() {}
+  },
+  mounted: function() {
+    this.getCredentials();
+  },
+  methods: {
+    async getCredentials() {
+      let { data } = await axios.get(
+        this.$app.route('dashboard.settings.index'),
+        {
+          params: {
+            keys: [
+              'gateway_bePaid_idMarket',
+              'gateway_bePaid_keyMarket',
+              'termsOfUse',
+              'disableLivePayments',
+              'minPayment',
+              'maxPayment',
+              'paymentInteval'
+            ]
+          }
         }
+      );
+
+      this.model.settings = data.settings;
     }
-}
+  }
+};
 </script>
