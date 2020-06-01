@@ -479,7 +479,7 @@ export default {
         this.model.target_amount) &&
       this.hideModalOnSubmit === false
     ) {
-      if (window.confirm('Сохранить введённые данные?')) {
+      if (window.confirm('Save changes?')) {
         localStorage.name = this.model.name
         localStorage.description = this.model.description
         localStorage.start_at = this.model.start_at
