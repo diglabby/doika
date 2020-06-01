@@ -319,14 +319,14 @@ export default {
       listPath: '/campaigns',
       imageData: '',
       model: {
-        name: '',
-        description: '',
+        name: '', // ''
+        description: '', // ''
         picture_url: '',
         active_status: 1,
-        target_amount: 0,
+        target_amount: 0, // 0
         currency: 'BYN',
-        start_at: null,
-        finish_at: null,
+        start_at: null, // null | "2020-06-02"
+        finish_at: null, // null
         visual_settings: {
           buttons: [5, 10, 25, 50],
           progressBar: true,
@@ -390,6 +390,23 @@ export default {
       return this.model.picture_url
         ? this.model.picture_url.replace(/^.*[\\\/]/, '')
         : ''
+    }
+  },
+  mounted() {
+    if (localStorage.name) {
+      this.model.name = localStorage.name
+    }
+    if (localStorage.description) {
+      this.model.description = localStorage.description
+    }
+    if (localStorage.start_at) {
+      this.model.start_at = localStorage.start_at
+    }
+    if (localStorage.finish_at) {
+      this.model.finish_at = localStorage.finish_at
+    }
+    if (localStorage.target_amount && localStorage.target_amount !== 0) {
+      this.model.target_amount = localStorage.target_amount
     }
   },
   methods: {
@@ -457,14 +474,30 @@ export default {
       this.model.target_amount
     ) {
       if (window.confirm('Сохранить введённые данные?')) {
-        console.log('Leave OK!')
+        localStorage.name = this.model.name
+        localStorage.description = this.model.description
+        localStorage.start_at = this.model.start_at
+        localStorage.finish_at = this.model.finish_at
+        if (this.model.target_amount != 0) {
+          localStorage.target_amount = this.model.target_amount
+        } else {
+          localStorage.removeItem('target_amount')
+        }
         next()
       } else {
-        console.log('Leave Cancel!')
+        localStorage.removeItem('name')
+        localStorage.removeItem('description')
+        localStorage.removeItem('start_at')
+        localStorage.removeItem('finish_at')
+        localStorage.removeItem('target_amount')
         next()
       }
     } else {
-      console.log('Leave empty!')
+      localStorage.removeItem('name')
+      localStorage.removeItem('description')
+      localStorage.removeItem('start_at')
+      localStorage.removeItem('finish_at')
+      localStorage.removeItem('target_amount')
       next()
     }
   },
