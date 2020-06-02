@@ -48,28 +48,8 @@
               v-model="donate_amount"
             >
             <b-button-group size="lg" class="btn-block">
-              <b-button
-                :style="{
-                  background: buttonBackground,
-                  color: buttonPaymentFontColor
-                }"
-                class="module-donate__button-select payment"
-                @click="recurrent = '/donate'"
-                :class="{ clicked: recurrent == '/donate' }"
-              >
-                {{ $t('buttons.widget.oneTime') }}
-              </b-button>
-              <b-button
-                :style="{
-                  background: buttonBackground,
-                  color: buttonPaymentFontColor
-                }"
-                class="module-donate__button-select payment"
-                @click="recurrent = '/recurrent'"
-                :class="{ clicked: recurrent == '/recurrent' }"
-              >
-                {{ $t('buttons.widget.subscribe') }}
-              </b-button>
+              <b-button :style="{ background:  buttonBackground, color: settings.buttonPaymentFontColor }" class="module-donate__button-select payment" @click="recurrent = '/donate'" :class="{clicked: (recurrent=='/donate')}">{{ $t('buttons.widget.oneTime') }}</b-button>
+              <b-button :style="{ background:  buttonBackground, color: settings.buttonPaymentFontColor }" class="module-donate__button-select payment" @click="recurrent = '/recurrent'" :class="{clicked: (recurrent=='/recurrent')}">{{ $t('buttons.widget.subscribe') }}</b-button>
             </b-button-group>
             <b-button
               :style="{ color: fontColor }"
