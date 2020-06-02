@@ -1,26 +1,26 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from 'vue';
+import Router from 'vue-router';
 
 // Containers
-import Full from '../containers/Full'
+import Full from '../containers/Full';
 
 // Views
-import Search from '../views/Search'
-import Campaigns from '../views/Campaigns'
-import CampaignForm from '../views/CampaignForm'
-import Payments from '../views/Payments'
-import PaymentForm from '../views/PaymentForm'
-import Help from '../views/Help'
-import Feedback from '../views/Feedback'
-import Settings from '../views/Settings'
-import UserForm from '../views/UserForm'
-import UserList from '../views/UserList'
-import Notifications from '../views/Notifications'
-import NotificationsForm from '../views/NotificationsForm'
-import PaymentSystems from '../views/PaymentSystems'
-import Layout from '../views/Layout'
+import Search from '../views/Search';
+import Campaigns from '../views/Campaigns';
+import CampaignForm from '../views/CampaignForm';
+import Payments from '../views/Payments';
+import PaymentForm from '../views/PaymentForm';
+import Help from '../views/Help';
+import Feedback from '../views/Feedback';
+import Settings from '../views/Settings';
+import UserForm from '../views/UserForm';
+import UserList from '../views/UserList';
+import Notifications from '../views/Notifications';
+import NotificationsForm from '../views/NotificationsForm';
+import PaymentSystems from '../views/PaymentSystems';
+import Layout from '../views/Layout';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export function createRouter(base, i18n) {
   return new Router({
@@ -58,7 +58,7 @@ export function createRouter(base, i18n) {
             path: 'campaigns',
             component: {
               render(c) {
-                return c('router-view')
+                return c('router-view');
               }
             },
             meta: {
@@ -96,7 +96,7 @@ export function createRouter(base, i18n) {
             path: 'transactions',
             component: {
               render(c) {
-                return c('router-view')
+                return c('router-view');
               }
             },
             meta: {
@@ -153,7 +153,7 @@ export function createRouter(base, i18n) {
               {
                 path: ':id/edit',
                 name: 'notification_edit',
-                component: NotificationsForm,
+                component: NotificationsForm
               }
             ]
           },
@@ -161,7 +161,7 @@ export function createRouter(base, i18n) {
             path: 'users',
             component: {
               render(c) {
-                return c('router-view')
+                return c('router-view');
               }
             },
             meta: {
@@ -206,5 +206,5 @@ export function createRouter(base, i18n) {
         ]
       }
     ]
-  })
+  });
 }

@@ -12,15 +12,24 @@
                   </a>
                 </h5>
               </b-card-header>
-              <b-collapse id="notifications" aria-expanded="true" visible role="tabpanel">
+              <b-collapse
+                id="notifications"
+                aria-expanded="true"
+                visible
+                role="tabpanel"
+              >
                 <div>
                   <b-tabs>
-                    <b-tab :title= "$t('labels.emailserver')" active>
+                    <b-tab :title="$t('labels.emailserver')" active>
                       <b-card-body>
                         <b-row>
                           <b-col md>
                             <b-form-group
-                              :label="$t('labels.admin.settings.notifications.address')"
+                              :label="
+                                $t(
+                                  'labels.admin.settings.notifications.address'
+                                )
+                              "
                               label-for="notificationsAddress"
                               horizontal
                               :label-cols="4"
@@ -30,7 +39,11 @@
                                 id="notificationsAddress"
                                 name="title"
                                 required
-                                :placeholder="$t('labels.admin.settings.notifications.placeholder.address')"
+                                :placeholder="
+                                  $t(
+                                    'labels.admin.settings.notifications.placeholder.address'
+                                  )
+                                "
                                 v-model="model.settings.notificationsAddress"
                                 :state="state('title')"
                               ></b-form-input>
@@ -38,7 +51,9 @@
                           </b-col>
                           <b-col md>
                             <b-form-group
-                              :label="$t('labels.admin.settings.notifications.port')"
+                              :label="
+                                $t('labels.admin.settings.notifications.port')
+                              "
                               label-for="notificationsPort"
                               horizontal
                               :label-cols="4"
@@ -48,7 +63,11 @@
                                 id="notificationsPort"
                                 name="title"
                                 required
-                                :placeholder="$t('labels.admin.settings.notifications.placeholder.port')"
+                                :placeholder="
+                                  $t(
+                                    'labels.admin.settings.notifications.placeholder.port'
+                                  )
+                                "
                                 v-model="model.settings.notificationsPort"
                                 :state="state('title')"
                               ></b-form-input>
@@ -58,7 +77,9 @@
                         <b-row>
                           <b-col md>
                             <b-form-group
-                              :label="$t('labels.admin.settings.notifications.user')"
+                              :label="
+                                $t('labels.admin.settings.notifications.user')
+                              "
                               label-for="notificationsUser"
                               horizontal
                               :label-cols="4"
@@ -68,7 +89,11 @@
                                 id="notificationsUser"
                                 name="title"
                                 required
-                                :placeholder="$t('labels.admin.settings.notifications.placeholder.user')"
+                                :placeholder="
+                                  $t(
+                                    'labels.admin.settings.notifications.placeholder.user'
+                                  )
+                                "
                                 v-model="model.settings.notificationsUser"
                                 :state="state('title')"
                               ></b-form-input>
@@ -76,7 +101,11 @@
                           </b-col>
                           <b-col md>
                             <b-form-group
-                              :label="$t('labels.admin.settings.notifications.password')"
+                              :label="
+                                $t(
+                                  'labels.admin.settings.notifications.password'
+                                )
+                              "
                               label-for="notificationsPassword"
                               horizontal
                               :label-cols="4"
@@ -86,7 +115,11 @@
                                 id="notificationsPassword"
                                 name="title"
                                 required
-                                :placeholder="$t('labels.admin.settings.notifications.placeholder.password')"
+                                :placeholder="
+                                  $t(
+                                    'labels.admin.settings.notifications.placeholder.password'
+                                  )
+                                "
                                 v-model="model.settings.notificationsPassword"
                                 :state="state('title')"
                               ></b-form-input>
@@ -95,12 +128,14 @@
                         </b-row>
                       </b-card-body>
                     </b-tab>
-                    <b-tab :title = "$t('labels.recurrent')">
+                    <b-tab :title="$t('labels.recurrent')">
                       <b-card-body>
                         <b-row>
                           <b-col lg="6">
                             <b-form-group
-                              :label="$t('labels.admin.settings.notifications.email')"
+                              :label="
+                                $t('labels.admin.settings.notifications.email')
+                              "
                               label-for="notificationsEmail"
                               horizontal
                               :label-cols="4"
@@ -110,7 +145,11 @@
                                 id="notificationsEmail"
                                 name="title"
                                 required
-                                :placeholder="$t('labels.admin.settings.notifications.placeholder.email')"
+                                :placeholder="
+                                  $t(
+                                    'labels.admin.settings.notifications.placeholder.email'
+                                  )
+                                "
                                 v-model="model.settings.notificationsEmail"
                                 :state="state('title')"
                               ></b-form-input>
@@ -118,25 +157,31 @@
                           </b-col>
                         </b-row>
                         <b-form-group
-                          :label="$t('labels.admin.settings.notifications.reccurentTemplate')"
+                          :label="
+                            $t(
+                              'labels.admin.settings.notifications.reccurentTemplate'
+                            )
+                          "
                           label-for="reccurent"
                           horizontal
                           :label-cols="2"
                         >
                           <vue-editor
-                                  id="reccurent"
+                            id="reccurent"
                             name="messageReccurent"
                             v-model="model.settings.messageReccurentTransaction"
                           ></vue-editor>
                         </b-form-group>
                       </b-card-body>
                     </b-tab>
-                    <b-tab :title = "$t('labels.single')">
+                    <b-tab :title="$t('labels.single')">
                       <b-card-body>
                         <b-row>
                           <b-col lg="6">
                             <b-form-group
-                              :label="$t('labels.admin.settings.notifications.email')"
+                              :label="
+                                $t('labels.admin.settings.notifications.email')
+                              "
                               label-for="notificationsSingleEmail"
                               horizontal
                               :label-cols="4"
@@ -146,21 +191,31 @@
                                 id="notificationsSingleEmail"
                                 name="title"
                                 required
-                                :placeholder="$t('labels.admin.settings.notifications.placeholder.email')"
-                                v-model="model.settings.notificationsSingleEmail"
+                                :placeholder="
+                                  $t(
+                                    'labels.admin.settings.notifications.placeholder.email'
+                                  )
+                                "
+                                v-model="
+                                  model.settings.notificationsSingleEmail
+                                "
                                 :state="state('title')"
                               ></b-form-input>
                             </b-form-group>
                           </b-col>
                         </b-row>
                         <b-form-group
-                          :label="$t('labels.admin.settings.notifications.singleTemplate')"
+                          :label="
+                            $t(
+                              'labels.admin.settings.notifications.singleTemplate'
+                            )
+                          "
                           label-for="single"
                           horizontal
                           :label-cols="2"
                         >
                           <vue-editor
-                                  id="single"
+                            id="single"
                             name="messageSingle"
                             v-model="model.settings.messageSingleTransaction"
                           ></vue-editor>
@@ -173,11 +228,20 @@
             </b-card>
             <b-row slot="footer">
               <b-col md>
-              </b-col>
+</b-col>
               <b-col md>
                 <input name="status" type="hidden" value="publish">
 
-                <b-button right split class="float-right" variant="success" @click="model.status = 'publish'; onSubmit()">
+                <b-button
+                  right
+                  split
+                  class="float-right"
+                  variant="success"
+                  @click="
+                    model.status = 'publish';
+                    onSubmit();
+                  "
+                >
                   {{ $t('buttons.admin.common.apply') }}
                 </b-button>
               </b-col>
@@ -190,8 +254,8 @@
 </template>
 
 <script>
-import axios from 'axios'
-import form from '../mixins/form'
+import axios from 'axios';
+import form from '../mixins/form';
 
 export default {
   name: 'Notifications',
@@ -202,36 +266,43 @@ export default {
       resourceRoute: 'settings',
       listPath: '/notifications',
       model: {
-          settings: {
-              notificationsAddress: null,
-              notificationsPort: null,
-              notificationsUser: null,
-              notificationsPassword: null,
-              notificationsEmail: null,
-              notificationsSingleEmail:null,
-              messageSingleTransaction: null,
-              messageReccurentTransaction: null,
-          }
-      }
-    }
-  },
-    mounted: function() {
-        this.getCredentials()
-    },
-    methods: {
-        async getCredentials() {
-            let { data } = await axios.get(
-                this.$app.route('dashboard.settings.index'),
-                {
-                    params:
-                        {
-                            keys:
-                                ['notificationsAddress', 'notificationsPort', 'notificationsUser', 'notificationsPassword', 'notificationsEmail', 'messageSingleTransaction','messageReccurentTransaction']
-                        }
-                })
-
-            this.model.settings = data.settings
+        settings: {
+          notificationsAddress: null,
+          notificationsPort: null,
+          notificationsUser: null,
+          notificationsPassword: null,
+          notificationsEmail: null,
+          notificationsSingleEmail: null,
+          messageSingleTransaction: null,
+          messageReccurentTransaction: null
         }
+      }
+    };
+  },
+  mounted: function() {
+    this.getCredentials();
+  },
+  methods: {
+    async getCredentials() {
+      let { data } = await axios.get(
+        this.$app.route('dashboard.settings.index'),
+        {
+          params: {
+            keys: [
+              'notificationsAddress',
+              'notificationsPort',
+              'notificationsUser',
+              'notificationsPassword',
+              'notificationsEmail',
+              'messageSingleTransaction',
+              'messageReccurentTransaction'
+            ]
+          }
+        }
+      );
+
+      this.model.settings = data.settings;
     }
-}
+  }
+};
 </script>

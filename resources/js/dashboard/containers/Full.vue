@@ -1,7 +1,7 @@
 <style>
-  .sidebar .nav-link{
-    padding: 0.5rem 1rem;
-  }
+.sidebar .nav-link {
+  padding: 0.5rem 1rem;
+}
 </style>
 <template>
   <div class="app">
@@ -9,12 +9,15 @@
     <div class="app-body">
       <Sidebar fixed>
         <SidebarNav :nav-items="nav">
-        </SidebarNav>
-        <b-button class="container-fluid btn btn-success" style="margin-top:auto !important; margin-bottom:50px; width: 80%;" href="https://doika.falanster.by">
+</SidebarNav>
+        <b-button
+          class="container-fluid btn btn-success"
+          style="margin-top:auto !important; margin-bottom:50px; width: 80%;"
+          href="https://doika.falanster.by"
+        >
           {{ $t('buttons.admin.support') }}
         </b-button>
-        <SidebarFooter>
-        </SidebarFooter>
+        <SidebarFooter> </SidebarFooter>
       </Sidebar>
       <main class="main">
         <breadcrumb :list="$route.matched"></breadcrumb>
@@ -24,43 +27,46 @@
       </main>
       <Aside fixed></Aside>
     </div>
-    <AppFooter :name="$app.appName" :editor-name="$app.editorName"
-               :editor-site-url="$app.editorSiteUrl"
+    <AppFooter
+      :name="$app.appName"
+      :editor-name="$app.editorName"
+      :editor-site-url="$app.editorSiteUrl"
+      :app-version="$app.appVersion"
     ></AppFooter>
   </div>
 </template>
 
 <script>
-import nav from '../_nav'
+import nav from '../_nav';
 
-import AppFooter from '../components/Footer'
-import AppHeader from '../components/Header'
+import AppFooter from '../components/Footer';
+import AppHeader from '../components/Header';
 
 export default {
   name: 'Full',
   components: {
     AppHeader,
-    AppFooter,
+    AppFooter
   },
   data() {
     return {
       nav: []
-    }
+    };
   },
   watch: {
     $route: 'fetchData'
   },
   created() {
-    this.initNav()
-    this.fetchData()
+    this.initNav();
+    this.fetchData();
   },
   methods: {
     initNav() {
-      this.nav = nav(this.$app, this.$i18n)
+      this.nav = nav(this.$app, this.$i18n);
     },
     async fetchData() {
-      this.initNav()
+      this.initNav();
     }
   }
-}
+};
 </script>

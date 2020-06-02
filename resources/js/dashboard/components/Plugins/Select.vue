@@ -1,35 +1,48 @@
 <template>
   <div :class="['custom-multiselect', stateClass]">
-    <div class="input-wrapper position-relative"
-         :class="{ 'dropup': openDirection === 'up', 'dropright': openDirection === 'right', 'dropleft': openDirection === 'left' }"
+    <div
+      class="input-wrapper position-relative"
+      :class="{
+        dropup: openDirection === 'up',
+        dropright: openDirection === 'right',
+        dropleft: openDirection === 'left'
+      }"
     >
-      <input type="text"
-             :id="id"
-             :name="name"
-             :class="['form-control', stateClass]"
-             :placeholder="placeholder"
-             v-model="search"
-             autocomplete="off"
-             @focus="showOptions = true"
-             @keydown.enter.prevent="onAddNew()"
-             @input="onSearch"
+      <input
+        type="text"
+        :id="id"
+        :name="name"
+        :class="['form-control', stateClass]"
+        :placeholder="placeholder"
+        v-model="search"
+        autocomplete="off"
+        @focus="showOptions = true"
+        @keydown.enter.prevent="onAddNew()"
+        @input="onSearch"
       >
       <div class="dropdown-menu d-block" v-if="showOptions && options.length">
-        <a href="#" class="dropdown-item" v-for="(item, index) in options" :key="index" @click.prevent="onAdd(item)">
+        <a
+          href="#"
+          class="dropdown-item"
+          v-for="(item, index) in options"
+          :key="index"
+          @click.prevent="onAdd(item)"
+        >
           {{ label ? item[label] : item }}
         </a>
       </div>
     </div>
     <div class="tags mt-2" v-if="multiple && mutableValue.length">
       <div class="tag" v-for="(item, index) in mutableValue" :key="index">
-        {{ label ? item[label] : item }} <a href="#" class="tag-addon" @click.prevent="onDelete(item)"><span aria-hidden="true">&times;</span></a>
+        {{ label ? item[label] : item }}
+        <a href="#" class="tag-addon" @click.prevent="onDelete(item)"><span aria-hidden="true">&times;</span></a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import formStateMixin from 'bootstrap-vue/src/mixins/form-state'
+import formStateMixin from 'bootstrap-vue/src/mixins/form-state';
 
 export default {
   mixins: [formStateMixin],
@@ -80,51 +93,51 @@ export default {
       mutableValue: this.value,
       showOptions: false,
       search: this.getSearchValue(this.value)
-    }
+    };
   },
   watch: {
     mutableValue(newValue) {
-      this.$emit('input', newValue)
+      this.$emit('input', newValue);
 
-      this.search = this.getSearchValue(newValue)
+      this.search = this.getSearchValue(newValue);
     },
     value(newValue) {
-      this.mutableValue = newValue
+      this.mutableValue = newValue;
     },
     search() {
       if (this.search === '' && !this.multiple) {
-        this.mutableValue = null
+        this.mutableValue = null;
       }
     }
   },
   mounted() {
     document.addEventListener('click', e => {
-      if (this.$el.contains(e.target)) return
+      if (this.$el.contains(e.target)) return;
 
-      this.showOptions = false
-    })
+      this.showOptions = false;
+    });
   },
   methods: {
     onSearch() {
       if (this.search !== '') {
-        this.$emit('search-change', this.search, this.id)
+        this.$emit('search-change', this.search, this.id);
       }
     },
     getSearchValue(newValue) {
       return this.multiple
         ? ''
-        : (this.label && newValue ? newValue[this.label] : newValue) || ''
+        : (this.label && newValue ? newValue[this.label] : newValue) || '';
     },
     onDelete(item) {
       this.mutableValue = this.mutableValue.filter(i => {
         return this.trackBy
           ? i[this.trackBy] !== item[this.trackBy]
-          : i !== item
-      })
+          : i !== item;
+      });
     },
     onAddNew() {
       if (this.tags) {
-        this.onAdd(this.search)
+        this.onAdd(this.search);
       }
     },
     onAdd(item) {
@@ -132,21 +145,21 @@ export default {
         let existingItem = this.mutableValue.filter(i => {
           return this.trackBy
             ? i[this.trackBy] === item[this.trackBy]
-            : i === item
-        })
+            : i === item;
+        });
 
         if (!existingItem.length) {
-          this.mutableValue.push(item)
+          this.mutableValue.push(item);
         }
       } else {
-        this.mutableValue = item
+        this.mutableValue = item;
       }
-      this.clearInput()
+      this.clearInput();
     },
     clearInput() {
-      this.search = ''
-      this.showOptions = false
+      this.search = '';
+      this.showOptions = false;
     }
   }
-}
+};
 </script>
