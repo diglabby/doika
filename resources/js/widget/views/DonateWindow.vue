@@ -1,59 +1,68 @@
 <template>
   <div>
-    <div v-if="isBusy" class="d-flex justify-content-center mb-3 spinner-wrapper">
+    <div
+      v-if="isBusy"
+      class="d-flex justify-content-center mb-3 spinner-wrapper"
+    >
       <b-spinner label="Loading..."></b-spinner>
     </div>
     <div class="container">
       <div class="module-donate__donateWindow">
         <div class="module-donate__card">
-          <div id="paymentForm">
-          </div>
+          <div id="paymentForm"></div>
         </div>
         <div class="donateWindow__footer">
-          <b-button :to=" '/campaigns/' + id"  class="module-donate__button-select confirm back">{{ $t('buttons.widget.back') }}</b-button>
+          <b-button
+            :to="'/campaigns/' + id"
+            class="module-donate__button-select confirm back"
+          >
+            {{ $t('buttons.widget.back') }}
+          </b-button>
         </div>
-        <p class="module-donate__version">powered by <a href="https://doika.falanster.by/" target="_blank">Doika</a></p>
+        <p class="module-donate__version">
+          powered by
+          <a href="https://doika.falanster.by/" target="_blank">Doika</a>
+        </p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
 
 export default {
   name: 'DonateWindow',
-    props:['id'],
+  props: ['id'],
   data() {
     return {
       isBusy: false,
       campaign: [],
       redirect_url: null,
       placeholder: this.$t('buttons.widget.email'),
-        model: {
-          email: 'test@mail.by',
-          amount: sessionStorage.getItem('amount'),
-          currency_code: 'BYN'
-        }
-    }
+      model: {
+        email: 'test@mail.by',
+        amount: sessionStorage.getItem('amount'),
+        currency_code: 'BYN'
+      }
+    };
   },
   async created() {
+    let formData = this.$app.objectToFormData(this.model);
+    formData.append('_method', 'POST');
+    let action = this.$app.route('widget.campaigns.payment-intends.store', {
+      campaign: this.id,
+      paymentGateway: 1
+    });
+    let { data } = await axios.post(action, formData);
+    this.redirect_url = data;
 
-      let formData = this.$app.objectToFormData(this.model)
-          formData.append('_method', 'POST')
-      let action = this.$app.route('widget.campaigns.payment-intends.store',
-          {
-              'campaign': this.id,
-              'paymentGateway': 1,
-          })
-    let { data } = await axios.post(action,formData)
-      this.redirect_url = data
-
-      var options = {
-          type: 'inline',
-          id: 'paymentForm',
-          url: this.redirect_url,
-          style: 'html {\
+    var options = {
+      type: 'inline',
+      id: 'paymentForm',
+      url: this.redirect_url,
+      style:
+        'html {\
     padding:0;\
     margin:0;\
     overflow: hidden;\
@@ -200,8 +209,12 @@ export default {
               max-width: 365px;\
               height: 186px;\
               position:relative;\
-              background: url("https://' + parent.document.location.host + '/doika/public/images/front-card.png"),\
-    url("https://' + parent.document.location.host + '/doika/public/images/back-card.png");\
+              background: url("https://' +
+        parent.document.location.host +
+        '/doika/public/images/front-card.png"),\
+    url("https://' +
+        parent.document.location.host +
+        '/doika/public/images/back-card.png");\
     background-repeat: no-repeat;\
     background-position: left top, right 20px;\
   }\
@@ -353,12 +366,11 @@ export default {
     }\
   }\
   ',
-          size: { width: 450, height: 450 }
-      };
+      size: { width: 450, height: 450 }
+    };
 
-      var pf = new BeGateway(options);
-      pf.buildForm();
-
+    var pf = new BeGateway(options);
+    pf.buildForm();
   }
-}
+};
 </script>

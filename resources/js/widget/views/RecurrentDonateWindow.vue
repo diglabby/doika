@@ -15,46 +15,48 @@
 </template>
 
 <script>
-    import axios from 'axios'
+import axios from 'axios';
 
-    export default {
-        name: 'ReccurentDonateWindow',
-        props:['id'],
-        data() {
-            return {
+export default {
+  name: 'ReccurentDonateWindow',
+  props: ['id'],
+  data() {
+    return {
+      campaign: [],
+      redirect_url: null,
+      placeholder: this.$t('buttons.widget.email'),
+      model: {
+        amount: sessionStorage.getItem('amount'),
+        email: null,
+        name: sessionStorage.getItem('name'),
+        phone: sessionStorage.getItem('phone'),
+        currency_code: 'BYN',
+        payment_interval: 'P1M'
+      }
+    };
+  },
+  async created() {
+    this.model.email = sessionStorage.getItem('email');
+    let formData = this.$app.objectToFormData(this.model);
+    formData.append('_method', 'POST');
+    let action = this.$app.route(
+      'widget.campaigns.subscription-intends.store',
+      {
+        campaign: this.id,
+        paymentGateway: 1,
+        email: this.model.email,
+        payment_interval: 'P1M'
+      }
+    );
+    let { data } = await axios.post(action, formData);
+    this.redirect_url = data;
 
-                campaign: [],
-                redirect_url: null,
-                placeholder: this.$t('buttons.widget.email'),
-                model: {
-                    amount: sessionStorage.getItem('amount'),
-                    email: null,
-                    name: sessionStorage.getItem('name'),
-                    phone: sessionStorage.getItem('phone'),
-                    currency_code: 'BYN',
-                    payment_interval: "P1M"
-                }
-            }
-        },
-        async created() {
-            this.model.email = sessionStorage.getItem('email')
-            let formData = this.$app.objectToFormData(this.model)
-            formData.append('_method', 'POST')
-            let action = this.$app.route('widget.campaigns.subscription-intends.store',
-                {
-                    'campaign': this.id,
-                    'paymentGateway': 1,
-                    'email': this.model.email,
-                    'payment_interval': "P1M"
-                })
-            let { data } = await axios.post(action,formData)
-            this.redirect_url = data
-
-            var options = {
-                type: 'inline',
-                id: 'paymentForm',
-                url: this.redirect_url,
-                style: 'html {\
+    var options = {
+      type: 'inline',
+      id: 'paymentForm',
+      url: this.redirect_url,
+      style:
+        'html {\
     padding:0;\
     margin:0;\
     overflow: hidden;\
@@ -201,8 +203,16 @@
               max-width: 365px;\
               height: 186px;\
               position:relative;\
-              background: url("' + parent.document.location.protocol + '//'+ parent.document.location.host + '/doika/public/images/front-card.png"),\
-    url("' + parent.document.location.protocol + '//'+ parent.document.location.host + '/doika/public/images/back-card.png");\
+              background: url("' +
+        parent.document.location.protocol +
+        '//' +
+        parent.document.location.host +
+        '/doika/public/images/front-card.png"),\
+    url("' +
+        parent.document.location.protocol +
+        '//' +
+        parent.document.location.host +
+        '/doika/public/images/back-card.png");\
     background-repeat: no-repeat;\
     background-position: left top, right 20px;\
   }\
@@ -327,12 +337,11 @@
     }\
   }\
   ',
-                size: { width: 450, height: 450 }
-            };
+      size: { width: 450, height: 450 }
+    };
 
-            var pf = new BeGateway(options);
-            pf.buildForm();
-
-        }
-    }
+    var pf = new BeGateway(options);
+    pf.buildForm();
+  }
+};
 </script>

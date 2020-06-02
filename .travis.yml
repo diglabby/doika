@@ -29,7 +29,7 @@ before_script:
 script:
   - composer test:ci
   - php artisan route:list
-  - php artisan translations:missing
+#  - php artisan translations:missing
   - php artisan migrate:fresh --seed
 
 after_script:
