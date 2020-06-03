@@ -2,7 +2,9 @@
   <div>
     <template v-if="result.length">
       <b-card v-for="item in result" :key="item.id">
-        <router-link :to="`/posts/${item.id}/edit`" slot="header">{{ item.title }}</router-link>
+        <router-link :to="`/posts/${item.id}/edit`" slot="header">
+          {{ item.title }}
+        </router-link>
         <span v-html="item.body"></span>
       </b-card>
     </template>
@@ -13,20 +15,20 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
 
 export default {
   name: 'AppSearch',
   data() {
     return {
       result: []
-    }
+    };
   },
   watch: {
     $route: 'fetchData'
   },
   created() {
-    this.fetchData()
+    this.fetchData();
   },
   methods: {
     async fetchData() {
@@ -35,10 +37,10 @@ export default {
           params: {
             q: this.$route.query.q
           }
-        })
-        this.result = data
+        });
+        this.result = data;
       }
     }
   }
-}
+};
 </script>

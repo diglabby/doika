@@ -2,27 +2,35 @@
   <div>
     <b-card>
       <template slot="header">
-        <h3 class="card-title">{{ $t('labels.admin.transactions.title') }}</h3>
+        <h3 class="card-title">
+          {{ $t('labels.admin.transactions.title') }}
+        </h3>
       </template>
-      <b-datatable ref="datasource"
-                   @context-changed="onContextChanged"
-                   search-route="dashboard.transactions.index"
-                   :selected.sync="selected"
+      <b-datatable
+        ref="datasource"
+        @context-changed="onContextChanged"
+        search-route="dashboard.transactions.index"
+        :selected.sync="selected"
       >
-        <b-table ref="datatable"
-                 striped
-                 bordered
-                 show-empty
-                 stacked="md"
-                 no-local-sorting
-                 :empty-text="$t('alerts.admin.common.search.noResult')"
-                 :empty-filtered-text="$t('alerts.dashboard.common.search.noMatchResult')"
-                 :fields="fields"
-                 :items="dataLoadProvider"
+        <b-table
+          ref="datatable"
+          striped
+          bordered
+          show-empty
+          stacked="md"
+          no-local-sorting
+          :empty-text="$t('alerts.admin.common.search.noResult')"
+          :empty-filtered-text="
+            $t('alerts.dashboard.common.search.noMatchResult')
+          "
+          :fields="fields"
+          :items="dataLoadProvider"
         >
-
           <template slot="campaign" slot-scope="row">
-            <router-link :to="`/transactions/${row.item.id}/edit`" v-text="row.item.campaign"></router-link>
+            <router-link
+              :to="`/transactions/${row.item.id}/edit`"
+              v-text="row.item.campaign"
+            ></router-link>
           </template>
           <template slot="status" slot-scope="row">
             <span v-text="row.item.status_message"></span>
@@ -31,13 +39,23 @@
             <span v-text="row.item.donator"></span>
           </template>
           <template slot="amount" slot-scope="row">
-            <span v-text="row.item.amount/100"></span>
+            <span v-text="row.item.amount / 100"></span>
           </template>
           <template slot="currency" slot-scope="row">
             <span v-text="row.item.currency"></span>
           </template>
           <template slot="created_at" slot-scope="row">
-            <span v-text="(new Date(row.item.created_at * 1000).toLocaleDateString('ru-RU')) + ' ' + (new Date(row.item.created_at * 1000).toLocaleTimeString('ru-RU'))"></span>
+            <span
+              v-text="
+                new Date(row.item.created_at * 1000).toLocaleDateString(
+                  'ru-RU'
+                ) +
+                  ' ' +
+                  new Date(row.item.created_at * 1000).toLocaleTimeString(
+                    'ru-RU'
+                  )
+              "
+            ></span>
           </template>
           <template slot="table-busy">
             <div class="text-center">
@@ -45,14 +63,13 @@
             </div>
           </template>
         </b-table>
-
       </b-datatable>
     </b-card>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
 
 export default {
   name: 'PaymentsList',
@@ -93,17 +110,15 @@ export default {
           sortable: true
         }
       ]
-    }
+    };
   },
   methods: {
     dataLoadProvider(ctx) {
-
-      return this.$refs.datasource.loadData(ctx.sortBy, ctx.sortDesc)
+      return this.$refs.datasource.loadData(ctx.sortBy, ctx.sortDesc);
     },
     onContextChanged() {
-
-      return this.$refs.datatable.refresh()
+      return this.$refs.datatable.refresh();
     }
   }
-}
+};
 </script>

@@ -7,7 +7,7 @@ newIssueWelcomeComment: >
 # Configuration for new-pr-welcome - https://github.com/behaviorbot/new-pr-welcome
 # Comment to be posted to on PRs from first time contributors in your repository
 newPRWelcomeComment: >
-  Дзякуй за стварэнне твайго першага Pull Request для Doika 👍! Калі ласка азнаемся з [правіламі афармлення PR](/diglabby/doika/CONTRIBUTING.md).
+  Дзякуй за стварэнне твайго першага Pull Request для Doika 👍! Калі ласка азнаемся з [правіламі афармлення PR](/diglabby/doika/blob/develop/CONTRIBUTING.md).
 
 # Configuration for first-pr-merge - https://github.com/behaviorbot/first-pr-merge
 # Comment to be posted to on pull requests merged by a first time user

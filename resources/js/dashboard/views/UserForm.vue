@@ -4,7 +4,13 @@
       <b-row class="justify-content-center">
         <b-col xl="6">
           <b-card>
-            <h3 class="card-title" slot="header">{{ isNew ? $t('labels.admin.users.create.header') : $t('labels.admin.users.edit.header') }}</h3>
+            <h3 class="card-title" slot="header">
+              {{
+                isNew
+                  ? $t('labels.admin.users.create.header')
+                  : $t('labels.admin.users.edit.header')
+              }}
+            </h3>
 
             <b-form-group
               :label="$t('labels.admin.users.name')"
@@ -81,7 +87,9 @@
                 id="password_confirmation"
                 name="password_confirmation"
                 type="password"
-                :placeholder="$t('labels.admin.users.placeholder.passwordConfirmation')"
+                :placeholder="
+                  $t('labels.admin.users.placeholder.passwordConfirmation')
+                "
                 v-model="model.password_confirmation"
                 :state="state('password_confirmation')"
               ></b-form-input>
@@ -94,11 +102,19 @@
                 </b-button>
               </b-col>
               <b-col>
-                <b-button type="submit" variant="success" size="sm" class="float-right"
-                          :disabled="pending"
-                          v-if="isNew || this.$app.user.can('edit users')"
+                <b-button
+                  type="submit"
+                  variant="success"
+                  size="sm"
+                  class="float-right"
+                  :disabled="pending"
+                  v-if="isNew || this.$app.user.can('edit users')"
                 >
-                  {{ isNew ? $t('buttons.admin.common.create') : $t('buttons.admin.common.edit') }}
+                  {{
+                    isNew
+                      ? $t('buttons.admin.common.create')
+                      : $t('buttons.admin.common.edit')
+                  }}
                 </b-button>
               </b-col>
             </b-row>
@@ -110,8 +126,8 @@
 </template>
 
 <script>
-import axios from 'axios'
-import form from '../mixins/form'
+import axios from 'axios';
+import form from '../mixins/form';
 
 export default {
   name: 'UserForm',
@@ -126,21 +142,21 @@ export default {
         email: null,
         active: true,
         password: null,
-        confirm_password: null,
+        confirm_password: null
       }
-    }
+    };
   },
   async created() {
-    this.fetchData()
+    this.fetchData();
   },
   methods: {
     onModelChanged() {
       if (this.model.roles) {
         this.model.roles = this.model.roles.map(item => {
-          return item.id
-        })
+          return item.id;
+        });
       }
     }
   }
-}
+};
 </script>
