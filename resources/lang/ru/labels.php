@@ -81,6 +81,7 @@ return [
             'description' => 'Описание',
             'image' => 'Изображение для кампании',
             'uploadImage' => 'Загрузить изображение',
+            'proportionsImage' => '(оптимальное соотношение сторон 2х1)',
             'allowedImageTypes' => 'Допустимый формат: png gif jpg jpeg.',
             'paymentSystem' => 'Платежная система',
             'startAt' => 'Дата начала',

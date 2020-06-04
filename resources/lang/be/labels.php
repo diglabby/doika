@@ -86,6 +86,7 @@ return [
             'description' => 'Апісанне',
             'image' => 'Выява кампаніі',
             'uploadImage' => 'Загрузіць малюнак',
+            'proportionsImage' => '(аптымальныя суадносіны бакоў 2х1)',
             'allowedImageTypes' => 'Магчымы фармат: png gif jpg jpeg.',
             'paymentSystem' => 'Плацёжная сістэма',
             'startAt' => 'Дата пачатку',
