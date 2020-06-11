@@ -28,11 +28,12 @@
             :placeholder="$t('labels.widget.email')"
           >
           <input
-            type="phone"
+            type="tel"
             id="phone"
             class="donate__email module-donate__text-input"
             v-model="model.phone"
             :placeholder="$t('labels.widget.phone')"
+            @keypress="onlyNumbers"
           >
         </div>
 
@@ -78,6 +79,7 @@
 </style>
 
 <script>
+
 import axios from 'axios';
 
 export default {
@@ -92,6 +94,7 @@ export default {
         email: '',
         name: '',
         phone: '',
+        maxQuantSymbols: 13,
         amount: sessionStorage.getItem('amount'),
         currency_code: 'BYN'
       }
@@ -105,6 +108,17 @@ export default {
       sessionStorage.setItem('email', this.model.email);
       sessionStorage.setItem('name', this.model.name);
       sessionStorage.setItem('phone', this.model.phone);
+    },
+    onlyNumbers: function(evt) {
+      let keyCode = (evt.keyCode ? evt.keyCode : evt.which);
+
+      if ((keyCode < 48 && keyCode !== 43) || (keyCode > 57)) {
+        evt.preventDefault();
+      }
+
+      if (this.model.phone.length >= this.maxQuantSymbols) {
+        evt.preventDefault();
+      }
     }
   }
 };
