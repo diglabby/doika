@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 
 export default {
   props: ['id'],
@@ -6,94 +6,87 @@ export default {
     return {
       validation: {},
       isLoading: false
-    }
+    };
   },
   computed: {
     isNew() {
-      return this.id === undefined
+      return this.id === undefined;
     }
   },
   methods: {
     async fetchData() {
-      this.isLoading = true
+      this.isLoading = true;
 
       if (!this.isNew) {
-        this.modelName = 'id'
+        this.modelName = 'id';
         let { data } = await axios.get(
           this.$app.route(`dashboard.${this.resourceRoute}.show`, {
             [this.modelName]: this.id
           })
-        )
+        );
 
         Object.keys(data.data).forEach(key => {
           if (key in this.model) {
-
-            this.model[key] = data.data[key]
+            this.model[key] = data.data[key];
           }
-        })
+        });
 
-        this.onModelChanged()
-
+        this.onModelChanged();
       }
-
-
     },
     onModelChanged() {},
     feedback(name) {
       if (this.state(name)) {
-        return this.validation.errors[name][0]
+        return this.validation.errors[name][0];
       }
     },
     state(name) {
       return this.validation.errors !== undefined &&
         this.validation.errors.hasOwnProperty(name)
         ? 'invalid'
-        : null
+        : null;
     },
     async onSubmit() {
-
-      this.isLoading = true
-      let router = this.$router
+      this.isLoading = true;
+      let router = this.$router;
       let action = this.isNew
         ? this.$app.route(`dashboard.${this.resourceRoute}.store`)
         : this.$app.route(`dashboard.${this.resourceRoute}.update`, {
             [this.modelName]: this.id
-          })
+          });
 
-      let formData = this.$app.objectToFormData(this.model)
+      let formData = this.$app.objectToFormData(this.model);
 
       if (!this.isNew) {
-        formData.append('_method', 'PUT')
-
+        formData.append('_method', 'PUT');
       }
 
       try {
-        let { data } = await axios.post(action, formData)
-        this.isLoading = false
+        let { data } = await axios.post(action, formData);
+        this.isLoading = false;
 
-        window.swal("Поспех", "Новыя дадзеныя запісаны", "success", {
+        window.swal('Поспех', 'Новыя дадзеныя запісаны', 'success', {
           timer: 2000,
-          buttons: false,
-        })
+          buttons: false
+        });
 
         //this.$app.noty[data.status](data.message)
         if (this.listPath) {
-          router.push(this.listPath)
+          router.push(this.listPath);
         }
-
       } catch (e) {
-        this.isLoading = false
+        this.isLoading = false;
 
         if (e.response.status === 422) {
-          this.validation = e.response.data
-          return
+          this.validation = e.response.data;
+          return;
         }
 
-        this.$app.error(e)
+        this.$app.error(e);
       }
     }
   },
   created() {
-    this.fetchData()
+    this.fetchData();
   }
-}
+};

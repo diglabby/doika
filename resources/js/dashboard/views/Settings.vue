@@ -14,7 +14,6 @@
               </b-card-header>
               <b-collapse id="payment" visible role="tabpanel">
                 <b-card-body>
-
                   <b-row>
                     <b-col md>
                       <b-form-group
@@ -28,7 +27,11 @@
                           id="title"
                           name="title"
                           required
-                          :placeholder="$t('labels.admin.settings.payments.placeholder.idMarket')"
+                          :placeholder="
+                            $t(
+                              'labels.admin.settings.payments.placeholder.idMarket'
+                            )
+                          "
                           v-model="model.title"
                           :state="state('title')"
                         ></b-form-input>
@@ -47,7 +50,11 @@
                           id="title"
                           name="title"
                           required
-                          :placeholder="$t('labels.admin.settings.payments.placeholder.keyMarket')"
+                          :placeholder="
+                            $t(
+                              'labels.admin.settings.payments.placeholder.keyMarket'
+                            )
+                          "
                           v-model="model.title"
                           :state="state('title')"
                         ></b-form-input>
@@ -68,7 +75,11 @@
                           id="title"
                           name="title"
                           required
-                          :placeholder="$t('labels.admin.settings.payments.placeholder.minPayment')"
+                          :placeholder="
+                            $t(
+                              'labels.admin.settings.payments.placeholder.minPayment'
+                            )
+                          "
                           v-model="model.title"
                           :state="state('title')"
                         ></b-form-input>
@@ -87,7 +98,11 @@
                           id="title"
                           name="title"
                           required
-                          :placeholder="$t('labels.admin.settings.payments.placeholder.maxPayment')"
+                          :placeholder="
+                            $t(
+                              'labels.admin.settings.payments.placeholder.maxPayment'
+                            )
+                          "
                           v-model="model.title"
                           :state="state('title')"
                         ></b-form-input>
@@ -100,7 +115,9 @@
                         <c-switch
                           name="test"
                           v-model="model.test"
-                          :description="$t('labels.admin.settings.payments.test')"
+                          :description="
+                            $t('labels.admin.settings.payments.test')
+                          "
                         ></c-switch>
                       </b-col>
                     </b-row>
@@ -111,10 +128,7 @@
                     horizontal
                     :label-cols="2"
                   >
-                    <vue-editor
-                      name="body"
-                      v-model="model.body"
-                    ></vue-editor>
+                    <vue-editor name="body" v-model="model.body"></vue-editor>
                   </b-form-group>
                 </b-card-body>
               </b-collapse>
@@ -128,8 +142,7 @@
                 </h5>
               </b-card-header>
               <b-collapse id="layout" role="tabpanel">
-                <b-card-body>
-                </b-card-body>
+                <b-card-body> </b-card-body>
               </b-collapse>
             </b-card>
             <b-card no-body class="mb-0">
@@ -145,7 +158,9 @@
                   <b-row>
                     <b-col md>
                       <b-form-group
-                        :label="$t('labels.admin.settings.notifications.address')"
+                        :label="
+                          $t('labels.admin.settings.notifications.address')
+                        "
                         label-for="title"
                         horizontal
                         :label-cols="4"
@@ -155,7 +170,11 @@
                           id="title"
                           name="title"
                           required
-                          :placeholder="$t('labels.admin.settings.notifications.placeholder.address')"
+                          :placeholder="
+                            $t(
+                              'labels.admin.settings.notifications.placeholder.address'
+                            )
+                          "
                           v-model="model.title"
                           :state="state('title')"
                         ></b-form-input>
@@ -173,7 +192,11 @@
                           id="title"
                           name="title"
                           required
-                          :placeholder="$t('labels.admin.settings.notifications.placeholder.port')"
+                          :placeholder="
+                            $t(
+                              'labels.admin.settings.notifications.placeholder.port'
+                            )
+                          "
                           v-model="model.title"
                           :state="state('title')"
                         ></b-form-input>
@@ -193,7 +216,11 @@
                           id="title"
                           name="title"
                           required
-                          :placeholder="$t('labels.admin.settings.notifications.placeholder.user')"
+                          :placeholder="
+                            $t(
+                              'labels.admin.settings.notifications.placeholder.user'
+                            )
+                          "
                           v-model="model.title"
                           :state="state('title')"
                         ></b-form-input>
@@ -201,7 +228,9 @@
                     </b-col>
                     <b-col md>
                       <b-form-group
-                        :label="$t('labels.admin.settings.notifications.password')"
+                        :label="
+                          $t('labels.admin.settings.notifications.password')
+                        "
                         label-for="title"
                         horizontal
                         :label-cols="4"
@@ -211,7 +240,11 @@
                           id="title"
                           name="title"
                           required
-                          :placeholder="$t('labels.admin.settings.notifications.placeholder.password')"
+                          :placeholder="
+                            $t(
+                              'labels.admin.settings.notifications.placeholder.password'
+                            )
+                          "
                           v-model="model.title"
                           :state="state('title')"
                         ></b-form-input>
@@ -231,7 +264,11 @@
                           id="title"
                           name="title"
                           required
-                          :placeholder="$t('labels.admin.settings.notifications.placeholder.email')"
+                          :placeholder="
+                            $t(
+                              'labels.admin.settings.notifications.placeholder.email'
+                            )
+                          "
                           v-model="model.title"
                           :state="state('title')"
                         ></b-form-input>
@@ -239,37 +276,47 @@
                     </b-col>
                   </b-row>
                   <b-form-group
-                    :label="$t('labels.admin.settings.notifications.reccurentTemplate')"
+                    :label="
+                      $t(
+                        'labels.admin.settings.notifications.reccurentTemplate'
+                      )
+                    "
                     label-for="body"
                     horizontal
                     :label-cols="2"
                   >
-                    <vue-editor
-                      name="body"
-                      v-model="model.body"
-                    ></vue-editor>
+                    <vue-editor name="body" v-model="model.body"></vue-editor>
                   </b-form-group>
                   <b-form-group
-                    :label="$t('labels.admin.settings.notifications.singleTemplate')"
+                    :label="
+                      $t('labels.admin.settings.notifications.singleTemplate')
+                    "
                     label-for="body"
                     horizontal
                     :label-cols="2"
                   >
-                    <vue-editor
-                      name="body"
-                      v-model="model.body"
-                    ></vue-editor>
+                    <vue-editor name="body" v-model="model.body"></vue-editor>
                   </b-form-group>
                 </b-card-body>
               </b-collapse>
             </b-card>
             <b-row slot="footer">
               <b-col md>
-              </b-col>
+</b-col>
               <b-col md>
                 <input name="status" type="hidden" value="publish">
 
-                <b-button right split class="float-right" variant="success" @click="model.status = 'publish'; onSubmit()" :disabled="pending">
+                <b-button
+                  right
+                  split
+                  class="float-right"
+                  variant="success"
+                  @click="
+                    model.status = 'publish';
+                    onSubmit();
+                  "
+                  :disabled="pending"
+                >
                   {{ $t('buttons.admin.common.apply') }}
                 </b-button>
               </b-col>
@@ -282,8 +329,8 @@
 </template>
 
 <script>
-import axios from 'axios'
-import form from '../mixins/form'
+import axios from 'axios';
+import form from '../mixins/form';
 
 export default {
   name: 'Settings',
@@ -325,7 +372,7 @@ export default {
         },
         has_featured_image: false
       }
-    }
+    };
   },
   methods: {
     async getTags(search) {
@@ -333,15 +380,15 @@ export default {
         params: {
           q: search
         }
-      })
+      });
 
-      this.tags = data.items
+      this.tags = data.items;
     },
     deleteFeaturedImage() {
-      this.$refs.featuredImageInput.reset()
-      this.model.thumbnail_image_path = null
-      this.model.has_featured_image = false
+      this.$refs.featuredImageInput.reset();
+      this.model.thumbnail_image_path = null;
+      this.model.has_featured_image = false;
     }
   }
-}
+};
 </script>

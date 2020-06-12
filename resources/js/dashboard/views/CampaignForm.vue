@@ -7,10 +7,13 @@
             <h3>
               <b-row>
                 <b-col lg="5">
-                  <h3
-                    class="card-title"
-                    slot="header"
-                  >{{ isNew ? $t('labels.admin.campaigns.create.title') : $t('labels.admin.campaigns.edit.title') }}</h3>
+                  <h3 class="card-title" slot="header">
+                    {{
+                      isNew
+                        ? $t('labels.admin.campaigns.create.title')
+                        : $t('labels.admin.campaigns.edit.title')
+                    }}
+                  </h3>
                 </b-col>
                 <b-col offset-lg="2" lg="5">
                   <b-form-input
@@ -18,7 +21,9 @@
                     name="shortcode"
                     v-if="!isNew"
                     required
-                    :placeholder="$t('labels.admin.campaigns.placeholder.shortcode')"
+                    :placeholder="
+                      $t('labels.admin.campaigns.placeholder.shortcode')
+                    "
                     v-model="shortcode"
                   ></b-form-input>
                 </b-col>
@@ -46,7 +51,9 @@
                     :state="nameState"
                     trim
                   ></b-form-input>
-                  <b-form-invalid-feedback id="title-feedback">Enter at least 3 letters</b-form-invalid-feedback>
+                  <b-form-invalid-feedback id="title-feedback">
+                    Enter at least 3 letters
+                  </b-form-invalid-feedback>
                 </b-form-group>
               </b-col>
             </b-row>
@@ -57,9 +64,13 @@
               </template>
               <vue-editor
                 class="description-shadow"
-                :class="{'description-shadow_is-valid': this.model.description.length,
-                        'description-shadow_is-valid-backlight': editorFocus && this.model.description.length,
-                        'description-shadow_is-invalid-backlight': editorFocus && !this.model.description.length}"
+                :class="{
+                  'description-shadow_is-valid': this.model.description.length,
+                  'description-shadow_is-valid-backlight':
+                    editorFocus && this.model.description.length,
+                  'description-shadow_is-invalid-backlight':
+                    editorFocus && !this.model.description.length
+                }"
                 @blur="editorFocus = false"
                 @focus="editorFocus = true"
                 name="description"
@@ -90,7 +101,11 @@
                         id="picture_url"
                         name="picture_url"
                         ref="featuredImageInput"
-                        :placeholder="pictureName ? pictureName: $t('labels.admin.campaigns.placeholder.image')"
+                        :placeholder="
+                          pictureName
+                            ? pictureName
+                            : $t('labels.admin.campaigns.placeholder.image')
+                        "
                         :state="pictureState"
                         v-b-tooltip.hover
                         :title="$t('labels.admin.campaigns.allowedImageTypes')"
@@ -116,10 +131,17 @@
             <b-card no-body class="mb-0">
               <b-card-header header-tag="header" role="tab">
                 <h5 class="card-title">
-                  <a href="#" v-b-toggle.collapseOne>{{ $t('labels.admin.campaigns.options') }}</a>
+                  <a href="#" v-b-toggle.collapseOne>{{
+                    $t('labels.admin.campaigns.options')
+                  }}</a>
                 </h5>
               </b-card-header>
-              <b-collapse id="collapseOne" visible accordion="campaign-accordion" role="tabpanel">
+              <b-collapse
+                id="collapseOne"
+                visible
+                accordion="campaign-accordion"
+                role="tabpanel"
+              >
                 <b-card-body>
                   <b-row class="date-field">
                     <b-form-group
@@ -153,7 +175,11 @@
                     </b-form-group>
                   </b-row>
                   <b-row class="date-field">
-                    <b-form-group label-for="finishAt" horizontal :label-cols="4">
+                    <b-form-group
+                      label-for="finishAt"
+                      horizontal
+                      :label-cols="4"
+                    >
                       <template v-slot:label>
                         {{ $t('labels.admin.campaigns.finishAt') }}
                         <span class="text-danger">*</span>
@@ -201,8 +227,7 @@
                           :state="amountState"
                         ></b-form-input>
                         <b-form-invalid-feedback id="amount-feedback">
-                          Please
-                          enter a number greater than zero
+                          Please enter a number greater than zero
                         </b-form-invalid-feedback>
                       </b-form-group>
                     </b-col>
@@ -238,7 +263,9 @@
                         <c-switch
                           name="progressBar"
                           v-model="model.visual_settings.progressBar"
-                          :description="$t('labels.admin.campaigns.progressBar')"
+                          :description="
+                            $t('labels.admin.campaigns.progressBar')
+                          "
                         ></c-switch>
                       </b-col>
                     </b-row>
@@ -264,11 +291,9 @@
 
             <b-row slot="footer">
               <b-col md>
-                <b-button
-                  to="/campaigns"
-                  exact
-                  variant="secondary"
-                >{{ $t('buttons.admin.common.back') }}</b-button>
+                <b-button to="/campaigns" exact variant="secondary">
+                  {{ $t('buttons.admin.common.back') }}
+                </b-button>
               </b-col>
               <b-col md>
                 <input name="status" type="hidden" value="publish" />
@@ -280,7 +305,9 @@
                   variant="success"
                   @click="onSubmitClick"
                   :disabled="buttonState"
-                >{{ $t('buttons.admin.common.save') }}</b-button>
+                >
+                  {{ $t('buttons.admin.common.save') }}
+                </b-button>
               </b-col>
             </b-row>
           </b-card>
@@ -291,15 +318,15 @@
 </template>
 
 <script>
-import axios from 'axios'
-import form from '../mixins/form'
-import { VueEditor } from 'vue2-editor'
+import axios from 'axios';
+import form from '../mixins/form';
+import { VueEditor } from 'vue2-editor';
 export default {
   name: 'CampaignForm',
-  mixins: [form],
   components: {
     VueEditor
   },
+  mixins: [form],
   data() {
     return {
       config: {
@@ -308,7 +335,7 @@ export default {
         altFormat: 'd-m-Y',
         dateFormat: 'Y-m-d',
         onChange: function(selectedDates, dateStr, instance) {
-          instance.close()
+          instance.close();
         }
       },
       editorFocus: false,
@@ -350,14 +377,14 @@ export default {
         "<iframe width='750' height='550' frameborder='0' src='/doika/doika/widget/campaigns/" +
         this.id +
         "'></iframe>"
-      )
+      );
     },
     nameState() {
       return !this.model.name.length
         ? null
         : this.model.name.length > 2 && this.model.name.length < 255
         ? true
-        : false
+        : false;
     },
     pictureState() {
       //      return (this.model.picture_url != "") ? true : false
@@ -369,28 +396,28 @@ export default {
         this.startAtState &&
         this.finishAtState &&
         this.descriptionState
-      )
+      );
     },
     descriptionState() {
-      return this.model.description ? true : false
+      return this.model.description ? true : false;
     },
     startAtState() {
-      return this.model.start_at != null
+      return this.model.start_at != null;
     },
     finishAtState() {
-      return this.model.finish_at != null
+      return this.model.finish_at != null;
     },
     amountState() {
       return !this.model.target_amount
         ? null
         : this.model.target_amount > 0
         ? true
-        : false
+        : false;
     },
     pictureName: function() {
       return this.model.picture_url
         ? this.model.picture_url.replace(/^.*[\\\/]/, '')
-        : ''
+        : '';
     }
   },
   mounted() {
@@ -429,35 +456,35 @@ export default {
             ]
           }
         }
-      )
-      this.model.visual_settings.colors = data.settings
+      );
+      this.model.visual_settings.colors = data.settings;
     },
     deleteFeaturedImage() {
-      this.$refs.featuredImageInput.reset()
-      this.image.thumbnail_image_path = null
-      this.image.has_picture_url = false
-      this.model.picture_url = ''
+      this.$refs.featuredImageInput.reset();
+      this.image.thumbnail_image_path = null;
+      this.image.has_picture_url = false;
+      this.model.picture_url = '';
       //this.pictureName = []
     },
     previewImage: async function(event) {
       // Reference to the DOM input element
-      var input = event.target
+      var input = event.target;
       // Ensure that you have a file before attempting to read it
       if (input.files && input.files[0]) {
         // create a new FileReader to read this image and convert to base64 format
-        var reader = new FileReader()
+        var reader = new FileReader();
         // Define a callback function to run, when FileReader finishes its job
         reader.onload = e => {
           // Note: arrow function used here, so that "this.imageData" refers to the imageData of Vue component
           // Read image as base64 and set to imageData
-          this.images.imageData = e.target.result
+          this.images.imageData = e.target.result;
 
-          this.imageData = e.target.result
-        }
+          this.imageData = e.target.result;
+        };
         // Start the reader job - read file as a data url (base64 format)
-        reader.readAsDataURL(input.files[0])
+        reader.readAsDataURL(input.files[0]);
 
-        this.images.image = input.files[0]
+        this.images.image = input.files[0];
       }
       let formData = new FormData()
       formData.append('image', input.files[0], input.files[0].name)
@@ -466,8 +493,8 @@ export default {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
-      })
-      this.model.picture_url = data
+      });
+      this.model.picture_url = data;
     }
   },
   beforeRouteLeave(from, to, next) {
@@ -498,7 +525,7 @@ export default {
       next()
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

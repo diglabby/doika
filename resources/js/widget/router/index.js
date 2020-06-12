@@ -1,18 +1,18 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from 'vue';
+import Router from 'vue-router';
 
 // Containers
-import Full from '../containers/Full'
+import Full from '../containers/Full';
 
 // Views
 
-import MainWindow from '../views/MainWindow'
-import DonateWindow from '../views/DonateWindow'
-import RecurrentWindow from '../views/RecurrentWindow'
-import RecurrentDonateWindow from '../views/RecurrentDonateWindow'
-import StatusWindow from '../views/StatusWindow'
+import MainWindow from '../views/MainWindow';
+import DonateWindow from '../views/DonateWindow';
+import RecurrentWindow from '../views/RecurrentWindow';
+import RecurrentDonateWindow from '../views/RecurrentDonateWindow';
+import StatusWindow from '../views/StatusWindow';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export function createRouter(base, i18n) {
   return new Router({
@@ -41,7 +41,7 @@ export function createRouter(base, i18n) {
             path: ':id/donate',
             name: 'donate',
             component: DonateWindow,
-            props:true,
+            props: true,
             meta: {
               label: i18n.t('labels.admin.campaigns.title')
             }
@@ -58,7 +58,7 @@ export function createRouter(base, i18n) {
             path: ':id/recurrent',
             name: 'recurrent',
             component: RecurrentWindow,
-            props:true,
+            props: true,
             meta: {
               label: i18n.t('labels.admin.campaigns.title')
             }
@@ -67,7 +67,7 @@ export function createRouter(base, i18n) {
             path: ':id/recurrent/donate',
             name: 'recurrentDonate',
             component: RecurrentDonateWindow,
-            props:true,
+            props: true,
             meta: {
               label: i18n.t('labels.admin.campaigns.title')
             }
@@ -81,16 +81,16 @@ export function createRouter(base, i18n) {
             }
           },
           {
-              path: ':id/donation-result/:status',
-              name: 'status',
-              component: StatusWindow,
-              props: true,
-              meta: {
-                  label: i18n.t('labels.admin.campaigns.title')
-              }
+            path: ':id/donation-result/:status',
+            name: 'status',
+            component: StatusWindow,
+            props: true,
+            meta: {
+              label: i18n.t('labels.admin.campaigns.title')
+            }
           }
-      ]
+        ]
       }
     ]
-  })
+  });
 }
