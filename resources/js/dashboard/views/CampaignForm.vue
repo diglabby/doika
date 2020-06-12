@@ -479,25 +479,16 @@ export default {
         this.model.target_amount) &&
       this.hideModalOnSubmit === false
     ) {
-      if (window.confirm('Save changes?')) {
-        localStorage.name = this.model.name
-        localStorage.description = this.model.description
-        localStorage.start_at = this.model.start_at
-        localStorage.finish_at = this.model.finish_at
-        if (this.model.target_amount != 0) {
-          localStorage.target_amount = this.model.target_amount
-        } else {
-          localStorage.removeItem('target_amount')
-        }
-        next()
+      localStorage.name = this.model.name
+      localStorage.description = this.model.description
+      localStorage.start_at = this.model.start_at
+      localStorage.finish_at = this.model.finish_at
+      if (this.model.target_amount != 0) {
+        localStorage.target_amount = this.model.target_amount
       } else {
-        localStorage.removeItem('name')
-        localStorage.removeItem('description')
-        localStorage.removeItem('start_at')
-        localStorage.removeItem('finish_at')
         localStorage.removeItem('target_amount')
-        next()
       }
+      next()
     } else {
       localStorage.removeItem('name')
       localStorage.removeItem('description')
