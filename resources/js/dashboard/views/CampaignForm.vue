@@ -303,7 +303,7 @@
                   split
                   class="float-right"
                   variant="success"
-                  @click="onSubmit()"
+                  @click="onSubmitClick"
                   :disabled="buttonState"
                 >
                   {{ $t('buttons.admin.common.save') }}
@@ -360,7 +360,6 @@ export default {
           colors: null
         }
       },
-
       image: {
         thumbnail_image_path: null,
         has_picture_url: false
@@ -368,10 +367,10 @@ export default {
       images: {
         image: null,
         imageData: null
-      }
-    };
+      },
+      hideModalOnSubmit: false
+    }
   },
-
   computed: {
     shortcode() {
       return (
@@ -421,8 +420,28 @@ export default {
         : '';
     }
   },
-
+  mounted() {
+    if (localStorage.name) {
+      this.model.name = localStorage.name
+    }
+    if (localStorage.description) {
+      this.model.description = localStorage.description
+    }
+    if (localStorage.start_at) {
+      this.model.start_at = localStorage.start_at
+    }
+    if (localStorage.finish_at) {
+      this.model.finish_at = localStorage.finish_at
+    }
+    if (localStorage.target_amount && localStorage.target_amount !== 0) {
+      this.model.target_amount = localStorage.target_amount
+    }
+  },
   methods: {
+    onSubmitClick() {
+      this.hideModalOnSubmit = true
+      this.onSubmit()
+    },
     async getColors() {
       let { data } = await axios.get(
         this.$app.route('dashboard.settings.index'),
@@ -467,17 +486,43 @@ export default {
 
         this.images.image = input.files[0];
       }
-
-      let formData = new FormData();
-      formData.append('image', input.files[0], input.files[0].name);
-
-      let action = this.$app.route('dashboard.images.store');
+      let formData = new FormData()
+      formData.append('image', input.files[0], input.files[0].name)
+      let action = this.$app.route('dashboard.images.store')
       let { data } = await axios.post(action, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       });
       this.model.picture_url = data;
+    }
+  },
+  beforeRouteLeave(from, to, next) {
+    if (
+      (this.model.name ||
+        this.model.description ||
+        this.model.start_at ||
+        this.model.finish_at ||
+        this.model.target_amount) &&
+      this.hideModalOnSubmit === false
+    ) {
+      localStorage.name = this.model.name
+      localStorage.description = this.model.description
+      localStorage.start_at = this.model.start_at
+      localStorage.finish_at = this.model.finish_at
+      if (this.model.target_amount != 0) {
+        localStorage.target_amount = this.model.target_amount
+      } else {
+        localStorage.removeItem('target_amount')
+      }
+      next()
+    } else {
+      localStorage.removeItem('name')
+      localStorage.removeItem('description')
+      localStorage.removeItem('start_at')
+      localStorage.removeItem('finish_at')
+      localStorage.removeItem('target_amount')
+      next()
     }
   }
 };
