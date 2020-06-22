@@ -9,13 +9,18 @@
       <template v-if="editorName !== ''">
         <template v-if="editorSiteUrl !== ''">
           {{ $t('labels.admin.common.footer.with') }}
-          <i class="fe fe-heart"></i> {{ $t('labels.admin.common.footer.by') }}
+          <FontAwesomeIcon
+            class="heart-icon"
+            :icon="heartIcon"
+          ></FontAwesomeIcon>
+          {{ $t('labels.admin.common.footer.by') }}
           <a :href="editorSiteUrl" target="_blank">
             <strong>{{ editorName }}</strong>
           </a>
         </template>
       </template>
-      {{ $t('labels.admin.common.footer.with') }} <i class="fe fe-heart"></i>
+      {{ $t('labels.admin.common.footer.with') }}
+      <FontAwesomeIcon class="heart-icon" :icon="heartIcon"></FontAwesomeIcon>
       {{ $t('labels.admin.common.footer.by') }}
       <a href="https://falanster.by/" target="_blank"
         ><strong>Falanster</strong></a
@@ -24,8 +29,11 @@
   </Footer>
 </template>
 <script>
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 export default {
   name: 'AppFooter',
+  components: { FontAwesomeIcon },
   props: {
     name: {
       type: String,
@@ -43,6 +51,16 @@ export default {
       type: String,
       required: true
     }
+  },
+  computed: {
+    heartIcon() {
+      return faHeart;
+    }
   }
 };
 </script>
+<style scoped>
+.heart-icon {
+  color: #ff0000;
+}
+</style>
