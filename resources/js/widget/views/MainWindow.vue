@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <div>
     <div
       v-if="isBusy"
@@ -43,6 +43,7 @@
               type="number"
               :style="{ background: buttonBackground, color: fontColor }"
               @click="provide(button)"
+              @keypress="getNotMinus"
               class="module-donate__text-input"
               :placeholder="$t('labels.widget.input')"
               v-model="donate_amount"
@@ -265,6 +266,13 @@ export default {
     },
     setAmount: function() {
       sessionStorage.setItem('amount', this.donate_amount * 100);
+    },
+    getNotMinus: function(evt) {
+      let keyCode = (evt.keyCode ? evt.keyCode : evt.which);
+
+      if (keyCode < 48 || keyCode > 57) {
+        evt.preventDefault();
+      }
     }
   }
 };
