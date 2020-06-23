@@ -81,6 +81,7 @@ return [
             'description' => 'Description',
             'image' => 'Title image',
             'uploadImage' => 'Upload image',
+            'proportionsImage' => '(optimal aspect ratio 2х1)',
             'allowedImageTypes' => 'Allowed types: png gif jpg jpeg.',
             'paymentSystem' => 'Payment system',
             'startAt' => 'Start at',

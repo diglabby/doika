@@ -94,7 +94,11 @@
                 />
 
                 <div class="media-body">
-                  <h6>{{ $t('buttons.admin.campaigns.uploadImage') }}</h6>
+                  <h6>{{ $t('labels.admin.campaigns.uploadImage') }}
+                    <span>
+                      {{ $t('labels.admin.campaigns.proportionsImage') }}
+                    </span>
+                  </h6>
                   <b-row>
                     <b-col lg="9">
                       <b-form-file
@@ -529,6 +533,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.media-body span {
+  opacity: 0.5;
+}
+
 .form-control.is-invalid {
   background-image: none;
 }
