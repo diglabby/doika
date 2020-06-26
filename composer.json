@@ -31,7 +31,7 @@
         "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-ide-helper": "^2.5",
         "beyondcode/laravel-dump-server": "^1.2",
-        "diglabby/laravel-find-missing-translations":  "*",
+        "diglabby/laravel-find-missing-translations":  "^1.0",
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
         "laravel/dusk": "^5.1",
