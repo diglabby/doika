@@ -22,7 +22,7 @@
                   <div class="row">
                     <div class="col-md-6 col-md-offset-6">
                       <div class="row">
-                        <div class="col-md-10 col-md-offset-2">
+                        <div class="col-10 col-md-offset-2">
                           <div class="form-group">
                             <div class="col-sm-8">
                               <colorpicker
@@ -35,7 +35,7 @@
                         </div>
                       </div>
                       <div class="row">
-                        <div class="col-md-10 col-md-offset-2">
+                        <div class="col-10 col-md-offset-2">
                           <div class="form-group">
                             <div class="col-sm-8">
                               <colorpicker
@@ -50,7 +50,7 @@
                         </div>
                       </div>
                       <div class="row">
-                        <div class="col-md-10 col-md-offset-2">
+                        <div class="col-10 col-md-offset-2">
                           <div class="form-group">
                             <div class="col-sm-8">
                               <colorpicker
@@ -63,7 +63,7 @@
                         </div>
                       </div>
                       <div class="row">
-                        <div class="col-md-10 col-md-offset-2">
+                        <div class="col-10 col-md-offset-2">
                           <div class="form-group">
                             <div class="col-sm-8">
                               <colorpicker

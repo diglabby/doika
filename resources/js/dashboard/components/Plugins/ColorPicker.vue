@@ -1,31 +1,35 @@
 <template>
-  <b-input-group :prepend="section_name" class="mt-3">
-    <b-form-input
-      v-model="colorValue"
-      @focus="showPicker()"
-      @input="updateFromInput"
-    ></b-form-input>
-    <b-input-group-append>
-      <b-button class="color-picker__button" variant="primary">
-        <span
-          class="current-color"
-          :style="'background-color: ' + colorValue"
-          @click="togglePicker()"
-        ></span>
-      </b-button>
-      <chrome-picker
-        :value="colors"
-        @input="updateFromPicker"
-        v-if="displayPicker"
-      ></chrome-picker>
-    </b-input-group-append>
+  <b-input-group class="mt-3">
+    <span class="color-picker__desc">{{ section_name }}</span>
+    <div class="color-picker__input-wrapper">
+      <b-form-input
+        class="color-picker__input"
+        v-model="colorValue"
+        @focus="showPicker()"
+        @input="updateFromInput"
+      ></b-form-input>
+      <b-input-group-append>
+        <b-button class="color-picker__button" variant="primary">
+          <span
+            class="current-color"
+            :style="'background-color: ' + colorValue"
+            @click="togglePicker()"
+          ></span>
+        </b-button>
+        <chrome-picker
+          :value="colors"
+          @input="updateFromPicker"
+          v-if="displayPicker"
+        ></chrome-picker>
+      </b-input-group-append>
+    </div>
   </b-input-group>
 </template>
 <style>
 .vc-chrome {
   position: absolute;
-  top: 35px;
-  right: 0;
+  top: 60px;
+  right: -38px;
   z-index: 9;
 }
 .current-color {
@@ -36,9 +40,18 @@
   cursor: pointer;
   border-radius: 3px;
 }
+.color-picker__input-wrapper {
+  display: flex;
+}
+.color-picker__input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
 .color-picker__button {
   padding: 0;
   border: none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 </style>
 <script>
@@ -48,7 +61,7 @@ export default {
   components: {
     'chrome-picker': Chrome
   },
-  props: ['color', 'sectionName'],
+  props: ['color', 'section_name'],
   data() {
     return {
       colors: {
