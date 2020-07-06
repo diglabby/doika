@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Diglabby\Doika\Http\Controllers\Controller;
 use Diglabby\Doika\Services\PaymentGateways\BePaidPaymentGateway;
 
-final class CheckPaymentStatusController extends Controller
+final class BePaidCheckPaymentStatusController extends Controller
 {
     public function checkPaymentStatus(BePaidPaymentGateway $gateway, Request $request)
     {
@@ -17,8 +17,10 @@ final class CheckPaymentStatusController extends Controller
         }
         $arrResponse = $gateway->checkPaymentStatus($token);
 
-        echo $arrResponse['json_response'];
-        echo '<br>// Status line: <br>';
-        echo $arrResponse['status'];
+        $output = $arrResponse['json_response'];
+        $output .= '<br>// Status line: <br>';
+        $output .= $arrResponse['status'];
+
+        return response($output);
     }
 }
