@@ -95,7 +95,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
         /** @var array $paymentData */
         $paymentData = json_decode($response->getBody()->getContents(), true);
 
-        return $paymentData['checkout']['redirect_url'];
+        return json_encode($paymentData['checkout']);
     }
 
     /**
