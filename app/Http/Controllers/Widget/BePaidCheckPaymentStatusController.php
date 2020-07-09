@@ -17,7 +17,7 @@ final class BePaidCheckPaymentStatusController extends Controller
         }
         $arrResponse = $gateway->checkPaymentStatus($token);
 
-        $output = $arrResponse['json_response'];git 
+        $output = $arrResponse['json_response'];
 
         return response($output);
     }
