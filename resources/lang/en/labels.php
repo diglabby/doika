@@ -236,6 +236,7 @@ return [
     'widget' => [
         'paymentInfo' => 'Terms of Use',
         'input' => 'Other amount',
+        'invalidFeedback' => 'Please enter payment amount',
         'received' => 'received',
         'needed' => 'Needed',
     ],
