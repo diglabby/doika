@@ -6,6 +6,7 @@ import '../vendor/axios-config';
 
 import 'babel-polyfill';
 import BootstrapVue from 'bootstrap-vue';
+import Vuelidate from 'vuelidate';
 
 // Vendor plugins components
 import '../vendor/coreui/components';
@@ -30,6 +31,9 @@ Vue.use(VueMaterial);
 Vue.use(BootstrapVue);
 // vue-select
 Vue.component('v-select', vSelect);
+
+//vuelidate
+Vue.use(Vuelidate);
 
 // Custom components
 Vue.component('c-switch', Switch);
