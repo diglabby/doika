@@ -39,15 +39,21 @@
             >
               {{ button }} {{ model.currency }}
             </b-button>
-            <input
-              type="number"
-              :style="{ background: buttonBackground, color: fontColor }"
-              @click="provide(button)"
-              @keypress="getNotMinus"
-              class="module-donate__text-input"
-              :placeholder="$t('labels.widget.input')"
-              v-model="donate_amount"
-            >
+            <div class="form-group">
+              <input
+                type="number"
+                min="0"
+                v-model="donate_amount"
+                :style="{ background: buttonBackground, color: fontColor }"
+                @click="provide()"
+                @keypress="getNotMinus"
+                @input="$v.sum.$model = donate_amount"
+                class="module-donate__text-input form-control"
+                :class="{'is-invalid': $v.sum.$error}"
+                :placeholder="$t('labels.widget.input')"
+              >
+              <p class="invalid-feedback">{{ $t('labels.widget.invalidFeedback') }}</p>
+            </div>
             <b-button-group size="lg" class="btn-block">
               <b-button :style="{ background:  buttonBackground, color: settings.buttonPaymentFontColor }" class="module-donate__button-select payment" @click="recurrent = '/donate'" :class="{clicked: (recurrent=='/donate')}">{{ $t('buttons.widget.oneTime') }}</b-button>
               <b-button :style="{ background:  buttonBackground, color: settings.buttonPaymentFontColor }" class="module-donate__button-select payment" @click="recurrent = '/recurrent'" :class="{clicked: (recurrent=='/recurrent')}">{{ $t('buttons.widget.subscribe') }}</b-button>
@@ -57,7 +63,7 @@
               id="button__confirm"
               :to="'/campaigns/' + model.id + recurrent"
               @click="setAmount"
-              :disabled="agreement_status == 'false'"
+              :disabled="agreement_status == 'false' || this.$v.sum.$invalid"
               class="module-donate__button-select confirm"
             >
               {{ $t('buttons.widget.confirm') }}
@@ -130,12 +136,14 @@
 <script>
 import axios from 'axios';
 import form from '../mixins/form';
+import required from 'vuelidate/lib/validators/required';
 
 export default {
   name: 'MainWindow',
   mixins: [form],
   data() {
     return {
+      sum: '',
       showModal: false,
       campaign: [],
       buttons: [],
@@ -171,6 +179,11 @@ export default {
         buttonPaymentFontColor: '#ff80b2'
       }
     };
+  },
+  validations: {
+    sum: {
+      required
+    }
   },
   computed: {
     showProgress() {
@@ -260,6 +273,7 @@ export default {
       this.buttons = [];
       this.buttons.push(item);
       this.donate_amount = item;
+      this.$v.sum.$model = item;
     },
     contains: function(arr, item) {
       return arr.indexOf(item) != -1;
@@ -277,3 +291,14 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+  .is-invalid {
+    border: 1px solid #dc3545;
+    box-shadow: 0 0 0 2px rgba(246, 109, 155, 0.25);
+  }
+
+  .invalid-feedback {
+    font-size: 70%;
+  }
+</style>
