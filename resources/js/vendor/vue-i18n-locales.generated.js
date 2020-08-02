@@ -338,6 +338,7 @@ export default {
                 "phone": "Тэлефон",
                 "mask": "(+375)",
                 "input": "Iншая сума",
+                "invalidFeedback": "Калі ласка, увядзіце суму плацяжу",
                 "received": "Сабраная сума",
                 "needed": "Мэтавая сума",
                 "thanks": "Вялікі дзякуй за дапамогу!",
@@ -753,6 +754,7 @@ export default {
             "widget": {
                 "paymentInfo": "Terms of Use",
                 "input": "Other amount",
+                "invalidFeedback": "Please enter payment amount",
                 "received": "received",
                 "needed": "Needed"
             }
@@ -1193,6 +1195,7 @@ export default {
             "widget": {
                 "paymentInfo": "Terms of Use",
                 "input": "Другая сумма",
+                "invalidFeedback": "Пожалуйста, введите сумму платежа",
                 "received": "Собранная сумма",
                 "needed": "Целевая сумма"
             }

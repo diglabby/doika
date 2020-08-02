@@ -236,6 +236,7 @@ return [
     'widget' => [
         'paymentInfo' => 'Terms of Use',
         'input' => 'Другая сумма',
+        'invalidFeedback' => 'Пожалуйста, введите сумму платежа',
         'received' => 'Собранная сумма',
         'needed' => 'Целевая сумма',
     ],
