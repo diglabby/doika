@@ -1,4 +1,6 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers;
 
@@ -19,8 +21,9 @@ final class DeleteCanceledSubscription
             ->withTrashed()
             ->first();
 
-        if (! $subscription) {
+        if (!$subscription) {
             \Log::alert("Webhook {$request->json('event')} received for unknown subscription", $request->all());
+
             return;
         }
 

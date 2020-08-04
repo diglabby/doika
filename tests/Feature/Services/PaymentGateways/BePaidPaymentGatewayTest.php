@@ -13,7 +13,7 @@ use Tests\TestCase;
 class BePaidPaymentGatewayTest extends TestCase
 {
     /**
-     * Public test data, @see https://bepaid.by/module/shop-script
+     * Public test data, @see https://bepaid.by/module/shop-script.
      */
     private const MARKET_ID = 363;
     private const MARKET_KEY = '4f585d2709776e53d080f36872fd1b63b700733e7624dfcadd057296daa37df6';
@@ -26,9 +26,9 @@ class BePaidPaymentGatewayTest extends TestCase
         parent::setUp();
         $this->app->bind(BePaidApiContext::class, function () {
             return new BePaidApiContext([
-                'marketId' => self::MARKET_ID,
+                'marketId'  => self::MARKET_ID,
                 'marketKey' => self::MARKET_KEY,
-                'mode' => 'test',
+                'mode'      => 'test',
             ]);
         });
 
@@ -57,6 +57,7 @@ class BePaidPaymentGatewayTest extends TestCase
 
     /**
      * ⚠ This test works with real integration data only!
+     *
      * @test
      * @group real-api
      * @group network
@@ -72,6 +73,7 @@ class BePaidPaymentGatewayTest extends TestCase
 
     /**
      * ⚠ This test works with real integration data only!
+     *
      * @test
      * @group real-api
      * @group network

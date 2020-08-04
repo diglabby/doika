@@ -1,4 +1,6 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace Diglabby\Doika\Models;
 
@@ -9,23 +11,24 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
 /**
- * Diglabby\Doika\Models\Subscription
+ * Diglabby\Doika\Models\Subscription.
  *
- * @property int $id
- * @property int $donator_id
- * @property int $campaign_id
- * @property string $payment_gateway
- * @property string $payment_gateway_subscription_id Native subscription ID on PG
- * @property int $amount Amount in cents
- * @property string $currency
- * @property string $payment_interval An ISO 8601 repeating interval specification
- * @property string $unsubscribe_token
- * @property string|null $cancel_reason A reason of subscription cancellation
+ * @property int                             $id
+ * @property int                             $donator_id
+ * @property int                             $campaign_id
+ * @property string                          $payment_gateway
+ * @property string                          $payment_gateway_subscription_id Native subscription ID on PG
+ * @property int                             $amount                          Amount in cents
+ * @property string                          $currency
+ * @property string                          $payment_interval                An ISO 8601 repeating interval specification
+ * @property string                          $unsubscribe_token
+ * @property string|null                     $cancel_reason                   A reason of subscription cancellation
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \Diglabby\Doika\Models\Campaign $campaign
  * @property-read \Diglabby\Doika\Models\Donator $donator
+ *
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\Subscription newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\Subscription newQuery()
@@ -45,7 +48,7 @@ class Subscription extends Model
 
     /** @var array Default attribute values */
     protected $attributes = [
-        'currency' => 'BYN',
+        'currency'         => 'BYN',
         'payment_interval' => 'P1M', // means "Period: 1 Month"
     ];
 

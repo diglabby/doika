@@ -1,4 +1,6 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace Diglabby\Doika\Models;
 
@@ -7,17 +9,18 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * Diglabby\Doika\Models\Donator
+ * Diglabby\Doika\Models\Donator.
  *
- * @property int $id
- * @property string $email
- * @property string|null $name
- * @property int|null $phone Phone using international format (without leading "+" sign)
+ * @property int                             $id
+ * @property string                          $email
+ * @property string|null                     $name
+ * @property int|null                        $phone      Phone using international format (without leading "+" sign)
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string $locale
+ * @property string                          $locale
  * @property-read \Illuminate\Database\Eloquent\Collection|\Diglabby\Doika\Models\Subscription[] $subscriptions
  * @property-read \Illuminate\Database\Eloquent\Collection|\Diglabby\Doika\Models\Transaction[] $transactions
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\Donator newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\Donator newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\Donator query()
@@ -43,7 +46,7 @@ class Donator extends Model implements HasLocalePreference
         return $this->hasMany(Transaction::class);
     }
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function preferredLocale()
     {
         return $this->locale;

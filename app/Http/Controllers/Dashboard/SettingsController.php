@@ -1,4 +1,6 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace Diglabby\Doika\Http\Controllers\Dashboard;
 
@@ -33,6 +35,7 @@ final class SettingsController extends Controller
         $updatedSettings = collect($request->get('settings'))
             ->mapWithKeys(function (string $value, string $key) {
                 $this->settingStore->set($key, $value);
+
                 return [$key => $value];
             });
 

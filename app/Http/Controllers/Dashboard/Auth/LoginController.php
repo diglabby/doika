@@ -32,7 +32,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Show the application's login form
+     * Show the application's login form.
      */
     public function showLoginForm(): View
     {
@@ -41,7 +41,9 @@ class LoginController extends Controller
 
     /**
      * Get the post register / login redirect path.
+     *
      * @see \Illuminate\Foundation\Auth\RedirectsUsers::redirectPath
+     *
      * @return string
      */
     protected function redirectTo(): string

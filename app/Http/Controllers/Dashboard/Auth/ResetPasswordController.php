@@ -33,7 +33,9 @@ class ResetPasswordController extends Controller
 
     /**
      * Get the post register / login redirect path.
+     *
      * @see \Illuminate\Foundation\Auth\RedirectsUsers::redirectPath
+     *
      * @return string
      */
     protected function redirectTo(): string
@@ -42,7 +44,8 @@ class ResetPasswordController extends Controller
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
+     *
      * @see \Illuminate\Foundation\Auth\ResetsPasswords::showResetForm
      */
     public function showResetForm(Request $request, $token = null)

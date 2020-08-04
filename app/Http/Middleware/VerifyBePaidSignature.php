@@ -17,12 +17,11 @@ final class VerifyBePaidSignature
     }
 
     /**
-     * {@inheritDoc}
      * @throws WebhookFailed
      */
     public function handle(Request $request, \Closure $next)
     {
-        if (! $request->headers->has('AUTHORIZATION')) {
+        if (!$request->headers->has('AUTHORIZATION')) {
             throw WebhookFailed::missingAuthorization();
         }
 
@@ -32,13 +31,13 @@ final class VerifyBePaidSignature
 
         $marketIdFromRequest = (string) $request->headers->get('PHP_AUTH_USER');
         $isValidMarketId = $marketIdFromRequest === (string) $this->apiContext->marketId;
-        if (! $isValidMarketId) {
+        if (!$isValidMarketId) {
             throw WebhookFailed::invalidMarket($marketIdFromRequest);
         }
 
         $marketKeyFromRequest = $request->headers->get('PHP_AUTH_PW');
         $isValidMarketKey = $marketKeyFromRequest === $this->apiContext->marketKey;
-        if (! $isValidMarketKey) {
+        if (!$isValidMarketKey) {
             throw WebhookFailed::invalidMarketKey($marketKeyFromRequest);
         }
 

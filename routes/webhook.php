@@ -1,6 +1,7 @@
 <?php
 /**
- * URIs prefixed by /doika/
+ * URIs prefixed by /doika/.
+ *
  * @see \Diglabby\Doika\Providers\RouteServiceProvider::mapWebhookRoutes()
  * Applied middleware groups: api
  */

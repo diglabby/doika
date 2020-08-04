@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 final class SubscriptionResource extends JsonResource
 {
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function toArray($request): array
     {
         /** @var \Diglabby\Doika\Models\Subscription $subscription */
@@ -14,19 +14,19 @@ final class SubscriptionResource extends JsonResource
         $subscription->loadMissing(['donator', 'campaign']);
 
         return [
-            'id' => $subscription->id,
+            'id'      => $subscription->id,
             'donator' => [
-                'id' => $subscription->donator->id,
+                'id'   => $subscription->donator->id,
                 'name' => $subscription->donator->name,
             ],
             'campaign' => [
-                'id' => $subscription->campaign->id,
+                'id'   => $subscription->campaign->id,
                 'name' => $subscription->campaign->name,
             ],
             'payment_gateway' => $subscription->payment_gateway,
-            'amount' => $subscription->amount,
-            'currency' => $subscription->currency,
-            'created_at' => $subscription->created_at->timestamp,
+            'amount'          => $subscription->amount,
+            'currency'        => $subscription->currency,
+            'created_at'      => $subscription->created_at->timestamp,
         ];
     }
 }

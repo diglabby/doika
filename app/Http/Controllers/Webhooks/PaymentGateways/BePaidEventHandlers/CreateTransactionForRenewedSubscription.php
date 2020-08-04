@@ -1,4 +1,6 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace Diglabby\Doika\Http\Controllers\Webhooks\PaymentGateways\BePaidEventHandlers;
 
@@ -19,26 +21,28 @@ final class CreateTransactionForRenewedSubscription
             ->withTrashed()
             ->first();
 
-        if (! $subscription) {
+        if (!$subscription) {
             \Log::alert("Webhook {$request->json('event')} received for unknown subscription: ", $request->all());
+
             return;
         }
 
-        if (! $request->json('state') !== 'active') {
+        if (!$request->json('state') !== 'active') {
             \Log::alert("Webhook {$request->json('event')} received for non-active transaction: ", $request->all());
+
             return;
         }
 
         $transaction = new Transaction([
-            'amount' => $request->json('plan.plan.amount'),
-            'currency' => $request->json('plan.currency'),
-            'campaign_id' => $subscription->campaign->id,
-            'donator_id' => $subscription->donator_id,
-            'subscription_id' => $subscription->id,
-            'payment_gateway' => 'bePaid',
+            'amount'                         => $request->json('plan.plan.amount'),
+            'currency'                       => $request->json('plan.currency'),
+            'campaign_id'                    => $subscription->campaign->id,
+            'donator_id'                     => $subscription->donator_id,
+            'subscription_id'                => $subscription->id,
+            'payment_gateway'                => 'bePaid',
             'payment_gateway_transaction_id' => $request->json('last_transaction.uid'),
-            'status' => Transaction::STATUS_SUCCESSFUL,
-            'status_message' => $request->json('last_transaction.message'),
+            'status'                         => Transaction::STATUS_SUCCESSFUL,
+            'status_message'                 => $request->json('last_transaction.message'),
         ]);
         $transaction->save();
 

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Diglabby\Doika\Mail;
 
@@ -19,15 +21,15 @@ final class SubscriptionSuccessfullyCharged extends Mailable
         $this->transaction = $transaction;
     }
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function build(): self
     {
         return $this
             ->subject('Дзякуй за чарговае ахвяраванне!')
             ->markdown('emails.subscriptions.charge--success', [
                 'subscription' => $this->subscription,
-                'transaction' => $this->transaction,
-                'campaign' => $this->subscription->campaign,
+                'transaction'  => $this->transaction,
+                'campaign'     => $this->subscription->campaign,
             ]);
     }
 }

@@ -1,4 +1,6 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace Diglabby\Doika\Models;
 
@@ -6,17 +8,18 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 /**
- * @property int $id
- * @property string $name
- * @property string $email
+ * @property int                             $id
+ * @property string                          $name
+ * @property string                          $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
- * @property string $password
- * @property string|null $remember_token
- * @property string $locale
- * @property string|null $last_access_at
+ * @property string                          $password
+ * @property string|null                     $remember_token
+ * @property string                          $locale
+ * @property string|null                     $last_access_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\Admin newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\Admin newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\Admin query()

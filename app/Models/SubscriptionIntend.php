@@ -1,4 +1,6 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace Diglabby\Doika\Models;
 
@@ -67,12 +69,14 @@ final class SubscriptionIntend
     public function getBillingCyclesCount(): int
     {
         $period = $this->interval->toPeriod(now(), $this->campaign->finish_at);
+
         return $period->count();
     }
 
     public function getPlanName(): string
     {
         $currencyCode = $this->money->getCurrency()->getCode();
+
         return ((int) $this->money->getAmount() / 100)."{$currencyCode} для {$this->campaign->name}";
     }
 

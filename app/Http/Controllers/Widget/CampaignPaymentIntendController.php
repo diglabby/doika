@@ -1,4 +1,6 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace Diglabby\Doika\Http\Controllers\Widget;
 
@@ -14,7 +16,7 @@ final class CampaignPaymentIntendController extends Controller
     public function store(Campaign $campaign, BePaidPaymentGateway $gateway, Request $request)
     {
         $this->validate($request, [
-            'amount' => ['required', 'integer', 'min:100'], // in cents!
+            'amount'        => ['required', 'integer', 'min:100'], // in cents!
             'currency_code' => ['string', 'size:3'],
         ]);
 

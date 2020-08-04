@@ -1,10 +1,10 @@
 <?php
 /**
- * URIs prefixed by /doika/widget/api
+ * URIs prefixed by /doika/widget/api.
+ *
  * @see \Diglabby\Doika\Providers\RouteServiceProvider::mapWidgetRoutes()
  * Applied middleware groups: api
  */
-
 Route::get('/campaigns/{campaign}', 'Widget\CampaignController@show')->name('widget.campaigns.show');
 Route::post('/campaigns/{campaign}/subscription-intends', 'Widget\CampaignSubscriptionIntendController@store')->name('widget.campaigns.subscription-intends.store');
 Route::post('/campaigns/{campaign}/payment-intends', 'Widget\CampaignPaymentIntendController@store')->name('widget.campaigns.payment-intends.store');

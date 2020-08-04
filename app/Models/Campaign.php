@@ -1,4 +1,6 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace Diglabby\Doika\Models;
 
@@ -7,24 +9,25 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Diglabby\Doika\Models\Campaign
+ * Diglabby\Doika\Models\Campaign.
  *
- * @property int $id
- * @property string $name
- * @property string $description
- * @property string $picture_url
- * @property int $target_amount Target amount in cents
- * @property string $currency
- * @property bool $active_status
+ * @property int                             $id
+ * @property string                          $name
+ * @property string                          $description
+ * @property string                          $picture_url
+ * @property int                             $target_amount   Target amount in cents
+ * @property string                          $currency
+ * @property bool                            $active_status
  * @property \Illuminate\Support\Carbon|null $start_at
  * @property \Illuminate\Support\Carbon|null $finish_at
- * @property array $visual_settings Button preset, colors, etc. (as json)
+ * @property array                           $visual_settings Button preset, colors, etc. (as json)
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\Diglabby\Doika\Models\Subscription[] $subscriptions
  * @property-read \Illuminate\Database\Eloquent\Collection|\Diglabby\Doika\Models\Transaction[] $transactions
  * @property-read \Illuminate\Database\Eloquent\Collection|\Diglabby\Doika\Models\CampaignTranslation[] $translations
+ *
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\Campaign newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Diglabby\Doika\Models\Campaign newQuery()
@@ -53,13 +56,13 @@ class Campaign extends Model
 
     /** @var array The attributes that should be cast to native types */
     protected $casts = [
-        'active_status' => 'bool',
+        'active_status'   => 'bool',
         'visual_settings' => 'array',
     ];
 
     /** @var array Default attribute values */
     protected $attributes = [
-        'description' => '',
+        'description'   => '',
         'active_status' => false,
     ];
 

@@ -9,14 +9,14 @@ use Illuminate\Support\ServiceProvider;
 
 final class PaymentGatewayServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function register(): void
     {
         $this->app->singleton(BePaidApiContext::class, function () {
             return new BePaidApiContext([
-                'marketId' => setting('gateway_bePaid_idMarket'),
+                'marketId'  => setting('gateway_bePaid_idMarket'),
                 'marketKey' => setting('gateway_bePaid_keyMarket'),
-                'mode' => setting('gateway_bePaid_mode') === 'live' ? 'live' : 'test',
+                'mode'      => setting('gateway_bePaid_mode') === 'live' ? 'live' : 'test',
             ]);
         });
 
@@ -24,7 +24,7 @@ final class PaymentGatewayServiceProvider extends ServiceProvider implements Def
         $this->app->bind(BePaidPaymentGateway::class, BePaidPaymentGateway::class);
     }
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function provides(): array
     {
         return [

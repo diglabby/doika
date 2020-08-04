@@ -2,9 +2,9 @@
 
 namespace Diglabby\Doika\Http\Controllers\Dashboard;
 
+use Diglabby\Doika\Http\Controllers\Controller;
 use Diglabby\Doika\Models\Notification;
 use Illuminate\Http\Request;
-use Diglabby\Doika\Http\Controllers\Controller;
 
 class NotificationsController extends Controller
 {
@@ -16,13 +16,15 @@ class NotificationsController extends Controller
     public function index()
     {
         $notifications = Notification::all();
+
         return $notifications;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \Diglabby\Doika\Models\Notification  $notification
+     * @param \Diglabby\Doika\Models\Notification $notification
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Notification $notification)
@@ -33,7 +35,8 @@ class NotificationsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Diglabby\Doika\Models\Notification  $notification
+     * @param \Diglabby\Doika\Models\Notification $notification
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Notification $notification)
@@ -44,8 +47,9 @@ class NotificationsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Diglabby\Doika\Models\Notification  $notification
+     * @param \Illuminate\Http\Request            $request
+     * @param \Diglabby\Doika\Models\Notification $notification
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Notification $notification)
@@ -53,7 +57,7 @@ class NotificationsController extends Controller
         $notification->update($request->all());
 
         return response()->json([
-           'message' => '!!!!!!!!!!!!!!!!!!!!!!!YOHOOOOO!!',
+            'message' => '!!!!!!!!!!!!!!!!!!!!!!!YOHOOOOO!!',
         ]);
         //return $notification;
     }

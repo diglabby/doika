@@ -2,9 +2,9 @@
 
 namespace Diglabby\Doika\Http\Controllers\Widget;
 
-use Illuminate\Http\Request;
 use Diglabby\Doika\Http\Controllers\Controller;
 use Diglabby\Doika\Services\PaymentGateways\BePaidPaymentGateway;
+use Illuminate\Http\Request;
 
 final class BePaidCheckPaymentStatusController extends Controller
 {

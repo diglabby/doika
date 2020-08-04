@@ -28,7 +28,7 @@ class ViewServiceProvider extends ServiceProvider
         HtmlFacade::macro('asset', function ($manifestName, $path) {
             static $manifest;
             $basePath = app()->environment('production') ? 'dist' : 'build';
-            if (! $manifest
+            if (!$manifest
                 && file_exists($manifestPath = public_path("{$basePath}/manifest-{$manifestName}.json"))
             ) {
                 $manifest = json_decode(file_get_contents($manifestPath), true);

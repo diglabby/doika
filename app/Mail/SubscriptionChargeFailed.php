@@ -1,4 +1,6 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace Diglabby\Doika\Mail;
 
@@ -19,15 +21,15 @@ final class SubscriptionChargeFailed extends Mailable
         $this->transaction = $transaction;
     }
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function build(): self
     {
         return $this
             ->subject('Памылка пры стварэнні падпіскі')
             ->markdown('emails.subscriptions.charge--failed', [
                 'subscription' => $this->subscription,
-                'transaction' => $this->transaction,
-                'campaign' => $this->transaction->campaign,
+                'transaction'  => $this->transaction,
+                'campaign'     => $this->transaction->campaign,
             ]);
     }
 }

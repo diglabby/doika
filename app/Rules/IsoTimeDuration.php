@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Diglabby\Doika\Rules;
 
@@ -10,7 +11,7 @@ use Illuminate\Contracts\Validation\Rule;
  */
 final class IsoTimeDuration implements Rule
 {
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function passes($attribute, $value): bool
     {
         try {
@@ -22,7 +23,7 @@ final class IsoTimeDuration implements Rule
         return true;
     }
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function message()
     {
         return 'Unknown or bad format of time interval/duration';

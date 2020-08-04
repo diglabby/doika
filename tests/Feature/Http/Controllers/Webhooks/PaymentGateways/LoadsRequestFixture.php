@@ -6,6 +6,7 @@ trait LoadsRequestFixture
 {
     /**
      * @param string $fixtureFilename
+     *
      * @return array with keys: 'input' and 'headers'
      */
     public function getRequestData(string $fixtureFilename): array
@@ -14,6 +15,7 @@ trait LoadsRequestFixture
         $dir = dirname($reflector->getFileName());
 
         $fixtureFilepath = $dir.DIRECTORY_SEPARATOR.$fixtureFilename;
+
         return json_decode(file_get_contents($fixtureFilepath), true);
     }
 }
