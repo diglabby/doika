@@ -37,12 +37,6 @@ jobs:
         continue-on-error: true
 
       - name: Commit PHP code-style fixes
-        if: ${{ steps.fix_php.outcome == 'failure' }}
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "✨ Apply coding style fixes to PHP"
-          push_options: --force
-
-      - name: Lint PHP coding style issues
-        if: ${{ steps.fix_php.outcome == 'failure' }}
-        run: composer php:lint
