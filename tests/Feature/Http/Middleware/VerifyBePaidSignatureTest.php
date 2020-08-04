@@ -20,7 +20,7 @@ class VerifyBePaidSignatureTest extends TestCase
     {
         $response = $this->getResponseFromRouteWithMiddleware([
             'PHP_AUTH_USER' => self::VALID_MARKET_ID,
-            'PHP_AUTH_PW'   => self::VALID_MARKET_KEY,
+            'PHP_AUTH_PW' => self::VALID_MARKET_KEY,
         ]);
 
         $response->assertOk();
@@ -43,7 +43,7 @@ class VerifyBePaidSignatureTest extends TestCase
 
         $response = $this->getResponseFromRouteWithMiddleware([
             'PHP_AUTH_USER' => self::VALID_MARKET_ID + 1,
-            'PHP_AUTH_PW'   => self::VALID_MARKET_KEY,
+            'PHP_AUTH_PW' => self::VALID_MARKET_KEY,
         ]);
 
         $response->assertOk();
@@ -56,7 +56,7 @@ class VerifyBePaidSignatureTest extends TestCase
 
         $response = $this->getResponseFromRouteWithMiddleware([
             'PHP_AUTH_USER' => self::VALID_MARKET_ID,
-            'PHP_AUTH_PW'   => 'random_INVALID_key',
+            'PHP_AUTH_PW' => 'random_INVALID_key',
         ]);
 
         $response->assertOk();
@@ -66,9 +66,9 @@ class VerifyBePaidSignatureTest extends TestCase
     {
         $this->app->bind(BePaidApiContext::class, function () {
             return new BePaidApiContext([
-                'marketId'  => self::VALID_MARKET_ID,
+                'marketId' => self::VALID_MARKET_ID,
                 'marketKey' => self::VALID_MARKET_KEY,
-                'mode'      => 'test',
+                'mode' => 'test',
             ]);
         });
 
