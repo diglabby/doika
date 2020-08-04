@@ -71,7 +71,7 @@ export default {
         break;
       default:
         this.image = '/doika/public/images/sadsmile.png';
-        this.message = 'Немагчыма правесці аплату';
+        this.message = 'Немагчыма правесці аплату. Завяршыўся час чакання. Паспрабуйце яшчэ раз націснуўшы "Назад"';
         break;
     }
     this.isBusy = false;
