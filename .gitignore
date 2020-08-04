@@ -24,3 +24,6 @@ storage/public/uploads/
 /docker/apache/logs
 /docker/node/logs
 /storage/debugbar
+
+# PHP Tools
+.php_cs.cache

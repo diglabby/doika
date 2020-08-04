@@ -1,37 +1,63 @@
-<?php
-
-$finder = PhpCsFixer\Finder::create()
-    ->exclude('bootstrap/cache')
-    ->exclude('node_modules')
-    ->exclude('storage')
-    ->in(__DIR__)
-    ->notName('*.blade.php')
-    ->notName('.phpstorm.meta.php')
-    ->notName('_ide_*.php')
-;
+<?php declare(strict_types=1);
 
 return PhpCsFixer\Config::create()
+    ->setUsingCache(true)
     ->setRiskyAllowed(true)
-    ->setRules([
-        '@Symfony' => true,
-        '@Symfony:risky' => true,
-        'array_syntax' => ['syntax' => 'short'],
-        'array_indentation' => true,
-        'binary_operator_spaces' => ['operators' => ['=>' => 'align']],
-        'increment_style' => ['style' => 'post'],
-        'linebreak_after_opening_tag' => true,
-        'mb_str_functions' => true,
-        'no_php4_constructor' => true,
-        'no_unreachable_default_argument_value' => true,
-        'no_useless_else' => true,
-        'no_useless_return' => true,
-        'not_operator_with_successor_space' => true,
-        'ordered_imports' => ['sortAlgorithm' => 'length'],
-        'php_unit_strict' => true,
-        'phpdoc_order' => true,
-        'simplified_null_return' => true,
-        'strict_comparison' => true,
-        'strict_param' => true,
-    ])
-    ->setFinder($finder)
-;
+    ->setRules(
+        [
+            'align_multiline_comment' => ['comment_type' => 'phpdocs_only'],
+            'array_indentation' => true,
+            'class_attributes_separation' => ['elements' => ['method']],
+            'binary_operator_spaces' => ['default' => 'single_space'],
+
+            'general_phpdoc_annotation_remove' => [
+                'api',
+                'access',
+                'author',
+                'category',
+                'copyright',
+                'created',
+                'license',
+                'link',
+                'package',
+                'since',
+                'subpackage',
+                'version',
+            ],
+            'phpdoc_align' => ['align' => 'left'],
+            'phpdoc_indent' => true,
+            'phpdoc_scalar' => true,
+            'phpdoc_single_line_var_spacing' => true,
+            'no_empty_phpdoc' => true,
+            'no_unused_imports' => true,
+
+            'modernize_types_casting' => true,
+
+            'php_unit_method_casing' => ['case' => 'snake_case'],
+            'php_unit_test_annotation' => ['style' => 'annotation'],
+            'php_unit_construct' => true,
+            'php_unit_set_up_tear_down_visibility' => true,
+
+            'ternary_to_null_coalescing' => true,
+            'trim_array_spaces' => true,
+        ]
+    )
+    ->setIndent('    ')
+    ->setLineEnding("\n")
+    ->setFinder(
+        PhpCsFixer\Finder::create()
+            ->in(__DIR__)
+            ->notPath('bootstrap/cache')
+            ->notPath('storage')
+            ->notPath('homestead')
+            ->notPath('public')
+            ->notPath('vendor')
+            ->name('*.php')
+            ->notName('*.blade.php')
+            ->notName('_ide_helper.php')
+            ->notName('.phpstorm.meta.php')
+            ->notName('artisan.php')
+            ->notName('server.php')
+            ->ignoreDotFiles(true)
+            ->ignoreVCS(true)
+    );
