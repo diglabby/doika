@@ -30,8 +30,8 @@ final class AdminController extends Controller
     public function update(Admin $admin, Request $request): \JsonSerializable
     {
         $this->validate($request, [
-            'name' => ['required', 'string', 'min:2'],
-            'email' => ['required', 'email'],
+            'name'   => ['required', 'string', 'min:2'],
+            'email'  => ['required', 'email'],
             'locale' => ['required'],
         ]);
 
