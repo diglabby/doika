@@ -25,7 +25,7 @@ class LoginControllerTest extends TestCase
     public function admin_can_login()
     {
         $admin = factory(Admin::class)->create([
-            'email' => 'example@example.com',
+            'email'    => 'example@example.com',
             'password' => bcrypt('secret'),
         ]);
 
@@ -40,7 +40,7 @@ class LoginControllerTest extends TestCase
     public function it_displays_error_on_invalid_email()
     {
         factory(Admin::class)->create([
-            'email' => 'example@example.com',
+            'email'    => 'example@example.com',
             'password' => bcrypt('secret'),
         ]);
 
@@ -54,7 +54,7 @@ class LoginControllerTest extends TestCase
     public function it_displays_error_on_invalid_password()
     {
         factory(Admin::class)->create([
-            'email' => 'example@example.com',
+            'email'    => 'example@example.com',
             'password' => bcrypt('secret'),
         ]);
 
