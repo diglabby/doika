@@ -18,14 +18,14 @@ final class MailServiceProvider extends \Illuminate\Mail\MailServiceProvider
         $this->app->singleton('swift.transport', function () {
             // @todo check performance of this solution
             $this->app['config']['mail'] = [
-                'driver'   => setting()->get('mail_driver') ?? config('mail.driver'),
-                'host'     => setting()->get('mail_server_address') ?? config('mail.host'),
-                'port'     => setting()->get('mail_server_port') ?? config('mail.port'),
+                'driver' => setting()->get('mail_driver') ?? config('mail.driver'),
+                'host' => setting()->get('mail_server_address') ?? config('mail.host'),
+                'port' => setting()->get('mail_server_port') ?? config('mail.port'),
                 'username' => setting()->get('mail_server_address') ?? config('mail.username'),
                 'password' => setting()->get('mail_account_password') ?? config('mail.password'),
-                'from'     => [
+                'from' => [
                     'address' => setting()->get('mail_from_address') ?? config('mail.from.address'),
-                    'name'    => setting()->get('mail_from_name') ?? config('mail.from.name'),
+                    'name' => setting()->get('mail_from_name') ?? config('mail.from.name'),
                 ],
             ];
 
