@@ -11,29 +11,29 @@ use Diglabby\Doika\Models\Transaction;
  */
 $factory->define(Transaction::class, function (\Faker\Generator $faker) {
     return [
-        'donator_id'                     => factory(Donator::class)->lazy(),
-        'campaign_id'                    => factory(Campaign::class)->lazy(),
-        'subscription_id'                => null,
-        'payment_gateway'                => 'bePaid',
+        'donator_id' => factory(Donator::class)->lazy(),
+        'campaign_id' => factory(Campaign::class)->lazy(),
+        'subscription_id' => null,
+        'payment_gateway' => 'bePaid',
         'payment_gateway_transaction_id' => $faker->uuid,
-        'amount'                         => $faker->randomDigitNotNull * 100, // in cents
-        'currency'                       => 'BYN',
-        'status'                         => 'successful',
-        'status_message'                 => 'The operation was successfully processed.',
+        'amount' => $faker->randomDigitNotNull * 100, // in cents
+        'currency' => 'BYN',
+        'status' => 'successful',
+        'status_message' => 'The operation was successfully processed.',
     ];
 });
 
 $factory->state(Transaction::class, 'successful', [
-    'status'         => 'successful',
+    'status' => 'successful',
     'status_message' => 'The operation was successfully processed.',
 ]);
 
 $factory->state(Transaction::class, 'failed', [
-    'status'         => 'failed',
+    'status' => 'failed',
     'status_message' => 'Merchant terminal limits exceeded (maximum transaction amount). Transaction didn\'t pass anti-fraud checks.',
 ]);
 
 $factory->state(Transaction::class, 'incomplete', [
-    'status'         => 'incomplete',
+    'status' => 'incomplete',
     'status_message' => 'Operation didn\'t pass 3-D Secure check',
 ]);
