@@ -31,12 +31,12 @@ final class CampaignController extends Controller
     public function store(Request $request): \JsonSerializable
     {
         $this->validate($request, [
-            'name' => ['required', 'max:255'],
-            'description' => ['required', 'max:488'],
+            'name'          => ['required', 'max:255'],
+            'description'   => ['required', 'max:488'],
             'target_amount' => ['required', 'integer', 'min:1'],
-            'currency' => ['required', 'string', 'size:3'],
-            'start_at' => ['required', 'date'],
-            'finish_at' => ['required', 'date', 'after:start_at'],
+            'currency'      => ['required', 'string', 'size:3'],
+            'start_at'      => ['required', 'date'],
+            'finish_at'     => ['required', 'date', 'after:start_at'],
         ]);
 
         $campaign = new Campaign($request->all());
