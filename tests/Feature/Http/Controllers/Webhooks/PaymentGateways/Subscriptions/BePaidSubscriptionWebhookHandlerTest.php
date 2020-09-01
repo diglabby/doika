@@ -32,8 +32,8 @@ class BePaidSubscriptionWebhookHandlerTest extends TestCase
 
         $response->assertOk();
         $this->assertDatabaseHas('subscriptions', [
-            'campaign_id'     => $requestData['additional_data']['campaign_id'],
-            'donator_id'      => $requestData['additional_data']['donator_id'],
+            'campaign_id' => $requestData['additional_data']['campaign_id'],
+            'donator_id' => $requestData['additional_data']['donator_id'],
             'payment_gateway' => 'bePaid',
         ]);
     }
@@ -46,7 +46,7 @@ class BePaidSubscriptionWebhookHandlerTest extends TestCase
         $requestData = $this->getRequestData('canceled.subscription.json');
         /** @var Subscription $subscription */
         $subscription = factory(Subscription::class)->create([
-            'campaign_id'                     => factory(Campaign::class)->create(),
+            'campaign_id' => factory(Campaign::class)->create(),
             'payment_gateway_subscription_id' => $requestData['id'],
         ]);
 
