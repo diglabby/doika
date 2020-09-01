@@ -21,11 +21,11 @@ final class CampaignSubscriptionIntendController extends Controller
     public function store(Campaign $campaign, Request $request, BePaidPaymentGateway $gateway)
     {
         $this->validate($request, [
-            'amount' => ['required', 'integer', 'min:100'], // in cents!
-            'currency_code' => ['string', 'size:3'],
+            'amount'           => ['required', 'integer', 'min:100'], // in cents!
+            'currency_code'    => ['string', 'size:3'],
             'payment_interval' => ['required', new IsoTimeDuration()], // P1M (means 1 month)
-            'email' => ['required', 'email'],
-            'phone' => ['nullable', 'string', 'max:20'],
+            'email'            => ['required', 'email'],
+            'phone'            => ['nullable', 'string', 'max:20'],
         ]);
 
         if ($campaign->isFinished()) {
@@ -38,7 +38,7 @@ final class CampaignSubscriptionIntendController extends Controller
         /** @var Donator $donator */
         $donator = Donator::query()->updateOrCreate([
             'email' => $request->get('email'),
-            'name' => $request->get('name'),
+            'name'  => $request->get('name'),
         ]);
 
         $donator->update(['phone' => $request->get('phone')]);
