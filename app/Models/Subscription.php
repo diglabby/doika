@@ -48,7 +48,7 @@ class Subscription extends Model
 
     /** @var array Default attribute values */
     protected $attributes = [
-        'currency' => 'BYN',
+        'currency'         => 'BYN',
         'payment_interval' => 'P1M', // means "Period: 1 Month"
     ];
 
