@@ -19,7 +19,7 @@ class SettingsControllerTest extends TestCase
             ->get(route('dashboard.settings.index', ['keys' => ['existing_key', 'not_existing_key']]));
 
         $response->assertJson(['settings' => [
-            'existing_key' => 'value',
+            'existing_key'     => 'value',
             'not_existing_key' => null,
         ]]);
     }
@@ -29,14 +29,14 @@ class SettingsControllerTest extends TestCase
     {
         $response = $this->withoutMiddleware()
             ->post(route('dashboard.settings.store'), ['settings' => [
-                'string_value' => 'string value',
-                'empty_value' => '',
+                'string_value'  => 'string value',
+                'empty_value'   => '',
                 'numeric_value' => 2,
             ]]);
 
         $response->assertJson(['settings' => [
-            'string_value' => 'string value',
-            'empty_value' => '',
+            'string_value'  => 'string value',
+            'empty_value'   => '',
             'numeric_value' => '2',
         ]]);
     }
