@@ -40,6 +40,6 @@ return [
     'table' => 'settings',
     // If you want to use custom column names in database store you could
     // set them in this configuration
-    'keyColumn'   => 'key',
+    'keyColumn' => 'key',
     'valueColumn' => 'value',
 ];
