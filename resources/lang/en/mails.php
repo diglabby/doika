@@ -2,7 +2,7 @@
 
 return [
     'layout' => [
-        'hello'   => 'Hello!',
+        'hello' => 'Hello!',
         'regards' => 'Best regards',
     ],
 ];
