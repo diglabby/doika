@@ -28,8 +28,8 @@ final class SubscriptionSuccessfullyCharged extends Mailable
             ->subject('Дзякуй за чарговае ахвяраванне!')
             ->markdown('emails.subscriptions.charge--success', [
                 'subscription' => $this->subscription,
-                'transaction' => $this->transaction,
-                'campaign' => $this->subscription->campaign,
+                'transaction'  => $this->transaction,
+                'campaign'     => $this->subscription->campaign,
             ]);
     }
 }
