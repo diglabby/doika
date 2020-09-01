@@ -14,7 +14,7 @@
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "anlutro/l4-settings": "^0.8.1",
+        "anlutro/l4-settings": "^0.11.3",
         "carbondate/carbon": "^1.33",
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",

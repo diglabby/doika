@@ -4,30 +4,31 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c00acf243961779d3b7c0a211e1d71c4",
+    "content-hash": "02342d2552de9c8c3643b3d4b7b69156",
     "packages": [
         {
             "name": "anlutro/l4-settings",
-            "version": "v0.8.3",
+            "version": "v0.11.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/anlutro/laravel-settings.git",
-                "reference": "851dd685b5659edc07a34df0a5415217a6595654"
+                "reference": "c76df6706d07d5f8edcd6c377bed8859b12d5da4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anlutro/laravel-settings/zipball/851dd685b5659edc07a34df0a5415217a6595654",
-                "reference": "851dd685b5659edc07a34df0a5415217a6595654",
+                "url": "https://api.github.com/repos/anlutro/laravel-settings/zipball/c76df6706d07d5f8edcd6c377bed8859b12d5da4",
+                "reference": "c76df6706d07d5f8edcd6c377bed8859b12d5da4",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": ">=4.1 <6.0",
+                "illuminate/cache": ">=4.2 <8.0",
+                "illuminate/support": ">=4.2 <8.0",
                 "php": ">=5.4.0"
             },
             "require-dev": {
-                "laravel/framework": ">=4.1 <6.0",
-                "mockery/mockery": "0.9.*",
-                "phpunit/phpunit": ">=4.8, <6"
+                "laravel/framework": ">=4.2",
+                "mockery/mockery": "^1.2",
+                "phpunit/phpunit": "^8.0"
             },
             "suggest": {
                 "illuminate/database": "Save settings to a database table.",
@@ -63,7 +64,7 @@
                 }
             ],
             "description": "Persistent settings in Laravel.",
-            "time": "2019-07-01T13:08:13+00:00"
+            "time": "2020-08-06T21:02:39+00:00"
         },
         {
             "name": "carbondate/carbon",
@@ -1444,6 +1445,7 @@
                 "laravel",
                 "vue-i18n"
             ],
+            "abandoned": true,
             "time": "2020-03-10T18:55:52+00:00"
         },
         {
@@ -4923,7 +4925,7 @@
             "funding": [
                 {
                     "type": "custom",
-                    "url": "https://doika.falanster.by/"
+                    "url": "https://doika.falanster.by/#history"
                 }
             ],
             "time": "2020-06-26T10:29:39+00:00"
@@ -6374,6 +6376,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2019-09-17T06:23:10+00:00"
         },
         {
