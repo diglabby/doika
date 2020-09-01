@@ -4,7 +4,7 @@ return [
     'admin' => [
         'common' => [
             'search' => [
-                'noResult' => 'Not found',
+                'noResult'      => 'Not found',
                 'noMatchResult' => 'No match',
             ],
         ],
@@ -12,7 +12,7 @@ return [
             'error' => 'These credentials do not match our records.',
         ],
         'feedback' => [
-            'error' => 'Sending error!',
+            'error'   => 'Sending error!',
             'success' => 'Message sent successfully',
         ],
     ],
