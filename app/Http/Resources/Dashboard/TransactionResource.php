@@ -15,13 +15,13 @@ final class TransactionResource extends JsonResource
         $transaction = $this->resource;
 
         return [
-            'id' => $transaction->id,
-            'campaign' => $transaction->campaign->name,
-            'donator' => $transaction->donator->name,
+            'id'             => $transaction->id,
+            'campaign'       => $transaction->campaign->name,
+            'donator'        => $transaction->donator->name,
             'status_message' => $transaction->status_message,
-            'amount' => $transaction->amount,
-            'currency' => $transaction->currency,
-            'created_at' => $transaction->created_at->timestamp,
+            'amount'         => $transaction->amount,
+            'currency'       => $transaction->currency,
+            'created_at'     => $transaction->created_at->timestamp,
         ];
     }
 }
