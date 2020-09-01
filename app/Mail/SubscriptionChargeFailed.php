@@ -28,8 +28,8 @@ final class SubscriptionChargeFailed extends Mailable
             ->subject('Памылка пры стварэнні падпіскі')
             ->markdown('emails.subscriptions.charge--failed', [
                 'subscription' => $this->subscription,
-                'transaction'  => $this->transaction,
-                'campaign'     => $this->transaction->campaign,
+                'transaction' => $this->transaction,
+                'campaign' => $this->transaction->campaign,
             ]);
     }
 }
