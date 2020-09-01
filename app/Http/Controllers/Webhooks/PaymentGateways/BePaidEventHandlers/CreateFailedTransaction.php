@@ -26,15 +26,15 @@ final class CreateFailedTransaction
             ->first();
 
         $transaction = new Transaction([
-            'amount' => $request->json('plan.plan.amount'),
-            'currency' => $request->json('plan.currency'),
-            'campaign_id' => $request->json('additional_data.campaign_id'),
-            'subscription_id' => $subscription ? $subscription->id : null,
-            'donator_id' => $request->json('additional_data.donator_id'),
-            'payment_gateway' => 'bePaid',
+            'amount'                         => $request->json('plan.plan.amount'),
+            'currency'                       => $request->json('plan.currency'),
+            'campaign_id'                    => $request->json('additional_data.campaign_id'),
+            'subscription_id'                => $subscription ? $subscription->id : null,
+            'donator_id'                     => $request->json('additional_data.donator_id'),
+            'payment_gateway'                => 'bePaid',
             'payment_gateway_transaction_id' => $request->json('last_transaction.uid'),
-            'status' => Transaction::STATUS_FAILED,
-            'status_message' => $request->json('last_transaction.message'),
+            'status'                         => Transaction::STATUS_FAILED,
+            'status_message'                 => $request->json('last_transaction.message'),
         ]);
         $transaction->save();
 
