@@ -10,7 +10,7 @@ use Faker\Generator as Faker;
  */
 $factory->define(Donator::class, function (Faker $faker) {
     return [
-        'name' => null,
+        'name'  => null,
         'email' => $faker->unique()->email,
         'phone' => null,
     ];
