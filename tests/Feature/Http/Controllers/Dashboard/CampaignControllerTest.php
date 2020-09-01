@@ -36,7 +36,7 @@ class CampaignControllerTest extends TestCase
         $campaign = factory(Campaign::class)->create();
         factory(Transaction::class, 1)->create([
             'campaign_id' => $campaign,
-            'donator_id'  => factory(Donator::class)->create(),
+            'donator_id' => factory(Donator::class)->create(),
         ]);
 
         \DB::enableQueryLog();
