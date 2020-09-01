@@ -16,7 +16,7 @@ return [
     */
 
     'defaults' => [
-        'guard'     => 'web',
+        'guard' => 'web',
         'passwords' => 'admins', // default password broker name
     ],
 
@@ -39,14 +39,14 @@ return [
 
     'guards' => [
         'web' => [
-            'driver'   => 'session',
+            'driver' => 'session',
             'provider' => 'admins',
         ],
 
         'api' => [
-            'driver'   => 'token',
+            'driver' => 'token',
             'provider' => 'admins',
-            'hash'     => false,
+            'hash' => false,
         ],
     ],
 
@@ -70,7 +70,7 @@ return [
     'providers' => [
         'admins' => [
             'driver' => 'eloquent',
-            'model'  => Admin::class,
+            'model' => Admin::class,
         ],
 
         // 'users' => [
@@ -97,8 +97,8 @@ return [
     'passwords' => [
         'admins' => [
             'provider' => 'admins',
-            'table'    => 'password_resets',
-            'expire'   => 60,
+            'table' => 'password_resets',
+            'expire' => 60,
         ],
     ],
 
