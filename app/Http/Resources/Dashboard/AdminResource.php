@@ -15,9 +15,9 @@ final class AdminResource extends JsonResource
         $admin = $this->resource;
 
         return [
-            'id'         => $admin->id,
-            'name'       => $admin->name,
-            'email'      => $admin->email,
+            'id' => $admin->id,
+            'name' => $admin->name,
+            'email' => $admin->email,
             'created_at' => $admin->created_at->timestamp,
             'updated_at' => $admin->updated_at->timestamp,
         ];
