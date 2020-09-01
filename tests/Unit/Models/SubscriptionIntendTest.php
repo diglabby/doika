@@ -48,15 +48,15 @@ class SubscriptionIntendTest extends TestCase
     public function plannedTimesToPayForFutureDatesProvider(): array
     {
         return [
-            'finish in few seconds' => [1, now()->addSeconds(1)],
-            'finish in 1 minute' => [1, now()->addMinutes(1)],
-            'finish in 1 day' => [1, now()->addDays(1)],
-            'finish in 1 week' => [1, now()->addWeeks(1)],
-            'finish in almost 1 month' => [1, now()->addMonthsWithOverflow(1)->subMinutes(1)],
-            'finish in 1 month' => [2, now()->addMonthsWithOverflow(1)],
+            'finish in few seconds'     => [1, now()->addSeconds(1)],
+            'finish in 1 minute'        => [1, now()->addMinutes(1)],
+            'finish in 1 day'           => [1, now()->addDays(1)],
+            'finish in 1 week'          => [1, now()->addWeeks(1)],
+            'finish in almost 1 month'  => [1, now()->addMonthsWithOverflow(1)->subMinutes(1)],
+            'finish in 1 month'         => [2, now()->addMonthsWithOverflow(1)],
             'finish in almost 2 months' => [2, now()->addMonthsWithOverflow(2)->subMinutes(1)],
-            'finish in 2 month' => [3, now()->addMonthsWithOverflow(2)],
-            'finish in 1 year' => [13, now()->addYearsWithOverflow(1)],
+            'finish in 2 month'         => [3, now()->addMonthsWithOverflow(2)],
+            'finish in 1 year'          => [13, now()->addYearsWithOverflow(1)],
         ];
     }
 
