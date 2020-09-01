@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c00acf243961779d3b7c0a211e1d71c4",
+    "content-hash": "de18c76405e751741248c45622755521",
     "packages": [
         {
             "name": "anlutro/l4-settings",
@@ -1444,6 +1444,7 @@
                 "laravel",
                 "vue-i18n"
             ],
+            "abandoned": true,
             "time": "2020-03-10T18:55:52+00:00"
         },
         {
@@ -2235,28 +2236,28 @@
         },
         {
             "name": "spatie/laravel-query-builder",
-            "version": "1.17.5",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-query-builder.git",
-                "reference": "8c5cecd27f69d8d4e6817a9207e796d34dab6a70"
+                "reference": "29bda1325ca7511bb979ad5fe3c55ac90666f182"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/8c5cecd27f69d8d4e6817a9207e796d34dab6a70",
-                "reference": "8c5cecd27f69d8d4e6817a9207e796d34dab6a70",
+                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/29bda1325ca7511bb979ad5fe3c55ac90666f182",
+                "reference": "29bda1325ca7511bb979ad5fe3c55ac90666f182",
                 "shasum": ""
             },
             "require": {
-                "illuminate/database": "~5.6.34|~5.7.0|~5.8.0",
-                "illuminate/http": "~5.6.34|~5.7.0|~5.8.0",
-                "illuminate/support": "~5.6.34|~5.7.0|~5.8.0",
+                "illuminate/database": "~5.6.34|~5.7.0|~5.8.0|^6.0|^7.0",
+                "illuminate/http": "~5.6.34|~5.7.0|~5.8.0|^6.0|^7.0",
+                "illuminate/support": "~5.6.34|~5.7.0|~5.8.0|^6.0|^7.0",
                 "php": "^7.1"
             },
             "require-dev": {
                 "ext-json": "*",
-                "orchestra/testbench": "~3.6.0|~3.7.0|~3.8.0",
-                "phpunit/phpunit": "^7.0|^8.0"
+                "orchestra/testbench": "~3.6.0|~3.7.0|~3.8.0|^4.0|^5.0",
+                "phpunit/phpunit": "^7.0|^8.0|^9.0"
             },
             "type": "library",
             "extra": {
@@ -2289,7 +2290,13 @@
                 "laravel-query-builder",
                 "spatie"
             ],
-            "time": "2019-07-08T09:08:34+00:00"
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
+            ],
+            "time": "2020-08-18T14:33:24+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -4923,7 +4930,7 @@
             "funding": [
                 {
                     "type": "custom",
-                    "url": "https://doika.falanster.by/"
+                    "url": "https://doika.falanster.by/#history"
                 }
             ],
             "time": "2020-06-26T10:29:39+00:00"
@@ -6374,6 +6381,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2019-09-17T06:23:10+00:00"
         },
         {
