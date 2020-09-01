@@ -59,23 +59,23 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
 
         $checkoutParams = [
             'checkout' => [
-                'test'             => $this->apiContext->isTest(),
+                'test' => $this->apiContext->isTest(),
                 'transaction_type' => 'payment',
-                'version'          => self::API_VERSION,
-                'attempts'         => 3,
-                'settings'         => [
-                    'success_url'      => route('widget.campaigns.donation-result', ['campaign' => $campaign->id, 'status' => 'success']),
-                    'decline_url'      => route('widget.campaigns.donation-result', ['campaign' => $campaign->id, 'status' => 'decline']),
-                    'fail_url'         => route('widget.campaigns.donation-result', ['campaignId' => $campaign->id, 'status' => 'fail']),
+                'version' => self::API_VERSION,
+                'attempts' => 3,
+                'settings' => [
+                    'success_url' => route('widget.campaigns.donation-result', ['campaign' => $campaign->id, 'status' => 'success']),
+                    'decline_url' => route('widget.campaigns.donation-result', ['campaign' => $campaign->id, 'status' => 'decline']),
+                    'fail_url' => route('widget.campaigns.donation-result', ['campaignId' => $campaign->id, 'status' => 'fail']),
                     'notification_url' => route('webhooks.bepaid.donated', [$campaign->id]),
-                    'language'         => app()->getLocale(),
-                    'customer_fields'  => [
+                    'language' => app()->getLocale(),
+                    'customer_fields' => [
                         'visible' => ['email'],
                     ],
                 ],
                 'order' => [
-                    'amount'      => $money->getAmount(),
-                    'currency'    => $money->getCurrency()->getCode(),
+                    'amount' => $money->getAmount(),
+                    'currency' => $money->getCurrency()->getCode(),
                     'description' => sprintf('Donation for "%s" campaign', $campaign->name),
                 ],
             ],
@@ -83,9 +83,9 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
 
         try {
             $response = $this->httpClient->request('POST', self::CHECKOUT_ENDPOINT.'/ctp/api/checkouts', [
-                'auth'    => [$this->apiContext->marketId, $this->apiContext->marketKey],
+                'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
                 'headers' => ['Accept' => 'application/json'],
-                'json'    => $checkoutParams,
+                'json' => $checkoutParams,
             ]);
         } catch (ClientException $exception) {
             throw new InvalidConfigException("Invalid API request: {$exception->getMessage()}", $exception->getCode(), $exception);
@@ -110,24 +110,24 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
     {
         $getSubscriptionParams = [
             'plan' => [
-                'test'     => $this->apiContext->isTest(),
-                'title'    => $subscriptionIntend->getPlanName(),
+                'test' => $this->apiContext->isTest(),
+                'title' => $subscriptionIntend->getPlanName(),
                 'currency' => $subscriptionIntend->money->getCurrency()->getCode(),
-                'plan'     => array_merge(
+                'plan' => array_merge(
                     ['amount' => (int) $subscriptionIntend->money->getAmount()],
                     $this->parseDateInterval($subscriptionIntend->getInterval())
                 ),
-                'infinite'       => false,
+                'infinite' => false,
                 'billing_cycles' => $subscriptionIntend->getBillingCyclesCount(),
             ],
             'return_url' => route('widget.campaigns.donation-result', [
                 'campaign' => $subscriptionIntend->campaign,
-                'status'   => 'subscribed',
+                'status' => 'subscribed',
             ]),
             'notification_url' => route('webhooks.bepaid.subscriptions'),
-            'additional_data'  => [
+            'additional_data' => [
                 'campaign_id' => $subscriptionIntend->campaign->id,
-                'donator_id'  => $subscriptionIntend->donator->id,
+                'donator_id' => $subscriptionIntend->donator->id,
             ],
             'settings' => [
                 'language' => app()->getLocale(),
@@ -137,10 +137,10 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
 
         try {
             $response = $this->httpClient->request('POST', self::API_ENDPOINT.'/subscriptions', [
-                'auth'    => [$this->apiContext->marketId, $this->apiContext->marketKey],
+                'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
                 'headers' => ['Accept' => 'application/json'],
-                'json'    => $getSubscriptionParams,
-                'verify'  => false,
+                'json' => $getSubscriptionParams,
+                'verify' => false,
             ]);
         } catch (ClientException $exception) {
             throw new InvalidConfigException("Invalid API request: {$exception->getMessage()}", $exception->getCode(), $exception);
@@ -189,7 +189,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
         }
 
         return [
-            'interval'      => (int) $intervalSize,
+            'interval' => (int) $intervalSize,
             'interval_unit' => $convertedIntervalUnit, // hour|day|month
         ];
     }
@@ -212,9 +212,9 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
             'POST',
             self::API_ENDPOINT."/subscriptions/{$subscription->payment_gateway_subscription_id}/cancel",
             [
-                'auth'    => [$this->apiContext->marketId, $this->apiContext->marketKey],
+                'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
                 'headers' => ['Accept' => 'application/json'],
-                'json'    => $payload,
+                'json' => $payload,
             ]
         );
 
@@ -237,7 +237,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
     {
         try {
             $response = $this->httpClient->request('GET', self::CHECKOUT_ENDPOINT.'/ctp/api/checkouts/'.$token, [
-                'auth'    => [$this->apiContext->marketId, $this->apiContext->marketKey],
+                'auth' => [$this->apiContext->marketId, $this->apiContext->marketKey],
                 'headers' => ['Accept' => 'application/json'],
             ]);
         } catch (ClientException $exception) {
