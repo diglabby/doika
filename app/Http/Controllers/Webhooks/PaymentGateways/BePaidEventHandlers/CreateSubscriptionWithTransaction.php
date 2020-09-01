@@ -19,26 +19,26 @@ final class CreateSubscriptionWithTransaction
         $interval = CarbonInterval::fromString($request->json('plan.plan.interval').' '.$request->json('plan.plan.interval_unit'));
 
         $subscription = new Subscription([
-            'donator_id' => $request->json('additional_data.donator_id'),
-            'campaign_id' => $request->json('additional_data.campaign_id'),
-            'payment_gateway' => BePaidPaymentGateway::GATEWAY_ID,
+            'donator_id'                      => $request->json('additional_data.donator_id'),
+            'campaign_id'                     => $request->json('additional_data.campaign_id'),
+            'payment_gateway'                 => BePaidPaymentGateway::GATEWAY_ID,
             'payment_gateway_subscription_id' => $request->json('id'),
-            'amount' => (int) $request->json('plan.plan.amount'),
-            'currency' => $request->json('plan.currency'),
-            'payment_interval' => $interval->spec(),
+            'amount'                          => (int) $request->json('plan.plan.amount'),
+            'currency'                        => $request->json('plan.currency'),
+            'payment_interval'                => $interval->spec(),
         ]);
         $subscription->save();
 
         $transaction = new Transaction([
-            'amount' => $request->json('plan.plan.amount'),
-            'currency' => $request->json('plan.currency'),
-            'campaign_id' => $subscription->campaign->id,
-            'donator_id' => $subscription->donator_id,
-            'subscription_id' => $subscription->id,
-            'payment_gateway' => 'bePaid',
+            'amount'                         => $request->json('plan.plan.amount'),
+            'currency'                       => $request->json('plan.currency'),
+            'campaign_id'                    => $subscription->campaign->id,
+            'donator_id'                     => $subscription->donator_id,
+            'subscription_id'                => $subscription->id,
+            'payment_gateway'                => 'bePaid',
             'payment_gateway_transaction_id' => $request->json('last_transaction.uid'),
-            'status' => Transaction::STATUS_SUCCESSFUL,
-            'status_message' => $request->json('last_transaction.message'),
+            'status'                         => Transaction::STATUS_SUCCESSFUL,
+            'status_message'                 => $request->json('last_transaction.message'),
         ]);
         $transaction->save();
 
