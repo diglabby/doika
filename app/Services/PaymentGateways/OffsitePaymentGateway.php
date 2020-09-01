@@ -14,7 +14,7 @@ interface OffsitePaymentGateway extends PaymentGateway
      * so we can redirect visitor to a payment page
      * where visitor can input payment data.
      *
-     * @param Money $money
+     * @param Money    $money
      * @param Campaign $campaign
      *
      * @return string
