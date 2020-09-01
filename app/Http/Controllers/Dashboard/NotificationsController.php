@@ -47,7 +47,7 @@ class NotificationsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request            $request
      * @param \Diglabby\Doika\Models\Notification $notification
      *
      * @return \Illuminate\Http\Response
