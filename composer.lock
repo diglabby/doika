@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c00acf243961779d3b7c0a211e1d71c4",
+    "content-hash": "f7a9429089a7d679a7b310d948bf3722",
     "packages": [
         {
             "name": "anlutro/l4-settings",
@@ -1444,6 +1444,7 @@
                 "laravel",
                 "vue-i18n"
             ],
+            "abandoned": true,
             "time": "2020-03-10T18:55:52+00:00"
         },
         {
@@ -4094,24 +4095,23 @@
         },
         {
             "name": "tightenco/ziggy",
-            "version": "v0.7.1",
+            "version": "0.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tightenco/ziggy.git",
-                "reference": "aa4c42aaec9516da892bc2e9f6e992582646af77"
+                "reference": "82ea6ec6cb6ab3545b0245310b2a424316fe48d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tightenco/ziggy/zipball/aa4c42aaec9516da892bc2e9f6e992582646af77",
-                "reference": "aa4c42aaec9516da892bc2e9f6e992582646af77",
+                "url": "https://api.github.com/repos/tightenco/ziggy/zipball/82ea6ec6cb6ab3545b0245310b2a424316fe48d8",
+                "reference": "82ea6ec6cb6ab3545b0245310b2a424316fe48d8",
                 "shasum": ""
             },
             "require": {
-                "laravel/framework": "~5.4"
+                "laravel/framework": ">=5.4@dev"
             },
             "require-dev": {
-                "mikey179/vfsstream": "^1.6",
-                "orchestra/testbench": "~3.6"
+                "orchestra/testbench": "^5.0"
             },
             "type": "library",
             "extra": {
@@ -4132,16 +4132,23 @@
             ],
             "authors": [
                 {
-                    "name": "Matt Stauffer",
-                    "email": "matt@tighten.co"
-                },
-                {
                     "name": "Daniel Coulbourne",
                     "email": "daniel@tighten.co"
+                },
+                {
+                    "name": "Jake Bathman",
+                    "email": "jake@tighten.co"
                 }
             ],
             "description": "Generates a Blade directive exporting all of your named Laravel routes. Also provides a nice route() helper function in JavaScript.",
-            "time": "2019-04-26T22:03:47+00:00"
+            "homepage": "https://github.com/tightenco/ziggy",
+            "keywords": [
+                "Ziggy",
+                "javascript",
+                "laravel",
+                "routes"
+            ],
+            "time": "2020-06-05T14:42:41+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -4923,7 +4930,7 @@
             "funding": [
                 {
                     "type": "custom",
-                    "url": "https://doika.falanster.by/"
+                    "url": "https://doika.falanster.by/#history"
                 }
             ],
             "time": "2020-06-26T10:29:39+00:00"
@@ -6374,6 +6381,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2019-09-17T06:23:10+00:00"
         },
         {

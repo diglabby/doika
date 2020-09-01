@@ -25,7 +25,7 @@
         "martinlindhe/laravel-vue-i18n-generator": "^0.1.22",
         "moneyphp/money": "^3.2",
         "spatie/laravel-query-builder": "^1.17",
-        "tightenco/ziggy": "^0.7.1"
+        "tightenco/ziggy": "^0.9.4"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
