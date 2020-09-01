@@ -26,9 +26,9 @@ class BePaidPaymentGatewayTest extends TestCase
         parent::setUp();
         $this->app->bind(BePaidApiContext::class, function () {
             return new BePaidApiContext([
-                'marketId'  => self::MARKET_ID,
+                'marketId' => self::MARKET_ID,
                 'marketKey' => self::MARKET_KEY,
-                'mode'      => 'test',
+                'mode' => 'test',
             ]);
         });
 
