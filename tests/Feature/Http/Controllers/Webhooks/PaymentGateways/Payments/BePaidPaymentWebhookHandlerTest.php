@@ -29,13 +29,13 @@ class BePaidPaymentWebhookHandlerTest extends TestCase
 
         $response->assertOk();
         $this->assertDatabaseHas('transactions', [
-            'campaign_id'                    => $campaign->id,
-            'subscription_id'                => null,
-            'payment_gateway'                => 'bePaid',
+            'campaign_id' => $campaign->id,
+            'subscription_id' => null,
+            'payment_gateway' => 'bePaid',
             'payment_gateway_transaction_id' => '12019567-c74ce49914',
-            'amount'                         => 500,
-            'currency'                       => 'BYN',
-            'status'                         => Transaction::STATUS_SUCCESSFUL,
+            'amount' => 500,
+            'currency' => 'BYN',
+            'status' => Transaction::STATUS_SUCCESSFUL,
         ]);
         $this->assertDatabaseHas('donators', [
             'email' => 'jake@example.com',
