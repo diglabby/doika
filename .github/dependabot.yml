@@ -1,0 +1,14 @@
+version: 2
+updates:
+- package-ecosystem: composer
+  directory: "/"
+  schedule:
+    interval: monthly
+    time: "03:00"
+  reviewers:
+  - lptn
+  ignore:
+  - dependency-name: phpunit/phpunit
+    versions:
+    - ">= 8.a"
+    - "< 9"
