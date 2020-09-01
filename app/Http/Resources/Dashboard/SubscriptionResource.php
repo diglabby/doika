@@ -14,19 +14,19 @@ final class SubscriptionResource extends JsonResource
         $subscription->loadMissing(['donator', 'campaign']);
 
         return [
-            'id'      => $subscription->id,
+            'id' => $subscription->id,
             'donator' => [
-                'id'   => $subscription->donator->id,
+                'id' => $subscription->donator->id,
                 'name' => $subscription->donator->name,
             ],
             'campaign' => [
-                'id'   => $subscription->campaign->id,
+                'id' => $subscription->campaign->id,
                 'name' => $subscription->campaign->name,
             ],
             'payment_gateway' => $subscription->payment_gateway,
-            'amount'          => $subscription->amount,
-            'currency'        => $subscription->currency,
-            'created_at'      => $subscription->created_at->timestamp,
+            'amount' => $subscription->amount,
+            'currency' => $subscription->currency,
+            'created_at' => $subscription->created_at->timestamp,
         ];
     }
 }

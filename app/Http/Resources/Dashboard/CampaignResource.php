@@ -18,7 +18,7 @@ final class CampaignResource extends JsonResource
             $campaign->attributesToArray(),
             [
                 'amount_collected' => $campaign->transactions->sum('amount'),
-                'translations'     => $this->whenLoaded('translations'),
+                'translations' => $this->whenLoaded('translations'),
             ]
         );
     }
