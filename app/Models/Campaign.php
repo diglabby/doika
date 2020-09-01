@@ -56,13 +56,13 @@ class Campaign extends Model
 
     /** @var array The attributes that should be cast to native types */
     protected $casts = [
-        'active_status'   => 'bool',
+        'active_status' => 'bool',
         'visual_settings' => 'array',
     ];
 
     /** @var array Default attribute values */
     protected $attributes = [
-        'description'   => '',
+        'description' => '',
         'active_status' => false,
     ];
 
