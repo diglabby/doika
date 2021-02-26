@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
-    <link rel="shortcut icon" href="{{ asset('images/Doika-logo.png') }}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('images/Dbai-logo.png') }}" type="image/x-icon" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,7 +45,7 @@
                     <a class="navbar-brand" href="{{ url('/doika/doika/dashboard/') }}">
                         {{ config('app.name') }}
                     </a>
-                    
+
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">

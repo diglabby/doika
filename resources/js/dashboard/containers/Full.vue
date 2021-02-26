@@ -13,7 +13,7 @@
         <b-button
           class="container-fluid btn btn-success"
           style="margin-top:auto !important; margin-bottom:50px; width: 80%;"
-          href="https://doika.falanster.by"
+          href="https://t.me/dbai4ua"
         >
           {{ $t('buttons.admin.support') }}
         </b-button>

@@ -7,14 +7,14 @@
         class="navbar-brand-full"
         :src="require('@/dashboard/logo')"
         height="30"
-        alt="Doika-logo"
+        alt="Dbai-logo"
       >
       <img
         class="navbar-brand-minimized"
-        :src="require('@/dashboard/Doika-logo')"
+        :src="require('@/dashboard/Dbai-logo')"
         width="30"
         height="30"
-        alt="Doika-logo"
+        alt="Dbai-logo"
       >
     </a>
 

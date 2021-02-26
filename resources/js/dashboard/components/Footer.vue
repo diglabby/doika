@@ -2,8 +2,8 @@
   <Footer>
     <strong>
       {{ $t('labels.admin.common.footer.left') }}
-      <a href="/" target="_blank">{{ name }}</a>
-      . v{{ appVersion }}
+      <a href="http://doika.falanster.by/" target="_blank">{{ name }}</a>
+       v{{ appVersion }}
     </strong>
     <span class="ml-auto">
       <template v-if="editorName !== ''">

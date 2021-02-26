@@ -27,21 +27,21 @@
                             <b-form-group
                               :label="
                                 $t(
-                                  'labels.admin.settings.payments.bePaidIdMarket'
+                                  'labels.admin.settings.payments.fondyIdMarket'
                                 )
                               "
-                              label-for="bePaidIdMarket"
+                              label-for="fondyIdMarket"
                               horizontal
                               :label-cols="4"
                               :feedback="feedback('title')"
                             >
                               <b-form-input
-                                id="bePaidIdMarket"
+                                id="fondyIdMarket"
                                 name="title"
                                 required
                                 :placeholder="
                                   $t(
-                                    'labels.admin.settings.payments.placeholder.bePaidIdMarket'
+                                    'labels.admin.settings.payments.placeholder.fondyIdMarket'
                                   )
                                 "
                                 v-model="model.settings.gateway_bePaid_idMarket"
@@ -54,21 +54,21 @@
                             <b-form-group
                               :label="
                                 $t(
-                                  'labels.admin.settings.payments.bePaidKeyMarket'
+                                  'labels.admin.settings.payments.fondyKeyMarket'
                                 )
                               "
-                              label-for="bePaidKeyMarket"
+                              label-for="fondyKeyMarket"
                               horizontal
                               :label-cols="4"
                               :feedback="feedback('title')"
                             >
                               <b-form-input
-                                id="bePaidKeyMarket"
+                                id="fondyKeyMarket"
                                 name="title"
                                 required
                                 :placeholder="
                                   $t(
-                                    'labels.admin.settings.payments.placeholder.bePaidKeyMarket'
+                                    'labels.admin.settings.payments.placeholder.fondyKeyMarket'
                                   )
                                 "
                                 v-model="

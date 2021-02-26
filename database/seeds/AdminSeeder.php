@@ -9,7 +9,7 @@ final class AdminSeeder extends Seeder
     {
         factory(Admin::class)->create([
             'email' => 'demo@example.com',
-            'password' => Hash::make('demo'), // demo
+            'password' => Hash::make('demo123'), // demo
             'name' => 'Demo Admin',
         ]);
     }

@@ -11,7 +11,7 @@
                                 @csrf
 
                                 <div class="card-logo">
-                                    <img src="{{ asset('images/Doika-logo.png') }}" />
+                                    <img src="{{ asset('images/Dbai-logo.png') }}" />
                                 </div>
 
                                 <h1>@lang('labels.admin.login.header')</h1>
