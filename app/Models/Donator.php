@@ -33,7 +33,7 @@ class Donator extends Model implements HasLocalePreference
 
     /** @var array Default attribute values */
     protected $attributes = [
-        'locale' => 'be',
+        'locale' => 'ua',
     ];
 
     public function subscriptions(): HasMany

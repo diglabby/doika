@@ -10,7 +10,7 @@ use Diglabby\Doika\Models\CampaignTranslation;
  */
 $factory->define(CampaignTranslation::class, function (Faker\Generator $faker) {
     return [
-        'locale' => $faker->randomElement(['be', 'ru', 'en']),
+        'locale' => $faker->randomElement(['ua', 'be', 'ru', 'en']),
         'name' => $faker->words(3, true),
         'description' => $faker->imageUrl(),
         'terms_of_use' => "<div>{$faker->sentence}<div>",

@@ -43,7 +43,7 @@ export function createRouter(base, i18n) {
             name: 'search',
             component: Search,
             meta: {
-              label: i18n.t('labels.common.search')
+              label: i18n.t('labels.admin.common.search')
             }
           },
           {

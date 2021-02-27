@@ -34,7 +34,7 @@ class Admin extends Authenticatable
 
     /** @var array Default attribute values */
     protected $attributes = [
-        'locale' => 'be',
+        'locale' => 'ua',
     ];
 
     /** @var array The attributes that are mass assignable */

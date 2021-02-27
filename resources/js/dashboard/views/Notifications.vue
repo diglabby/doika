@@ -115,14 +115,14 @@ export default {
           data
         )
         .then(({ data }) => {
-          window.swal('Поспех', 'Запіс абноўлены', 'success', {
+          window.swal('Поспех', 'Запіс абноўлены', 'success', {//i18
             timer: 2000,
             buttons: false
           });
         })
         // needs to be developed
         .catch(({ response }) => {
-          window.swal('Праблемы', 'Нешта пайшло не так', 'error', {
+          window.swal('Праблемы', 'Нешта пайшло не так', 'error', {//i18
             timer: 2000,
             buttons: false
           });

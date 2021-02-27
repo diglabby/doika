@@ -11,6 +11,8 @@ import Locales from './vue-i18n-locales.generated.js'
 
 Vue.use(VueI18n)
 
+Vue.config.lang = 'ua';
+
 export function createLocales(locale) {
   return new VueI18n({
     locale: locale,
