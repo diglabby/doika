@@ -78,7 +78,6 @@
     "scripts": {
         "post-update-cmd": [
             "@php artisan ide-helper:generate",
-            "@php artisan ide-helper:models",
             "@php artisan ide-helper:meta"
         ],
         "post-autoload-dump": [
