@@ -12,6 +12,9 @@ npm-debug.log
 
 # Laravel
 .env
+
+# Composer
+composer.lock
 /vendor
 
 /public/build
