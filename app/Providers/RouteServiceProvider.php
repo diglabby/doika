@@ -8,15 +8,6 @@ use Illuminate\Support\Facades\Route;
 final class RouteServiceProvider extends BasicRouteServiceProvider
 {
     /**
-     * This namespace is applied to your controller routes.
-     *
-     * In addition, it is set as the URL generator's root namespace.
-     *
-     * @var string
-     */
-    protected $namespace = 'Diglabby\Doika\Http\Controllers';
-
-    /**
      * Define the routes for the application.
      *
      * @return void
@@ -32,7 +23,6 @@ final class RouteServiceProvider extends BasicRouteServiceProvider
     {
         Route::middleware('api')
             ->prefix('doika/webhooks')
-            ->namespace($this->namespace)
             ->group(base_path('routes/webhook.php'));
     }
 
@@ -40,12 +30,10 @@ final class RouteServiceProvider extends BasicRouteServiceProvider
     {
         Route::middleware(['api'])
             ->prefix('doika/widget/api')
-            ->namespace($this->namespace)
             ->group(base_path('routes/widget_api.php'));
 
         Route::middleware('web')
             ->prefix('doika')
-            ->namespace($this->namespace)
             ->group(base_path('routes/widget_ssr.php'));
     }
 
@@ -53,12 +41,10 @@ final class RouteServiceProvider extends BasicRouteServiceProvider
     {
         Route::middleware(['api', 'auth'])
             ->prefix('doika/dashboard/api')
-            ->namespace($this->namespace)
             ->group(base_path('routes/dashboard_api.php'));
 
         Route::middleware(['web', 'localize'])
             ->prefix('doika/dashboard')
-            ->namespace($this->namespace)
             ->group(base_path('routes/dashboard_ssr.php'));
     }
 }

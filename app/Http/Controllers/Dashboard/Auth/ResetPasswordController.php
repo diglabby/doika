@@ -1,6 +1,6 @@
 <?php
 
-namespace Diglabby\Doika\Http\Controllers\Auth;
+namespace Diglabby\Doika\Http\Controllers\Dashboard\Auth;
 
 use Diglabby\Doika\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
