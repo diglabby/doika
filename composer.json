@@ -28,13 +28,13 @@
         "tightenco/ziggy": "^0.7.1"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-ide-helper": "^2.5",
         "beyondcode/laravel-dump-server": "^1.2",
         "diglabby/laravel-find-missing-translations": "^1.0",
         "filp/whoops": "^2.0",
         "friendsofphp/php-cs-fixer": "^2.16",
         "fzaninotto/faker": "^1.4",
+        "itsgoingd/clockwork": "^5.0",
         "laravel/dusk": "^5.1",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",

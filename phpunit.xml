@@ -34,6 +34,6 @@
         <server name="SESSION_DRIVER" value="array"/>
 
         <server name="DB_CONNECTION" value="testing"/>
-        <server name="DEBUGBAR_ENABLED" value="false"/>
+        <server name="CLOCKWORK_ENABLE" value="false"/>
     </php>
 </phpunit>
