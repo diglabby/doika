@@ -10,16 +10,17 @@ _ide_helper_models.php
 /node_modules
 npm-debug.log
 
+# Composer
+/vendor
+composer.lock
+
 # Laravel
 .env
-/vendor
 
 /public/build
 /public/dist
 /public/mix-manifest.json
 storage/public/uploads/
-
-.phpunit.result.cache
 
 /docker/apache/logs
 /docker/node/logs
@@ -27,3 +28,4 @@ storage/public/uploads/
 
 # PHP Tools
 .php_cs.cache
+.phpunit.result.cache
