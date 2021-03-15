@@ -17,7 +17,7 @@
             'appName' => config('app.name'),
             'appVersion' => config('app.version'),
             'homePath' => route('dashboard.home'),
-            'dashboardBasePath' => '/doika/doika/dashboard',
+            'dashboardBasePath' => doika_route('dashboard.home'),
             'locales' => 'en',
             'user' => $loggedInUser,
         ]) !!}
@@ -42,10 +42,10 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/doika/doika/dashboard/') }}">
+                    <a class="navbar-brand" href="{{ doika_route('dashboard.home') }}">
                         {{ config('app.name') }}
                     </a>
-                    
+
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">

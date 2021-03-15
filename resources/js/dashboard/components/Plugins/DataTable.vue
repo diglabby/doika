@@ -135,7 +135,7 @@ export default {
         .then(test => {
           //  console.log(this.$app.route(this.deleteRoute));
           axios
-            .delete(`/doika/doika/dashboard/api/campaigns/${params}`)
+            .delete(`/doika/dashboard/api/campaigns/${params}`)
             .then(({ data }) => {
               this.onContextChanged();
             })
