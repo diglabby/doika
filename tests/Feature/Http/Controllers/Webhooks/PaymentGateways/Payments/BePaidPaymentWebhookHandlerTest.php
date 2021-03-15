@@ -1,11 +1,12 @@
 <?php
 
-namespace Tests\Feature\Http\Controllers\Webhooks\PaymentGateways;
+namespace Tests\Feature\Http\Controllers\Webhooks\PaymentGateways\Payments;
 
 use Diglabby\Doika\Http\Middleware\VerifyBePaidSignature;
 use Diglabby\Doika\Models\Campaign;
 use Diglabby\Doika\Models\Transaction;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Feature\Http\Controllers\Webhooks\PaymentGateways\LoadsRequestFixture;
 use Tests\TestCase;
 
 class BePaidPaymentWebhookHandlerTest extends TestCase
