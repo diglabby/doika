@@ -17,7 +17,7 @@
             'appName' => config('app.name'),
             'appVersion' => config('app.version'),
             'homePath' => route('dashboard.home'),
-            'dashboardBasePath' => doika_route('dashboard.home'),
+            'dashboardBasePath' => doika_route('dashboard.home', [], false),
             'locales' => 'en',
             'user' => $loggedInUser,
         ]) !!}
