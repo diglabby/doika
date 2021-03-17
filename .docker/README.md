@@ -35,7 +35,7 @@ exit
 
 Open shell of the "app" container to prepare and build front-end assets:
 ```sh
-docker-compose exec node
+docker-compose exec node sh
 
 ## Install NPM dependencies and build assets
 npm install && npm run dev
@@ -43,3 +43,8 @@ npm install && npm run dev
 # exit from container SSH session
 exit
 ```
+
+Test site should be available on [http://localhost:8080](http://localhost:8080) (if you haven’t changed FORWARD_HTTP_PORT in your .env).
+Test admin credentials `demo@example.com`/`demo`.
+
+Happy hacking! 🚀
