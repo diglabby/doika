@@ -33,6 +33,10 @@ php artisan key:generate
 exit
 ```
 
+Next, you need to install NPM dependencies and build assets.
+We recommend you to do it from your local machine, if you have nodejs locally installed.
+If if not, please follow these steps:
+
 Open shell of the "app" container to prepare and build front-end assets:
 ```sh
 docker-compose exec node sh
