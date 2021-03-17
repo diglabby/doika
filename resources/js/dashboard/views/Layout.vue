@@ -1100,7 +1100,7 @@ export default {
         currency: 'BYN',
         target_amount: 1000,
         amount_collected: 10,
-        picture_url: '/doika/public/images/logo_campaign.png'
+        picture_url: '/doika/images/logo_campaign.png'
       },
 
       modelName: 'settings',
