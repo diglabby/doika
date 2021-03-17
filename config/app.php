@@ -15,8 +15,6 @@ return [
 
     'name' => env('APP_NAME', 'Doika'),
 
-    'version' => env('APP_VERSION', '2.X'),
-
     /*
     |--------------------------------------------------------------------------
     | Application Environment
