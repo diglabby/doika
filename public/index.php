@@ -8,6 +8,22 @@ define('LARAVEL_START', microtime(true));
 
 /*
 |--------------------------------------------------------------------------
+| Set Doika Path
+|--------------------------------------------------------------------------
+|
+| Doika path should be outside of public webserver directory, for security
+| reasons. `app/public` directory should be symlinked to the web server
+| directory, usually using "doika" name. Example:
+| /var/www/html/.htaccess
+| /var/www/html/index.html
+| /var/www/html/doika -> /var/doika_v2/public [symlink]
+|
+*/
+
+$doikaPath = dirname(__DIR__, 3);
+
+/*
+|--------------------------------------------------------------------------
 | Register The Auto Loader
 |--------------------------------------------------------------------------
 |
@@ -18,7 +34,7 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
-require __DIR__.'/vendor/autoload.php';
+require $doikaPath.'/app/vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +48,7 @@ require __DIR__.'/vendor/autoload.php';
 |
 */
 
-$app = require_once __DIR__.'/bootstrap/app.php';
+$app = require_once $doikaPath.'/app/bootstrap/app.php';
 
 /*
 |--------------------------------------------------------------------------
