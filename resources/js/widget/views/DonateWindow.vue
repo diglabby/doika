@@ -33,51 +33,51 @@ import axios from 'axios';
 
 /** recursive function checking the server status and redirect to partical status page
  *
- *  num - current number of attempts 
+ *  num - current number of attempts
  *  tokenOp - current payment token
- *  fail - fail link for redirection in case the checking process timeout 
+ *  fail - fail link for redirection in case the checking process timeout
  */
-    
+
 function delay(num, tokenOp, fail) {
-    
+
     const limit = 3; // attempts to check server status of the payments
     const postpone = 3000 // interval of checkin the server
-    
+
     // in the current attepmpt less the limit
     if (num < limit) {
 
       // set interval for repeating the checking porocess
-      setTimeout( function() {       
+      setTimeout( function() {
 
         axios( {
             method: "post",
-            url: '/doika/doika/widget/api/bepaid-check-payment-status', // TBD - need to move to some variables...
+            url: '/doika/widget/api/bepaid-check-payment-status', // TBD - need to move to some variables...
             data: {
                 token: tokenOp
             }
         }).
-        then( ({ data }) => {         
+        then( ({ data }) => {
             num++;
-            
+
             // if success when redirect to success status page
-            if (data.checkout.status === 'successful') {              
-              window.location.href = data.checkout.settings.success_url;            
+            if (data.checkout.status === 'successful') {
+              window.location.href = data.checkout.settings.success_url;
             }
-            
+
             // else save the redirect link to the fail status page
             fail = data.checkout.settings.fail_url;
-            
+
             // on more circle
             delay(num, tokenOp, fail);
 
-        })            
+        })
       }, postpone);
 
-    } else {       
+    } else {
         window.location.href = fail;
     }
 }
-    
+
 export default {
   name: 'DonateWindow',
   props: ['id'],
@@ -94,16 +94,16 @@ export default {
       }
     };
   },
-    
 
-    
-  methods: {      
+
+
+  methods: {
     delay
-  },     
-    
-    
-  async created() {    
-    
+  },
+
+
+  async created() {
+
     let formData = this.$app.objectToFormData(this.model);
     formData.append('_method', 'POST');
     let action = this.$app.route('widget.campaigns.payment-intends.store', {
@@ -112,7 +112,7 @@ export default {
     });
 
     await axios.post(action, formData).
-    then(({ data }) => {            
+    then(({ data }) => {
         this.redirect_url = data.redirect_url;
         this.token = data.token;
         return this.token;
@@ -128,7 +128,7 @@ export default {
   const firstLaunch = 5000;
 
   setTimeout(function() { delay(1, curToken, ''); }, firstLaunch);
-    
+
 
   var options = {
       type: 'inline',
