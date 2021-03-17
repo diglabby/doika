@@ -2,9 +2,9 @@
 
 ## Prerequisites
 
-Install Docker Desktop: [Get Docker](https://docs.docker.com/get-docker/).
+1. Install Docker Desktop: [Get Docker](https://docs.docker.com/get-docker/).
+2. Setup your .env: create `.env` file from `.env.docker` (by coping it with a new name). 
 
-Setup your .env (specify )
 
 ## Installation
 
