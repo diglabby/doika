@@ -34,11 +34,10 @@
 
                                 <div class="d-flex align-items-center">
                                     <button type="submit" class="btn btn-primary"><i class="fe fe-log-in"></i>&nbsp;@lang('buttons.admin.login.submit')</button>
-                                    <!--
-                                    <a href="{{ route('password.reset', 'token') }}" class="ml-auto small">
+
+                                    {{-- <a href="{{ route('password.reset', 'token') }}" class="ml-auto small">
                                         @lang('labels.admin.login.reset.link')
-                                    </a>
-                                    -->
+                                    </a>--}}
                                 </div>
                             </form>
                         </div>
