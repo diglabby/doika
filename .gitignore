@@ -25,6 +25,7 @@ storage/public/uploads/
 .phpunit.result.cache
 
 /storage/debugbar
+/storage/clockwork
 
 # PHP Tools
 .php_cs.cache
