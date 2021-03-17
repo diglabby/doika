@@ -1,6 +1,6 @@
 <?php
 /**
- * URIs prefixed by /doika/dashboard.
+ * URIs prefixed by /dashboard.
  *
  * @see \Diglabby\Doika\Providers\RouteServiceProvider::mapDashboardRoutes()
  * Applied middleware groups: web
@@ -15,7 +15,7 @@ Route::post('login', [LoginController::class, 'login']);
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/', function () {
-    return redirect('doika/dashboard/campaigns');
+    return redirect('dashboard/campaigns');
 })->name('dashboard.home')->middleware(['auth']);
 
 Route::get('/{any}', [SpaLayoutController::class, 'show'])->where('any', '[\/\w\.-]*')

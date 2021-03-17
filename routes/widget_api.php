@@ -1,6 +1,6 @@
 <?php
 /**
- * URIs prefixed by /doika/widget/api.
+ * URIs prefixed by /widget/api.
  *
  * @see \Diglabby\Doika\Providers\RouteServiceProvider::mapWidgetRoutes()
  * Applied middleware groups: api
