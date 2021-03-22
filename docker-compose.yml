@@ -39,7 +39,7 @@ services:
     ports:
       - ${FORWARD_DB_PORT:-33060}:3306
     volumes:
-      - ./docker/mysql/data:/var/lib/mysql
+      - ./.docker/mysql/data:/var/lib/mysql
     stop_grace_period: 1m
 
   node:
@@ -50,5 +50,5 @@ services:
     working_dir: /app
     volumes:
       - ./:/app
-      - ./docker/node/data/npm-cache:/root/.npm
-      - ./docker/node/data/logs:/root/.npm/_logs
+      - ./.docker/node/data/npm-cache:/root/.npm
+      - ./.docker/node/data/logs:/root/.npm/_logs
