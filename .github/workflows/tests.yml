@@ -51,5 +51,11 @@ jobs:
           sudo /etc/init.d/mysql start --explicit_defaults_for_timestamp
           mysql -u root -proot -e 'CREATE DATABASE IF NOT EXISTS `doika`;'
 
+      - name: Prepare front end
+        run: |
+          npm config set registry http://registry.npmjs.org/
+          npm ci
+          npm run prod
+
       - name: Execute PHP tests
         run: composer test:ci
