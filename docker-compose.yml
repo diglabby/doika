@@ -22,6 +22,8 @@ services:
       - ./.docker/app/data/apache/logs:/var/log/apache2
       - ./.docker/app/config/php/php.ini:/usr/local/etc/php/php.ini
       - ./.docker/app/data/composer/cache:/home/unicorn/.composer/cache:cached
+    environment:
+      IS_DOIKA_DOCKER_SETUP: 1
 
   mysql:
     image: mysql:5.7

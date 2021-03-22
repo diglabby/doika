@@ -16,11 +16,14 @@ define('LARAVEL_START', microtime(true));
 | directory, usually using "doika" name. Example:
 | /var/www/html/.htaccess
 | /var/www/html/index.html
-| /var/www/html/doika -> /var/doika_v2/public [symlink]
+| /var/www/doika
+| /var/www/doika/public -> /var/www/html/doika [symlink]
 |
 */
 
-$doikaPath = dirname(__DIR__, 3);
+$doikaPath = getenv('IS_DOIKA_DOCKER_SETUP') === '1'
+    ? dirname(__DIR__, 3).'/app'
+    : dirname(__DIR__, 1);
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +37,7 @@ $doikaPath = dirname(__DIR__, 3);
 |
 */
 
-require $doikaPath.'/app/vendor/autoload.php';
+require $doikaPath.'/vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +51,7 @@ require $doikaPath.'/app/vendor/autoload.php';
 |
 */
 
-$app = require_once $doikaPath.'/app/bootstrap/app.php';
+$app = require_once $doikaPath.'/bootstrap/app.php';
 
 /*
 |--------------------------------------------------------------------------
