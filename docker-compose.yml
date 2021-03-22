@@ -15,9 +15,9 @@ services:
     depends_on:
       - mysql
     volumes:
-      - ./.docker/www:/var/www
-      - ./public:/var/www/doika
-      - ./:/app
+      - ./.docker/www:/var/www/html # emulate main site (that hosts doika)
+      - ./:/var/www/doika_v2 # mount doika application outside web-server
+      - ./public:/var/www/html/doika # symlink public dir as "doika" to web-server
       - ./.docker/app/config/apache/vhosts:/etc/apache2/sites-enabled
       - ./.docker/app/data/apache/logs:/var/log/apache2
       - ./.docker/app/config/php/php.ini:/usr/local/etc/php/php.ini
