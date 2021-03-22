@@ -157,8 +157,8 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
     }
 
     /**
-     * Parse CarbonInterval into bePaid format.
-     *
+     * Parse ISO8601/CarbonInterval into bePaid format.
+     * @see https://en.wikipedia.org/wiki/ISO_8601#Durations
      * @see https://docs.bepaid.by/ru/subscriptions/plans
      *
      * @param CarbonInterval $interval
@@ -233,7 +233,7 @@ final class BePaidPaymentGateway implements OffsitePaymentGateway, SupportsSubsc
      *
      * @return array
      */
-    public function checkPaymentStatus($token)
+    public function checkPaymentStatus(string $token): array
     {
         try {
             $response = $this->httpClient->request('GET', self::CHECKOUT_ENDPOINT.'/ctp/api/checkouts/'.$token, [
