@@ -18,18 +18,17 @@ Open shell of the "app" container and prepare Laravel application.
 # Open shell of the "app" container
 docker-compose exec app bash
 
-# Install composer
-curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# Run all these command inside "app" container shell
 
 # Install PHP dependencies using composer
-/usr/local/bin/composer install
+composer install
 
 # Prepare Laravel app (first run)
 php artisan migrate
 php artisan db:seed
 php artisan key:generate
 
-# exit from container SSH session
+# exit from container SSH shell session
 exit
 ```
 

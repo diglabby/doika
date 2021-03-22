@@ -22,7 +22,6 @@ services:
       - ./.docker/app/data/apache/logs:/var/log/apache2
       - ./.docker/app/config/php/php.ini:/usr/local/etc/php/php.ini
       - ./.docker/app/data/composer/cache:/home/unicorn/.composer/cache:cached
-#    command: sh -c "curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer"
 
   mysql:
     image: mysql:5.7
