@@ -1,0 +1,78 @@
+name: PHP tests
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '**.php'
+      - '.composer.*'
+      - '.github/workflows/tests.yml'
+      - 'phpunit.xml'
+
+jobs:
+  test_php:
+    name: Run PHP tests
+    runs-on: ubuntu-18.04
+    if: "! contains(github.event.head_commit.message, '[skip ci]')"
+    env:
+      DB_HOST: 127.0.0.1
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      DB_DATABASE: doika_test
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.1
+          extensions: curl, json, mbstring, pdo, pdo_mysql, zip # keep in sync with composer.json
+          coverage: none
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v2
+        id: composer-cache
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.json') }}
+
+      - name: Run composer install
+        if: steps.composer-cache.outputs.cache-hit != 'true' # run composer install only when actions/cache haven't restored cached /vendor dir
+        run: composer install -q --no-interaction --no-scripts --no-progress --prefer-dist --no-ansi
+
+      - name: Prepare Laravel application
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+
+      - name: Create testing DB
+        run: |
+          sudo /etc/init.d/mysql start --explicit_defaults_for_timestamp
+          mysql -u root -proot -e 'CREATE DATABASE IF NOT EXISTS `doika_test`;'
+
+      - name: Cache NPM dependencies
+        uses: actions/cache@v2
+        id: npm-cache
+        with:
+          path: node_modules
+          key: composer-${{ hashFiles('package.json') }}
+
+      - name: Check Laravel routes
+        run: php artisan route:list
+
+      - name: Install NPM dependencies
+        if: steps.npm-cache.outputs.cache-hit != 'true' # run npm install only when actions/cache haven't restored cached /node_modules dir
+        run: |
+          npm config set registry http://registry.npmjs.org/
+          npm ci
+
+      - name: Build front-end assets
+        run: npm run production
+
+      - name: Execute PHP tests
+        run: composer test:ci
+
+      - name: Check for missing translations
+        run: php artisan translations:missing
+        continue-on-error: true
