@@ -1,6 +1,6 @@
 <?php
 /**
- * URIs not prefixed.
+ * URIs prefixed by /{subdir}.
  *
  * @see \Diglabby\Doika\Providers\RouteServiceProvider::mapWebhookRoutes()
  * Applied middleware groups: api

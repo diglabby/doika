@@ -20,7 +20,6 @@ return [
             'actions' => 'Дзеянні',
             'info' => 'Даведка',
         ],
-
         'common' => [
             'search' => 'Пошук',
             'footer' => [
@@ -38,8 +37,8 @@ return [
         'languageMenu' => [
             'header' => 'Мова',
             'be' => 'Беларуская',
-            'ru' => 'Руская',
-            'en' => 'Английская',
+            'ru' => 'Русский',
+            'en' => 'English',
         ],
         'accountMenu' => [
             'header' => 'Профіль',
@@ -125,9 +124,9 @@ return [
             'amount' => 'Сума',
             'backer' => 'Ахвярадаўца',
             'recurrent' => 'Падпіска на кампанію',
-            'status' => 'Статус аплаты',
             'currency' => 'Валюта',
             'created_at' => 'Дата стварэння',
+            'status' => 'Статус аплаты',
             'backerStatus' => 'Статус карты',
             'statuses' => [
                 'success' => 'Паспяхова',

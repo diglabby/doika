@@ -44,15 +44,13 @@ return [
             'description' => 'Апісанне',
             'change' => 'Змяніць паведамленне',
         ],
-
     ],
     'widget' => [
         'back' => 'Назад',
         'confirm' => 'Пацвердзіць',
         'proceed' => 'Працягнуць',
-        'oneTime' => 'Плацеж',
+        'oneTime' => 'Плацёж',
         'subscribe' => 'Падпіска',
         'email' => 'Email для падзякі',
-
     ],
 ];

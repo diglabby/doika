@@ -1,6 +1,6 @@
 <?php
 /**
- * URIs prefixed by /dashboard.
+ * URIs prefixed by /{subdir}/dashboard.
  *
  * @see \Diglabby\Doika\Providers\RouteServiceProvider::mapDashboardRoutes()
  * Applied middleware groups: web
