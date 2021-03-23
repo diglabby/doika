@@ -11,7 +11,7 @@ final class DoikaRouteTest extends TestCase
     /** @test */
     public function it_generates_a_route_for_doika_installed_to_site_root(): void
     {
-        Config::set('doika.url_prefix', 'doika');
+        Config::set('doika.url_prefix', '');
 
         $doikaRoute = doika_route('login', [], false);
 
