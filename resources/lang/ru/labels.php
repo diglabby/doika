@@ -7,6 +7,10 @@ return [
             'description' => '',
         ],
     ],
+    'emailserver' => 'Паштовы сэрвер',
+    'recurrent' => 'Падпіска',
+    'single' => 'Аднаразовы плацёж',
+
     'admin' => [
         'title' => 'Управление',
         'datatables' => [
@@ -89,6 +93,7 @@ return [
             'colors' => 'Конфигурация цветов',
             'preview' => 'Просмотр кампании',
             'active' => 'Действующая',
+            'amount' => 'Патрэбная сума',
             'topBanner' => 'Верхний баннер',
             'progressBar' => 'Полоса прогресса',
             'options' => 'Параметры',
@@ -119,6 +124,8 @@ return [
             'amount' => 'Необходимая сумма',
             'backer' => 'Жертвователь',
             'recurrent' => 'Подписка на кампанию',
+            'currency' => 'Валюта',
+            'created_at' => 'Дата стварэння',
             'status' => 'Статус оплаты',
             'backerStatus' => 'Статус карты',
             'statuses' => [
@@ -141,6 +148,22 @@ return [
                 'backerStatus' => 'Статус карты',
             ],
         ],
+        'paymentSystems' => [
+            'title' => 'Плацежныя сістэмы',
+        ],
+        'layout' => [
+            'title' => 'Знешні выгляд',
+            'font' => 'Колер шрыфта',
+            'background' => 'Колер фона',
+            'progressBar' => 'Колер паласы прагрэсу',
+            'button' => 'Колер кнопак',
+        ],
+        'notifications' => [
+            'title' => 'Уведомления',
+            'name' => 'Название уведомления',
+            'text' => 'Опишите лаконично содержание уведомления',
+            'caution' => 'Удаленная кампания не возобновится. Все подписки будут приостановлены!',
+        ],
         'settings' => [
             'title' => 'Настройки',
             'payments' => [
@@ -149,6 +172,11 @@ return [
                 'artPayIdMarket' => 'Artpay Market Id',
                 'bePaidKeyMarket' => 'Bepaid Market key',
                 'artPayKeyMarket' => 'Artpay Market key',
+                'paymentInterval' => 'Выберите интевал подписки',
+                'paymentInterval1D' => '1 день',
+                'paymentInterval1H' => '1 час',
+                'paymentInterval1M' => '1 месяц',
+                'paymentInterval1Y' => '1 год',
                 'test' => 'Отключить тестовые платежи',
                 'maxPayment' => 'Максимальный платеж, бел.руб',
                 'minPayment' => 'Минимальный платеж, бел.руб',
@@ -182,10 +210,6 @@ return [
                     'password' => 'Пароль',
                     'email' => 'Адрес электронный почты',
                 ],
-                'title' => 'Уведомления',
-                'name' => 'Название уведомления',
-                'text' => 'Опишите лаконично содержание уведомления',
-                'caution' => 'Удаленная кампания не возобновится. Все подписки будут приостановлены!',
             ],
         ],
         'help' => [
@@ -221,6 +245,7 @@ return [
                 'name' => 'Имя',
                 'message' => 'Напишите Ваше сообщение',
                 'password' => 'Password',
+                'passwordConfirmation' => 'Паўтарыце пароль',
             ],
             'create' => [
                 'breadcrumb' => 'Создать',
@@ -234,10 +259,17 @@ return [
         ],
     ],
     'widget' => [
-        'paymentInfo' => 'Terms of Use',
+        'title' => 'Дадзеныя карыстальніка',
+        'name' => 'Імя Прозвішча',
+        'email' => 'Пошта',
+        'phone' => 'Тэлефон',
+        'mask' => '(+375)',
         'input' => 'Другая сумма',
         'invalidFeedback' => 'Пожалуйста, введите сумму платежа',
         'received' => 'Собранная сумма',
         'needed' => 'Целевая сумма',
+        'thanks' => 'Вялікі дзякуй за дапамогу!',
+        'paymentInfo' => 'Правила использования',
+        'terms' => 'Правілы данэйта',
     ],
 ];

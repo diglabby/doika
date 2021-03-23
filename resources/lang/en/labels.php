@@ -7,14 +7,18 @@ return [
             'description' => '',
         ],
     ],
+    'emailserver' => 'Mail server',
+    'recurrent' => 'Subscription',
+    'single' => 'Donate',
+
     'admin' => [
-        'title' => 'Administration',
+        'title' => 'Dashboard',
         'datatables' => [
             'showPerPage' => 'Show',
             'entriesPerPage' => 'entries per page',
             'search' => 'Search',
             'actions' => 'Actions',
-            'info' => '',
+            'info' => 'Help',
         ],
         'common' => [
             'search' => 'Search',
@@ -32,7 +36,7 @@ return [
         ],
         'languageMenu' => [
             'header' => 'Language',
-            'be' => 'Belarussian',
+            'be' => 'Belarusian',
             'ru' => 'Russian',
             'en' => 'English',
         ],
@@ -88,7 +92,8 @@ return [
             'finishAt' => 'Finish at',
             'colors' => 'Colors configuration',
             'preview' => 'Campaign preview',
-            'active' => 'Active',
+            'active' => 'Дзеючая',
+            'amount' => 'Amount',
             'topBanner' => 'Top banner',
             'progressBar' => 'Progress bar',
             'options' => 'Options',
@@ -110,7 +115,7 @@ return [
                 'breadcrumb' => 'Edit',
             ],
         ],
-        'payments' => [
+        'transactions' => [
             'title' => 'Payments',
             'header' => 'Payments list',
             'breadcrumb' => 'Payments',
@@ -119,6 +124,8 @@ return [
             'amount' => 'Required sum',
             'backer' => 'Backer',
             'recurrent' => 'Recurrent',
+            'currency' => 'Currency',
+            'created_at' => 'Creation date',
             'status' => 'Payment status',
             'backerStatus' => 'Backer status',
             'statuses' => [
@@ -141,6 +148,22 @@ return [
                 'backerStatus' => 'Backer status',
             ],
         ],
+        'paymentSystems' => [
+            'title' => 'Payment systems',
+        ],
+        'layout' => [
+            'title' => 'Layout',
+            'font' => 'Font color',
+            'background' => 'Backgroung color',
+            'progressBar' => 'Progressbar color',
+            'button' => 'Button color',
+        ],
+        'notifications' => [
+            'title' => 'Notifications',
+            'name' => 'Title',
+            'text' => 'Describe the contents of the notification in a concise form',
+            'caution' => 'The deleted campaign will not resume. All subscriptions will be suspended!',
+        ],
         'settings' => [
             'title' => 'Settings',
             'payments' => [
@@ -149,12 +172,17 @@ return [
                 'artPayIdMarket' => 'Artpay Market Id',
                 'bePaidKeyMarket' => 'Bepaid Market key',
                 'artPayKeyMarket' => 'Artpay Market key',
+                'paymentInterval' => 'Please choose reccurence interval',
+                'paymentInterval1D' => '1 day',
+                'paymentInterval1H' => '1 hour',
+                'paymentInterval1M' => '1 month',
+                'paymentInterval1Y' => '1 year',
                 'test' => 'Turn off test payments',
                 'maxPayment' => 'Max payment amount',
                 'minPayment' => 'Min payment amount',
                 'termsOfUse' => 'Terms of use',
                 'placeholder' => [
-                    'bePaidIdMarket' => 'Bepaid Market Id',
+                    'bePaidIdMarket' => 'Bepaid Market ID',
                     'artPayIdMarket' => 'Artpay Market Id',
                     'bePaidKeyMarket' => 'Bepaid Market key',
                     'artPayKeyMarket' => 'Artpay Market key',
@@ -182,10 +210,6 @@ return [
                     'password' => 'Email password',
                     'email' => 'Email address',
                 ],
-                'title' => 'Notifications',
-                'name' => 'Notification title',
-                'text' => 'Describe the contents of the notification in a concise form',
-                'caution' => 'The deleted campaign will not resume. All subscriptions will be suspended!',
             ],
         ],
         'help' => [
@@ -221,6 +245,7 @@ return [
                 'name' => 'Name',
                 'message' => 'Write your message',
                 'password' => 'Password',
+                'passwordConfirmation' => 'Please confirm your password',
             ],
             'create' => [
                 'breadcrumb' => 'Create',
@@ -234,10 +259,17 @@ return [
         ],
     ],
     'widget' => [
-        'paymentInfo' => 'Terms of Use',
+        'title' => 'Donator data',
+        'name' => 'Name',
+        'email' => 'Email',
+        'phone' => 'Phone number',
+        'mask' => '(+375)',
         'input' => 'Other amount',
         'invalidFeedback' => 'Please enter payment amount',
-        'received' => 'received',
+        'received' => ' Received',
         'needed' => 'Needed',
+        'thanks' => 'Thanks for the donation!',
+        'paymentInfo' => 'Terms of Use',
+        'terms' => 'Правілы данэйта',
     ],
 ];
