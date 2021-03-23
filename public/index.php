@@ -21,7 +21,7 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
-$doikaPath = getenv('IS_DOIKA_DOCKER_SETUP') === '1'
+$doikaPath = getenv('IS_DOIKA_SYMLINKED') === '1'
     ? dirname(__DIR__, 2).'/doika_v2'
     : dirname(__DIR__, 1);
 
