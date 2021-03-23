@@ -65,7 +65,7 @@ export default {
         let { data } = await axios.post(action, formData);
         this.isLoading = false;
 
-        window.swal('Поспех', 'Новыя дадзеныя запісаны', 'success', {
+	      window.swal(this.$t('alerts.admin.forms.success'), this.$t('alerts.admin.forms.data_written'), 'success', {
           timer: 2000,
           buttons: false
         });

@@ -115,14 +115,14 @@ export default {
           data
         )
         .then(({ data }) => {
-          window.swal('Поспех', 'Запіс абноўлены', 'success', {
+          window.swal(this.$t('alerts.admin.forms.success'), this.$t('alerts.admin.forms.data_written'), 'success', {
             timer: 2000,
             buttons: false
           });
         })
         // needs to be developed
         .catch(({ response }) => {
-          window.swal('Праблемы', 'Нешта пайшло не так', 'error', {
+          window.swal(this.$t('alerts.admin.forms.error'), this.$t('alerts.admin.forms.smthgwrong'), 'error', {
             timer: 2000,
             buttons: false
           });

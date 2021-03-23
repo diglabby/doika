@@ -21,7 +21,7 @@
           no-local-sorting
           :empty-text="$t('alerts.admin.common.search.noResult')"
           :empty-filtered-text="
-            $t('alerts.dashboard.common.search.noMatchResult')
+            $t('alerts.admin.common.search.noMatchResult')
           "
           :fields="fields"
           :items="dataLoadProvider"
@@ -69,7 +69,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 
 export default {
   name: 'PaymentsList',

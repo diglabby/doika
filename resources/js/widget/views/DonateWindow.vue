@@ -88,7 +88,7 @@ export default {
       redirect_url: null,
       placeholder: this.$t('buttons.widget.email'),
       model: {
-        email: 'test@mail.by',
+        email: 'test@mail.com',
         amount: sessionStorage.getItem('amount'),
         currency_code: 'BYN'
       }

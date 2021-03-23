@@ -92,7 +92,7 @@ return [
             'finishAt' => 'Finish at',
             'colors' => 'Colors configuration',
             'preview' => 'Campaign preview',
-            'active' => 'Дзеючая',
+            'active' => 'Active',
             'amount' => 'Amount',
             'topBanner' => 'Top banner',
             'progressBar' => 'Progress bar',

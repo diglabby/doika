@@ -15,5 +15,11 @@ return [
             'error' => 'Sending error!',
             'success' => 'Message sent successfully',
         ],
+        'forms' => [
+            'success' => 'Success',
+            'data_written' => 'Data written',
+            'error' => 'Error',
+            'smthgwrong' => 'Something went wrong',
+        ],
     ],
 ];

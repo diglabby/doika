@@ -50,7 +50,7 @@ return [
         'confirm' => 'Confirm',
         'proceed' => 'Proceed',
         'oneTime' => 'Donate',
-        'subscribe' => 'Subscription',
-        'email' => 'Email',
+        'subscribe' => 'Subscribe',
+        'email' => 'Confirmation Email',
     ],
 ];
