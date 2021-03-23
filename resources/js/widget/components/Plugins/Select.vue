@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import formStateMixin from 'bootstrap-vue/src/mixins/form-state';
+import { formStateMixin } from 'bootstrap-vue/src/mixins/form-state';
 
 export default {
   mixins: [formStateMixin],
