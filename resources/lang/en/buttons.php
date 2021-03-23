@@ -44,11 +44,13 @@ return [
             'description' => 'Description',
             'change' => 'Change notification',
         ],
-
     ],
     'widget' => [
         'back' => 'Back',
         'confirm' => 'Confirm',
         'proceed' => 'Proceed',
+        'oneTime' => 'Donate',
+        'subscribe' => 'Subscription',
+        'email' => 'Email',
     ],
 ];
