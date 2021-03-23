@@ -8,7 +8,7 @@ services:
       dockerfile: '.docker/app/Dockerfile'
     container_name: 'doika-app'
     restart: 'unless-stopped'
-    working_dir: /app
+    working_dir: /var/www/doika_v2
     ports:
       - ${FORWARD_HTTP_PORT:-8080}:80
       - ${FORWARD_HTTPS_PORT:-4430}:443
