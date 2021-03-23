@@ -91,4 +91,3 @@ jobs:
 
       - name: Check for missing translations
         run: php artisan translations:missing
-        continue-on-error: true
