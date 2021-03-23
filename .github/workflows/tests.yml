@@ -1,4 +1,4 @@
-name: PHP tests
+name: tests
 
 on:
   workflow_dispatch:
@@ -84,7 +84,7 @@ jobs:
           npm ci
 
       - name: Build front-end assets
-        run: npm run production
+        run: npm run dev
 
       - name: Execute PHP tests
         run: composer test:ci
