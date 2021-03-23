@@ -13,7 +13,7 @@ final class DoikaRouteTest extends TestCase
     {
         Config::set('doika.url_prefix', 'doika');
 
-        $doikaRoute = doika_route('dashboard.login', [], false);
+        $doikaRoute = doika_route('login', [], false);
 
         $this->assertSame('/dashboard/login', $doikaRoute);
     }
@@ -23,7 +23,7 @@ final class DoikaRouteTest extends TestCase
     {
         Config::set('doika.url_prefix', 'doika');
 
-        $doikaRoute = doika_route('dashboard.login', [], false);
+        $doikaRoute = doika_route('login', [], false);
 
         $this->assertSame('/doika/dashboard/login', $doikaRoute);
     }
@@ -33,7 +33,7 @@ final class DoikaRouteTest extends TestCase
     {
         Config::set('doika.url_prefix', 'payments/doika');
 
-        $doikaRoute = doika_route('dashboard.login', [], false);
+        $doikaRoute = doika_route('login', [], false);
 
         $this->assertSame('/payments/doika/dashboard/login', $doikaRoute);
     }
