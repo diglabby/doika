@@ -37,8 +37,8 @@ return [
         'languageMenu' => [
             'header' => 'Мова',
             'be' => 'Беларуская',
-            'ru' => 'Руская',
-            'en' => 'Английская',
+            'ru' => 'Русский',
+            'en' => 'English',
         ],
         'accountMenu' => [
             'header' => 'Профіль',

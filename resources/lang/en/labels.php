@@ -270,6 +270,6 @@ return [
         'needed' => 'Needed',
         'thanks' => 'Thanks for the donation!',
         'paymentInfo' => 'Terms of Use',
-        'terms' => 'Правілы данэйта',
+        'terms' => 'Terms of donation',
     ],
 ];
