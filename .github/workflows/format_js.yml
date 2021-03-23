@@ -1,0 +1,46 @@
+name: Format (JS)
+
+on:
+  push:
+    paths:
+      - '**.js'
+      - '**.vue'
+      - 'package.json'
+      - '.github/workflows/format_js.yml'
+
+jobs:
+  format_js:
+    name: Format JS
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Cache NPM dependencies
+        uses: actions/cache@v2
+        id: npm-node_modules-cache
+        with:
+          ref: ${{ github.head_ref }}
+          path: node_modules
+          key: npm-${{ hashFiles('package-lock.json') }}
+
+      - run: npm ci
+        env:
+          CI: true
+        if: steps.npm-node_modules-cache.outputs.cache-hit != 'true' # run npm install only when actions/cache haven't restored cached /node_modules dir
+
+      - name: Detect JS coding style issues
+        id: lint_js
+        run: npm run cs:lint # @todo change to cs:lint when we'll be ready
+
+      - name: Commit JS coding-style fixes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "#795 ✨ Паляпшчае coding-style для JS"
+          file_pattern: '*.js *.vue'
