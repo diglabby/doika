@@ -134,7 +134,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import form from '../mixins/form';
 import required from 'vuelidate/lib/validators/required';
 
@@ -282,7 +281,7 @@ export default {
       sessionStorage.setItem('amount', this.donate_amount * 100);
     },
     getNotMinus: function(evt) {
-      let keyCode = (evt.keyCode ? evt.keyCode : evt.which);
+      let keyCode = evt.keyCode ? evt.keyCode : evt.which;
 
       if (keyCode < 48 || keyCode > 57) {
         evt.preventDefault();
@@ -293,12 +292,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .is-invalid {
-    border: 1px solid #dc3545;
-    box-shadow: 0 0 0 2px rgba(246, 109, 155, 0.25);
-  }
+.is-invalid {
+  border: 1px solid #dc3545;
+  box-shadow: 0 0 0 2px rgba(246, 109, 155, 0.25);
+}
 
-  .invalid-feedback {
-    font-size: 70%;
-  }
+.invalid-feedback {
+  font-size: 70%;
+}
 </style>
