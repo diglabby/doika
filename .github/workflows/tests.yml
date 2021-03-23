@@ -1,7 +1,8 @@
-name: PHP tests
+name: tests
 
 on:
   workflow_dispatch:
+  pull_request:
   push:
     paths:
       - '**.php'
@@ -10,10 +11,19 @@ on:
       - 'phpunit.xml'
 
 jobs:
-  test_php:
-    name: Run PHP tests
+  tests:
     runs-on: ubuntu-18.04
     if: "! contains(github.event.head_commit.message, '[skip ci]')"
+    strategy:
+      fail-fast: true
+      matrix:
+        php:
+          - 7.1.3
+          - 7.2
+          - 7.3
+          - 7.4
+    name: Run tests on PHP ${{ matrix.php }}
+
     env:
       DB_HOST: 127.0.0.1
       DB_USERNAME: root
@@ -26,19 +36,25 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.1
+          php-version: ${{ matrix.php }}
           extensions: curl, json, mbstring, pdo, pdo_mysql, zip # keep in sync with composer.json
+          tools: composer:v2
           coverage: none
 
-      - name: Cache composer dependencies
-        uses: actions/cache@v2
-        id: composer-cache
+      - name: Get Composer Cache Directory
+        id: composer-cache-dir
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - uses: actions/cache@v2
         with:
-          path: vendor
-          key: composer-${{ hashFiles('composer.json') }}
+          path: ${{ steps.composer-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.php }}-composer-
 
       - name: Run composer install
-        if: steps.composer-cache.outputs.cache-hit != 'true' # run composer install only when actions/cache haven't restored cached /vendor dir
+        if: steps.composer-cache-dir.outputs.cache-hit != 'true' # run composer install only when actions/cache haven’t restored cached /vendor dir
         run: composer install -q --no-interaction --no-scripts --no-progress --prefer-dist --no-ansi
 
       - name: Prepare Laravel application
@@ -68,7 +84,7 @@ jobs:
           npm ci
 
       - name: Build front-end assets
-        run: npm run production
+        run: npm run dev
 
       - name: Execute PHP tests
         run: composer test:ci
