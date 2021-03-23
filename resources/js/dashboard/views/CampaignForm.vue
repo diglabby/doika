@@ -325,6 +325,7 @@
 import axios from 'axios';
 import form from '../mixins/form';
 import { VueEditor } from 'vue2-editor';
+
 export default {
   name: 'CampaignForm',
   components: {
@@ -378,7 +379,7 @@ export default {
   computed: {
     shortcode() {
       return (
-        "<iframe width='750' height='550' frameborder='0' src='/doika/doika/widget/campaigns/" +
+        "<iframe width='750' height='550' frameborder='0' src='/doika/widget/campaigns/" +
         this.id +
         "'></iframe>"
       );

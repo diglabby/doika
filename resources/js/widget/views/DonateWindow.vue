@@ -51,7 +51,7 @@ function delay(num, tokenOp, fail) {
 
         axios( {
             method: "post",
-            url: '/doika/doika/widget/api/bepaid-check-payment-status', // TBD - need to move to some variables...
+            url: '/doika/widget/api/bepaid-check-payment-status', // TBD - need to move to some variables...
             data: {
                 token: tokenOp
             }

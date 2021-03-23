@@ -22,29 +22,29 @@ final class RouteServiceProvider extends BasicRouteServiceProvider
     protected function mapWebhookRoutes()
     {
         Route::middleware('api')
-            ->prefix('doika/webhooks')
+            ->prefix('webhooks')
             ->group(base_path('routes/webhook.php'));
     }
 
     protected function mapWidgetRoutes()
     {
         Route::middleware(['api'])
-            ->prefix('doika/widget/api')
+            ->prefix('widget/api')
             ->group(base_path('routes/widget_api.php'));
 
         Route::middleware('web')
-            ->prefix('doika')
+            ->prefix('')
             ->group(base_path('routes/widget_ssr.php'));
     }
 
     protected function mapDashboardRoutes()
     {
         Route::middleware(['api', 'auth'])
-            ->prefix('doika/dashboard/api')
+            ->prefix('dashboard/api')
             ->group(base_path('routes/dashboard_api.php'));
 
         Route::middleware(['web', 'localize'])
-            ->prefix('doika/dashboard')
+            ->prefix('dashboard')
             ->group(base_path('routes/dashboard_ssr.php'));
     }
 }
