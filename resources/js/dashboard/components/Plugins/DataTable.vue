@@ -93,7 +93,7 @@ export default {
     onContextChanged() {
       this.$emit('context-changed');
     },
-    async loadData(sortBy, sortDesc) {
+    async loadData() {
       try {
         this.isBusy = true;
 
