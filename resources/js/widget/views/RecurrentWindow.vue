@@ -80,8 +80,6 @@
 
 <script>
 
-import axios from 'axios';
-
 export default {
   name: 'RecurrentWindow',
   props: ['id'],
@@ -110,9 +108,9 @@ export default {
       sessionStorage.setItem('phone', this.model.phone);
     },
     onlyNumbers: function(evt) {
-      let keyCode = (evt.keyCode ? evt.keyCode : evt.which);
+      let keyCode = evt.keyCode ? evt.keyCode : evt.which;
 
-      if ((keyCode < 48 && keyCode !== 43) || (keyCode > 57)) {
+      if ((keyCode < 48 && keyCode !== 43) || keyCode > 57) {
         evt.preventDefault();
       }
 

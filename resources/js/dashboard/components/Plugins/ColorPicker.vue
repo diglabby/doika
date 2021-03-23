@@ -79,7 +79,7 @@ export default {
       }
     },
 
-    color: function(newVal, oldVal) {
+    color: function(newVal) {
       this.setColor(newVal);
     }
   },
@@ -151,7 +151,7 @@ export default {
       var el = this.$refs.colorpicker;
 
       let target = e.target;
-      if (el !== e.target && !el.contains(e.target)) {
+      if (el !== target && !el.contains(target)) {
         this.hidePicker();
       }
     }
