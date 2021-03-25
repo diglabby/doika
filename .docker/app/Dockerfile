@@ -20,4 +20,4 @@ RUN pecl install xdebug-2.9.8 \
 RUN a2enmod rewrite headers
 
 # Install composer
-COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
