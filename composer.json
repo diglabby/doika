@@ -14,7 +14,7 @@
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "anlutro/l4-settings": "^0.8.1",
+        "anlutro/l4-settings": "^1.0",
         "carbondate/carbon": "^1.33",
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
@@ -24,7 +24,7 @@
         "laravelcollective/html": "^5.7",
         "martinlindhe/laravel-vue-i18n-generator": "^0.1.22",
         "moneyphp/money": "^3.2",
-        "spatie/laravel-query-builder": "^1.17",
+        "spatie/laravel-query-builder": "^2.0",
         "tightenco/ziggy": "^0.7.1"
     },
     "require-dev": {
@@ -38,7 +38,7 @@
         "laravel/dusk": "^5.1",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
-        "phpunit/phpunit": "^7.5"
+        "phpunit/phpunit": "^7.5 | 8.5"
     },
     "config": {
         "optimize-autoloader": true,
