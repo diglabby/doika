@@ -24,8 +24,6 @@ storage/public/uploads/
 
 .phpunit.result.cache
 
-/docker/apache/logs
-/docker/node/logs
 /storage/debugbar
 /storage/clockwork
 
