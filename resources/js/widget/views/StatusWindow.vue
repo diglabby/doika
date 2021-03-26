@@ -32,7 +32,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 
 export default {
   name: 'StatusWindow',
@@ -49,28 +48,28 @@ export default {
   mounted: function() {
     switch (this.status) {
       case 'success':
-        this.image = '/doika/public/images/smile.png';
+        this.image = '/doika/images/smile.png';
         this.message = this.$t('labels.widget.thanks');
         break;
 
       case 'fail': // if (x === 'value2')
-        this.image = '/doika/public/images/sadsmile.png';
+        this.image = '/doika/images/sadsmile.png';
         this.message = 'Транзакция была обработана и отклонена шлюзом';
         break;
       case 'incomplete': // if (x === 'value2')
-        this.image = '/doika/public/images/sadsmile.png';
+        this.image = '/doika/images/sadsmile.png';
         this.message = 'Транзакция не завершена, требуется участие торговца';
         break;
       case 'expired': // if (x === 'value2')
-        this.image = '/doika/public/images/sadsmile.png';
+        this.image = '/doika/images/sadsmile.png';
         this.message = 'Время обработки транзакции истекло';
         break;
       case 'subscribed': // if (x === 'value2')
-        this.image = '/doika/public/images/smile.png';
+        this.image = '/doika/images/smile.png';
         this.message = 'Вы паспяхова падпісаны!';
         break;
       default:
-        this.image = '/doika/public/images/sadsmile.png';
+        this.image = '/doika/images/sadsmile.png';
         this.message = 'Немагчыма правесці аплату. Завяршыўся час чакання. Паспрабуйце яшчэ раз націснуўшы "Назад"';
         break;
     }

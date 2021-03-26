@@ -207,12 +207,12 @@ export default {
         parent.document.location.protocol +
         '//' +
         parent.document.location.host +
-        '/doika/public/images/front-card.png"),\
+        '/doika/images/front-card.png"),\
     url("' +
         parent.document.location.protocol +
         '//' +
         parent.document.location.host +
-        '/doika/public/images/back-card.png");\
+        '/doika/images/back-card.png");\
     background-repeat: no-repeat;\
     background-position: left top, right 20px;\
   }\

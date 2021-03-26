@@ -284,10 +284,10 @@ export default {
               position:relative;\
               background: url("https://' +
         parent.document.location.host +
-        '/doika/public/images/front-card.png"),\
+        '/doika/images/front-card.png"),\
     url("https://' +
         parent.document.location.host +
-        '/doika/public/images/back-card.png");\
+        '/doika/images/back-card.png");\
     background-repeat: no-repeat;\
     background-position: left top, right 20px;\
   }\
