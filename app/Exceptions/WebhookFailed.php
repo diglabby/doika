@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Diglabby\Doika\Exceptions;
 
 class WebhookFailed extends \Exception implements DoikaException

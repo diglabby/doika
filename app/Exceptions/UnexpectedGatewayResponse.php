@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Diglabby\Doika\Exceptions;
 
 final class UnexpectedGatewayResponse extends \RuntimeException implements DoikaException
