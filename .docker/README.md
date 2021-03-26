@@ -47,7 +47,7 @@ npm install && npm run dev
 exit
 ```
 
-Test site should be available on [http://localhost:8080](http://localhost:8080) (if you haven’t changed FORWARD_HTTP_PORT in your .env).
+Test site should be available on [http://localhost:8080](http://localhost:8080) (if you haven’t changed `FORWARD_HTTP_PORT` in your .env).
 Test admin credentials `demo@example.com`/`demo`.
 
 Happy hacking! 🚀

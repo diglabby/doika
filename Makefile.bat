@@ -6,14 +6,14 @@ goto :parse
 	goto :end
 
 :start
-	docker-compose -f docker-compose.yml up
+	docker-compose up
 	goto :end
 
 :install
-	docker exec -it doika-webserver cp .env.docker .env
-	docker exec -it doika-webserver php /var/www/html/doika/artisan key:generate
-	docker exec -it doika-webserver php /var/www/html/doika/artisan storage:link
-	docker exec -it doika-webserver php /var/www/html/doika/artisan migrate --seed
+	docker exec -it app cp .env.docker .env
+	docker exec -it app php artisan key:generate
+	docker exec -it app php artisan storage:link
+	docker exec -it app php artisan migrate --seed
 	goto :end
 
 :stop
@@ -23,7 +23,6 @@ goto :parse
 :delete
 	docker-compose down
 	goto :end
-
 
 :parse
 
