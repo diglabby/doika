@@ -33,7 +33,7 @@
     @routes()
 </head>
 <body>
-    <div id="app">
+    <div id="doikaWidget">
         @yield('content')
     </div>
 

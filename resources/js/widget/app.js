@@ -13,7 +13,6 @@ import '../vendor/coreui/components';
 import DataTable from './components/Plugins/DataTable';
 import DateTimePicker from './components/Plugins/DateTimePicker';
 import Switch from './components/Plugins/Switch';
-import ModalWindow from './components/Plugins/ModalWindow';
 import vSelect from './components/Plugins/Select';
 
 import { createRouter } from './router';
@@ -180,7 +179,7 @@ export function createApp() {
 }
 
 // Init App
-if (document.getElementById('app') !== null) {
+if (document.getElementById('doikaWidget') !== null) {
   const { app } = createApp();
-  app.$mount('#app');
+  app.$mount('#doikaWidget');
 }
