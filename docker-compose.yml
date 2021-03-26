@@ -24,6 +24,7 @@ services:
       - ./.docker/app/data/composer/cache:/home/unicorn/.composer/cache:cached
     environment:
       IS_DOIKA_SYMLINKED: 1
+      COMPOSER_MEMORY_LIMIT: -1
 
   mysql:
     image: mysql:5.7
