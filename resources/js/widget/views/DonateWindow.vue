@@ -39,11 +39,10 @@ import axios from 'axios';
  */
 
 function delay(num, tokenOp, fail) {
-
     const limit = 3; // attempts to check server status of the payments
     const postpone = 3000 // interval of checkin the server
 
-    // in the current attepmpt less the limit
+    // in the current attempt less the limit
     if (num < limit) {
 
       // set interval for repeating the checking porocess
@@ -51,7 +50,7 @@ function delay(num, tokenOp, fail) {
 
         axios( {
             method: "post",
-            url: '/doika/widget/api/bepaid-check-payment-status', // TBD - need to move to some variables...
+            url: '/doika/widget/api/bepaid/check-payment-status', // TBD - need to move to some variables...
             data: {
                 token: tokenOp
             }

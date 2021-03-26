@@ -23,4 +23,6 @@ Route::get('/help', [HelpController::class, 'show'])->name('widget.help.show');
 
 Route::get('/feedback', [FeedbackController::class, 'show'])->name('widget.feedbacks.show');
 Route::post('/feedback', [FeedbackController::class, 'store'])->name('widget.feedbacks.store');
-Route::post('/bepaid-check-payment-status', [BePaidCheckPaymentStatusController::class, 'checkPaymentStatus'])->name('widget.bepaid.check-payment-status');
+
+/** BePaid */
+Route::post('/bepaid/check-payment-status', [BePaidCheckPaymentStatusController::class, 'checkPaymentStatus'])->name('widget.bepaid.check-payment-status');
