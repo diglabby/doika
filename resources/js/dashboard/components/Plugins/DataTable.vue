@@ -133,7 +133,6 @@ export default {
           ]
         })
         .then(test => {
-          //  console.log(this.$app.route(this.deleteRoute));
           axios
             .delete(`/doika/dashboard/api/campaigns/${params}`)
             .then(({ data }) => {

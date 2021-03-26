@@ -225,7 +225,7 @@
                           name="amount"
                           required
                           :placeholder="
-                            $t('labels.admin.campaigns.amount')
+                            $t('labels.admin.campaigns.placeholder.amount')
                           "
                           v-model="model.target_amount"
                           :state="amountState"
