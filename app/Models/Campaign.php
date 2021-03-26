@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Diglabby\Doika\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -84,5 +85,12 @@ class Campaign extends Model
     public function isFinished(): bool
     {
         return now() > $this->finish_at;
+    }
+
+    public function scopeActive(Builder $builder): void
+    {
+        $builder
+            ->where('start_at', '<=', now())
+            ->where('finish_at', '>', now());
     }
 }

@@ -15,4 +15,10 @@ final class CampaignController extends Controller
     {
         return new CampaignResource($campaign);
     }
+
+    public function showLatest(): Responsable
+    {
+        $campaign = Campaign::query()->scopes(['active'])->latest()->firstOrFail();
+        return new CampaignResource($campaign);
+    }
 }

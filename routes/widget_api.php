@@ -14,6 +14,7 @@ use Diglabby\Doika\Http\Controllers\Widget\FeedbackController;
 use Diglabby\Doika\Http\Controllers\Widget\HelpController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/campaigns/latest', [CampaignController::class, 'showLatest'])->name('widget.campaigns.showLatest');
 Route::get('/campaigns/{campaign}', [CampaignController::class, 'show'])->name('widget.campaigns.show');
 Route::post('/campaigns/{campaign}/subscription-intends', [CampaignSubscriptionIntendController::class, 'store'])->name('widget.campaigns.subscription-intends.store');
 Route::post('/campaigns/{campaign}/payment-intends', [CampaignPaymentIntendController::class, 'store'])->name('widget.campaigns.payment-intends.store');
