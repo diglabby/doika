@@ -37,7 +37,7 @@ jobs:
 
       - name: Detect JS coding style issues
         id: lint_js
-        run: npm run cs:lint # @todo change to cs:lint when we'll be ready
+        run: npm run cs:fix
 
       - name: Commit JS coding-style fixes
         uses: stefanzweifel/git-auto-commit-action@v4
