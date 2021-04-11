@@ -13,7 +13,7 @@
         </div>
         <div class="donateWindow__footer">
           <b-button
-            :to="'/campaigns/' + id"
+            :to="'/campaigns/' + campaignId"
             class="module-donate__button-select confirm back"
           >
             {{ $t('buttons.widget.back') }}
@@ -77,7 +77,7 @@ function delay(num, tokenOp, fail) {
 export default {
   name: 'DonateWindow',
   props: {
-    id: {
+    campaignId: {
       type: String,
       required: true
     }
@@ -86,7 +86,7 @@ export default {
     return {
       isBusy: false,
       campaign: [],
-      redirect_url: null,
+      checkoutUrl: null,
       placeholder: this.$t('buttons.widget.email'),
       model: {
         email: 'test@mail.com',
@@ -100,14 +100,14 @@ export default {
     let formData = this.$app.objectToFormData(this.model);
     formData.append('_method', 'POST');
     let action = this.$app.route('widget.campaigns.payment-intends.store', {
-      campaign: this.id,
+      campaign: this.campaignId,
       paymentGateway: 1
     });
 
     await axios
       .post(action, formData)
       .then(({ data }) => {
-        this.redirect_url = data.redirect_url;
+        this.checkoutUrl = data.redirect_url;
         this.token = data.token;
         return this.token;
       })
@@ -424,7 +424,7 @@ display:none !important;\
     const bePaidOptions = {
       type: 'inline',
       id: 'paymentForm',
-      url: this.redirect_url,
+      url: this.checkoutUrl,
       style: cssStylesForBePaidIframe,
       size: { width: 450, height: 450 }
     };

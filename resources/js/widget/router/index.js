@@ -5,7 +5,6 @@ import Router from 'vue-router';
 import Full from '../containers/Full';
 
 // Views
-
 import MainWindow from '../views/MainWindow';
 import DonateWindow from '../views/DonateWindow';
 import RecurrentWindow from '../views/RecurrentWindow';
@@ -38,7 +37,7 @@ export function createRouter(base, i18n) {
             }
           },
           {
-            path: ':id/donate',
+            path: ':campaignId/donate',
             name: 'donate',
             component: DonateWindow,
             props: true,

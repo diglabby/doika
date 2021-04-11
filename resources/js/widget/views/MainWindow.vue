@@ -287,7 +287,7 @@ export default {
       this.$v.sum.$model = item;
     },
     contains: function(arr, item) {
-      return arr.indexOf(item) != -1;
+      return arr.indexOf(item) !== -1;
     },
     setAmount: function() {
       sessionStorage.setItem('amount', this.donate_amount * 100);
