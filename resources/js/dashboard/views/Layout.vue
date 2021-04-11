@@ -67,9 +67,12 @@
                           <div class="form-group">
                             <div class="col-sm-8">
                               <colorpicker
-                                :section_name="$t('labels.admin.layout.progressBar')"
+                                :section_name="
+                                  $t('labels.admin.layout.progressBar')
+                                "
                                 :color="model.settings.progressBarColor"
-                                v-model="model.settings.progressBarColor" />
+                                v-model="model.settings.progressBarColor"
+                              ></colorpicker>
                             </div>
                           </div>
                         </div>
@@ -175,20 +178,16 @@
                               :style="{ color: model.settings.fontColor }"
                             >
                               {{ $t('labels.widget.received') }}:
-                              <span class="summ__highlight"
-                                >{{ fakeCampaign.amount_collected }}
-                                {{ fakeCampaign.currency }}</span
-                              >
+                              <span class="summ__highlight">{{ fakeCampaign.amount_collected }}
+                                {{ fakeCampaign.currency }}</span>
                             </p>
                             <p
                               class="result__received"
                               :style="{ color: model.settings.fontColor }"
                             >
                               {{ $t('labels.widget.needed') }}:
-                              <span class="summ__highlight"
-                                >{{ fakeCampaign.target_amount }}
-                                {{ fakeCampaign.currency }}</span
-                              >
+                              <span class="summ__highlight">{{ fakeCampaign.target_amount }}
+                                {{ fakeCampaign.currency }}</span>
                             </p>
                             <p
                               class="module-donate__version"
@@ -198,8 +197,7 @@
                               <a
                                 href="https://doika.falanster.by/"
                                 target="_blank"
-                                >Doika</a
-                              >
+                              >Doika</a>
                             </p>
                           </div>
                         </div>
@@ -210,10 +208,17 @@
               </b-collapse>
             </b-card>
             <b-row slot="footer">
-              <b-col md> </b-col>
               <b-col md>
-                <input name="status" type="hidden" value="publish">
-                <b-button right split class="float-right" variant="success" @click="onSubmit()">
+              </b-col>
+              <b-col md>
+                <input name="status" type="hidden" value="publish" />
+                <b-button
+                  right
+                  split
+                  class="float-right"
+                  variant="success"
+                  @click="onSubmit()"
+                >
                   {{ $t('buttons.admin.common.apply') }}
                 </b-button>
               </b-col>

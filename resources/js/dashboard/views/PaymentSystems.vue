@@ -287,9 +287,9 @@
             </b-card>
             <b-row slot="footer">
               <b-col md>
-</b-col>
+              </b-col>
               <b-col md>
-                <input name="status" type="hidden" value="publish">
+                <input name="status" type="hidden" value="publish" />
 
                 <b-button
                   right
@@ -345,7 +345,9 @@ export default {
     },
 
     //needs to be developed or deleted
-    pending() {}
+    pending() {
+      return false;
+    }
   },
   mounted: function() {
     this.getCredentials();

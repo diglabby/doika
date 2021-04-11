@@ -140,7 +140,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import form from '../mixins/form';
 
 export default {

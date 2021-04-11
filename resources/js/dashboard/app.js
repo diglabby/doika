@@ -7,8 +7,6 @@ import '../vendor/axios-config';
 import 'babel-polyfill';
 import BootstrapVue from 'bootstrap-vue';
 import VueSwal from 'vue-swal';
-Vue.use(VueSwal);
-
 // Vendor plugins components
 import '../vendor/coreui/components';
 import DataTable from './components/Plugins/DataTable';
@@ -25,10 +23,13 @@ import { createLocales } from '../vendor/vue-i18n-config';
 import App from './App.vue';
 
 import Noty from 'noty';
+import moment from 'moment';
+
+Vue.use(VueSwal);
+
 // Bootstrap Vue
 Vue.use(BootstrapVue);
 
-import moment from 'moment';
 moment.locale('be');
 Vue.prototype.moment = moment;
 
@@ -63,7 +64,7 @@ export function createApp() {
    * Client-side permissions
    */
   if (Vue.prototype.$app.user) {
-    Vue.prototype.$app.user.can = permission => {
+    Vue.prototype.$app.user.can = () => {
       if (Vue.prototype.$app.user.id === 1) {
         return true;
       }

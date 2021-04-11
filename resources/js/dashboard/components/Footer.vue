@@ -22,15 +22,16 @@
       {{ $t('labels.admin.common.footer.with') }}
       <FontAwesomeIcon class="heart-icon" :icon="heartIcon"></FontAwesomeIcon>
       {{ $t('labels.admin.common.footer.by') }}
-      <a href="https://falanster.by/" target="_blank"
-        ><strong>Falanster</strong></a
-      >
+      <a href="https://falanster.by/" target="_blank">
+        <strong>Falanster</strong>
+      </a>
     </span>
   </Footer>
 </template>
 <script>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+
 export default {
   name: 'AppFooter',
   components: { FontAwesomeIcon },

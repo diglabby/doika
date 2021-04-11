@@ -8,7 +8,7 @@
             active
           >
             <b-card-text>
-              <div v-for="notification in notifications">
+              <div v-for="(notification, index) in notifications" :key="index">
                 <div v-if="notification.regular === 0">
                   <div>
                     <h2 class="mt-4">
@@ -20,9 +20,9 @@
                         active
                       >
                         <p>{{ notification.body }}</p>
-                        <br>
-                        <hr>
-                        <br>
+                        <br />
+                        <hr />
+                        <br />
                       </b-tab>
                       <b-tab :title="$t('buttons.admin.common.edit')">
                         <notifications-form
@@ -41,7 +41,7 @@
             :title="$t('buttons.admin.notifications.header.subscriptions')"
           >
             <b-card-text>
-              <div v-for="(notification, index) in notifications">
+              <div v-for="(notification, index) in notifications" :key="index">
                 <div v-if="notification.regular === 1">
                   <div>
                     <h2 class="mt-4">
@@ -53,9 +53,9 @@
                         active
                       >
                         <p>{{ notification.body }}</p>
-                        <br>
-                        <hr>
-                        <br>
+                        <br />
+                        <hr />
+                        <br />
                       </b-tab>
                       <b-tab :title="$t('buttons.admin.common.edit')">
                         <notifications-form
@@ -105,7 +105,7 @@ export default {
       });
   },
   methods: {
-    //edit particula record in notification list
+    //edit particular record in notification list
     editForm(data) {
       axios
         .put(
@@ -114,18 +114,28 @@ export default {
           }),
           data
         )
-        .then(({ data }) => {
-          window.swal(this.$t('alerts.admin.forms.success'), this.$t('alerts.admin.forms.data_written'), 'success', {
-            timer: 2000,
-            buttons: false
-          });
+        .then(() => {
+          window.swal(
+            this.$t('alerts.admin.forms.success'),
+            this.$t('alerts.admin.forms.data_written'),
+            'success',
+            {
+              timer: 2000,
+              buttons: false
+            }
+          );
         })
         // needs to be developed
-        .catch(({ response }) => {
-          window.swal(this.$t('alerts.admin.forms.error'), this.$t('alerts.admin.forms.smthgwrong'), 'error', {
-            timer: 2000,
-            buttons: false
-          });
+        .catch(() => {
+          window.swal(
+            this.$t('alerts.admin.forms.error'),
+            this.$t('alerts.admin.forms.smthgwrong'),
+            'error',
+            {
+              timer: 2000,
+              buttons: false
+            }
+          );
           //console.log(response);
         });
     }

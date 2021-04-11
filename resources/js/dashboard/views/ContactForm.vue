@@ -57,6 +57,7 @@
 
 <script>
 import axios from 'axios';
+
 export default {
   name: 'ContactForm',
   data() {
@@ -79,6 +80,7 @@ export default {
             this.fields = {}; //Clear input fields.
             this.loaded = true;
             this.success = true;
+            return response;
           })
           .catch(error => {
             this.loaded = true;

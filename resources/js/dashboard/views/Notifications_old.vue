@@ -228,9 +228,9 @@
             </b-card>
             <b-row slot="footer">
               <b-col md>
-</b-col>
+              </b-col>
               <b-col md>
-                <input name="status" type="hidden" value="publish">
+                <input name="status" type="hidden" value="publish" />
 
                 <b-button
                   right

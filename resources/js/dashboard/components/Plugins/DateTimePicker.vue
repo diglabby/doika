@@ -9,7 +9,7 @@
     :required="required"
     v-model="mutableValue"
     data-input
-  >
+  />
 </template>
 
 <script>

@@ -65,11 +65,11 @@
               <vue-editor
                 class="description-shadow"
                 :class="{
-                  'description-shadow_is-valid': this.model.description.length,
+                  'description-shadow_is-valid': model.description.length,
                   'description-shadow_is-valid-backlight':
-                    editorFocus && this.model.description.length,
+                    editorFocus && model.description.length,
                   'description-shadow_is-invalid-backlight':
-                    editorFocus && !this.model.description.length
+                    editorFocus && !model.description.length
                 }"
                 @blur="editorFocus = false"
                 @focus="editorFocus = true"
@@ -94,7 +94,8 @@
                 />
 
                 <div class="media-body">
-                  <h6>{{ $t('labels.admin.campaigns.uploadImage') }}
+                  <h6>
+                    {{ $t('labels.admin.campaigns.uploadImage') }}
                     <span>
                       {{ $t('labels.admin.campaigns.proportionsImage') }}
                     </span>
@@ -114,7 +115,7 @@
                         v-b-tooltip.hover
                         :title="$t('labels.admin.campaigns.allowedImageTypes')"
                         @change="previewImage"
-                        style="margin-top auto; margin-bottom: auto;"
+                        style="margin-top: auto; margin-bottom: auto;"
                       ></b-form-file>
                       <a
                         href="#"
@@ -374,7 +375,7 @@ export default {
         imageData: null
       },
       hideModalOnSubmit: false
-    }
+    };
   },
   computed: {
     shortcode() {
@@ -393,6 +394,7 @@ export default {
     },
     pictureState() {
       //      return (this.model.picture_url != "") ? true : false
+      return true; // temp solution
     },
     buttonState() {
       return !(
@@ -421,31 +423,31 @@ export default {
     },
     pictureName: function() {
       return this.model.picture_url
-        ? this.model.picture_url.replace(/^.*[\\\/]/, '')
+        ? this.model.picture_url.replace(/^.*[\\/]/, '')
         : '';
     }
   },
   mounted() {
     if (localStorage.name) {
-      this.model.name = localStorage.name
+      this.model.name = localStorage.name;
     }
     if (localStorage.description) {
-      this.model.description = localStorage.description
+      this.model.description = localStorage.description;
     }
     if (localStorage.start_at) {
-      this.model.start_at = localStorage.start_at
+      this.model.start_at = localStorage.start_at;
     }
     if (localStorage.finish_at) {
-      this.model.finish_at = localStorage.finish_at
+      this.model.finish_at = localStorage.finish_at;
     }
     if (localStorage.target_amount && localStorage.target_amount !== 0) {
-      this.model.target_amount = localStorage.target_amount
+      this.model.target_amount = localStorage.target_amount;
     }
   },
   methods: {
     onSubmitClick() {
-      this.hideModalOnSubmit = true
-      this.onSubmit()
+      this.hideModalOnSubmit = true;
+      this.onSubmit();
     },
     async getColors() {
       let { data } = await axios.get(
@@ -491,9 +493,9 @@ export default {
 
         this.images.image = input.files[0];
       }
-      let formData = new FormData()
-      formData.append('image', input.files[0], input.files[0].name)
-      let action = this.$app.route('dashboard.images.store')
+      let formData = new FormData();
+      formData.append('image', input.files[0], input.files[0].name);
+      let action = this.$app.route('dashboard.images.store');
       let { data } = await axios.post(action, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
@@ -511,23 +513,23 @@ export default {
         this.model.target_amount) &&
       this.hideModalOnSubmit === false
     ) {
-      localStorage.name = this.model.name
-      localStorage.description = this.model.description
-      localStorage.start_at = this.model.start_at
-      localStorage.finish_at = this.model.finish_at
+      localStorage.name = this.model.name;
+      localStorage.description = this.model.description;
+      localStorage.start_at = this.model.start_at;
+      localStorage.finish_at = this.model.finish_at;
       if (this.model.target_amount != 0) {
-        localStorage.target_amount = this.model.target_amount
+        localStorage.target_amount = this.model.target_amount;
       } else {
-        localStorage.removeItem('target_amount')
+        localStorage.removeItem('target_amount');
       }
-      next()
+      next();
     } else {
-      localStorage.removeItem('name')
-      localStorage.removeItem('description')
-      localStorage.removeItem('start_at')
-      localStorage.removeItem('finish_at')
-      localStorage.removeItem('target_amount')
-      next()
+      localStorage.removeItem('name');
+      localStorage.removeItem('description');
+      localStorage.removeItem('start_at');
+      localStorage.removeItem('finish_at');
+      localStorage.removeItem('target_amount');
+      next();
     }
   }
 };

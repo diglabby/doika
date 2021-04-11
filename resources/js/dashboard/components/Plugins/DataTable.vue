@@ -132,10 +132,10 @@ export default {
             this.$t('buttons.admin.campaigns.delete')
           ]
         })
-        .then(test => {
+        .then(() => {
           axios
             .delete(`/doika/dashboard/api/campaigns/${params}`)
-            .then(({ data }) => {
+            .then(() => {
               this.onContextChanged();
             })
             .catch(e => {

@@ -15,7 +15,7 @@
       <div class="module-donate__wrapper">
         <div class="module-donate__info">
           <div class="module-donate__image" v-if="model.picture_url">
-            <img :src="model.picture_url" class="mainImage" alt="doika image">
+            <img :src="model.picture_url" class="mainImage" alt="doika image" />
             <div class="blurredImage"></div>
           </div>
           <div class="module-donate__description-wrapper">
@@ -49,14 +49,36 @@
                 @keypress="getNotMinus"
                 @input="$v.sum.$model = donate_amount"
                 class="module-donate__text-input form-control"
-                :class="{'is-invalid': $v.sum.$error}"
+                :class="{ 'is-invalid': $v.sum.$error }"
                 :placeholder="$t('labels.widget.input')"
-              >
-              <p class="invalid-feedback">{{ $t('labels.widget.invalidFeedback') }}</p>
+              />
+              <p class="invalid-feedback">
+                {{ $t('labels.widget.invalidFeedback') }}
+              </p>
             </div>
             <b-button-group size="lg" class="btn-block">
-              <b-button :style="{ background:  buttonBackground, color: settings.buttonPaymentFontColor }" class="module-donate__button-select payment" @click="recurrent = '/donate'" :class="{clicked: (recurrent=='/donate')}">{{ $t('buttons.widget.oneTime') }}</b-button>
-              <b-button :style="{ background:  buttonBackground, color: settings.buttonPaymentFontColor }" class="module-donate__button-select payment" @click="recurrent = '/recurrent'" :class="{clicked: (recurrent=='/recurrent')}">{{ $t('buttons.widget.subscribe') }}</b-button>
+              <b-button
+                :style="{
+                  background: buttonBackground,
+                  color: settings.buttonPaymentFontColor
+                }"
+                class="module-donate__button-select payment"
+                @click="recurrent = '/donate'"
+                :class="{ clicked: recurrent === '/donate' }"
+              >
+                {{ $t('buttons.widget.oneTime') }}
+              </b-button>
+              <b-button
+                :style="{
+                  background: buttonBackground,
+                  color: settings.buttonPaymentFontColor
+                }"
+                class="module-donate__button-select payment"
+                @click="recurrent = '/recurrent'"
+                :class="{ clicked: recurrent === '/recurrent' }"
+              >
+                {{ $t('buttons.widget.subscribe') }}
+              </b-button>
             </b-button-group>
             <b-button
               :style="{ color: fontColor }"
@@ -224,16 +246,6 @@ export default {
         return this.settings.termsOfUse;
       }
       return this.model.visual_settings.colors.termsOfUse;
-    },
-    buttonBackground() {
-      try {
-        if (!this.model.visual_settings.colors.buttonBackground) {
-          return this.settings.buttonBackground;
-        }
-      } catch (e) {
-        return this.settings.buttonBackground;
-      }
-      return this.model.visual_settings.colors.buttonBackground;
     },
     buttonBackground() {
       try {

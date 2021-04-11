@@ -5,7 +5,7 @@
       :name="name"
       class="custom-switch-input"
       @change="handleChange"
-    >
+    />
     <span class="custom-switch-indicator"></span>
     <span class="custom-switch-description" v-if="description">{{
       description
@@ -38,6 +38,7 @@ export default {
   },
   computed: {},
   methods: {
+    // eslint-disable-next-line no-unused-vars
     handleChange({ target: { checked } }) {}
   }
 };

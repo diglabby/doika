@@ -19,7 +19,7 @@
         @focus="showOptions = true"
         @keydown.enter.prevent="onAddNew()"
         @input="onSearch"
-      >
+      />
       <div class="dropdown-menu d-block" v-if="showOptions && options.length">
         <a
           href="#"
@@ -35,7 +35,9 @@
     <div class="tags mt-2" v-if="multiple && mutableValue.length">
       <div class="tag" v-for="(item, index) in mutableValue" :key="index">
         {{ label ? item[label] : item }}
-        <a href="#" class="tag-addon" @click.prevent="onDelete(item)"><span aria-hidden="true">&times;</span></a>
+        <a href="#" class="tag-addon" @click.prevent="onDelete(item)">
+          <span aria-hidden="true">&times;</span>
+        </a>
       </div>
     </div>
   </div>

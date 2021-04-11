@@ -44,12 +44,13 @@
 </template>
 
 <script>
-import Notifications from './Notifications';
+import axios from 'axios';
 
 export default {
   props: {
     notification: {
-      type: Object
+      type: Object,
+      required: true
     },
 
     isEdit: {

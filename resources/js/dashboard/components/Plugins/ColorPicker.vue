@@ -61,7 +61,12 @@ export default {
   components: {
     'chrome-picker': Chrome
   },
-  props: ['color', 'section_name'],
+  props: {
+    color: {
+      type: String,
+      default: '#000000'
+    }
+  },
   data() {
     return {
       colors: {

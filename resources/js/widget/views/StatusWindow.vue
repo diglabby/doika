@@ -12,7 +12,7 @@
           {{ message }}
         </p>
         <div class="module-donate__icon">
-          <img :src="image" >
+          <img :src="image" />
         </div>
       </div>
       <b-button
@@ -32,10 +32,18 @@
 </template>
 
 <script>
-
 export default {
   name: 'StatusWindow',
-  props: ['id', 'status'],
+  props: {
+    id: {
+      type: String,
+      default: null
+    },
+    status: {
+      type: String,
+      default: null
+    }
+  },
   data() {
     return {
       isBusy: true,
@@ -70,7 +78,8 @@ export default {
         break;
       default:
         this.image = '/doika/images/sadsmile.png';
-        this.message = 'Немагчыма правесці аплату. Завяршыўся час чакання. Паспрабуйце яшчэ раз націснуўшы "Назад"';
+        this.message =
+          'Немагчыма правесці аплату. Завяршыўся час чакання. Паспрабуйце яшчэ раз націснуўшы "Назад"';
         break;
     }
     this.isBusy = false;

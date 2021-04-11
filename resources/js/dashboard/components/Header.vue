@@ -8,14 +8,14 @@
         :src="require('@/dashboard/logo')"
         height="30"
         alt="Doika-logo"
-      >
+      />
       <img
         class="navbar-brand-minimized"
         :src="require('@/dashboard/Doika-logo')"
         width="30"
         height="30"
         alt="Doika-logo"
-      >
+      />
     </a>
 
     <SidebarToggler class="d-md-down-none" display="lg"></SidebarToggler>
@@ -33,7 +33,8 @@
             <i class="fe fe-book"></i>&nbsp;&nbsp;{{
               $t('labels.admin.newMenu.campaign')
             }}
-</b-dropdown-item><!--
+          </b-dropdown-item>
+          <!--
           <b-dropdown-item to="/users/create">
             <i class="fe fe-users"></i>&nbsp;&nbsp;{{ $t('labels.admin.newMenu.user') }}
           </b-dropdown-item>-->
@@ -81,10 +82,10 @@ export default {
     logout() {
       axios
         .post(this.$app.route('logout'))
-        .then(response => {
+        .then(() => {
           this.$router.push(this.$app.route('login'));
         })
-        .catch(error => {
+        .catch(() => {
           location.reload();
         });
     }

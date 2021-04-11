@@ -16,6 +16,7 @@
 <script>
 import axios from 'axios';
 import ContactForm from './ContactForm';
+
 export default {
   name: 'Feedback',
   components: {
@@ -33,12 +34,12 @@ export default {
     };
   },
   async created() {
-    // let { data } = await axios.get(
-    //   this.$app.route('admin.feedback.show', {
-    //     form_submission: this.id
-    //   })
-    // )
-    // this.submission = data
+    let { data } = await axios.get(
+      this.$app.route('admin.feedback.show', {
+        form_submission: this.id
+      })
+    )
+    this.submission = data
   }
 };
 </script>

@@ -20,9 +20,7 @@
           stacked="md"
           no-local-sorting
           :empty-text="$t('alerts.admin.common.search.noResult')"
-          :empty-filtered-text="
-            $t('alerts.admin.common.search.noMatchResult')
-          "
+          :empty-filtered-text="$t('alerts.admin.common.search.noMatchResult')"
           :fields="fields"
           :items="dataLoadProvider"
         >
@@ -69,7 +67,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'PaymentsList',
   data() {

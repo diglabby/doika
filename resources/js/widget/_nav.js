@@ -1,4 +1,4 @@
-export default (app, i18n, newPostsCount, pendingPostsCount) => {
+export default (app, i18n) => {
   return [
     {
       name: i18n.t('labels.client.titles.main'),

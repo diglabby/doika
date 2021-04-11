@@ -7,7 +7,7 @@
       :value="value"
       :checked="isChecked"
       @change="handleChange"
-    >
+    />
     <span class="custom-switch-indicator"></span>
     <span class="custom-switch-description" v-if="description">{{
       description

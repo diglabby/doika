@@ -170,8 +170,7 @@ export default {
   computed: {},
   methods: {
     dataLoadProvider(ctx) {
-      let data = this.$refs.datasource.loadData(ctx.sortBy, ctx.sortDesc);
-      return data;
+      return this.$refs.datasource.loadData(ctx.sortBy, ctx.sortDesc);
     },
 
     average(count, summ) {
@@ -189,11 +188,11 @@ export default {
     },
 
     onActiveToggle(id) {
-      // axios
-      //   .post(this.$app.route('admin.campaigns.active', { campaign: id }))
-      //   .catch(error => {
-      //     this.$app.error(error)
-      //   })
+      axios
+        .post(this.$app.route('admin.campaigns.active', { campaign: id }))
+        .catch(error => {
+          this.$app.error(error);
+        });
     }
   }
 };

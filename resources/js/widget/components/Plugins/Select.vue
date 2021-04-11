@@ -19,7 +19,7 @@
         @focus="showOptions = true"
         @keydown.enter.prevent="onAddNew()"
         @input="onSearch"
-      >
+      />
       <div class="dropdown-menu d-block" v-if="showOptions && options.length">
         <a
           href="#"

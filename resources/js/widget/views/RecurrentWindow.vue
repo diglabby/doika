@@ -19,14 +19,14 @@
             class="donate__email module-donate__text-input"
             v-model="model.name"
             :placeholder="$t('labels.widget.name')"
-          >
+          />
           <input
             type="email"
             id="email"
             class="donate__email module-donate__text-input"
             v-model="model.email"
             :placeholder="$t('labels.widget.email')"
-          >
+          />
           <input
             type="tel"
             id="phone"
@@ -34,7 +34,7 @@
             v-model="model.phone"
             :placeholder="$t('labels.widget.phone')"
             @keypress="onlyNumbers"
-          >
+          />
         </div>
 
         <div class="donateReccurentWindow__footer">
@@ -63,8 +63,8 @@
 
 <style lang="scss">
 @import '~vue-material/dist/theme/engine';
-
 @import '~vue-material/dist/theme/all';
+
 .md-theme-default a:not(.md-button) {
   color: #303030;
 }
@@ -79,10 +79,14 @@
 </style>
 
 <script>
-
 export default {
   name: 'RecurrentWindow',
-  props: ['id'],
+  props: {
+    id: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       isBusy: true,

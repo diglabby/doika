@@ -1,7 +1,12 @@
 import axios from 'axios';
 
 export default {
-  props: ['id'],
+  props: {
+    id: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       validation: {},
@@ -62,13 +67,18 @@ export default {
       }
 
       try {
-        let { data } = await axios.post(action, formData);
+        await axios.post(action, formData);
         this.isLoading = false;
 
-	      window.swal(this.$t('alerts.admin.forms.success'), this.$t('alerts.admin.forms.data_written'), 'success', {
-          timer: 2000,
-          buttons: false
-        });
+        window.swal(
+          this.$t('alerts.admin.forms.success'),
+          this.$t('alerts.admin.forms.data_written'),
+          'success',
+          {
+            timer: 2000,
+            buttons: false
+          }
+        );
 
         //this.$app.noty[data.status](data.message)
         if (this.listPath) {
