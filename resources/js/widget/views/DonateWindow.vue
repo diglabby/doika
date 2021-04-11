@@ -115,16 +115,6 @@ export default {
         //console.log(error);
       });
 
-    const curToken = this.token;
-    //this.isBusy = true;
-
-    // set first interval for calling payments status. it need for putting the card data in the form
-    const firstLaunch = 5000;
-
-    setTimeout(function() {
-      delay(1, curToken, '');
-    }, firstLaunch);
-
     const cssStylesForBePaidIframe =
       'html {\
     padding:0;\
@@ -273,11 +263,11 @@ export default {
               max-width: 365px;\
               height: 186px;\
               position:relative;\
-              background: url("https://' +
-      parent.document.location.host +
+              background: url("' +
+      parent.document.location.origin +
       '/doika/images/front-card.png"),\
-url("https://' +
-      parent.document.location.host +
+url("' +
+      parent.document.location.origin +
       '/doika/images/back-card.png");\
 background-repeat: no-repeat;\
 background-position: left top, right 20px;\
@@ -440,7 +430,8 @@ display:none !important;\
     };
 
     /** @see https://github.com/begateway/begateway-js/blob/master/Readme.md **/
-    new BeGateway(bePaidOptions);
+    const pf = new BeGateway(bePaidOptions);
+    pf.buildForm();
   },
 
   methods: {
