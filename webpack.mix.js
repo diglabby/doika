@@ -1,6 +1,5 @@
-let mix = require('laravel-mix');
-
-
+const mix = require('laravel-mix');
+const sass = require('node-sass');
 
 /*
  |--------------------------------------------------------------------------
@@ -13,64 +12,12 @@ let mix = require('laravel-mix');
  |
  */
 
-
 mix
     .js('resources/js/dashboard/app.js', 'public/build/js/dashboard/dashboard.js')
     .js('resources/js/widget/app.js', 'public/build/js/widget/widget.js')
-    .sass('resources/sass/dashboard/app.scss', 'public/build/css/dashboard/dashboard.css', { implementation: require('node-sass') })
-    .sass('resources/sass/widget/app.scss', 'public/build/css/widget/widget.css', { implementation: require('node-sass') })
+    .vue()
+    .sass('resources/sass/dashboard/app.scss', 'public/build/css/dashboard/dashboard.css', { implementation: sass })
+    .sass('resources/sass/widget/app.scss', 'public/build/css/widget/widget.css', { implementation: sass })
     .options({
         processCssUrls: false
-    })
-    .webpackConfig({
-        watchOptions: {
-            ignored: /node_modules/
-        }
     });
-
-mix.extend('assetsConfig', new class {
-    webpackConfig(webpackConfig) {
-        webpackConfig.resolve.extensions.push('.js', '.vue', '.json','.png');
-        webpackConfig.resolve.alias = {
-            '@': __dirname + '/resources/images'
-        };
-    }
-}).setResourceRoot('/doika/public/');
-mix.assetsConfig();
-
-// Full API
-// mix.js(src, output);
-// mix.react(src, output); <-- Identical to mix.js(), but registers React Babel compilation.
-// mix.preact(src, output); <-- Identical to mix.js(), but registers Preact compilation.
-// mix.coffee(src, output); <-- Identical to mix.js(), but registers CoffeeScript compilation.
-// mix.ts(src, output); <-- TypeScript support. Requires tsconfig.json to exist in the same folder as webpack.mix.js
-// mix.extract(vendorLibs);
-// mix.sass(src, output);
-// mix.less(src, output);
-// mix.stylus(src, output);
-// mix.postCss(src, output, [require('postcss-some-plugin')()]);
-// mix.browserSync('my-site.test');
-// mix.combine(files, destination);
-// mix.babel(files, destination); <-- Identical to mix.combine(), but also includes Babel compilation.
-// mix.copy(from, to);
-// mix.copyDirectory(fromDir, toDir);
-// mix.minify(file);
-// mix.sourceMaps(); // Enable sourcemaps
-// mix.version(); // Enable versioning.
-// mix.disableNotifications();
-// mix.setPublicPath('path/to/public');
-// mix.setResourceRoot('prefix/for/resource/locators');
-// mix.autoload({}); <-- Will be passed to Webpack's ProvidePlugin.
-// mix.webpackConfig({}); <-- Override webpack.config.js, without editing the file directly.
-// mix.babelConfig({}); <-- Merge extra Babel configuration (plugins, etc.) with Mix's default.
-// mix.then(function () {}) <-- Will be triggered each time Webpack finishes building.
-// mix.dump(); <-- Dump the generated webpack config object t the console.
-// mix.extend(name, handler) <-- Extend Mix's API with your own components.
-// mix.options({
-//   extractVueStyles: false, // Extract .vue component styling to file, rather than inline.
-//   globalVueStyles: file, // Variables file to be imported in every component.
-//   processCssUrls: true, // Process/optimize relative stylesheet url()'s. Set to false, if you don't want them touched.
-//   purifyCss: false, // Remove unused CSS selectors.
-//   terser: {}, // Terser-specific options. https://github.com/webpack-contrib/terser-webpack-plugin#options
-//   postCss: [] // Post-CSS options: https://github.com/postcss/postcss/blob/master/docs/plugins.md
-// });
