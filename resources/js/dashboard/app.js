@@ -184,7 +184,7 @@ export function createApp() {
 }
 
 // Init App
-if (document.getElementById('app') !== null) {
+if (document.getElementById('doikaDashboardApp') !== null) {
   const { app } = createApp();
-  app.$mount('#app');
+  app.$mount('#doikaDashboardApp');
 }
