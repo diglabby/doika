@@ -9,12 +9,6 @@ import BootstrapVue from 'bootstrap-vue';
 import Vuelidate from 'vuelidate';
 
 // Vendor plugins components
-import '../vendor/coreui/components';
-import DataTable from './components/Plugins/DataTable';
-import DateTimePicker from './components/Plugins/DateTimePicker';
-import Switch from './components/Plugins/Switch';
-import vSelect from './components/Plugins/Select';
-
 import { createRouter } from './router';
 import { createStore } from './store';
 import { createLocales } from '../vendor/vue-i18n-config';
@@ -28,16 +22,9 @@ import Noty from 'noty';
 
 Vue.use(VueMaterial);
 Vue.use(BootstrapVue);
-// vue-select
-Vue.component('v-select', vSelect);
 
 //vuelidate
 Vue.use(Vuelidate);
-
-// Custom components
-Vue.component('c-switch', Switch);
-Vue.component('p-datetimepicker', DateTimePicker);
-Vue.component('b-datatable', DataTable);
 
 export function createApp() {
   // Init router and store
