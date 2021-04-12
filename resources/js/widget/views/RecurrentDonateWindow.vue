@@ -58,7 +58,6 @@ export default {
       'widget.campaigns.subscription-intends.store',
       {
         campaign: this.id,
-        paymentGateway: 1,
         email: this.model.email,
         payment_interval: 'P1M'
       }

@@ -2,14 +2,14 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 // Containers
-import Full from '../containers/Full';
+import Full from '../containers/Full.vue';
 
 // Views
-import MainWindow from '../views/MainWindow';
-import DonateWindow from '../views/DonateWindow';
-import RecurrentWindow from '../views/RecurrentWindow';
-import RecurrentDonateWindow from '../views/RecurrentDonateWindow';
-import StatusWindow from '../views/StatusWindow';
+import MainWindow from '../views/MainWindow.vue';
+import DonateWindow from '../views/DonateWindow.vue';
+import RecurrentWindow from '../views/RecurrentWindow.vue';
+import RecurrentDonateWindow from '../views/RecurrentDonateWindow.vue';
+import StatusWindow from '../views/StatusWindow.vue';
 
 Vue.use(Router);
 

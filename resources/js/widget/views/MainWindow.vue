@@ -84,7 +84,7 @@
               :style="{ color: fontColor }"
               id="button__confirm"
               :to="'/campaigns/' + model.id + recurrent"
-              @click="setAmount"
+              @click="confirmIntend"
               :disabled="agreement_status == 'false' || this.$v.sum.$invalid"
               class="module-donate__button-select confirm"
             >
@@ -209,10 +209,13 @@ export default {
   computed: {
     showProgress() {
       try {
-        return this.model.visual_settings.progressBar != '0';
+        return this.model.visual_settings.progressBar !== '0';
       } catch (e) {
         return false;
       }
+    },
+    oneTimeDonationUrl() {
+      return `/campaigns/${this.model.id}${this.recurrent}`;
     },
 
     widgetBackground() {
@@ -259,13 +262,13 @@ export default {
     },
     getButtons() {
       try {
-        if (!this.model.visual_settings.buttons) {
-          return this.settings.buttons;
+        if (this.model.visual_settings.buttons) {
+          return this.model.visual_settings.buttons;
         }
       } catch (e) {
-        return this.settings.buttons;
+        return this.settings.buttons
       }
-      return this.model.visual_settings.buttons;
+      return this.settings.buttons;
     },
     fontColor() {
       try {
@@ -289,7 +292,7 @@ export default {
     contains: function(arr, item) {
       return arr.indexOf(item) !== -1;
     },
-    setAmount: function() {
+    confirmIntend: function() {
       sessionStorage.setItem('amount', this.donate_amount * 100);
     },
     getNotMinus: function(evt) {
