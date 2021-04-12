@@ -5,6 +5,8 @@
 // Custom Variables
 @import "variables";
 
+//@import "./fonts/_feather";
+
 // Thème CoreUI
 @import "~@coreui/coreui/scss/coreui";
 @import "~bootstrap-vue/dist/bootstrap-vue.css";
@@ -14,7 +16,6 @@
 @import "../vendor/tabler/scss/dashboard/cards";
 @import "../vendor/tabler/scss/dashboard/tag";
 @import "../vendor/tabler/scss/dashboard/forms/custom-switch";
-@import "../vendor/tabler/scss/dashboard/fonts/feather";
 
 // Plugins
 @import "~sweetalert2/src/sweetalert2";
