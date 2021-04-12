@@ -5,13 +5,13 @@
     <a class="navbar-brand" :href="$app.homePath" target="_blank">
       <img
         class="navbar-brand-full"
-        :src="require('@/dashboard/logo')"
+        src="/doika/images/logo.png"
         height="30"
         alt="Doika-logo"
       />
       <img
         class="navbar-brand-minimized"
-        :src="require('@/dashboard/Doika-logo')"
+        src="/doika/images/Doika-logo.png"
         width="30"
         height="30"
         alt="Doika-logo"
